@@ -1,7 +1,0 @@
-node_modules/
-.env
-config/token.json
-config/credentials.json
-config/pending.json
-logs/
-.DS_Store
