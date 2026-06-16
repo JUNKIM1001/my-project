@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+requests
+beautifulsoup4
+lxml
+google-genai
+python-dotenv
+python-multipart
+pypdf
+python-pptx
+pymupdf

@@ -1,0 +1,22 @@
+[
+  {"name": "グロービス・キャピタル・パートナーズ", "type": "VC", "parent_company": null, "website": "https://www.globiscapital.co.jp"},
+  {"name": "グローバル・ブレイン", "type": "VC", "parent_company": null, "website": "https://globalbrains.com"},
+  {"name": "ジェネシア・ベンチャーズ", "type": "VC", "parent_company": null, "website": "https://genesia.vc"},
+  {"name": "インキュベイトファンド", "type": "VC", "parent_company": null, "website": "https://incubatefund.com"},
+  {"name": "ANRI", "type": "VC", "parent_company": null, "website": "https://anri.vc"},
+  {"name": "Coral Capital", "type": "VC", "parent_company": null, "website": "https://coralcap.co"},
+  {"name": "DNX Ventures", "type": "VC", "parent_company": null, "website": "https://www.dnx.vc"},
+  {"name": "East Ventures", "type": "VC", "parent_company": null, "website": "https://east.vc"},
+  {"name": "サイバーエージェント・キャピタル", "type": "VC", "parent_company": null, "website": "https://www.cyberagentcapital.com"},
+  {"name": "JAFCO グループ", "type": "VC", "parent_company": null, "website": "https://www.jafco.co.jp"},
+  {"name": "三菱UFJキャピタル", "type": "VC", "parent_company": "三菱UFJ銀行", "website": "https://www.mucap.co.jp"},
+  {"name": "SBIインベストメント", "type": "CVC", "parent_company": "SBIホールディングス", "website": "https://www.sbi-investment.co.jp"},
+  {"name": "NTTドコモ・ベンチャーズ", "type": "CVC", "parent_company": "NTTドコモ", "website": "https://www.nttdocomo-ventures.com"},
+  {"name": "ソニーイノベーションファンド", "type": "CVC", "parent_company": "ソニーグループ", "website": "https://www.sonyinnovationfund.com"},
+  {"name": "KDDI Open Innovation Fund", "type": "CVC", "parent_company": "KDDI", "website": "https://www.kddi-ventures.com"},
+  {"name": "電通ベンチャーズ", "type": "CVC", "parent_company": "電通グループ", "website": "https://dentsu-ventures.com"},
+  {"name": "WiL", "type": "VC", "parent_company": null, "website": "https://wilab.com"},
+  {"name": "Spiral Capital", "type": "VC", "parent_company": null, "website": "https://spiralcapital.co.jp"},
+  {"name": "F Ventures", "type": "VC", "parent_company": null, "website": "https://f-ventures.vc"},
+  {"name": "みずほキャピタル", "type": "VC", "parent_company": "みずほ銀行", "website": "https://www.mizuho-cap.co.jp"}
+]

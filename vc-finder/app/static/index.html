@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>VC/CVC 商談先ファインダー</title>
+<style>
+  body { font-family: sans-serif; margin: 2rem; background: #f7f7f9; color: #222; }
+  h1 { font-size: 1.4rem; margin-bottom: 0.2rem; }
+  .lead { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .panel { background: #fff; border: 1px solid #e2e2e8; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
+  .panel h2 { font-size: 1.05rem; margin: 0 0 0.7rem; }
+  .panel .step { display: inline-block; background: #2b6cb0; color: #fff; border-radius: 999px; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: 0.85rem; margin-right: 0.4rem; }
+  .controls { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
+  select, input, textarea, button { padding: 0.4rem 0.6rem; font-size: 0.9rem; }
+  button { cursor: pointer; background: #2b6cb0; color: #fff; border: none; border-radius: 5px; }
+  button.secondary { background: #fff; color: #2b6cb0; border: 1px solid #2b6cb0; }
+  table { width: 100%; border-collapse: collapse; background: #fff; }
+  th, td { border: 1px solid #ddd; padding: 0.5rem; font-size: 0.83rem; vertical-align: top; }
+  th { background: #eee; text-align: left; }
+  .tag { display: inline-block; background: #e0ecff; border-radius: 4px; padding: 0 4px; margin: 1px; font-size: 0.74rem; }
+  .score { font-size: 1.05rem; font-weight: bold; color: #2b6cb0; }
+  .muted { color: #888; font-size: 0.85rem; }
+  .error { color: #c0392b; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>VC / CVC 商談先ファインダー</h1>
+<p class="lead">自社のピッチ資料を読み込ませ、商談ニーズを入力すると、AIが事業アセットのシナジーを軸に出資・協業候補のVC/CVCを探し、商談先リストを作成します。</p>
+
+<!-- STEP 0: ピッチ資料の読み込み -->
+<div class="panel">
+  <h2><span class="step">0</span>自社のピッチ資料を読み込む</h2>
+  <div class="controls">
+    <input type="file" id="pitchFile" accept=".pdf,.pptx">
+    <button onclick="uploadPitch()">ファイルを読み込む</button>
+  </div>
+  <div class="controls" style="margin-top:0.6rem;">
+    <input id="pitchUrl" style="flex:1; min-width:320px;"
+      placeholder="またはピッチ資料のURLを貼り付け（Google Slides / PDF / Webページ）">
+    <button onclick="uploadPitchUrl()">URLから読み込む</button>
+  </div>
+  <p class="muted" style="margin:0.5rem 0 0;">※Google Slidesは共有設定を「リンクを知っている全員（閲覧可）」にしてください。</p>
+  <div id="pitchStatus" class="muted" style="margin-top:0.5rem;"></div>
+  <div id="pitchSummary" style="margin-top: 0.8rem; white-space: pre-wrap; font-size: 0.85rem; background:#f7f9fc; border-radius:6px; padding:0.8rem; display:none;"></div>
+</div>
+
+<!-- STEP 1: 商談ニーズ -->
+<div class="panel">
+  <h2><span class="step">1</span>商談ニーズを入力して候補を探す</h2>
+  <p class="muted" style="margin:0 0 0.6rem;">どのような出資・協業を求めているか、どんなアセットを持つ相手と組みたいかを書いてください。Step0の自社事業情報と合わせてAIが探します。</p>
+  <div class="controls" style="align-items: flex-start;">
+    <textarea id="aiNeeds" rows="3" style="flex:1; min-width: 320px;"
+      placeholder="例: シード期の資金調達に加え、店舗網や防音設備・楽器などのアセットを持つ事業会社との協業を求めている。スタジオの多店舗展開を支援してくれるCVC、音楽テックに投資実績のある独立系VCを探してほしい。"></textarea>
+    <button onclick="aiSearch()">候補を探す</button>
+  </div>
+  <div id="aiStatus" class="muted" style="margin-top:0.5rem;"></div>
+  <div id="aiResult" style="margin-top: 0.8rem; font-size: 0.85rem;"></div>
+  <details style="margin-top: 0.8rem;">
+    <summary style="cursor:pointer; font-size:0.85rem;">過去の検索条件を再利用する</summary>
+    <div id="historyList" style="font-size: 0.82rem; margin-top: 0.5rem;"></div>
+  </details>
+</div>
+
+<!-- STEP 2: 商談先リスト -->
+<div class="panel">
+  <h2><span class="step">2</span>商談先リスト</h2>
+  <div class="controls" style="margin-bottom: 0.8rem;">
+    <select id="reviewStatus" onchange="search()">
+      <option value="latest">今回の検索結果</option>
+      <option value="ai">これまでのAI検索結果すべて</option>
+      <option value="all">参照マスタ全件（取込済みの国内VC約2,700件）</option>
+    </select>
+    <select id="type"><option value="">種別: すべて</option></select>
+    <select id="stage"><option value="">ステージ: すべて</option></select>
+    <select id="sector"><option value="">投資領域: すべて</option></select>
+    <input id="keyword" placeholder="キーワード（社名など）" style="width:180px;">
+    <button class="secondary" onclick="search()">絞り込み</button>
+    <button onclick="exportCsv()">この結果を商談先リストとして出力（CSV）</button>
+    <span id="status" class="muted"></span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>適合度</th><th>名称</th><th>種別</th><th>設立年</th><th>ステージ</th><th>商談提案ポイント</th><th>最近の出資・協業</th><th>サイト</th><th>代表者 / SNS</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="muted" id="emptyNote" style="display:none; margin-top:0.8rem;">
+    まだ結果がありません。上の「STEP1 商談ニーズを入力して候補を探す」から条件を入力してリストアップしてください。
+  </p>
+</div>
+
+<script>
+async function loadOptions() {
+  const res = await fetch('/api/options');
+  const opts = await res.json();
+  for (const v of opts.types) addOption('type', v);
+  for (const v of opts.stages) addOption('stage', v);
+  for (const v of opts.sectors) addOption('sector', v);
+}
+function addOption(selectId, value) {
+  const sel = document.getElementById(selectId);
+  const o = document.createElement('option');
+  o.value = value; o.textContent = value;
+  sel.appendChild(o);
+}
+
+function buildParams() {
+  const params = new URLSearchParams();
+  const reviewStatus = document.getElementById('reviewStatus').value;
+  const type = document.getElementById('type').value;
+  const stage = document.getElementById('stage').value;
+  const sector = document.getElementById('sector').value;
+  const keyword = document.getElementById('keyword').value;
+  params.set('review_status', reviewStatus);
+  if (type) params.set('type', type);
+  if (stage) params.set('stage', stage);
+  if (sector) params.set('sector', sector);
+  if (keyword) params.set('keyword', keyword);
+  return params;
+}
+
+async function search() {
+  const params = buildParams();
+  const res = await fetch('/api/vcs?' + params.toString());
+  const data = await res.json();
+  const rows = document.getElementById('rows');
+  rows.innerHTML = '';
+  for (const v of data) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="score">${v.score != null ? v.score : ''}</td>
+      <td><strong>${v.name}</strong>${v.parent_company ? '<br><span class="muted">' + v.parent_company + '</span>' : ''}
+        ${v.contact_url ? `<br><a href="${v.contact_url}" target="_blank" style="font-size:0.75rem;">問い合わせ先</a>` : ''}</td>
+      <td>${v.type}</td>
+      <td>${v.founded_year || ''}</td>
+      <td>${tags(v.stages)}</td>
+      <td>${(v.pitch_points || []).map(p => '・' + p).join('<br>')}</td>
+      <td class="muted">${v.investment_evidence || ''}</td>
+      <td><a href="${v.website}" target="_blank">サイト</a></td>
+      <td>${repCell(v)}</td>
+    `;
+    rows.appendChild(tr);
+  }
+  document.getElementById('status').textContent = `${data.length} 件`;
+  document.getElementById('emptyNote').style.display = data.length === 0 ? 'block' : 'none';
+}
+
+function repCell(v) {
+  const sns = [];
+  if (v.rep_linkedin) sns.push(`<a href="${v.rep_linkedin}" target="_blank">LinkedIn</a>`);
+  if (v.rep_facebook) sns.push(`<a href="${v.rep_facebook}" target="_blank">Facebook</a>`);
+  const name = v.rep_name || '<span class="muted">未確認</span>';
+  const snsHtml = sns.length ? sns.join(' / ') : '<span class="muted">未確認</span>';
+  return `${name}<br>${snsHtml}`;
+}
+
+function tags(arr) {
+  return (arr || []).filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
+}
+
+function exportCsv() {
+  window.location = '/api/vcs.csv?' + buildParams().toString();
+}
+
+function setStatus(id, message, isError) {
+  const el = document.getElementById(id);
+  el.textContent = message;
+  el.className = isError ? 'error' : 'muted';
+}
+
+async function uploadPitch() {
+  const input = document.getElementById('pitchFile');
+  if (!input.files.length) { setStatus('pitchStatus', 'ファイルを選択してください', true); return; }
+  const fd = new FormData();
+  fd.append('file', input.files[0]);
+  setStatus('pitchStatus', '読み込み中…（資料を解析しています。画像主体の資料は画像認識のため1分ほどかかります）', false);
+  try {
+    const res = await fetch('/api/company-profile', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (data.error) { setStatus('pitchStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('pitchStatus', `読み込み完了: ${data.filename}`, false);
+    showProfile(data.summary);
+  } catch (e) {
+    setStatus('pitchStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
+}
+
+async function uploadPitchUrl() {
+  const url = document.getElementById('pitchUrl').value.trim();
+  if (!url) { setStatus('pitchStatus', 'URLを入力してください', true); return; }
+  setStatus('pitchStatus', '読み込み中…（URLの資料を解析しています。画像主体の資料は1分ほどかかります）', false);
+  try {
+    const res = await fetch('/api/company-profile-url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+    const data = await res.json();
+    if (data.error) { setStatus('pitchStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('pitchStatus', `読み込み完了: ${data.filename}`, false);
+    showProfile(data.summary);
+  } catch (e) {
+    setStatus('pitchStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
+}
+
+function showProfile(summary) {
+  const el = document.getElementById('pitchSummary');
+  if (!summary) { el.style.display = 'none'; return; }
+  el.textContent = summary;
+  el.style.display = 'block';
+}
+
+async function loadProfile() {
+  const res = await fetch('/api/company-profile');
+  const data = await res.json();
+  if (data.summary) {
+    document.getElementById('pitchStatus').textContent = data.filename ? `読込済み: ${data.filename}` : '';
+    showProfile(data.summary);
+  }
+}
+
+async function aiSearch() {
+  const needs = document.getElementById('aiNeeds').value.trim();
+  if (!needs) { setStatus('aiStatus', '商談ニーズを入力してください', true); return; }
+  setStatus('aiStatus', 'AIが検索中です…（Web検索を行うため3〜4分かかります）', false);
+  document.getElementById('aiResult').innerHTML = '';
+  let data;
+  try {
+    const res = await fetch('/api/ai-search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ needs })
+    });
+    data = await res.json();
+  } catch (e) {
+    setStatus('aiStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+    return;
+  }
+  if (data.error) {
+    setStatus('aiStatus', 'エラー: ' + data.error, true);
+    return;
+  }
+  setStatus('aiStatus',
+    `完了: 新規${data.created}件 / 既存統合${data.updated}件。下の商談先リストに反映しました。`, false);
+
+  const list = document.getElementById('aiResult');
+  for (const c of data.candidates) {
+    const div = document.createElement('div');
+    div.style.marginBottom = '0.7rem';
+    const assets = (c.relevant_assets || []).map(t => `<span class="tag">${t}</span>`).join('');
+    const active = c.investment_active ? '✅出資機能あり' : '⚠️要確認';
+    const matched = c.matched_existing ? `（既存リスト「${c.matched_existing}」に統合）` : '';
+    div.innerHTML = `<strong>${c.name}</strong> (${c.type}${c.parent_company ? ' / ' + c.parent_company : ''})
+      適合度 <strong>${c.score != null ? c.score : '-'}</strong> ${active} ${matched}<br>
+      <span class="muted">関連アセット:</span> ${assets}`;
+    list.appendChild(div);
+  }
+  loadHistory();
+  search();
+}
+
+async function loadHistory() {
+  const res = await fetch('/api/history');
+  const items = await res.json();
+  const list = document.getElementById('historyList');
+  list.innerHTML = '';
+  for (const h of items) {
+    const div = document.createElement('div');
+    div.style.marginBottom = '0.4rem';
+    const date = h.created_at ? new Date(h.created_at).toLocaleString('ja-JP') : '';
+    div.innerHTML = `<a href="#" onclick="reuseCondition(${h.id}); return false;">再利用</a>
+      <span class="muted">[${date}] ${h.condition.slice(0, 70)} → ${h.result_count}件</span>`;
+    div.dataset.condition = h.condition;
+    div.id = 'history-' + h.id;
+    list.appendChild(div);
+  }
+}
+
+function reuseCondition(id) {
+  const div = document.getElementById('history-' + id);
+  if (div) document.getElementById('aiNeeds').value = div.dataset.condition;
+}
+
+loadOptions().then(search);
+loadHistory();
+loadProfile();
+</script>
+</body>
+</html>
