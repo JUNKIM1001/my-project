@@ -1,0 +1,35 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ridge-runner",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /tmp/ridge-runner-preview && exec python3 -m http.server 5179"],
+      "port": 5179
+    },
+    {
+      "name": "ridge-runner-flutter",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd /Users/thisiskj/projects/ridge-runner/build/web && exec python3 -m http.server 5181"],
+      "port": 5181
+    },
+    {
+      "name": "location-rpg-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "location-rpg-app", "run", "dev", "--", "--host"],
+      "port": 5173
+    },
+    {
+      "name": "shrine-finder-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "shrine-finder-web", "run", "dev", "--", "--host", "--port", "5183"],
+      "port": 5183
+    },
+    {
+      "name": "vc-finder",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/vc-finder\" && .venv/bin/uvicorn app.main:app --port 8420"],
+      "port": 8420
+    }
+  ]
+}

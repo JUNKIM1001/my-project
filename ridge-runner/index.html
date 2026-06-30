@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>チャリ縦走 — Ridge Runner</title>
+<style>
+  :root { color-scheme: dark; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: #0b1020; overflow: hidden; }
+  body {
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
+    -webkit-user-select: none; user-select: none; touch-action: none;
+  }
+  /* Phone frame so it reads as an iOS mobile game */
+  #phone {
+    position: relative;
+    width: min(390px, 100vw);
+    height: min(844px, 100vh);
+    aspect-ratio: 390 / 844;
+    border-radius: 44px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 2px #1b2233 inset;
+  }
+  canvas { display: block; width: 100%; height: 100%; }
+  /* iOS-style notch */
+  #notch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 140px; height: 28px; background: #000;
+    border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;
+    z-index: 20; pointer-events: none;
+  }
+  #hud {
+    position: absolute; inset: 0; z-index: 10; pointer-events: none;
+    padding: 44px 20px 0;
+    color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,.45);
+  }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .alt { font-size: 13px; letter-spacing: .08em; opacity: .85; }
+  .alt b { font-size: 30px; font-weight: 800; letter-spacing: 0; }
+  .range {
+    text-align: right; font-size: 12px; opacity: .9;
+  }
+  .range .name { font-size: 17px; font-weight: 700; letter-spacing: .12em; }
+  .pill {
+    display: inline-block; margin-top: 6px; padding: 3px 10px;
+    background: rgba(255,255,255,.16); border-radius: 999px;
+    font-size: 11px; letter-spacing: .1em; backdrop-filter: blur(4px);
+  }
+  #progress {
+    position: absolute; left: 20px; right: 20px; top: 86px; height: 5px;
+    background: rgba(255,255,255,.18); border-radius: 999px; overflow: hidden;
+  }
+  #progressFill { height: 100%; width: 0%; background: linear-gradient(90deg,#ffd66b,#ff8a5c); border-radius: 999px; }
+  #marks { position: absolute; left: 20px; right: 20px; top: 96px; display: flex; justify-content: space-between; font-size: 9px; opacity: .7; letter-spacing: .05em; }
+  #hint {
+    position: absolute; left: 0; right: 0; bottom: 70px; text-align: center;
+    color: #fff; font-size: 14px; letter-spacing: .15em; opacity: .9;
+    animation: blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:.35} 50%{opacity:.95} }
+  #title {
+    position: absolute; top: 130px; left: 0; right: 0; text-align: center; color:#fff;
+  }
+  #title .jp { font-size: 40px; font-weight: 900; letter-spacing: .18em; text-shadow: 0 4px 18px rgba(0,0,0,.5); }
+  #title .en { font-size: 13px; letter-spacing: .5em; opacity: .8; margin-top: 6px; }
+  #gameover {
+    position: absolute; inset: 0; z-index: 15; display: none;
+    align-items: center; justify-content: center;
+    background: rgba(8,10,18,.5); backdrop-filter: blur(3px);
+  }
+  .goCard {
+    text-align: center; color: #fff; padding: 26px 34px;
+    background: rgba(20,24,36,.78); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 22px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  }
+  .goTitle { font-size: 30px; font-weight: 900; letter-spacing: .12em; color: #ff7a3c; }
+  .goRow { margin-top: 12px; font-size: 14px; letter-spacing: .08em; opacity: .9; }
+  .goRow b { font-size: 20px; margin-left: 8px; }
+  .goBtn {
+    margin-top: 20px; padding: 10px 18px; border-radius: 999px;
+    background: linear-gradient(90deg,#ffd66b,#ff8a5c); color: #221; font-weight: 800;
+    font-size: 13px; letter-spacing: .1em; animation: blink 1.6s ease-in-out infinite;
+  }
+</style>
+</head>
+<body>
+  <div id="phone">
+    <canvas id="game"></canvas>
+    <div id="notch"></div>
+    <div id="hud">
+      <div class="top">
+        <div class="alt">標高<br><b id="alt">0</b> m</div>
+        <div class="range">
+          <div class="name" id="rangeName">北アルプス</div>
+          <div id="rangeSub">飛騨山脈</div>
+          <span class="pill" id="distPill">0 km 縦走</span>
+        </div>
+      </div>
+      <div id="progress"><div id="progressFill"></div></div>
+      <div id="marks"><span>北ア</span><span>中央ア</span><span>南ア</span><span>富士</span></div>
+      <div id="title">
+        <div class="jp">チャリ縦走</div>
+        <div class="en">RIDGE&nbsp;RUNNER</div>
+      </div>
+      <div id="hint">TAP / SPACE でジャンプ</div>
+    </div>
+    <div id="gameover">
+      <div class="goCard">
+        <div class="goTitle">クラッシュ！</div>
+        <div class="goRow">走破 <b id="goDist">0 km</b></div>
+        <div class="goRow">ベスト <b id="goBest">0 km</b></div>
+        <div class="goBtn">TAP でリスタート</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+"use strict";
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+
+// ---- Logical resolution (portrait phone) with devicePixelRatio scaling ----
+let W = 390, H = 844, DPR = 1;
+function resize() {
+  const r = canvas.getBoundingClientRect();
+  W = r.width; H = r.height;
+  DPR = Math.min(window.devicePixelRatio || 1, 2.5);
+  canvas.width = Math.round(W * DPR);
+  canvas.height = Math.round(H * DPR);
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+}
+window.addEventListener('resize', resize);
+
+// ---------------------------------------------------------------------------
+// Mountain ranges — visual "biomes" we traverse south along the Japanese Alps
+// ---------------------------------------------------------------------------
+const RANGES = [
+  { name:'北アルプス', sub:'飛騨山脈',  sky:['#9fd2ff','#dff0ff'], far:'#7fa8d6', mid:'#5b7fb0', hill:'#3f6f54', hill2:'#2f5a44', snow:0.55, accent:'#ffffff' },
+  { name:'中央アルプス', sub:'木曽山脈', sky:['#bfe0f2','#fef3da'], far:'#86b0c4', mid:'#5f86a0', hill:'#4a7a4f', hill2:'#37623e', snow:0.35, accent:'#fbf3dd' },
+  { name:'南アルプス', sub:'赤石山脈',  sky:['#f6c98f','#ffe9c2'], far:'#b98a73', mid:'#8c5f57', hill:'#6a5a3a', hill2:'#52482f', snow:0.25, accent:'#ffe2bd' },
+  { name:'富士山', sub:'独立峰・霊峰',  sky:['#3a4f8a','#c98fae'], far:'#5b6aa0', mid:'#46508a', hill:'#2c3566', hill2:'#222a52', snow:0.7,  accent:'#ffffff' },
+];
+const SEG_LEN = 2600; // world units per range before transition
+
+// ---------------------------------------------------------------------------
+// World / camera
+// ---------------------------------------------------------------------------
+const world = {
+  x: 0,            // distance travelled in world units
+  speed: 230,      // px per second base scroll speed
+  t: 0,
+};
+
+// deterministic pseudo-random
+function rand(seed){ const s = Math.sin(seed * 127.1) * 43758.5453; return s - Math.floor(s); }
+
+// ---------------------------------------------------------------------------
+// Terrain — rolling ridge with occasional ravines (gaps) to leap
+// ---------------------------------------------------------------------------
+function rollingY(wx){
+  const base = H * 0.72;
+  return base
+    + Math.sin(wx * 0.0018) * 46
+    + Math.sin(wx * 0.0061 + 1.3) * 18
+    + Math.sin(wx * 0.013 + 0.5) * 8;
+}
+const GAP_CELL = 760;        // one candidate ravine per cell
+function gapInCell(idx){
+  if(idx < 3) return null;                 // safe runway at the start
+  if(rand(idx*2.71) > 0.32) return null;
+  const w = 78 + rand(idx*5.13)*60;
+  const start = idx*GAP_CELL + 240 + rand(idx*3.7)*220;
+  return { start, end:start+w, w };
+}
+function gapAt(wx){
+  const g = gapInCell(Math.floor(wx/GAP_CELL));
+  return (g && wx>g.start && wx<g.end) ? g : null;
+}
+const GAP_DEEP = 1e4;        // sentinel: ground has dropped away
+function groundY(wx){ return gapAt(wx) ? GAP_DEEP : rollingY(wx); }
+
+// ---------------------------------------------------------------------------
+// Player vehicle — motocross bike (KTM-ish orange theme)
+// ---------------------------------------------------------------------------
+const BIKE = {
+  body:'#ff6a1a', metal:'#c8ccd3', engine:'#23272f', tire:'#15181f',
+  jersey:'#ff6a1a', pants:'#22304e', helmet:'#f4f6fa', helmetTrim:'#ff6a1a', goggle:'#11141a',
+};
+const bike = { worldX:110, y:0, vy:0, onGround:true, jumpsLeft:2, wheelRot:0, wheelie:0 };
+const GRAV = 2400, JUMP_V = -780;
+
+// ---------------------------------------------------------------------------
+// Particles — rear-wheel dust + exhaust smoke
+// ---------------------------------------------------------------------------
+const particles = [];
+function emitDust(x,y,n,kick){
+  for(let i=0;i<n;i++) particles.push({
+    x:x+(Math.random()-0.5)*8, y:y+(Math.random()-0.5)*4,
+    vx:-(20+Math.random()*kick), vy:-(20+Math.random()*60),
+    life:0, max:0.45+Math.random()*0.45, r:3+Math.random()*4, type:'dust' });
+}
+function emitSmoke(x,y){
+  particles.push({ x, y, vx:-26-Math.random()*14, vy:-12-Math.random()*10,
+    life:0, max:0.7+Math.random()*0.5, r:3+Math.random()*3, type:'smoke' });
+}
+function updateParticles(dt, scrollPx){
+  for(let i=particles.length-1;i>=0;i--){
+    const p=particles[i]; p.life+=dt;
+    if(p.life>=p.max){ particles.splice(i,1); continue; }
+    p.x -= scrollPx; p.x += p.vx*dt; p.y += p.vy*dt;
+    p.vx *= 0.95; p.vy += (p.type==='smoke' ? -26 : 150)*dt;
+  }
+}
+function drawParticles(){
+  for(const p of particles){
+    const k = 1 - p.life/p.max;
+    ctx.fillStyle = p.type==='smoke' ? `rgba(120,120,128,${0.28*k})` : `rgba(150,128,96,${0.55*k})`;
+    const r = p.r * (p.type==='smoke' ? (1.4-0.4*k) : 1);
+    ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2); ctx.fill();
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Game state + input
+// ---------------------------------------------------------------------------
+let started = false, dead = false, deathTimer = 0;
+let best = +(localStorage.getItem('rr_best') || 0);
+
+function jump(){
+  if(dead) return;
+  if(bike.jumpsLeft > 0){
+    bike.vy = JUMP_V * (bike.jumpsLeft===2 ? 1 : 0.86);
+    bike.onGround = false; bike.jumpsLeft--;
+    started = true; hideTitle();
+  }
+}
+function die(){
+  if(dead) return;
+  dead = true; deathTimer = 0.55;
+  emitDust(bike.worldX, bike.y-6, 22, 120);
+  const dist = +(world.x/100).toFixed(1);
+  best = Math.max(best, dist); localStorage.setItem('rr_best', best);
+  document.getElementById('goDist').textContent = dist.toFixed(1)+' km';
+  document.getElementById('goBest').textContent = best.toFixed(1)+' km';
+  document.getElementById('gameover').style.display = 'flex';
+}
+function restart(){
+  world.x = 0; bike.y = rollingY(bike.worldX); bike.vy = 0;
+  bike.onGround = true; bike.jumpsLeft = 2; bike.wheelie = 0;
+  particles.length = 0; dead = false; started = false;
+  document.getElementById('gameover').style.display = 'none';
+}
+function press(){ if(dead){ if(deathTimer<=0) restart(); } else jump(); }
+function hideTitle(){ const t=document.getElementById('title'); const h=document.getElementById('hint'); if(t) t.style.transition='opacity .5s', t.style.opacity='0'; if(h) h.style.opacity='0'; }
+
+window.addEventListener('keydown', e => { if(e.code==='Space'){ e.preventDefault(); press(); }});
+window.addEventListener('pointerdown', () => press());
+
+// idle autopilot — plays the demo itself (jumps hazards) until the user taps
+function botJump(){
+  if(bike.jumpsLeft>0){ bike.vy = JUMP_V*(bike.jumpsLeft===2?1:0.86); bike.onGround=false; bike.jumpsLeft--; }
+}
+function autopilot(){
+  if(!bike.onGround) return;
+  const bx = world.x + bike.worldX;
+  for(let d=34; d<120; d+=10){ if(gapAt(bx+d)){ botJump(); return; } }   // leap ravines
+  const idx0 = Math.floor((bx+20)/ROCK_CELL);
+  for(let c=idx0;c<=idx0+1;c++){ const rk=rockInCell(c); const dx=rk?rk.wx-bx:0; if(rk && dx>18 && dx<108){ botJump(); return; } }
+}
+
+// ---------------------------------------------------------------------------
+// Hazards — boulders to leap (ravines handled by terrain gaps)
+// ---------------------------------------------------------------------------
+const ROCK_CELL = 520;
+function rockInCell(idx){
+  if(idx < 3) return null;
+  if(rand(idx*1.91 + 0.5) > 0.40) return null;
+  const wx = idx*ROCK_CELL + 160 + rand(idx*4.2)*200;
+  if(gapAt(wx)) return null;                 // never over a ravine
+  const s = 0.8 + rand(idx*6.6)*0.7;
+  return { wx, s, r: 13*s };
+}
+function checkHazards(){
+  const bx = world.x + bike.worldX;
+  const idx0 = Math.floor((bx-60)/ROCK_CELL);
+  for(let c=idx0; c<=idx0+1; c++){
+    const rk = rockInCell(c); if(!rk) continue;
+    const dx = Math.abs(rk.wx - bx);
+    const top = rollingY(rk.wx) - rk.r*1.6;   // clear it by jumping above this
+    if(dx < rk.r + 11 && bike.y > top){ die(); return; }
+  }
+}
+function drawRock(sx, gy, s){
+  ctx.save(); ctx.translate(sx, gy); ctx.scale(s,s);
+  ctx.fillStyle='#5b5048';
+  ctx.beginPath(); ctx.moveTo(-15,0); ctx.lineTo(-10,-13); ctx.lineTo(-2,-19);
+  ctx.lineTo(9,-15); ctx.lineTo(15,-2); ctx.lineTo(11,0); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#6e635a'; ctx.beginPath(); ctx.moveTo(-2,-19); ctx.lineTo(9,-15); ctx.lineTo(4,-6); ctx.lineTo(-4,-9); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='rgba(0,0,0,.20)'; ctx.beginPath(); ctx.moveTo(-15,0); ctx.lineTo(-10,-13); ctx.lineTo(-6,-6); ctx.lineTo(-9,0); ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+function drawGaps(rg){
+  // carve dark ravines over the (continuously drawn) ground
+  for(let sx=-40; sx<=W+40; ){
+    const g = gapAt(world.x + sx);
+    if(g){
+      const sL = g.start - world.x, sR = g.end - world.x;
+      const rim = rollingY(g.start);
+      const grad = ctx.createLinearGradient(0, rim-6, 0, H);
+      grad.addColorStop(0, mix(rg.hill2, '#0a0d12', 0.55));
+      grad.addColorStop(1, '#05070a');
+      ctx.fillStyle = grad;
+      ctx.fillRect(sL-1, rim-4, (sR-sL)+2, H-rim+50);
+      ctx.strokeStyle = mix(rg.hill, '#000', 0.35); ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(sL, rollingY(g.start)); ctx.lineTo(sL, H);
+      ctx.moveTo(sR, rollingY(g.end));   ctx.lineTo(sR, H);
+      ctx.stroke();
+      sx = sR + 4;
+    } else sx += 8;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Color helpers for smooth transitions between ranges
+// ---------------------------------------------------------------------------
+function parseColor(c){
+  if(Array.isArray(c)) return c;
+  if(c[0]==='#'){ const n=parseInt(c.slice(1),16); return [(n>>16)&255,(n>>8)&255,n&255]; }
+  const m=c.match(/-?\d+\.?\d*/g); return [ +m[0], +m[1], +m[2] ];
+}
+function mix(a,b,t){ const A=parseColor(a),B=parseColor(b); return `rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(',')})`; }
+function blendRange(wx){
+  const f = wx / SEG_LEN;
+  const i = Math.min(Math.floor(f), RANGES.length-1);
+  const j = Math.min(i+1, RANGES.length-1);
+  let t = f - Math.floor(f);
+  // only blend within the last 12% of a segment for a crisp-ish biome with soft seam
+  t = t < 0.88 ? 0 : (t-0.88)/0.12;
+  const A=RANGES[i], B=RANGES[j];
+  return {
+    name: t<0.5?A.name:B.name, sub: t<0.5?A.sub:B.sub, index:i,
+    sky0: mix(A.sky[0],B.sky[0],t), sky1: mix(A.sky[1],B.sky[1],t),
+    far: mix(A.far,B.far,t), mid: mix(A.mid,B.mid,t),
+    hill: mix(A.hill,B.hill,t), hill2: mix(A.hill2,B.hill2,t),
+    snow: A.snow+(B.snow-A.snow)*t, accent: mix(A.accent,B.accent,t),
+  };
+}
+
+// ridgeline generator: layered silhouettes
+function ridgeY(wx, amp, freq, phase, baseY){
+  return baseY
+    + Math.sin(wx*freq + phase)*amp
+    + Math.sin(wx*freq*2.3 + phase*1.7)*amp*0.4
+    + Math.sin(wx*freq*0.5 + phase*0.6)*amp*0.6;
+}
+
+function drawRidge(parX, color, amp, freq, phase, baseY, peakSnow){
+  const step = 14;
+  ctx.beginPath();
+  ctx.moveTo(-20, H);
+  let firstY = 0;
+  const pts = [];
+  for(let sx=-20; sx<=W+20; sx+=step){
+    const wx = (world.x*parX) + sx;
+    const y = ridgeY(wx, amp, freq, phase, baseY);
+    pts.push([sx,y]);
+    if(sx===-20) firstY=y;
+    ctx.lineTo(sx, y);
+  }
+  ctx.lineTo(W+20, H); ctx.closePath();
+  ctx.fillStyle = color; ctx.fill();
+
+  // snow caps on peaks
+  if(peakSnow>0){
+    ctx.save();
+    ctx.fillStyle = `rgba(255,255,255,${0.85})`;
+    for(let k=1;k<pts.length-1;k++){
+      const [sx,y]=pts[k];
+      const prev=pts[k-1][1], next=pts[k+1][1];
+      if(y<prev && y<next && y < baseY - amp*peakSnow){ // local peak high enough
+        ctx.beginPath();
+        ctx.moveTo(sx-10, y+16);
+        ctx.lineTo(sx, y-2);
+        ctx.lineTo(sx+10, y+16);
+        ctx.closePath();
+        ctx.globalAlpha = 0.9;
+        ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+}
+
+// clouds (sparse + soft, so the sky doesn't feel busy)
+function drawClouds(par){
+  ctx.save();
+  ctx.fillStyle='#ffffff';
+  const span = W + 360;
+  for(let i=0;i<4;i++){
+    const seed=i*9.13;
+    const cx=((rand(seed)*span - world.x*par*0.5) % span + span)%span -180;
+    const cy=64 + rand(seed+1)*150;
+    const s=0.5+rand(seed+2)*0.6;
+    ctx.globalAlpha=0.20+rand(seed+3)*0.16;
+    blob(cx,cy,40*s); blob(cx+30*s,cy+7*s,30*s); blob(cx-26*s,cy+9*s,26*s); blob(cx+8*s,cy-12*s,26*s);
+  }
+  ctx.restore();
+}
+function blob(x,y,r){ ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill(); }
+
+// pine tree
+function pine(x, gy, scale, color){
+  ctx.save();
+  ctx.translate(x, gy);
+  ctx.scale(scale, scale);
+  ctx.fillStyle = '#6b4a2b';
+  ctx.fillRect(-3, -14, 6, 16);
+  ctx.fillStyle = color;
+  for(let i=0;i<3;i++){
+    const yy = -16 - i*14;
+    const w = 26 - i*6;
+    ctx.beginPath();
+    ctx.moveTo(0, yy-20);
+    ctx.lineTo(-w, yy+6);
+    ctx.lineTo(w, yy+6);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
+// torii gate
+function torii(x, gy, scale){
+  ctx.save();
+  ctx.translate(x, gy); ctx.scale(scale, scale);
+  ctx.fillStyle = '#c0392b';
+  ctx.fillRect(-26, -48, 8, 48);
+  ctx.fillRect(18, -48, 8, 48);
+  ctx.beginPath();
+  ctx.moveTo(-38,-50); ctx.lineTo(38,-50); ctx.lineTo(34,-58); ctx.lineTo(-34,-58); ctx.closePath();
+  ctx.fill();
+  ctx.fillRect(-30,-42,60,7);
+  ctx.fillStyle='#7d2018'; ctx.fillRect(-38,-58,76,4);
+  ctx.restore();
+}
+
+// mountain hut 山小屋
+function hut(x, gy, scale){
+  ctx.save();
+  ctx.translate(x, gy); ctx.scale(scale, scale);
+  ctx.fillStyle='#8a5a3c'; ctx.fillRect(-22,-22,44,22);
+  ctx.fillStyle='#5a3826';
+  ctx.beginPath(); ctx.moveTo(-28,-22); ctx.lineTo(0,-40); ctx.lineTo(28,-22); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#ffce6b'; ctx.fillRect(-8,-16,16,12);
+  ctx.fillStyle='#3a2418'; ctx.fillRect(10,-2,1,2);
+  ctx.restore();
+}
+
+// signpost showing the next range name
+function signpost(x, gy, scale, label){
+  ctx.save();
+  ctx.translate(x, gy); ctx.scale(scale, scale);
+  ctx.fillStyle='#5b4632'; ctx.fillRect(-2,-44,4,44);
+  ctx.fillStyle='#efe2c4';
+  ctx.beginPath();
+  ctx.moveTo(2,-44); ctx.lineTo(40,-44); ctx.lineTo(48,-38); ctx.lineTo(40,-32); ctx.lineTo(2,-32); ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle='#3a2c1a'; ctx.font='bold 9px sans-serif'; ctx.textBaseline='middle';
+  ctx.fillText(label, 6, -38);
+  ctx.restore();
+}
+
+// draw a single knobby motocross wheel at local origin (already translated)
+function mxWheel(wr){
+  ctx.save(); ctx.rotate(bike.wheelRot);
+  // tire carcass
+  ctx.strokeStyle='#15181f'; ctx.lineWidth=7; ctx.lineCap='butt';
+  ctx.beginPath(); ctx.arc(0,0,wr,0,Math.PI*2); ctx.stroke();
+  // knobby tread blocks
+  ctx.fillStyle='#0d0f14';
+  for(let i=0;i<14;i++){ const a=i*Math.PI/7; ctx.save(); ctx.rotate(a); ctx.fillRect(wr-2,-2,5,4); ctx.restore(); }
+  // rim
+  ctx.strokeStyle='#d7dbe2'; ctx.lineWidth=2;
+  ctx.beginPath(); ctx.arc(0,0,wr-6,0,Math.PI*2); ctx.stroke();
+  // spokes
+  ctx.strokeStyle='rgba(210,215,225,.7)'; ctx.lineWidth=1;
+  for(let i=0;i<8;i++){ ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(Math.cos(i*Math.PI/4)*(wr-6), Math.sin(i*Math.PI/4)*(wr-6)); ctx.stroke(); }
+  // hub
+  ctx.fillStyle='#2c313b'; ctx.beginPath(); ctx.arc(0,0,3.2,0,Math.PI*2); ctx.fill();
+  ctx.restore();
+}
+
+// draw the motocross rider + bike
+function drawBike(x, y, range){
+  const wr = 18;            // wheel radius
+  const cy = -wr;           // wheel-center height so knobby tires rest on the ground point
+  const RW = -22, FW = 24;  // rear / front wheel x (bike travels right)
+  const ACC = BIKE.body;    // bike body accent
+
+  ctx.save();
+  ctx.translate(x, y);
+
+  // ground shadow
+  ctx.save();
+  ctx.globalAlpha = bike.onGround ? 0.30 : 0.14;
+  ctx.fillStyle = '#000';
+  ctx.beginPath(); ctx.ellipse(0, 1, 40, 7, 0, 0, Math.PI*2); ctx.fill();
+  ctx.restore();
+
+  // tilt: airborne nose attitude (up climbing / down falling), or a wheelie pop on the ground
+  let tilt = Math.max(-0.26, Math.min(0.32, bike.vy * 0.00026));
+  if(bike.onGround) tilt = -bike.wheelie * 0.5;
+  ctx.translate(0, cy); ctx.rotate(tilt); ctx.translate(0, -cy);
+
+  // ---- wheels ----
+  ctx.save(); ctx.translate(RW, cy); mxWheel(wr); ctx.restore();
+  ctx.save(); ctx.translate(FW, cy); mxWheel(wr); ctx.restore();
+
+  // ---- swingarm + lower frame (dark) ----
+  ctx.strokeStyle='#3a4049'; ctx.lineWidth=4; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(RW,cy); ctx.lineTo(-2,cy+2); ctx.stroke();         // rear swingarm
+  // ---- exhaust pipe (silver) ----
+  ctx.strokeStyle='#c2c6cc'; ctx.lineWidth=4;
+  ctx.beginPath(); ctx.moveTo(6,cy-2); ctx.quadraticCurveTo(-14,cy-8, -26,cy-2); ctx.stroke();
+  ctx.strokeStyle='#9aa0a8'; ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(-22,cy-2); ctx.lineTo(-30,cy-1); ctx.stroke();
+
+  // ---- engine block ----
+  ctx.fillStyle='#23272f';
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(-9,cy-2,20,14,3) : ctx.rect(-9,cy-2,20,14); ctx.fill();
+  ctx.fillStyle='#191c22'; ctx.fillRect(-7,cy+1,16,2); ctx.fillRect(-7,cy+5,16,2); // cooling fins
+
+  // ---- front fork / suspension ----
+  ctx.strokeStyle='#5a606b'; ctx.lineWidth=4.5;
+  ctx.beginPath(); ctx.moveTo(FW,cy); ctx.lineTo(15,cy-22); ctx.stroke();       // fork tube
+  ctx.strokeStyle='#9aa0a8'; ctx.lineWidth=2.2;
+  ctx.beginPath(); ctx.moveTo(FW-1,cy-5); ctx.lineTo(15,cy-20); ctx.stroke();   // stanchion shine
+
+  // ---- main frame (accent) ----
+  ctx.strokeStyle=ACC; ctx.lineWidth=4; ctx.lineCap='round';
+  ctx.beginPath();
+  ctx.moveTo(-12,cy-12); ctx.lineTo(2,cy);      // rear down tube
+  ctx.lineTo(13,cy-14);                          // up to steering head
+  ctx.moveTo(-12,cy-12); ctx.lineTo(8,cy-16);    // top tube under tank
+  ctx.stroke();
+
+  // ---- fuel tank + seat (accent) ----
+  ctx.fillStyle=ACC;
+  ctx.beginPath();
+  ctx.moveTo(-16,cy-15); ctx.lineTo(-2,cy-19); ctx.lineTo(10,cy-17);
+  ctx.lineTo(9,cy-12); ctx.lineTo(-15,cy-11); ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#1d2027'; ctx.fillRect(-18,cy-16,9,3);                          // seat tail (dark)
+
+  // ---- fenders (accent) ----
+  ctx.strokeStyle=ACC; ctx.lineWidth=3; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(11,cy-16); ctx.quadraticCurveTo(24,cy-20, 34,cy-12); ctx.stroke(); // front fender
+  ctx.beginPath(); ctx.moveTo(-30,cy-12); ctx.quadraticCurveTo(-22,cy-16, -12,cy-14); ctx.stroke(); // rear fender
+
+  // ---- handlebar ----
+  ctx.strokeStyle='#2b2f37'; ctx.lineWidth=2.6;
+  ctx.beginPath(); ctx.moveTo(13,cy-14); ctx.lineTo(11,cy-24); ctx.lineTo(18,cy-26); ctx.stroke();
+
+  // ---------- RIDER (motocross stance, leaning forward over the bars) ----------
+  const hip = [-3, cy-20], shoulder = [9, cy-30], hand = [17, cy-25], peg = [1, cy-4];
+  // back leg
+  ctx.strokeStyle='#1f2740'; ctx.lineWidth=5.5; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(hip[0],hip[1]); ctx.lineTo(-8,cy-10); ctx.lineTo(peg[0]-2,peg[1]); ctx.stroke();
+  // boot (back)
+  ctx.strokeStyle='#0f1320'; ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(peg[0]-3,peg[1]); ctx.lineTo(peg[0]+4,peg[1]); ctx.stroke();
+  // torso (jersey)
+  ctx.strokeStyle=ACC; ctx.lineWidth=7;
+  ctx.beginPath(); ctx.moveTo(hip[0],hip[1]); ctx.lineTo(shoulder[0],shoulder[1]); ctx.stroke();
+  // front leg
+  ctx.strokeStyle='#2b3554'; ctx.lineWidth=5.5;
+  ctx.beginPath(); ctx.moveTo(hip[0],hip[1]); ctx.lineTo(-4,cy-9); ctx.lineTo(peg[0]+2,peg[1]); ctx.stroke();
+  ctx.strokeStyle='#161a26'; ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(peg[0]-2,peg[1]); ctx.lineTo(peg[0]+6,peg[1]); ctx.stroke();
+  // arm to handlebar
+  ctx.strokeStyle='#e64f33'; ctx.lineWidth=4.2;
+  ctx.beginPath(); ctx.moveTo(shoulder[0],shoulder[1]); ctx.lineTo(14,cy-28); ctx.lineTo(hand[0],hand[1]); ctx.stroke();
+  // glove
+  ctx.fillStyle='#15181f'; ctx.beginPath(); ctx.arc(hand[0],hand[1],2.6,0,Math.PI*2); ctx.fill();
+
+  // ---- full-face MX helmet (white shell, orange trim, dark goggle) ----
+  const hx = 15, hy = cy-37;
+  ctx.fillStyle=BIKE.helmet;
+  ctx.beginPath(); ctx.arc(hx,hy,7,0,Math.PI*2); ctx.fill();                     // shell
+  ctx.beginPath(); ctx.moveTo(hx-1,hy+2); ctx.quadraticCurveTo(hx+10,hy+3, hx+8,hy+7);
+  ctx.quadraticCurveTo(hx+3,hy+8, hx-1,hy+6); ctx.closePath(); ctx.fill();        // rounded chin bar
+  ctx.fillStyle=BIKE.helmetTrim;                                                 // trim band over the crown
+  ctx.beginPath(); ctx.arc(hx,hy,7,Math.PI*1.05,Math.PI*1.75); ctx.lineTo(hx+2,hy-2.5); ctx.closePath(); ctx.fill();
+  ctx.fillStyle=BIKE.goggle;                                                     // goggle lens
+  ctx.beginPath(); ctx.moveTo(hx+1,hy-1); ctx.lineTo(hx+8,hy); ctx.lineTo(hx+7,hy+3); ctx.lineTo(hx+1,hy+2.5); ctx.closePath(); ctx.fill();
+  ctx.fillStyle=BIKE.helmetTrim;                                                 // sun peak (visor)
+  ctx.beginPath(); ctx.moveTo(hx-6,hy-4); ctx.lineTo(hx+9,hy-7); ctx.lineTo(hx+10,hy-4); ctx.lineTo(hx-5,hy-2); ctx.closePath(); ctx.fill();
+
+  ctx.restore();
+}
+
+// ---------------------------------------------------------------------------
+// Main loop
+// ---------------------------------------------------------------------------
+let last = performance.now();
+function frame(now){
+  const dt = Math.min((now-last)/1000, 0.033); last = now;
+  update(dt); render();
+  requestAnimationFrame(frame);
+}
+
+function update(dt){
+  world.t += dt;
+
+  if(dead){                                 // frozen crash state; let dust settle
+    deathTimer = Math.max(0, deathTimer - dt);
+    updateParticles(dt, 0);
+    return;
+  }
+
+  if(!started) autopilot();                 // self-play until first tap
+
+  // speed ramps up with distance
+  const sp = world.speed + Math.min(world.x*0.02, 200);
+  const scrollPx = sp*dt;
+  world.x += scrollPx;
+
+  // vertical physics against terrain (ravines make groundY drop away)
+  const wasAir = !bike.onGround;
+  const gy = groundY(world.x + bike.worldX);
+  if(!bike.onGround || bike.vy<0){
+    bike.vy += GRAV*dt;
+    bike.y += bike.vy*dt;
+    if(bike.y >= gy){
+      bike.y=gy; bike.vy=0; bike.onGround=true; bike.jumpsLeft=2;
+      if(wasAir){ emitDust(bike.worldX-18, bike.y+1, 14, 90); bike.wheelie=0.5; } // landing burst + pop
+    }
+  } else {
+    bike.y = gy; bike.jumpsLeft=2;
+  }
+
+  // fell into a ravine?
+  if(bike.y > H + 80){ die(); }
+
+  // wheel spin + wheelie decay
+  bike.wheelRot += scrollPx/16;
+  bike.wheelie = Math.max(0, bike.wheelie - dt*1.4);
+
+  // rear-wheel dust + exhaust smoke while grounded
+  if(bike.onGround){
+    if(Math.random()<0.6) emitDust(bike.worldX-20, bike.y-1, 1, 40);
+    if(Math.random()<0.22) emitSmoke(bike.worldX-26, bike.y-14);
+  }
+  updateParticles(dt, scrollPx);
+  checkHazards();
+
+  // HUD
+  const alt = Math.round(2300 + Math.sin(world.x*0.0018)*300 - (rollingY(world.x)-H*0.72)*4);
+  document.getElementById('alt').textContent = Math.max(0,alt).toLocaleString();
+  const rg = blendRange(world.x);
+  document.getElementById('rangeName').textContent = rg.name;
+  document.getElementById('rangeSub').textContent = rg.sub;
+  document.getElementById('distPill').textContent = (world.x/100).toFixed(1) + ' km 縦走';
+  document.getElementById('progressFill').style.width =
+    Math.min(world.x/(SEG_LEN*RANGES.length)*100, 100) + '%';
+}
+
+function render(){
+  const rg = blendRange(world.x);
+
+  // sky
+  const g = ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0, rg.sky0); g.addColorStop(1, rg.sky1);
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+
+  // sun / moon
+  ctx.save();
+  ctx.globalAlpha=0.85;
+  const sunY = 150 + Math.sin(world.x*0.0002)*30;
+  const sg = ctx.createRadialGradient(W*0.72, sunY, 4, W*0.72, sunY, 60);
+  sg.addColorStop(0, rg.index===3 ? 'rgba(255,255,235,.95)':'rgba(255,250,220,.95)');
+  sg.addColorStop(1, 'rgba(255,250,220,0)');
+  ctx.fillStyle=sg; ctx.beginPath(); ctx.arc(W*0.72, sunY, 60,0,Math.PI*2); ctx.fill();
+  ctx.restore();
+
+  drawClouds(0.06);
+
+  // layered ridgelines (far -> near)
+  drawRidge(0.10, rg.far,  70, 0.0016, 0.0, H*0.40, rg.snow);
+  drawRidge(0.22, rg.mid,  90, 0.0022, 2.1, H*0.50, rg.snow*0.6);
+  drawRidge(0.40, mix(rg.mid, rg.hill, 0.5), 80, 0.003, 4.4, H*0.58, 0);
+
+  // ---- foreground ground (parallax 1.0) ----
+  const step = 10;
+  ctx.beginPath();
+  ctx.moveTo(-20, H);
+  for(let sx=-20; sx<=W+20; sx+=step){
+    ctx.lineTo(sx, rollingY(world.x + sx));
+  }
+  ctx.lineTo(W+20, H); ctx.closePath();
+  const gg = ctx.createLinearGradient(0,H*0.55,0,H);
+  gg.addColorStop(0, rg.hill); gg.addColorStop(1, rg.hill2);
+  ctx.fillStyle=gg; ctx.fill();
+
+  // grass edge highlight
+  ctx.beginPath();
+  for(let sx=-20; sx<=W+20; sx+=step){
+    const y=rollingY(world.x+sx);
+    if(sx===-20) ctx.moveTo(sx,y); else ctx.lineTo(sx,y);
+  }
+  ctx.strokeStyle='rgba(180,255,180,.25)'; ctx.lineWidth=2; ctx.stroke();
+
+  // ---- ravines carved over the ground ----
+  drawGaps(rg);
+
+  // ---- decorations along the ground (deterministic by world cell) ----
+  const cell = 230;
+  const startCell = Math.floor((world.x-100)/cell);
+  for(let c=startCell; c<startCell + Math.ceil(W/cell)+3; c++){
+    const wx = c*cell + rand(c*1.7)*120;
+    const sx = wx - world.x;
+    if(sx<-80 || sx>W+80) continue;
+    if(gapAt(wx)) continue;                 // don't float decorations over a ravine
+    const gy = rollingY(wx);
+    const pick = rand(c*3.3);
+    const rIdx = Math.min(Math.floor(wx/SEG_LEN), RANGES.length-1);
+    const pineColor = ['#3f6f54','#4a7a4f','#6a5a3a','#3a5a4a'][rIdx];
+    if(pick<0.55){ pine(sx, gy, 0.7+rand(c*5)*0.6, pineColor); }
+    else if(pick<0.72){ hut(sx, gy, 0.9); }
+    else if(pick<0.85){ torii(sx, gy, 0.8); }
+    else if(pick<0.92){ signpost(sx, gy, 1, ['北ア','中央ア','南ア','富士'][Math.min(rIdx+1,3)]); }
+    else { pine(sx, gy, 0.5, pineColor); pine(sx+20, gy, 0.8, pineColor); }
+  }
+
+  // ---- hazards: boulders to leap ----
+  const rc0 = Math.floor((world.x-100)/ROCK_CELL);
+  for(let c=rc0; c<=rc0 + Math.ceil(W/ROCK_CELL)+1; c++){
+    const rk = rockInCell(c); if(!rk) continue;
+    const sx = rk.wx - world.x;
+    if(sx<-60 || sx>W+60) continue;
+    drawRock(sx, rollingY(rk.wx), rk.s);
+  }
+
+  // dust + smoke behind the rider
+  drawParticles();
+
+  // the rider
+  drawBike(bike.worldX, bike.y, rg);
+
+  // motion speed lines
+  ctx.save(); ctx.globalAlpha=0.12; ctx.strokeStyle='#fff'; ctx.lineWidth=2;
+  for(let i=0;i<5;i++){ const ly=120+i*70 + (i%2?20:0); const lx=(W - (world.t*900 + i*130)%(W+200)); ctx.beginPath(); ctx.moveTo(lx,ly); ctx.lineTo(lx-40,ly); ctx.stroke(); }
+  ctx.restore();
+}
+
+// ---- boot ----
+window.world = world; // debug scrub handle
+resize();
+bike.y = rollingY(world.x + bike.worldX);
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

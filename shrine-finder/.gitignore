@@ -1,0 +1,9 @@
+# 機密
+scripts/.env
+
+# Xcode / build
+ios/build/
+ios/DerivedData/
+**/xcuserdata/
+*.xcuserstate
+.DS_Store

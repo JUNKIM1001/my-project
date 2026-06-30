@@ -1,0 +1,68 @@
+{
+  "itsukushima-jinja": {
+    "license": "CC0",
+    "author": "Balon Greyjoy",
+    "source": "https://commons.wikimedia.org/wiki/File:20181111_Itsukushima_Shrine_torii-1.jpg",
+    "file": "itsukushima-jinja.jpg"
+  },
+  "senso-ji": {
+    "license": "Public domain",
+    "author": "Daderot",
+    "source": "https://commons.wikimedia.org/wiki/File:Kaminarimon_(outer_gate),_Sensoji_Temple,_Akakusa,_Tokyo.jpg",
+    "file": "senso-ji.jpg"
+  },
+  "dazaifu-tenmangu": {
+    "license": "CC0",
+    "author": "Drivephotographer",
+    "source": "https://commons.wikimedia.org/wiki/File:Dazaifu_Tenmangu.jpg",
+    "file": "dazaifu-tenmangu.jpg"
+  },
+  "kotohira-gu": {
+    "license": "CC0",
+    "author": "Higa4",
+    "source": "https://commons.wikimedia.org/wiki/File:Kotohira-g%C5%AB_(Baba-cho,_Ch%C5%8Dshi)_01.jpg",
+    "file": "kotohira-gu.jpg"
+  },
+  "sumiyoshi-taisha": {
+    "license": "CC0",
+    "author": "Saigen Jiro",
+    "source": "https://commons.wikimedia.org/wiki/File:Sumiyoshi-taisha,_keidai.jpg",
+    "file": "sumiyoshi-taisha.jpg"
+  },
+  "kirishima-jingu": {
+    "license": "Public domain",
+    "author": "鹿児島県",
+    "source": "https://commons.wikimedia.org/wiki/File:Kirishima-jingu_kagoshima_pref_book1.jpg",
+    "file": "kirishima-jingu.jpg"
+  },
+  "kiyomizu-dera": {
+    "license": "CC0",
+    "author": "Lars1512",
+    "source": "https://commons.wikimedia.org/wiki/File:Kiyomizu_Dera_Temple_Kyoto_Skyline_(219542405).jpeg",
+    "file": "kiyomizu-dera.jpg"
+  },
+  "fushimi-inari-taisha": {
+    "license": "CC0",
+    "author": "Balon Greyjoy",
+    "source": "https://commons.wikimedia.org/wiki/File:20181110_Fushimi_Inari_Torii_12.jpg",
+    "file": "fushimi-inari-taisha.jpg"
+  },
+  "meiji-jingu": {
+    "license": "CC0",
+    "author": "Syced",
+    "source": "https://commons.wikimedia.org/wiki/File:September_2024_Meiji_Jingu_10.jpg",
+    "file": "meiji-jingu.jpg"
+  },
+  "nikko-toshogu": {
+    "license": "Public domain",
+    "author": "Wikimedia Commons",
+    "source": "https://commons.wikimedia.org/wiki/File:ToshoguHearSpeakSee.jpg",
+    "file": "nikko-toshogu.jpg"
+  },
+  "fujisan-hongu-sengen": {
+    "license": "Public domain",
+    "author": "Ennui",
+    "source": "https://commons.wikimedia.org/wiki/File:Fujisan_Hong%C5%AB_Sengen_Taisha_Stone.jpg",
+    "file": "fujisan-hongu-sengen.jpg"
+  }
+}
