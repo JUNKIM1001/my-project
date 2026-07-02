@@ -18,6 +18,13 @@ struct DeityDetailView: View {
                 }.padding(.vertical, 4)
             }
 
+            if let lore = deity.longDescription, !lore.isEmpty {
+                Section("由来") {
+                    Text(lore).font(.callout)
+                        .padding(.vertical, 2)
+                }
+            }
+
             Section("司るご利益") {
                 GoriyakuTagFlow(goriyaku: store.names(forGoriyaku: deity.goriyaku))
                     .padding(.vertical, 4)

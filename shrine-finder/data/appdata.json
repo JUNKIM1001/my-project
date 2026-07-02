@@ -327,32 +327,6 @@
    ]
   },
   {
-   "slug": "ame_no_futodama",
-   "name": "天太玉命",
-   "kana": "あめのふとだまのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "忌部氏の祖神。祭祀を司る神。",
-   "goriyaku": [
-    "kaiun",
-    "shobai",
-    "suisan_noko"
-   ]
-  },
-  {
-   "slug": "ame_no_hiwashi",
-   "name": "天日鷲命",
-   "kana": "あめのひわしのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "阿波忌部の祖神。紡績・開運の神。鷲子山上神社の主神。",
-   "goriyaku": [
-    "kaiun",
-    "shigoto",
-    "shobai"
-   ]
-  },
-  {
    "slug": "ame_no_mikage",
    "name": "天之御影命",
    "kana": "あめのみかげのみこと",
@@ -378,19 +352,6 @@
    ]
   },
   {
-   "slug": "ame_no_uzume",
-   "name": "天鈿女命",
-   "kana": "あめのうずめのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "天岩戸で舞った芸能の祖神。猿田彦の妻。",
-   "goriyaku": [
-    "enmusubi",
-    "geino",
-    "kaiun"
-   ]
-  },
-  {
    "slug": "amekuma",
    "name": "天熊人命",
    "kana": "あめのくまひとのみこと",
@@ -403,32 +364,6 @@
    ]
   },
   {
-   "slug": "ameno_koyane",
-   "name": "天児屋根命",
-   "kana": "あめのこやねのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "祝詞を司る中臣・藤原氏の祖神。",
-   "goriyaku": [
-    "gakumon",
-    "kaiun",
-    "shusse"
-   ]
-  },
-  {
-   "slug": "ameno_oshihomimi",
-   "name": "天忍穂耳命",
-   "kana": "あめのおしほみみのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "天照大神の子で瓊瓊杵尊の父。",
-   "goriyaku": [
-    "kaiun",
-    "shigoto",
-    "shusse"
-   ]
-  },
-  {
    "slug": "amenofutodama",
    "name": "天太玉命",
    "kana": "あめのふとだまのみこと",
@@ -438,7 +373,8 @@
    "goriyaku": [
     "kaiun",
     "shigoto",
-    "shobai"
+    "shobai",
+    "suisan_noko"
    ]
   },
   {
@@ -503,7 +439,8 @@
    "goriyaku": [
     "kaiun",
     "shobai",
-    "suisan_noko"
+    "suisan_noko",
+    "shigoto"
    ]
   },
   {
@@ -545,19 +482,6 @@
     "shobai",
     "kaiun",
     "shigoto"
-   ]
-  },
-  {
-   "slug": "amenokaguyama",
-   "name": "天香山命",
-   "kana": "あめのかぐやまのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "越後開拓の祖神。彌彦神社の祭神で殖産・漁業の神。",
-   "goriyaku": [
-    "kaiun",
-    "shobai",
-    "suisan_noko"
    ]
   },
   {
@@ -642,7 +566,8 @@
     "shobai",
     "shobu",
     "shusse",
-    "suisan_noko"
+    "suisan_noko",
+    "shigoto"
    ]
   },
   {
@@ -798,20 +723,8 @@
    "goriyaku": [
     "kaiun",
     "shobu",
-    "yakubarai"
-   ]
-  },
-  {
-   "slug": "chuai_tenno",
-   "name": "仲哀天皇",
-   "kana": "ちゅうあいてんのう",
-   "kind": "kami",
-   "category": "人神",
-   "description": "第14代天皇。神功皇后の夫、応神天皇の父。",
-   "goriyaku": [
-    "kaiun",
-    "kanai_anzen",
-    "shobu"
+    "yakubarai",
+    "kanai_anzen"
    ]
   },
   {
@@ -1730,21 +1643,6 @@
    ]
   },
   {
-   "slug": "isotakeru",
-   "name": "五十猛命",
-   "kana": "いそたけるのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "素戔嗚尊の子で植林・航海の神。",
-   "goriyaku": [
-    "kaijo_anzen",
-    "kaiun",
-    "shigoto",
-    "shobai",
-    "suisan_noko"
-   ]
-  },
-  {
    "slug": "itakeru",
    "name": "五十猛命",
    "kana": "いたけるのみこと",
@@ -1907,19 +1805,6 @@
    ]
   },
   {
-   "slug": "jinmu",
-   "name": "神武天皇",
-   "kana": "じんむてんのう",
-   "kind": "kami",
-   "category": "御霊",
-   "description": "初代天皇。日本建国の祖とされる。",
-   "goriyaku": [
-    "kaiun",
-    "shobu",
-    "shusse"
-   ]
-  },
-  {
    "slug": "jinmu_tenno",
    "name": "神武天皇",
    "kana": "じんむてんのう",
@@ -1961,19 +1846,6 @@
    ]
   },
   {
-   "slug": "kakimoto_hitomaro",
-   "name": "柿本人麻呂",
-   "kana": "かきのもとのひとまろ",
-   "kind": "kami",
-   "category": "御霊",
-   "description": "歌聖と崇められた飛鳥時代の歌人。学問・火防・眼病の神。",
-   "goriyaku": [
-    "byoki_heyu",
-    "gakugyo",
-    "gakumon"
-   ]
-  },
-  {
    "slug": "kakinomoto_hitomaro",
    "name": "柿本人麻呂",
    "kana": "かきのもとのひとまろ",
@@ -1983,7 +1855,8 @@
    "goriyaku": [
     "gakugyo",
     "gakumon",
-    "geino"
+    "geino",
+    "byoki_heyu"
    ]
   },
   {
@@ -2050,19 +1923,6 @@
     "kotsu_anzen",
     "tabi_anzen",
     "yakubarai"
-   ]
-  },
-  {
-   "slug": "kamotamayorihime",
-   "name": "玉依姫命",
-   "kana": "たまよりひめのみこと",
-   "kind": "kami",
-   "category": "国津神",
-   "description": "賀茂別雷神を生んだ母神。下鴨神社に祀られる。",
-   "goriyaku": [
-    "anzan",
-    "enmusubi",
-    "kosodate"
    ]
   },
   {
@@ -2805,19 +2665,6 @@
    ]
   },
   {
-   "slug": "kushinada",
-   "name": "櫛名田比売",
-   "kana": "くしなだひめ",
-   "kind": "kami",
-   "category": "国津神",
-   "description": "スサノオの妻。稲田の女神。稲田姫命とも。",
-   "goriyaku": [
-    "anzan",
-    "enmusubi",
-    "kanai_anzen"
-   ]
-  },
-  {
    "slug": "kushinadahime",
    "name": "櫛名田比売",
    "kana": "くしなだひめ",
@@ -2903,7 +2750,8 @@
    "goriyaku": [
     "shobu",
     "shusse",
-    "yakubarai"
+    "yakubarai",
+    "kaiun"
    ]
   },
   {
@@ -3091,19 +2939,6 @@
    "goriyaku": [
     "shobai",
     "shobu"
-   ]
-  },
-  {
-   "slug": "minamoto_yoshitsune",
-   "name": "源義経",
-   "kana": "みなもとのよしつね",
-   "kind": "kami",
-   "category": "御霊",
-   "description": "悲劇の武将。北行伝説により蝦夷地で神格化。",
-   "goriyaku": [
-    "kaiun",
-    "shobu",
-    "shusse"
    ]
   },
   {
@@ -3423,19 +3258,6 @@
    ]
   },
   {
-   "slug": "nintoku",
-   "name": "仁徳天皇",
-   "kana": "にんとくてんのう",
-   "kind": "kami",
-   "category": "人神",
-   "description": "第16代天皇。仁政で知られる。",
-   "goriyaku": [
-    "kaiun",
-    "kanai_anzen",
-    "shobai"
-   ]
-  },
-  {
    "slug": "nintoku_tenno",
    "name": "仁徳天皇",
    "kana": "にんとくてんのう",
@@ -3671,19 +3493,6 @@
    ]
   },
   {
-   "slug": "omiyahime",
-   "name": "大宮能売命",
-   "kana": "おおみやのめのみこと",
-   "kind": "kami",
-   "category": "稲荷神",
-   "description": "稲荷三神の一柱。和合・接客の徳を司る女神。",
-   "goriyaku": [
-    "enmusubi",
-    "kaiun",
-    "shobai"
-   ]
-  },
-  {
    "slug": "omiyanome",
    "name": "大宮売命",
    "kana": "おおみやのめのみこと",
@@ -3694,7 +3503,8 @@
     "enmusubi",
     "geino",
     "kanai_anzen",
-    "shobai"
+    "shobai",
+    "kaiun"
    ]
   },
   {
@@ -3796,19 +3606,6 @@
     "kaiun",
     "shobu",
     "yakubarai"
-   ]
-  },
-  {
-   "slug": "ooyamatsumi",
-   "name": "大山積神",
-   "kana": "おおやまつみのかみ",
-   "kind": "kami",
-   "category": "国津神",
-   "description": "山と海を司る神。武人の守護神として信仰。",
-   "goriyaku": [
-    "kaijo_anzen",
-    "shobu",
-    "shusse"
    ]
   },
   {
@@ -3943,7 +3740,8 @@
     "shobu",
     "suisan_noko",
     "tabi_anzen",
-    "yakubarai"
+    "yakubarai",
+    "shusse"
    ]
   },
   {
@@ -4576,7 +4374,8 @@
    "goriyaku": [
     "kaijo_anzen",
     "kaiun",
-    "kotsu_anzen"
+    "kotsu_anzen",
+    "suisan_noko"
    ]
   },
   {
@@ -4591,19 +4390,6 @@
     "kaiun",
     "kotsu_anzen",
     "suisan_noko"
-   ]
-  },
-  {
-   "slug": "taira_masakado",
-   "name": "平将門",
-   "kana": "たいらのまさかど",
-   "kind": "kami",
-   "category": "御霊",
-   "description": "平安期の武将。御霊信仰の対象。",
-   "goriyaku": [
-    "kaiun",
-    "shobu",
-    "yakubarai"
    ]
   },
   {
@@ -4787,19 +4573,6 @@
    ]
   },
   {
-   "slug": "takirihime",
-   "name": "田心姫神",
-   "kana": "たきりひめのかみ",
-   "kind": "kami",
-   "category": "宗像三女神",
-   "description": "宗像三女神の一柱。沖津宮(沖ノ島)の祭神。",
-   "goriyaku": [
-    "kaijo_anzen",
-    "kotsu_anzen",
-    "suisan_noko"
-   ]
-  },
-  {
    "slug": "takitsuhime",
    "name": "瀧津姫命",
    "kana": "たきつひめのみこと",
@@ -4967,19 +4740,6 @@
    ]
   },
   {
-   "slug": "tenchi_tenno",
-   "name": "天智天皇",
-   "kana": "てんぢてんのう",
-   "kind": "kami",
-   "category": "人物神",
-   "description": "大化改新を主導した第38代天皇。",
-   "goriyaku": [
-    "gakumon",
-    "kaiun",
-    "shusse"
-   ]
-  },
-  {
    "slug": "tenji_tenno",
    "name": "天智天皇",
    "kana": "てんじてんのう",
@@ -4989,7 +4749,8 @@
    "goriyaku": [
     "gakugyo",
     "gakumon",
-    "kaiun"
+    "kaiun",
+    "shusse"
    ]
   },
   {
@@ -5045,19 +4806,6 @@
    ]
   },
   {
-   "slug": "toyokiiribiko",
-   "name": "豊城入彦命",
-   "kana": "とよきいりひこのみこと",
-   "kind": "kami",
-   "category": "天津神",
-   "description": "崇神天皇の皇子。東国経営の祖神で上毛野・赤城信仰の神。",
-   "goriyaku": [
-    "kaiun",
-    "shobu",
-    "shusse"
-   ]
-  },
-  {
    "slug": "toyokiirihiko",
    "name": "豊城入彦命",
    "kana": "とよきいりひこのみこと",
@@ -5066,7 +4814,8 @@
    "description": "崇神天皇の皇子で東国経営の祖神。上毛野氏の祖。",
    "goriyaku": [
     "kaiun",
-    "shobu"
+    "shobu",
+    "shusse"
    ]
   },
   {
@@ -5080,20 +4829,6 @@
     "anzan",
     "kaiun",
     "kosodate"
-   ]
-  },
-  {
-   "slug": "toyotama",
-   "name": "豊玉姫命",
-   "kana": "とよたまひめのみこと",
-   "kind": "kami",
-   "category": "記紀神",
-   "description": "海神の娘。安産・縁結びの神。",
-   "goriyaku": [
-    "anzan",
-    "enmusubi",
-    "kaijo_anzen",
-    "kaiun"
    ]
   },
   {
@@ -5120,7 +4855,8 @@
     "anzan",
     "enmusubi",
     "kaijo_anzen",
-    "kosodate"
+    "kosodate",
+    "kaiun"
    ]
   },
   {
@@ -5186,19 +4922,6 @@
    "goriyaku": [
     "kaiun",
     "kanai_anzen"
-   ]
-  },
-  {
-   "slug": "tsukushi_no_kami",
-   "name": "筑紫神",
-   "kana": "つくしのかみ",
-   "kind": "kami",
-   "category": "国津神",
-   "description": "筑紫国の国魂神。",
-   "goriyaku": [
-    "kaiun",
-    "suisan_noko",
-    "yakubarai"
    ]
   },
   {
@@ -5576,22 +5299,6 @@
    ]
   },
   {
-   "slug": "yamato_takeru",
-   "name": "日本武尊",
-   "kana": "やまとたけるのみこと",
-   "kind": "kami",
-   "category": "人神",
-   "description": "景行天皇の皇子。東西を平定した伝説の英雄。",
-   "goriyaku": [
-    "kaiun",
-    "kotsu_anzen",
-    "shobu",
-    "shusse",
-    "tabi_anzen",
-    "yakubarai"
-   ]
-  },
-  {
    "slug": "yamatohime",
    "name": "倭姫命",
    "kana": "やまとひめのみこと",
@@ -5616,7 +5323,8 @@
     "shobu",
     "shusse",
     "tabi_anzen",
-    "yakubarai"
+    "yakubarai",
+    "kotsu_anzen"
    ]
   },
   {
@@ -6200,19 +5908,6 @@
    ]
   },
   {
-   "slug": "monju",
-   "name": "文殊菩薩",
-   "kana": "もんじゅぼさつ",
-   "kind": "buddha",
-   "category": "菩薩",
-   "description": "智慧を司る菩薩。学業成就の信仰を集める。",
-   "goriyaku": [
-    "gakugyo",
-    "gakumon",
-    "kaiun"
-   ]
-  },
-  {
    "slug": "monju_bosatsu",
    "name": "文殊菩薩",
    "kana": "もんじゅぼさつ",
@@ -6228,19 +5923,6 @@
    ]
   },
   {
-   "slug": "myoken",
-   "name": "妙見菩薩",
-   "kana": "みょうけんぼさつ",
-   "kind": "buddha",
-   "category": "菩薩",
-   "description": "北極星・北斗を神格化した菩薩。眼病平癒・国土守護。",
-   "goriyaku": [
-    "byoki_heyu",
-    "kaiun",
-    "majo_kekkai"
-   ]
-  },
-  {
    "slug": "myoken_bosatsu",
    "name": "妙見菩薩",
    "kana": "みょうけんぼさつ",
@@ -6250,7 +5932,8 @@
    "goriyaku": [
     "kaiun",
     "yakubarai",
-    "byoki_heyu"
+    "byoki_heyu",
+    "majo_kekkai"
    ]
   },
   {
@@ -6322,19 +6005,6 @@
    ]
   },
   {
-   "slug": "sanpo_son",
-   "name": "三宝尊",
-   "kana": "さんぼうそん",
-   "kind": "buddha",
-   "category": "如来",
-   "description": "法華経の三宝(仏・法・僧)を一体として祀る日蓮宗の本尊。",
-   "goriyaku": [
-    "jouju",
-    "kaiun",
-    "yakubarai"
-   ]
-  },
-  {
    "slug": "sanqing",
    "name": "三清道祖",
    "kana": "さんせいどうそ",
@@ -6353,20 +6023,8 @@
    "goriyaku": [
     "byoki_heyu",
     "gakumon",
-    "kaiun"
-   ]
-  },
-  {
-   "slug": "seishi_kannon",
-   "name": "勢至菩薩",
-   "kana": "せいしぼさつ",
-   "kind": "buddha",
-   "category": "菩薩",
-   "description": "智慧の光で衆生を救う菩薩。",
-   "goriyaku": [
-    "byoki_heyu",
-    "gakugyo",
-    "kaiun"
+    "kaiun",
+    "gakugyo"
    ]
   },
   {
@@ -6399,19 +6057,6 @@
     "kaiun",
     "kinun",
     "yakubarai"
-   ]
-  },
-  {
-   "slug": "shakyamuni",
-   "name": "釈迦如来",
-   "kana": "しゃかにょらい",
-   "kind": "buddha",
-   "category": "如来",
-   "description": "仏教の開祖を仏格化した如来。",
-   "goriyaku": [
-    "byoki_heyu",
-    "jouju",
-    "kaiun"
    ]
   },
   {
@@ -7139,7 +6784,7 @@
    "lat": 33.764139,
    "lng": 129.7025,
    "deities": [
-    "ameno_oshihomimi"
+    "amenooshihomimi"
    ],
    "website": null,
    "description": "壱岐国一宮の論社。",
@@ -8230,7 +7875,7 @@
    "lng": 140.832889,
    "deities": [
     "ninigi",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "http://hitaka.org/",
    "description": "日本武尊ゆかりと伝わる伊具郡の式内社。瓊瓊杵尊を祀る。",
@@ -8254,7 +7899,10 @@
    "website": "https://www.atsutajingu.or.jp/",
    "description": "三種の神器・草薙剣を祀る。熱田大神（天照大神）が御祭神。",
    "source": "https://ja.wikipedia.org/wiki/熱田神宮",
-   "longDescription": "熱田神宮（あつたじんぐう）は、愛知県名古屋市熱田区神宮にある神社。名神大社、尾張国三宮。草薙剣を祀る日本神話と関係が深い神社で、古代から「熱田社」として信仰を集めた。"
+   "longDescription": "熱田神宮（あつたじんぐう）は、愛知県名古屋市熱田区神宮にある神社。名神大社、尾張国三宮。草薙剣を祀る日本神話と関係が深い神社で、古代から「熱田社」として信仰を集めた。",
+   "aliases": [
+    "熱田さん"
+   ]
   },
   {
    "slug": "atsuta-jinja-ishikari",
@@ -10525,7 +10173,10 @@
    "website": "https://www.dazaifutenmangu.or.jp/",
    "description": "菅原道真を祀る天神信仰の中心。学問の神。",
    "source": "https://ja.wikipedia.org/wiki/太宰府天満宮",
-   "longDescription": "太宰府天満宮（だざいふてんまんぐう）は、福岡県太宰府市宰府（さいふ）にある神社。近代社格制度による旧社格は官幣中社で、現在は神社本庁の別表神社。神紋は梅紋である。菅原道真（菅公）を祭神として祀る天満宮の一つ（天神様のお膝元）。\n京都の北野天満宮とともに全国天満宮の総本社とされ、また菅公の霊廟として篤く信仰される。正月三が日の初詣客数は約200万人、年間では約1000万人の参拝者が訪れる。\n太宰府天満宮・北野天満宮・防府天満宮を合わせて「三天神」と呼ぶ。三天神には諸説あり、太宰府天満宮と北野天満宮までは共通するものの、あとの一つを大阪天満宮等とする説も存在する。"
+   "longDescription": "太宰府天満宮（だざいふてんまんぐう）は、福岡県太宰府市宰府（さいふ）にある神社。近代社格制度による旧社格は官幣中社で、現在は神社本庁の別表神社。神紋は梅紋である。菅原道真（菅公）を祭神として祀る天満宮の一つ（天神様のお膝元）。\n京都の北野天満宮とともに全国天満宮の総本社とされ、また菅公の霊廟として篤く信仰される。正月三が日の初詣客数は約200万人、年間では約1000万人の参拝者が訪れる。\n太宰府天満宮・北野天満宮・防府天満宮を合わせて「三天神」と呼ぶ。三天神には諸説あり、太宰府天満宮と北野天満宮までは共通するものの、あとの一つを大阪天満宮等とする説も存在する。",
+   "aliases": [
+    "天神さま"
+   ]
   },
   {
    "slug": "denko-ji",
@@ -11642,7 +11293,7 @@
    "lng": 135.771694,
    "deities": [
     "susanoo",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "http://www.fujinomorijinjya.or.jp/",
    "description": "勝運と馬の神社。駈馬神事と紫陽花で知られる。",
@@ -12276,7 +11927,11 @@
    "website": "https://inari.jp/",
    "description": "全国約3万社の稲荷神社の総本宮。千本鳥居で有名。",
    "source": "https://ja.wikipedia.org/wiki/伏見稲荷大社",
-   "longDescription": "伏見稲荷大社（ふしみいなりたいしゃ）は、京都府京都市伏見区深草薮之内町にある神社。式内社（名神大社）、二十二社（上七社）の一社。旧社格は官幣大社で、現在は単立神社となっている。\n旧称は「稲荷神社」。1946年に現社名に改称した（後述）。稲荷山の麓に本殿があり、稲荷山全体を神域とする。全国に約3万社あるといわれる稲荷神社の総本宮である。初詣では近畿地方の社寺で最多の参拝者を集める（日本国内第4位〔2010年〕）。現存する旧社家は大西家。\n現在は「伏見」を冠しているが、伏見の中心部大手筋からは北へ4キロメートルほど離れた深草地区にある。また、藤森神社の氏子圏のほぼ中央に鎮座する当社の氏子圏は北西に離れた鴨川の対岸、東寺や京都駅周辺の南区や下京区に広がる。"
+   "longDescription": "伏見稲荷大社（ふしみいなりたいしゃ）は、京都府京都市伏見区深草薮之内町にある神社。式内社（名神大社）、二十二社（上七社）の一社。旧社格は官幣大社で、現在は単立神社となっている。\n旧称は「稲荷神社」。1946年に現社名に改称した（後述）。稲荷山の麓に本殿があり、稲荷山全体を神域とする。全国に約3万社あるといわれる稲荷神社の総本宮である。初詣では近畿地方の社寺で最多の参拝者を集める（日本国内第4位〔2010年〕）。現存する旧社家は大西家。\n現在は「伏見」を冠しているが、伏見の中心部大手筋からは北へ4キロメートルほど離れた深草地区にある。また、藤森神社の氏子圏のほぼ中央に鎮座する当社の氏子圏は北西に離れた鴨川の対岸、東寺や京都駅周辺の南区や下京区に広がる。",
+   "aliases": [
+    "お稲荷さん",
+    "稲荷神社総本宮"
+   ]
   },
   {
    "slug": "futagami-imizu-jinja",
@@ -13997,7 +13652,7 @@
    "lng": 139.730917,
    "deities": [
     "ototachibana",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": null,
    "description": "日本武尊の東征伝説に由来する古社。弟橘媛を配祀。",
@@ -15938,7 +15593,7 @@
    "lng": 140.2615,
    "deities": [
     "takemikazuchi",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": null,
    "description": "日本武尊・武甕槌神を祀る須賀川の式内社。",
@@ -16090,7 +15745,7 @@
    "lat": 37.622667,
    "lng": 138.945083,
    "deities": [
-    "sanpo_son"
+    "sanbo_son"
    ],
    "website": "http://www.honjyouji.or.jp/",
    "description": "法華宗陣門流の総本山。鬼踊りで知られる。",
@@ -16437,7 +16092,7 @@
    "lat": 35.456839,
    "lng": 139.590233,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": null,
    "description": "武蔵国都筑郡の式内社論社。日本武尊を祀る。",
@@ -16843,7 +16498,7 @@
    "deities": [
     "amaterasu",
     "sarutahiko",
-    "tenchi_tenno"
+    "tenji_tenno"
    ],
    "website": null,
    "description": "鹿児島三社の筆頭。郡元の弥生遺跡に隣接する古社。",
@@ -17696,7 +17351,7 @@
    "lat": 31.612611,
    "lng": 130.568583,
    "deities": [
-    "omiyahime",
+    "omiyanome",
     "sarutahiko",
     "ukemochi"
    ],
@@ -17739,7 +17394,7 @@
    "lat": 33.163139,
    "lng": 130.100694,
    "deities": [
-    "isotakeru"
+    "itakeru"
    ],
    "website": null,
    "description": "稲佐山に鎮座する国史見在社。古来の神仏習合の名残を留める。",
@@ -17885,7 +17540,11 @@
    "website": "https://www.isejingu.or.jp/",
    "description": "天照大御神を祀る神宮の中心。日本人の総氏神。",
    "source": "https://ja.wikipedia.org/wiki/伊勢神宮",
-   "longDescription": "伊勢神宮（いせじんぐう）は、日本の三重県伊勢市にある神社。正式名称は「神宮」（じんぐう）である。他の神宮と区別するために、「伊勢」の地名を冠し伊勢神宮と通称される。出雲国は天照大神であるが、持統天皇から天照大御神を祀り天皇は祭祀とされるようになる。\n「伊勢の神宮」、または親しみを込めて「お伊勢さん」「大神宮さん」とも称される。古来、最高の特別格の宮とされ、現在は神社本庁の本宗（ほんそう。全ての神社の上に立つ神社）であり、「日本国民の総氏神」とされる。\n律令国家体制における神祇体系のうちで最高位を占め、平安時代には二十二社の中のさらに上七社の1社となった。また、神階が授与されたことのない神社の一つ。明治時代から太平洋戦争前までの近代社格制度においては、全ての神社の上に位置する神社として社格の対象外とされた。"
+   "longDescription": "伊勢神宮（いせじんぐう）は、日本の三重県伊勢市にある神社。正式名称は「神宮」（じんぐう）である。他の神宮と区別するために、「伊勢」の地名を冠し伊勢神宮と通称される。出雲国は天照大神であるが、持統天皇から天照大御神を祀り天皇は祭祀とされるようになる。\n「伊勢の神宮」、または親しみを込めて「お伊勢さん」「大神宮さん」とも称される。古来、最高の特別格の宮とされ、現在は神社本庁の本宗（ほんそう。全ての神社の上に立つ神社）であり、「日本国民の総氏神」とされる。\n律令国家体制における神祇体系のうちで最高位を占め、平安時代には二十二社の中のさらに上七社の1社となった。また、神階が授与されたことのない神社の一つ。明治時代から太平洋戦争前までの近代社格制度においては、全ての神社の上に位置する神社として社格の対象外とされた。",
+   "aliases": [
+    "お伊勢さん",
+    "皇大神宮"
+   ]
   },
   {
    "slug": "isesaki-jinja",
@@ -18659,7 +18318,7 @@
    "lat": 43.04175,
    "lng": 141.355639,
    "deities": [
-    "amenokaguyama",
+    "amenokagoyama",
     "michizane"
    ],
    "website": "https://iyahiko.or.jp/",
@@ -18973,7 +18632,10 @@
    "description": "縁結びの大神・大国主大神を祀る日本有数の古社。",
    "source": "https://ja.wikipedia.org/wiki/出雲大社",
    "nt": true,
-   "longDescription": "出雲大社（いずもおおやしろ / いずもたいしゃ）は、島根県出雲市大社町杵築東にある神社。祭神は大国主大神。式内社（名神大）、出雲国一宮で旧社格は官幣大社。神社本庁の別表神社。宗教法人出雲大社教の宗祠。明治維新に伴う近代社格制度下において唯一「大社」を名乗る神社であった。出雲大社の社紋（神紋）は二重亀甲に剣花菱（にじゅうきっこうにけんはなびし）。"
+   "longDescription": "出雲大社（いずもおおやしろ / いずもたいしゃ）は、島根県出雲市大社町杵築東にある神社。祭神は大国主大神。式内社（名神大）、出雲国一宮で旧社格は官幣大社。神社本庁の別表神社。宗教法人出雲大社教の宗祠。明治維新に伴う近代社格制度下において唯一「大社」を名乗る神社であった。出雲大社の社紋（神紋）は二重亀甲に剣花菱（にじゅうきっこうにけんはなびし）。",
+   "aliases": [
+    "だいこくさま"
+   ]
   },
   {
    "slug": "izumo-taisha-matsuyama-bunshi",
@@ -19794,7 +19456,7 @@
    "lat": 39.354514,
    "lng": 141.570969,
    "deities": [
-    "seishi_kannon"
+    "seishi_bosatsu"
    ],
    "website": null,
    "description": "カッパ狛犬で有名。背後にカッパ淵がある遠野の名刹。",
@@ -20060,7 +19722,7 @@
    "lng": 139.735056,
    "deities": [
     "ukanomitama",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "https://www.jubaninari.or.jp/",
    "description": "麻布十番の鎮守。火伏せのかえる御守で知られる。",
@@ -20593,7 +20255,7 @@
    "lat": 34.650208,
    "lng": 135.001611,
    "deities": [
-    "kakimoto_hitomaro"
+    "kakinomoto_hitomaro"
    ],
    "website": "http://www.kakinomoto-jinja.or.jp/",
    "description": "歌聖・柿本人麻呂を祀る人丸山の社。学問・眼病で信仰。",
@@ -20937,7 +20599,7 @@
    "deities": [
     "hachiman",
     "jingu_kogo",
-    "kamotamayorihime"
+    "tamayorihime"
    ],
    "website": "https://hachimanguu.org",
    "description": "伊達氏が鶴岡八幡宮を勧請した古社。長い石段の参道で知られる。",
@@ -21196,7 +20858,7 @@
    "lng": 140.849056,
    "deities": [
     "kamotaketsunumi",
-    "kamotamayorihime",
+    "tamayorihime",
     "wakeikazuchi"
    ],
    "website": null,
@@ -21475,7 +21137,10 @@
    ],
    "website": "https://www.kandamyoujin.or.jp/",
    "description": "江戸総鎮守。大己貴命・少彦名命・平将門を祀る。",
-   "source": "https://ja.wikipedia.org/wiki/神田明神"
+   "source": "https://ja.wikipedia.org/wiki/神田明神",
+   "aliases": [
+    "神田神社"
+   ]
   },
   {
    "slug": "kaneiji",
@@ -21892,7 +21557,7 @@
    "lat": 35.666781,
    "lng": 139.756794,
    "deities": [
-    "ame_no_uzume",
+    "amenouzume",
     "ninigi",
     "ukanomitama"
    ],
@@ -22118,7 +21783,7 @@
     "amaterasu",
     "hachiman",
     "sumiyoshi",
-    "takirihime"
+    "tagirihime"
    ],
    "website": null,
    "description": "薩摩国二宮とされる式内社。",
@@ -22711,7 +22376,10 @@
    "website": "https://www.kawasakidaishi.com/",
    "description": "厄除け大師として知られる真言宗智山派の大本山。",
    "source": "https://ja.wikipedia.org/wiki/平間寺",
-   "longDescription": "平間寺（へいけんじ）は、神奈川県川崎市川崎区にある、真言宗智山派の大本山。1128年（大治3年）建立。川崎大師（かわさきだいし）という通称で知られる。山号は金剛山。院号は金乗院（きんじょういん）。尊賢（そんけん）を開山、平間兼乗（ひらまかねのり）を開基とする。2022年（令和4年）時点の貫首は第45世・中興第2世藤田隆乗が務める。"
+   "longDescription": "平間寺（へいけんじ）は、神奈川県川崎市川崎区にある、真言宗智山派の大本山。1128年（大治3年）建立。川崎大師（かわさきだいし）という通称で知られる。山号は金剛山。院号は金乗院（きんじょういん）。尊賢（そんけん）を開山、平間兼乗（ひらまかねのり）を開基とする。2022年（令和4年）時点の貫首は第45世・中興第2世藤田隆乗が務める。",
+   "aliases": [
+    "厄除け大師"
+   ]
   },
   {
    "slug": "kazusa-kokubunji",
@@ -24335,7 +24003,7 @@
    "lat": 43.032778,
    "lng": 144.839167,
    "deities": [
-    "shakyamuni"
+    "shaka_nyorai"
    ],
    "website": null,
    "description": "江戸幕府が蝦夷地に建てた蝦夷三官寺の一つ。国指定史跡。",
@@ -25270,7 +24938,11 @@
    "imageURL": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Kotohira-gu01s.jpg/960px-Kotohira-gu01s.jpg",
    "imageLicense": "CC BY-SA 3.0",
    "imageAuthor": "Toto-tarou",
-   "longDescription": "金刀比羅宮（ことひらぐう）は、香川県仲多度郡琴平町の象頭山中腹に鎮座する単立神社である。明治初年の神仏分離以前は金毘羅大権現（こんぴらだいごんげん）と称し、通称は「讃岐の金毘羅さん（さぬきのこんぴらさん）」。明治初年以降に神社になってからの当宮の通称は「金比羅さん」。\n御朱印：金刀比羅宮（本宮前神札授与所）・白峰宮・厳魂神社（奥宮）。"
+   "longDescription": "金刀比羅宮（ことひらぐう）は、香川県仲多度郡琴平町の象頭山中腹に鎮座する単立神社である。明治初年の神仏分離以前は金毘羅大権現（こんぴらだいごんげん）と称し、通称は「讃岐の金毘羅さん（さぬきのこんぴらさん）」。明治初年以降に神社になってからの当宮の通称は「金比羅さん」。\n御朱印：金刀比羅宮（本宮前神札授与所）・白峰宮・厳魂神社（奥宮）。",
+   "aliases": [
+    "こんぴらさん",
+    "金毘羅宮"
+   ]
   },
   {
    "slug": "kotohira-jinja-kawasaki",
@@ -25471,7 +25143,7 @@
    "deities": [
     "susanoo",
     "takeminakata",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": null,
    "description": "腰越の鎮守。湘南の天王祭(腰越祭)で知られる。",
@@ -26096,7 +25768,7 @@
    "lng": 131.09175,
    "deities": [
     "hachiman",
-    "myoken"
+    "myoken_bosatsu"
    ],
    "website": "http://kumohachiman.j-air.net/",
    "description": "八幡神と妙見神を祀る。河童伝説の宮園楽で知られる。",
@@ -26305,7 +25977,7 @@
    "lat": 39.660806,
    "lng": 141.94056,
    "deities": [
-    "kushinada",
+    "kushinadahime",
     "okuninushi",
     "susanoo"
    ],
@@ -26325,7 +25997,7 @@
    "lat": 37.670278,
    "lng": 140.481056,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "http://www.kuronumajinja.com",
    "description": "延喜式内社の論社。金沢の羽山ごもり(重要無形民俗文化財)で知られる。",
@@ -27092,7 +26764,7 @@
    "deities": [
     "susanoo",
     "ukanomitama",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": null,
    "description": "小田原宿の総鎮守。小田原流の神輿振りで知られる例大祭。",
@@ -27153,7 +26825,7 @@
    "lat": 35.780644,
    "lng": 139.897789,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "https://www.matsudojinja.com/",
    "description": "日本武尊を祀る松戸の総鎮守。「松戸」地名由来の社。",
@@ -27713,7 +27385,7 @@
    "lat": 35.3735944,
    "lng": 136.5824722,
    "deities": [
-    "taira_masakado"
+    "masakado"
    ],
    "website": null,
    "description": "平将門の御神霊を祀り首から上の願掛けで知られる。",
@@ -28168,7 +27840,7 @@
    "lat": 36.36167,
    "lng": 140.48194,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "https://yoshidajinja.jp/",
    "description": "常陸国三宮。日本武尊を祀る朝日山上の古社。",
@@ -29038,7 +28710,7 @@
    "lat": 34.241778,
    "lng": 130.104,
    "deities": [
-    "takirihime"
+    "tagirihime"
    ],
    "website": "https://munakata-taisha.or.jp/",
    "description": "世界遺産。沖ノ島に鎮座する宗像大社の沖津宮。",
@@ -29782,7 +29454,7 @@
    "lat": 35.083694,
    "lng": 135.889611,
    "deities": [
-    "ame_no_futodama"
+    "amenofutodama"
    ],
    "website": null,
    "description": "天太玉命を祀る式内社。農耕を助けた天降りの神を伝える。",
@@ -30369,7 +30041,11 @@
    "longDescription": "成田山新勝寺（なりたさんしんしょうじ）は、日本の千葉県成田市成田にある真言宗智山派の仏教寺院であり、同派の大本山の一つである。山号は成田山。本尊は不動明王で、当寺は不動明王信仰の一大中心地である。そのため、成田不動、お不動さまなどといった通称でも広く親しまれてきた。開山は平安時代中期の天慶3年（940年）と伝えられる。寺紋は葉牡丹。\n参詣者数において関東地方屈指の寺である。初詣の参拝者数は、2020年に約305万人であり、社寺としては明治神宮に次ぐ全国第2位（千葉県内第1位）、寺院に限れば全国第1位の参拝者数である。年間参詣者数は1000万人を超える。今も昔も加持祈祷のために訪れる人が多いことでも知られる。成田国際空港に近いことから、外国人観光客にも人気がある。",
    "imageURL": "https://upload.wikimedia.org/wikipedia/commons/1/15/Naritasan-Shinshoji-Temple-2008.jpg",
    "imageLicense": "CC BY-SA 3.0",
-   "imageAuthor": "Hoku-sou-san"
+   "imageAuthor": "Hoku-sou-san",
+   "aliases": [
+    "成田不動",
+    "成田山"
+   ]
   },
   {
    "slug": "narushima-hachiman-jinja",
@@ -30846,7 +30522,7 @@
    "lng": 139.167639,
    "deities": [
     "okuninushi",
-    "toyokiiribiko"
+    "toyokiirihiko"
    ],
    "website": null,
    "description": "上野国二宮。約300社ある赤城神社の本宮論社の一つ。",
@@ -31064,7 +30740,7 @@
    "lat": 32.678306,
    "lng": 130.647972,
    "deities": [
-    "ameno_koyane",
+    "amenokoyane",
     "hachiman",
     "sumiyoshi"
    ],
@@ -32437,7 +32113,7 @@
    "deities": [
     "ikeda_mitsumasa",
     "okibitsuhiko",
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "http://www.okayama-jinjya.or.jp/",
    "description": "岡山城の北に鎮座する旧県社。随神門が重要文化財。",
@@ -33382,7 +33058,7 @@
    "lat": 39.280278,
    "lng": 141.893889,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": null,
    "description": "日本武尊ゆかりの剣を祀ると伝わる釜石の鎮守。",
@@ -33496,7 +33172,7 @@
    "lat": 38.038447,
    "lng": 140.699597,
    "deities": [
-    "yamato_takeru",
+    "yamatotakeru",
     "yomei_tenno"
    ],
    "website": "http://www.ohtakayama.org/",
@@ -34026,7 +33702,7 @@
    "lat": 34.247889,
    "lng": 133.005806,
    "deities": [
-    "ooyamatsumi"
+    "oyamatsumi"
    ],
    "website": "https://oomishimagu.jp/",
    "description": "大三島に鎮座する全国の大山祇神社の総本社。武具の国宝多数。",
@@ -34956,7 +34632,7 @@
    "lat": 43.180361,
    "lng": 141.009278,
    "deities": [
-    "shakyamuni"
+    "shaka_nyorai"
    ],
    "website": null,
    "description": "小樽最古の本堂を持つ古刹。日本最大級の一木造木魚で知られる。",
@@ -35071,7 +34747,7 @@
    "lat": 38.162028,
    "lng": 140.84667,
    "deities": [
-    "ame_no_uzume",
+    "amenouzume",
     "sarutahiko"
    ],
    "website": null,
@@ -37069,7 +36745,10 @@
    ],
    "website": "https://www.senso-ji.jp/",
    "description": "東京最古の寺。雷門・仲見世で知られる観音霊場。",
-   "source": "https://ja.wikipedia.org/wiki/浅草寺"
+   "source": "https://ja.wikipedia.org/wiki/浅草寺",
+   "aliases": [
+    "浅草観音"
+   ]
   },
   {
    "slug": "senyuji-imabari",
@@ -37837,7 +37516,7 @@
     "amaterasu",
     "izanagi",
     "izanami",
-    "jinmu",
+    "jinmu_tenno",
     "kunitokotachi"
    ],
    "website": null,
@@ -38269,7 +37948,7 @@
    "lat": 34.24615,
    "lng": 134.3637361,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "http://www.shirotori-jinja.jp/",
    "description": "日本武尊の白鳥伝説の社。日本一低い山「御山」がある。",
@@ -38805,7 +38484,7 @@
    "lat": 33.855111,
    "lng": 129.690889,
    "deities": [
-    "chuai_tenno",
+    "chuai",
     "jingu_kogo",
     "sumiyoshi"
    ],
@@ -39483,7 +39162,7 @@
    "lat": 38.115389,
    "lng": 140.034778,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": null,
    "description": "坂上田村麻呂創建と伝わる長井の古社。直江兼続お手植えの大杉で知られる。",
@@ -41400,7 +41079,7 @@
    "lat": 34.395906,
    "lng": 132.510253,
    "deities": [
-    "jinmu"
+    "jinmu_tenno"
    ],
    "website": "http://takejinja.net/",
    "description": "安芸国総鎮守。神武天皇東征伝承の地とされる。",
@@ -43502,7 +43181,7 @@
    "lat": 36.69972,
    "lng": 140.235056,
    "deities": [
-    "ame_no_hiwashi",
+    "amenohiwashi",
     "okuninushi",
     "sukunabikona"
    ],
@@ -43687,7 +43366,10 @@
    "website": "https://www.toyokawainari.jp/",
    "description": "正式名は妙厳寺。鎮守の吒枳尼真天を祀り商売繁盛で知られる。",
    "source": "https://ja.wikipedia.org/wiki/豊川稲荷",
-   "longDescription": "豊川稲荷（とよかわいなり）は、愛知県豊川市豊川町にある曹洞宗の寺院。"
+   "longDescription": "豊川稲荷（とよかわいなり）は、愛知県豊川市豊川町にある曹洞宗の寺院。",
+   "aliases": [
+    "妙厳寺"
+   ]
   },
   {
    "slug": "toyokuni-jinja-nagoya",
@@ -44193,7 +43875,10 @@
    "website": "https://www.hachimangu.or.jp/",
    "description": "鎌倉武士の守護神。源氏ゆかりの八幡宮。",
    "source": "https://ja.wikipedia.org/wiki/鶴岡八幡宮",
-   "longDescription": "鶴岡八幡宮（つるがおかはちまんぐう）は、神奈川県鎌倉市雪ノ下にある八幡宮。鎌倉八幡宮とも呼ばれる。11世紀後半に、源氏の守り神として創建された。以後、鎌倉武士の守護神となる。現代では全国の八幡宮の中で、鎌倉幕府の初代将軍源頼朝ゆかりの神社として関東方面で知名度が高い。境内は国の史跡に指定されている。旧社格は国幣中社で、神社本庁の別表神社であったが、2024年に神社本庁を離脱する手続きを進めている（後述）。"
+   "longDescription": "鶴岡八幡宮（つるがおかはちまんぐう）は、神奈川県鎌倉市雪ノ下にある八幡宮。鎌倉八幡宮とも呼ばれる。11世紀後半に、源氏の守り神として創建された。以後、鎌倉武士の守護神となる。現代では全国の八幡宮の中で、鎌倉幕府の初代将軍源頼朝ゆかりの神社として関東方面で知名度が高い。境内は国の史跡に指定されている。旧社格は国幣中社で、神社本庁の別表神社であったが、2024年に神社本庁を離脱する手続きを進めている（後述）。",
+   "aliases": [
+    "鎌倉八幡宮"
+   ]
   },
   {
    "slug": "tsurugaya-hachimangu",
@@ -44755,7 +44440,7 @@
    "lng": 135.8115,
    "deities": [
     "hachiman",
-    "nintoku",
+    "nintoku_tenno",
     "uji_no_wakiiratsuko"
    ],
    "website": "https://www.ujikamijinja.jp",
@@ -45790,7 +45475,7 @@
    "lat": 37.86025,
    "lng": 138.3306389,
    "deities": [
-    "isotakeru"
+    "itakeru"
    ],
    "website": null,
    "description": "佐渡国一宮。五十猛命を祀る式内社。",
@@ -46260,7 +45945,7 @@
    "lng": 138.848694,
    "deities": [
     "takeminakata",
-    "toyotama"
+    "toyotamahime"
    ],
    "website": null,
    "description": "安産・子授けの神事で全国に知られる。武田信玄も社殿を寄進した。",
@@ -47038,7 +46723,7 @@
    "lat": 42.592306,
    "lng": 142.136222,
    "deities": [
-    "minamoto_yoshitsune"
+    "minamoto_no_yoshitsune"
    ],
    "website": "https://yoshitsune-jinja.com/website/",
    "description": "義経北行伝説にちなみ源義経を祀る。アイヌのオキクルミ信仰とも習合。",
@@ -47442,7 +47127,7 @@
    "lat": 35.493083,
    "lng": 139.393083,
    "deities": [
-    "yamato_takeru"
+    "yamatotakeru"
    ],
    "website": "https://zamajinja.or.jp/",
    "description": "座間の鎮守。日本武尊を祀り疫病鎮めの伝承を伝える。",
@@ -47520,7 +47205,10 @@
    "website": "https://www.zenkoji.jp/",
    "description": "宗派を問わない庶民信仰の寺。秘仏の阿弥陀如来を本尊とする。",
    "source": "https://ja.wikipedia.org/wiki/善光寺",
-   "nt": true
+   "nt": true,
+   "aliases": [
+    "信州善光寺"
+   ]
   },
   {
    "slug": "zenpoji",

@@ -62,7 +62,10 @@ def main():
     print("Web:")
     light = {
         "goriyaku": data["goriyaku"],
-        "deities": data["deities"],
+        "deities": [
+            {k: v for k, v in d.items() if k != "longDescription"}
+            for d in data["deities"]
+        ],
         "shrines": [
             {k: v for k, v in s.items() if k != "longDescription"}
             for s in data["shrines"]
@@ -74,7 +77,12 @@ def main():
             s["slug"]: s["longDescription"]
             for s in data["shrines"]
             if s.get("longDescription")
-        }
+        },
+        "deities": {
+            d["slug"]: d["longDescription"]
+            for d in data["deities"]
+            if d.get("longDescription")
+        },
     }
     dump(details, WEB_DETAILS_OUT)
 

@@ -40,7 +40,7 @@ export function createStore(data) {
 
   // 社寺ごとのご利益：社寺固有の明示分を先頭に、御祭神/本尊由来の導出分との和集合
   const shrineGoriyaku = {}
-  // 検索用の正規化済みテキスト（名前・かな・都道府県・市区町村）
+  // 検索用の正規化済みテキスト（名前・かな・通称・都道府県・市区町村）
   const searchText = {}
   for (const s of shrines) {
     const seen = new Set(), arr = []
@@ -50,7 +50,9 @@ export function createStore(data) {
       for (const g of deityBySlug[ds]?.goriyaku || [])
         if (!seen.has(g)) { seen.add(g); arr.push(g) }
     shrineGoriyaku[s.slug] = arr
-    searchText[s.slug] = normalizeQuery(`${s.name}\n${s.kana || ''}\n${s.pref}\n${s.city}`)
+    searchText[s.slug] = normalizeQuery(
+      `${s.name}\n${s.kana || ''}\n${(s.aliases || []).join('\n')}\n${s.pref}\n${s.city}`
+    )
   }
 
   // ご利益 → 社寺の逆引きインデックス（一度だけ構築）

@@ -26,7 +26,7 @@ export default function ShrineDetail() {
       .catch(() => { /* 取得失敗時は本文セクションを表示しない */ })
     return () => { active = false }
   }, [])
-  const longDesc = details?.[slug] || null
+  const longDesc = details?.shrines?.[slug] || null
 
   // 共有（Web Share API がなければURLをクリップボードへ）
   const [copied, setCopied] = useState(false)

@@ -123,7 +123,8 @@ final class DataStore: ObservableObject {
                 }
             }
             shrineGoriyaku[shrine.slug] = ordered
-            searchText[shrine.slug] = [shrine.name, shrine.kana, shrine.pref, shrine.city]
+            searchText[shrine.slug] = ([shrine.name, shrine.kana] + (shrine.aliases ?? []) +
+                                       [shrine.pref, shrine.city])
                 .map(normalizedForSearch).joined(separator: "\n")
         }
 

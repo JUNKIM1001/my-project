@@ -1,5 +1,6 @@
-// 社寺の全文説明（longDescription）の遅延取得。
+// 社寺・神仏の全文説明（longDescription）の遅延取得。
 // appdata-details.json（約600KB）を初回参照時にのみ fetch し、モジュール内にキャッシュする。
+// 形式: { shrines: { slug: 本文 }, deities: { slug: 本文 } }
 
 let cache = null
 let pending = null
@@ -13,7 +14,7 @@ export function loadDetails() {
         return res.json()
       })
       .then((json) => {
-        cache = json.shrines || {}
+        cache = { shrines: json.shrines || {}, deities: json.deities || {} }
         return cache
       })
       .catch((err) => {

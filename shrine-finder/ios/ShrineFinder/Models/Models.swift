@@ -18,6 +18,7 @@ struct Deity: Codable, Identifiable, Hashable {
     let kind: String          // "kami" | "buddha"
     let category: String
     let description: String
+    let longDescription: String?  // 図鑑詳細用の由来解説（主要神仏のみ）
     let goriyaku: [String]
     var id: String { slug }
 
@@ -37,6 +38,7 @@ struct Shrine: Codable, Identifiable, Hashable {
     let lng: Double
     let deities: [String]
     let goriyaku: [String]?     // 社寺固有のご利益（御祭神/本尊からの導出に先行して表示）
+    let aliases: [String]?      // 通称・別名（例:「お稲荷さん」）。検索対象に含める
     let website: String?
     let description: String
     let source: String
