@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>事業会社 営業先ファインダー</title>
+<style>
+  body { font-family: sans-serif; margin: 2rem; background: #f7f7f9; color: #222; }
+  h1 { font-size: 1.4rem; margin-bottom: 0.2rem; }
+  .lead { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .panel { background: #fff; border: 1px solid #e2e2e8; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
+  .panel h2 { font-size: 1.05rem; margin: 0 0 0.7rem; }
+  .panel .step { display: inline-block; background: #2f855a; color: #fff; border-radius: 999px; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: 0.85rem; margin-right: 0.4rem; }
+  .controls { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
+  select, input, textarea, button { padding: 0.4rem 0.6rem; font-size: 0.9rem; }
+  button { cursor: pointer; background: #2f855a; color: #fff; border: none; border-radius: 5px; }
+  button.secondary { background: #fff; color: #2f855a; border: 1px solid #2f855a; }
+  table { width: 100%; border-collapse: collapse; background: #fff; }
+  th, td { border: 1px solid #ddd; padding: 0.5rem; font-size: 0.83rem; vertical-align: top; }
+  th { background: #eee; text-align: left; }
+  .tag { display: inline-block; background: #e0f2e9; border-radius: 4px; padding: 0 4px; margin: 1px; font-size: 0.74rem; }
+  .score { font-size: 1.05rem; font-weight: bold; color: #2f855a; }
+  .muted { color: #888; font-size: 0.85rem; }
+  .error { color: #c0392b; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>事業会社 営業先ファインダー</h1>
+<p class="lead">自社の営業資料を読み込ませ、ターゲット条件を入力すると、AIが商材への導入ニーズを軸に営業先の事業会社を探します。有望な候補を「リード化」してGoogleスプレッドシートの営業台帳で管理します。</p>
+
+<!-- STEP 0: 営業資料の読み込み -->
+<div class="panel">
+  <h2><span class="step">0</span>自社の営業資料（商材情報）を読み込む</h2>
+  <div class="controls">
+    <input type="file" id="pitchFile" accept=".pdf,.pptx">
+    <button onclick="uploadPitch()">ファイルを読み込む</button>
+  </div>
+  <div class="controls" style="margin-top:0.6rem;">
+    <input id="pitchUrl" style="flex:1; min-width:320px;"
+      placeholder="または営業資料・サービスサイトのURLを貼り付け（Google Slides / PDF / Webページ）">
+    <button onclick="uploadPitchUrl()">URLから読み込む</button>
+  </div>
+  <p class="muted" style="margin:0.5rem 0 0;">※Google Slidesは共有設定を「リンクを知っている全員（閲覧可）」にしてください。</p>
+  <div id="pitchStatus" class="muted" style="margin-top:0.5rem;"></div>
+  <div id="pitchSummary" style="margin-top: 0.8rem; white-space: pre-wrap; font-size: 0.85rem; background:#f7fcf9; border-radius:6px; padding:0.8rem; display:none;"></div>
+</div>
+
+<!-- STEP 1: ターゲット条件 -->
+<div class="panel">
+  <h2><span class="step">1</span>営業ターゲット条件を入力して候補を探す</h2>
+  <p class="muted" style="margin:0 0 0.6rem;">どんな業界・規模・地域の企業に売りたいか、除外したい先などを書いてください。Step0の商材情報と合わせてAIが探します。</p>
+  <div class="controls" style="align-items: flex-start;">
+    <textarea id="aiTarget" rows="3" style="flex:1; min-width: 320px;"
+      placeholder="例: 首都圏に複数拠点を持つ商業施設・鉄道・不動産系の事業会社。遊休スペースの活用や若年層の集客に課題がありそうな先を優先。すでに取引のある○○社は除外。"></textarea>
+    <button onclick="aiSearch()">候補を探す</button>
+  </div>
+  <div id="aiStatus" class="muted" style="margin-top:0.5rem;"></div>
+  <div id="aiResult" style="margin-top: 0.8rem; font-size: 0.85rem;"></div>
+  <details style="margin-top: 0.8rem;">
+    <summary style="cursor:pointer; font-size:0.85rem;">過去の検索条件を再利用する</summary>
+    <div id="historyList" style="font-size: 0.82rem; margin-top: 0.5rem;"></div>
+  </details>
+</div>
+
+<!-- STEP 2: 候補リスト -->
+<div class="panel">
+  <h2><span class="step">2</span>営業先候補リスト</h2>
+  <div class="controls" style="margin-bottom: 0.8rem;">
+    <select id="scope" onchange="search()">
+      <option value="latest">今回の検索結果</option>
+      <option value="ai">これまでのAI検索結果すべて</option>
+      <option value="all">登録済み全件（手動登録含む）</option>
+    </select>
+    <select id="industry" onchange="search()"><option value="">業界: すべて</option></select>
+    <input id="keyword" placeholder="キーワード（社名など）" style="width:180px;">
+    <button class="secondary" onclick="search()">絞り込み</button>
+    <button onclick="exportCsv()">この結果をCSV出力</button>
+    <span id="status" class="muted"></span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>有望度</th><th>企業名</th><th>業界</th><th>規模</th><th>想定ニーズ</th><th>提案ポイント</th><th>ニーズの根拠</th><th>サイト</th><th>キーパーソン</th><th>リード</th></tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="muted" id="emptyNote" style="display:none; margin-top:0.8rem;">
+    まだ結果がありません。上の「STEP1 営業ターゲット条件を入力して候補を探す」から条件を入力してリストアップしてください。
+  </p>
+  <details style="margin-top:0.8rem;">
+    <summary style="cursor:pointer; font-size:0.85rem;">展示会・紹介などのリードを手動登録する</summary>
+    <div class="controls" style="margin-top:0.5rem;">
+      <input id="manualName" placeholder="企業名（必須）" style="width:200px;">
+      <input id="manualIndustry" placeholder="業界" style="width:120px;">
+      <input id="manualWebsite" placeholder="WebサイトURL" style="width:220px;">
+      <button onclick="addManual()">有効リードとして登録</button>
+      <span id="manualStatus" class="muted"></span>
+    </div>
+  </details>
+</div>
+
+<!-- STEP 3: 有効リード管理（Googleスプレッドシート連携） -->
+<div class="panel">
+  <h2><span class="step">3</span>有効リード管理（Googleスプレッドシート連携）</h2>
+  <p class="muted" style="margin:0 0 0.6rem;">
+    「リード化」した企業をGoogleスプレッドシートの営業台帳に反映します。
+    商談ステージ・担当者・次アクション・メモはシート側で編集し、「シートから取り込む」でこの画面に反映されます。
+  </p>
+  <div class="controls" style="margin-bottom: 0.8rem;">
+    <button onclick="sheetsPush()">シートへ反映（push）</button>
+    <button class="secondary" onclick="sheetsPull()">シートから取り込む（pull）</button>
+    <a id="sheetLink" href="#" target="_blank" style="display:none; font-size:0.9rem;">シートを開く</a>
+    <span id="sheetsStatus" class="muted"></span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>有望度</th><th>企業名</th><th>商談ステージ</th><th>担当者</th><th>次アクション</th><th>期日</th><th>メモ</th><th>リード解除</th></tr>
+    </thead>
+    <tbody id="leadRows"></tbody>
+  </table>
+  <p class="muted" id="leadEmptyNote" style="display:none; margin-top:0.8rem;">
+    有効リードはまだありません。STEP2のリストで「⭐リード化」した企業がここに表示されます。
+  </p>
+</div>
+
+<script>
+async function loadOptions() {
+  const res = await fetch('/api/options');
+  const opts = await res.json();
+  const sel = document.getElementById('industry');
+  while (sel.options.length > 1) sel.remove(1);
+  for (const v of opts.industries) {
+    const o = document.createElement('option');
+    o.value = v; o.textContent = v;
+    sel.appendChild(o);
+  }
+}
+
+function buildParams() {
+  const params = new URLSearchParams();
+  params.set('scope', document.getElementById('scope').value);
+  const industry = document.getElementById('industry').value;
+  const keyword = document.getElementById('keyword').value;
+  if (industry) params.set('industry', industry);
+  if (keyword) params.set('keyword', keyword);
+  return params;
+}
+
+async function search() {
+  const params = buildParams();
+  const res = await fetch('/api/companies?' + params.toString());
+  const data = await res.json();
+  const rows = document.getElementById('rows');
+  rows.innerHTML = '';
+  for (const c of data) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="score">${c.score != null ? c.score : ''}</td>
+      <td><strong>${c.name}</strong>${c.region ? '<br><span class="muted">' + c.region + '</span>' : ''}
+        ${c.contact_url ? `<br><a href="${c.contact_url}" target="_blank" style="font-size:0.75rem;">問い合わせ先</a>` : ''}</td>
+      <td>${c.industry || ''}</td>
+      <td>${c.employee_scale || ''}</td>
+      <td>${tags(c.needs)}</td>
+      <td>${(c.proposal_points || []).map(p => '・' + p).join('<br>')}</td>
+      <td class="muted">${c.needs_evidence || ''}</td>
+      <td>${c.website ? `<a href="${c.website}" target="_blank">サイト</a>` : ''}</td>
+      <td>${c.key_person_hint || '<span class="muted">未確認</span>'}</td>
+      <td>${reviewCell(c)}</td>
+    `;
+    rows.appendChild(tr);
+  }
+  document.getElementById('status').textContent = `${data.length} 件`;
+  document.getElementById('emptyNote').style.display = data.length === 0 ? 'block' : 'none';
+}
+
+function reviewCell(c) {
+  if (c.review_status === '承認') return '<span class="tag">⭐有効リード</span>';
+  if (c.review_status === '却下') return `<span class="muted">却下</span><br><a href="#" onclick="reviewCompany(${c.id}, '候補'); return false;" style="font-size:0.75rem;">戻す</a>`;
+  return `<button style="font-size:0.78rem;" onclick="reviewCompany(${c.id}, '承認')">⭐リード化</button><br>
+    <a href="#" onclick="reviewCompany(${c.id}, '却下'); return false;" style="font-size:0.75rem;" class="muted">却下</a>`;
+}
+
+async function reviewCompany(id, status) {
+  await fetch(`/api/companies/${id}/review`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ review_status: status })
+  });
+  search();
+  loadLeads();
+}
+
+async function addManual() {
+  const name = document.getElementById('manualName').value.trim();
+  if (!name) { setStatus('manualStatus', '企業名を入力してください', true); return; }
+  const res = await fetch('/api/companies', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name,
+      industry: document.getElementById('manualIndustry').value.trim() || null,
+      website: document.getElementById('manualWebsite').value.trim() || null,
+    })
+  });
+  const data = await res.json();
+  if (data.error) { setStatus('manualStatus', 'エラー: ' + data.error, true); return; }
+  setStatus('manualStatus', `登録しました: ${data.name}`, false);
+  document.getElementById('manualName').value = '';
+  loadOptions();
+  loadLeads();
+}
+
+async function loadLeads() {
+  const res = await fetch('/api/leads');
+  const data = await res.json();
+  const rows = document.getElementById('leadRows');
+  rows.innerHTML = '';
+  for (const c of data) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="score">${c.score != null ? c.score : ''}</td>
+      <td><strong>${c.name}</strong>${c.industry ? '<br><span class="muted">' + c.industry + '</span>' : ''}</td>
+      <td>${c.status || '未着手'}</td>
+      <td>${c.owner || ''}</td>
+      <td>${c.next_action || ''}</td>
+      <td>${c.next_action_due || ''}</td>
+      <td class="muted">${c.lead_memo || ''}</td>
+      <td><a href="#" onclick="reviewCompany(${c.id}, '候補'); return false;" style="font-size:0.75rem;">解除</a></td>
+    `;
+    rows.appendChild(tr);
+  }
+  document.getElementById('leadEmptyNote').style.display = data.length === 0 ? 'block' : 'none';
+}
+
+async function loadSheetsInfo() {
+  const res = await fetch('/api/sheets/info');
+  const info = await res.json();
+  const link = document.getElementById('sheetLink');
+  if (info.configured && info.url) {
+    link.href = info.url;
+    link.style.display = 'inline';
+  } else {
+    setStatus('sheetsStatus', '未設定: .env に GOOGLE_SERVICE_ACCOUNT_FILE と LEADS_SPREADSHEET_ID を設定してください（docs/sheets-lead-management.md 参照）', false);
+  }
+}
+
+async function sheetsPush() {
+  setStatus('sheetsStatus', 'シートへ反映中…', false);
+  try {
+    const res = await fetch('/api/sheets/push', { method: 'POST' });
+    const data = await res.json();
+    if (data.error) { setStatus('sheetsStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('sheetsStatus', `反映完了: 有効リード${data.pushed}件（シート${data.rows}行）`, false);
+    loadLeads();
+  } catch (e) {
+    setStatus('sheetsStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
+}
+
+async function sheetsPull() {
+  setStatus('sheetsStatus', 'シートから取り込み中…', false);
+  try {
+    const res = await fetch('/api/sheets/pull', { method: 'POST' });
+    const data = await res.json();
+    if (data.error) { setStatus('sheetsStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('sheetsStatus', `取り込み完了: ${data.pulled}件`, false);
+    loadLeads();
+  } catch (e) {
+    setStatus('sheetsStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
+}
+
+function tags(arr) {
+  return (arr || []).filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
+}
+
+function exportCsv() {
+  window.location = '/api/companies.csv?' + buildParams().toString();
+}
+
+function setStatus(id, message, isError) {
+  const el = document.getElementById(id);
+  el.textContent = message;
+  el.className = isError ? 'error' : 'muted';
+}
+
+async function uploadPitch() {
+  const input = document.getElementById('pitchFile');
+  if (!input.files.length) { setStatus('pitchStatus', 'ファイルを選択してください', true); return; }
+  const fd = new FormData();
+  fd.append('file', input.files[0]);
+  setStatus('pitchStatus', '読み込み中…（資料を解析しています。画像主体の資料は画像認識のため1分ほどかかります）', false);
+  try {
+    const res = await fetch('/api/company-profile', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (data.error) { setStatus('pitchStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('pitchStatus', `読み込み完了: ${data.filename}`, false);
+    showProfile(data.summary);
+  } catch (e) {
+    setStatus('pitchStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
+}
+
+async function uploadPitchUrl() {
+  const url = document.getElementById('pitchUrl').value.trim();
+  if (!url) { setStatus('pitchStatus', 'URLを入力してください', true); return; }
+  setStatus('pitchStatus', '読み込み中…（URLの資料を解析しています。画像主体の資料は1分ほどかかります）', false);
+  try {
+    const res = await fetch('/api/company-profile-url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+    const data = await res.json();
+    if (data.error) { setStatus('pitchStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('pitchStatus', `読み込み完了: ${data.filename}`, false);
+    showProfile(data.summary);
+  } catch (e) {
+    setStatus('pitchStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
+}
+
+function showProfile(summary) {
+  const el = document.getElementById('pitchSummary');
+  if (!summary) { el.style.display = 'none'; return; }
+  el.textContent = summary;
+  el.style.display = 'block';
+}
+
+async function loadProfile() {
+  const res = await fetch('/api/company-profile');
+  const data = await res.json();
+  if (data.summary) {
+    document.getElementById('pitchStatus').textContent = data.filename ? `読込済み: ${data.filename}` : '';
+    showProfile(data.summary);
+  }
+}
+
+async function aiSearch() {
+  const target = document.getElementById('aiTarget').value.trim();
+  if (!target) { setStatus('aiStatus', '営業ターゲット条件を入力してください', true); return; }
+  setStatus('aiStatus', 'AIが検索中です…（Web検索を行うため3〜4分かかります）', false);
+  document.getElementById('aiResult').innerHTML = '';
+  let data;
+  try {
+    const res = await fetch('/api/ai-search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ target })
+    });
+    data = await res.json();
+  } catch (e) {
+    setStatus('aiStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+    return;
+  }
+  if (data.error) {
+    setStatus('aiStatus', 'エラー: ' + data.error, true);
+    return;
+  }
+  setStatus('aiStatus',
+    `完了: 新規${data.created}件 / 既存統合${data.updated}件。下の営業先候補リストに反映しました。`, false);
+
+  const list = document.getElementById('aiResult');
+  for (const c of data.candidates) {
+    const div = document.createElement('div');
+    div.style.marginBottom = '0.7rem';
+    const needs = (c.needs || []).map(t => `<span class="tag">${t}</span>`).join('');
+    const matched = c.matched_existing ? `（既存リスト「${c.matched_existing}」に統合）` : '';
+    div.innerHTML = `<strong>${c.name}</strong> (${c.industry || ''}${c.employee_scale ? ' / ' + c.employee_scale : ''})
+      有望度 <strong>${c.score != null ? c.score : '-'}</strong> ${matched}<br>
+      <span class="muted">想定ニーズ:</span> ${needs}`;
+    list.appendChild(div);
+  }
+  loadHistory();
+  loadOptions();
+  search();
+}
+
+async function loadHistory() {
+  const res = await fetch('/api/history');
+  const items = await res.json();
+  const list = document.getElementById('historyList');
+  list.innerHTML = '';
+  for (const h of items) {
+    const div = document.createElement('div');
+    div.style.marginBottom = '0.4rem';
+    const date = h.created_at ? new Date(h.created_at).toLocaleString('ja-JP') : '';
+    div.innerHTML = `<a href="#" onclick="reuseCondition(${h.id}); return false;">再利用</a>
+      <span class="muted">[${date}] ${h.condition.slice(0, 70)} → ${h.result_count}件</span>`;
+    div.dataset.condition = h.condition;
+    div.id = 'history-' + h.id;
+    list.appendChild(div);
+  }
+}
+
+function reuseCondition(id) {
+  const div = document.getElementById('history-' + id);
+  if (div) document.getElementById('aiTarget').value = div.dataset.condition;
+}
+
+loadOptions().then(search);
+loadHistory();
+loadProfile();
+loadLeads();
+loadSheetsInfo();
+</script>
+</body>
+</html>
