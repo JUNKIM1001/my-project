@@ -4,7 +4,7 @@
 import json, re, os, sys, glob
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APP = os.path.join(ROOT, "ios/ShrineFinder/Resources/appdata.json")
+APP = os.path.join(ROOT, "data/appdata.json")  # 正準ソース。編集後は scripts/sync_appdata.py で配布ファイルを生成
 BASE = os.path.join(ROOT, "scripts/appdata.backup.json")   # 地域統合前の土台(36社寺/32神仏)
 # data/regions/ の全SQLを取り込む（extra-famous系は土台に既出のため除外）
 EXCLUDE = {"extra-famous.sql", "extra-famous-2.sql"}

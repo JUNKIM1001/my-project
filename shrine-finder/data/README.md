@@ -3,6 +3,21 @@
 本アプリのデータは **すべて実在し参拝可能なもの** のみを格納する。
 情報は信頼できるソースで裏取りし、各レコードに `source_url` / `source_name` / `verified` を保持する。
 
+## 正準ソースと配布ファイル
+
+**`data/appdata.json` が唯一の正準ソース**（社寺2086・神仏481・ご利益30）。
+編集後は `python3 scripts/sync_appdata.py` を実行して配布ファイルを再生成する:
+
+- `ios/ShrineFinder/Resources/appdata.json` — iOS同梱用（全項目・ミニファイ）
+- `../shrine-finder-web/public/appdata.json` — Web初期ロード用（`longDescription`抜き）
+- `../shrine-finder-web/public/appdata-details.json` — Web詳細画面の遅延取得用
+
+配布ファイルは直接編集しない（syncで上書きされる）。`scripts/` の整備スクリプト群も正準ソースを読み書きする。
+
+### 社寺単位のご利益上書き
+社寺のご利益は原則、御祭神/本尊から導出するが、社寺固有の信仰（例: 堀越神社の
+ひと夢祈願）は社寺レコードの `goriyaku` 配列で明示できる（導出結果との和集合になる）。
+
 ## 採用する情報源（優先順）
 1. **各社寺の公式サイト**（`*.or.jp` 等）— 住所・由緒・公式情報
 2. **自治体・観光協会の公式サイト**（`*.lg.jp`, `city.*.jp` 等）
