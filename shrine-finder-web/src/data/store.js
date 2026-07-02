@@ -1,5 +1,17 @@
 // データストア（iOS版 DataStore と同一ロジック）。appdata.json を読み込み検索クエリを提供。
 
+// 47都道府県の地理順（北→南）。フィルタの表示順に使う。
+const PREF_ORDER = [
+  '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
+  '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県',
+  '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県',
+  '岐阜県', '静岡県', '愛知県', '三重県',
+  '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県',
+  '鳥取県', '島根県', '岡山県', '広島県', '山口県',
+  '徳島県', '香川県', '愛媛県', '高知県',
+  '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県',
+]
+
 const RECOMMENDED = [
   'ise-jingu-naiku', 'izumo-taisha', 'fushimi-inari-taisha', 'meiji-jingu',
   'itsukushima-jinja', 'kiyomizu-dera', 'kasuga-taisha', 'dazaifu-tenmangu',
@@ -65,12 +77,16 @@ export function createStore(data) {
     .filter(([, c]) => c > 0)
     .sort((a, b) => b[1] - a[1])
 
+  // データに存在する都道府県のみ、地理順（北→南）の固定配列で保持
+  const prefSet = new Set(shrines.map((s) => s.pref))
+  const prefectures = PREF_ORDER.filter((p) => prefSet.has(p))
+
   const goriyakuSlugsOf = (s) => shrineGoriyaku[s.slug] || []
   const deitiesOf = (s) => s.deities.map((d) => deityBySlug[d]).filter(Boolean)
   const names = (slugs) => slugs.map((g) => goriyakuBySlug[g]).filter(Boolean)
 
   return {
-    goriyaku, deities, shrines, goriyakuBySlug, deityBySlug, bySlug,
+    goriyaku, deities, shrines, goriyakuBySlug, deityBySlug, bySlug, prefectures,
     goriyakuName: (slug) => goriyakuBySlug[slug]?.name || slug,
     deity: (slug) => deityBySlug[slug],
     shrine: (slug) => bySlug[slug],
@@ -113,12 +129,13 @@ export function createStore(data) {
       return scored.slice(0, limit).map((x) => x[0])
     },
 
-    search(query, { type = null, ntOnly = false, origin = null } = {}) {
+    search(query, { type = null, ntOnly = false, pref = null, origin = null } = {}) {
       const q = normalizeQuery((query || '').trim())
       let list = shrines.filter(
         (s) =>
           (type == null || s.type === type) &&
           (!ntOnly || isNationalTreasure(s)) &&
+          (pref == null || s.pref === pref) &&
           (q === '' || searchText[s.slug].includes(q))
       )
       if (origin) return list.map((s) => [s, haversine(origin, s)]).sort((a, b) => a[1] - b[1])

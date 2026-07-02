@@ -115,6 +115,19 @@ describe('search', () => {
     expect(store.search('', { type: 'temple' }).length).toBe(1)
     expect(bySlugList(store.search('', { ntOnly: true }).map(([s]) => s))).toEqual(['otsu-dera'])
   })
+  it('prefectures はデータに存在する都道府県のみを地理順で返す', () => {
+    expect(store.prefectures).toEqual(['東京都', '京都府'])
+  })
+  it('pref フィルタで都道府県を絞り込める', () => {
+    expect(bySlugList(store.search('', { pref: '京都府' }).map(([s]) => s))).toEqual(['otsu-dera'])
+    expect(store.search('', { pref: '東京都' }).length).toBe(2)
+    expect(store.search('', { pref: '北海道' }).length).toBe(0)
+  })
+  it('pref フィルタは他の条件と併用できる', () => {
+    expect(bySlugList(store.search('じんじゃ', { pref: '東京都', type: 'shrine' }).map(([s]) => s)))
+      .toEqual(['kou-jinja', 'hei-jinja'])
+    expect(store.search('', { pref: '東京都', ntOnly: true }).length).toBe(0)
+  })
   it('origin 指定時は距離昇順で距離付き', () => {
     const res = store.search('', { origin: { lat: 35.68, lng: 139.76 } })
     expect(res[0][0].slug).toBe('kou-jinja')

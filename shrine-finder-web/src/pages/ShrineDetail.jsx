@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { MapContainer, TileLayer, CircleMarker } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import { useStore, useFavorites } from '../data/providers'
+import { useStore, useFavorites, useRecent } from '../data/providers'
 import { ShrineHero, TypeBadge, NTBadge, GoriyakuTags, RecommendCard } from '../components/ui'
 import { safeURL, isNationalTreasure, deityRoleLabel } from '../data/store'
 import { loadDetails } from '../data/details'
@@ -13,9 +13,16 @@ export default function ShrineDetail() {
   const { slug } = useParams()
   const store = useStore()
   const fav = useFavorites()
+  const recent = useRecent()
   const nav = useNavigate()
   const s = store.bySlug[slug]
   usePageTitle(s ? s.name : undefined)
+
+  // 「最近見た社寺」に記録（存在する slug のみ・slug が変わったときだけ）
+  const record = recent.record
+  useEffect(() => {
+    if (store.bySlug[slug]) record(slug)
+  }, [store, slug, record])
 
   // 全文説明は初回参照時に appdata-details.json から遅延取得（失敗時は本文セクションを出さないだけ）
   const [details, setDetails] = useState(null)

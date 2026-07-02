@@ -3,7 +3,11 @@ import { loadStore } from './store'
 
 const StoreCtx = createContext(null)
 const FavCtx = createContext(null)
+const RecentCtx = createContext(null)
 const GeoCtx = createContext(null)
+
+const RECENT_KEY = 'recent_shrine_slugs'
+const RECENT_MAX = 10
 
 export function AppProviders({ children }) {
   const [store, setStore] = useState(null)
@@ -36,6 +40,24 @@ export function AppProviders({ children }) {
       if (n.has(slug)) n.delete(slug)
       else n.add(slug)
       return n
+    })
+  }, [])
+
+  // 最近見た社寺（localStorage・新しい順・最大10件）
+  const [recentSlugs, setRecentSlugs] = useState(() => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]')
+      return Array.isArray(raw) ? raw.filter((x) => typeof x === 'string').slice(0, RECENT_MAX) : []
+    } catch { return [] }
+  })
+  useEffect(() => {
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(recentSlugs)) }
+    catch { /* プライベートモード等で保存できない場合は無視 */ }
+  }, [recentSlugs])
+  const recordRecent = useCallback((slug) => {
+    setRecentSlugs((prev) => {
+      if (prev[0] === slug) return prev // 先頭と同じなら更新不要
+      return [slug, ...prev.filter((x) => x !== slug)].slice(0, RECENT_MAX)
     })
   }, [])
 
@@ -82,7 +104,9 @@ export function AppProviders({ children }) {
   return (
     <StoreCtx.Provider value={store}>
       <FavCtx.Provider value={{ slugs, has: (s) => slugs.has(s), toggle: toggleFav }}>
-        <GeoCtx.Provider value={{ coords, status: geoStatus, request: requestGeo }}>{children}</GeoCtx.Provider>
+        <RecentCtx.Provider value={{ slugs: recentSlugs, record: recordRecent }}>
+          <GeoCtx.Provider value={{ coords, status: geoStatus, request: requestGeo }}>{children}</GeoCtx.Provider>
+        </RecentCtx.Provider>
       </FavCtx.Provider>
     </StoreCtx.Provider>
   )
@@ -90,4 +114,5 @@ export function AppProviders({ children }) {
 
 export const useStore = () => useContext(StoreCtx)
 export const useFavorites = () => useContext(FavCtx)
+export const useRecent = () => useContext(RecentCtx)
 export const useGeo = () => useContext(GeoCtx)

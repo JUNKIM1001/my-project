@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
-import { useStore, useGeo } from '../data/providers'
+import { useStore, useGeo, useRecent } from '../data/providers'
 import { RecommendCard } from '../components/ui'
 import usePageTitle from '../hooks/usePageTitle'
 
 export default function Home() {
   const store = useStore()
   const geo = useGeo()
+  const recent = useRecent()
   usePageTitle(null)
 
   const counts = store.goriyakuCounts()
   const recs = store.recommended(geo.coords)
+  const recentShrines = recent.slugs.map((slug) => store.bySlug[slug]).filter(Boolean)
 
   return (
     <div className="page">
@@ -30,6 +32,17 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {recentShrines.length > 0 && (
+        <section className="sec">
+          <div className="sec-head"><b>🕐 最近見た社寺</b></div>
+          <div className="hscroll">
+            {recentShrines.map((s) => (
+              <RecommendCard key={s.slug} shrine={s} distance={geo.coords ? store.dist(geo.coords, s) : null} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="sec">
         <b>願い事から探す</b>

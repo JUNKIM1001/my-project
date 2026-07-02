@@ -1,5 +1,6 @@
-import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
-import { lazy, Suspense, useEffect } from 'react'
+import { Routes, Route, NavLink } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import ScrollToTop from './hooks/ScrollToTop'
 import Home from './pages/Home'
 import WishResult from './pages/WishResult'
 import DeityList from './pages/DeityList'
@@ -13,16 +14,10 @@ import NotFound from './pages/NotFound'
 const MapSearch = lazy(() => import('./pages/MapSearch'))
 const ShrineDetail = lazy(() => import('./pages/ShrineDetail'))
 
-function ScrollTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { document.querySelector('.content')?.scrollTo(0, 0) }, [pathname])
-  return null
-}
-
 export default function App() {
   return (
     <div className="app">
-      <ScrollTop />
+      <ScrollToTop />
       <div className="content">
         <Suspense fallback={<div className="loading">読み込み中…</div>}>
           <Routes>

@@ -11,11 +11,12 @@ export default function Search() {
   const [q, setQ] = useState('')
   const [type, setType] = useState(null)
   const [ntOnly, setNtOnly] = useState(false)
+  const [pref, setPref] = useState('')
 
   const deferredQ = useDeferredValue(q)
   const results = useMemo(
-    () => store.search(deferredQ, { type, ntOnly, origin: geo.coords }),
-    [store, deferredQ, type, ntOnly, geo.coords]
+    () => store.search(deferredQ, { type, ntOnly, pref: pref || null, origin: geo.coords }),
+    [store, deferredQ, type, ntOnly, pref, geo.coords]
   )
 
   return (
@@ -39,6 +40,10 @@ export default function Search() {
           <button className={type === 'temple' ? 'on' : ''} onClick={() => setType('temple')}>寺</button>
         </div>
         <button className={`chip ${ntOnly ? 'on' : ''}`} onClick={() => setNtOnly((v) => !v)}>★ 国宝</button>
+        <select value={pref} onChange={(e) => setPref(e.target.value)} aria-label="都道府県で絞る">
+          <option value="">すべての都道府県</option>
+          {store.prefectures.map((p) => <option key={p} value={p}>{p}</option>)}
+        </select>
       </div>
 
       <PagedList

@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useStore, useGeo } from '../data/providers'
 import { ShrineRow, PagedList } from '../components/ui'
@@ -11,13 +11,15 @@ export default function WishResult() {
   const geo = useGeo()
   const g = store.goriyakuBySlug[slug]
   usePageTitle(g ? g.name : undefined)
+  const [pref, setPref] = useState('')
 
   const ranked = useMemo(() => {
-    const list = store.shrinesForGoriyaku(slug)
+    let list = store.shrinesForGoriyaku(slug)
+    if (pref) list = list.filter((s) => s.pref === pref)
     return geo.coords
       ? list.map((s) => [s, store.dist(geo.coords, s)]).sort((a, b) => a[1] - b[1])
       : list.map((s) => [s, null])
-  }, [store, slug, geo.coords])
+  }, [store, slug, pref, geo.coords])
 
   if (!g) return <NotFound message="このご利益は見つかりません" />
 
@@ -60,10 +62,14 @@ export default function WishResult() {
       <section className="sec">
         <div className="sec-head">
           <b>参拝できる社寺（{geo.coords ? '近い順・' : ''}{ranked.length}件）</b>
+          <select value={pref} onChange={(e) => setPref(e.target.value)} aria-label="都道府県で絞る">
+            <option value="">すべての都道府県</option>
+            {store.prefectures.map((p) => <option key={p} value={p}>{p}</option>)}
+          </select>
         </div>
         <PagedList
           items={ranked}
-          empty="該当する社寺がありません。"
+          empty={pref ? `${pref}に該当する社寺がありません。` : '該当する社寺がありません。'}
           renderItem={([s, d]) => <ShrineRow key={s.slug} shrine={s} highlight={slug} distance={d} />}
         />
       </section>
