@@ -10,12 +10,14 @@ struct ShrineHeroView: View {
         ZStack(alignment: .bottomTrailing) {
             if let img = store.photo(for: shrine) {
                 Image(uiImage: img).resizable().scaledToFill()
+                    .accessibilityLabel("\(shrine.name)の写真")
                 creditLabel(store.photoCredit(for: shrine))
             } else if let url = shrine.photoURL {
                 AsyncImage(url: url) { phase in
                     switch phase {
                     case .success(let image):
                         image.resizable().scaledToFill()
+                            .accessibilityLabel("\(shrine.name)の写真")
                     case .empty:
                         ZStack { ShrineMotifView(shrine: shrine); ProgressView().tint(.white) }
                     case .failure:
@@ -36,7 +38,7 @@ struct ShrineHeroView: View {
     private func creditLabel(_ text: String?) -> some View {
         if showsCredit, let text {
             Text(text)
-                .font(.system(size: 9))
+                .font(.caption2)
                 .padding(.horizontal, 6).padding(.vertical, 2)
                 .background(.black.opacity(0.38))
                 .foregroundStyle(.white)

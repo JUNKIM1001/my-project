@@ -6,6 +6,8 @@ struct ShrineDetailView: View {
     @EnvironmentObject var store: DataStore
     @EnvironmentObject var favorites: FavoritesStore
     let shrine: Shrine
+    /// おすすめ（body評価ごとの全件走査を避けるため .task で一度だけ計算）
+    @State private var related: [Shrine] = []
 
     var body: some View {
         List {
@@ -56,12 +58,14 @@ struct ShrineDetailView: View {
                 }
             }
 
-            Section("授かれるご利益") {
-                GoriyakuTagFlow(goriyaku: store.names(forGoriyaku: store.goriyakuSlugs(of: shrine)))
-                    .padding(.vertical, 4)
+            let goriyakuList = store.names(forGoriyaku: store.goriyakuSlugs(of: shrine))
+            if !goriyakuList.isEmpty {
+                Section("授かれるご利益") {
+                    GoriyakuTagFlow(goriyaku: goriyakuList)
+                        .padding(.vertical, 4)
+                }
             }
 
-            let related = store.related(to: shrine)
             if !related.isEmpty {
                 Section("ここに行った人はこちらも") {
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -92,6 +96,7 @@ struct ShrineDetailView: View {
         .listStyle(.insetGrouped)
         .navigationTitle(shrine.name)
         .navigationBarTitleDisplayMode(.inline)
+        .task(id: shrine.slug) { related = store.related(to: shrine) }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button { favorites.toggle(shrine.slug) } label: {
@@ -105,6 +110,6 @@ struct ShrineDetailView: View {
     private func openInMaps() {
         let item = MKMapItem(placemark: MKPlacemark(coordinate: shrine.coordinate))
         item.name = shrine.name
-        item.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+        item.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault])
     }
 }

@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// 願い事から探す入口。おすすめの有名社寺 ＋ ご利益グリッド。
 struct HomeView: View {
@@ -17,7 +18,7 @@ struct HomeView: View {
                         Text("ご利益を選ぶと、ふさわしい神仏とお参り先が見つかります。")
                             .font(.subheadline).foregroundStyle(.secondary)
                         LazyVGrid(columns: cols, spacing: 12) {
-                            ForEach(store.goriyakuCounts(), id: \.0.id) { item in
+                            ForEach(store.goriyakuCounts, id: \.0.id) { item in
                                 NavigationLink(value: item.0) {
                                     GoriyakuCard(goriyaku: item.0, count: item.1)
                                 }.buttonStyle(.plain)
@@ -70,12 +71,16 @@ struct RecommendCard: View {
     @EnvironmentObject var store: DataStore
     let shrine: Shrine
     var distance: Double? = nil
+    // Dynamic Type に追随するサイズ（固定値の代わり）
+    @ScaledMetric(relativeTo: .subheadline) private var cardWidth: CGFloat = 168
+    @ScaledMetric(relativeTo: .subheadline) private var photoHeight: CGFloat = 96
+    @ScaledMetric(relativeTo: .subheadline) private var textHeight: CGFloat = 48
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // 写真フィールド（固定高さ・はみ出しをクリップ）
+            // 写真フィールド（はみ出しをクリップ）
             ShrineHeroView(shrine: shrine)
-                .frame(width: 168, height: 96)
+                .frame(width: cardWidth, height: photoHeight)
                 .clipped()
                 .overlay(alignment: .topTrailing) {
                     if let distance {
@@ -94,10 +99,10 @@ struct RecommendCard: View {
                 Text("\(shrine.pref)\(shrine.city)").font(.caption2).foregroundStyle(.secondary).lineLimit(1)
             }
             .padding(.horizontal, 8)
-            .frame(width: 168, height: 48, alignment: .leading)
+            .frame(width: cardWidth, height: textHeight, alignment: .leading)
             .background(Color(.secondarySystemBackground))
         }
-        .frame(width: 168)
+        .frame(width: cardWidth)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
@@ -106,14 +111,21 @@ struct RecommendCard: View {
 struct GoriyakuCard: View {
     let goriyaku: Goriyaku
     let count: Int
+    @ScaledMetric(relativeTo: .subheadline) private var cardMinHeight: CGFloat = 96
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 6) {
             Image(systemName: goriyaku.icon).font(.title2).foregroundStyle(toriiRed)
-            Text(goriyaku.name).font(.subheadline.weight(.semibold))
-                .multilineTextAlignment(.center).foregroundStyle(.primary)
+            VStack(spacing: 2) {
+                Text(goriyaku.name).font(.subheadline.weight(.semibold))
+                    .multilineTextAlignment(.center).foregroundStyle(.primary)
+                if let description = goriyaku.description, !description.isEmpty {
+                    Text(description).font(.caption2).foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center).lineLimit(2)
+                }
+            }
             Text("\(count)社寺").font(.caption2).foregroundStyle(.secondary)
         }
-        .frame(maxWidth: .infinity, minHeight: 96)
+        .frame(maxWidth: .infinity, minHeight: cardMinHeight)
         .padding(.vertical, 8)
         .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
@@ -124,6 +136,7 @@ struct GoriyakuCard: View {
 struct WishResultView: View {
     @EnvironmentObject var store: DataStore
     @EnvironmentObject var location: LocationService
+    @Environment(\.openURL) private var openURL
     let goriyaku: Goriyaku
 
     /// 現在地が分かれば近い順、無ければ規定順。距離はラベル表示用。
@@ -138,6 +151,14 @@ struct WishResultView: View {
 
     var body: some View {
         List {
+            // ご利益の副文（例:「良縁・人間関係」）をヘッダとして表示
+            if let description = goriyaku.description, !description.isEmpty {
+                Section {
+                    Label(description, systemImage: goriyaku.icon)
+                        .font(.subheadline).foregroundStyle(.secondary)
+                }
+            }
+
             Section {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
@@ -159,10 +180,24 @@ struct WishResultView: View {
 
             if location.currentLocation == nil {
                 Section {
-                    Button {
-                        location.request()
-                    } label: {
-                        Label("現在地から近い順に並べる", systemImage: "location.fill")
+                    if location.isDenied {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Label("位置情報が許可されていません", systemImage: "location.slash")
+                                .font(.subheadline)
+                            Text("設定アプリで位置情報を許可してください。近い順の並べ替えに使用します。")
+                                .font(.caption).foregroundStyle(.secondary)
+                            Button("設定を開く") {
+                                if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
+                            }
+                            .font(.subheadline)
+                        }
+                        .padding(.vertical, 2)
+                    } else {
+                        Button {
+                            location.request()
+                        } label: {
+                            Label("現在地から近い順に並べる", systemImage: "location.fill")
+                        }
                     }
                 }
             }

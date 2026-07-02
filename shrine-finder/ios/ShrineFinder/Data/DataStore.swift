@@ -10,53 +10,155 @@ struct PhotoCredit: Codable {
     let file: String
 }
 
+/// DataStore の読み込み失敗を表すエラー
+enum DataStoreError: LocalizedError {
+    case missingResource(String)
+    var errorDescription: String? {
+        switch self {
+        case .missingResource(let name): return "\(name) が見つかりません"
+        }
+    }
+}
+
+/// バックグラウンドで読み込み・導出計算した結果一式（MainActor への受け渡し用）
+private struct LoadedData {
+    let goriyaku: [Goriyaku]
+    let deities: [Deity]
+    let shrines: [Shrine]
+    let goriyakuBySlug: [String: Goriyaku]
+    let deityBySlug: [String: Deity]
+    let shrineGoriyaku: [String: [String]]
+    let goriyakuCounts: [(Goriyaku, Int)]
+    let searchText: [String: String]
+    let credits: [String: PhotoCredit]
+}
+
 /// 検証済みデータ（appdata.json）を読み込み、検索クエリを提供する中核ストア。
 /// 将来的にはこのクラスの実装を Supabase 取得に差し替えるだけでよい。
 @MainActor
 final class DataStore: ObservableObject {
+    /// 読み込み状態。デコードはバックグラウンドで行い、完了後に loaded になる。
+    enum LoadState {
+        case loading
+        case loaded
+        case failed(Error)
+    }
+
+    @Published private(set) var state: LoadState = .loading
     @Published private(set) var goriyaku: [Goriyaku] = []
     @Published private(set) var deities: [Deity] = []
     @Published private(set) var shrines: [Shrine] = []
+    /// ご利益ごとの社寺件数（多い順・0件は除外）。ロード時に一度だけ計算する。
+    private(set) var goriyakuCounts: [(Goriyaku, Int)] = []
 
     private var goriyakuBySlug: [String: Goriyaku] = [:]
     private var deityBySlug: [String: Deity] = [:]
-    /// 社寺ごとの導出ご利益（御祭神／本尊が司るご利益の和集合）
+    /// 社寺ごとのご利益（社寺固有の明示分を先頭に、御祭神／本尊由来の導出分との和集合）
     private var shrineGoriyaku: [String: [String]] = [:]
+    /// 検索用に正規化した「名称・かな・都道府県・市区町村」（slug ごと）
+    private var searchText: [String: String] = [:]
     /// CC0/PD写真のクレジットと画像キャッシュ
     private var credits: [String: PhotoCredit] = [:]
     private var photoCache: [String: UIImage] = [:]
 
     init() { load() }
 
-    private func load() {
-        guard let url = Bundle.main.url(forResource: "appdata", withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let decoded = try? JSONDecoder().decode(AppData.self, from: data) else {
-            assertionFailure("appdata.json の読み込みに失敗")
-            return
+    /// デコードと導出計算をバックグラウンドで行い、結果を MainActor で反映する。
+    /// 失敗時は state = .failed になり、「再試行」からこのメソッドを呼び直せる。
+    func load() {
+        state = .loading
+        Task.detached(priority: .userInitiated) { [weak self] in
+            do {
+                let loaded = try DataStore.loadFromBundle()
+                await self?.apply(loaded)
+            } catch {
+                await self?.fail(error)
+            }
         }
-        goriyaku = decoded.goriyaku
-        deities = decoded.deities
-        shrines = decoded.shrines
-        goriyakuBySlug = Dictionary(uniqueKeysWithValues: goriyaku.map { ($0.slug, $0) })
-        deityBySlug = Dictionary(uniqueKeysWithValues: deities.map { ($0.slug, $0) })
+    }
 
-        for shrine in shrines {
+    private func apply(_ loaded: LoadedData) {
+        goriyaku = loaded.goriyaku
+        deities = loaded.deities
+        shrines = loaded.shrines
+        goriyakuBySlug = loaded.goriyakuBySlug
+        deityBySlug = loaded.deityBySlug
+        shrineGoriyaku = loaded.shrineGoriyaku
+        goriyakuCounts = loaded.goriyakuCounts
+        searchText = loaded.searchText
+        credits = loaded.credits
+        state = .loaded
+    }
+
+    private func fail(_ error: Error) {
+        state = .failed(error)
+    }
+
+    private nonisolated static func loadFromBundle() throws -> LoadedData {
+        guard let url = Bundle.main.url(forResource: "appdata", withExtension: "json") else {
+            throw DataStoreError.missingResource("appdata.json")
+        }
+        let data = try Data(contentsOf: url)
+        let decoded = try JSONDecoder().decode(AppData.self, from: data)
+
+        // slug が万一重複していてもクラッシュせず先勝ちで採用する
+        let goriyakuBySlug = Dictionary(decoded.goriyaku.map { ($0.slug, $0) },
+                                        uniquingKeysWith: { first, _ in first })
+        let deityBySlug = Dictionary(decoded.deities.map { ($0.slug, $0) },
+                                     uniquingKeysWith: { first, _ in first })
+
+        var shrineGoriyaku: [String: [String]] = [:]
+        var searchText: [String: String] = [:]
+        for shrine in decoded.shrines {
             var ordered: [String] = []
             var seen = Set<String>()
+            // 社寺固有の明示的なご利益を先頭に
+            for g in shrine.goriyaku ?? [] where !seen.contains(g) {
+                seen.insert(g); ordered.append(g)
+            }
+            // 御祭神／本尊が司るご利益との和集合
             for d in shrine.deities {
                 for g in deityBySlug[d]?.goriyaku ?? [] where !seen.contains(g) {
                     seen.insert(g); ordered.append(g)
                 }
             }
             shrineGoriyaku[shrine.slug] = ordered
+            searchText[shrine.slug] = [shrine.name, shrine.kana, shrine.pref, shrine.city]
+                .map(normalizedForSearch).joined(separator: "\n")
         }
 
+        // ご利益ごとの社寺件数（多い順・0件は除外）を事前計算
+        var countBySlug: [String: Int] = [:]
+        for slugs in shrineGoriyaku.values {
+            for g in slugs { countBySlug[g, default: 0] += 1 }
+        }
+        let goriyakuCounts: [(Goriyaku, Int)] = decoded.goriyaku
+            .compactMap { g in
+                let c = countBySlug[g.slug] ?? 0
+                return c > 0 ? (g, c) : nil
+            }
+            .sorted { $0.1 > $1.1 }
+
+        var credits: [String: PhotoCredit] = [:]
         if let u = Bundle.main.url(forResource: "photo_credits", withExtension: "json"),
            let d = try? Data(contentsOf: u),
            let c = try? JSONDecoder().decode([String: PhotoCredit].self, from: d) {
             credits = c
         }
+
+        return LoadedData(goriyaku: decoded.goriyaku, deities: decoded.deities, shrines: decoded.shrines,
+                          goriyakuBySlug: goriyakuBySlug, deityBySlug: deityBySlug,
+                          shrineGoriyaku: shrineGoriyaku, goriyakuCounts: goriyakuCounts,
+                          searchText: searchText, credits: credits)
+    }
+
+    // MARK: 検索の正規化
+    /// カタカナ→ひらがな統一・小文字化・前後空白除去。
+    /// クエリと対象の双方に適用することで、カナ／かな・大文字小文字の揺れを吸収する。
+    nonisolated static func normalizedForSearch(_ s: String) -> String {
+        let trimmed = s.trimmingCharacters(in: .whitespacesAndNewlines)
+        let hiragana = trimmed.applyingTransform(.hiraganaToKatakana, reverse: true) ?? trimmed
+        return hiragana.lowercased()
     }
 
     // MARK: 写真（CC0/パブリックドメインのみ）
@@ -98,15 +200,15 @@ final class DataStore: ObservableObject {
     var nationalTreasureCount: Int { shrines.lazy.filter(\.isNationalTreasure).count }
     var prefectureCount: Int { Set(shrines.map(\.pref)).count }
 
-    /// 名称・かな・都道府県・市区町村でのフリーワード検索（種別・国宝・近い順の絞り込み付き）
+    /// 名称・かな・都道府県・市区町村でのフリーワード検索（種別・国宝・近い順の絞り込み付き）。
+    /// クエリ・対象とも正規化（かな統一・小文字化）した上で部分一致させる。
     func search(_ query: String, type: String? = nil, nationalTreasureOnly: Bool = false,
                 near origin: CLLocation? = nil) -> [(Shrine, Double?)] {
-        let q = query.trimmingCharacters(in: .whitespaces)
+        let q = Self.normalizedForSearch(query)
         var list = shrines.filter { s in
             (type == nil || s.type == type!) &&
             (!nationalTreasureOnly || s.isNationalTreasure) &&
-            (q.isEmpty || s.name.contains(q) || s.kana.contains(q) ||
-             s.pref.contains(q) || s.city.contains(q))
+            (q.isEmpty || (searchText[s.slug] ?? "").contains(q))
         }
         if let origin {
             return list.map { ($0, origin.distance(from: $0.location)) }.sorted { ($0.1 ?? 0) < ($1.1 ?? 0) }
@@ -135,13 +237,6 @@ final class DataStore: ObservableObject {
     /// ある神仏を祀る社寺
     func shrines(enshrining deitySlug: String) -> [Shrine] {
         shrines.filter { $0.deities.contains(deitySlug) }
-    }
-    /// ご利益ごとの社寺件数（多い順）。0件は除外。
-    func goriyakuCounts() -> [(Goriyaku, Int)] {
-        goriyaku.compactMap { g in
-            let c = shrines(forGoriyaku: g.slug).count
-            return c > 0 ? (g, c) : nil
-        }.sorted { $0.1 > $1.1 }
     }
 
     /// 地図に表示されている矩形範囲内の社寺（中心からの距離付き・近い順・上限あり）

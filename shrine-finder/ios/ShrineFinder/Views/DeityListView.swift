@@ -1,15 +1,22 @@
 import SwiftUI
 
-/// 神仏図鑑。神様／仏様タブ＋検索。
+/// 神仏図鑑。神様／仏様タブ＋ご利益絞り込み＋検索。
 struct DeityListView: View {
     @EnvironmentObject var store: DataStore
     @State private var kind = "kami"
     @State private var query = ""
+    @State private var goriyakuFilter: String? = nil
 
     private var filtered: [Deity] {
-        store.deities
+        let q = DataStore.normalizedForSearch(query)
+        return store.deities
             .filter { $0.kind == kind }
-            .filter { query.isEmpty || $0.name.contains(query) || $0.kana.contains(query) }
+            .filter { goriyakuFilter == nil || $0.goriyaku.contains(goriyakuFilter!) }
+            .filter {
+                q.isEmpty ||
+                DataStore.normalizedForSearch($0.name).contains(q) ||
+                DataStore.normalizedForSearch($0.kana).contains(q)
+            }
     }
 
     var body: some View {
@@ -21,6 +28,21 @@ struct DeityListView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding()
+
+                HStack {
+                    Menu {
+                        Button("すべてのご利益") { goriyakuFilter = nil }
+                        ForEach(store.goriyaku) { g in
+                            Button(g.name) { goriyakuFilter = g.slug }
+                        }
+                    } label: {
+                        Label(goriyakuFilter.flatMap { store.goriyaku($0)?.name } ?? "ご利益で絞る",
+                              systemImage: "line.3.horizontal.decrease.circle")
+                            .font(.subheadline)
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal).padding(.bottom, 8)
 
                 List(filtered) { d in
                     NavigationLink(value: d) {

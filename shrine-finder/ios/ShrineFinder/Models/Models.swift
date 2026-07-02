@@ -7,6 +7,7 @@ struct Goriyaku: Codable, Identifiable, Hashable {
     let slug: String
     let name: String
     let icon: String
+    let description: String?  // 副文（例:「良縁・人間関係」）
     var id: String { slug }
 }
 
@@ -35,6 +36,7 @@ struct Shrine: Codable, Identifiable, Hashable {
     let lat: Double
     let lng: Double
     let deities: [String]
+    let goriyaku: [String]?     // 社寺固有のご利益（御祭神/本尊からの導出に先行して表示）
     let website: String?
     let description: String
     let source: String
