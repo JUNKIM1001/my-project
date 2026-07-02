@@ -44,8 +44,26 @@ struct ShrineDetailView: View {
                 Button { openInMaps() } label: {
                     Label("経路案内（マップで開く）", systemImage: "arrow.triangle.turn.up.right.diamond.fill")
                 }
+                if let access = shrine.access, !access.isEmpty {
+                    Label(access, systemImage: "tram.fill")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
                 Text(shrine.address).font(.caption).foregroundStyle(.secondary)
             } header: { Text("アクセス") }
+
+            if shrine.hours != nil || shrine.fee != nil || shrine.goshuin != nil {
+                Section("参拝情報") {
+                    if let hours = shrine.hours {
+                        LabeledContent("参拝時間", value: hours)
+                    }
+                    if let fee = shrine.fee {
+                        LabeledContent("拝観料", value: fee)
+                    }
+                    if let goshuin = shrine.goshuin {
+                        LabeledContent("御朱印", value: goshuin ? "あり" : "なし")
+                    }
+                }
+            }
 
             Section(shrine.deityRoleLabel) {
                 ForEach(store.deities(of: shrine)) { d in

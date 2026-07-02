@@ -39,6 +39,11 @@ struct Shrine: Codable, Identifiable, Hashable {
     let deities: [String]
     let goriyaku: [String]?     // 社寺固有のご利益（御祭神/本尊からの導出に先行して表示）
     let aliases: [String]?      // 通称・別名（例:「お稲荷さん」）。検索対象に含める
+    // 参拝実用情報（公式サイト等で確認できた社寺のみ）
+    let hours: String?          // 参拝時間（例:「6:00〜17:00（季節により変動）」）
+    let fee: String?            // 拝観料（例:「境内無料（本堂内陣500円）」）
+    let goshuin: Bool?          // 御朱印の授与
+    let access: String?         // 公共交通でのアクセス
     let website: String?
     let description: String
     let source: String

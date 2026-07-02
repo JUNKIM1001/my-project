@@ -91,8 +91,35 @@ export default function ShrineDetail() {
           </MapContainer>
         </div>
         <a className="cta" href={dir} target="_blank" rel="noreferrer">🚗 経路案内（地図で開く）</a>
+        {s.access && <div className="muted small">🚃 {s.access}</div>}
         <div className="muted small">{s.address}</div>
       </section>
+
+      {(s.hours || s.fee || s.goshuin != null) && (
+        <section className="sec">
+          <b>参拝情報</b>
+          <div className="list">
+            {s.hours && (
+              <div className="row">
+                <div className="row-name">参拝時間</div>
+                <div className="row-meta">{s.hours}</div>
+              </div>
+            )}
+            {s.fee && (
+              <div className="row">
+                <div className="row-name">拝観料</div>
+                <div className="row-meta">{s.fee}</div>
+              </div>
+            )}
+            {s.goshuin != null && (
+              <div className="row">
+                <div className="row-name">御朱印</div>
+                <div className="row-meta">{s.goshuin ? 'あり' : 'なし'}</div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       <section className="sec">
         <b>{deityRoleLabel(s)}</b>
