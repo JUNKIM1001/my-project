@@ -1,16 +1,17 @@
 import SwiftUI
 
-/// 全社寺をフリーワード検索（種別・国宝・近い順で絞り込み）。
+/// 全社寺をフリーワード検索（種別・国宝・都道府県・近い順で絞り込み）。
 struct SearchView: View {
     @EnvironmentObject var store: DataStore
     @EnvironmentObject var location: LocationService
     @State private var query = ""
     @State private var typeFilter: String? = nil   // nil=すべて / "shrine" / "temple"
     @State private var ntOnly = false
+    @State private var prefFilter: String? = nil   // nil=すべての都道府県
 
     private var results: [(shrine: Shrine, distance: Double?)] {
         store.search(query, type: typeFilter, nationalTreasureOnly: ntOnly,
-                     near: location.currentLocation)
+                     pref: prefFilter, near: location.currentLocation)
             .map { ($0.0, $0.1) }
     }
 
@@ -45,6 +46,20 @@ struct SearchView: View {
             .fixedSize()
 
             Spacer()
+
+            Menu {
+                Picker("都道府県", selection: $prefFilter) {
+                    Text("すべての都道府県").tag(String?.none)
+                    ForEach(store.prefectures, id: \.self) { p in
+                        Text(p).tag(String?.some(p))
+                    }
+                }
+            } label: {
+                Label(prefFilter ?? "都道府県", systemImage: "mappin.and.ellipse")
+                    .font(.subheadline)
+                    .lineLimit(1)
+            }
+            .tint(prefFilter != nil ? toriiRed : .secondary)
 
             Button { ntOnly.toggle() } label: {
                 Label("国宝", systemImage: ntOnly ? "star.fill" : "star")

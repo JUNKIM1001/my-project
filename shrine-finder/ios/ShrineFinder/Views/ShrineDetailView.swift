@@ -5,6 +5,7 @@ import MapKit
 struct ShrineDetailView: View {
     @EnvironmentObject var store: DataStore
     @EnvironmentObject var favorites: FavoritesStore
+    @EnvironmentObject var recent: RecentStore
     let shrine: Shrine
     /// おすすめ（body評価ごとの全件走査を避けるため .task で一度だけ計算）
     @State private var related: [Shrine] = []
@@ -114,7 +115,10 @@ struct ShrineDetailView: View {
         .listStyle(.insetGrouped)
         .navigationTitle(shrine.name)
         .navigationBarTitleDisplayMode(.inline)
-        .task(id: shrine.slug) { related = store.related(to: shrine) }
+        .task(id: shrine.slug) {
+            related = store.related(to: shrine)
+            recent.record(shrine.slug)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button { favorites.toggle(shrine.slug) } label: {

@@ -1,17 +1,27 @@
 import SwiftUI
 import UIKit
 
-/// 願い事から探す入口。おすすめの有名社寺 ＋ ご利益グリッド。
+/// 願い事から探す入口。おすすめの有名社寺 ＋ 最近見た社寺 ＋ ご利益グリッド。
 struct HomeView: View {
     @EnvironmentObject var store: DataStore
     @EnvironmentObject var location: LocationService
+    @EnvironmentObject var recent: RecentStore
     private let cols = [GridItem(.adaptive(minimum: 104), spacing: 12)]
+
+    /// 最近見た社寺（新しい順・slug から解決できたもののみ）
+    private var recentShrines: [Shrine] {
+        recent.slugs.compactMap { slug in store.shrines.first { $0.slug == slug } }
+    }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     recommendSection
+
+                    if !recentShrines.isEmpty {
+                        recentSection
+                    }
 
                     VStack(alignment: .leading, spacing: 8) {
                         Text("願い事から探す").font(.title3.bold())
@@ -58,6 +68,21 @@ struct HomeView: View {
                     ForEach(store.recommended(near: location.currentLocation)) { s in
                         NavigationLink(value: s) {
                             RecommendCard(shrine: s, distance: location.currentLocation?.distance(from: s.location))
+                        }.buttonStyle(.plain)
+                    }
+                }
+            }
+        }
+    }
+
+    private var recentSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label("最近見た社寺", systemImage: "clock.arrow.circlepath").font(.title3.bold())
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(recentShrines) { s in
+                        NavigationLink(value: s) {
+                            RecommendCard(shrine: s)
                         }.buttonStyle(.plain)
                     }
                 }
@@ -138,10 +163,15 @@ struct WishResultView: View {
     @EnvironmentObject var location: LocationService
     @Environment(\.openURL) private var openURL
     let goriyaku: Goriyaku
+    @State private var prefFilter: String? = nil   // nil=すべての都道府県
 
     /// 現在地が分かれば近い順、無ければ規定順。距離はラベル表示用。
+    /// 都道府県フィルタが選ばれていれば該当都道府県のみに絞る（近い順ソートと併用可）。
     private var ranked: [(shrine: Shrine, distance: Double?)] {
-        let list = store.shrines(forGoriyaku: goriyaku.slug)
+        var list = store.shrines(forGoriyaku: goriyaku.slug)
+        if let prefFilter {
+            list = list.filter { $0.pref == prefFilter }
+        }
         if let origin = location.currentLocation {
             return list.map { ($0, origin.distance(from: $0.location)) }
                        .sorted { ($0.1 ?? 0) < ($1.1 ?? 0) }
@@ -203,9 +233,32 @@ struct WishResultView: View {
             }
 
             Section {
-                ForEach(ranked, id: \.shrine.id) { item in
-                    NavigationLink(value: item.shrine) {
-                        ShrineRow(shrine: item.shrine, highlight: goriyaku.slug, distance: item.distance)
+                Menu {
+                    Picker("都道府県", selection: $prefFilter) {
+                        Text("すべての都道府県").tag(String?.none)
+                        ForEach(store.prefectures, id: \.self) { p in
+                            Text(p).tag(String?.some(p))
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Label(prefFilter ?? "すべての都道府県", systemImage: "mappin.and.ellipse")
+                            .font(.subheadline)
+                            .foregroundStyle(prefFilter != nil ? toriiRed : .secondary)
+                        Spacer()
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption2).foregroundStyle(.secondary)
+                    }
+                }
+
+                if ranked.isEmpty {
+                    Text("該当する社寺がありません")
+                        .font(.subheadline).foregroundStyle(.secondary)
+                } else {
+                    ForEach(ranked, id: \.shrine.id) { item in
+                        NavigationLink(value: item.shrine) {
+                            ShrineRow(shrine: item.shrine, highlight: goriyaku.slug, distance: item.distance)
+                        }
                     }
                 }
             } header: {

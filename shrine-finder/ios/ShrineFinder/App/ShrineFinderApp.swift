@@ -4,6 +4,7 @@ import SwiftUI
 struct ShrineFinderApp: App {
     @StateObject private var store = DataStore()
     @StateObject private var favorites = FavoritesStore()
+    @StateObject private var recent = RecentStore()
     @StateObject private var location = LocationService()
 
     var body: some Scene {
@@ -11,6 +12,7 @@ struct ShrineFinderApp: App {
             RootView()
                 .environmentObject(store)
                 .environmentObject(favorites)
+                .environmentObject(recent)
                 .environmentObject(location)
                 .tint(toriiRed)
         }

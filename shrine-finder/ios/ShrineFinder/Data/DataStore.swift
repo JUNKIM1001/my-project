@@ -20,6 +20,18 @@ enum DataStoreError: LocalizedError {
     }
 }
 
+/// 47都道府県（北から南の地理順・JIS X 0401 準拠）。
+/// データに存在するものだけを DataStore.prefectures として残す。
+private let allPrefectures = [
+    "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
+    "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県",
+    "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県",
+    "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県",
+    "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県",
+    "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県",
+    "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
+]
+
 /// バックグラウンドで読み込み・導出計算した結果一式（MainActor への受け渡し用）
 private struct LoadedData {
     let goriyaku: [Goriyaku]
@@ -31,6 +43,7 @@ private struct LoadedData {
     let goriyakuCounts: [(Goriyaku, Int)]
     let searchText: [String: String]
     let credits: [String: PhotoCredit]
+    let prefectures: [String]
 }
 
 /// 検証済みデータ（appdata.json）を読み込み、検索クエリを提供する中核ストア。
@@ -50,6 +63,8 @@ final class DataStore: ObservableObject {
     @Published private(set) var shrines: [Shrine] = []
     /// ご利益ごとの社寺件数（多い順・0件は除外）。ロード時に一度だけ計算する。
     private(set) var goriyakuCounts: [(Goriyaku, Int)] = []
+    /// データに存在する都道府県（北から南の地理順）。ロード時に一度だけ算出する。
+    private(set) var prefectures: [String] = []
 
     private var goriyakuBySlug: [String: Goriyaku] = [:]
     private var deityBySlug: [String: Deity] = [:]
@@ -87,6 +102,7 @@ final class DataStore: ObservableObject {
         goriyakuCounts = loaded.goriyakuCounts
         searchText = loaded.searchText
         credits = loaded.credits
+        prefectures = loaded.prefectures
         state = .loaded
     }
 
@@ -147,10 +163,14 @@ final class DataStore: ObservableObject {
             credits = c
         }
 
+        // データに存在する都道府県のみを北から南の地理順で残す
+        let prefsInData = Set(decoded.shrines.map(\.pref))
+        let prefectures = allPrefectures.filter { prefsInData.contains($0) }
+
         return LoadedData(goriyaku: decoded.goriyaku, deities: decoded.deities, shrines: decoded.shrines,
                           goriyakuBySlug: goriyakuBySlug, deityBySlug: deityBySlug,
                           shrineGoriyaku: shrineGoriyaku, goriyakuCounts: goriyakuCounts,
-                          searchText: searchText, credits: credits)
+                          searchText: searchText, credits: credits, prefectures: prefectures)
     }
 
     // MARK: 検索の正規化
@@ -201,14 +221,15 @@ final class DataStore: ObservableObject {
     var nationalTreasureCount: Int { shrines.lazy.filter(\.isNationalTreasure).count }
     var prefectureCount: Int { Set(shrines.map(\.pref)).count }
 
-    /// 名称・かな・都道府県・市区町村でのフリーワード検索（種別・国宝・近い順の絞り込み付き）。
+    /// 名称・かな・都道府県・市区町村でのフリーワード検索（種別・国宝・都道府県・近い順の絞り込み付き）。
     /// クエリ・対象とも正規化（かな統一・小文字化）した上で部分一致させる。
     func search(_ query: String, type: String? = nil, nationalTreasureOnly: Bool = false,
-                near origin: CLLocation? = nil) -> [(Shrine, Double?)] {
+                pref: String? = nil, near origin: CLLocation? = nil) -> [(Shrine, Double?)] {
         let q = Self.normalizedForSearch(query)
         var list = shrines.filter { s in
             (type == nil || s.type == type!) &&
             (!nationalTreasureOnly || s.isNationalTreasure) &&
+            (pref == nil || s.pref == pref!) &&
             (q.isEmpty || (searchText[s.slug] ?? "").contains(q))
         }
         if let origin {
