@@ -1,12 +1,24 @@
 // データストア（iOS版 DataStore と同一ロジック）。appdata.json を読み込み検索クエリを提供。
 
+// 47都道府県の地理順（北→南）。フィルタの表示順に使う。
+const PREF_ORDER = [
+  '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
+  '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県',
+  '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県',
+  '岐阜県', '静岡県', '愛知県', '三重県',
+  '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県',
+  '鳥取県', '島根県', '岡山県', '広島県', '山口県',
+  '徳島県', '香川県', '愛媛県', '高知県',
+  '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県',
+]
+
 const RECOMMENDED = [
   'ise-jingu-naiku', 'izumo-taisha', 'fushimi-inari-taisha', 'meiji-jingu',
   'itsukushima-jinja', 'kiyomizu-dera', 'kasuga-taisha', 'dazaifu-tenmangu',
   'nikko-toshogu', 'senso-ji', 'fujisan-hongu-sengen', 'kumano-hongu-taisha',
 ]
 
-function haversine(a, b) {
+export function haversine(a, b) {
   const R = 6371000, d = (x) => (x * Math.PI) / 180
   const dla = d(b.lat - a.lat), dlo = d(b.lng - a.lng)
   const h = Math.sin(dla / 2) ** 2 + Math.cos(d(a.lat)) * Math.cos(d(b.lat)) * Math.sin(dlo / 2) ** 2
@@ -15,6 +27,13 @@ function haversine(a, b) {
 
 export function distanceLabel(m) {
   return m >= 1000 ? `${(m / 1000).toFixed(1)}km` : `${Math.round(m)}m`
+}
+
+// 検索用正規化：カタカナ→ひらがな + 小文字化（カタカナ入力でもかなにヒットさせる）
+export function normalizeQuery(str) {
+  return (str || '')
+    .replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60))
+    .toLowerCase()
 }
 
 const HTTP = /^https?:\/\//i
@@ -31,47 +50,56 @@ export function createStore(data) {
   const deityBySlug = Object.fromEntries(deities.map((d) => [d.slug, d]))
   const bySlug = Object.fromEntries(shrines.map((s) => [s.slug, s]))
 
-  // 社寺ごとの導出ご利益（御祭神/本尊が司るご利益の和集合）
+  // 社寺ごとのご利益：社寺固有の明示分を先頭に、御祭神/本尊由来の導出分との和集合
   const shrineGoriyaku = {}
+  // 検索用の正規化済みテキスト（名前・かな・通称・都道府県・市区町村）
+  const searchText = {}
   for (const s of shrines) {
     const seen = new Set(), arr = []
+    for (const g of s.goriyaku || [])
+      if (!seen.has(g)) { seen.add(g); arr.push(g) }
     for (const ds of s.deities)
       for (const g of deityBySlug[ds]?.goriyaku || [])
         if (!seen.has(g)) { seen.add(g); arr.push(g) }
     shrineGoriyaku[s.slug] = arr
+    searchText[s.slug] = normalizeQuery(
+      `${s.name}\n${s.kana || ''}\n${(s.aliases || []).join('\n')}\n${s.pref}\n${s.city}`
+    )
   }
+
+  // ご利益 → 社寺の逆引きインデックス（一度だけ構築）
+  const shrinesByGoriyaku = new Map(goriyaku.map((g) => [g.slug, []]))
+  for (const s of shrines)
+    for (const g of shrineGoriyaku[s.slug])
+      shrinesByGoriyaku.get(g)?.push(s)
+  const goriyakuCounts = goriyaku
+    .map((g) => [g, shrinesByGoriyaku.get(g.slug).length])
+    .filter(([, c]) => c > 0)
+    .sort((a, b) => b[1] - a[1])
+
+  // データに存在する都道府県のみ、地理順（北→南）の固定配列で保持
+  const prefSet = new Set(shrines.map((s) => s.pref))
+  const prefectures = PREF_ORDER.filter((p) => prefSet.has(p))
 
   const goriyakuSlugsOf = (s) => shrineGoriyaku[s.slug] || []
   const deitiesOf = (s) => s.deities.map((d) => deityBySlug[d]).filter(Boolean)
   const names = (slugs) => slugs.map((g) => goriyakuBySlug[g]).filter(Boolean)
 
   return {
-    goriyaku, deities, shrines, goriyakuBySlug, deityBySlug, bySlug,
+    goriyaku, deities, shrines, goriyakuBySlug, deityBySlug, bySlug, prefectures,
     goriyakuName: (slug) => goriyakuBySlug[slug]?.name || slug,
     deity: (slug) => deityBySlug[slug],
     shrine: (slug) => bySlug[slug],
     deitiesOf, goriyakuSlugsOf, names,
 
-    shrinesForGoriyaku: (slug) => shrines.filter((s) => goriyakuSlugsOf(s).includes(slug)),
+    shrinesForGoriyaku: (slug) => shrinesByGoriyaku.get(slug) || [],
     deitiesForGoriyaku: (slug) => deities.filter((d) => d.goriyaku.includes(slug)),
     shrinesEnshrining: (deitySlug) => shrines.filter((s) => s.deities.includes(deitySlug)),
 
-    goriyakuCounts() {
-      return goriyaku
-        .map((g) => [g, shrines.filter((s) => goriyakuSlugsOf(s).includes(g.slug)).length])
-        .filter(([, c]) => c > 0)
-        .sort((a, b) => b[1] - a[1])
-    },
+    goriyakuCounts: () => goriyakuCounts,
 
     nationalTreasureCount: () => shrines.filter(isNationalTreasure).length,
     prefectureCount: () => new Set(shrines.map((s) => s.pref)).size,
-
-    nearby(origin, { goriyaku: g = null, type = null } = {}) {
-      return shrines
-        .filter((s) => (g == null || goriyakuSlugsOf(s).includes(g)) && (type == null || s.type === type))
-        .map((s) => [s, haversine(origin, s)])
-        .sort((a, b) => a[1] - b[1])
-    },
 
     shrinesInBounds({ latMin, latMax, lngMin, lngMax, center, goriyaku: g = null, type = null, limit = 200 }) {
       const out = []
@@ -101,16 +129,17 @@ export function createStore(data) {
       return scored.slice(0, limit).map((x) => x[0])
     },
 
-    search(query, { type = null, ntOnly = false, origin = null } = {}) {
-      const q = (query || '').trim()
+    search(query, { type = null, ntOnly = false, pref = null, origin = null } = {}) {
+      const q = normalizeQuery((query || '').trim())
       let list = shrines.filter(
         (s) =>
           (type == null || s.type === type) &&
           (!ntOnly || isNationalTreasure(s)) &&
-          (q === '' || s.name.includes(q) || (s.kana || '').includes(q) || s.pref.includes(q) || s.city.includes(q))
+          (pref == null || s.pref === pref) &&
+          (q === '' || searchText[s.slug].includes(q))
       )
       if (origin) return list.map((s) => [s, haversine(origin, s)]).sort((a, b) => a[1] - b[1])
-      list = list.slice().sort((a, b) => (a.kana || '').localeCompare(b.kana || ''))
+      list = list.slice().sort((a, b) => (a.kana || '').localeCompare(b.kana || '', 'ja'))
       return list.map((s) => [s, null])
     },
 
@@ -131,6 +160,7 @@ export function createStore(data) {
 
 export async function loadStore() {
   const res = await fetch(`${import.meta.env.BASE_URL}appdata.json`)
+  if (!res.ok) throw new Error(`appdata.json の取得に失敗しました (HTTP ${res.status})`)
   const data = await res.json()
   return createStore(data)
 }

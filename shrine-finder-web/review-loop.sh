@@ -46,8 +46,8 @@ for i in $(seq 1 "$MAX_ITER"); do
     "あなたは厳格なコードレビュアーです。git の未コミット差分(staged/unstaged/untracked)だけをレビューしてください。${FOCUS:+重点観点: $FOCUS。}重大度(P0/P1/P2)付きで、ファイルと行番号と修正方針を簡潔に列挙してください。修正すべき指摘が一つもない場合は、最終行に REVIEW_CLEAN とだけ出力してください。" \
     | tee "$REVIEW_FILE"
 
-  # 指摘なし判定
-  if grep -q "REVIEW_CLEAN" "$REVIEW_FILE"; then
+  # 指摘なし判定（最終行が REVIEW_CLEAN と完全一致する場合のみ）
+  if tail -n1 "$REVIEW_FILE" | grep -qx "REVIEW_CLEAN"; then
     echo ""
     echo "✅ 指摘なし。ループを終了します。"
     break
@@ -60,7 +60,7 @@ for i in $(seq 1 "$MAX_ITER"); do
 
 --- レビュー結果 ---
 $(cat "$REVIEW_FILE")" \
-    --allowedTools "Read,Edit,Bash"
+    --allowedTools "Read,Edit,Write,Grep,Glob"
 
   if [ "$i" -eq "$MAX_ITER" ]; then
     echo ""

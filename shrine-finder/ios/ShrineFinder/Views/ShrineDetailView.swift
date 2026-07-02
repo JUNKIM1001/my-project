@@ -5,7 +5,10 @@ import MapKit
 struct ShrineDetailView: View {
     @EnvironmentObject var store: DataStore
     @EnvironmentObject var favorites: FavoritesStore
+    @EnvironmentObject var recent: RecentStore
     let shrine: Shrine
+    /// おすすめ（body評価ごとの全件走査を避けるため .task で一度だけ計算）
+    @State private var related: [Shrine] = []
 
     var body: some View {
         List {
@@ -42,8 +45,26 @@ struct ShrineDetailView: View {
                 Button { openInMaps() } label: {
                     Label("経路案内（マップで開く）", systemImage: "arrow.triangle.turn.up.right.diamond.fill")
                 }
+                if let access = shrine.access, !access.isEmpty {
+                    Label(access, systemImage: "tram.fill")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
                 Text(shrine.address).font(.caption).foregroundStyle(.secondary)
             } header: { Text("アクセス") }
+
+            if shrine.hours != nil || shrine.fee != nil || shrine.goshuin != nil {
+                Section("参拝情報") {
+                    if let hours = shrine.hours {
+                        LabeledContent("参拝時間", value: hours)
+                    }
+                    if let fee = shrine.fee {
+                        LabeledContent("拝観料", value: fee)
+                    }
+                    if let goshuin = shrine.goshuin {
+                        LabeledContent("御朱印", value: goshuin ? "あり" : "なし")
+                    }
+                }
+            }
 
             Section(shrine.deityRoleLabel) {
                 ForEach(store.deities(of: shrine)) { d in
@@ -56,12 +77,14 @@ struct ShrineDetailView: View {
                 }
             }
 
-            Section("授かれるご利益") {
-                GoriyakuTagFlow(goriyaku: store.names(forGoriyaku: store.goriyakuSlugs(of: shrine)))
-                    .padding(.vertical, 4)
+            let goriyakuList = store.names(forGoriyaku: store.goriyakuSlugs(of: shrine))
+            if !goriyakuList.isEmpty {
+                Section("授かれるご利益") {
+                    GoriyakuTagFlow(goriyaku: goriyakuList)
+                        .padding(.vertical, 4)
+                }
             }
 
-            let related = store.related(to: shrine)
             if !related.isEmpty {
                 Section("ここに行った人はこちらも") {
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -92,6 +115,10 @@ struct ShrineDetailView: View {
         .listStyle(.insetGrouped)
         .navigationTitle(shrine.name)
         .navigationBarTitleDisplayMode(.inline)
+        .task(id: shrine.slug) {
+            related = store.related(to: shrine)
+            recent.record(shrine.slug)
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button { favorites.toggle(shrine.slug) } label: {
@@ -105,6 +132,6 @@ struct ShrineDetailView: View {
     private func openInMaps() {
         let item = MKMapItem(placemark: MKPlacemark(coordinate: shrine.coordinate))
         item.name = shrine.name
-        item.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+        item.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault])
     }
 }

@@ -6,8 +6,15 @@ import CoreLocation
 final class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var coordinate: CLLocationCoordinate2D?
     @Published var authorization: CLAuthorizationStatus = .notDetermined
+    /// 直近の位置取得エラー（取得に成功したらクリア）
+    @Published var lastError: Error?
 
     private let manager = CLLocationManager()
+
+    /// 位置情報の利用が拒否・制限されているか（設定アプリへの導線表示用）
+    var isDenied: Bool {
+        authorization == .denied || authorization == .restricted
+    }
 
     override init() {
         super.init()
@@ -40,8 +47,13 @@ final class LocationService: NSObject, ObservableObject, CLLocationManagerDelega
 
     nonisolated func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let loc = locations.last else { return }
-        Task { @MainActor in self.coordinate = loc.coordinate }
+        Task { @MainActor in
+            self.coordinate = loc.coordinate
+            self.lastError = nil
+        }
     }
 
-    nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
+    nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        Task { @MainActor in self.lastError = error }
+    }
 }

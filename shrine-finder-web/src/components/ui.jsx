@@ -92,6 +92,28 @@ export function ShrineRow({ shrine, highlight, distance }) {
   )
 }
 
+/** 50件ずつの「さらに表示」ページング付きリスト。items は useMemo 等で参照を安定させること。 */
+export function PagedList({ items, renderItem, pageSize = 50, empty = '該当する項目がありません。' }) {
+  // items が変わったら表示件数をリセット（レンダー中の派生state調整パターン）
+  const [paging, setPaging] = useState({ items, count: pageSize })
+  if (paging.items !== items) setPaging({ items, count: pageSize })
+  const count = paging.items === items ? paging.count : pageSize
+  const setCount = (n) => setPaging({ items, count: n })
+  if (items.length === 0) return <p className="empty">{empty}</p>
+  const shown = items.slice(0, count)
+  return (
+    <>
+      <div className="list">{shown.map(renderItem)}</div>
+      {items.length > shown.length && (
+        <div className="more">
+          <p className="muted small center">{items.length}件中 上位{shown.length}件を表示中</p>
+          <button className="cta" onClick={() => setCount(count + pageSize)}>さらに表示</button>
+        </div>
+      )}
+    </>
+  )
+}
+
 export function RecommendCard({ shrine, distance }) {
   return (
     <Link to={`/shrine/${shrine.slug}`} className="rec-card">

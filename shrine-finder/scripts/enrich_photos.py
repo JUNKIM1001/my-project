@@ -6,7 +6,7 @@ Wikimedia API のみ使用(Claudeのクレジット不使用)。"""
 import json, os, re, time, urllib.parse, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APP = os.path.join(ROOT, "ios/ShrineFinder/Resources/appdata.json")
+APP = os.path.join(ROOT, "data/appdata.json")  # 正準ソース。編集後は scripts/sync_appdata.py で配布ファイルを生成
 UA = {"User-Agent": "ShrineFinderApp/0.9 (photo enrichment; local dev)"}
 
 def api(params):

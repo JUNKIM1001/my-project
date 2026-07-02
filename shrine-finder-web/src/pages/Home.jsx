@@ -1,15 +1,17 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useStore, useGeo } from '../data/providers'
+import { useStore, useGeo, useRecent } from '../data/providers'
 import { RecommendCard } from '../components/ui'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function Home() {
   const store = useStore()
   const geo = useGeo()
-  useEffect(() => { geo.request() }, []) // eslint-disable-line
+  const recent = useRecent()
+  usePageTitle(null)
 
   const counts = store.goriyakuCounts()
   const recs = store.recommended(geo.coords)
+  const recentShrines = recent.slugs.map((slug) => store.bySlug[slug]).filter(Boolean)
 
   return (
     <div className="page">
@@ -31,6 +33,17 @@ export default function Home() {
         </div>
       </section>
 
+      {recentShrines.length > 0 && (
+        <section className="sec">
+          <div className="sec-head"><b>🕐 最近見た社寺</b></div>
+          <div className="hscroll">
+            {recentShrines.map((s) => (
+              <RecommendCard key={s.slug} shrine={s} distance={geo.coords ? store.dist(geo.coords, s) : null} />
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="sec">
         <b>願い事から探す</b>
         <p className="muted">ご利益を選ぶと、ふさわしい神仏とお参り先が見つかります。</p>
@@ -38,6 +51,7 @@ export default function Home() {
           {counts.map(([g, c]) => (
             <Link key={g.slug} to={`/wish/${g.slug}`} className="gcard">
               <div className="gname">{g.name}</div>
+              {g.description && <div className="muted small">{g.description}</div>}
               <div className="muted small">{c}社寺</div>
             </Link>
           ))}

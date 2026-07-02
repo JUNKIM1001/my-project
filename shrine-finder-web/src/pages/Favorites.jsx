@@ -1,9 +1,11 @@
 import { useStore, useFavorites } from '../data/providers'
 import { ShrineRow } from '../components/ui'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function Favorites() {
   const store = useStore()
   const fav = useFavorites()
+  usePageTitle('お気に入り')
   const saved = store.shrines.filter((s) => fav.has(s.slug))
 
   return (

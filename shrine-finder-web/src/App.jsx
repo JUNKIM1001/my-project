@@ -1,37 +1,38 @@
-import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { Routes, Route, NavLink } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import ScrollToTop from './hooks/ScrollToTop'
 import Home from './pages/Home'
 import WishResult from './pages/WishResult'
-import MapSearch from './pages/MapSearch'
 import DeityList from './pages/DeityList'
 import DeityDetail from './pages/DeityDetail'
-import ShrineDetail from './pages/ShrineDetail'
 import Favorites from './pages/Favorites'
 import Search from './pages/Search'
 import About from './pages/About'
+import NotFound from './pages/NotFound'
 
-function ScrollTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { document.querySelector('.content')?.scrollTo(0, 0) }, [pathname])
-  return null
-}
+// Leaflet を含むページは遅延読み込みし、初回バンドルから地図関連を外す
+const MapSearch = lazy(() => import('./pages/MapSearch'))
+const ShrineDetail = lazy(() => import('./pages/ShrineDetail'))
 
 export default function App() {
   return (
     <div className="app">
-      <ScrollTop />
+      <ScrollToTop />
       <div className="content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/wish/:slug" element={<WishResult />} />
-          <Route path="/map" element={<MapSearch />} />
-          <Route path="/deities" element={<DeityList />} />
-          <Route path="/deity/:slug" element={<DeityDetail />} />
-          <Route path="/shrine/:slug" element={<ShrineDetail />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <Suspense fallback={<div className="loading">読み込み中…</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/wish/:slug" element={<WishResult />} />
+            <Route path="/map" element={<MapSearch />} />
+            <Route path="/deities" element={<DeityList />} />
+            <Route path="/deity/:slug" element={<DeityDetail />} />
+            <Route path="/shrine/:slug" element={<ShrineDetail />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </div>
       <nav className="tabbar">
         <NavLink to="/" end>✨<span>さがす</span></NavLink>

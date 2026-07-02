@@ -1,16 +1,61 @@
+import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { MapContainer, TileLayer, CircleMarker } from 'react-leaflet'
-import { useStore, useFavorites } from '../data/providers'
+import 'leaflet/dist/leaflet.css'
+import { useStore, useFavorites, useRecent } from '../data/providers'
 import { ShrineHero, TypeBadge, NTBadge, GoriyakuTags, RecommendCard } from '../components/ui'
-import { safeURL, isShrine, isNationalTreasure, deityRoleLabel } from '../data/store'
+import { safeURL, isNationalTreasure, deityRoleLabel } from '../data/store'
+import { loadDetails } from '../data/details'
+import usePageTitle from '../hooks/usePageTitle'
+import NotFound from './NotFound'
 
 export default function ShrineDetail() {
   const { slug } = useParams()
   const store = useStore()
   const fav = useFavorites()
+  const recent = useRecent()
   const nav = useNavigate()
   const s = store.bySlug[slug]
-  if (!s) return <div className="page"><p className="empty">見つかりません</p></div>
+  usePageTitle(s ? s.name : undefined)
+
+  // 「最近見た社寺」に記録（存在する slug のみ・slug が変わったときだけ）
+  const record = recent.record
+  useEffect(() => {
+    if (store.bySlug[slug]) record(slug)
+  }, [store, slug, record])
+
+  // 全文説明は初回参照時に appdata-details.json から遅延取得（失敗時は本文セクションを出さないだけ）
+  const [details, setDetails] = useState(null)
+  useEffect(() => {
+    let active = true
+    loadDetails()
+      .then((d) => { if (active) setDetails(d) })
+      .catch(() => { /* 取得失敗時は本文セクションを表示しない */ })
+    return () => { active = false }
+  }, [])
+  const longDesc = details?.shrines?.[slug] || null
+
+  // 共有（Web Share API がなければURLをクリップボードへ）
+  const [copied, setCopied] = useState(false)
+  useEffect(() => {
+    if (!copied) return
+    const t = setTimeout(() => setCopied(false), 2000)
+    return () => clearTimeout(t)
+  }, [copied])
+  async function share() {
+    const url = window.location.href
+    if (navigator.share) {
+      try { await navigator.share({ title: `${s.name} | おまいりナビ`, text: `${s.name}（${s.pref}${s.city}）`, url }) }
+      catch { /* ユーザーによるキャンセル等は無視 */ }
+      return
+    }
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+    } catch { /* クリップボード不可の環境では何もしない */ }
+  }
+
+  if (!s) return <NotFound message="この社寺は見つかりません" />
 
   const related = store.related(s)
   const website = safeURL(s.website)
@@ -22,10 +67,13 @@ export default function ShrineDetail() {
       <header className="appbar">
         <button className="iconbtn" onClick={() => nav(-1)}>‹</button>
         <h1 className="ellipsis">{s.name}</h1>
+        <button className="iconbtn" onClick={share} aria-label="共有">📤</button>
         <button className="iconbtn" onClick={() => fav.toggle(s.slug)} aria-label="お気に入り">
           {fav.has(s.slug) ? '❤️' : '🤍'}
         </button>
       </header>
+
+      {copied && <div className="toast" role="status">リンクをコピーしました</div>}
 
       <div className="detail-hero"><ShrineHero shrine={s} showCredit /></div>
 
@@ -37,7 +85,7 @@ export default function ShrineDetail() {
         </div>
         <div className="muted">{s.kana}</div>
         <p>{s.description}</p>
-        {s.longDescription && <p className="muted small">{s.longDescription}</p>}
+        {longDesc && <p className="muted small">{longDesc}</p>}
       </section>
 
       <section className="sec">
@@ -50,8 +98,35 @@ export default function ShrineDetail() {
           </MapContainer>
         </div>
         <a className="cta" href={dir} target="_blank" rel="noreferrer">🚗 経路案内（地図で開く）</a>
+        {s.access && <div className="muted small">🚃 {s.access}</div>}
         <div className="muted small">{s.address}</div>
       </section>
+
+      {(s.hours || s.fee || s.goshuin != null) && (
+        <section className="sec">
+          <b>参拝情報</b>
+          <div className="list">
+            {s.hours && (
+              <div className="row">
+                <div className="row-name">参拝時間</div>
+                <div className="row-meta">{s.hours}</div>
+              </div>
+            )}
+            {s.fee && (
+              <div className="row">
+                <div className="row-name">拝観料</div>
+                <div className="row-meta">{s.fee}</div>
+              </div>
+            )}
+            {s.goshuin != null && (
+              <div className="row">
+                <div className="row-name">御朱印</div>
+                <div className="row-meta">{s.goshuin ? 'あり' : 'なし'}</div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       <section className="sec">
         <b>{deityRoleLabel(s)}</b>

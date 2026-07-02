@@ -30,6 +30,7 @@
 		B757C422558816C8263CEC52 /* appdata.json in Resources */ = {isa = PBXBuildFile; fileRef = CDCB8B3ECE9E81C81CFBC5B8 /* appdata.json */; };
 		BA243E93D1E71181DBA5F6FA /* FavoritesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48772E751F2D6C3700F9FC01 /* FavoritesStore.swift */; };
 		BD8DD10F99C4738C4481C08C /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EED0902A23DF676C8F3709 /* LocationService.swift */; };
+		C0DE0A5AFE00000000000001 /* RecentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DE0A5AFE00000000000002 /* RecentStore.swift */; };
 		D417C9790EF6D7CD5BECAE04 /* nikko-toshogu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1C057367EE6D7ACBF2DAD69 /* nikko-toshogu.jpg */; };
 		D622493C48C5E1B08E8FBDF9 /* ShrineHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C552768D319055C3D00FA8 /* ShrineHeroView.swift */; };
 		EC55649D22DF0D059A7537CC /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B00B381A1C967C22B6BEEA /* DataStore.swift */; };
@@ -60,6 +61,7 @@
 		AE333B7B164EEF23AC655665 /* NearbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyView.swift; sourceTree = "<group>"; };
 		B3ADD5070225257DF6ED0BE8 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		B3FA98E60FDCD1C44E77A7E8 /* DeityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeityDetailView.swift; sourceTree = "<group>"; };
+		C0DE0A5AFE00000000000002 /* RecentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentStore.swift; sourceTree = "<group>"; };
 		C1C057367EE6D7ACBF2DAD69 /* nikko-toshogu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "nikko-toshogu.jpg"; sourceTree = "<group>"; };
 		C2E2C5AA6DA80C507FD7917D /* kirishima-jingu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "kirishima-jingu.jpg"; sourceTree = "<group>"; };
 		C4B00B381A1C967C22B6BEEA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				C4B00B381A1C967C22B6BEEA /* DataStore.swift */,
 				48772E751F2D6C3700F9FC01 /* FavoritesStore.swift */,
+				C0DE0A5AFE00000000000002 /* RecentStore.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				BD8DD10F99C4738C4481C08C /* LocationService.swift in Sources */,
 				93233728B8C5A5CBE08EB2B4 /* Models.swift in Sources */,
 				880DF532A8C912F9996676D3 /* NearbyView.swift in Sources */,
+				C0DE0A5AFE00000000000001 /* RecentStore.swift in Sources */,
 				FE40314AB47DB5DB46DEECEF /* SearchView.swift in Sources */,
 				B5CA782E5C5AB5FA44D4F9FA /* ShrineDetailView.swift in Sources */,
 				B2E51BAC2E612C6247C0BFBC /* ShrineFinderApp.swift in Sources */,

@@ -1,16 +1,23 @@
-import { useState } from 'react'
+import { useDeferredValue, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore, useGeo } from '../data/providers'
-import { ShrineRow } from '../components/ui'
+import { ShrineRow, PagedList } from '../components/ui'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function Search() {
   const store = useStore()
   const geo = useGeo()
+  usePageTitle('社寺をさがす')
   const [q, setQ] = useState('')
   const [type, setType] = useState(null)
   const [ntOnly, setNtOnly] = useState(false)
+  const [pref, setPref] = useState('')
 
-  const results = store.search(q, { type, ntOnly, origin: geo.coords })
+  const deferredQ = useDeferredValue(q)
+  const results = useMemo(
+    () => store.search(deferredQ, { type, ntOnly, pref: pref || null, origin: geo.coords }),
+    [store, deferredQ, type, ntOnly, pref, geo.coords]
+  )
 
   return (
     <div className="page">
@@ -33,15 +40,17 @@ export default function Search() {
           <button className={type === 'temple' ? 'on' : ''} onClick={() => setType('temple')}>寺</button>
         </div>
         <button className={`chip ${ntOnly ? 'on' : ''}`} onClick={() => setNtOnly((v) => !v)}>★ 国宝</button>
+        <select value={pref} onChange={(e) => setPref(e.target.value)} aria-label="都道府県で絞る">
+          <option value="">すべての都道府県</option>
+          {store.prefectures.map((p) => <option key={p} value={p}>{p}</option>)}
+        </select>
       </div>
 
-      <div className="list">
-        {results.length === 0 ? (
-          <p className="empty">該当する社寺がありません。</p>
-        ) : (
-          results.slice(0, 300).map(([s, d]) => <ShrineRow key={s.slug} shrine={s} distance={d} />)
-        )}
-      </div>
+      <PagedList
+        items={results}
+        empty="該当する社寺がありません。"
+        renderItem={([s, d]) => <ShrineRow key={s.slug} shrine={s} distance={d} />}
+      />
     </div>
   )
 }

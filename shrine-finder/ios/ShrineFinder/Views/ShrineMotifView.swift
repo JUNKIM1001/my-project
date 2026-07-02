@@ -27,6 +27,8 @@ struct ShrineMotifView: View {
             }
         }
         .clipped()
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(shrine.name)の\(shrine.isShrine ? "鳥居" : "五重塔")のイラスト")
     }
 
     private var palette: [Color] {

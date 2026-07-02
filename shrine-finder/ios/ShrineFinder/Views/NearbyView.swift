@@ -6,6 +6,7 @@ import CoreLocation
 struct NearbyView: View {
     @EnvironmentObject var store: DataStore
     @EnvironmentObject var location: LocationService
+    @Environment(\.openURL) private var openURL
 
     @State private var camera: MapCameraPosition = .region(
         MKCoordinateRegion(center: .init(latitude: 35.681, longitude: 139.767),
@@ -16,19 +17,12 @@ struct NearbyView: View {
     @State private var goriyakuFilter: String? = nil
     @State private var shrineOnly = false
     @State private var searchText = ""
-
-    private let fallback = CLLocation(latitude: 35.681236, longitude: 139.767125)
-    private var usingCurrent: Bool { location.currentLocation != nil }
-
-    /// 表示中の地図範囲にある社寺（中心から近い順）
-    private var visible: [(Shrine, Double)] {
-        let c = region.center, s = region.span
-        let center = CLLocation(latitude: c.latitude, longitude: c.longitude)
-        return store.shrines(
-            latMin: c.latitude - s.latitudeDelta/2,  latMax: c.latitude + s.latitudeDelta/2,
-            lngMin: c.longitude - s.longitudeDelta/2, lngMax: c.longitude + s.longitudeDelta/2,
-            center: center, goriyaku: goriyakuFilter, type: shrineOnly ? "shrine" : nil, limit: 200)
-    }
+    /// 表示中の地図範囲にある社寺（中心から近い順）。
+    /// 地図カメラ・フィルタの変更時のみ再計算するキャッシュ（body評価ごとの再計算を避ける）。
+    @State private var visible: [(Shrine, Double)] = []
+    /// 初回の現在地取得時だけ地図をセンタリングする（以降はユーザーのパン操作を上書きしない）
+    @State private var hasCenteredOnUser = false
+    @State private var showsLocationDeniedAlert = false
 
     var body: some View {
         NavigationStack {
@@ -57,7 +51,10 @@ struct NearbyView: View {
                             .tint(s.isShrine ? toriiRed : .blue)
                     }
                 }
-                .onMapCameraChange(frequency: .onEnd) { ctx in region = ctx.region }
+                .onMapCameraChange(frequency: .onEnd) { ctx in
+                    region = ctx.region
+                    updateVisible()
+                }
                 .frame(height: 300)
 
                 filters
@@ -80,14 +77,31 @@ struct NearbyView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button { focusOnCurrent() } label: { Image(systemName: "location") }
-                        .disabled(!usingCurrent)
+                    Button { locateTapped() } label: { Image(systemName: "location") }
                 }
             }
             .navigationDestination(for: Shrine.self) { ShrineDetailView(shrine: $0) }
             .navigationDestination(for: Deity.self) { DeityDetailView(deity: $0) }
-            .task { location.request() }
-            .onChange(of: location.coordinate?.latitude) { _, _ in focusOnCurrent() }
+            .task {
+                location.request()
+                updateVisible()
+            }
+            .onChange(of: goriyakuFilter) { _, _ in updateVisible() }
+            .onChange(of: shrineOnly) { _, _ in updateVisible() }
+            .onChange(of: location.coordinate?.latitude) { _, _ in
+                // 初回の位置取得時のみセンタリング（以降はユーザーの操作を優先）
+                guard !hasCenteredOnUser, location.currentLocation != nil else { return }
+                hasCenteredOnUser = true
+                focusOnCurrent()
+            }
+            .alert("位置情報が許可されていません", isPresented: $showsLocationDeniedAlert) {
+                Button("設定を開く") {
+                    if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
+                }
+                Button("キャンセル", role: .cancel) {}
+            } message: {
+                Text("設定アプリで位置情報を許可してください。")
+            }
         }
     }
 
@@ -109,6 +123,27 @@ struct NearbyView: View {
             Toggle("神社のみ", isOn: $shrineOnly).font(.subheadline).fixedSize()
         }
         .padding(.horizontal).padding(.vertical, 8)
+    }
+
+    /// 表示範囲の社寺を再計算する（地図カメラ・フィルタ変更時に呼ぶ）
+    private func updateVisible() {
+        let c = region.center, s = region.span
+        let center = CLLocation(latitude: c.latitude, longitude: c.longitude)
+        visible = store.shrines(
+            latMin: c.latitude - s.latitudeDelta/2,  latMax: c.latitude + s.latitudeDelta/2,
+            lngMin: c.longitude - s.longitudeDelta/2, lngMax: c.longitude + s.longitudeDelta/2,
+            center: center, goriyaku: goriyakuFilter, type: shrineOnly ? "shrine" : nil, limit: 200)
+    }
+
+    /// 現在地ボタン：取得済みならセンタリング、拒否なら設定への導線、未確定なら許可を要求
+    private func locateTapped() {
+        if location.currentLocation != nil {
+            focusOnCurrent()
+        } else if location.isDenied {
+            showsLocationDeniedAlert = true
+        } else {
+            location.request()
+        }
     }
 
     private func focusOnCurrent() {
@@ -134,5 +169,6 @@ struct NearbyView: View {
         let r = MKCoordinateRegion(center: center, span: .init(latitudeDelta: deg, longitudeDelta: deg))
         withAnimation { camera = .region(r) }
         region = r
+        updateVisible()
     }
 }

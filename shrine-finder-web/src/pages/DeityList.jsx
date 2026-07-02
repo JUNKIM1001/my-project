@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from '../data/providers'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function DeityList() {
   const store = useStore()
+  usePageTitle('神仏図鑑')
   const [kind, setKind] = useState('kami')
   const [q, setQ] = useState('')
   const list = store.deities.filter(

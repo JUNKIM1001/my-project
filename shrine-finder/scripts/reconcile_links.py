@@ -6,7 +6,7 @@ import json, os, re, ssl, glob, subprocess, urllib.request, urllib.error, urllib
 from concurrent.futures import ThreadPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-APP = os.path.join(ROOT, "ios/ShrineFinder/Resources/appdata.json")
+APP = os.path.join(ROOT, "data/appdata.json")  # 正準ソース。編集後は scripts/sync_appdata.py で配布ファイルを生成
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605 Safari/605"}
 CTX = ssl.create_default_context(); CTX.check_hostname = False; CTX.verify_mode = ssl.CERT_NONE
 
