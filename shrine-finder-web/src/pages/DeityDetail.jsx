@@ -1,14 +1,18 @@
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useMemo } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useStore } from '../data/providers'
-import { ShrineRow, GoriyakuTags } from '../components/ui'
+import { ShrineRow, GoriyakuTags, PagedList } from '../components/ui'
+import usePageTitle from '../hooks/usePageTitle'
+import NotFound from './NotFound'
 
 export default function DeityDetail() {
   const { slug } = useParams()
   const store = useStore()
   const nav = useNavigate()
   const d = store.deityBySlug[slug]
-  if (!d) return <div className="page"><p className="empty">見つかりません</p></div>
-  const shrines = store.shrinesEnshrining(slug)
+  usePageTitle(d ? d.name : undefined)
+  const shrines = useMemo(() => store.shrinesEnshrining(slug), [store, slug])
+  if (!d) return <NotFound message="この神仏は見つかりません" />
   return (
     <div className="page">
       <header className="appbar">
@@ -27,7 +31,11 @@ export default function DeityDetail() {
       </section>
       <section className="sec">
         <b>この神仏を祀る社寺</b>
-        <div className="list">{shrines.map((s) => <ShrineRow key={s.slug} shrine={s} />)}</div>
+        <PagedList
+          items={shrines}
+          empty="この神仏を祀る社寺は収録されていません。"
+          renderItem={(s) => <ShrineRow key={s.slug} shrine={s} />}
+        />
       </section>
     </div>
   )

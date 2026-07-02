@@ -155,6 +155,17 @@ a { color: inherit; text-decoration: none; }
 .minimap { border-radius: 12px; overflow: hidden; margin: 8px 0; }
 .leaflet-container { background: #cfe3d8; }
 
+/* Inline notes / paging / toast */
+.inline-note { margin: 0 14px 8px; }
+.geo-note { margin: 10px 14px; padding: 10px 12px; background: var(--bg2); border-radius: 10px; }
+.more { padding: 0 14px 10px; }
+.more p { margin: 8px 0 0; }
+.empty-state .cta { max-width: 240px; margin: 16px auto 0; }
+.toast {
+  position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%);
+  background: #000c; color: #fff; font-size: 13px; padding: 8px 16px; border-radius: 999px; z-index: 50;
+}
+
 /* Empty states */
 .empty { color: var(--muted); padding: 24px 14px; text-align: center; }
 .empty-state { text-align: center; padding: 60px 24px; color: var(--muted); }

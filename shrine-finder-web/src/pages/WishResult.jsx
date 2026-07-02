@@ -1,29 +1,40 @@
+import { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useStore, useGeo } from '../data/providers'
-import { ShrineRow } from '../components/ui'
+import { ShrineRow, PagedList } from '../components/ui'
+import usePageTitle from '../hooks/usePageTitle'
+import NotFound from './NotFound'
 
 export default function WishResult() {
   const { slug } = useParams()
   const store = useStore()
   const geo = useGeo()
   const g = store.goriyakuBySlug[slug]
-  const deities = store.deitiesForGoriyaku(slug)
+  usePageTitle(g ? g.name : undefined)
 
-  let ranked = store.shrinesForGoriyaku(slug)
-  ranked = geo.coords
-    ? ranked.map((s) => [s, store.dist(geo.coords, s)]).sort((a, b) => a[1] - b[1])
-    : ranked.map((s) => [s, null])
+  const ranked = useMemo(() => {
+    const list = store.shrinesForGoriyaku(slug)
+    return geo.coords
+      ? list.map((s) => [s, store.dist(geo.coords, s)]).sort((a, b) => a[1] - b[1])
+      : list.map((s) => [s, null])
+  }, [store, slug, geo.coords])
+
+  if (!g) return <NotFound message="このご利益は見つかりません" />
+
+  const deities = store.deitiesForGoriyaku(slug)
+  const geoUnavailable = geo.status === 'denied' || geo.status === 'error'
 
   return (
     <div className="page">
       <header className="appbar">
         <Link to="/" className="iconbtn">‹</Link>
-        <h1>{g?.name || 'ご利益'}</h1>
+        <h1>{g.name}</h1>
         <span className="iconbtn" />
       </header>
 
       <section className="sec">
-        <div className="sec-head"><b>「{g?.name}」を司る神仏</b></div>
+        <div className="sec-head"><b>「{g.name}」を司る神仏</b></div>
+        {g.description && <p className="muted small">{g.description}</p>}
         <div className="hscroll">
           {deities.map((d) => (
             <Link key={d.slug} to={`/deity/${d.slug}`} className="dchip">
@@ -35,16 +46,26 @@ export default function WishResult() {
       </section>
 
       {!geo.coords && (
-        <button className="cta" onClick={geo.request}>📍 現在地から近い順に並べる</button>
+        geoUnavailable ? (
+          <p className="geo-note muted small">
+            位置情報が利用できないため、近い順の並べ替えはできません。ブラウザの設定でこのサイトの位置情報を許可すると、現在地から近い順に表示できます。
+          </p>
+        ) : (
+          <button className="cta" onClick={geo.request} disabled={geo.status === 'loading'}>
+            {geo.status === 'loading' ? '📍 現在地を取得中…' : '📍 現在地から近い順に並べる'}
+          </button>
+        )
       )}
 
       <section className="sec">
         <div className="sec-head">
           <b>参拝できる社寺（{geo.coords ? '近い順・' : ''}{ranked.length}件）</b>
         </div>
-        <div className="list">
-          {ranked.map(([s, d]) => <ShrineRow key={s.slug} shrine={s} highlight={slug} distance={d} />)}
-        </div>
+        <PagedList
+          items={ranked}
+          empty="該当する社寺がありません。"
+          renderItem={([s, d]) => <ShrineRow key={s.slug} shrine={s} highlight={slug} distance={d} />}
+        />
       </section>
     </div>
   )

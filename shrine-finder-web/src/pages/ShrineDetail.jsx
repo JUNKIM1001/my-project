@@ -1,8 +1,13 @@
+import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { MapContainer, TileLayer, CircleMarker } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
 import { useStore, useFavorites } from '../data/providers'
 import { ShrineHero, TypeBadge, NTBadge, GoriyakuTags, RecommendCard } from '../components/ui'
-import { safeURL, isShrine, isNationalTreasure, deityRoleLabel } from '../data/store'
+import { safeURL, isNationalTreasure, deityRoleLabel } from '../data/store'
+import { loadDetails } from '../data/details'
+import usePageTitle from '../hooks/usePageTitle'
+import NotFound from './NotFound'
 
 export default function ShrineDetail() {
   const { slug } = useParams()
@@ -10,7 +15,40 @@ export default function ShrineDetail() {
   const fav = useFavorites()
   const nav = useNavigate()
   const s = store.bySlug[slug]
-  if (!s) return <div className="page"><p className="empty">見つかりません</p></div>
+  usePageTitle(s ? s.name : undefined)
+
+  // 全文説明は初回参照時に appdata-details.json から遅延取得（失敗時は本文セクションを出さないだけ）
+  const [details, setDetails] = useState(null)
+  useEffect(() => {
+    let active = true
+    loadDetails()
+      .then((d) => { if (active) setDetails(d) })
+      .catch(() => { /* 取得失敗時は本文セクションを表示しない */ })
+    return () => { active = false }
+  }, [])
+  const longDesc = details?.[slug] || null
+
+  // 共有（Web Share API がなければURLをクリップボードへ）
+  const [copied, setCopied] = useState(false)
+  useEffect(() => {
+    if (!copied) return
+    const t = setTimeout(() => setCopied(false), 2000)
+    return () => clearTimeout(t)
+  }, [copied])
+  async function share() {
+    const url = window.location.href
+    if (navigator.share) {
+      try { await navigator.share({ title: `${s.name} | おまいりナビ`, text: `${s.name}（${s.pref}${s.city}）`, url }) }
+      catch { /* ユーザーによるキャンセル等は無視 */ }
+      return
+    }
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+    } catch { /* クリップボード不可の環境では何もしない */ }
+  }
+
+  if (!s) return <NotFound message="この社寺は見つかりません" />
 
   const related = store.related(s)
   const website = safeURL(s.website)
@@ -22,10 +60,13 @@ export default function ShrineDetail() {
       <header className="appbar">
         <button className="iconbtn" onClick={() => nav(-1)}>‹</button>
         <h1 className="ellipsis">{s.name}</h1>
+        <button className="iconbtn" onClick={share} aria-label="共有">📤</button>
         <button className="iconbtn" onClick={() => fav.toggle(s.slug)} aria-label="お気に入り">
           {fav.has(s.slug) ? '❤️' : '🤍'}
         </button>
       </header>
+
+      {copied && <div className="toast" role="status">リンクをコピーしました</div>}
 
       <div className="detail-hero"><ShrineHero shrine={s} showCredit /></div>
 
@@ -37,7 +78,7 @@ export default function ShrineDetail() {
         </div>
         <div className="muted">{s.kana}</div>
         <p>{s.description}</p>
-        {s.longDescription && <p className="muted small">{s.longDescription}</p>}
+        {longDesc && <p className="muted small">{longDesc}</p>}
       </section>
 
       <section className="sec">

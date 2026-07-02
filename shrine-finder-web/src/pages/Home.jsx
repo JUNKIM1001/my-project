@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore, useGeo } from '../data/providers'
 import { RecommendCard } from '../components/ui'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function Home() {
   const store = useStore()
   const geo = useGeo()
-  useEffect(() => { geo.request() }, []) // eslint-disable-line
+  usePageTitle(null)
 
   const counts = store.goriyakuCounts()
   const recs = store.recommended(geo.coords)
@@ -38,6 +38,7 @@ export default function Home() {
           {counts.map(([g, c]) => (
             <Link key={g.slug} to={`/wish/${g.slug}`} className="gcard">
               <div className="gname">{g.name}</div>
+              {g.description && <div className="muted small">{g.description}</div>}
               <div className="muted small">{c}社寺</div>
             </Link>
           ))}

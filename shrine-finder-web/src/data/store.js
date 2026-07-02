@@ -6,7 +6,7 @@ const RECOMMENDED = [
   'nikko-toshogu', 'senso-ji', 'fujisan-hongu-sengen', 'kumano-hongu-taisha',
 ]
 
-function haversine(a, b) {
+export function haversine(a, b) {
   const R = 6371000, d = (x) => (x * Math.PI) / 180
   const dla = d(b.lat - a.lat), dlo = d(b.lng - a.lng)
   const h = Math.sin(dla / 2) ** 2 + Math.cos(d(a.lat)) * Math.cos(d(b.lat)) * Math.sin(dlo / 2) ** 2
@@ -15,6 +15,13 @@ function haversine(a, b) {
 
 export function distanceLabel(m) {
   return m >= 1000 ? `${(m / 1000).toFixed(1)}km` : `${Math.round(m)}m`
+}
+
+// 検索用正規化：カタカナ→ひらがな + 小文字化（カタカナ入力でもかなにヒットさせる）
+export function normalizeQuery(str) {
+  return (str || '')
+    .replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60))
+    .toLowerCase()
 }
 
 const HTTP = /^https?:\/\//i
@@ -31,15 +38,30 @@ export function createStore(data) {
   const deityBySlug = Object.fromEntries(deities.map((d) => [d.slug, d]))
   const bySlug = Object.fromEntries(shrines.map((s) => [s.slug, s]))
 
-  // 社寺ごとの導出ご利益（御祭神/本尊が司るご利益の和集合）
+  // 社寺ごとのご利益：社寺固有の明示分を先頭に、御祭神/本尊由来の導出分との和集合
   const shrineGoriyaku = {}
+  // 検索用の正規化済みテキスト（名前・かな・都道府県・市区町村）
+  const searchText = {}
   for (const s of shrines) {
     const seen = new Set(), arr = []
+    for (const g of s.goriyaku || [])
+      if (!seen.has(g)) { seen.add(g); arr.push(g) }
     for (const ds of s.deities)
       for (const g of deityBySlug[ds]?.goriyaku || [])
         if (!seen.has(g)) { seen.add(g); arr.push(g) }
     shrineGoriyaku[s.slug] = arr
+    searchText[s.slug] = normalizeQuery(`${s.name}\n${s.kana || ''}\n${s.pref}\n${s.city}`)
   }
+
+  // ご利益 → 社寺の逆引きインデックス（一度だけ構築）
+  const shrinesByGoriyaku = new Map(goriyaku.map((g) => [g.slug, []]))
+  for (const s of shrines)
+    for (const g of shrineGoriyaku[s.slug])
+      shrinesByGoriyaku.get(g)?.push(s)
+  const goriyakuCounts = goriyaku
+    .map((g) => [g, shrinesByGoriyaku.get(g.slug).length])
+    .filter(([, c]) => c > 0)
+    .sort((a, b) => b[1] - a[1])
 
   const goriyakuSlugsOf = (s) => shrineGoriyaku[s.slug] || []
   const deitiesOf = (s) => s.deities.map((d) => deityBySlug[d]).filter(Boolean)
@@ -52,26 +74,14 @@ export function createStore(data) {
     shrine: (slug) => bySlug[slug],
     deitiesOf, goriyakuSlugsOf, names,
 
-    shrinesForGoriyaku: (slug) => shrines.filter((s) => goriyakuSlugsOf(s).includes(slug)),
+    shrinesForGoriyaku: (slug) => shrinesByGoriyaku.get(slug) || [],
     deitiesForGoriyaku: (slug) => deities.filter((d) => d.goriyaku.includes(slug)),
     shrinesEnshrining: (deitySlug) => shrines.filter((s) => s.deities.includes(deitySlug)),
 
-    goriyakuCounts() {
-      return goriyaku
-        .map((g) => [g, shrines.filter((s) => goriyakuSlugsOf(s).includes(g.slug)).length])
-        .filter(([, c]) => c > 0)
-        .sort((a, b) => b[1] - a[1])
-    },
+    goriyakuCounts: () => goriyakuCounts,
 
     nationalTreasureCount: () => shrines.filter(isNationalTreasure).length,
     prefectureCount: () => new Set(shrines.map((s) => s.pref)).size,
-
-    nearby(origin, { goriyaku: g = null, type = null } = {}) {
-      return shrines
-        .filter((s) => (g == null || goriyakuSlugsOf(s).includes(g)) && (type == null || s.type === type))
-        .map((s) => [s, haversine(origin, s)])
-        .sort((a, b) => a[1] - b[1])
-    },
 
     shrinesInBounds({ latMin, latMax, lngMin, lngMax, center, goriyaku: g = null, type = null, limit = 200 }) {
       const out = []
@@ -102,15 +112,15 @@ export function createStore(data) {
     },
 
     search(query, { type = null, ntOnly = false, origin = null } = {}) {
-      const q = (query || '').trim()
+      const q = normalizeQuery((query || '').trim())
       let list = shrines.filter(
         (s) =>
           (type == null || s.type === type) &&
           (!ntOnly || isNationalTreasure(s)) &&
-          (q === '' || s.name.includes(q) || (s.kana || '').includes(q) || s.pref.includes(q) || s.city.includes(q))
+          (q === '' || searchText[s.slug].includes(q))
       )
       if (origin) return list.map((s) => [s, haversine(origin, s)]).sort((a, b) => a[1] - b[1])
-      list = list.slice().sort((a, b) => (a.kana || '').localeCompare(b.kana || ''))
+      list = list.slice().sort((a, b) => (a.kana || '').localeCompare(b.kana || '', 'ja'))
       return list.map((s) => [s, null])
     },
 
@@ -131,6 +141,7 @@ export function createStore(data) {
 
 export async function loadStore() {
   const res = await fetch(`${import.meta.env.BASE_URL}appdata.json`)
+  if (!res.ok) throw new Error(`appdata.json の取得に失敗しました (HTTP ${res.status})`)
   const data = await res.json()
   return createStore(data)
 }

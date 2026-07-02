@@ -1,9 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useStore } from '../data/providers'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function About() {
   const store = useStore()
   const nav = useNavigate()
+  usePageTitle('このアプリについて')
   const nt = store.nationalTreasureCount()
   const photos = store.shrines.filter((s) => s.imageURL).length
   return (
