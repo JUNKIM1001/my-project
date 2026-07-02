@@ -10,3 +10,5 @@ python-multipart
 pypdf
 python-pptx
 pymupdf
+gspread
+google-auth

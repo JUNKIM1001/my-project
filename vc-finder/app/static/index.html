@@ -80,12 +80,36 @@
   </div>
   <table>
     <thead>
-      <tr><th>適合度</th><th>名称</th><th>種別</th><th>設立年</th><th>ステージ</th><th>商談提案ポイント</th><th>最近の出資・協業</th><th>サイト</th><th>代表者 / SNS</th></tr>
+      <tr><th>適合度</th><th>名称</th><th>種別</th><th>設立年</th><th>ステージ</th><th>商談提案ポイント</th><th>最近の出資・協業</th><th>サイト</th><th>代表者 / SNS</th><th>リード</th></tr>
     </thead>
     <tbody id="rows"></tbody>
   </table>
   <p class="muted" id="emptyNote" style="display:none; margin-top:0.8rem;">
     まだ結果がありません。上の「STEP1 商談ニーズを入力して候補を探す」から条件を入力してリストアップしてください。
+  </p>
+</div>
+
+<!-- STEP 3: 有効リード管理（Googleスプレッドシート連携） -->
+<div class="panel">
+  <h2><span class="step">3</span>有効リード管理（Googleスプレッドシート連携）</h2>
+  <p class="muted" style="margin:0 0 0.6rem;">
+    「リード化」した候補をGoogleスプレッドシートの管理台帳に反映します。
+    対応ステータス・担当者・次アクション・メモはシート側で編集し、「シートから取り込む」でこの画面に反映されます。
+  </p>
+  <div class="controls" style="margin-bottom: 0.8rem;">
+    <button onclick="sheetsPush()">シートへ反映（push）</button>
+    <button class="secondary" onclick="sheetsPull()">シートから取り込む（pull）</button>
+    <a id="sheetLink" href="#" target="_blank" style="display:none; font-size:0.9rem;">シートを開く</a>
+    <span id="sheetsStatus" class="muted"></span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>適合度</th><th>名称</th><th>対応ステータス</th><th>担当者</th><th>次アクション</th><th>期日</th><th>メモ</th><th>リード解除</th></tr>
+    </thead>
+    <tbody id="leadRows"></tbody>
+  </table>
+  <p class="muted" id="leadEmptyNote" style="display:none; margin-top:0.8rem;">
+    有効リードはまだありません。STEP2のリストで「⭐リード化」した候補がここに表示されます。
   </p>
 </div>
 
@@ -138,11 +162,89 @@ async function search() {
       <td class="muted">${v.investment_evidence || ''}</td>
       <td><a href="${v.website}" target="_blank">サイト</a></td>
       <td>${repCell(v)}</td>
+      <td>${reviewCell(v)}</td>
     `;
     rows.appendChild(tr);
   }
   document.getElementById('status').textContent = `${data.length} 件`;
   document.getElementById('emptyNote').style.display = data.length === 0 ? 'block' : 'none';
+}
+
+function reviewCell(v) {
+  if (v.review_status === '承認') return '<span class="tag">⭐有効リード</span>';
+  if (v.review_status === '却下') return `<span class="muted">却下</span><br><a href="#" onclick="reviewVc(${v.id}, '候補'); return false;" style="font-size:0.75rem;">戻す</a>`;
+  return `<button style="font-size:0.78rem;" onclick="reviewVc(${v.id}, '承認')">⭐リード化</button><br>
+    <a href="#" onclick="reviewVc(${v.id}, '却下'); return false;" style="font-size:0.75rem;" class="muted">却下</a>`;
+}
+
+async function reviewVc(id, status) {
+  await fetch(`/api/vcs/${id}/review`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ review_status: status })
+  });
+  search();
+  loadLeads();
+}
+
+async function loadLeads() {
+  const res = await fetch('/api/leads');
+  const data = await res.json();
+  const rows = document.getElementById('leadRows');
+  rows.innerHTML = '';
+  for (const v of data) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="score">${v.score != null ? v.score : ''}</td>
+      <td><strong>${v.name}</strong>${v.parent_company ? '<br><span class="muted">' + v.parent_company + '</span>' : ''}</td>
+      <td>${v.status || '未着手'}</td>
+      <td>${v.owner || ''}</td>
+      <td>${v.next_action || ''}</td>
+      <td>${v.next_action_due || ''}</td>
+      <td class="muted">${v.lead_memo || ''}</td>
+      <td><a href="#" onclick="reviewVc(${v.id}, '候補'); return false;" style="font-size:0.75rem;">解除</a></td>
+    `;
+    rows.appendChild(tr);
+  }
+  document.getElementById('leadEmptyNote').style.display = data.length === 0 ? 'block' : 'none';
+}
+
+async function loadSheetsInfo() {
+  const res = await fetch('/api/sheets/info');
+  const info = await res.json();
+  const link = document.getElementById('sheetLink');
+  if (info.configured && info.url) {
+    link.href = info.url;
+    link.style.display = 'inline';
+  } else {
+    setStatus('sheetsStatus', '未設定: .env に GOOGLE_SERVICE_ACCOUNT_FILE と LEADS_SPREADSHEET_ID を設定してください（docs/sheets-lead-management.md 参照）', false);
+  }
+}
+
+async function sheetsPush() {
+  setStatus('sheetsStatus', 'シートへ反映中…', false);
+  try {
+    const res = await fetch('/api/sheets/push', { method: 'POST' });
+    const data = await res.json();
+    if (data.error) { setStatus('sheetsStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('sheetsStatus', `反映完了: 有効リード${data.pushed}件（シート${data.rows}行）`, false);
+    loadLeads();
+  } catch (e) {
+    setStatus('sheetsStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
+}
+
+async function sheetsPull() {
+  setStatus('sheetsStatus', 'シートから取り込み中…', false);
+  try {
+    const res = await fetch('/api/sheets/pull', { method: 'POST' });
+    const data = await res.json();
+    if (data.error) { setStatus('sheetsStatus', 'エラー: ' + data.error, true); return; }
+    setStatus('sheetsStatus', `取り込み完了: ${data.pulled}件`, false);
+    loadLeads();
+  } catch (e) {
+    setStatus('sheetsStatus', 'エラー: 通信に失敗しました (' + e + ')', true);
+  }
 }
 
 function repCell(v) {
@@ -285,6 +387,8 @@ function reuseCondition(id) {
 loadOptions().then(search);
 loadHistory();
 loadProfile();
+loadLeads();
+loadSheetsInfo();
 </script>
 </body>
 </html>

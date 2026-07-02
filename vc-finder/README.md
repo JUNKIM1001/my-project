@@ -14,6 +14,9 @@
 - **商談提案ポイント**: 商談の場で提案できるシナジー仮説をAIが生成
 - **検証用マスタとの突合**: 手持ちのVCリスト（Excel 2,740件）をDB化し、AI候補と名寄せ・重複統合
 - **承認/却下ワークフロー**: AI候補を選別し、承認済みだけを商談リストとして絞り込み
+- **有効リード管理 (Googleスプレッドシート連携)**: 「リード化」した候補を管理台帳シートへ同期。
+  対応ステータス・担当者・次アクション・メモはシート側で編集し、アプリへ取り込み（双方向同期）。
+  詳細: [docs/sheets-lead-management.md](docs/sheets-lead-management.md)
 - **CSVエクスポート**: テンプレート形式（＃/企業名/設立年/主な投資ステージ/Webサイト/最近の出資・協業ニュース/リレーション有無/適合度/商談提案ポイント/問い合わせ先）
 - **検索履歴**: 過去のAI検索条件と結果を保存・再利用
 
@@ -49,6 +52,8 @@ python3 -m venv .venv
 | `app/scraper/dedupe.py` | 法人名の正規化・名寄せ |
 | `app/scraper/normalize_sectors.py` | 投資領域の表記ゆれ統一 |
 | `app/scraper/crawler.py` | 個別サイト/一覧ページのクロール（補助） |
+| `app/sheets/client.py` | Googleスプレッドシート接続（サービスアカウント認証） |
+| `app/sheets/sync.py` | 有効リードの双方向同期（push/pull/setup、CLIあり） |
 | `app/static/index.html` | 検索UI |
 | `data/vc.db` | SQLite（gitignore対象） |
 

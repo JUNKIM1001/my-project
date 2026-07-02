@@ -10,7 +10,7 @@ from pydantic import BaseModel
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from app.db import get_db, Base, engine
+from app.db import get_db, Base, engine, ensure_columns
 from app.models import VC, SearchHistory, CompanyProfile
 from app.scraper.crawler import crawl_seed_vcs, discover_from_list_page
 from app.scraper.ai_search import ai_search_vcs
@@ -20,6 +20,7 @@ from app.scraper.pitch_reader import build_profile_from_file, build_profile_from
 load_dotenv()
 
 Base.metadata.create_all(bind=engine)
+ensure_columns()
 
 app = FastAPI(title="VC/CVC Finder")
 
@@ -117,6 +118,13 @@ def _serialize(v: VC) -> dict:
         "rep_name": v.rep_name,
         "rep_linkedin": v.rep_linkedin,
         "rep_facebook": v.rep_facebook,
+        "review_status": v.review_status,
+        "owner": v.owner,
+        "next_action": v.next_action,
+        "next_action_due": v.next_action_due,
+        "lead_memo": v.lead_memo,
+        "lead_registered_at": v.lead_registered_at.isoformat() if v.lead_registered_at else None,
+        "sheet_synced_at": v.sheet_synced_at.isoformat() if v.sheet_synced_at else None,
     }
 
 
@@ -349,6 +357,76 @@ def ai_search(req: AISearchRequest, db: Session = Depends(get_db)):
     db.commit()
 
     return {"created": created, "updated": updated, "search_id": search_id, "candidates": result["candidates"]}
+
+
+class ReviewRequest(BaseModel):
+    review_status: str  # 承認（=有効リード） / 却下 / 候補
+
+
+@app.post("/api/vcs/{vc_id}/review")
+def review_vc(vc_id: int, req: ReviewRequest, db: Session = Depends(get_db)):
+    if req.review_status not in ("承認", "却下", "候補"):
+        return {"error": "review_status は 承認 / 却下 / 候補 のいずれかを指定してください"}
+    vc = db.query(VC).filter(VC.id == vc_id).first()
+    if vc is None:
+        return {"error": f"id={vc_id} のVCが見つかりません"}
+    vc.review_status = req.review_status
+    if req.review_status == "承認":
+        if vc.lead_registered_at is None:
+            vc.lead_registered_at = func.now()
+        if not vc.status:
+            vc.status = "未着手"
+    db.commit()
+    return {"id": vc.id, "name": vc.name, "review_status": vc.review_status}
+
+
+@app.get("/api/leads")
+def list_leads(db: Session = Depends(get_db)):
+    """有効リード（承認済み）の一覧。営業管理列も含めて返す。"""
+    from app.sheets.sync import qualified_leads
+
+    return [_serialize(v) for v in qualified_leads(db)]
+
+
+@app.get("/api/sheets/info")
+def sheets_info():
+    from app.sheets.client import get_config
+
+    cfg = get_config()
+    return {"configured": cfg["configured"], "url": cfg["url"], "worksheet": cfg["worksheet"]}
+
+
+@app.post("/api/sheets/setup")
+def sheets_setup():
+    from app.sheets.client import SheetsConfigError
+    from app.sheets.sync import setup_sheet
+
+    try:
+        return setup_sheet()
+    except SheetsConfigError as e:
+        return {"error": str(e)}
+
+
+@app.post("/api/sheets/push")
+def sheets_push(db: Session = Depends(get_db)):
+    from app.sheets.client import SheetsConfigError
+    from app.sheets.sync import push_leads
+
+    try:
+        return push_leads(db)
+    except SheetsConfigError as e:
+        return {"error": str(e)}
+
+
+@app.post("/api/sheets/pull")
+def sheets_pull(db: Session = Depends(get_db)):
+    from app.sheets.client import SheetsConfigError
+    from app.sheets.sync import pull_leads
+
+    try:
+        return pull_leads(db)
+    except SheetsConfigError as e:
+        return {"error": str(e)}
 
 
 @app.get("/api/history")

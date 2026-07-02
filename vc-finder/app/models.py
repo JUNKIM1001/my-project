@@ -19,8 +19,14 @@ class VC(Base):
     regions = Column(Text, nullable=True)  # comma-separated
     entertainment_track_record = Column(String, nullable=True)  # エンタメコンテンツ関連SU出資経歴
     recent_entertainment_investment = Column(String, nullable=True)  # 3年以内のエンタメ投資実績
-    status = Column(String, nullable=True)  # 対応ステータス（未着手/連絡済み等）
-    review_status = Column(String, nullable=True)  # AI候補の確認状態: 候補/承認/却下（元リスト由来はNULL）
+    status = Column(String, nullable=True)  # 対応ステータス（未着手/連絡済み/商談設定/成約/見送り等）
+    review_status = Column(String, nullable=True)  # AI候補の確認状態: 候補/承認/却下（承認=有効リード）
+    owner = Column(String, nullable=True)          # リード担当者（シート側で入力）
+    next_action = Column(String, nullable=True)    # 次アクション（シート側で入力）
+    next_action_due = Column(String, nullable=True)  # 次アクション期日（シート側で入力・文字列のまま保持）
+    lead_memo = Column(Text, nullable=True)        # 商談メモ（シート側で入力）
+    lead_registered_at = Column(DateTime(timezone=True), nullable=True)  # 有効リード化した日時
+    sheet_synced_at = Column(DateTime(timezone=True), nullable=True)     # 最後にシートと同期した日時
     relevant_assets = Column(Text, nullable=True)  # シナジーが期待できる事業アセット（comma-separated）
     investment_active = Column(String, nullable=True)  # 出資機能が稼働中か（AI確認結果）
     investment_evidence = Column(Text, nullable=True)  # 出資機能の根拠

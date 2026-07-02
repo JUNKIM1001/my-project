@@ -17,3 +17,22 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+def ensure_columns():
+    """既存のSQLiteテーブルにモデル定義の新列を追加する（create_allは列追加をしないため）。"""
+    from sqlalchemy import inspect, text
+
+    inspector = inspect(engine)
+    with engine.begin() as conn:
+        for table in Base.metadata.sorted_tables:
+            if not inspector.has_table(table.name):
+                continue
+            existing = {c["name"] for c in inspector.get_columns(table.name)}
+            for column in table.columns:
+                if column.name in existing:
+                    continue
+                col_type = column.type.compile(engine.dialect)
+                conn.execute(text(
+                    f'ALTER TABLE {table.name} ADD COLUMN "{column.name}" {col_type}'
+                ))
