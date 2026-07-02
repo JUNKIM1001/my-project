@@ -6129,6 +6129,79 @@
     "shobu",
     "yakubarai"
    ]
+  },
+  {
+   "slug": "jikkai_mandara",
+   "name": "十界曼荼羅",
+   "kana": "じっかいまんだら",
+   "kind": "buddha",
+   "category": "本尊",
+   "description": "日蓮聖人が顕した文字曼荼羅。中央に南無妙法蓮華経の題目を大書し十界の諸尊を配した日蓮宗の本尊。",
+   "goriyaku": [
+    "jouju",
+    "anchin",
+    "kaiun"
+   ]
+  },
+  {
+   "slug": "komagata_okami",
+   "name": "駒形大神",
+   "kana": "こまがたおおかみ",
+   "kind": "kami",
+   "category": "祭神",
+   "description": "天照大御神・天常立尊・國狭槌尊・吾勝尊・置瀬尊・彦火火出見尊の六柱の総称。馬の守護神で勝負運の神。",
+   "goriyaku": [
+    "shobu",
+    "kotsu_anzen"
+   ]
+  },
+  {
+   "slug": "tsuchimikado_tenno",
+   "name": "土御門天皇",
+   "kana": "つちみかどてんのう",
+   "kind": "kami",
+   "category": "御霊",
+   "description": "第83代天皇。承久の乱後、自ら土佐・阿波へ遷幸した。水無瀬神宮に後鳥羽・順徳両帝と共に祀られる。",
+   "goriyaku": [
+    "anchin",
+    "jouju"
+   ]
+  },
+  {
+   "slug": "juntoku_tenno",
+   "name": "順徳天皇",
+   "kana": "じゅんとくてんのう",
+   "kind": "kami",
+   "category": "御霊",
+   "description": "第84代天皇。承久の乱で佐渡に配流された。歌道に優れ百人一首にも歌を残す学芸の帝。",
+   "goriyaku": [
+    "anchin",
+    "gakumon"
+   ]
+  },
+  {
+   "slug": "saisho_gongen",
+   "name": "西照大権現",
+   "kana": "さいしょうだいごんげん",
+   "kind": "buddha",
+   "category": "権現",
+   "description": "阿讃山地・大瀧山の山岳神。四国別格二十霊場結願所大瀧寺の本尊で、厄除け開運の権現として信仰される。",
+   "goriyaku": [
+    "yakubarai",
+    "kaiun"
+   ]
+  },
+  {
+   "slug": "yodohime",
+   "name": "與止日女命",
+   "kana": "よどひめのみこと",
+   "kind": "kami",
+   "category": "国津神",
+   "description": "肥前国一宮・與止日女神社の祭神。淀姫とも。神功皇后の妹と伝わり豊玉姫と同一視される川と水の女神。",
+   "goriyaku": [
+    "mizu_amagoi",
+    "suisan_noko"
+   ]
   }
  ],
  "shrines": [
@@ -6184,7 +6257,10 @@
    "address": "大阪府大阪市阿倍野区北畠3-7-20",
    "lat": 34.62833,
    "lng": 135.499528,
-   "deities": [],
+   "deities": [
+    "kitabatake_chikafusa",
+    "kitabatake_akiie"
+   ],
    "website": "https://www.abenojinjya.com/",
    "description": "北畠親房・顕家を祀る建武中興十五社の一社。",
    "source": "https://ja.wikipedia.org/wiki/阿部野神社",
@@ -7023,7 +7099,9 @@
    "address": "大分県国東市国東町安国寺2245",
    "lat": 33.5615,
    "lng": 131.719778,
-   "deities": [],
+   "deities": [
+    "shaka_nyorai"
+   ],
    "website": null,
    "description": "足利尊氏が全国に建てた安国寺の一。国宝の足利尊氏木像を蔵する六郷満山の禅刹。",
    "source": "https://ja.wikipedia.org/wiki/安国寺_(国東市)",
@@ -11613,7 +11691,9 @@
    "address": "長崎県長崎市筑後町2-56",
    "lat": 32.7533083,
    "lng": 129.8749722,
-   "deities": [],
+   "deities": [
+    "shaka_nyorai"
+   ],
    "website": null,
    "description": "唐寺の一つ。長崎観音と巨大フーコー振り子で知られる。",
    "source": "https://ja.wikipedia.org/wiki/福済寺",
@@ -13521,7 +13601,14 @@
    "website": "http://www.haritsunajinja.com/",
    "description": "犬山城下の総鎮守。安産・子授けの神として信仰され犬山祭で有名。",
    "source": "https://ja.wikipedia.org/wiki/針綱神社",
-   "longDescription": "針綱神社（はりつなじんじゃ）は、愛知県犬山市にある神社。『延喜式神名帳』の尾張国丹羽郡「針綱神社」に比定されている。\n安産、子授けにご利益があるという。これは、1537年（天文6年）、織田信康が自ら手彫りの狛犬一対を奉納して安産祈願したことからである。以来、戌の日に安産祈願すると良いとされている。\n三光稲荷神社と同じく犬山城の南の登城入り口近くにある。犬山祭は当社の祭礼。"
+   "longDescription": "針綱神社（はりつなじんじゃ）は、愛知県犬山市にある神社。『延喜式神名帳』の尾張国丹羽郡「針綱神社」に比定されている。\n安産、子授けにご利益があるという。これは、1537年（天文6年）、織田信康が自ら手彫りの狛犬一対を奉納して安産祈願したことからである。以来、戌の日に安産祈願すると良いとされている。\n三光稲荷神社と同じく犬山城の南の登城入り口近くにある。犬山祭は当社の祭礼。",
+   "goriyaku": [
+    "anzan",
+    "kosodate",
+    "yakubarai",
+    "majo_kekkai",
+    "choju"
+   ]
   },
   {
    "slug": "haruna-jinja",
@@ -15801,7 +15888,10 @@
    "address": "熊本県熊本市西区花園4-13-1",
    "lat": 32.816778,
    "lng": 130.689556,
-   "deities": [],
+   "deities": [
+    "jikkai_mandara",
+    "kato_kiyomasa"
+   ],
    "website": "http://www.honmyouji.jp/",
    "description": "加藤清正の菩提寺。浄池廟に清正公を祀り、176段の石段と桜で知られる。",
    "source": "https://ja.wikipedia.org/wiki/本妙寺_(熊本市)"
@@ -19416,7 +19506,9 @@
    "address": "京都府京都市右京区嵯峨小倉山小倉町3",
    "lat": 35.0196389,
    "lng": 135.668675,
-   "deities": [],
+   "deities": [
+    "jikkai_mandara"
+   ],
    "website": "https://jojakko-ji.or.jp/",
    "description": "小倉山の中腹に建つ日蓮宗の名刹。嵯峨野屈指の紅葉の名所。",
    "source": "https://ja.wikipedia.org/wiki/常寂光寺",
@@ -19759,7 +19851,17 @@
    "address": "神奈川県鎌倉市十二所285",
    "lat": 35.323581,
    "lng": 139.581047,
-   "deities": [],
+   "deities": [
+    "kunitokotachi",
+    "toyokumununu",
+    "izanagi",
+    "izanami",
+    "amaterasu",
+    "amenooshihomimi",
+    "ninigi",
+    "hikohohodemi",
+    "ugayafukiaezu"
+   ],
    "website": null,
    "description": "鎌倉十二所の鎮守。天神七代・地神五代の十二神を祀る。",
    "source": "https://ja.wikipedia.org/wiki/十二所神社_(鎌倉市)",
@@ -21305,7 +21407,9 @@
    "address": "鹿児島県出水市野田町下名",
    "lat": 32.067361,
    "lng": 130.26675,
-   "deities": [],
+   "deities": [
+    "senju_kannon"
+   ],
    "website": null,
    "description": "島津氏の菩提寺。栄西開山と伝わる九州屈指の古刹。島津五廟社を擁す。",
    "source": "https://ja.wikipedia.org/wiki/感応寺_(出水市)",
@@ -21378,7 +21482,9 @@
    "address": "岡山県倉敷市阿知2丁目25-22",
    "lat": 34.598028,
    "lng": 133.771722,
-   "deities": [],
+   "deities": [
+    "dainichi_nyorai"
+   ],
    "website": null,
    "description": "倉敷美観地区を見下ろす鶴形山上の古刹。",
    "source": "https://ja.wikipedia.org/wiki/観龍寺_(倉敷市)"
@@ -22471,7 +22577,9 @@
    "address": "京都府京都市右京区花園寺ノ中町11",
    "lat": 35.0248528,
    "lng": 135.7224333,
-   "deities": [],
+   "deities": [
+    "yakushi_nyorai"
+   ],
    "website": null,
    "description": "妙心寺の塔頭。禅の四境地を表す四庭園で知られる。",
    "source": "https://ja.wikipedia.org/wiki/桂春院",
@@ -24043,7 +24151,9 @@
    "address": "広島県広島市東区山根町32-1",
    "lat": 34.403139,
    "lng": 132.48125,
-   "deities": [],
+   "deities": [
+    "shaka_nyorai"
+   ],
    "website": null,
    "description": "浅野家の祈願所となった日蓮宗の本山。本堂・庫裏が重要文化財。",
    "source": "https://ja.wikipedia.org/wiki/國前寺",
@@ -24098,11 +24208,18 @@
    "address": "岩手県奥州市水沢中上野町1-83",
    "lat": 39.136528,
    "lng": 141.138083,
-   "deities": [],
+   "deities": [
+    "komagata_okami"
+   ],
    "website": "http://www.rnac.ne.jp/~komagata/",
    "description": "駒ヶ岳を奥宮とする陸中一宮。駒形大神を祀る。",
    "source": "https://ja.wikipedia.org/wiki/駒形神社",
-   "longDescription": "駒形神社（こまがたじんじゃ）は、岩手県にある神社。奥州市水沢中上野町の本社、胆沢郡金ケ崎町西根の駒ヶ岳山頂の奥宮、胆沢郡金ケ崎町西根雛子沢の里宮からなる。式内社、旧社格は国幣小社で、現在は神社本庁の別表神社。陸中国の一之宮。"
+   "longDescription": "駒形神社（こまがたじんじゃ）は、岩手県にある神社。奥州市水沢中上野町の本社、胆沢郡金ケ崎町西根の駒ヶ岳山頂の奥宮、胆沢郡金ケ崎町西根雛子沢の里宮からなる。式内社、旧社格は国幣小社で、現在は神社本庁の別表神社。陸中国の一之宮。",
+   "goriyaku": [
+    "shobu",
+    "kotsu_anzen",
+    "gakugyo"
+   ]
   },
   {
    "slug": "komatsu-tenmangu",
@@ -25906,10 +26023,15 @@
    "address": "大阪府池田市室町7-4",
    "lat": 34.822917,
    "lng": 135.422083,
-   "deities": [],
+   "deities": [
+    "nintoku_tenno"
+   ],
    "website": "https://kureha-shrine.com/",
    "description": "機織の祖神・呉服媛を祀る。「ごふく(呉服)」の語源とされる。",
-   "source": "https://ja.wikipedia.org/wiki/呉服神社"
+   "source": "https://ja.wikipedia.org/wiki/呉服神社",
+   "goriyaku": [
+    "geino"
+   ]
   },
   {
    "slug": "kurihama-tenjinsha",
@@ -27586,7 +27708,11 @@
    "address": "大阪府三島郡島本町広瀬3-10-24",
    "lat": 34.884889,
    "lng": 135.673083,
-   "deities": [],
+   "deities": [
+    "gotoba_tenno",
+    "tsuchimikado_tenno",
+    "juntoku_tenno"
+   ],
    "website": "https://www.minasejingu.jp/",
    "description": "後鳥羽天皇ら三帝を祀る大阪府唯一の神宮。",
    "source": "https://ja.wikipedia.org/wiki/水無瀬神宮",
@@ -29571,11 +29697,18 @@
    "address": "千葉県市川市中山二丁目10番1号",
    "lat": 35.720861,
    "lng": 139.949361,
-   "deities": [],
+   "deities": [
+    "jikkai_mandara",
+    "kishimojin"
+   ],
    "website": "https://hokekyoji2101.wixsite.com/nakayama",
    "description": "日蓮宗大本山。日蓮真筆の国宝を所蔵。五重塔・法華堂は重文。",
    "source": "https://ja.wikipedia.org/wiki/法華経寺",
-   "longDescription": "法華経寺（ほけきょうじ）は、千葉県市川市中山二丁目にある日蓮宗大本山の寺院である。鎌倉時代の文応元年（1260年）創立。中山法華経寺（なかやまほけきょうじ）とも呼ばれる。\n山号は正中山（しょうちゅうざん）で、所在地名である中山の由来になったとの説もある。"
+   "longDescription": "法華経寺（ほけきょうじ）は、千葉県市川市中山二丁目にある日蓮宗大本山の寺院である。鎌倉時代の文応元年（1260年）創立。中山法華経寺（なかやまほけきょうじ）とも呼ばれる。\n山号は正中山（しょうちゅうざん）で、所在地名である中山の由来になったとの説もある。",
+   "goriyaku": [
+    "kosodate",
+    "jouju"
+   ]
   },
   {
    "slug": "nakayama-jinja-saitama",
@@ -32576,11 +32709,21 @@
    "address": "大阪府八尾市恩智中町5-10",
    "lat": 34.606611,
    "lng": 135.6385,
-   "deities": [],
+   "deities": [
+    "toyouke"
+   ],
    "website": null,
    "description": "河内国二宮。大御食津彦大神らを祀る名神大社。",
    "source": "https://ja.wikipedia.org/wiki/恩智神社",
-   "longDescription": "恩智神社（おんじじんじゃ/おんぢじんじゃ/おんちじんじゃ）は、大阪府八尾市恩智中町にある神社。式内社（名神大社）で、河内国二宮と伝わる。旧社格は府社。神使は兎と龍とされる。"
+   "longDescription": "恩智神社（おんじじんじゃ/おんぢじんじゃ/おんちじんじゃ）は、大阪府八尾市恩智中町にある神社。式内社（名神大社）で、河内国二宮と伝わる。旧社格は府社。神使は兎と龍とされる。",
+   "goriyaku": [
+    "yakubarai",
+    "enmusubi",
+    "kotsu_anzen",
+    "tabi_anzen",
+    "suisan_noko",
+    "kanai_anzen"
+   ]
   },
   {
    "slug": "onjoji",
@@ -32612,7 +32755,9 @@
    "address": "山梨県甲府市伊勢2丁目",
    "lat": 35.647806,
    "lng": 138.568361,
-   "deities": [],
+   "deities": [
+    "jikkai_mandara"
+   ],
    "website": null,
    "description": "甲斐の日蓮宗有力寺院。八角形の本堂で知られる。",
    "source": "https://ja.wikipedia.org/wiki/遠光寺",
@@ -32809,7 +32954,12 @@
    "website": "http://ooagata.urdr.weblife.me/",
    "description": "尾張国二宮。姫の宮があり安産・縁結びの信仰を集める。",
    "source": "https://ja.wikipedia.org/wiki/大縣神社",
-   "longDescription": "大縣神社（おおあがたじんじゃ）は、愛知県犬山市にある神社である。旧社格は、式内社（名神大社）・尾張国二宮・旧国幣中社・別表神社。\n新字体で「大県神社（読みは同じ）」と表記する場合もある。"
+   "longDescription": "大縣神社（おおあがたじんじゃ）は、愛知県犬山市にある神社である。旧社格は、式内社（名神大社）・尾張国二宮・旧国幣中社・別表神社。\n新字体で「大県神社（読みは同じ）」と表記する場合もある。",
+   "goriyaku": [
+    "anzan",
+    "kosodate",
+    "enmusubi"
+   ]
   },
   {
    "slug": "oohi-jinja",
@@ -33252,7 +33402,9 @@
    "address": "徳島県美馬市脇町西大谷674",
    "lat": 34.121903,
    "lng": 134.127131,
-   "deities": [],
+   "deities": [
+    "saisho_gongen"
+   ],
    "website": null,
    "description": "四国別格二十霊場第20番。標高約910mの最高所霊場。",
    "source": "https://ja.wikipedia.org/wiki/大瀧寺",
@@ -33434,7 +33586,11 @@
    "website": null,
    "description": "有明海の海中に立つ鳥居で知られる。大魚大明神を祀り、干満で姿を変える。",
    "source": "https://ja.wikipedia.org/wiki/大魚神社",
-   "longDescription": "大魚神社（おおうおじんじゃ）は、佐賀県藤津郡太良町多良にある神社。有明海に面した場所にあり、複数の鳥居が海中に建てられている。"
+   "longDescription": "大魚神社（おおうおじんじゃ）は、佐賀県藤津郡太良町多良にある神社。有明海に面した場所にあり、複数の鳥居が海中に建てられている。",
+   "goriyaku": [
+    "kaijo_anzen",
+    "suisan_noko"
+   ]
   },
   {
    "slug": "oushiko-jinja",
@@ -34538,7 +34694,9 @@
    "address": "神奈川県藤沢市片瀬三丁目13番37号",
    "lat": 35.3117139,
    "lng": 139.4893583,
-   "deities": [],
+   "deities": [
+    "nichiren"
+   ],
    "website": "https://ryuukoji.com/",
    "description": "日蓮の龍ノ口法難の地に建つ霊跡本山。五重塔を有する。",
    "source": "https://ja.wikipedia.org/wiki/龍口寺",
@@ -38292,7 +38450,9 @@
    "address": "長崎県長崎市玉園町3-77",
    "lat": 32.7530472,
    "lng": 129.877075,
-   "deities": [],
+   "deities": [
+    "shaka_nyorai"
+   ],
    "website": null,
    "description": "長崎四福寺の一つ。広東出身者ゆかりの唐寺。重要文化財4棟。",
    "source": "https://ja.wikipedia.org/wiki/聖福寺_(長崎市)",
@@ -38983,11 +39143,16 @@
    "address": "千葉県成田市宗吾1-558",
    "lat": 35.7615556,
    "lng": 140.2795833,
-   "deities": [],
+   "deities": [
+    "kangiten"
+   ],
    "website": null,
    "description": "義民・佐倉惣五郎を祀る霊堂。あじさい寺としても知られる。",
    "source": "https://ja.wikipedia.org/wiki/宗吾霊堂",
-   "longDescription": "東勝寺（とうしょうじ）は、千葉県成田市にある真言宗豊山派の寺である。山号は鳴鐘山。義民・佐倉惣五郎の霊が祀られていることから宗吾霊堂（そうごれいどう）と広くよばれる。\n2016年4月25日、登録名「宗吾霊堂」として日本遺産構成文化財に認定。"
+   "longDescription": "東勝寺（とうしょうじ）は、千葉県成田市にある真言宗豊山派の寺である。山号は鳴鐘山。義民・佐倉惣五郎の霊が祀られていることから宗吾霊堂（そうごれいどう）と広くよばれる。\n2016年4月25日、登録名「宗吾霊堂」として日本遺産構成文化財に認定。",
+   "goriyaku": [
+    "jouju"
+   ]
   },
   {
    "slug": "soji-ji-soin",
@@ -46355,7 +46520,9 @@
    "address": "佐賀県佐賀市大和町大字川上1",
    "lat": 33.326306,
    "lng": 130.26833,
-   "deities": [],
+   "deities": [
+    "yodohime"
+   ],
    "website": null,
    "description": "肥前国一宮とされる古社。與止日女命を祀り、嘉瀬川のほとりに鎮座する。",
    "source": "https://ja.wikipedia.org/wiki/與止日女神社",
