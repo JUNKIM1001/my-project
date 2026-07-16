@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { loadStore } from './store'
+import { loadStoreFromSupabase } from './supabase'
 
 const StoreCtx = createContext(null)
 const FavCtx = createContext(null)
@@ -7,7 +8,10 @@ const GeoCtx = createContext(null)
 
 export function AppProviders({ children }) {
   const [store, setStore] = useState(null)
-  useEffect(() => { loadStore().then(setStore) }, [])
+  useEffect(() => {
+    // Supabaseが設定されていればそこから取得、無ければ同梱appdata.jsonにフォールバック
+    loadStoreFromSupabase().then((s) => (s ? setStore(s) : loadStore().then(setStore)))
+  }, [])
 
   // お気に入り（localStorage）
   const [slugs, setSlugs] = useState(() => {

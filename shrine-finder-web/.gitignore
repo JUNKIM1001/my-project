@@ -3,3 +3,9 @@ dist/
 .DS_Store
 *.log
 .vite/
+.env
+.env.local
+.env.*.local
+.vercel/
+.vercel
+.env*

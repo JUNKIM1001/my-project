@@ -6,6 +6,18 @@ const RECOMMENDED = [
   'nikko-toshogu', 'senso-ji', 'fujisan-hongu-sengen', 'kumano-hongu-taisha',
 ]
 
+// 8地方区分（北→南）。地域から探す画面のグルーピングと表示順。
+export const REGIONS = [
+  { name: '北海道', prefs: ['北海道'] },
+  { name: '東北', prefs: ['青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県'] },
+  { name: '関東', prefs: ['茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県'] },
+  { name: '中部', prefs: ['新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', '岐阜県', '静岡県', '愛知県'] },
+  { name: '近畿', prefs: ['三重県', '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県'] },
+  { name: '中国', prefs: ['鳥取県', '島根県', '岡山県', '広島県', '山口県'] },
+  { name: '四国', prefs: ['徳島県', '香川県', '愛媛県', '高知県'] },
+  { name: '九州・沖縄', prefs: ['福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県'] },
+]
+
 function haversine(a, b) {
   const R = 6371000, d = (x) => (x * Math.PI) / 180
   const dla = d(b.lat - a.lat), dlo = d(b.lng - a.lng)
@@ -21,6 +33,24 @@ const HTTP = /^https?:\/\//i
 export const safeURL = (u) => (u && HTTP.test(u) ? u : null)
 
 export function isNationalTreasure(s) { return s.nt === true }
+export function hasGoshuin(s) { return s.goshuin === true }
+
+// テレビ放映が「1年以内」か（放映日が「1年前の同日」以降〜今日まで）。
+// 暦日で判定（タイムゾーン非依存の YYYY-MM-DD 文字列比較）。実行時の現在日で
+// 判定するので、1年経過すると自動的にバッジが消える。未来日は非表示。
+const ymd = (d) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+export function tvAiredDate(s) {
+  const t = s.tv && s.tv.date ? Date.parse(s.tv.date) : NaN
+  return Number.isNaN(t) ? null : t
+}
+export function tvActive(s, now = new Date()) {
+  const d = s.tv && s.tv.date
+  if (!d || !/^\d{4}-\d{2}-\d{2}$/.test(d)) return false
+  const today = ymd(now)
+  const cutoff = ymd(new Date(now.getFullYear() - 1, now.getMonth(), now.getDate()))
+  return d >= cutoff && d <= today
+}
 export function isShrine(s) { return s.type === 'shrine' }
 export function typeLabel(s) { return isShrine(s) ? '神社' : '寺' }
 export function deityRoleLabel(s) { return isShrine(s) ? '御祭神' : '本尊' }
@@ -66,6 +96,27 @@ export function createStore(data) {
     nationalTreasureCount: () => shrines.filter(isNationalTreasure).length,
     prefectureCount: () => new Set(shrines.map((s) => s.pref)).size,
 
+    // 都道府県ごとの社寺件数 { '北海道': 12, ... }
+    prefCounts() {
+      const m = {}
+      for (const s of shrines) m[s.pref] = (m[s.pref] || 0) + 1
+      return m
+    },
+
+    // ある都道府県の社寺一覧。origin があれば近い順、無ければ市区町村→よみ順。
+    shrinesInPref(pref, origin = null) {
+      const list = shrines.filter((s) => s.pref === pref)
+      if (origin) return list.map((s) => [s, haversine(origin, s)]).sort((a, b) => a[1] - b[1])
+      return list
+        .slice()
+        .sort(
+          (a, b) =>
+            (a.city || '').localeCompare(b.city || '', 'ja') ||
+            (a.kana || '').localeCompare(b.kana || '', 'ja')
+        )
+        .map((s) => [s, null])
+    },
+
     nearby(origin, { goriyaku: g = null, type = null } = {}) {
       return shrines
         .filter((s) => (g == null || goriyakuSlugsOf(s).includes(g)) && (type == null || s.type === type))
@@ -101,12 +152,14 @@ export function createStore(data) {
       return scored.slice(0, limit).map((x) => x[0])
     },
 
-    search(query, { type = null, ntOnly = false, origin = null } = {}) {
+    search(query, { type = null, ntOnly = false, goshuinOnly = false, tvOnly = false, origin = null } = {}) {
       const q = (query || '').trim()
       let list = shrines.filter(
         (s) =>
           (type == null || s.type === type) &&
           (!ntOnly || isNationalTreasure(s)) &&
+          (!goshuinOnly || hasGoshuin(s)) &&
+          (!tvOnly || tvActive(s)) &&
           (q === '' || s.name.includes(q) || (s.kana || '').includes(q) || s.pref.includes(q) || s.city.includes(q))
       )
       if (origin) return list.map((s) => [s, haversine(origin, s)]).sort((a, b) => a[1] - b[1])
@@ -119,6 +172,15 @@ export function createStore(data) {
       if (!origin) return list
       return list.slice().sort((a, b) => haversine(origin, a) - haversine(origin, b))
     },
+
+    // 直近1年にテレビ放映された社寺（放映日の新しい順）。1年経過分は自動的に外れる。
+    tvFeatured(now = new Date()) {
+      return shrines
+        .filter((s) => tvActive(s, now))
+        .sort((a, b) => tvAiredDate(b) - tvAiredDate(a))
+    },
+
+    goshuinCount: () => shrines.filter(hasGoshuin).length,
 
     imageCredit(s) {
       if (!s.imageURL) return null

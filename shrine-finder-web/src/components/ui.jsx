@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useStore } from '../data/providers'
 import {
-  safeURL, isShrine, isNationalTreasure, typeLabel, deityRoleLabel, distanceLabel,
+  safeURL, isShrine, isNationalTreasure, hasGoshuin, tvActive,
+  typeLabel, deityRoleLabel, distanceLabel,
 } from '../data/store'
 
 /** オリジナルのシンボルアート（神社=鳥居 / 寺=五重塔） */
@@ -61,6 +62,12 @@ export function TypeBadge({ shrine }) {
 export function NTBadge() {
   return <span className="badge b-nt">★国宝</span>
 }
+export function TVBadge() {
+  return <span className="badge b-tv">📺 テレビ放映</span>
+}
+export function GoshuinBadge() {
+  return <span className="badge b-goshuin">御朱印</span>
+}
 
 export function GoriyakuTags({ slugs, highlight }) {
   const store = useStore()
@@ -81,6 +88,8 @@ export function ShrineRow({ shrine, highlight, distance }) {
         <span className="row-name">{shrine.name}</span>
         <TypeBadge shrine={shrine} />
         {isNationalTreasure(shrine) && <NTBadge />}
+        {tvActive(shrine) && <TVBadge />}
+        {hasGoshuin(shrine) && <GoshuinBadge />}
         <span className="spacer" />
         {distance != null && <span className="row-dist">{distanceLabel(distance)}</span>}
       </div>

@@ -30,6 +30,12 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/vc-finder\" && .venv/bin/uvicorn app.main:app --port 8420"],
       "port": 8420
+    },
+    {
+      "name": "startup-finder",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/startup-finder\" && .venv/bin/uvicorn app.main:app --port 8430"],
+      "port": 8430
     }
   ]
 }

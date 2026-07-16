@@ -9,8 +9,10 @@ export default function Search() {
   const [q, setQ] = useState('')
   const [type, setType] = useState(null)
   const [ntOnly, setNtOnly] = useState(false)
+  const [goshuinOnly, setGoshuinOnly] = useState(false)
+  const [tvOnly, setTvOnly] = useState(false)
 
-  const results = store.search(q, { type, ntOnly, origin: geo.coords })
+  const results = store.search(q, { type, ntOnly, goshuinOnly, tvOnly, origin: geo.coords })
 
   return (
     <div className="page">
@@ -33,6 +35,12 @@ export default function Search() {
           <button className={type === 'temple' ? 'on' : ''} onClick={() => setType('temple')}>寺</button>
         </div>
         <button className={`chip ${ntOnly ? 'on' : ''}`} onClick={() => setNtOnly((v) => !v)}>★ 国宝</button>
+        <button className={`chip ${goshuinOnly ? 'on' : ''}`} onClick={() => setGoshuinOnly((v) => !v)}>御朱印</button>
+        <button className={`chip ${tvOnly ? 'on' : ''}`} onClick={() => setTvOnly((v) => !v)}>📺 テレビ紹介</button>
+      </div>
+
+      <div className="sec-head" style={{ padding: '4px 14px' }}>
+        <span className="muted small">{results.length}件{results.length > 300 && '（上位300件を表示）'}</span>
       </div>
 
       <div className="list">

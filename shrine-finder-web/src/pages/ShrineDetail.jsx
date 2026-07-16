@@ -1,8 +1,8 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { MapContainer, TileLayer, CircleMarker } from 'react-leaflet'
 import { useStore, useFavorites } from '../data/providers'
-import { ShrineHero, TypeBadge, NTBadge, GoriyakuTags, RecommendCard } from '../components/ui'
-import { safeURL, isShrine, isNationalTreasure, deityRoleLabel } from '../data/store'
+import { ShrineHero, TypeBadge, NTBadge, TVBadge, GoshuinBadge, GoriyakuTags, RecommendCard } from '../components/ui'
+import { safeURL, isShrine, isNationalTreasure, hasGoshuin, tvActive, deityRoleLabel } from '../data/store'
 
 export default function ShrineDetail() {
   const { slug } = useParams()
@@ -33,11 +33,20 @@ export default function ShrineDetail() {
         <div className="row-head">
           <TypeBadge shrine={s} />
           {isNationalTreasure(s) && <NTBadge />}
+          {tvActive(s) && <TVBadge />}
+          {hasGoshuin(s) && <GoshuinBadge />}
           <span className="muted small">{s.sect}</span>
         </div>
         <div className="muted">{s.kana}</div>
         <p>{s.description}</p>
         {s.longDescription && <p className="muted small">{s.longDescription}</p>}
+        {tvActive(s) && (
+          <p className="tv-note">
+            📺 {s.tv.program ? `「${s.tv.program}」` : 'テレビ'}で紹介（{s.tv.date}）
+            {safeURL(s.tv.source) && <> — <a href={s.tv.source} target="_blank" rel="noreferrer">出典</a></>}
+          </p>
+        )}
+        {hasGoshuin(s) && <p className="muted small">御朱印：あり</p>}
       </section>
 
       <section className="sec">
