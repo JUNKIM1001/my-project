@@ -69,13 +69,23 @@ export function GoshuinBadge() {
   return <span className="badge b-goshuin">御朱印</span>
 }
 
-export function GoriyakuTags({ slugs, highlight }) {
+export function GoriyakuTags({ slugs, highlight, limit }) {
   const store = useStore()
+  let names = store.names(slugs)
+  // 該当ご利益（highlight）を先頭に寄せる
+  if (highlight) {
+    const hit = names.filter((g) => g.slug === highlight)
+    const rest = names.filter((g) => g.slug !== highlight)
+    names = [...hit, ...rest]
+  }
+  const shown = limit ? names.slice(0, limit) : names
+  const extra = limit ? names.length - shown.length : 0
   return (
     <div className="tags">
-      {store.names(slugs).map((g) => (
+      {shown.map((g) => (
         <span key={g.slug} className={`tag ${g.slug === highlight ? 'hit' : ''}`}>{g.name}</span>
       ))}
+      {extra > 0 && <span className="tag tag-more">ほか＋{extra}</span>}
     </div>
   )
 }
@@ -96,7 +106,7 @@ export function ShrineRow({ shrine, highlight, distance }) {
       <div className="row-meta">
         {shrine.pref} {shrine.city}・{deityRoleLabel(shrine)}：{store.deitiesOf(shrine).map((d) => d.name).join('、')}
       </div>
-      <GoriyakuTags slugs={store.goriyakuSlugsOf(shrine)} highlight={highlight} />
+      <GoriyakuTags slugs={store.goriyakuSlugsOf(shrine)} highlight={highlight} limit={4} />
     </Link>
   )
 }
