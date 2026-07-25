@@ -25,6 +25,10 @@ final class DataStore: ObservableObject {
     /// CC0/PD写真のクレジットと画像キャッシュ
     private var credits: [String: PhotoCredit] = [:]
     private var photoCache: [String: UIImage] = [:]
+    /// 読み込み時に1回だけ計算する集計（bodyから毎回2,086件を走査しないため）
+    private var prefCountsCache: [String: Int] = [:]
+    private var tvCandidates: [Shrine] = []
+    private var goriyakuCountsCache: [(Goriyaku, Int)] = []
 
     init() { load() }
 
@@ -51,6 +55,19 @@ final class DataStore: ObservableObject {
             }
             shrineGoriyaku[shrine.slug] = ordered
         }
+
+        // 一覧・ホームで繰り返し使う集計は、ここで1回だけ計算しておく
+        var counts: [String: Int] = [:]
+        for s in shrines { counts[s.pref, default: 0] += 1 }
+        prefCountsCache = counts
+        tvCandidates = shrines.filter { $0.tv != nil }
+            .sorted { ($0.tv?.date ?? "") > ($1.tv?.date ?? "") }
+        goriyakuCountsCache = goriyaku.compactMap { g in
+            let c = shrines.reduce(into: 0) { acc, s in
+                if (shrineGoriyaku[s.slug] ?? []).contains(g.slug) { acc += 1 }
+            }
+            return c > 0 ? (g, c) : nil
+        }.sorted { $0.1 > $1.1 }
 
         if let u = Bundle.main.url(forResource: "photo_credits", withExtension: "json"),
            let d = try? Data(contentsOf: u),
@@ -97,6 +114,39 @@ final class DataStore: ObservableObject {
     // MARK: 集計（情報画面用）
     var nationalTreasureCount: Int { shrines.lazy.filter(\.isNationalTreasure).count }
     var prefectureCount: Int { Set(shrines.map(\.pref)).count }
+    var goshuinCount: Int { shrines.lazy.filter(\.hasGoshuin).count }
+
+    // MARK: 地域から探す
+    /// 8地方区分（北→南）。地域画面のグルーピングと表示順。
+    static let regions: [(name: String, prefs: [String])] = [
+        ("北海道", ["北海道"]),
+        ("東北", ["青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県"]),
+        ("関東", ["茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県"]),
+        ("中部", ["新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県"]),
+        ("近畿", ["三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県"]),
+        ("中国", ["鳥取県", "島根県", "岡山県", "広島県", "山口県"]),
+        ("四国", ["徳島県", "香川県", "愛媛県", "高知県"]),
+        ("九州・沖縄", ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"]),
+    ]
+
+    /// 都道府県ごとの社寺件数（読み込み時に1回だけ集計してキャッシュ）
+    func prefCounts() -> [String: Int] { prefCountsCache }
+
+    /// ある都道府県の社寺。現在地があれば近い順、無ければ市区町村→よみ順。
+    func shrines(inPref pref: String, near origin: CLLocation? = nil) -> [(Shrine, Double?)] {
+        let list = shrines.filter { $0.pref == pref }
+        if let origin {
+            return list.map { ($0, origin.distance(from: $0.location)) }
+                       .sorted { ($0.1 ?? 0) < ($1.1 ?? 0) }
+        }
+        return list.sorted { ($0.city, $0.kana) < ($1.city, $1.kana) }.map { ($0, nil) }
+    }
+
+    /// 直近1年にテレビ放映された社寺（放映日の新しい順）。1年経過分は自動的に外れる。
+    /// tv を持つ社寺だけを候補として保持し、1年判定のみ都度行う（全件走査を避ける）。
+    func tvFeatured() -> [Shrine] {
+        tvCandidates.filter(\.isTVActive)
+    }
 
     /// 名称・かな・都道府県・市区町村でのフリーワード検索（種別・国宝・近い順の絞り込み付き）
     func search(_ query: String, type: String? = nil, nationalTreasureOnly: Bool = false,
@@ -136,13 +186,8 @@ final class DataStore: ObservableObject {
     func shrines(enshrining deitySlug: String) -> [Shrine] {
         shrines.filter { $0.deities.contains(deitySlug) }
     }
-    /// ご利益ごとの社寺件数（多い順）。0件は除外。
-    func goriyakuCounts() -> [(Goriyaku, Int)] {
-        goriyaku.compactMap { g in
-            let c = shrines(forGoriyaku: g.slug).count
-            return c > 0 ? (g, c) : nil
-        }.sorted { $0.1 > $1.1 }
-    }
+    /// ご利益ごとの社寺件数（多い順）。0件は除外。読み込み時にキャッシュ済み。
+    func goriyakuCounts() -> [(Goriyaku, Int)] { goriyakuCountsCache }
 
     /// 地図に表示されている矩形範囲内の社寺（中心からの距離付き・近い順・上限あり）
     func shrines(latMin: Double, latMax: Double, lngMin: Double, lngMax: Double,

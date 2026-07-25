@@ -24,6 +24,7 @@
 		93233728B8C5A5CBE08EB2B4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDC44DC7F6C0692D1EAF227 /* Models.swift */; };
 		9C99BD47F1675993F0C305A4 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8591A19DD8FFE3E53144E1B /* AcknowledgementsView.swift */; };
 		A55DE6F30583407F831D189D /* fujisan-hongu-sengen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EDC89A8DDEEF6020D69083B4 /* fujisan-hongu-sengen.jpg */; };
+		A59A74C9AE0EFA1B5DBBC221 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE568B55218FB2D07B632BA /* RegionView.swift */; };
 		B2E51BAC2E612C6247C0BFBC /* ShrineFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8246AE1E95B5A00441AFE /* ShrineFinderApp.swift */; };
 		B5CA782E5C5AB5FA44D4F9FA /* ShrineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289243E4CD72F45E698F7009 /* ShrineDetailView.swift */; };
 		B6754E74AED11FF01505AFAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A896B7ACF85D7362C3F6D10 /* HomeView.swift */; };
@@ -65,6 +66,7 @@
 		C4B00B381A1C967C22B6BEEA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		CDCB8B3ECE9E81C81CFBC5B8 /* appdata.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appdata.json; sourceTree = "<group>"; };
 		DAD842F93FAF0B865C2AC1EE /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
+		DEE568B55218FB2D07B632BA /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
 		E0824F7E0ADAA7C462573CBF /* ShrineFinder.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ShrineFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8591A19DD8FFE3E53144E1B /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 		E93E5FCCFFA9442889B0A269 /* sumiyoshi-taisha.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sumiyoshi-taisha.jpg"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				392BCB7F4CAC021911476371 /* FavoritesView.swift */,
 				1A896B7ACF85D7362C3F6D10 /* HomeView.swift */,
 				AE333B7B164EEF23AC655665 /* NearbyView.swift */,
+				DEE568B55218FB2D07B632BA /* RegionView.swift */,
 				F1040C5277ECE1837F4D0529 /* SearchView.swift */,
 				289243E4CD72F45E698F7009 /* ShrineDetailView.swift */,
 				F1C552768D319055C3D00FA8 /* ShrineHeroView.swift */,
@@ -282,6 +285,7 @@
 				BD8DD10F99C4738C4481C08C /* LocationService.swift in Sources */,
 				93233728B8C5A5CBE08EB2B4 /* Models.swift in Sources */,
 				880DF532A8C912F9996676D3 /* NearbyView.swift in Sources */,
+				A59A74C9AE0EFA1B5DBBC221 /* RegionView.swift in Sources */,
 				FE40314AB47DB5DB46DEECEF /* SearchView.swift in Sources */,
 				B5CA782E5C5AB5FA44D4F9FA /* ShrineDetailView.swift in Sources */,
 				B2E51BAC2E612C6247C0BFBC /* ShrineFinderApp.swift in Sources */,

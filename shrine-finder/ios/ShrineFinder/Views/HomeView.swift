@@ -12,6 +12,26 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     recommendSection
 
+                    let tv = store.tvFeatured()
+                    if !tv.isEmpty { tvSection(tv) }
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("地域から探す").font(.title3.bold())
+                        Text("都道府県ごとに神社・お寺を一覧できます。")
+                            .font(.subheadline).foregroundStyle(.secondary)
+                        NavigationLink { RegionGrid().navigationTitle("地域から探す") } label: {
+                            HStack {
+                                Label("全国の社寺を地域から", systemImage: "mappin.and.ellipse")
+                                    .font(.headline)
+                                Spacer()
+                                Image(systemName: "chevron.right").foregroundStyle(.secondary)
+                            }
+                            .padding()
+                            .background(Color(.secondarySystemBackground))
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
+                        }.buttonStyle(.plain)
+                    }
+
                     VStack(alignment: .leading, spacing: 8) {
                         Text("願い事から探す").font(.title3.bold())
                         Text("ご利益を選ぶと、ふさわしい神仏とお参り先が見つかります。")
@@ -31,6 +51,7 @@ struct HomeView: View {
             .navigationDestination(for: Goriyaku.self) { WishResultView(goriyaku: $0) }
             .navigationDestination(for: Shrine.self) { ShrineDetailView(shrine: $0) }
             .navigationDestination(for: Deity.self) { DeityDetailView(deity: $0) }
+            .navigationDestination(for: PrefRef.self) { PrefectureShrinesView(pref: $0.pref) }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     NavigationLink { AboutView() } label: { Image(systemName: "info.circle") }
@@ -40,6 +61,25 @@ struct HomeView: View {
                 }
             }
             .task { location.request() }
+        }
+    }
+
+    private func tvSection(_ shrines: [Shrine]) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Label("最近テレビで紹介", systemImage: "tv.fill").font(.title3.bold())
+                Spacer()
+                Text("直近1年").font(.caption).foregroundStyle(.secondary)
+            }
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(shrines) { s in
+                        NavigationLink(value: s) {
+                            RecommendCard(shrine: s, distance: location.currentLocation?.distance(from: s.location))
+                        }.buttonStyle(.plain)
+                    }
+                }
+            }
         }
     }
 

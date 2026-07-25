@@ -17,16 +17,37 @@ struct ShrineDetailView: View {
             }
             Section {
                 VStack(alignment: .leading, spacing: 8) {
-                    HStack(spacing: 6) {
+                    FlowLayout(spacing: 6) {
                         TypeBadge(shrine: shrine)
                         if shrine.isNationalTreasure { NationalTreasureBadge() }
-                        Text(shrine.sect).font(.caption).foregroundStyle(.secondary)
+                        if shrine.isTVActive { TVBadge() }
+                        if shrine.hasGoshuin { GoshuinBadge() }
                     }
+                    Text(shrine.sect).font(.caption).foregroundStyle(.secondary)
                     Text(shrine.kana).font(.subheadline).foregroundStyle(.secondary)
                     Text(shrine.description).font(.body)
                     if let long = shrine.longDescription, !long.isEmpty {
                         Text(long).font(.callout).foregroundStyle(.secondary)
                             .padding(.top, 2)
+                    }
+                    if shrine.isTVActive, let tv = shrine.tv {
+                        VStack(alignment: .leading, spacing: 6) {
+                            // program はデータ側で既に「」付きに整形済みのため、そのまま表示する
+                            Label("\(tv.program ?? "テレビ")で紹介（\(Shrine.jaDateLabel(tv.date))）",
+                                  systemImage: "tv.fill")
+                                .font(.footnote)
+                                .foregroundStyle(tvAccent)
+                            if let url = shrine.tvSourceURL {
+                                Link(destination: url) {
+                                    Text("出典を見る").font(.footnote).underline()
+                                        .frame(minHeight: 44, alignment: .leading)
+                                }
+                            }
+                        }
+                        .padding(.top, 2)
+                    }
+                    if shrine.hasGoshuin {
+                        Text("御朱印：あり").font(.footnote).foregroundStyle(.secondary)
                     }
                 }.padding(.vertical, 4)
             }

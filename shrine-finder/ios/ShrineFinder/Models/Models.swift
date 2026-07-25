@@ -23,6 +23,13 @@ struct Deity: Codable, Identifiable, Hashable {
     var kindLabel: String { kind == "kami" ? "神様" : "仏様" }
 }
 
+/// 直近のテレビ放映情報（tv フィールド）
+struct TVFeature: Codable, Hashable {
+    let date: String        // "YYYY-MM-DD"
+    let program: String?
+    let source: String?
+}
+
 struct Shrine: Codable, Identifiable, Hashable {
     let slug: String
     let name: String
@@ -43,6 +50,8 @@ struct Shrine: Codable, Identifiable, Hashable {
     let imageLicense: String?   // 例: CC BY-SA 4.0
     let imageAuthor: String?
     let longDescription: String?   // Wikipedia記事の冒頭(歴史・由緒など)
+    let goshuin: Bool?          // 御朱印の授与あり
+    let tv: TVFeature?          // 直近のテレビ放映
     var id: String { slug }
 
     /// 表示用の写真クレジット（実行時にAsyncImageへ添える）
@@ -64,6 +73,51 @@ struct Shrine: Codable, Identifiable, Hashable {
     }
 
     var isNationalTreasure: Bool { nt == true }
+    var hasGoshuin: Bool { goshuin == true }
+    var tvSourceURL: URL? { Shrine.httpURL(tv?.source) }
+
+    /// テレビ放映が「1年以内」か（放映日が1年前の同日以降〜今日まで・暦日判定）。
+    /// 実行時の現在日で判定するので、1年経過すると自動的に非表示になる。
+    var isTVActive: Bool { Shrine.tvActive(tv?.date) }
+
+    /// "YYYY-MM-DD" のパーサ（生成コストを避けて使い回す）
+    private static let isoDayFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.timeZone = .current
+        f.dateFormat = "yyyy-MM-dd"
+        f.calendar = Calendar(identifier: .gregorian)
+        f.isLenient = false
+        return f
+    }()
+    /// 端末が和暦設定でも判定がぶれないようグレゴリオ暦で固定
+    private static let gregorian: Calendar = {
+        var c = Calendar(identifier: .gregorian)
+        c.timeZone = .current
+        return c
+    }()
+    /// 表示用「2026年6月6日」（パースできなければ元の文字列）
+    private static let jaDisplayFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.calendar = Calendar(identifier: .gregorian)
+        f.dateFormat = "y年M月d日"
+        return f
+    }()
+    static func jaDateLabel(_ dateStr: String) -> String {
+        guard let d = isoDayFormatter.date(from: dateStr) else { return dateStr }
+        return jaDisplayFormatter.string(from: d)
+    }
+
+    static func tvActive(_ dateStr: String?, now: Date = Date()) -> Bool {
+        guard let dateStr, let aired = isoDayFormatter.date(from: dateStr) else { return false }
+        let cal = gregorian
+        let airedDay = cal.startOfDay(for: aired)
+        let today = cal.startOfDay(for: now)
+        guard let cutoff = cal.date(byAdding: .year, value: -1, to: today) else { return false }
+        return airedDay >= cutoff && airedDay <= today
+    }
+
     var isShrine: Bool { type == "shrine" }
     var typeLabel: String { isShrine ? "神社" : "寺" }
     var deityRoleLabel: String { isShrine ? "御祭神" : "本尊" }

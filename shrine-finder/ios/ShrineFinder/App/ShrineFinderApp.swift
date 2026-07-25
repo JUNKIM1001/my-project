@@ -22,6 +22,8 @@ struct RootView: View {
         TabView {
             HomeView()
                 .tabItem { Label("さがす", systemImage: "sparkles") }
+            RegionView()
+                .tabItem { Label("地域", systemImage: "mappin.and.ellipse") }
             NearbyView()
                 .tabItem { Label("地図", systemImage: "map.fill") }
             DeityListView()

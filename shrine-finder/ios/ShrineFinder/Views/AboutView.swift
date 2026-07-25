@@ -29,6 +29,7 @@ struct AboutView: View {
                 row("神様・仏様", "\(store.deities.count) 柱/尊")
                 row("ご利益カテゴリ", "\(store.goriyaku.count) 種")
                 row("国宝を有する社寺", "⭐️ \(store.nationalTreasureCount) 件")
+                row("御朱印を確認済み", "\(store.goshuinCount) 件")
                 row("カバー都道府県", "\(store.prefectureCount) / 47")
             } header: {
                 Text("収録データ")
