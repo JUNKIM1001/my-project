@@ -1,0 +1,1281 @@
+[
+ {
+  "name": "BETA株式会社",
+  "representative": "長沼健一",
+  "hq": "東京都港区",
+  "founded_year": 2019,
+  "website": "https://b-inc.co.jp/",
+  "description": "採用動画制作事業と就活メディア「メイキャリ」の運営",
+  "sectors": [
+   "HR",
+   "メディア"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA",
+   "amount_oku": 10.2,
+   "investors": [
+    "三井住友海上キャピタル",
+    "KUSABI",
+    "三菱UFJキャピタル",
+    "愛知キャピタル",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "三井住友海上キャピタル",
+   "KUSABI",
+   "三菱UFJキャピタル",
+   "愛知キャピタル",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000185474.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000001_000185474/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Tokenz",
+  "representative": "林伯寰",
+  "hq": "東京都千代田区",
+  "founded_year": 2024,
+  "website": "https://tokenz.one/ja",
+  "description": "デジタルコンテンツ向けMoR型グローバル決済・販売代行ソリューション",
+  "sectors": [
+   "フィンテック",
+   "SaaS"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA",
+   "amount_oku": 10.0,
+   "investors": [
+    "Headline Asia",
+    "SBIインベストメント",
+    "New Commerce Ventures",
+    "Coral Capital",
+    "Cherubic Ventures",
+    "NEA"
+   ]
+  },
+  "investors": [
+   "Headline Asia",
+   "SBIインベストメント",
+   "New Commerce Ventures",
+   "Coral Capital",
+   "Cherubic Ventures",
+   "NEA"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000003.000163361.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000003_000163361/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "サウンドウェーブイノベーション株式会社",
+  "representative": "下川宏明",
+  "hq": "東京都千代田区",
+  "founded_year": 2020,
+  "website": "https://sw-innovation.com/",
+  "description": "低出力パルス波超音波(LIPUS)による認知症等の治療機器開発",
+  "sectors": [
+   "医療機器"
+  ],
+  "stage": "シリーズC",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シリーズC",
+   "amount_oku": 26.5,
+   "investors": [
+    "Fiducia GrowthTech投資事業有限責任組合",
+    "住友重機械工業",
+    "iGlobe Partners"
+   ]
+  },
+  "investors": [
+   "Fiducia GrowthTech投資事業有限責任組合",
+   "住友重機械工業",
+   "iGlobe Partners"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000010.000118851.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000010_000118851/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社INDUSTRIAL-X",
+  "representative": "八子知礼",
+  "hq": "東京都港区",
+  "founded_year": 2019,
+  "website": "https://industrial-x.jp/",
+  "description": "企業DX/AI導入支援とDX推進クラウド・データ基盤の提供",
+  "sectors": [
+   "DX",
+   "SaaS"
+  ],
+  "stage": "シリーズC",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シリーズC",
+   "amount_oku": 19.3,
+   "investors": [
+    "杉本商事",
+    "テクノア",
+    "QR2号ファンド",
+    "金融機関"
+   ]
+  },
+  "investors": [
+   "杉本商事",
+   "テクノア",
+   "QR2号ファンド",
+   "金融機関"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000169.000051016.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000169_000051016/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Shizen Connect",
+  "representative": "松村宗和",
+  "hq": "東京都中央区",
+  "founded_year": 2023,
+  "website": "https://se-digital.net",
+  "description": "VPPプラットフォーム事業とIoT機器販売事業",
+  "sectors": [
+   "エネルギー"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 32.6,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シリーズA 1stクローズ",
+   "amount_oku": 27.0,
+   "investors": [
+    "BIPROGY",
+    "東京ガス",
+    "パナソニック エレクトリックワークス",
+    "九州電力",
+    "東邦ガス",
+    "西日本鉄道"
+   ]
+  },
+  "investors": [
+   "BIPROGY",
+   "東京ガス",
+   "パナソニック エレクトリックワークス",
+   "九州電力",
+   "東邦ガス",
+   "西日本鉄道"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000044.000168657.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000044_000168657/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社ヨセミテ",
+  "representative": "菊川航希",
+  "hq": "東京都新宿区",
+  "founded_year": 2022,
+  "website": "https://corp.yose-mite.co.jp/",
+  "description": "グッズ・アパレル領域のコマースプラットフォーム開発・運営",
+  "sectors": [
+   "EC"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": null,
+   "amount_oku": 15.0,
+   "investors": [
+    "B Dash Ventures",
+    "Dual Bridge Capital",
+    "BRICKS FUND TOKYO",
+    "Value Chain Innovation Fund"
+   ]
+  },
+  "investors": [
+   "B Dash Ventures",
+   "Dual Bridge Capital",
+   "BRICKS FUND TOKYO",
+   "Value Chain Innovation Fund"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000005.000127924.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000005_000127924/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社NeoRealX",
+  "representative": "安藤聖泰",
+  "hq": "東京都文京区",
+  "founded_year": 2023,
+  "website": "https://neorealx.com/",
+  "description": "XR技術と映像制作を組み合わせた体験型コンテンツ・ソリューション",
+  "sectors": [
+   "XR",
+   "エンタメ"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "第三者割当増資・新株予約権",
+   "amount_oku": 5.4,
+   "investors": [
+    "日本テレビ放送網",
+    "吉田正樹事務所",
+    "国内企業1社"
+   ]
+  },
+  "investors": [
+   "日本テレビ放送網",
+   "吉田正樹事務所",
+   "国内企業1社"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000012.000130851.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000012_000130851/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "ライトタッチテクノロジー株式会社",
+  "representative": "山川考一",
+  "hq": "大阪府大阪市城東区",
+  "founded_year": 2017,
+  "website": "https://www.light-tt.co.jp/",
+  "description": "採血不要の非侵襲血糖値センサーの開発・製造販売",
+  "sectors": [
+   "医療機器"
+  ],
+  "stage": "シリーズB",
+  "total_raised_oku": 12.0,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シリーズBエクステンション",
+   "amount_oku": 5.0,
+   "investors": [
+    "タムロン",
+    "JMTCキャピタル",
+    "広島ベンチャーキャピタル",
+    "BPキャピタル",
+    "紀陽銀行"
+   ]
+  },
+  "investors": [
+   "タムロン",
+   "JMTCキャピタル",
+   "広島ベンチャーキャピタル",
+   "BPキャピタル",
+   "紀陽銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000009.000082314.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000009_000082314/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "CrestecBio株式会社",
+  "representative": "丸島愛樹",
+  "hq": "茨城県つくば市",
+  "founded_year": 2021,
+  "website": "https://crestecbio.com",
+  "description": "虚血性脳卒中向け神経保護薬CTB211等の高分子医薬創薬",
+  "sectors": [
+   "バイオ",
+   "創薬"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シード",
+   "amount_oku": 2.5,
+   "investors": [
+    "UntroD Capital Japan(リアルテックファンド)",
+    "科学技術振興機構",
+    "ケイエスピー",
+    "Newsight Tech Angels"
+   ]
+  },
+  "investors": [
+   "UntroD Capital Japan(リアルテックファンド)",
+   "科学技術振興機構",
+   "ケイエスピー",
+   "Newsight Tech Angels"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000182492.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000001_000182492/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "Zen Intelligence株式会社（旧・株式会社SoftRoid）",
+  "representative": "野﨑大幹",
+  "hq": "東京都中央区",
+  "founded_year": 2020,
+  "website": "https://zen-intelligence.ai/",
+  "description": "建設現場向けPhysical AI「zenshot」等の開発・提供",
+  "sectors": [
+   "AI",
+   "建設"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シリーズA",
+   "amount_oku": 25.0,
+   "investors": [
+    "みずほ銀行",
+    "三菱UFJ銀行",
+    "商工組合中央金庫",
+    "北國銀行(デット10億円含む)"
+   ]
+  },
+  "investors": [
+   "みずほ銀行",
+   "三菱UFJ銀行",
+   "商工組合中央金庫",
+   "北國銀行(デット10億円含む)"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000016.000108083.html",
+   "https://thebridge.jp/2026/05/zen-intelligence-closes-series-a-with-2-5-billion-yen"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社CFOne",
+  "representative": "木村優太",
+  "hq": "東京都港区",
+  "founded_year": 2023,
+  "website": "http://www.cfone.co.jp",
+  "description": "AI税務支援サービス「CFOne」の開発・提供",
+  "sectors": [
+   "AI",
+   "フィンテック"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": 2.0,
+  "last_round": {
+   "date": "2026-06",
+   "round": "プレシリーズA",
+   "amount_oku": 1.7,
+   "investors": [
+    "Coreline Ventures",
+    "ANOBAKA",
+    "みずほ銀行"
+   ]
+  },
+  "investors": [
+   "Coreline Ventures",
+   "ANOBAKA",
+   "みずほ銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000002.000183508.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000002_000183508/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "NEULO株式会社",
+  "representative": "船瀬悠太",
+  "hq": "東京都渋谷区",
+  "founded_year": 2025,
+  "website": "https://neulo.com/",
+  "description": "パフォーマンス・フットギアの企画・開発・販売",
+  "sectors": [
+   "D2C",
+   "スポーツ"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シード",
+   "amount_oku": 3.5,
+   "investors": [
+    "ジェネシア・ベンチャーズ",
+    "Dawn Capital",
+    "Asu Capital Partners",
+    "エンジェル投資家"
+   ]
+  },
+  "investors": [
+   "ジェネシア・ベンチャーズ",
+   "Dawn Capital",
+   "Asu Capital Partners",
+   "エンジェル投資家"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000181262.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000001_000181262/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Greenphard Energy",
+  "representative": "西山健人",
+  "hq": "東京都港区",
+  "founded_year": 2021,
+  "website": "https://greenphard.com/",
+  "description": "冷凍冷蔵・空調設備のAI最適制御とVPPを組み合わせた電力事業",
+  "sectors": [
+   "エネルギー",
+   "AI"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 5.1,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA 2ndクローズ",
+   "amount_oku": 1.2,
+   "investors": [
+    "鈴与商事",
+    "三菱UFJキャピタル"
+   ]
+  },
+  "investors": [
+   "鈴与商事",
+   "三菱UFJキャピタル"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000014.000142594.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000014_000142594/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社テラファーム",
+  "representative": "上田翔太",
+  "hq": "東京都渋谷区",
+  "founded_year": 2025,
+  "website": "https://www.terrafarm.jp/",
+  "description": "宇宙農業の実現に向けた研究開発",
+  "sectors": [
+   "宇宙",
+   "アグリ"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シード",
+   "amount_oku": 1.0,
+   "investors": [
+    "個人投資家4名"
+   ]
+  },
+  "investors": [
+   "個人投資家4名"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000185407.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000001_000185407/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社WeDraft",
+  "representative": "橋村洋希",
+  "hq": "愛知県名古屋市昭和区",
+  "founded_year": 2026,
+  "website": "https://wedraftinc.com/",
+  "description": "個人情報・情報資産管理プラットフォーム「Flows」の提供",
+  "sectors": [
+   "SaaS",
+   "セキュリティ"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シード",
+   "amount_oku": 1.0,
+   "investors": [
+    "DNX Ventures"
+   ]
+  },
+  "investors": [
+   "DNX Ventures"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000185837.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000001_000185837/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社STYZ",
+  "representative": "田中辰也",
+  "hq": "東京都渋谷区",
+  "founded_year": 2016,
+  "website": "https://styz.io/",
+  "description": "寄付プラットフォーム「Syncable」とインクルーシブデザイン事業",
+  "sectors": [
+   "ソーシャル",
+   "SaaS"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA 1stクローズ",
+   "amount_oku": 2.7,
+   "investors": [
+    "ニッセイ・キャピタル",
+    "西武しんきんキャピタル"
+   ]
+  },
+  "investors": [
+   "ニッセイ・キャピタル",
+   "西武しんきんキャピタル"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000349.000022873.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000349_000022873/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "天創堂株式会社",
+  "representative": "粕井健次",
+  "hq": "大阪府大阪市中央区",
+  "founded_year": 2009,
+  "website": "https://www.tensodo.co.jp/",
+  "description": "ご当地商品・ご当地ブランドの企画開発・卸売・海外輸出",
+  "sectors": [
+   "流通",
+   "EC"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "融資・私募債",
+   "amount_oku": 2.65,
+   "investors": [
+    "三菱UFJ銀行",
+    "りそな銀行",
+    "池田泉州銀行",
+    "みなと銀行",
+    "南都銀行",
+    "紀陽銀行"
+   ]
+  },
+  "investors": [
+   "三菱UFJ銀行",
+   "りそな銀行",
+   "池田泉州銀行",
+   "みなと銀行",
+   "南都銀行",
+   "紀陽銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000003.000182282.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000003_000182282/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社be-FULL",
+  "representative": "岩井凌太",
+  "hq": "東京都中央区",
+  "founded_year": 2024,
+  "website": "https://befull-lifedesign.com/",
+  "description": "ミドルマネジメント支援プラットフォーム「PXクラウド」の開発・提供",
+  "sectors": [
+   "SaaS",
+   "HR"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "プレシリーズA 1stクローズ",
+   "amount_oku": 1.0,
+   "investors": [
+    "新韓－GBフューチャーフロー投資事業有限責任組合(グローバル・ブレイン/新韓ベンチャー投資)"
+   ]
+  },
+  "investors": [
+   "新韓－GBフューチャーフロー投資事業有限責任組合(グローバル・ブレイン/新韓ベンチャー投資)"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000005.000182001.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000005_000182001/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社ネコノメ",
+  "representative": "工藤ショーン",
+  "hq": "東京都中央区",
+  "founded_year": 2024,
+  "website": "https://neconome.co.jp/",
+  "description": "ゲーム開発・運営。新作将棋ゲーム「棋桜(KIOU)」を開発中",
+  "sectors": [
+   "ゲーム"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 2.0,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA",
+   "amount_oku": 1.1,
+   "investors": [
+    "EX Innovation Fund",
+    "三菱UFJキャピタル",
+    "SMBCベンチャーキャピタル"
+   ]
+  },
+  "investors": [
+   "EX Innovation Fund",
+   "三菱UFJキャピタル",
+   "SMBCベンチャーキャピタル"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000069.000145138.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000069_000145138/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社リモア",
+  "representative": "橋本竜",
+  "hq": "東京都港区",
+  "founded_year": 2024,
+  "website": "https://rimoa.jp",
+  "description": "キャラクターとAIを活用した行動変容インフラ「キャラミクス」",
+  "sectors": [
+   "AI",
+   "エンタメ"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": null,
+   "amount_oku": 1.0,
+   "investors": [
+    "Headline Asia"
+   ]
+  },
+  "investors": [
+   "Headline Asia"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000002.000179521.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000002_000179521/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "モルゲンロット株式会社",
+  "representative": "中村昌道",
+  "hq": "東京都千代田区",
+  "founded_year": 2019,
+  "website": "https://morgenrot.net/",
+  "description": "GPU等計算リソースの可視化・最適化・シェアリングサービス",
+  "sectors": [
+   "AI",
+   "クラウド"
+  ],
+  "stage": "シリーズB",
+  "total_raised_oku": 12.5,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シリーズB 2ndクローズ",
+   "amount_oku": 1.5,
+   "investors": [
+    "三菱HCキャピタル",
+    "SB C&S"
+   ]
+  },
+  "investors": [
+   "三菱HCキャピタル",
+   "SB C&S"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000096.000053470.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000096_000053470/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社FACTORY X",
+  "representative": "神谷喜穂",
+  "hq": "愛知県岡崎市",
+  "founded_year": 2022,
+  "website": "https://www.factory-x.com/",
+  "description": "製造業向け在庫戦略モデルの開発・展開",
+  "sectors": [
+   "製造",
+   "SaaS"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シード",
+   "amount_oku": 1.0,
+   "investors": [
+    "STATION Ai Central Japan 1号ファンド",
+    "ANRI",
+    "epiST Ventures",
+    "名古屋銀行",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "STATION Ai Central Japan 1号ファンド",
+   "ANRI",
+   "epiST Ventures",
+   "名古屋銀行",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000020.000116690.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000020_000116690/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "NUVVE JAPAN株式会社",
+  "representative": "東田真輝",
+  "hq": "東京都港区",
+  "founded_year": 2025,
+  "website": "https://nuvve.co.jp/",
+  "description": "V2G(Vehicle to Grid)技術を核としたエネルギーソリューション",
+  "sectors": [
+   "エネルギー",
+   "モビリティ"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "J-KISS型新株予約権",
+   "amount_oku": 2.0,
+   "investors": [
+    "玉川工産関係者",
+    "SIソーラー",
+    "エンジェル投資家"
+   ]
+  },
+  "investors": [
+   "玉川工産関係者",
+   "SIソーラー",
+   "エンジェル投資家"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000005.000163695.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000005_000163695/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "ペリオセラピア株式会社",
+  "representative": "田原栄治",
+  "hq": "大阪府吹田市",
+  "founded_year": 2017,
+  "website": "https://periotherapia.co.jp/",
+  "description": "病的ペリオスチンを標的とする抗体医薬品の研究・開発",
+  "sectors": [
+   "バイオ",
+   "創薬"
+  ],
+  "stage": "シリーズD",
+  "total_raised_oku": 24.0,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズD2",
+   "amount_oku": 5.75,
+   "investors": [
+    "三菱UFJキャピタル",
+    "テクノサイエンス",
+    "金融機関"
+   ]
+  },
+  "investors": [
+   "三菱UFJキャピタル",
+   "テクノサイエンス",
+   "金融機関"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000008.000125075.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000008_000125075/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社BEAM Technologies",
+  "representative": "飯村一樹",
+  "hq": "東京都千代田区",
+  "founded_year": 2022,
+  "website": "https://beam-tec.co.jp/",
+  "description": "微小重力を活用した半導体製造プラットフォーム事業",
+  "sectors": [
+   "宇宙",
+   "半導体"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シード",
+   "amount_oku": 2.2,
+   "investors": [
+    "UntroD Capital Japan",
+    "DG Daiwa Ventures",
+    "シンニチ工業",
+    "ごうぎんキャピタル",
+    "個人投資家"
+   ]
+  },
+  "investors": [
+   "UntroD Capital Japan",
+   "DG Daiwa Ventures",
+   "シンニチ工業",
+   "ごうぎんキャピタル",
+   "個人投資家"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000005.000147216.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000005_000147216/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社ハイウェイ",
+  "representative": "久保文誉",
+  "hq": "東京都新宿区",
+  "founded_year": 2021,
+  "website": "https://product.hiway.app/",
+  "description": "代理店・販売店経由の営業連携を支援する自律型CRM/PRM",
+  "sectors": [
+   "SaaS",
+   "AI"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 4.65,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA",
+   "amount_oku": 3.0,
+   "investors": [
+    "DNX Ventures"
+   ]
+  },
+  "investors": [
+   "DNX Ventures"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000021.000097145.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000021_000097145/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社HerLifeLab",
+  "representative": "オリガ・エリセーバ,大塚響子",
+  "hq": "沖縄県国頭郡恩納村",
+  "founded_year": 2022,
+  "website": "https://vivalle-mydoctor.com/",
+  "description": "更年期専門オンライン診療サービス「Vivalle」の開発・運営",
+  "sectors": [
+   "ヘルスケア",
+   "フェムテック"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": 2.0,
+  "last_round": {
+   "date": "2026-06",
+   "round": "プレシリーズA",
+   "amount_oku": 1.3,
+   "investors": [
+    "三菱UFJモルガン・スタンレー証券",
+    "津梁ファンド",
+    "沖縄振興開発金融公庫",
+    "インキュベイトファンド",
+    "ライフタイムベンチャーズ"
+   ]
+  },
+  "investors": [
+   "三菱UFJモルガン・スタンレー証券",
+   "津梁ファンド",
+   "沖縄振興開発金融公庫",
+   "インキュベイトファンド",
+   "ライフタイムベンチャーズ"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000007.000133842.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000007_000133842/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "ORTHOREBIRTH株式会社",
+  "representative": null,
+  "hq": "神奈川県横浜市都筑区",
+  "founded_year": null,
+  "website": "https://orthorebirth.com/",
+  "description": "綿形状人工骨充填材「ReBOSSIS」等の整形外科向け医療機器開発",
+  "sectors": [
+   "医療機器",
+   "再生医療"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "第三者割当増資",
+   "amount_oku": 2.22,
+   "investors": []
+  },
+  "investors": [],
+  "sources": [
+   "https://orthorebirth.com/wp/wp-content/uploads/2026/05/20260512_NEWS-RELEASE.pdf",
+   "https://orthorebirth.com/?cat=13"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Arrowsmith",
+  "representative": "安藤弘樹",
+  "hq": "茨城県つくば市",
+  "founded_year": 2025,
+  "website": "https://arrowsmith.co.jp/jp",
+  "description": "薬剤耐性菌感染症向け次世代ファージセラピーの研究・開発",
+  "sectors": [
+   "バイオ",
+   "創薬"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 10.5,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA",
+   "amount_oku": 10.5,
+   "investors": [
+    "JAFCO",
+    "JICベンチャー・グロース・インベストメンツ",
+    "ANRI",
+    "DBJキャピタル"
+   ]
+  },
+  "investors": [
+   "JAFCO",
+   "JICベンチャー・グロース・インベストメンツ",
+   "ANRI",
+   "DBJキャピタル"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000003.000167216.html",
+   "https://bio.nikkeibp.co.jp/atcl/news/p1/26/06/29/14750/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社NEXT NEW WORLD",
+  "representative": "高嶋耕太郎",
+  "hq": "群馬県桐生市",
+  "founded_year": 2021,
+  "website": "https://www.nextnewworld.co",
+  "description": "シルクタンパク質原料「カラダシルク」とペット・人向けヘルスケア製品",
+  "sectors": [
+   "バイオ",
+   "ヘルスケア"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 4.5,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA(第三者割当増資・CB転換・デット)",
+   "amount_oku": 2.4,
+   "investors": [
+    "15th Rock",
+    "味の素",
+    "ポーラ・オルビスホールディングス",
+    "エステー",
+    "信金キャピタル",
+    "みずほキャピタル",
+    "インテグレート"
+   ]
+  },
+  "investors": [
+   "15th Rock",
+   "味の素",
+   "ポーラ・オルビスホールディングス",
+   "エステー",
+   "信金キャピタル",
+   "みずほキャピタル",
+   "インテグレート"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000020.000089760.html",
+   "https://thebridge.jp/2026/06/next-new-world-raises-240-million-yen-for-silk-protein-healthcare"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社AZNICS",
+  "representative": "古澤利成",
+  "hq": "東京都文京区",
+  "founded_year": 2023,
+  "website": "https://aznics.co.jp/",
+  "description": "次世代パワー半導体向けデジタルゲートドライバICの開発",
+  "sectors": [
+   "半導体",
+   "エネルギー"
+  ],
+  "stage": null,
+  "total_raised_oku": 3.4,
+  "last_round": {
+   "date": "2026-05",
+   "round": "第三者割当増資",
+   "amount_oku": 1.5,
+   "investors": [
+    "日本政策投資銀行",
+    "みずほキャピタル",
+    "三菱UFJキャピタル",
+    "脱炭素化支援機構",
+    "NCBベンチャーキャピタル"
+   ]
+  },
+  "investors": [
+   "日本政策投資銀行",
+   "みずほキャピタル",
+   "三菱UFJキャピタル",
+   "脱炭素化支援機構",
+   "NCBベンチャーキャピタル"
+  ],
+  "sources": [
+   "https://aznics.co.jp/%e6%a0%aa%e5%bc%8f%e4%bc%9a%e7%a4%beaznics%e3%80%811-5%e5%84%84%e5%86%86%e3%81%ae%e8%b3%87%e9%87%91%e8%aa%bf%e9%81%94%e3%82%92%e5%ae%9f%e6%96%bd/",
+   "https://prtimes.jp/main/html/rd/p/000000045.000140317.html"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "Noahlogy株式会社",
+  "representative": "福重佑亮",
+  "hq": "東京都港区",
+  "founded_year": 2024,
+  "website": "https://noahlogy.com",
+  "description": "造船・海事産業特化のAIエージェント基盤の開発・コンサルティング",
+  "sectors": [
+   "AI",
+   "海事"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シード",
+   "amount_oku": 1.5,
+   "investors": [
+    "ANRI",
+    "ブーストキャピタル"
+   ]
+  },
+  "investors": [
+   "ANRI",
+   "ブーストキャピタル"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000002.000155340.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000002_000155340/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "I.W.G Inc.",
+  "representative": "周暁妍",
+  "hq": "東京都千代田区",
+  "founded_year": 2020,
+  "website": "https://www.iwg-inc.co.jp/",
+  "description": "医療データの相互運用性を実現するAIインフラの開発・提供",
+  "sectors": [
+   "ヘルスケア",
+   "AI"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "プレシリーズA",
+   "amount_oku": 2.8,
+   "investors": [
+    "Golden Gate Ventures",
+    "Antler",
+    "個人投資家"
+   ]
+  },
+  "investors": [
+   "Golden Gate Ventures",
+   "Antler",
+   "個人投資家"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000003.000154763.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000003_000154763/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "旭東ホールディングス株式会社",
+  "representative": null,
+  "hq": "東京都渋谷区",
+  "founded_year": null,
+  "website": null,
+  "description": "食品業界のM&Aロールアップ戦略を展開",
+  "sectors": [
+   "食品",
+   "M&A"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "第三者割当増資",
+   "amount_oku": 8.0,
+   "investors": [
+    "Dual Bridge Capital"
+   ]
+  },
+  "investors": [
+   "Dual Bridge Capital"
+  ],
+  "sources": [
+   "https://www.nikkei.com/article/DGXZQOUC051F40V00C26A6000000/",
+   "https://prtimes.jp/main/html/searchrlp/company_id/174945"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社XAION DATA",
+  "representative": "佐藤泰秀",
+  "hq": "東京都千代田区",
+  "founded_year": 2020,
+  "website": "https://xaiondata.co.jp/",
+  "description": "AIタレント検索「AUTOHUNT」等のAIデータプラットフォーム",
+  "sectors": [
+   "AI",
+   "HR"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "ベンチャーデット(融資)",
+   "amount_oku": 1.2,
+   "investors": [
+    "RFC Venture Debt Fund 1号"
+   ]
+  },
+  "investors": [
+   "RFC Venture Debt Fund 1号"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000047.000078718.html",
+   "https://www.nikkei.com/compass/content/PRTKDB000000047_000078718/preview"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社M2X",
+  "representative": "岡部晋太郎",
+  "hq": "東京都中央区",
+  "founded_year": 2022,
+  "website": "https://www.m2xsoftware.com/",
+  "description": "工場向け設備保全クラウドシステムの開発・提供",
+  "sectors": [
+   "SaaS",
+   "製造"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 11.4,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズAエクステンション",
+   "amount_oku": 8.4,
+   "investors": [
+    "Angel Bridge",
+    "三菱UFJキャピタル",
+    "自動車ファンド",
+    "商工組合中央金庫",
+    "りそな銀行",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "Angel Bridge",
+   "三菱UFJキャピタル",
+   "自動車ファンド",
+   "商工組合中央金庫",
+   "りそな銀行",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000121.000131729.html",
+   "https://thebridge.jp/2026/06/m2x-raises-series-a-extension-for-equipment-maintenance-cloud"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ }
+]

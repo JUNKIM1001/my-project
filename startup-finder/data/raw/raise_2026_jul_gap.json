@@ -1,0 +1,394 @@
+[
+ {
+  "name": "BETA株式会社",
+  "representative": "長沼健一",
+  "hq": "東京都港区",
+  "founded_year": 2019,
+  "website": "https://b-inc.co.jp/",
+  "description": "採用動画制作事業と就活メディア「メイキャリ」の運営。動画×データで採用DX支援",
+  "sectors": [
+   "HR",
+   "動画",
+   "メディア"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 10.2,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズA",
+   "amount_oku": 10.2,
+   "investors": [
+    "三井住友海上キャピタル",
+    "KUSABI",
+    "三菱UFJキャピタル",
+    "愛知キャピタル",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "三井住友海上キャピタル",
+   "KUSABI",
+   "三菱UFJキャピタル",
+   "愛知キャピタル",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://sogyotecho.jp/news/20260630beta/",
+   "https://b-inc.co.jp/news/eg_dwSIC"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社M2X",
+  "representative": "岡部晋太郎",
+  "hq": "東京都中央区",
+  "founded_year": 2022,
+  "website": "https://m2xsoftware.com",
+  "description": "次世代設備保全クラウド「M2X」を開発・提供。工場等の保全業務を一気通貫で効率化",
+  "sectors": [
+   "SaaS",
+   "製造業DX",
+   "AI"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 11.4,
+  "last_round": {
+   "date": "2026-06",
+   "round": "シリーズAエクステンション",
+   "amount_oku": 8.4,
+   "investors": [
+    "Angel Bridge",
+    "三菱UFJキャピタル",
+    "自動車ファンド",
+    "商工組合中央金庫",
+    "りそな銀行",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "Angel Bridge",
+   "三菱UFJキャピタル",
+   "自動車ファンド",
+   "商工組合中央金庫",
+   "りそな銀行",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000121.000131729.html",
+   "https://www.nikkei.com/article/DGXZQOUC2624Q0W6A620C2000000/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "マネーフォワードプライベートバンク株式会社",
+  "representative": "佐藤貴之",
+  "hq": "東京都港区",
+  "founded_year": 2024,
+  "website": "https://moneyforwardprivatebank.com/",
+  "description": "超富裕層向け資産管理プラットフォームとファミリーオフィスサービスを提供",
+  "sectors": [
+   "フィンテック",
+   "ウェルスマネジメント"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "第三者割当増資",
+   "amount_oku": 10.0,
+   "investors": [
+    "Spiral Innovation Partners",
+    "三井住友信託銀行"
+   ]
+  },
+  "investors": [
+   "Spiral Innovation Partners",
+   "三井住友信託銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000010.000141034.html",
+   "https://thebridge.jp/2026/07/moneyforward-private-bank-raises-1-billion-yen-to-accelerate-ai-powered-wealth-management-platform"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社スパイクスタジオ",
+  "representative": "黒柳茂",
+  "hq": "東京都港区",
+  "founded_year": 2023,
+  "website": "https://spikestudio.jp/",
+  "description": "24時間365日働くAIエージェントの開発、生成AIコンサルティング・研修事業",
+  "sectors": [
+   "AI",
+   "生成AI"
+  ],
+  "stage": "シード",
+  "total_raised_oku": 3.7,
+  "last_round": {
+   "date": "2026-07",
+   "round": "シード",
+   "amount_oku": 3.7,
+   "investors": [
+    "B Dash Ventures",
+    "あおぞら企業投資",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "B Dash Ventures",
+   "あおぞら企業投資",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000015.000147277.html",
+   "https://thebridge.jp/2026/07/spikes-studio-raises-seed-round-funding-for-ai-agent-development"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社robottte",
+  "representative": "髙橋健一",
+  "hq": "東京都港区",
+  "founded_year": 2021,
+  "website": "https://www.robottte.com/",
+  "description": "エッセンシャルワーカー産業向け採用プラットフォーム「HRモンスター」等を提供",
+  "sectors": [
+   "HR",
+   "SaaS"
+  ],
+  "stage": null,
+  "total_raised_oku": 1.3,
+  "last_round": {
+   "date": "2026-07",
+   "round": "第三者割当増資・借入",
+   "amount_oku": 1.3,
+   "investors": [
+    "DG Daiwa Ventures",
+    "日本政策金融公庫",
+    "三菱UFJ銀行"
+   ]
+  },
+  "investors": [
+   "DG Daiwa Ventures",
+   "日本政策金融公庫",
+   "三菱UFJ銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000179235.html",
+   "https://www.jiji.com/jc/article?k=000000001.000179235&g=prt"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社L&F",
+  "representative": null,
+  "hq": null,
+  "founded_year": 2007,
+  "website": "https://www.l-f.co.jp/",
+  "description": "空き家管理の全国ネットワーク「日本空き家サポート」等、不動産・住宅領域サービスを展開",
+  "sectors": [
+   "不動産",
+   "空き家管理"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-07",
+   "round": "シリーズA（セカンドクローズ）",
+   "amount_oku": 1.1,
+   "investors": [
+    "九州オープンイノベーション2号ファンド(GxPartners/FFGベンチャービジネスパートナーズ)",
+    "SGインキュベート",
+    "HOXIN"
+   ]
+  },
+  "investors": [
+   "九州オープンイノベーション2号ファンド(GxPartners/FFGベンチャービジネスパートナーズ)",
+   "SGインキュベート",
+   "HOXIN"
+  ],
+  "sources": [
+   "https://www.l-f.co.jp/news/NaN2332.html",
+   "https://kepple.co.jp/articles/k_kfiq2503qt"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社BuddyCompass",
+  "representative": "高石大地",
+  "hq": "神奈川県川崎市",
+  "founded_year": 2020,
+  "website": "https://buddycompass.com/",
+  "description": "ブランド開発・リブランディング、観光向けプロモーション動画制作等のブランドアセット共創事業",
+  "sectors": [
+   "ブランディング",
+   "観光",
+   "クリエイティブ"
+  ],
+  "stage": null,
+  "total_raised_oku": 1.5,
+  "last_round": {
+   "date": "2026-07",
+   "round": "第三者割当増資",
+   "amount_oku": 1.5,
+   "investors": [
+    "ジェネシア・ベンチャーズ"
+   ]
+  },
+  "investors": [
+   "ジェネシア・ベンチャーズ"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000020.000084988.html",
+   "https://sogyotecho.jp/news/20260714buddycompass/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "Space Tech Accelerator株式会社",
+  "representative": "平賀元気",
+  "hq": "東京都千代田区",
+  "founded_year": 2023,
+  "website": "https://spacetechaccelerator.com/",
+  "description": "衛星データでパーム油等のサステナブル調達・サプライチェーン可視化を支援",
+  "sectors": [
+   "宇宙",
+   "衛星データ",
+   "サステナビリティ"
+  ],
+  "stage": "シード",
+  "total_raised_oku": 2.0,
+  "last_round": {
+   "date": "2026-07",
+   "round": "シード",
+   "amount_oku": 2.0,
+   "investors": [
+    "Frontier Innovations"
+   ]
+  },
+  "investors": [
+   "Frontier Innovations"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000014.000162991.html",
+   "https://thebridge.jp/2026/07/space-tech-accelerator-raises-seed-round-funding"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "InnoJin株式会社",
+  "representative": "猪俣武範",
+  "hq": "東京都文京区",
+  "founded_year": 2020,
+  "website": "https://innojin.co.jp/",
+  "description": "順天堂大発。眼科デジタル診療プラットフォームとプログラム医療機器(SaMD)を開発",
+  "sectors": [
+   "ヘルスケア",
+   "医療機器",
+   "SaMD"
+  ],
+  "stage": "シリーズC",
+  "total_raised_oku": 9.5,
+  "last_round": {
+   "date": "2026-07",
+   "round": "シリーズC",
+   "amount_oku": 2.3,
+   "investors": [
+    "ロートSEED",
+    "住友商事",
+    "ジンズ",
+    "日本ケミファ"
+   ]
+  },
+  "investors": [
+   "ロートSEED",
+   "住友商事",
+   "ジンズ",
+   "日本ケミファ"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000076.000088821.html",
+   "https://www.nikkei.com/article/DGXZQOUC169K70W6A710C2000000/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社ランプ",
+  "representative": "河野匠",
+  "hq": "京都府京都市",
+  "founded_year": 2017,
+  "website": "https://lamp.jp",
+  "description": "テイクアウト予約・決済「テイクイーツ」と飲食・小売特化AIプラットフォーム「Ritel」を提供",
+  "sectors": [
+   "フードテック",
+   "SaaS",
+   "AI"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 10.5,
+  "last_round": {
+   "date": "2026-07",
+   "round": "シリーズA追加（借入）",
+   "amount_oku": 3.5,
+   "investors": [
+    "みずほ銀行",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "みずほ銀行",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000093.000033995.html",
+   "https://thebridge.jp/2026/07/lamp-raises-additional-funding-for-ai-platform-ritel"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "NUJP株式会社",
+  "representative": "後藤健太",
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "日本発ブランドへの投資・M&A、経営支援、海外展開支援を一体で行うロールアップ型事業",
+  "sectors": [
+   "投資",
+   "ブランド",
+   "海外展開"
+  ],
+  "stage": null,
+  "total_raised_oku": 1.0,
+  "last_round": {
+   "date": "2026-07",
+   "round": "第三者割当増資・借入",
+   "amount_oku": 1.0,
+   "investors": [
+    "インキュベイトファンド",
+    "DRG FUND",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "インキュベイトファンド",
+   "DRG FUND",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://thebridge.jp/2026/07/nujp-raises-100-million-yen-for-japanese-brand-global-expansion",
+   "https://kepple.co.jp/articles/avq63xmdob8r"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ }
+]

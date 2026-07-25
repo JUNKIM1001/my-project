@@ -1,0 +1,440 @@
+[
+ {
+  "name": "株式会社LOOV",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": "https://www.loov.co.jp",
+  "description": "商談・提案を自動化するプレゼンインフラ「TALKsmith」(旧LOOV)を提供",
+  "sectors": [
+   "AI",
+   "SaaS"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 8.4,
+  "last_round": {
+   "date": "2026-04",
+   "round": "シリーズA",
+   "amount_oku": null,
+   "investors": [
+    "Archetype Ventures",
+    "みずほキャピタル",
+    "HAKOBUNE"
+   ]
+  },
+  "investors": [
+   "Archetype Ventures",
+   "みずほキャピタル",
+   "HAKOBUNE"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000055.000113608.html",
+   "https://talk-smith.com/news/2026-04-13/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Kikuvi",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": "https://kikuvi.com",
+  "description": "AIヒアリング・インタビューSaaS「Kikuvi」を開発・提供",
+  "sectors": [
+   "AI",
+   "SaaS"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-04",
+   "round": "シード",
+   "amount_oku": 4.0,
+   "investors": [
+    "グロービス・キャピタル・パートナーズ",
+    "Plug and Play Japan",
+    "Animal Spirits",
+    "エンジェル投資家"
+   ]
+  },
+  "investors": [
+   "グロービス・キャピタル・パートナーズ",
+   "Plug and Play Japan",
+   "Animal Spirits",
+   "エンジェル投資家"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000032.000164127.html",
+   "https://kikuvi.com/news/seed-round-400m"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "PathAhead株式会社",
+  "representative": "伊賀将之",
+  "hq": "東京都港区",
+  "founded_year": 2026,
+  "website": null,
+  "description": "砂漠の砂を人工骨材「Rising Sand」化し道路インフラを整備するHonda発スタートアップ",
+  "sectors": [
+   "素材",
+   "インフラ"
+  ],
+  "stage": "シード",
+  "total_raised_oku": 1.36,
+  "last_round": {
+   "date": "2026-04",
+   "round": null,
+   "amount_oku": 1.36,
+   "investors": [
+    "インキュベイトファンド",
+    "サイバーエージェント・キャピタル",
+    "本田技研工業"
+   ]
+  },
+  "investors": [
+   "インキュベイトファンド",
+   "サイバーエージェント・キャピタル",
+   "本田技研工業"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000002.000181221.html",
+   "https://global.honda/jp/news/2026/c260331.html"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "Free Standard株式会社",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": "https://freestandard.co.jp",
+  "description": "ブランド公式リユースを実現するリコマースOS「Retailor」を提供",
+  "sectors": [
+   "リコマース",
+   "SaaS"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 13.7,
+  "last_round": {
+   "date": "2026-03",
+   "round": "シリーズA(エクイティ+デット)",
+   "amount_oku": null,
+   "investors": [
+    "BRICKS FUND TOKYO",
+    "三井不動産",
+    "KURONEKO Innovation Fund",
+    "D4V",
+    "みずほ銀行",
+    "りそな銀行",
+    "東北銀行"
+   ]
+  },
+  "investors": [
+   "BRICKS FUND TOKYO",
+   "三井不動産",
+   "KURONEKO Innovation Fund",
+   "D4V",
+   "みずほ銀行",
+   "りそな銀行",
+   "東北銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000057.000104536.html",
+   "https://thebridge.jp/2026/03/free-standard-raises-series-a-funding-for-retailor"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社ENBASE",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "訪問看護・在宅医療向けアンビエントAI「Stand LM」を開発",
+  "sectors": [
+   "医療",
+   "AI"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-03",
+   "round": "第三者割当増資",
+   "amount_oku": 3.5,
+   "investors": []
+  },
+  "investors": [],
+  "sources": [
+   "https://note.com/zaimo_ai/n/nb43025e6b00a",
+   "https://initial.inc/companies/A-GRDTL"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "Asterminds株式会社",
+  "representative": null,
+  "hq": "東京都港区",
+  "founded_year": null,
+  "website": "https://asterminds.ai",
+  "description": "AIヒアリングエージェント「InTake」を開発",
+  "sectors": [
+   "AI",
+   "SaaS"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-03",
+   "round": "シード",
+   "amount_oku": 1.1,
+   "investors": [
+    "デライト・ベンチャーズ",
+    "DNX Ventures"
+   ]
+  },
+  "investors": [
+   "デライト・ベンチャーズ",
+   "DNX Ventures"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000007.000167430.html",
+   "https://note.com/dnx_vc/n/n337ac3ee48de"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社grafto",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "韓国中心のアジアトレンドカルチャーメディア「mylo magazine」を運営",
+  "sectors": [
+   "メディア"
+  ],
+  "stage": "シード",
+  "total_raised_oku": 1.0,
+  "last_round": {
+   "date": "2026-03",
+   "round": "シード",
+   "amount_oku": 1.0,
+   "investors": [
+    "mint",
+    "ANRI",
+    "有安伸宏ほかエンジェル投資家"
+   ]
+  },
+  "investors": [
+   "mint",
+   "ANRI",
+   "有安伸宏ほかエンジェル投資家"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000175556.html",
+   "https://sogyotecho.jp/news/20260317grafto/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Andeco",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "スマートビルの企画・設計・施工・運用を一気通貫で支援するマスターSIer",
+  "sectors": [
+   "建設",
+   "IoT"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-03",
+   "round": "第三者割当増資+融資",
+   "amount_oku": 1.5,
+   "investors": []
+  },
+  "investors": [],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000022.000024427.html",
+   "https://kepple.co.jp/articles/rhqyhx084327"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社WineBank",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": "https://www.wine-bank.co.jp",
+  "description": "ファインワインの資産管理・売買プラットフォーム等のWineTech事業を展開",
+  "sectors": [
+   "フィンテック",
+   "EC"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 7.2,
+  "last_round": {
+   "date": "2026-03",
+   "round": "シリーズA(増資1.6億+みずほ銀行PF枠2億)",
+   "amount_oku": 3.6,
+   "investors": [
+    "マネーフォワードベンチャーパートナーズ",
+    "みずほ銀行"
+   ]
+  },
+  "investors": [
+   "マネーフォワードベンチャーパートナーズ",
+   "みずほ銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000009.000115945.html",
+   "https://thebridge.jp/2026/03/winebank-raises-follow-on-funding-from-hirac-fund"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "ピュアサーモンジャパン株式会社",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "閉鎖循環式(RAS)陸上養殖によるアトランティックサーモンの生産・加工",
+  "sectors": [
+   "アグリ",
+   "フードテック"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-04",
+   "round": "優先ノート",
+   "amount_oku": 287.0,
+   "investors": [
+    "フォートレス・インベストメント・グループ",
+    "TOR Investment Management"
+   ]
+  },
+  "investors": [
+   "フォートレス・インベストメント・グループ",
+   "TOR Investment Management"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000008.000093673.html",
+   "https://www.nikkei.com/compass/company/qfVayYFPF9cmHdf7VxnnAT"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "Ruten Inc",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "埋め込み型Brain-Machine Interfaceを開発する医療機器スタートアップ",
+  "sectors": [
+   "医療機器",
+   "ブレインテック"
+  ],
+  "stage": "シード",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-03",
+   "round": "追加調達(SAFE)",
+   "amount_oku": 3.0,
+   "investors": [
+    "Coral Capital"
+   ]
+  },
+  "investors": [
+   "Coral Capital"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000002.000134786.html",
+   "https://thebridge.jp/2026/03/ruten-raises-additional-funding-from-coral-capital"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社プラススイッチ",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": "https://www.plus-switch.co.jp",
+  "description": "BtoC向けマーケ支援・店舗アプリ「+switch」やD2Cブランド事業を展開",
+  "sectors": [
+   "マーケティング",
+   "D2C"
+  ],
+  "stage": null,
+  "total_raised_oku": 3.0,
+  "last_round": {
+   "date": "2026-03",
+   "round": "融資(デット)",
+   "amount_oku": 1.0,
+   "investors": [
+    "みずほ銀行",
+    "商工組合中央金庫",
+    "西武信用金庫"
+   ]
+  },
+  "investors": [
+   "みずほ銀行",
+   "商工組合中央金庫",
+   "西武信用金庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000010.000121504.html",
+   "https://www.nikkei.com/compass/company/icvom1EDEHCEqFG64G7Sx8"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Zevero",
+  "representative": null,
+  "hq": null,
+  "founded_year": 2021,
+  "website": "https://www.zevero.earth",
+  "description": "AIでScope1-3排出量算定を自動化するカーボンマネジメントプラットフォーム",
+  "sectors": [
+   "クライメートテック",
+   "SaaS"
+  ],
+  "stage": null,
+  "total_raised_oku": 22.0,
+  "last_round": {
+   "date": "2026-03",
+   "round": "追加調達",
+   "amount_oku": 11.0,
+   "investors": [
+    "Spiral Capital",
+    "Gazelle Capital",
+    "Deep30"
+   ]
+  },
+  "investors": [
+   "Spiral Capital",
+   "Gazelle Capital",
+   "Deep30"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000040.000131543.html",
+   "https://thebridge.jp/2026/03/zevero-raises-1-1-billion-yen-follow-on-funding"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ }
+]

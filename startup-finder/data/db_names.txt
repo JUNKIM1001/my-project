@@ -41,7 +41,9 @@ ArchiTek株式会社
 Ascenders株式会社
 AssetHub Inc.
 AssistMotion株式会社
+Asterminds株式会社
 AstroX株式会社
+BETA株式会社
 BackofficeForce株式会社
 Baseconnect株式会社
 Beatrust株式会社
@@ -81,6 +83,7 @@ ContractS株式会社
 Contrea株式会社
 CoreTissue BioEngineering株式会社
 Craif株式会社
+CrestecBio株式会社
 Crevo株式会社
 Crezit Holdings株式会社
 CryptoGames株式会社
@@ -113,6 +116,7 @@ Fairy Devices株式会社
 FastLabel株式会社
 Felo株式会社
 Flora株式会社
+Free Standard株式会社
 Frich株式会社
 G.U.テクノロジーズ株式会社
 GITAI Japan株式会社
@@ -144,11 +148,13 @@ Heartseed株式会社
 HelloWorld株式会社
 HiJoJo Partners株式会社
 HuLA immune株式会社
+I.W.G Inc.
 IMPUTE株式会社
 INSOL-HIGH株式会社
 IVA株式会社
 Idein株式会社
 Inagoraホールディングス株式会社
+InnoJin株式会社
 IssueHunt株式会社
 J-CAT株式会社
 JAPAN AI株式会社
@@ -198,15 +204,19 @@ Morus株式会社
 Muso Action株式会社
 MyDearest株式会社
 NEL株式会社
+NEULO株式会社
 NEW STANDARD株式会社
 NExT-e Solutions株式会社
 NOT A HOTEL株式会社
 NPO法人WELgee
+NUJP株式会社
+NUVVE JAPAN株式会社
 NanoFrontier株式会社
 Nanofiber Quantum Technologies, Inc.
 Nature株式会社
 Neusignal Therapeutics株式会社
 Nishika株式会社
+Noahlogy株式会社
 Notta株式会社
 Now Do株式会社
 Nstockホールディングス株式会社
@@ -218,6 +228,7 @@ ONESTRUCTION株式会社
 ONE株式会社
 ONIGO株式会社
 ORNIS株式会社
+ORTHOREBIRTH株式会社
 OSHIAI株式会社
 OWB株式会社（旧・株式会社小高ワーカーズベース）
 Oishii Farm Corporation
@@ -235,6 +246,7 @@ PRONI株式会社（旧・株式会社ユニラボ）
 Paradigm AI株式会社
 Parakeet株式会社
 Patentix株式会社
+PathAhead株式会社
 Payn株式会社
 PharmaX株式会社
 Playco（Play Co., Ltd.）
@@ -259,6 +271,7 @@ Ramps株式会社
 Recustomer株式会社
 Rehabilitation3.0株式会社
 Repro株式会社
+Ruten Inc
 SALESCORE株式会社
 SATORI株式会社
 SCALE photonics株式会社
@@ -291,6 +304,7 @@ SkySense株式会社
 Somewhere株式会社
 Sotas株式会社
 Space BD株式会社
+Space Tech Accelerator株式会社
 Spiber株式会社
 SpiralAI株式会社
 Spready株式会社
@@ -299,6 +313,7 @@ Starlight Engine株式会社
 Studio株式会社
 Sustineri株式会社
 Symbiobe株式会社
+Synflux株式会社
 SyntheticGestalt株式会社
 TAKEO株式会社
 THECOO株式会社
@@ -356,6 +371,7 @@ Yoom株式会社
 Yper株式会社
 ZIDAI株式会社
 Zaimo株式会社
+Zen Intelligence株式会社（旧・株式会社SoftRoid）
 ZettaJoule株式会社
 adapt株式会社
 aidea株式会社
@@ -382,6 +398,7 @@ eMotion Fleet株式会社
 ecbo株式会社
 emole株式会社
 emol株式会社
+extra mile株式会社（Xross Road）
 fermata株式会社
 forest株式会社
 glafit株式会社
@@ -455,6 +472,7 @@ xMap株式会社
 アル株式会社
 アンドエル株式会社
 アークエルテクノロジーズ株式会社
+イグアルファン株式会社
 イジゲングループ株式会社
 イチニ株式会社
 イネーブラー株式会社
@@ -463,6 +481,7 @@ xMap株式会社
 イルミメディカル株式会社
 インスタリム株式会社
 インターステラテクノロジズ株式会社
+インターセクト
 インテグリカルチャー株式会社
 インパクトサークル株式会社
 イークラウド株式会社
@@ -526,6 +545,7 @@ xMap株式会社
 コングラント株式会社
 コードキャンプ株式会社
 サイバーコマンド株式会社
+サウンドウェーブイノベーション株式会社
 サグリ株式会社
 サスメド株式会社
 サロウィン株式会社
@@ -605,6 +625,7 @@ xMap株式会社
 ヒラソル・エナジー株式会社
 ビットバンク株式会社
 ピクシーダストテクノロジーズ株式会社
+ピュアサーモンジャパン株式会社
 ファイトケミカルプロダクツ株式会社
 ファイメクス株式会社
 ファインディ株式会社
@@ -632,12 +653,14 @@ xMap株式会社
 ペイトナー株式会社
 ペプチスター株式会社
 ペプチドリーム株式会社
+ペリオセラピア株式会社
 ボンディッシュ株式会社（旧・株式会社ノンピ）
 ボールウェーブ株式会社
 ポケトーク株式会社
 マイクロ波化学株式会社
 マゼランシステムズジャパン株式会社
 マネーツリー株式会社
+マネーフォワードプライベートバンク株式会社
 ミラーフィット株式会社
 ミントフラッグ株式会社
 ミーチュー株式会社
@@ -652,6 +675,7 @@ xMap株式会社
 モデラート株式会社
 モノオク株式会社
 モノグサ株式会社
+モルゲンロット株式会社
 モルミル株式会社
 モーションリブ株式会社
 ユアスタンド株式会社
@@ -663,6 +687,7 @@ xMap株式会社
 ユニファ株式会社
 ユビ電株式会社
 ユーザーライク株式会社（旧・株式会社Crunch Style）
+ライトタッチテクノロジー株式会社
 ライフイズテック株式会社
 ライフロボティクス株式会社
 ラピュタロボティクス株式会社
@@ -698,11 +723,13 @@ xMap株式会社
 喪服レスキュー株式会社
 変な商社株式会社
 大熊ダイヤモンドデバイス株式会社
+天創堂株式会社
 将来宇宙輸送システム株式会社
 建ロボテック株式会社
 日本サイバーディフェンス株式会社
 日本ハイドロパウテック株式会社
 日本積層造形株式会社
+旭東ホールディングス株式会社
 有機米デザイン株式会社
 株式会社 eve autonomy
 株式会社10X
@@ -734,6 +761,7 @@ xMap株式会社
 株式会社ARK
 株式会社ASTINA
 株式会社AVIATE
+株式会社AZNICS
 株式会社AZOO
 株式会社Acompany
 株式会社AdipoSeeds
@@ -749,12 +777,14 @@ xMap株式会社
 株式会社AmaterZ
 株式会社Ancar
 株式会社Andbot
+株式会社Andeco
 株式会社Another works
 株式会社Antway
 株式会社AppBrew
 株式会社AppBroadCast
 株式会社AquaFusion
 株式会社Arent
+株式会社Arrowsmith
 株式会社Ashirase
 株式会社Asobica
 株式会社Athena Technologies
@@ -767,6 +797,7 @@ xMap株式会社
 株式会社Azit
 株式会社BALLAS
 株式会社BANKEY
+株式会社BEAM Technologies
 株式会社BLUE BATON
 株式会社BLUEISH
 株式会社BLUEPRINT Founders
@@ -782,9 +813,11 @@ xMap株式会社
 株式会社Bomo
 株式会社BookBase
 株式会社Brave group
+株式会社BuddyCompass
 株式会社Buzzreach
 株式会社CAMPFIRE
 株式会社CELLORB
+株式会社CFOne
 株式会社CLUE
 株式会社CONOC
 株式会社COTEN
@@ -802,6 +835,7 @@ xMap株式会社
 株式会社CastingONE
 株式会社Catallaxy
 株式会社Cell-En
+株式会社Cellest
 株式会社Cellid
 株式会社CharacterBank
 株式会社ChillStack
@@ -809,6 +843,7 @@ xMap株式会社
 株式会社Chronoter
 株式会社CinemaLeap
 株式会社Citadel AI
+株式会社ClaN Entertainment
 株式会社Clear
 株式会社Closer
 株式会社CoA Nexus
@@ -842,6 +877,7 @@ xMap株式会社
 株式会社EEFULホールディングス
 株式会社ELEMENTS
 株式会社ELYZA
+株式会社ENBASE
 株式会社ENDROLL
 株式会社EQUES
 株式会社EVERING
@@ -856,7 +892,9 @@ xMap株式会社
 株式会社EmbodyMe
 株式会社EventHub
 株式会社FABRIC TOKYO
+株式会社FACTORY X
 株式会社FAcraft
+株式会社FEIDIAS
 株式会社FIXER
 株式会社FLIGHTS
 株式会社FLOSFIA
@@ -882,6 +920,7 @@ xMap株式会社
 株式会社FullDepth
 株式会社Fun Group
 株式会社FunMake
+株式会社G-ant
 株式会社GATARI
 株式会社GINKAN
 株式会社GO TODAY SHAiRE SALON
@@ -898,6 +937,7 @@ xMap株式会社
 株式会社Glocalist
 株式会社Goals
 株式会社GramEye
+株式会社Greenphard Energy
 株式会社Greenspoon
 株式会社Grooves
 株式会社HA-LU
@@ -925,6 +965,7 @@ xMap株式会社
 株式会社Helical Fusion
 株式会社Helpfeel
 株式会社Helte
+株式会社HerLifeLab
 株式会社High Link
 株式会社HikariQ Health
 株式会社Hogetic Lab
@@ -932,6 +973,7 @@ xMap株式会社
 株式会社Housmart
 株式会社Hubble
 株式会社Huber.
+株式会社INDUSTRIAL-X
 株式会社INDX
 株式会社INFORICH
 株式会社INFRECT
@@ -965,6 +1007,7 @@ xMap株式会社
 株式会社KabuK Style
 株式会社Kailas Robotics
 株式会社Kanazawa Diamond
+株式会社Kikuvi
 株式会社KiteRa
 株式会社Kiva
 株式会社Knowhere
@@ -975,12 +1018,14 @@ xMap株式会社
 株式会社Kyulux
 株式会社Kyuzan
 株式会社L is B
+株式会社L&F
 株式会社LABOT
 株式会社LATRICO
 株式会社LEAN BODY
 株式会社LEP
 株式会社LIFESCAPES
 株式会社LIGHTz
+株式会社LOOV
 株式会社LX DESIGN
 株式会社LabBase
 株式会社LacuS
@@ -1001,6 +1046,7 @@ xMap株式会社
 株式会社Linkhola
 株式会社Linkship
 株式会社Liquitous
+株式会社LivCo（旧・株式会社ASEAN HOUSE）
 株式会社LivEQuality大家さん
 株式会社Live Search
 株式会社Loco Partners
@@ -1010,6 +1056,7 @@ xMap株式会社
 株式会社Luup
 株式会社Luxonus
 株式会社M&Aクラウド
+株式会社M2X
 株式会社MATCHA
 株式会社MAZIN
 株式会社MEME
@@ -1044,12 +1091,14 @@ xMap株式会社
 株式会社NABLA Mobility
 株式会社NEWGREEN
 株式会社NEWLOCAL
+株式会社NEXT NEW WORLD
 株式会社NINAITE
 株式会社NINZIA
 株式会社NOVARCA（旧・トレンドExpress）
 株式会社Natee
 株式会社NearMe
 株式会社Neautech
+株式会社NeoRealX
 株式会社New Innovations
 株式会社New Space Intelligence
 株式会社Newce
@@ -1141,8 +1190,10 @@ xMap株式会社
 株式会社SCMバイオメディカ
 株式会社SECAI MARCHE
 株式会社SENTOEN
+株式会社SHINSEKAI Technologies
 株式会社SHONAI（旧ヤマガタデザイン株式会社）
 株式会社SIGNATE
+株式会社SIGQ
 株式会社SISI
 株式会社SODA
 株式会社SOXAI
@@ -1155,6 +1206,7 @@ xMap株式会社
 株式会社STANDS
 株式会社STRACT
 株式会社STYLY（旧・株式会社Psychic VR Lab）
+株式会社STYZ
 株式会社SUN METALON
 株式会社SUPER STUDIO
 株式会社SUPERNOVA
@@ -1167,6 +1219,7 @@ xMap株式会社
 株式会社Schoo
 株式会社Seibii
 株式会社Shippio
+株式会社Shizen Connect
 株式会社Showcase Gig
 株式会社Singular Perturbations
 株式会社Skillnote
@@ -1227,6 +1280,7 @@ xMap株式会社
 株式会社Third Intelligence
 株式会社Thirdverse
 株式会社Timers
+株式会社Tokenz
 株式会社Tokyo Otaku Mode
 株式会社TranSe
 株式会社TriOrb
@@ -1256,12 +1310,16 @@ xMap株式会社
 株式会社Wanderlust
 株式会社Waqua
 株式会社Warrantee
+株式会社WeDraft
+株式会社WineBank
 株式会社WiseVine
 株式会社WizWe
 株式会社Wizleap
 株式会社Wunderbar
+株式会社XAION DATA
 株式会社XDeli
 株式会社YAGO
+株式会社YAMASTRO
 株式会社YOAKE entertainment
 株式会社YOUPACE
 株式会社YOUTRUST
@@ -1280,12 +1338,14 @@ xMap株式会社
 株式会社Zehitomo
 株式会社Zene
 株式会社Zenport
+株式会社Zevero
 株式会社aba
 株式会社aceRNA Technologies
 株式会社aiESG
 株式会社ailead
 株式会社alma
 株式会社ambr
+株式会社be-FULL
 株式会社chaintope
 株式会社coco
 株式会社cosmobloom
@@ -1308,6 +1368,7 @@ xMap株式会社
 株式会社for Crafts
 株式会社foriio
 株式会社grabss
+株式会社grafto
 株式会社hacomono
 株式会社heart relation
 株式会社hokan
@@ -1353,6 +1414,7 @@ xMap株式会社
 株式会社pafin
 株式会社primeNumber
 株式会社recri
+株式会社robottte
 株式会社route-D
 株式会社shizai
 株式会社souco
@@ -1562,6 +1624,7 @@ xMap株式会社
 株式会社ストリーモ
 株式会社スナックテクノロジーズ
 株式会社スナックミー
+株式会社スパイクスタジオ
 株式会社スピークバディ
 株式会社スプレッド
 株式会社スペースシフト
@@ -1591,6 +1654,7 @@ xMap株式会社
 株式会社ソーシャルインテリア（旧・株式会社subsclife）
 株式会社タイミー
 株式会社タスカジ
+株式会社タックスナップ
 株式会社タレントアンドアセスメント
 株式会社タンプ（旧・株式会社Gracia）
 株式会社ダイアログ
@@ -1606,6 +1670,7 @@ xMap株式会社
 株式会社テックオーシャン
 株式会社テックドクター
 株式会社テラアクソン
+株式会社テラファーム
 株式会社テラ・ラボ
 株式会社テラーノベル
 株式会社テンクー
@@ -1649,10 +1714,12 @@ xMap株式会社
 株式会社ネオキャリア
 株式会社ネクイノ（旧・ネクストイノベーション株式会社）
 株式会社ネクスタ
+株式会社ネコノメ
 株式会社ネストエッグ
 株式会社ネットスターズ
 株式会社ネットプロテクションズホールディングス
 株式会社ノベルクリスタルテクノロジー
+株式会社ハイウェイ
 株式会社ハイドロネクスト
 株式会社ハイヤールー
 株式会社ハイレゾ香川
@@ -1707,6 +1774,7 @@ xMap株式会社
 株式会社ブイクック
 株式会社プラグテック
 株式会社プラゴ
+株式会社プラススイッチ
 株式会社プランテックス
 株式会社プラントフォーム
 株式会社プレイブレーン
@@ -1764,6 +1832,7 @@ xMap株式会社
 株式会社ユーグレナ
 株式会社ユーフォリア
 株式会社ユーブローム
+株式会社ヨセミテ
 株式会社ライトハウス
 株式会社ライトライト
 株式会社ライナフ
@@ -1772,6 +1841,7 @@ xMap株式会社
 株式会社ラフール
 株式会社ラボル
 株式会社ラントリップ
+株式会社ランプ
 株式会社リスポ
 株式会社リセ
 株式会社リゾートワークス
@@ -1779,6 +1849,7 @@ xMap株式会社
 株式会社リチカ
 株式会社リフカム
 株式会社リボルナバイオサイエンス
+株式会社リモア
 株式会社リングブル
 株式会社リンケージ
 株式会社リーディングマーク
@@ -1800,6 +1871,7 @@ xMap株式会社
 株式会社ロジクラ
 株式会社ロジレス
 株式会社ロボトラック
+株式会社ロータス・サーマル・ソリューション
 株式会社ワイヤードビーンズ
 株式会社ワンテーブル
 株式会社ワープスペース

@@ -1,0 +1,566 @@
+[
+ {
+  "name": "モルゲンロット株式会社",
+  "representative": "中村昌道",
+  "hq": "東京都千代田区",
+  "founded_year": 2019,
+  "website": "https://morgenrot.net/",
+  "description": "生成AI時代向けコンピューティングパワー基盤・GPUリソース最適化ソリューション",
+  "sectors": [
+   "AI",
+   "インフラ",
+   "コンピューティング"
+  ],
+  "stage": "シリーズB",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-01",
+   "round": "シリーズB 1stクローズ",
+   "amount_oku": 11.0,
+   "investors": [
+    "ジャパンインベストメントアドバイザー",
+    "ミライト・ワン",
+    "J-POWER"
+   ]
+  },
+  "investors": [
+   "ジャパンインベストメントアドバイザー",
+   "ミライト・ワン",
+   "J-POWER"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000090.000053470.html",
+   "https://kepple.co.jp/articles/1ho-20bjj"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社タックスナップ",
+  "representative": "田中雄太",
+  "hq": "東京都杉並区",
+  "founded_year": 2022,
+  "website": "https://taxnap.co.jp/",
+  "description": "個人事業主向け確定申告アプリ「タックスナップ」。税理士監修AIで経費を自動仕分け",
+  "sectors": [
+   "FinTech",
+   "SaaS",
+   "AI"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 16.0,
+  "last_round": {
+   "date": "2026-01",
+   "round": "シリーズA",
+   "amount_oku": 13.0,
+   "investors": [
+    "WiL",
+    "Archetype Ventures",
+    "みずほ銀行"
+   ]
+  },
+  "investors": [
+   "WiL",
+   "Archetype Ventures",
+   "みずほ銀行"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000031.000122860.html",
+   "https://thebridge.jp/2026/01/taxsnap-raises-series-a-funding-for-tax-filing-app"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "Synflux株式会社",
+  "representative": null,
+  "hq": "東京都",
+  "founded_year": null,
+  "website": "https://synflux.io/",
+  "description": "衣服生産の素材廃棄を最小化するデザインシステム「Algorithmic Couture」開発",
+  "sectors": [
+   "ファッションテック",
+   "サステナビリティ"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 7.4,
+  "last_round": {
+   "date": "2026-01",
+   "round": "シリーズA 2ndクローズ",
+   "amount_oku": 5.2,
+   "investors": [
+    "Goldwin Play Earth Fund",
+    "Collateral Good",
+    "脱炭素化支援機構",
+    "三井住友トラスト・インベストメント",
+    "サザビーリーグ"
+   ]
+  },
+  "investors": [
+   "Goldwin Play Earth Fund",
+   "Collateral Good",
+   "脱炭素化支援機構",
+   "三井住友トラスト・インベストメント",
+   "サザビーリーグ"
+  ],
+  "sources": [
+   "https://thebridge.jp/2026/01/synflux-raises-520m-yen-for-algorithmic-couture",
+   "https://kepple.co.jp/articles/financing/kchqex31u5ut"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Greenphard Energy",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "冷蔵・冷凍・空調設備向けの最適化制御×電力アグリゲーション(VPP)ソリューション",
+  "sectors": [
+   "エネルギー",
+   "IoT",
+   "クライメートテック"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": 3.9,
+  "last_round": {
+   "date": "2026-01",
+   "round": "シリーズA 1stクローズ",
+   "amount_oku": 2.3,
+   "investors": [
+    "フジタ",
+    "三菱UFJ信託銀行",
+    "野村ホールディングス",
+    "NOBUNAGAキャピタルビレッジ"
+   ]
+  },
+  "investors": [
+   "フジタ",
+   "三菱UFJ信託銀行",
+   "野村ホールディングス",
+   "NOBUNAGAキャピタルビレッジ"
+  ],
+  "sources": [
+   "https://sogyotecho.jp/news/20260115greenphard/",
+   "https://thebridge.jp/2026/01/greenphard-energy-raises-series-a-1st-close"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "イグアルファン株式会社",
+  "representative": "新貝康司",
+  "hq": "東京都文京区",
+  "founded_year": 2022,
+  "website": "https://igalphan.jp/",
+  "description": "腸内細菌叢の乱れを治療する世界初の経口IgA抗体医薬の開発",
+  "sectors": [
+   "バイオ",
+   "創薬"
+  ],
+  "stage": "プレシード",
+  "total_raised_oku": 7.6,
+  "last_round": {
+   "date": "2026-01",
+   "round": "プレシードラウンド",
+   "amount_oku": 3.1,
+   "investors": [
+    "リアルテックファンド4号",
+    "インスパイア・インベストメント"
+   ]
+  },
+  "investors": [
+   "リアルテックファンド4号",
+   "インスパイア・インベストメント"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000174854.html",
+   "https://igalphan.jp/news/pre-seed-round-20260116/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社G-ant",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "VTuber・クリエイターIPのファンダムトイ「ミタクルブロック」開発・販売",
+  "sectors": [
+   "エンタメ",
+   "IP",
+   "トイ"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": 1.2,
+  "last_round": {
+   "date": "2026-01",
+   "round": "プレシリーズA",
+   "amount_oku": 1.2,
+   "investors": [
+    "ANOBAKA",
+    "mint",
+    "ごうぎんキャピタル"
+   ]
+  },
+  "investors": [
+   "ANOBAKA",
+   "mint",
+   "ごうぎんキャピタル"
+  ],
+  "sources": [
+   "https://thebridge.jp/2026/01/g-ant-raises-120-million-yen-pre-series-a-for-mitacle-block",
+   "https://note.com/zaimo_ai/n/nad41dc54d265"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "インターセクト",
+  "representative": "松本拓哉",
+  "hq": null,
+  "founded_year": 2023,
+  "website": null,
+  "description": "プロフェッショナルサービス統合型AIエージェントプラットフォーム「Askhub」提供",
+  "sectors": [
+   "AI",
+   "SaaS"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": 3.8,
+  "last_round": {
+   "date": "2026-01",
+   "round": "プレシリーズA",
+   "amount_oku": 3.0,
+   "investors": [
+    "ALPHA",
+    "SBIインベストメント",
+    "Skyland Ventures",
+    "みずほキャピタル"
+   ]
+  },
+  "investors": [
+   "ALPHA",
+   "SBIインベストメント",
+   "Skyland Ventures",
+   "みずほキャピタル"
+  ],
+  "sources": [
+   "https://thebridge.jp/2026/01/intersect-raises-pre-series-a-for-askhub"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社ClaN Entertainment",
+  "representative": "大井基行",
+  "hq": null,
+  "founded_year": 2022,
+  "website": null,
+  "description": "VTuber中心のクリエイターネットワーク・コンテンツ制作・マーケティング（日本テレビ子会社）",
+  "sectors": [
+   "エンタメ",
+   "VTuber"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-01",
+   "round": "第三者割当増資",
+   "amount_oku": 11.5,
+   "investors": [
+    "日本テレビ放送網"
+   ]
+  },
+  "investors": [
+   "日本テレビ放送網"
+  ],
+  "sources": [
+   "https://thebridge.jp/2026/01/clan-entertainment-raises-1-15-billion-yen-from-nippon-tv-for-global-expansion",
+   "https://note.com/zaimo_ai/n/n361ea40cb2ef"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社FEIDIAS",
+  "representative": "鹿野智裕",
+  "hq": "東京都港区",
+  "founded_year": 2022,
+  "website": "https://feidias.jp/",
+  "description": "AI×クリエイティブ。企業専用アバター「AGENTIA」やAI案内「NEUVOX」等を提供",
+  "sectors": [
+   "AI",
+   "クリエイティブ"
+  ],
+  "stage": "エンジェル",
+  "total_raised_oku": 2.0,
+  "last_round": {
+   "date": "2026-02",
+   "round": "エンジェルラウンド",
+   "amount_oku": 2.0,
+   "investors": [
+    "国内ファミリーオフィス・個人投資家（VC未介入）"
+   ]
+  },
+  "investors": [
+   "国内ファミリーオフィス・個人投資家（VC未介入）"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000013.000146150.html",
+   "https://kepple.co.jp/articles/vjy-25b0b2"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社ロータス・サーマル・ソリューション",
+  "representative": "井手拓哉",
+  "hq": "大阪府大阪市北区",
+  "founded_year": 2016,
+  "website": "https://www.lotus-t-s.co.jp/",
+  "description": "阪大発。ロータス型ポーラス金属によるサーバー冷却・熱制御ソリューション",
+  "sectors": [
+   "ディープテック",
+   "半導体",
+   "データセンター"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-02",
+   "round": "第三者割当増資+Go-Tech事業",
+   "amount_oku": 5.0,
+   "investors": [
+    "篠原電機",
+    "エレマテック"
+   ]
+  },
+  "investors": [
+   "篠原電機",
+   "エレマテック"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000006.000163646.html",
+   "https://kepple.co.jp/articles/q9y5uempk"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社SIGQ",
+  "representative": "金築敬晃",
+  "hq": "茨城県つくば市",
+  "founded_year": 2024,
+  "website": "https://company.sigq.io",
+  "description": "インシデントマネジメント特化Agentic AI「Incident Lake」開発",
+  "sectors": [
+   "AI",
+   "SaaS",
+   "セキュリティ"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-02",
+   "round": "プレシリーズA 1stクローズ",
+   "amount_oku": 1.23,
+   "investors": [
+    "みずほキャピタル",
+    "SMBCベンチャーキャピタル",
+    "個人投資家9名"
+   ]
+  },
+  "investors": [
+   "みずほキャピタル",
+   "SMBCベンチャーキャピタル",
+   "個人投資家9名"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000011.000149500.html",
+   "https://sogyotecho.jp/news/20260219sigq/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社Cellest",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": null,
+  "description": "ライブコマース専門事務所「トキバナ」・ライブコマースECモール「WABE」運営",
+  "sectors": [
+   "EC",
+   "ライブコマース"
+  ],
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-02",
+   "round": "デットファイナンス",
+   "amount_oku": 7.4,
+   "investors": [
+    "紀陽銀行",
+    "京都銀行",
+    "徳島大正銀行",
+    "日本政策金融公庫",
+    "北國銀行",
+    "みずほ銀行"
+   ]
+  },
+  "investors": [
+   "紀陽銀行",
+   "京都銀行",
+   "徳島大正銀行",
+   "日本政策金融公庫",
+   "北國銀行",
+   "みずほ銀行"
+  ],
+  "sources": [
+   "https://thebridge.jp/2026/02/cellest-raises-1-68-billion-yen-debt-financing-for-live-commerce",
+   "https://note.com/zaimo_ai/n/nc2de44e6e01b"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社SHINSEKAI Technologies",
+  "representative": "大社武",
+  "hq": null,
+  "founded_year": 2022,
+  "website": null,
+  "description": "LINEミニアプリ基盤のファンコミュニティ運営支援サービス群「MURA」開発・提供",
+  "sectors": [
+   "コミュニティ",
+   "SaaS",
+   "エンタメ"
+  ],
+  "stage": "プレシリーズA",
+  "total_raised_oku": 4.28,
+  "last_round": {
+   "date": "2026-02",
+   "round": "プレシリーズAエクステンション",
+   "amount_oku": 2.28,
+   "investors": [
+    "事業会社および個人投資家"
+   ]
+  },
+  "investors": [
+   "事業会社および個人投資家"
+  ],
+  "sources": [
+   "https://thebridge.jp/2026/02/shinsekai-technologies-raises-228-million-yen-pre-series-a-extension",
+   "https://note.com/zaimo_ai/n/n6c5bc2c86cbe"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社YAMASTRO",
+  "representative": "清水佑磨",
+  "hq": "東京都千代田区",
+  "founded_year": 2025,
+  "website": null,
+  "description": "AI・ソフトウェア駆動工場で宇宙・防衛・ロボティクス向け金属部品製造を自動化",
+  "sectors": [
+   "製造",
+   "AI",
+   "ディープテック"
+  ],
+  "stage": "シード",
+  "total_raised_oku": 1.0,
+  "last_round": {
+   "date": "2026-02",
+   "round": "シードラウンド",
+   "amount_oku": 1.0,
+   "investors": [
+    "インキュベイトファンド"
+   ]
+  },
+  "investors": [
+   "インキュベイトファンド"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000177951.html",
+   "https://kepple.co.jp/articles/08vml6l67q7"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "株式会社LivCo（旧・株式会社ASEAN HOUSE）",
+  "representative": "佐々翔太郎",
+  "hq": "東京都新宿区",
+  "founded_year": 2021,
+  "website": "https://livco.inc",
+  "description": "外国人特化型グローバルHRプラットフォーム。特定技能外国人紹介・教育・生活サポート",
+  "sectors": [
+   "HR",
+   "グローバル"
+  ],
+  "stage": null,
+  "total_raised_oku": 3.4,
+  "last_round": {
+   "date": "2026-01",
+   "round": "デットファイナンス",
+   "amount_oku": 1.8,
+   "investors": [
+    "みずほ銀行",
+    "りそな銀行",
+    "日本政策金融公庫"
+   ]
+  },
+  "investors": [
+   "みずほ銀行",
+   "りそな銀行",
+   "日本政策金融公庫"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000019.000089895.html",
+   "https://note.com/zaimo_ai/n/nd522e7064edf"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ },
+ {
+  "name": "extra mile株式会社（Xross Road）",
+  "representative": null,
+  "hq": null,
+  "founded_year": null,
+  "website": "https://extramile.jp/",
+  "description": "AIマンガ制作ツール「HANASEE」・次世代アニメIPエコシステム「Xross Road」開発",
+  "sectors": [
+   "AI",
+   "エンタメ",
+   "Web3"
+  ],
+  "stage": "プレシード",
+  "total_raised_oku": 2.3,
+  "last_round": {
+   "date": "2026-02",
+   "round": "プレシードラウンド",
+   "amount_oku": 2.3,
+   "investors": [
+    "Arbitrum Gaming Ventures",
+    "Decima Fund",
+    "Taisu Ventures",
+    "Baboon VC"
+   ]
+  },
+  "investors": [
+   "Arbitrum Gaming Ventures",
+   "Decima Fund",
+   "Taisu Ventures",
+   "Baboon VC"
+  ],
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000010.000100767.html",
+   "https://sogyotecho.jp/news/20260209xross-road/"
+  ],
+  "status": "active",
+  "last_verified": "2026-07"
+ }
+]
