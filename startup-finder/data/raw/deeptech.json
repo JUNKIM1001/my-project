@@ -1,0 +1,528 @@
+[
+  {
+    "name": "京都フュージョニアリング株式会社",
+    "website": "https://kyotofusioneering.com/",
+    "founded_year": 2019,
+    "hq": null,
+    "representative": "長尾昂",
+    "description": "核融合発電プラントの周辺機器（ジャイロトロン、熱取り出し・燃料サイクル技術等）を開発する京都大学発スタートアップ。国内外の核融合研究機関・企業にプラントエンジニアリングを提供する。",
+    "sectors": ["核融合", "エネルギー"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 162.6,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-09",
+      "round": "シリーズC（エクステンション）",
+      "amount_oku": 93.8,
+      "investors": ["KVIF-Ⅰ投資事業有限責任組合", "JERA", "三井住友信託銀行"]
+    },
+    "investors": ["三井物産", "三菱商事", "JERA", "三井住友信託銀行", "日本政策金融公庫", "国際協力銀行"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000045.000072520.html",
+      "https://www.nikkei.com/article/DGXZQOUC0524U0V00C25A9000000/",
+      "https://www.businessinsider.jp/article/2509-kyotofusioneering-finance/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Helical Fusion",
+    "website": "https://www.helicalfusion.com/",
+    "founded_year": 2021,
+    "hq": null,
+    "representative": "田口昂哉",
+    "description": "日本発のヘリカル（ステラレータ）方式による定常運転可能な核融合炉の商用化を目指すスタートアップ。2030年代の実用発電実証を掲げる「Helix Program」を推進する。",
+    "sectors": ["核融合", "エネルギー"],
+    "stage": "シリーズA",
+    "total_raised_oku": 60,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-12",
+      "round": "シリーズA（エクステンション）",
+      "amount_oku": 8.7,
+      "investors": ["Ecrowd NEXT 1st Investment", "個人投資家"]
+    },
+    "investors": ["SBIインベストメント", "慶應イノベーション・イニシアティブ", "日本政策金融公庫", "商工組合中央金庫"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000048.000089262.html",
+      "https://thebridge.jp/2025/12/helical-fusion-raises-870m-jpy-series-a-extension",
+      "https://kepple.co.jp/articles/ifn-zz6h2"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社EX-Fusion",
+    "website": "https://ex-fusion.com/",
+    "founded_year": 2021,
+    "hq": "大阪府大阪市",
+    "representative": "松尾一輝",
+    "description": "レーザー核融合方式による発電商用炉の実現を目指す大阪大学発スタートアップ。高出力レーザーの高精度制御・連続照射技術を開発し、2025年にシリーズAで約26億円を調達した。",
+    "sectors": ["核融合", "エネルギー", "レーザー"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-10",
+      "round": null,
+      "amount_oku": 4,
+      "investors": []
+    },
+    "investors": [],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://ex-fusion.com/news/ex-fusion%E3%80%81%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA-a-%E3%81%A7%E7%B7%8F%E9%A1%8D%E7%B4%84-26-%E5%84%84%E5%86%86%E3%81%AE%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94%E3%82%92%E5%AE%9F%E6%96%BD",
+      "https://kepple.co.jp/articles/d68q429rn1",
+      "https://sogyotecho.jp/news/20251014ex-fusion/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Synspective",
+    "website": "https://synspective.com/",
+    "founded_year": 2018,
+    "hq": "東京都江東区",
+    "representative": "新井元行",
+    "description": "小型SAR（合成開口レーダー）衛星コンステレーション「StriX」の開発・運用と衛星データ解析ソリューションを提供する慶應義塾大学発スタートアップ。2024年12月に東証グロース市場へ上場した。",
+    "sectors": ["宇宙", "衛星", "SAR"],
+    "stage": "IPO済",
+    "total_raised_oku": 281.9,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-06",
+      "round": "シリーズC",
+      "amount_oku": 70,
+      "investors": []
+    },
+    "investors": ["ジャフコ グループ", "大和ハウス工業"],
+    "partners": [],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2024年12月19日 東証グロース市場に上場（証券コード290A）",
+    "employee_count": null,
+    "sources": [
+      "https://synspective.com/press-release/2024/listed_tse/",
+      "https://www.ipokiso.com/company/2024/synspective.html",
+      "https://sorabatake.jp/38739/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "インターステラテクノロジズ株式会社",
+    "website": "https://www.istellartech.com/",
+    "founded_year": 2013,
+    "hq": "北海道広尾郡大樹町",
+    "representative": "稲川貴大",
+    "description": "観測ロケット「MOMO」と小型人工衛星打上げロケット「ZERO」を開発する民間ロケット企業。文科省SBIRフェーズ3に採択され、ウーブン・バイ・トヨタと提携してロケットの量産化を進める。",
+    "sectors": ["宇宙", "ロケット"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 446,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-01",
+      "round": "シリーズF",
+      "amount_oku": 201,
+      "investors": ["三井住友銀行", "宇宙フロンティア2号ファンド", "ジャパネットホールディングス"]
+    },
+    "investors": ["ウーブン・バイ・トヨタ", "三井住友銀行", "ジャパネットホールディングス", "宇宙フロンティアファンド"],
+    "partners": ["ウーブン・バイ・トヨタ"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://www.istellartech.com/news/releases/11034",
+      "https://news.mynavi.jp/techplus/article/20260116-3982294/",
+      "https://prtimes.jp/main/html/rd/p/000000077.000043667.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ElevationSpace",
+    "website": "https://elevation-space.com/",
+    "founded_year": 2021,
+    "hq": "宮城県仙台市",
+    "representative": "小林稜平",
+    "description": "宇宙環境利用・回収プラットフォーム「ELS-R」を開発する東北大学発スタートアップ。人工衛星内で実験を行い、成果物を地球に回収するサービスの実現を目指す。",
+    "sectors": ["宇宙", "衛星"],
+    "stage": "シリーズA",
+    "total_raised_oku": 37,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-09",
+      "round": "プレシリーズB",
+      "amount_oku": 11,
+      "investors": []
+    },
+    "investors": ["Beyond Next Ventures", "スパークス・アセット・マネジメント", "ニッセイ・キャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://elevation-space.com/posts/news_20250917",
+      "https://prtimes.jp/main/html/rd/p/000000054.000074085.html",
+      "https://sorabatake.jp/37439/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社アークエッジ・スペース",
+    "website": "https://arkedgespace.com/",
+    "founded_year": 2018,
+    "hq": "東京都江東区",
+    "representative": "福代孝良",
+    "description": "超小型衛星コンステレーションの企画・設計から量産・運用までを一貫して手がける東京大学発スタートアップ。船舶通信（衛星VDES）や月面通信測位などの衛星システムを開発する。",
+    "sectors": ["宇宙", "衛星"],
+    "stage": "シリーズB",
+    "total_raised_oku": 107,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-02",
+      "round": "シリーズB",
+      "amount_oku": 80,
+      "investors": []
+    },
+    "investors": ["みずほ銀行"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000044.000073065.html",
+      "https://www.nikkei.com/article/DGXZQOUC31A450R30C25A1000000/",
+      "https://uchubiz.com/article/new57769/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Pale Blue",
+    "website": "https://pale-blue.co.jp/",
+    "founded_year": 2020,
+    "hq": "千葉県柏市",
+    "representative": "浅川純",
+    "description": "水を推進剤とする小型衛星用推進機（水エンジン）を開発・製造する東京大学発スタートアップ。安全で低コストな推進系により小型衛星の軌道制御を可能にする。",
+    "sectors": ["宇宙", "衛星", "推進系"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-08",
+      "round": "シリーズC",
+      "amount_oku": 15,
+      "investors": ["エースタート", "ニッセイ・キャピタル", "三井住友海上キャピタル", "伊藤忠テクノロジーベンチャーズ", "MEイノベーション投資事業有限責任組合", "東急建設－GBイノベーション投資事業有限責任組合"]
+    },
+    "investors": ["ニッセイ・キャピタル", "三井住友海上キャピタル", "伊藤忠テクノロジーベンチャーズ", "三菱電機（MEイノベーションファンド）"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000017.000055668.html",
+      "https://pale-blue.co.jp/jpn_news/439/",
+      "https://spacemedia.jp/news/12738"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "大熊ダイヤモンドデバイス株式会社",
+    "website": null,
+    "founded_year": 2022,
+    "hq": null,
+    "representative": "星川尚久",
+    "description": "北海道大学・産業技術総合研究所発のダイヤモンド半導体スタートアップ。耐放射線・高出力に強いダイヤモンド半導体デバイスを開発し、福島県大熊町に世界初のダイヤモンド半導体工場を建設中。",
+    "sectors": ["半導体", "素材"],
+    "stage": "シード",
+    "total_raised_oku": 67,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-10",
+      "round": "プレシリーズA",
+      "amount_oku": 40,
+      "investors": ["グロービス・キャピタル・パートナーズ", "Coral Capital", "SMBCベンチャーキャピタル", "三井住友海上キャピタル", "みずほ銀行"]
+    },
+    "investors": ["グロービス・キャピタル・パートナーズ", "Coral Capital", "SMBCベンチャーキャピタル", "三井住友海上キャピタル", "FFGベンチャービジネスパートナーズ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000005.000120349.html",
+      "https://www.nikkei.com/article/DGXZQOUC106GO0Q4A011C2000000/",
+      "https://thebridge.jp/2024/10/ookuma-dd-pre-series-a-round-funding"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ノベルクリスタルテクノロジー",
+    "website": "https://www.novelcrystal.co.jp/",
+    "founded_year": 2015,
+    "hq": null,
+    "representative": "倉又朗人",
+    "description": "次世代パワー半導体材料であるβ型酸化ガリウム（Ga2O3）の単結晶基板・エピウエハの開発・製造・販売を行うタムラ製作所発スタートアップ。",
+    "sectors": ["半導体", "素材"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-02",
+      "round": null,
+      "amount_oku": null,
+      "investors": ["埼玉県渋沢MIXイノベーション創出支援投資事業有限責任組合", "飯能信金地域未来創造ファンド"]
+    },
+    "investors": ["タムラ製作所", "AGC", "ローム", "大陽日酸", "安川電機", "新電元工業"],
+    "partners": ["タムラ製作所"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://www.novelcrystal.co.jp/",
+      "https://eetimes.itmedia.co.jp/ee/articles/2205/18/news045.html",
+      "https://igaspedia.com/2023/07/31/tn-sanso-novelcrystal-%CE%B2-ga2o3/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社QunaSys",
+    "website": "https://qunasys.com/",
+    "founded_year": 2018,
+    "hq": "東京都文京区",
+    "representative": "楊天任",
+    "description": "量子コンピュータ向けアルゴリズム・ソフトウェアを開発するスタートアップ。量子化学計算クラウド「QURI」等を提供し、化学・材料分野での量子コンピュータ実用化を推進する。",
+    "sectors": ["量子", "ソフトウェア"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-11",
+      "round": "シリーズB2",
+      "amount_oku": 17,
+      "investors": []
+    },
+    "investors": ["IBM Ventures", "ANRI"],
+    "partners": ["KDDI", "京セラ"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000050.000041464.html",
+      "https://qunasys.com/news/posts/fundraising2024jp/",
+      "https://thebridge.jp/2024/11/qunasys-series-b2-round-funding"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "OptQC株式会社",
+    "website": "https://optqc.com/",
+    "founded_year": 2024,
+    "hq": null,
+    "representative": null,
+    "description": "東京大学・古澤研究室の研究成果をもとに、常温常圧で動作しスケーラビリティに優れる光量子コンピュータの商用機開発を行う東大発スタートアップ。",
+    "sectors": ["量子", "光技術"],
+    "stage": "シリーズA",
+    "total_raised_oku": 21.5,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-10",
+      "round": "シリーズA1",
+      "amount_oku": 15,
+      "investors": ["グローバル・ブレイン", "オープンイノベーション推進1号投資事業有限責任組合", "デライト・ベンチャーズ", "科学技術振興機構（JST）"]
+    },
+    "investors": ["グローバル・ブレイン", "デライト・ベンチャーズ", "科学技術振興機構（JST）"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000013.000148901.html",
+      "https://thebridge.jp/2025/10/optqc-photonic-quantum-funding",
+      "https://thebridge.jp/2025/01/optqc-a-photonic-quantum-computing-company-raises-650-million-yen-in-its-seed-round"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社TBM",
+    "website": "https://tb-m.com/",
+    "founded_year": 2011,
+    "hq": "東京都中央区",
+    "representative": "山﨑敦義",
+    "description": "石灰石を主原料とし紙・プラスチックの代替となる新素材「LIMEX」および再生素材「CirculeX」を開発・製造するユニコーン企業。東証グロース市場への上場準備を進めていると報じられている。",
+    "sectors": ["素材", "環境"],
+    "stage": "レイター",
+    "total_raised_oku": null,
+    "valuation_oku": 1360,
+    "valuation_source": "Bloomberg 2025年12月報道（現在の評価額約1,360億円） https://www.bloomberg.com/jp/news/articles/2025-12-10/T5WYV8KK3NY800",
+    "last_round": {
+      "date": null,
+      "round": null,
+      "amount_oku": null,
+      "investors": []
+    },
+    "investors": ["SBIホールディングス"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://www.bloomberg.com/jp/news/articles/2025-12-10/T5WYV8KK3NY800",
+      "https://ja.wikipedia.org/wiki/TBM_(%E4%BC%81%E6%A5%AD)",
+      "https://initial.inc/articles/briefing12"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "Spiber株式会社",
+    "website": "https://spiber.inc/",
+    "founded_year": 2007,
+    "hq": "山形県鶴岡市",
+    "representative": "関山和秀",
+    "description": "微生物発酵により人工構造タンパク質素材「Brewed Protein」を開発・量産する慶應義塾大学発バイオ素材スタートアップ。ゴールドウイン（The North Face）等と協業しアパレル向けに展開する。",
+    "sectors": ["素材", "バイオ"],
+    "stage": "レイター",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-09",
+      "round": null,
+      "amount_oku": 344,
+      "investors": ["カーライル", "クールジャパン機構"]
+    },
+    "investors": ["カーライル", "クールジャパン機構", "ゴールドウイン"],
+    "partners": ["ゴールドウイン"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://thebridge.jp/2021/09/spiber-jpy34-4b-funding",
+      "https://thebridge.jp/2021/01/spiber-jpy25b-funding",
+      "https://www.jbic.go.jp/ja/information/press/press-2021/1029-015375.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社アストロスケールホールディングス",
+    "website": "https://astroscale.com/",
+    "founded_year": 2013,
+    "hq": "東京都墨田区",
+    "representative": "岡田光信",
+    "description": "スペースデブリ（宇宙ごみ）除去や軌道上サービス（衛星寿命延長・点検等）を手がける世界的スタートアップ。2024年6月に東証グロース市場へ上場した。",
+    "sectors": ["宇宙", "デブリ除去", "軌道上サービス"],
+    "stage": "IPO済",
+    "total_raised_oku": 445,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-06",
+      "round": "IPO",
+      "amount_oku": 238,
+      "investors": []
+    },
+    "investors": [],
+    "partners": [],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2024年6月5日 東証グロース市場に上場（証券コード186A）。上場前にシリーズA〜Gで累計445億円を調達",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000071.000067481.html",
+      "https://www.jpx.co.jp/listing/ir-clips/interview/detail/186A.html",
+      "https://www.ipokiso.com/company/2024/astroscale.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "エレファンテック株式会社",
+    "website": "https://elephantech.com/",
+    "founded_year": 2014,
+    "hq": null,
+    "representative": "清水信哉",
+    "description": "金属インクジェット印刷による低環境負荷プリント基板（ピュアアディティブ法）を開発・製造する東京大学発スタートアップ。従来工法比で水使用量・CO2排出を大幅に削減する。",
+    "sectors": ["素材", "エレクトロニクス", "半導体"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 149,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-03",
+      "round": "シリーズE",
+      "amount_oku": 30,
+      "investors": []
+    },
+    "investors": [],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://elephantech.com/en/news/press_release_20240329/",
+      "https://prtimes.jp/main/html/rd/p/000000018.000036441.html",
+      "https://sogyotecho.jp/news/20240401elephantech/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Jij",
+    "website": "https://www.j-ij.com/",
+    "founded_year": 2018,
+    "hq": null,
+    "representative": "山城悠",
+    "description": "量子アニーリング理論を基盤に、数理最適化・量子計算ソフトウェア（最適化ミドルウェア「JijZept」等）を開発する東京工業大学発スタートアップ。",
+    "sectors": ["量子", "ソフトウェア"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-08",
+      "round": null,
+      "amount_oku": 2,
+      "investors": ["ANRI", "DEEPCORE", "みらい創造機構"]
+    },
+    "investors": ["ANRI", "DEEPCORE", "みらい創造機構"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000004.000046947.html",
+      "https://www.j-ij.com/ja"
+    ],
+    "last_verified": "2026-07"
+  }
+]

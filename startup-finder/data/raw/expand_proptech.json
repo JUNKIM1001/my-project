@@ -1,0 +1,322 @@
+[
+  {
+    "name": "TRUSTART株式会社",
+    "website": "https://www.trustart.co.jp",
+    "founded_year": 2020,
+    "hq": "東京都港区南青山",
+    "representative": "大江洋治郎",
+    "description": "全国約100万件の不動産登記情報を活用した不動産ビッグデータサービス「R.E.DATA」「R.E.DATA Plus」および不動産調査BPO「R.E.SEARCH」を提供する不動産テック企業。三菱UFJ信託銀行からの出向起業を経てスピンアウト。",
+    "sectors": ["不動産テック", "不動産データ"],
+    "stage": "シリーズC",
+    "total_raised_oku": 21.0,
+    "last_round": {
+      "date": null,
+      "round": "シリーズC",
+      "amount_oku": 13.0,
+      "investors": ["大和企業投資", "アジア航測", "岩手銀行", "SMBCベンチャーキャピタル", "鷺宮キャピタル", "テラスカイベンチャーズ", "HIRAC FUND", "三菱UFJキャピタル", "日本ベンチャーキャピタル", "GMO VenturePartners"]
+    },
+    "investors": ["HIRAC FUND", "三菱UFJキャピタル", "日本ベンチャーキャピタル", "GMO VenturePartners", "大和企業投資", "SMBCベンチャーキャピタル"],
+    "partners": ["アジア航測", "三菱UFJ信託銀行"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000056.000079172.html",
+      "https://kepple.co.jp/articles/6nllajuk7"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社カラーアンドデコ",
+    "website": "https://coloranddecor.co.jp",
+    "founded_year": 2019,
+    "hq": "東京都港区北青山",
+    "representative": "加藤望美",
+    "description": "物件写真や3D図面に国内外メーカーの3DCG家具を実寸で配置するバーチャルインテリア写真・オンライン3Dシミュレーターを不動産・住宅業界に提供。",
+    "sectors": ["不動産テック", "空間デザイン", "VR/3D"],
+    "stage": "シリーズA",
+    "total_raised_oku": 2.2,
+    "last_round": {
+      "date": "2023-06",
+      "round": "シリーズA",
+      "amount_oku": 2.2,
+      "investors": ["インクルージョン・ジャパン", "NESベンチャーキャピタル", "吉銘", "アンビション・ベンチャーズ"]
+    },
+    "investors": ["インクルージョン・ジャパン", "NESベンチャーキャピタル", "吉銘", "アンビション・ベンチャーズ", "IDATEN Ventures"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000021.000053045.html",
+      "https://www.s-housing.jp/archives/316396"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社iimon",
+    "website": "https://iimon.co.jp",
+    "founded_year": 2019,
+    "hq": "東京都中央区日本橋茅場町",
+    "representative": "島田州平",
+    "description": "不動産仲介会社向けの業務効率化SaaS「速いもんシリーズ」（物出速いもん・入力速いもん・物確速いもん・分析速いもん等）を開発・提供する不動産DX企業。",
+    "sectors": ["不動産テック", "賃貸DX", "SaaS"],
+    "stage": "シリーズA",
+    "total_raised_oku": 4.0,
+    "last_round": {
+      "date": "2022-07",
+      "round": "シリーズA",
+      "amount_oku": 4.0,
+      "investors": ["ファブリカコミュニケーションズ"]
+    },
+    "investors": ["ファブリカコミュニケーションズ"],
+    "partners": ["ファブリカコミュニケーションズ"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000019.000059118.html",
+      "https://iimon.co.jp/all/pressrelease/627"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": "https://iimon.co.jp/company",
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社WHERE",
+    "website": "https://pntwhere.com",
+    "founded_year": 2022,
+    "hq": "東京都文京区湯島",
+    "representative": "阿久津岳生",
+    "description": "JAXA発スタートアップ。衛星データとAIを活用し、市場に出る前の『オフマーケット』不動産の探索から評価・地権者へのダイレクトアプローチまでを一気通貫で支援する不動産AIツール「WHERE」を開発。",
+    "sectors": ["不動産テック", "衛星データ", "AI"],
+    "stage": "シリーズA",
+    "total_raised_oku": 5.5,
+    "last_round": {
+      "date": "2025",
+      "round": "シリーズA",
+      "amount_oku": 5.5,
+      "investors": null
+    },
+    "investors": null,
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000034.000146022.html",
+      "https://sg.wantedly.com/companies/company_9924832/post_articles/966124"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社ポルティ",
+    "website": "https://porty.co.jp",
+    "founded_year": 2022,
+    "hq": "神奈川県川崎市多摩区",
+    "representative": "平瑶平",
+    "description": "空き家フリマアプリ「ポルティ空き家バンク」やAI賃料査定「ポルティ賃料査定」を運営する不動産AIスタートアップ。空き家・不動産の売買と査定をデータとAIで支援。",
+    "sectors": ["不動産テック", "空き家", "AI査定"],
+    "stage": "プレシリーズA",
+    "total_raised_oku": 0.85,
+    "last_round": {
+      "date": null,
+      "round": "プレシリーズA（1stクローズ）",
+      "amount_oku": 0.85,
+      "investors": ["NESベンチャーキャピタル", "インクルージョン・ジャパン", "90s"]
+    },
+    "investors": ["NESベンチャーキャピタル", "インクルージョン・ジャパン", "90s"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://porty.co.jp/corp/news/preseriesa-1st",
+      "https://initial.inc/companies/A-41510"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": "https://porty.co.jp/company",
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "homie株式会社",
+    "website": "https://homie.co.jp",
+    "founded_year": 2019,
+    "hq": "東京都渋谷区円山町",
+    "representative": "村上靖知",
+    "description": "不動産・住宅の問い合わせに対し90秒以内に架電代行しアポ獲得を最大化するAI連携追客サービス「HOTLEAD」を提供。不動産テック・業務支援コンサルティング事業を展開。",
+    "sectors": ["不動産テック", "賃貸DX", "営業支援"],
+    "stage": null,
+    "total_raised_oku": null,
+    "last_round": {
+      "date": "2022-06",
+      "round": null,
+      "amount_oku": 1.0,
+      "investors": null
+    },
+    "investors": null,
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": 170,
+    "sources": [
+      "https://homie.co.jp/about/",
+      "https://prtimes.jp/main/html/rd/p/000000001.000073886.html"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "シェルフィー株式会社",
+    "website": "https://www.shelfy.co.jp",
+    "founded_year": 2014,
+    "hq": "東京都目黒区大橋",
+    "representative": "呂俊輝",
+    "description": "建設業向けの労働安全書類作成・現場管理サービス「Greenfile.work」を運営する建設DX企業。旧・建設マッチングプラットフォーム「内装建築.com（SHELFY）」は2023年に事業譲渡。",
+    "sectors": ["建設DX", "SaaS"],
+    "stage": null,
+    "total_raised_oku": null,
+    "last_round": {
+      "date": null,
+      "round": null,
+      "amount_oku": null,
+      "investors": null
+    },
+    "investors": ["East Ventures", "ジェネシア・ベンチャーズ", "Skyland Ventures", "ベクトル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://www.shelfy.co.jp/about/company",
+      "https://thebridge.jp/2014/11/shelfy-raise-from-east-ventures"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社デジタルクランプ",
+    "website": null,
+    "founded_year": 2021,
+    "hq": "東京都豊島区南池袋",
+    "representative": "高橋知大",
+    "description": "建設会社と職人を直接つなぐマッチングプラットフォームおよび施工品質保証を含む建設DXソリューションを提供。リフォーム・建設業界の受発注をデジタル化。",
+    "sectors": ["建設DX", "職人マッチング"],
+    "stage": "シード",
+    "total_raised_oku": 0.85,
+    "last_round": {
+      "date": "2024-08",
+      "round": "シード",
+      "amount_oku": 0.85,
+      "investors": ["DRG Fund", "Gazelle Capital", "ユナイテッド", "Waypoint Venture Partners"]
+    },
+    "investors": ["DRG Fund", "Gazelle Capital", "ユナイテッド", "Waypoint Venture Partners"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000339.000023821.html",
+      "https://startup-db.com/companies/wKOvZYRU4K5Jejl9"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "RESTAR株式会社",
+    "website": "https://www.restar-inc.com",
+    "founded_year": 2016,
+    "hq": "東京都港区虎ノ門",
+    "representative": "右納響",
+    "description": "不動産・地理情報の管理分析クラウドプラットフォーム「REMETIS」を開発・運営。オフィス・商業・住宅・物流など、プロ同士の不動産売買・投資の意思決定をデータとAIで支援。",
+    "sectors": ["不動産テック", "不動産投資", "不動産データ"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "last_round": {
+      "date": "2024",
+      "round": "シリーズB",
+      "amount_oku": null,
+      "investors": ["東京カンテイ", "DNX Ventures", "ファーストライト・キャピタル"]
+    },
+    "investors": ["東京カンテイ", "DNX Ventures", "ファーストライト・キャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": 40,
+    "sources": [
+      "https://macloud.jp/companies/21155",
+      "https://note.com/restar_inc/n/n55aaab3befc2"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社CaSy",
+    "website": "https://casy.co.jp",
+    "founded_year": 2014,
+    "hq": "東京都品川区",
+    "representative": null,
+    "description": "オンラインで完結する低価格な家事代行（掃除・料理）サービス「CaSy」を運営。ホームサービス領域のマッチングプラットフォーム。",
+    "sectors": ["ホームサービス", "家事代行"],
+    "stage": null,
+    "total_raised_oku": 7.56,
+    "last_round": {
+      "date": null,
+      "round": null,
+      "amount_oku": null,
+      "investors": null
+    },
+    "investors": null,
+    "partners": [],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2022年2月に東証マザーズへ上場（調達時は未上場スタートアップ）",
+    "employee_count": null,
+    "sources": [
+      "https://initial.inc/companies/A-15416",
+      "https://startup-db.com/companies/tags/housekeeping"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  }
+]

@@ -1,0 +1,229 @@
+[
+  {
+    "name": "株式会社ALGO ARTIS",
+    "website": "https://www.algo-artis.com/",
+    "founded_year": 2021,
+    "hq": "東京都千代田区",
+    "representative": "永田健太郎",
+    "description": "エネルギー・物流・製造など社会インフラの複雑な計画業務・意思決定を最適化するAI・アルゴリズムソリューション『Planning DX』を提供する研究開発型スタートアップ。",
+    "sectors": ["AI", "SaaS", "産業DX"],
+    "stage": "シリーズB",
+    "total_raised_oku": 25.14,
+    "last_round": {
+      "date": "2026-06",
+      "round": "シリーズB",
+      "amount_oku": 15.38,
+      "investors": ["Salesforce Ventures", "三井住友信託（Japan Coinvest Fund No.4）", "UTEC", "DeNA", "K4 Ventures"]
+    },
+    "investors": ["Salesforce Ventures", "UTEC", "DeNA", "K4 Ventures", "三井住友信託"],
+    "partners": null,
+    "awards": [{"event": "Startup CTO of the year", "year": 2023, "result": "優勝"}],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000024.000085809.html",
+      "https://www.algo-artis.com/news/260609-jp/",
+      "https://www.nikkei.com/compass/company/4TPHFkxZWpf3CarPkfTr4f"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "taskey株式会社",
+    "website": null,
+    "founded_year": 2014,
+    "hq": "東京都新宿区",
+    "representative": "大石弘務",
+    "description": "マンガ・ノベルアプリ『peep（ピープ）』の運営、及びWebtoon・マンガの制作・原作開発を手がけるデジタルIPコンテンツ企業。",
+    "sectors": ["エンタメ", "コンテンツ", "アプリ"],
+    "stage": "シリーズE",
+    "total_raised_oku": 21.0,
+    "last_round": {
+      "date": "2023-07",
+      "round": "シリーズE",
+      "amount_oku": 3.2,
+      "investors": null
+    },
+    "investors": ["Global Brain", "Global Catalyst Partners Japan", "三井住友海上キャピタル", "Voyage Ventures", "Sansei Capital"],
+    "partners": null,
+    "awards": [{"event": "Mizuho Innovation Award", "year": 2024, "result": "受賞（2024.4Q）"}],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000016.000012747.html",
+      "https://animebox.jp/381223/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社WARC",
+    "website": null,
+    "founded_year": 2017,
+    "hq": "東京都品川区",
+    "representative": "山本彰彦",
+    "description": "成長企業向けの経営管理部門ハンズオン支援、ハイクラス人材紹介『WARC AGENT』、経営管理特化の転職サービス『SYNCA』、M&Aアドバイザリー等を提供。",
+    "sectors": ["HR", "バックオフィス支援", "M&A"],
+    "stage": null,
+    "total_raised_oku": 5.0,
+    "last_round": {
+      "date": "2020-11",
+      "round": null,
+      "amount_oku": 3.0,
+      "investors": ["マネーフォワード", "STRIVE", "East Ventures"]
+    },
+    "investors": ["マネーフォワード", "STRIVE", "East Ventures"],
+    "partners": null,
+    "awards": [{"event": "Mizuho Innovation Award", "year": 2023, "result": "受賞（2023.1Q）"}],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000012.000038497.html",
+      "https://www.nikkei.com/compass/company/aV8DUrVbSWsJwmSo8aRM3X"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社エキュメノポリス",
+    "website": null,
+    "founded_year": 2022,
+    "hq": "東京都新宿区",
+    "representative": "松山洋一",
+    "description": "音声・表情・会話を解析する対話型AIエージェント基盤『EQU AI Platform』および英語スピーキング学習サービス『LANGX』を開発する早稲田大学発スタートアップ。",
+    "sectors": ["AI", "EdTech", "ヘルスケア"],
+    "stage": "プレシリーズA",
+    "total_raised_oku": 7.5,
+    "last_round": {
+      "date": "2025-05",
+      "round": "プレシリーズA",
+      "amount_oku": 7.5,
+      "investors": ["Beyond Next Ventures", "JST", "三菱UFJキャピタル", "マニーズグループ", "QB Capital", "静岡キャピタル"]
+    },
+    "investors": ["Beyond Next Ventures", "JST", "三菱UFJキャピタル", "マニーズグループ", "QB Capital", "静岡キャピタル"],
+    "partners": null,
+    "awards": [{"event": "大学発ベンチャー表彰", "year": 2024, "result": "科学技術振興機構理事長賞"}],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000011.000101029.html",
+      "https://www.waseda.jp/inst/entrepreneur/news/2025/03/11/7041/",
+      "https://sogyotecho.jp/news/20250502equ-ai/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "iSurgery株式会社",
+    "website": null,
+    "founded_year": 2020,
+    "hq": "東京都中央区",
+    "representative": "佐藤陽一",
+    "description": "健診で撮影される胸部レントゲン画像からAIで骨密度を推定し、骨粗しょう症リスクを判定する検診用医療機器を開発。",
+    "sectors": ["ヘルスケア", "医療AI", "メドテック"],
+    "stage": "シード",
+    "total_raised_oku": 0.8,
+    "last_round": {
+      "date": "2022-09",
+      "round": "シード（第三者割当増資）",
+      "amount_oku": 0.8,
+      "investors": ["ディープコア", "STATION Ai Central Japan 1号ファンド"]
+    },
+    "investors": ["ディープコア", "STATION Ai Central Japan 1号ファンド"],
+    "partners": null,
+    "awards": [{"event": "Healthcare Startup Pitch Competition", "year": 2023, "result": "受賞"}],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://www.nihon-ma.co.jp/news/20220906_1-616/",
+      "https://sogyotecho.jp/news/20220907isurgery/",
+      "https://kepple.co.jp/corporates/7011101091359/page/1"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "amu株式会社",
+    "website": "https://www.amu.co.jp/",
+    "founded_year": 2023,
+    "hq": "宮城県気仙沼市",
+    "representative": "加藤広大",
+    "description": "廃棄漁具を回収し再生ナイロン素材ブランド『amuca』として製品化する海洋プラスチック循環事業を展開。",
+    "sectors": ["サステナビリティ", "素材", "サーキュラーエコノミー"],
+    "stage": null,
+    "total_raised_oku": null,
+    "last_round": {
+      "date": null,
+      "round": "インキュベーションファンドからの出資",
+      "amount_oku": null,
+      "investors": ["AgVenture Lab"]
+    },
+    "investors": ["AgVenture Lab"],
+    "partners": ["JAグループ"],
+    "awards": [{"event": "JAアクセラレーター", "year": 2024, "result": "採択（第6期）"}],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://agventurelab.or.jp/news/agventure-lab_amu/",
+      "https://prtimes.jp/main/html/rd/p/000000054.000062040.html"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社Geolonia",
+    "website": "https://geolonia.com/",
+    "founded_year": 2019,
+    "hq": "東京都文京区",
+    "representative": "宮内隆行",
+    "description": "位置情報テクノロジーとオープンソースを活用したWeb地図・位置情報プラットフォームを提供し、スマートシティやIoT向けの地理空間データ基盤を手がける。",
+    "sectors": ["位置情報", "地図", "スマートシティ"],
+    "stage": null,
+    "total_raised_oku": null,
+    "last_round": {
+      "date": "2022-10",
+      "round": "第三者割当増資",
+      "amount_oku": null,
+      "investors": ["DRONE FUND"]
+    },
+    "investors": ["DRONE FUND"],
+    "partners": null,
+    "awards": [{"event": "Smart City Innovation Pitch", "year": 2024, "result": "受賞"}],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://geolonia.com/company",
+      "https://venture.jp/news/2024/08/23/10199/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  }
+]

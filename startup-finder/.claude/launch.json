@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "startup-finder",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/startup-finder\" && exec .venv/bin/uvicorn app.main:app --port 8430"],
+      "port": 8430
+    }
+  ]
+}

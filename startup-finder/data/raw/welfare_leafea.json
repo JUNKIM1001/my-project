@@ -1,0 +1,43 @@
+[
+ {
+  "name": "株式会社Leafea",
+  "website": "https://leafea.co.jp/",
+  "founded_year": 2022,
+  "hq": "東京都中央区",
+  "representative": "森田渉",
+  "description": "月額300円から導入できる福利厚生アプリ「福利アプリ」を提供。全国10万店舗以上での割引やギフト機能を中小企業向けに展開し、金融機関等へのOEM型SaaSでも提供する。",
+  "sectors": [
+   "福利厚生",
+   "SaaS",
+   "HRテック"
+  ],
+  "stage": "シリーズA",
+  "total_raised_oku": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "last_round": {
+   "date": "2025-05",
+   "round": "シリーズA",
+   "amount_oku": 3.6,
+   "investors": [
+    "XTech Ventures",
+    "きらぼしキャピタル"
+   ]
+  },
+  "investors": [
+   "XTech Ventures",
+   "きらぼしキャピタル"
+  ],
+  "partners": [],
+  "awards": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000013.000105190.html",
+   "https://thebridge.jp/2025/05/leafea-developer-of-a-welfare-benefits-app-available-for-just-300-yen-per-month-raises-series-a-funding-to-strengthen-its-nationwide-network",
+   "https://www.nikkei.com/article/DGXZQOUC072KY0X00C25A5000000/"
+  ],
+  "last_verified": "2026-07"
+ }
+]

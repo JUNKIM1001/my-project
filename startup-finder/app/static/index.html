@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup Finder — 国内スタートアップDB</title>
+<style>
+  :root {
+    --bg: #f4f6fa; --panel: #ffffff; --border: #e2e8f0; --border2: #cbd5e1;
+    --text: #16213a; --muted: #64748b; --faint: #94a3b8;
+    --accent: #2456d6; --accent-bg: #eef3fe;
+    --green: #0d9463; --green-bg: #e7f6ef;
+    --amber: #b45309; --amber-bg: #fdf3e3;
+    --red: #d03c3c; --red-bg: #fdecec;
+    --shadow: 0 1px 3px rgba(22,33,58,.08), 0 4px 16px rgba(22,33,58,.06);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scrollbar-gutter: stable; }
+  body { background: var(--bg); color: var(--text); font-family: "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif; font-size: 14px; }
+
+  /* ===== header ===== */
+  header { background: var(--panel); border-bottom: 1px solid var(--border); padding: 14px 28px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; position: sticky; top: 0; z-index: 5; }
+  header h1 { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  header .sub { color: var(--muted); font-size: 12px; }
+  .kpis { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+  .kpi { background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 5px 13px; text-align: center; cursor: pointer; transition: border-color .15s; }
+  .kpi:hover { border-color: var(--accent); }
+  .kpi b { font-size: 16px; display: block; line-height: 1.2; }
+  .kpi span { font-size: 10.5px; color: var(--muted); }
+  .kpi.k-closed b { color: var(--red); }
+  .kpi.k-val b { color: var(--accent); }
+  .userbox { display: flex; align-items: center; gap: 8px; padding-left: 12px; border-left: 1px solid var(--border); }
+  .userbox .uname { font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+  .userbox .logout { background: none; border: none; color: var(--muted); font-size: 11.5px; cursor: pointer; text-decoration: underline; padding: 2px; font-weight: 400; }
+  .userbox .logout:hover { color: var(--red); filter: none; }
+
+  /* ===== layout ===== */
+  main { max-width: 1280px; margin: 0 auto; padding: 18px 28px 60px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+  .tab { padding: 9px 20px; border-radius: 10px; background: transparent; color: var(--muted); cursor: pointer; font-weight: 600; font-size: 13.5px; border: 1px solid transparent; }
+  .tab:hover { background: var(--panel); }
+  .tab.active { background: var(--panel); color: var(--accent); border-color: var(--border); box-shadow: var(--shadow); }
+  .pane { display: none; }
+  .pane.active { display: block; }
+
+  /* ===== controls ===== */
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); }
+  .controls { padding: 14px 16px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .searchbox { position: relative; flex: 1; min-width: 240px; }
+  .searchbox input { width: 100%; padding: 10px 12px 10px 36px; }
+  .searchbox::before { content: "🔍"; position: absolute; left: 11px; top: 50%; transform: translateY(-50%); font-size: 13px; opacity: .5; }
+  input[type=text], select, textarea {
+    background: var(--panel); color: var(--text); border: 1.5px solid var(--border2);
+    border-radius: 9px; padding: 9px 12px; font-size: 13.5px; font-family: inherit;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input[type=text]:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+  select { cursor: pointer; color: var(--muted); }
+  select.set { color: var(--text); border-color: var(--accent); background: var(--accent-bg); }
+  label.chk { color: var(--muted); display: flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; font-size: 13px; padding: 8px 10px; border: 1.5px solid var(--border2); border-radius: 9px; user-select: none; }
+  label.chk:has(input:checked) { border-color: var(--accent); background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+  label.chk input { accent-color: var(--accent); }
+  button { background: var(--accent); color: #fff; border: none; border-radius: 9px; padding: 10px 20px; font-size: 13.5px; cursor: pointer; font-weight: 600; font-family: inherit; }
+  button:hover { filter: brightness(1.08); }
+  button.ghost { background: var(--panel); border: 1.5px solid var(--border2); color: var(--muted); }
+  button.ghost:hover { filter: none; border-color: var(--accent); color: var(--accent); }
+
+  /* active filter chips */
+  .active-filters { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; padding: 0 16px 12px; }
+  .active-filters:empty { display: none; }
+  .fchip { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-bg); color: var(--accent); border-radius: 20px; padding: 4px 6px 4px 12px; font-size: 12px; font-weight: 600; }
+  .fchip button { background: none; color: var(--accent); padding: 0 5px; font-size: 13px; line-height: 1; border-radius: 50%; }
+  .fchip button:hover { background: rgba(36,86,214,.15); filter: none; }
+  .clear-all { background: none; border: none; color: var(--muted); font-size: 12px; text-decoration: underline; cursor: pointer; padding: 4px; font-weight: 400; }
+  .clear-all:hover { color: var(--red); filter: none; }
+
+  /* ===== table ===== */
+  .result-bar { display: flex; align-items: baseline; gap: 12px; margin: 16px 4px 10px; }
+  .result-bar .n { font-size: 15px; font-weight: 700; }
+  .result-bar .hint { color: var(--faint); font-size: 12px; }
+  /* テーブル自体を縦横スクロールのコンテナにし、その中でヘッダを固定する
+     （overflow親の中では position:sticky がページスクロールに効かないため） */
+  .tablewrap { overflow: auto; max-height: calc(100vh - 300px); min-height: 360px; border-radius: 14px; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--panel); }
+  thead th { position: sticky; top: 0; background: #f8fafd; z-index: 2; text-align: left; padding: 11px 12px; color: var(--muted); font-size: 11.5px; font-weight: 700; white-space: nowrap; border-bottom: 2px solid var(--border); letter-spacing: .02em; box-shadow: 0 -14px 0 #f8fafd; /* スクロール時にヘッダ上端へ行が滲まないようガード */ }
+  th.sortable { cursor: pointer; user-select: none; }
+  th.sortable:hover { color: var(--accent); }
+  th .arrow { font-size: 9px; color: var(--accent); }
+  td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 13px; }
+  tbody tr:nth-child(even) { background: #fafbfd; }
+  tr.row { cursor: pointer; transition: background .1s; }
+  tr.row:hover { background: var(--accent-bg); }
+  tr.row:last-child td { border-bottom: none; }
+  tr.closed-row { opacity: .62; }
+  .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+  .num .unit { font-size: 11px; color: var(--muted); font-weight: 400; }
+  .name { font-weight: 700; font-size: 13.5px; }
+  .desc { color: var(--muted); font-size: 11.5px; line-height: 1.45; margin-top: 2px; }
+  .tag { display: inline-block; background: var(--bg); border: 1px solid var(--border); color: var(--muted); border-radius: 20px; padding: 2px 10px; font-size: 11px; margin: 1px 3px 1px 0; white-space: nowrap; cursor: pointer; transition: all .12s; }
+  .tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+  .tag.static { cursor: default; }
+  .tag.static:hover { border-color: var(--border); color: var(--muted); background: var(--bg); }
+  .badge { display: inline-block; border-radius: 6px; padding: 3px 9px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .b-active { background: var(--green-bg); color: var(--green); }
+  .b-ipo { background: var(--accent-bg); color: var(--accent); }
+  .b-ma { background: var(--amber-bg); color: var(--amber); }
+  .b-closed { background: var(--red-bg); color: var(--red); }
+  .award { color: var(--amber); font-size: 11px; font-weight: 600; }
+  .signal { display: inline-block; background: var(--amber-bg); color: var(--amber); border-radius: 6px; padding: 2px 8px; font-size: 10.5px; font-weight: 700; white-space: nowrap; margin-top: 3px; }
+  .muted { color: var(--muted); }
+  .faint { color: var(--faint); }
+  .empty { text-align: center; padding: 48px 20px; color: var(--muted); }
+  .empty b { display: block; font-size: 15px; margin-bottom: 6px; color: var(--text); }
+
+  /* ===== synergy ===== */
+  .syn-controls { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  textarea#assets { width: 100%; min-height: 74px; resize: vertical; line-height: 1.7; }
+  .syn-samples { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .syn-samples .lbl { font-size: 12px; color: var(--faint); }
+  .score-cell { min-width: 60px; }
+  .scorebar { height: 5px; border-radius: 3px; background: var(--border); overflow: hidden; margin-top: 5px; width: 52px; }
+  .scorebar i { display: block; height: 100%; background: var(--green); border-radius: 3px; }
+  .score { font-weight: 800; color: var(--green); font-size: 14px; }
+  .hitchip { display: inline-block; background: var(--green-bg); color: var(--green); border-radius: 20px; padding: 2px 10px; font-size: 11px; margin: 1px 3px 1px 0; font-weight: 600; }
+
+  /* ===== modal ===== */
+  #overlay { display: none; position: fixed; inset: 0; background: rgba(22,33,58,.45); z-index: 10; backdrop-filter: blur(2px); }
+  #modal { display: none; position: fixed; top: 4vh; left: 50%; transform: translateX(-50%); width: min(800px, 94vw); max-height: 91vh; overflow-y: auto; background: var(--panel); border-radius: 16px; padding: 0; z-index: 11; box-shadow: 0 24px 64px rgba(22,33,58,.3); }
+  .m-head { position: sticky; top: 0; background: var(--panel); padding: 22px 26px 14px; border-bottom: 1px solid var(--border); z-index: 1; }
+  .m-head h2 { font-size: 19px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .m-head .close { position: absolute; top: 16px; right: 16px; background: var(--bg); border: none; color: var(--muted); font-size: 15px; cursor: pointer; width: 32px; height: 32px; border-radius: 50%; padding: 0; }
+  .m-head .close:hover { color: var(--red); filter: none; }
+  .m-head .tags { margin-top: 8px; }
+  .m-body { padding: 18px 26px 26px; }
+  .m-desc { font-size: 14px; line-height: 1.75; margin-bottom: 16px; }
+  .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 18px; }
+  .m-stat { background: var(--bg); border-radius: 10px; padding: 11px 14px; }
+  .m-stat .k { font-size: 10.5px; color: var(--muted); font-weight: 600; letter-spacing: .03em; }
+  .m-stat .v { font-size: 16px; font-weight: 800; margin-top: 3px; }
+  .m-stat .v .unit { font-size: 11px; font-weight: 500; color: var(--muted); }
+  .m-stat .note { font-size: 10.5px; color: var(--faint); margin-top: 3px; line-height: 1.5; word-break: break-all; }
+  .m-sec { margin-bottom: 15px; }
+  .m-sec h3 { font-size: 11.5px; color: var(--muted); font-weight: 700; letter-spacing: .04em; margin-bottom: 7px; padding-bottom: 5px; border-bottom: 1px solid var(--border); }
+  .m-sec .body { font-size: 13px; line-height: 1.8; }
+  .m-sec a { color: var(--accent); word-break: break-all; font-size: 12px; }
+  .srcnote { margin-top: 18px; padding: 11px 14px; background: var(--amber-bg); border-radius: 10px; font-size: 11.5px; color: var(--amber); line-height: 1.7; }
+  .statusline { margin-top: 4px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+  @media (max-width: 720px) {
+    header, main { padding-left: 14px; padding-right: 14px; }
+    .kpis { width: 100%; margin-left: 0; }
+    .tablewrap { max-height: calc(100vh - 220px); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔭 Startup Finder</h1>
+  <span class="sub">国内スタートアップDB — CVCソーシング支援（事実・出典ベース）</span>
+  <div class="kpis" id="kpis"></div>
+  <div class="userbox" id="userbox"></div>
+</header>
+
+<main>
+<div class="tabs">
+  <div class="tab active" data-pane="search">🔍 企業検索</div>
+  <div class="tab" data-pane="synergy">🤝 シナジー検索</div>
+</div>
+
+<div class="pane active" id="pane-search">
+  <div class="card">
+    <div class="controls">
+      <div class="searchbox"><input type="text" id="q" placeholder="社名・事業内容・株主・所在地で検索（入力すると自動で絞り込み）"></div>
+      <select id="sector"><option value="">分野</option></select>
+      <select id="stage"><option value="">ステージ</option></select>
+      <select id="status">
+        <option value="">ステータス</option>
+        <option value="active">存続</option>
+        <option value="ipo">IPO済</option>
+        <option value="ma">M&A済</option>
+        <option value="closed">倒産・解散</option>
+      </select>
+      <select id="min_raised">
+        <option value="">累計調達額</option>
+        <option value="1">1億円以上</option>
+        <option value="10">10億円以上</option>
+        <option value="50">50億円以上</option>
+        <option value="100">100億円以上</option>
+      </select>
+      <label class="chk"><input type="checkbox" id="has_valuation">評価額あり</label>
+      <label class="chk"><input type="checkbox" id="has_award">受賞歴あり</label>
+      <label class="chk" title="直近ラウンドから12〜36ヶ月経過した存続企業（次回調達の検討時期）"><input type="checkbox" id="has_signal">🔔 調達シグナル</label>
+      <button class="ghost" onclick="location.href='/api/export.csv'">⬇ CSV</button>
+    </div>
+    <div class="active-filters" id="active-filters"></div>
+  </div>
+
+  <div class="result-bar"><span class="n" id="count"></span><span class="hint">行をクリックで詳細 / 分野タグをクリックで絞り込み / 列見出しで並べ替え</span></div>
+  <div class="card tablewrap">
+    <table>
+      <thead><tr>
+        <th class="sortable" onclick="setSort('name')">企業名 <span class="arrow" id="ar-name"></span></th>
+        <th>分野</th>
+        <th class="sortable" onclick="setSort('founded_year')">設立 <span class="arrow" id="ar-founded_year"></span></th>
+        <th style="text-align:right" class="sortable" onclick="setSort('total_raised_oku')">累計調達 <span class="arrow" id="ar-total_raised_oku"></span></th>
+        <th style="text-align:right" class="sortable" onclick="setSort('valuation_oku')">評価額 <span class="arrow" id="ar-valuation_oku"></span></th>
+        <th class="sortable" onclick="setSort('last_round_date')">直近調達 <span class="arrow" id="ar-last_round_date"></span></th>
+        <th>主要株主・投資家</th>
+        <th>受賞</th>
+        <th>状態</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="pane" id="pane-synergy">
+  <div class="card syn-controls">
+    <textarea id="assets" placeholder="自社のアセット・注力テーマをキーワードで入力（例: 物流 倉庫 小売 決済 店舗網 生成AI ヘルスケア）"></textarea>
+    <div class="syn-samples" id="syn-samples"><span class="lbl">例:</span></div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <label class="chk"><input type="checkbox" id="include_inactive">倒産・解散も含める</label>
+      <span class="faint" style="font-size:12px">分野一致=3点 / 事業内容=2点 / 提携先・株主=1点</span>
+      <button onclick="synergy()" style="margin-left:auto;">シナジー候補を探す</button>
+    </div>
+  </div>
+  <div class="result-bar"><span class="n" id="syn-count"></span></div>
+  <div class="card tablewrap">
+    <table>
+      <thead><tr>
+        <th>適合度</th><th>企業名</th><th>一致キーワード</th><th>分野</th>
+        <th style="text-align:right">累計調達</th><th>主要株主・投資家</th><th>状態</th>
+      </tr></thead>
+      <tbody id="syn-tbody"></tbody>
+    </table>
+  </div>
+</div>
+</main>
+
+<div id="overlay" onclick="closeModal()"></div>
+<div id="modal"></div>
+
+<script>
+let sortCol = 'total_raised_oku', sortOrder = 'desc';
+let CURRENT_USER = null;
+async function loadMe() {
+  const res = await fetch('/api/me');
+  if (res.status === 401) { location.reload(); return; }
+  CURRENT_USER = await res.json();
+  document.getElementById('userbox').innerHTML =
+    `<span class="uname">👤 ${esc(CURRENT_USER.display_name)}</span><button class="logout" onclick="logout()">ログアウト</button>`;
+}
+async function logout() {
+  await fetch('/api/logout', { method: 'POST' });
+  location.reload();
+}
+const STATUS = { active: ['存続','b-active'], ipo: ['IPO済','b-ipo'], ma: ['M&A済','b-ma'], closed: ['倒産・解散','b-closed'] };
+const SYN_SAMPLES = ['決済 銀行 金融', '物流 倉庫 ロボット', '小売 店舗 食品', '製造 素材 半導体', '医療 ヘルスケア 保険', '生成AI データ 業務効率化', 'エネルギー 脱炭素 EV'];
+
+const esc = s => (s == null ? '' : String(s)).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+// http/https 以外のスキーム（javascript: 等）はリンク化しない
+const safeUrl = u => {
+  try { const p = new URL(u); return (p.protocol === 'http:' || p.protocol === 'https:') ? u : null; }
+  catch (_) { return null; }
+};
+const linkify = (u, icon) => {
+  const ok = safeUrl(u);
+  return ok ? `<a href="${esc(ok)}" target="_blank" rel="noopener noreferrer">${icon} ${esc(u)}</a>`
+            : `<span class="muted">${icon} ${esc(u)}（リンク無効: 不正なURL）</span>`;
+};
+const oku = v => {
+  if (v == null) return '<span class="faint">—</span>';
+  const n = v >= 100 ? Math.round(v).toLocaleString() : Math.round(v * 10) / 10;
+  return `${n}<span class="unit"> 億円</span>`;
+};
+
+/* ===== tabs ===== */
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.pane').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('pane-' + t.dataset.pane).classList.add('active');
+});
+
+/* ===== meta / KPI ===== */
+async function loadMeta() {
+  const m = await (await fetch('/api/meta')).json();
+  document.getElementById('kpis').innerHTML = `
+    <div class="kpi" onclick="resetFilters()"><b>${m.total}</b><span>収録社数</span></div>
+    <div class="kpi k-val" onclick="quickFilter('has_valuation')"><b>${m.with_valuation}</b><span>評価額あり</span></div>
+    <div class="kpi" onclick="quickFilter('status','ipo')"><b>${m.statuses.ipo || 0}</b><span>IPO済</span></div>
+    <div class="kpi" onclick="quickFilter('status','ma')"><b>${m.statuses.ma || 0}</b><span>M&A済</span></div>
+    <div class="kpi k-closed" onclick="quickFilter('status','closed')"><b>${m.statuses.closed || 0}</b><span>倒産・解散</span></div>
+    <div class="kpi" onclick="quickFilter('has_signal')" title="直近ラウンドから12〜36ヶ月経過した存続企業"><b>🔔${m.with_signal || 0}</b><span>調達シグナル</span></div>`;
+  const sec = document.getElementById('sector');
+  m.sectors.slice(0, 40).forEach(([s, n]) => sec.add(new Option(`${s} (${n})`, s)));
+  const stg = document.getElementById('stage');
+  m.stages.forEach(([s, n]) => stg.add(new Option(`${s} (${n})`, s)));
+  const samples = document.getElementById('syn-samples');
+  SYN_SAMPLES.forEach(s => {
+    const el = document.createElement('span');
+    el.className = 'tag'; el.textContent = s;
+    el.onclick = () => { document.getElementById('assets').value = s; synergy(); };
+    samples.appendChild(el);
+  });
+}
+
+function quickFilter(id, val) {
+  resetFilters(true);
+  if (val === undefined) document.getElementById(id).checked = true;
+  else document.getElementById(id).value = val;
+  showTab('search'); search();
+}
+function showTab(name) { document.querySelector(`.tab[data-pane="${name}"]`).click(); }
+function resetFilters(silent) {
+  document.getElementById('q').value = '';
+  for (const id of ['sector','stage','status','min_raised']) document.getElementById(id).value = '';
+  for (const id of ['has_valuation','has_award','has_signal']) document.getElementById(id).checked = false;
+  if (!silent) { showTab('search'); search(); }
+}
+// 分野タグのクリックはイベント委譲で処理（onclick属性へのデータ埋め込みを避ける）
+document.addEventListener('click', e => {
+  const tag = e.target.closest('.tag[data-sector]');
+  if (!tag) return;
+  e.stopPropagation();
+  closeModal();
+  document.getElementById('sector').value = tag.dataset.sector;
+  showTab('search'); search();
+}, true);
+const sectorTag = s => `<span class="tag" data-sector="${esc(s)}">${esc(s)}</span>`;
+
+/* ===== active filter chips ===== */
+const FILTER_LABELS = { sector: '分野', stage: 'ステージ', status: 'ステータス', min_raised: '調達額', has_valuation: '評価額あり', has_award: '受賞歴あり', has_signal: '🔔調達シグナル' };
+function renderChips() {
+  const chips = [];
+  const q = document.getElementById('q').value.trim();
+  if (q) chips.push(['q', `“${q}”`]);
+  for (const id of ['sector','stage','status','min_raised']) {
+    const v = document.getElementById(id).value;
+    if (v) {
+      let label = v;
+      if (id === 'status') label = (STATUS[v] || [v])[0];
+      if (id === 'min_raised') label = v + '億円以上';
+      chips.push([id, `${FILTER_LABELS[id]}: ${label}`]);
+    }
+  }
+  for (const id of ['has_valuation','has_award','has_signal'])
+    if (document.getElementById(id).checked) chips.push([id, FILTER_LABELS[id]]);
+  const wrap = document.getElementById('active-filters');
+  wrap.innerHTML = chips.map(([id, label]) =>
+    `<span class="fchip">${esc(label)}<button onclick="clearFilter('${id}')" title="解除">✕</button></span>`).join('')
+    + (chips.length > 1 ? `<button class="clear-all" onclick="resetFilters()">すべて解除</button>` : '');
+}
+function clearFilter(id) {
+  const el = document.getElementById(id);
+  if (el.type === 'checkbox') el.checked = false; else el.value = '';
+  search();
+}
+
+/* ===== search ===== */
+let debounceTimer;
+async function search() {
+  renderChips();
+  document.querySelectorAll('select').forEach(s => s.classList.toggle('set', !!s.value));
+  const p = new URLSearchParams();
+  const q = document.getElementById('q').value.trim();
+  if (q) p.set('q', q);
+  for (const id of ['sector','stage','status']) {
+    const v = document.getElementById(id).value;
+    if (v) p.set(id, v);
+  }
+  const mr = document.getElementById('min_raised').value;
+  if (mr) p.set('min_raised', mr);
+  if (document.getElementById('has_valuation').checked) p.set('has_valuation', 'true');
+  if (document.getElementById('has_award').checked) p.set('has_award', 'true');
+  if (document.getElementById('has_signal').checked) p.set('has_signal', 'true');
+  p.set('sort', sortCol); p.set('order', sortOrder);
+  const data = await (await fetch('/api/companies?' + p)).json();
+  document.getElementById('count').textContent = `${data.count} 社`;
+  document.querySelectorAll('.arrow').forEach(a => a.textContent = '');
+  const ar = document.getElementById('ar-' + sortCol);
+  if (ar) ar.textContent = sortOrder === 'desc' ? '▼' : '▲';
+  const tbody = document.getElementById('tbody');
+  if (!data.items.length) {
+    tbody.innerHTML = `<tr><td colspan="9"><div class="empty"><b>該当する企業がありません</b>フィルタを解除するかキーワードを変えてみてください</div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = data.items.map(c => `
+    <tr class="row ${c.status === 'closed' ? 'closed-row' : ''}" onclick="openDetail(${c.id})">
+      <td style="min-width:190px"><span class="name">${esc(c.name)}</span><div class="desc">${esc((c.description || '').slice(0, 52))}${(c.description || '').length > 52 ? '…' : ''}</div></td>
+      <td style="min-width:120px">${c.sectors.slice(0, 3).map(sectorTag).join('')}</td>
+      <td class="muted">${c.founded_year || '<span class="faint">—</span>'}</td>
+      <td class="num">${oku(c.total_raised_oku)}</td>
+      <td class="num">${oku(c.valuation_oku)}</td>
+      <td style="white-space:nowrap">${lastRoundCell(c)}</td>
+      <td style="max-width:230px"><span class="muted" style="font-size:12px">${esc(c.investors.slice(0, 3).join('、'))}${c.investors.length > 3 ? `<span class="faint"> +${c.investors.length - 3}</span>` : ''}</span></td>
+      <td>${c.awards.length ? `<span class="award" title="${esc(c.awards.map(a => `${a.event || ''} ${a.year || ''} ${a.result || ''}`).join(' / '))}">🏆 ${esc(c.awards[0].event || '')}</span>` : ''}</td>
+      <td>${badge(c)}</td>
+    </tr>`).join('');
+}
+function lastRoundCell(c) {
+  if (!c.last_round_date) return '<span class="faint">—</span>';
+  const m = c.months_since_last_round;
+  const ago = m != null ? `<span class="faint" style="font-size:11px">（${m >= 12 ? Math.floor(m/12) + '年' + (m%12 ? m%12 + 'ヶ月' : '') : m + 'ヶ月'}前）</span>` : '';
+  const amt = c.last_round_amount_oku != null ? `<div class="desc">${c.last_round_amount_oku}億円</div>` : '';
+  const sig = c.funding_signal ? `<div><span class="signal">🔔 調達シグナル</span></div>` : '';
+  return `<span class="muted">${esc(c.last_round_date)}</span>${ago}${amt}${sig}`;
+}
+function badge(c) {
+  const [label, cls] = STATUS[c.status] || [c.status, ''];
+  return `<span class="badge ${cls}"${c.status_note ? ` title="${esc(c.status_note)}"` : ''}>${label}</span>`;
+}
+function setSort(col) {
+  if (sortCol === col) sortOrder = sortOrder === 'desc' ? 'asc' : 'desc';
+  else { sortCol = col; sortOrder = (col === 'name') ? 'asc' : 'desc'; }
+  search();
+}
+
+/* ===== synergy ===== */
+async function synergy() {
+  const assets = document.getElementById('assets').value.trim();
+  if (!assets) { document.getElementById('assets').focus(); return; }
+  const p = new URLSearchParams({ assets });
+  if (document.getElementById('include_inactive').checked) p.set('include_inactive', 'true');
+  const data = await (await fetch('/api/synergy?' + p)).json();
+  document.getElementById('syn-count').textContent = `${data.count} 社がマッチ`;
+  const max = data.items.length ? data.items[0].synergy_score : 1;
+  const tbody = document.getElementById('syn-tbody');
+  if (!data.items.length) {
+    tbody.innerHTML = `<tr><td colspan="7"><div class="empty"><b>マッチする企業がありません</b>より一般的なキーワード（業界名・技術名）で試してみてください</div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = data.items.map(c => `
+    <tr class="row ${c.status === 'closed' ? 'closed-row' : ''}" onclick="openDetail(${c.id})">
+      <td class="score-cell"><span class="score">${c.synergy_score}</span><div class="scorebar"><i style="width:${Math.round(c.synergy_score / max * 100)}%"></i></div></td>
+      <td style="min-width:190px"><span class="name">${esc(c.name)}</span><div class="desc">${esc((c.description || '').slice(0, 52))}${(c.description || '').length > 52 ? '…' : ''}</div></td>
+      <td>${c.synergy_hits.map(h => `<span class="hitchip">${esc(h)}</span>`).join('')}</td>
+      <td>${c.sectors.slice(0, 2).map(s => `<span class="tag static">${esc(s)}</span>`).join('')}</td>
+      <td class="num">${oku(c.total_raised_oku)}</td>
+      <td style="max-width:210px"><span class="muted" style="font-size:12px">${esc(c.investors.slice(0, 3).join('、'))}${c.investors.length > 3 ? `<span class="faint"> +${c.investors.length - 3}</span>` : ''}</span></td>
+      <td>${badge(c)}</td>
+    </tr>`).join('');
+}
+
+/* ===== detail modal ===== */
+async function openDetail(id) {
+  const c = await (await fetch('/api/companies/' + id)).json();
+  const lr = c.last_round || {};
+  const sec = (title, body) => body ? `<div class="m-sec"><h3>${title}</h3><div class="body">${body}</div></div>` : '';
+  const meta = [c.founded_year ? `${c.founded_year}年設立` : null, c.hq, c.representative ? `代表: ${esc(c.representative)}` : null,
+                c.employee_count ? `従業員 約${c.employee_count}名` : null].filter(Boolean).join('　·　');
+  document.getElementById('modal').innerHTML = `
+    <div class="m-head">
+      <button class="close" onclick="closeModal()">✕</button>
+      <h2>${esc(c.name)} ${badge(c)}</h2>
+      ${c.status_note ? `<div class="statusline">${esc(c.status_note)}</div>` : ''}
+      <div class="tags">${c.sectors.map(sectorTag).join('')}</div>
+    </div>
+    <div class="m-body">
+      <p class="m-desc">${esc(c.description || '')}</p>
+      ${meta ? `<p class="muted" style="font-size:12.5px;margin:-8px 0 16px">${meta}</p>` : ''}
+      <div class="m-grid">
+        <div class="m-stat"><div class="k">累計調達額</div><div class="v">${oku(c.total_raised_oku)}</div></div>
+        <div class="m-stat"><div class="k">評価額（公表・報道）</div><div class="v">${oku(c.valuation_oku)}</div>${c.valuation_source ? `<div class="note">出典: ${esc(c.valuation_source)}</div>` : ''}</div>
+        <div class="m-stat"><div class="k">直近ラウンド</div><div class="v" style="font-size:14px">${lr.date ? `${esc(lr.date)}　${esc(lr.round || '')}` : '<span class="faint">—</span>'}</div>${lr.amount_oku != null ? `<div class="note">調達額 ${lr.amount_oku}億円</div>` : ''}${c.funding_signal ? `<div style="margin-top:5px"><span class="signal">🔔 調達シグナル（${c.months_since_last_round}ヶ月経過）</span></div>` : ''}</div>
+        <div class="m-stat"><div class="k">ステージ</div><div class="v" style="font-size:14px">${esc(c.stage || '—')}</div></div>
+      </div>
+      ${sec('主要株主・投資家（VC・CVC・事業会社）', c.investors.length ? c.investors.map(i => `<span class="tag static">${esc(i)}</span>`).join('') : '')}
+      ${sec('直近ラウンド引受先', lr.investors && lr.investors.length ? lr.investors.map(i => `<span class="tag static">${esc(i)}</span>`).join('') : '')}
+      ${sec('提携事業会社', c.partners.length ? c.partners.map(i => `<span class="tag static">${esc(i)}</span>`).join('') : '')}
+      ${sec('受賞歴', c.awards.length ? c.awards.map(a => `🏆 ${esc(a.event || '')} ${esc(a.year || '')} <b>${esc(a.result || '')}</b>`).join('<br>') : '')}
+      ${sec('連絡先（アウトリーチ用）', [
+        c.contact_url ? linkify(c.contact_url, '✉️') : null,
+        c.rep_linkedin ? linkify(c.rep_linkedin, '💼') : null,
+        c.rep_facebook ? linkify(c.rep_facebook, '📘') : null,
+        c.rep_x ? linkify(c.rep_x, '𝕏') : null,
+      ].filter(Boolean).join('<br>'))}
+      ${sec('リンク', [
+        c.website ? linkify(c.website, '🌐') : null,
+        ...(c.sources || []).map(s => linkify(s, '📄'))
+      ].filter(Boolean).join('<br>'))}
+      <div class="srcnote">⚠️ 本データは公開情報（報道・PR TIMES・公式サイト等）に基づきます。評価額は公表・報道時点の参考値です。投資判断の際は必ず一次情報をご確認ください。${c.last_verified ? `（最終確認: ${esc(c.last_verified)}）` : ''}</div>
+    </div>`;
+  document.getElementById('overlay').style.display = 'block';
+  document.getElementById('modal').style.display = 'block';
+}
+function closeModal() {
+  document.getElementById('overlay').style.display = 'none';
+  document.getElementById('modal').style.display = 'none';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ===== instant search bindings ===== */
+document.getElementById('q').addEventListener('input', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(search, 280);
+});
+for (const id of ['sector','stage','status','min_raised'])
+  document.getElementById(id).addEventListener('change', search);
+for (const id of ['has_valuation','has_award','has_signal'])
+  document.getElementById(id).addEventListener('change', search);
+document.getElementById('assets').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); synergy(); }
+});
+
+loadMe();
+loadMeta().then(search);
+</script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+[
+  {
+    "name": "株式会社ネットプロテクションズホールディングス",
+    "website": "https://corp.netprotections.com/",
+    "founded_year": 2018,
+    "hq": "東京都千代田区",
+    "representative": "柴田紳",
+    "description": "BNPL（後払い決済）サービス「NP後払い」「NP掛け払い」「atone」を提供するネットプロテクションズの持株会社。2000年創業の後払い決済パイオニア。",
+    "sectors": ["フィンテック", "決済", "BNPL"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": 908.1,
+    "valuation_source": "INITIAL『Japan Startup Finance 2021上半期』調達後企業評価額（2021年6月11日時点・推定値）",
+    "last_round": {
+      "date": "2021-02",
+      "round": "第三者割当増資（JCBとの資本業務提携）",
+      "amount_oku": 60,
+      "investors": ["株式会社ジェーシービー（JCB）"]
+    },
+    "investors": ["ジェーシービー", "アドバンテッジパートナーズ系ファンド（旧株主）"],
+    "partners": ["JCB（BNPL事業連携）"],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2021年12月15日に東証一部（現・東証プライム）上場（証券コード7383）。JCBからの約60億円調達によりJCBの出資比率は10.24%となった",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000228.000022451.html",
+      "https://www.global.jcb/ja/press/2021/202102251000_others.html",
+      "https://netkeizai.com/articles/detail/3156"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "アトナープ株式会社（Atonarp Inc.）",
+    "website": "https://atonarp.com/",
+    "founded_year": 2009,
+    "hq": "東京都港区",
+    "representative": "プラカシュ・スリーダル・マーシー",
+    "description": "独自の分子センシング技術による小型質量分析計・光学分析プラットフォームを開発。半導体プロセスモニタリングやヘルスケア・デジタル診断向けに展開し、日本・米国・インドに拠点を持つ。",
+    "sectors": ["ディープテック", "半導体", "ヘルスケア機器", "分析装置"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 120,
+    "valuation_oku": 219.3,
+    "valuation_source": "INITIAL『Japan Startup Finance 2021上半期』調達後企業評価額（推定値）",
+    "last_round": {
+      "date": "2021-05",
+      "round": "シリーズD",
+      "amount_oku": 54,
+      "investors": ["Celesta Capital（旧WRVI Capital・リード）", "古河電気工業", "JPインベストメント", "Boscolo Intervest", "ATI Korea", "Banner Industries"]
+    },
+    "investors": ["Celesta Capital", "古河電気工業", "JPインベストメント", "Boscolo Intervest", "ATI Korea", "Banner Industries"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "シリーズDは5,000万ドル（約54億円）。同ラウンド完了時点の累計調達額は1億1,100万ドル（約120億円）と公表",
+    "employee_count": null,
+    "sources": [
+      "https://kyodonewsprwire.jp/release/202105195054",
+      "https://startup-db.com/companies/vNOKZXOURXzp185L"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ユビタス（Ubitus K.K.）",
+    "website": "https://ubitus.net/",
+    "founded_year": 2012,
+    "hq": "東京都新宿区",
+    "representative": "郭栄昌（Wesley Kuo）",
+    "description": "クラウドゲーミング技術のパイオニア。ゲームタイトルを低コストでクラウド対応化する「Ubitus GDK」やクラウドストリーミングプラットフォーム「GameCloud」を提供し、近年は生成AIソリューション（UbiChat等）にも展開。",
+    "sectors": ["クラウドゲーミング", "ゲーム", "AI"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": 249.5,
+    "valuation_source": "INITIAL『Japan Startup Finance 2021上半期』調達後企業評価額（推定値）",
+    "last_round": {
+      "date": "2021-03",
+      "round": "第三者割当増資（INITIAL区分はシリーズA）",
+      "amount_oku": 39,
+      "investors": ["テンセント（Tencent Holdings）", "スクウェア・エニックス", "Sony Innovation Fund by IGV（Innovation Growth Ventures）", "Actoz Soft"]
+    },
+    "investors": ["テンセント", "スクウェア・エニックス", "Sony Innovation Fund by IGV", "Actoz Soft", "NVIDIA（2024年出資）"],
+    "partners": ["任天堂・ソニー等プラットフォーム向けクラウド版タイトル提供実績"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2024年にNVIDIAから新規出資を受領。台湾発祥だが本社機能は東京（未上場）",
+    "employee_count": null,
+    "sources": [
+      "https://initial.inc/companies/A-28480",
+      "https://prtimes.jp/main/html/rd/p/000000005.000139323.html",
+      "https://assets.ctfassets.net/bdepgd648nl9/6mdMhZHgFpFL6FxjAO9b7T/55ce44c95770b6e4a08c25914fd037de/japan-startup-finance-2021h1.pdf"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Kyulux",
+    "website": "https://www.kyulux.com/",
+    "founded_year": 2015,
+    "hq": "福岡県福岡市西区",
+    "representative": "安達淳治",
+    "description": "九州大学発。有機ELディスプレイ・照明向け次世代発光材料TADF（熱活性化遅延蛍光）／Hyperfluorescence技術の研究開発を行う素材スタートアップ。",
+    "sectors": ["素材", "ディープテック", "有機EL", "大学発"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-02",
+      "round": "シリーズB-prime",
+      "amount_oku": 36.25,
+      "investors": []
+    },
+    "investors": ["El Camino Capital（シリーズCリード）", "MCPグループ", "九州発ジャパン・エボリューション・ファンド"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2021年2月にシリーズB-primeで36.25億円（3,430万米ドル）を調達。2023年12月にはシリーズCで42.7億円を調達し事業継続中",
+    "employee_count": null,
+    "sources": [
+      "https://www.kyulux.com/kyulux-raises-34-3-million-in-series-b-prime-funding-round/",
+      "https://www.kyulux.com/kylux-successfully-raises-4-27-billion-yen-28-6million-usd-in-its-series-c-funding-round/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "READYFOR株式会社",
+    "website": "https://corp.readyfor.jp/",
+    "founded_year": 2014,
+    "hq": "東京都",
+    "representative": "米良はるか",
+    "description": "日本初のクラウドファンディングサービス「READYFOR」を運営。寄付・購入型クラウドファンディングのほか、遺贈寄付や基金・助成プログラム運営支援など資金流通事業を展開。",
+    "sectors": ["クラウドファンディング", "フィンテック", "ソーシャルセクター"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-03",
+      "round": "シリーズB",
+      "amount_oku": 10,
+      "investors": ["グロービス・キャピタル・パートナーズ", "Salesforce Ventures", "JICベンチャー・グロース・インベストメンツ", "三菱UFJイノベーション・パートナーズ", "南都キャピタルパートナーズ", "ベンチャーラボインベストメント", "あおぞら企業投資"]
+    },
+    "investors": ["グロービス・キャピタル・パートナーズ", "Salesforce Ventures", "JICベンチャー・グロース・インベストメンツ", "三菱UFJイノベーション・パートナーズ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2022年7月にはシリーズCで総額17億円を追加調達",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000188.000031325.html",
+      "https://thebridge.jp/2021/03/readyfor-series-b-round-funding",
+      "https://corp.readyfor.jp/news/20220713"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社エクサウィザーズ",
+    "website": "https://exawizards.com/",
+    "founded_year": 2016,
+    "hq": "東京都港区",
+    "representative": "石山洸（調達当時・代表取締役社長）",
+    "description": "AIを活用した社会課題解決を掲げ、企業向けAIサービス開発・DX支援、介護・HR領域等のAIプロダクトを提供。2021年3月にアフラック生命と業務提携し、保険領域DXで協働。",
+    "sectors": ["AI", "DX支援", "SaaS"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-03",
+      "round": "第三者割当増資（アフラックとの業務提携に伴う）",
+      "amount_oku": 10,
+      "investors": ["Aflac Ventures LLC（アフラック・イノベーション・パートナーズ運営）", "ほか1社"]
+    },
+    "investors": ["Aflac Ventures LLC", "SBIインベストメント（過去ラウンド）"],
+    "partners": ["アフラック生命保険"],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2021年12月23日に東証マザーズ（現・東証グロース）上場（証券コード4259）",
+    "employee_count": null,
+    "sources": [
+      "https://robotstart.info/2021/03/22/exwzd-aflac.html",
+      "https://prtimes.jp/main/html/rd/p/000000068.000030192.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "吉積ホールディングス株式会社",
+    "website": "https://www.yoshidumi.com/",
+    "founded_year": 2018,
+    "hq": "東京都千代田区",
+    "representative": "吉積礼敏",
+    "description": "Google Cloud専業インテグレーターのクラウドエース、Google Workspace支援の吉積情報等を傘下に持つ持株会社。グループでクラウド導入支援・保守運用・自社サービス開発を展開。",
+    "sectors": ["クラウド", "SIer", "IT"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-01",
+      "round": "第三者割当増資",
+      "amount_oku": 10,
+      "investors": ["農林中央金庫", "SMBCベンチャーキャピタル", "りそなキャピタル", "既存株主"]
+    },
+    "investors": ["農林中央金庫", "SMBCベンチャーキャピタル", "りそなキャピタル"],
+    "partners": ["Google Cloud（プレミアパートナー）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "国内外の事業強化・人材採用・海外進出を目的に2021年1月22日に総額10億円を調達",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000071.000032396.html",
+      "https://www.yoshidumi.com/release20210122"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "クラウドクレジット株式会社",
+    "website": "https://crowdcredit.jp/",
+    "founded_year": 2013,
+    "hq": "東京都中央区",
+    "representative": "杉山智行",
+    "description": "海外の事業者・個人向け貸付に投資できる貸付型（融資型）クラウドファンディング「クラウドクレジット」を運営。新興国のマイクロファイナンス等に日本の個人資金をつなぐ。",
+    "sectors": ["フィンテック", "ソーシャルレンディング", "クラウドファンディング"],
+    "stage": "M&A済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-04",
+      "round": "第三者割当増資",
+      "amount_oku": 11,
+      "investors": ["三井住友海上キャピタル（MSIVC2020Vファンド）", "GMO VenturePartners（GMO GFFファンド）", "エッジ・ラボ", "インベストメントLab", "ほか既存投資家"]
+    },
+    "investors": ["三井住友海上キャピタル", "GMO VenturePartners", "伊藤忠商事（過去ラウンド）", "第一生命保険（過去ラウンド）"],
+    "partners": [],
+    "awards": [],
+    "status": "ma",
+    "status_note": "2023年1月1日付で株式会社バンカーズ・ホールディングが全株式を取得し完全子会社化（ブランドは継続）",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000012.000061482.html",
+      "https://www.bkhd.co.jp/news/20221228.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社SUPER STUDIO",
+    "website": "https://super-studio.jp/",
+    "founded_year": 2014,
+    "hq": "東京都目黒区",
+    "representative": "林紘祐",
+    "description": "EC基幹システム（統合コマースプラットフォーム）「ecforce」を提供し、D2C/ECブランドの立ち上げ・運営を支援。自社D2Cブランド事業も展開。",
+    "sectors": ["SaaS", "EC", "D2C"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-06",
+      "round": "シリーズB",
+      "amount_oku": 18,
+      "investors": ["ALL STAR SAAS FUND", "Pavilion Capital Pte Ltd", "SMBCベンチャーキャピタル", "アカツキ（Heart Driven Fund）", "みずほキャピタル"]
+    },
+    "investors": ["ALL STAR SAAS FUND", "Pavilion Capital", "SMBCベンチャーキャピタル", "アカツキ", "みずほキャピタル", "ポーラ・オルビスホールディングス（2020年出資）"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2023年10月にシリーズB延長ラウンドで14億円を追加調達",
+    "employee_count": null,
+    "sources": [
+      "https://ec-force.com/information/20210609",
+      "https://thebridge.jp/2021/06/super-studio-series-b-round-funding"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "EDGEMATRIX株式会社",
+    "website": "https://edgematrix.com/",
+    "founded_year": 2019,
+    "hq": "東京都渋谷区",
+    "representative": "太田洋",
+    "description": "映像エッジAIの現場実装を手がける。高性能エッジAIデバイス「Edge AI Box」とAIアプリの配信・遠隔管理を行うエッジAIプラットフォーム「EDGEMATRIXサービス」を提供。米Cloudianからのスピンオフ企業。",
+    "sectors": ["エッジAI", "IoT", "映像解析"],
+    "stage": "シリーズB",
+    "total_raised_oku": 19,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-03",
+      "round": "シリーズB",
+      "amount_oku": 10,
+      "investors": ["NTTドコモ", "清水建設", "SONY INNOVATION FUND", "DGベンチャーズ"]
+    },
+    "investors": ["NTTドコモ", "清水建設", "SONY INNOVATION FUND", "DGベンチャーズ", "日本郵政キャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "累計調達額はシリーズA（約9億円）と合わせ約19億円（2021年3月時点）。その後米Cloudianから正式にスピンオフ",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000002.000074385.html",
+      "https://www.weeklybcn.com/journal/news/detail/20210324_180867.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社オンリーストーリー",
+    "website": "https://onlystory.co.jp/",
+    "founded_year": 2014,
+    "hq": "東京都渋谷区",
+    "representative": "平野哲也",
+    "description": "決裁者同士のマッチングを支援する経営・営業支援プラットフォーム「チラCEO（ONLY STORY）」を運営。経営者インタビューメディアから決裁者マッチングSaaSへ展開。",
+    "sectors": ["SaaS", "営業支援", "マッチングプラットフォーム"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-04",
+      "round": "第三者割当増資",
+      "amount_oku": 13,
+      "investors": ["日本郵政キャピタル", "Das Capital SG Pte.Ltd.", "DCIベンチャー成長支援投資事業有限責任組合", "ユーザベース", "HAKUHODO DY FUTURE DESIGN FUND", "ユナイテッド"]
+    },
+    "investors": ["日本郵政キャピタル", "Das Capital", "DCIベンチャー成長支援ファンド", "ユーザベース", "博報堂DYベンチャーズ", "ユナイテッド"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2021年4月14日に総額約13億円の調達を発表",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000119.000015335.html",
+      "https://thebridge.jp/2021/04/only-story-jpy1-3b-funding"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "ユニファイド・サービス株式会社",
+    "website": "https://unisrv.jp/",
+    "founded_year": 2004,
+    "hq": "東京都港区",
+    "representative": "宇陀栄次",
+    "description": "電力・再生可能エネルギー業界向けのインダストリークラウド（電力CIS＝顧客情報システム等）や公共・デジタルマーケティング関連クラウドサービスを提供。",
+    "sectors": ["エネルギーテック", "クラウド", "SaaS"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-04",
+      "round": "第三者割当増資",
+      "amount_oku": 10.065,
+      "investors": ["JPインベストメント（ゆうちょ銀行子会社）", "米セールスフォース・ドットコム（salesforce.com）"]
+    },
+    "investors": ["JPインベストメント", "セールスフォース・ドットコム"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2021年4月に総額10億650万円を調達。電力CISパッケージの機能強化等に充当",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000006.000077839.html",
+      "https://unisrv.jp/topics/jpinvestment/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社FUNDINNO（旧・株式会社日本クラウドキャピタル）",
+    "website": "https://corp.fundinno.com/",
+    "founded_year": 2015,
+    "hq": "東京都品川区",
+    "representative": "柴原祐喜・大浦学（共同代表）",
+    "description": "日本初の株式投資型クラウドファンディング「FUNDINNO」を運営。未上場スタートアップへの少額投資プラットフォームのほか、経営管理クラウド「FUNDOOR」等を展開。",
+    "sectors": ["フィンテック", "クラウドファンディング", "証券"],
+    "stage": null,
+    "total_raised_oku": 35.9,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-06",
+      "round": "エクステンションラウンド（2020年11月開始・2021年6月クローズ）",
+      "amount_oku": 21.7,
+      "investors": ["野村ホールディングス", "ちばぎんキャピタル", "いよぎんキャピタル", "ほか"]
+    },
+    "investors": ["野村ホールディングス", "ちばぎんキャピタル", "いよぎんキャピタル"],
+    "partners": ["野村ホールディングス（資本業務提携）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2022年2月1日に日本クラウドキャピタルからFUNDINNOへ社名変更。累計調達額は約35.9億円（2021年6月時点）",
+    "employee_count": null,
+    "sources": [
+      "https://www.cloud-capital.co.jp/2021/06/16/pressrelease_0615/",
+      "https://www.fastgrow.jp/articles/funding-210616",
+      "https://prtimes.jp/main/html/rd/p/000000143.000021941.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ネクイノ（旧・ネクストイノベーション株式会社）",
+    "website": null,
+    "founded_year": 2016,
+    "hq": "大阪府大阪市北区",
+    "representative": "石井健一",
+    "description": "ピル処方に対応したオンライン診察アプリ「スマルナ」を運営する医療系スタートアップ。オンライン診察・薬剤配送と助産師・薬剤師によるチャット相談を提供。",
+    "sectors": ["ヘルスケア", "遠隔医療", "フェムテック"],
+    "stage": "シリーズB",
+    "total_raised_oku": 30,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-06",
+      "round": "シリーズB（2020年11月開始のラウンド累計）",
+      "amount_oku": 22.5,
+      "investors": ["ジャフコ グループ（メイン）", "アカツキ", "ほか"]
+    },
+    "investors": ["ジャフコ グループ", "アカツキ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "シリーズBラウンド累計22.5億円（2021年6月完了）、創業からの累計調達額は約30億円（同時点）",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000064.000021661.html",
+      "https://jp.techcrunch.com/2021/06/04/nextinnovation-inc-fundraising/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Showcase Gig",
+    "website": "https://www.showcase-gig.com/",
+    "founded_year": 2012,
+    "hq": "東京都渋谷区",
+    "representative": "新田剛史",
+    "description": "飲食・小売店向けモバイルオーダープラットフォーム「O:der Platform」（O:der Table／O:der ToGo／O:der Kiosk）を提供する次世代店舗創出プラットフォーム企業。",
+    "sectors": ["フードテック", "モバイルオーダー", "SaaS"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-01",
+      "round": "第三者割当増資（グローリーとの資本業務提携）",
+      "amount_oku": 10,
+      "investors": ["グローリー株式会社"]
+    },
+    "investors": ["グローリー", "ニッセイ・キャピタル（過去ラウンド）", "アマノ（過去ラウンド・資本業務提携）"],
+    "partners": ["グローリー（券売機・決済端末連携）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2021年1月にグローリーから10億円の第三者割当増資（1月12日契約・1月18日実行）。2022年12月にも追加調達を実施",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/21374",
+      "https://www.glory.co.jp/company/news/detail/id=1973",
+      "https://www.showcase-gig.com/news/info_20221215"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "じぶんde株式会社",
+    "website": "https://jibunde.co.jp/",
+    "founded_year": 2017,
+    "hq": "東京都新宿区",
+    "representative": "村田尋一",
+    "description": "業界初の定額制セルフエステサロン「じぶんdeエステ」と業務用エステマシンのレンタル「自宅deエステ」を運営。駅直結型ファッションビル等に店舗を展開。",
+    "sectors": ["美容", "サブスクリプション", "店舗サービス"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-02",
+      "round": "第三者割当増資＋デットファイナンス（総額・エクイティ内訳非公表）",
+      "amount_oku": 40,
+      "investors": ["サファイア・キャピタル運営ファンド", "金融機関（融資）"]
+    },
+    "investors": ["サファイア・キャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2021年2月19日に増資と融資を合わせ総額約40億円の調達完了を発表（エクイティ部分の金額は非公表）",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000020.000040196.html",
+      "https://www.marr.jp/marr/category/news/entry/27347"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ハッチ・ワーク",
+    "website": "https://hatchwork.co.jp/",
+    "founded_year": 2000,
+    "hq": "東京都港区",
+    "representative": "増田知平",
+    "description": "月極駐車場のDXを推進。検索・オンライン契約ポータル「アットパーキング」と管理会社向けオンライン管理システム「アットパーキングクラウド」、貸し会議室「アットビジネスセンター」を運営。",
+    "sectors": ["不動産テック", "モビリティ", "SaaS"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-03",
+      "round": "第三者割当増資＋融資等（総額・エクイティ内訳非公表）",
+      "amount_oku": 10,
+      "investors": ["イノベーション・エンジン", "環境エネルギー投資", "みずほキャピタル", "クラウドワークス", "ベクトル", "ほか"]
+    },
+    "investors": ["イノベーション・エンジン", "環境エネルギー投資", "みずほキャピタル", "クラウドワークス", "ベクトル"],
+    "partners": [],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2024年3月26日に東証グロース上場（証券コード148A）。2021年3月の調達は増資・融資合わせて総額10億円",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000071.000005153.html",
+      "https://www.ipokiso.com/company/2024/hatchwork.html"
+    ],
+    "last_verified": "2026-07"
+  }
+]

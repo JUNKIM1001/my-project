@@ -1,0 +1,242 @@
+[
+ {
+  "name": "株式会社ビードットメディカル",
+  "representative": "古川卓司",
+  "website": "https://bdotmed.co.jp",
+  "hq": "東京都江戸川区"
+ },
+ {
+  "name": "株式会社New Innovations",
+  "representative": "中尾渓人・山田奨",
+  "website": "https://newinov.com/",
+  "hq": "東京都江東区"
+ },
+ {
+  "name": "シンプルフォーム株式会社",
+  "representative": "田代翔太",
+  "website": "https://www.simpleform.co.jp",
+  "hq": "東京都目黒区"
+ },
+ {
+  "name": "株式会社リーディングマーク",
+  "representative": "飯田悠司",
+  "website": "https://www.leadingmark.jp/",
+  "hq": "東京都港区"
+ },
+ {
+  "name": "テックタッチ株式会社",
+  "representative": "井無田仲",
+  "website": "https://techtouch.jp/",
+  "hq": "東京都中央区"
+ },
+ {
+  "name": "株式会社KINS",
+  "representative": "下川穣",
+  "website": "https://corporate.yourkins.com",
+  "hq": "東京都目黒区"
+ },
+ {
+  "name": "株式会社Shippio",
+  "representative": "佐藤孝徳",
+  "website": "https://www.shippio.io/",
+  "hq": "東京都港区"
+ },
+ {
+  "name": "株式会社QunaSys",
+  "representative": "楊天任",
+  "website": "https://qunasys.com/",
+  "hq": "東京都文京区"
+ },
+ {
+  "name": "株式会社カミナシ",
+  "representative": "諸岡裕人",
+  "website": "https://corp.kaminashi.jp/",
+  "hq": "東京都千代田区"
+ },
+ {
+  "name": "株式会社シンプロジェン",
+  "representative": "山本一彦",
+  "website": "https://www.synplogen.com/",
+  "hq": "兵庫県神戸市"
+ },
+ {
+  "name": "株式会社ロジレス",
+  "representative": "西川真央",
+  "website": "https://corp.logiless.com",
+  "hq": "東京都豊島区"
+ },
+ {
+  "name": "株式会社THIRD",
+  "representative": "井上惇",
+  "website": "https://third-inc.co.jp/",
+  "hq": "東京都新宿区"
+ },
+ {
+  "name": "株式会社primeNumber",
+  "representative": "田邊雄樹",
+  "website": "https://primenumber.com",
+  "hq": "東京都品川区"
+ },
+ {
+  "name": "株式会社TRUSTDOCK",
+  "representative": "千葉孝浩",
+  "website": "https://biz.trustdock.io/",
+  "hq": "東京都中央区"
+ },
+ {
+  "name": "株式会社400F",
+  "representative": "中村仁",
+  "website": "https://400f.jp/",
+  "hq": "東京都中央区日本橋兜町9-1 兜町第2平和ビル FinGATE BLOOM 4F"
+ },
+ {
+  "name": "ファストドクター株式会社",
+  "representative": "菊池亮・水野敬志（共同代表）",
+  "website": "https://fastdoctor.jp",
+  "hq": "東京都渋谷区"
+ },
+ {
+  "name": "株式会社モノクローム",
+  "representative": "梅田優祐",
+  "website": "https://www.monochrome.so/",
+  "hq": "神奈川県横須賀市"
+ },
+ {
+  "name": "株式会社クラス",
+  "representative": "久保裕丈",
+  "website": "https://clas.style",
+  "hq": "東京都"
+ },
+ {
+  "name": "株式会社パトスロゴス",
+  "representative": "牧野正幸",
+  "website": "https://www.pathoslogos.co.jp",
+  "hq": "東京都品川区"
+ },
+ {
+  "name": "MNTSQ株式会社",
+  "representative": "板谷隆平",
+  "website": "https://mntsq.co.jp/",
+  "hq": "東京都中央区"
+ },
+ {
+  "name": "AIQ株式会社",
+  "representative": "渡辺求",
+  "website": "https://www.aiqlab.com/",
+  "hq": "東京都文京区後楽"
+ },
+ {
+  "name": "株式会社Photo electron Soul",
+  "representative": "鈴木孝征",
+  "website": "https://photoelectronsoul.com/",
+  "hq": "愛知県名古屋市"
+ },
+ {
+  "name": "Nature株式会社",
+  "representative": "塩出晴海",
+  "website": "https://nature.global",
+  "hq": "神奈川県横浜市"
+ },
+ {
+  "name": "リンクメッド株式会社",
+  "representative": "吉井幸恵",
+  "website": "https://linqmed.co.jp/",
+  "hq": "千葉県千葉市"
+ },
+ {
+  "name": "株式会社シェアダイン",
+  "representative": "飯田陽狩／井出有希",
+  "website": "https://sharedine.co.jp/",
+  "hq": "東京都港区"
+ },
+ {
+  "name": "株式会社エネコートテクノロジーズ",
+  "representative": "加藤尚哉",
+  "website": "https://enecoat.com/",
+  "hq": "京都府久世郡久御山町"
+ },
+ {
+  "name": "シコメルフードテック株式会社",
+  "representative": "西原直良",
+  "website": "https://corp.shikomel.com",
+  "hq": "東京都渋谷区"
+ },
+ {
+  "name": "株式会社ユカシカド",
+  "representative": "美濃部慎也",
+  "website": "https://www.yukashikado.co.jp/",
+  "hq": "東京都渋谷区"
+ },
+ {
+  "name": "株式会社mov",
+  "representative": "渡邊誠",
+  "website": "https://mov.am",
+  "hq": "東京都渋谷区"
+ },
+ {
+  "name": "株式会社フェイガー",
+  "representative": "石崎貴紘",
+  "website": "https://faeger.company/",
+  "hq": "東京都港区"
+ },
+ {
+  "name": "大熊ダイヤモンドデバイス株式会社",
+  "representative": "星川尚久",
+  "website": "https://ookuma-dd.com/",
+  "hq": "北海道札幌市"
+ },
+ {
+  "name": "株式会社フォトラクション",
+  "representative": "中島貴春",
+  "website": "https://corporate.photoruction.com",
+  "hq": "東京都中央区"
+ },
+ {
+  "name": "Lazuli株式会社",
+  "representative": "萩原静厳",
+  "website": "https://lazuli.ninja/",
+  "hq": "東京都渋谷区"
+ },
+ {
+  "name": "ペイトナー株式会社",
+  "representative": "阪井優",
+  "website": "https://paytner.co.jp/",
+  "hq": "東京都港区"
+ },
+ {
+  "name": "DIGGLE株式会社",
+  "representative": "山本清貴",
+  "website": "https://diggle.jp/",
+  "hq": "東京都港区"
+ },
+ {
+  "name": "株式会社LexxPluss",
+  "representative": "阿蘓将也",
+  "website": "https://lexxpluss.com/",
+  "hq": "神奈川県川崎市"
+ },
+ {
+  "name": "リジェネフロ株式会社",
+  "representative": "森中紹文",
+  "website": "https://www.regenephro.co.jp/",
+  "hq": "京都府京都市"
+ },
+ {
+  "name": "株式会社Facilo",
+  "representative": "市川紘",
+  "website": "https://corp.facilo.jp/",
+  "hq": "東京都中央区"
+ },
+ {
+  "name": "ugo株式会社",
+  "representative": "松井健",
+  "website": "https://ugo.plus/",
+  "hq": "東京都千代田区"
+ },
+ {
+  "name": "エイターリンク株式会社",
+  "representative": "田邉勇二・岩佐凌",
+  "website": "https://aeterlink.com",
+  "hq": "東京都墨田区"
+ }
+]

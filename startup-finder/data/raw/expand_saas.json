@@ -1,0 +1,98 @@
+[
+  {
+    "name": "ContractS株式会社",
+    "website": "https://www.contracts.co.jp/",
+    "founded_year": 2017,
+    "hq": "東京都千代田区",
+    "representative": "笹原健太",
+    "description": "契約書の作成・審査・締結・管理までを一元化する契約ライフサイクル管理（CLM）クラウド「ContractS CLM」を提供する法務DXスタートアップ。旧社名は株式会社Holmes。",
+    "sectors": ["リーガルテック", "契約ライフサイクル管理(CLM)", "法務DX", "ホリゾンタルSaaS"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "last_round": {
+      "date": "2018-11",
+      "round": "シリーズA",
+      "amount_oku": 5.2,
+      "investors": ["ジャフコ", "BEENEXT", "SMBCベンチャーキャピタル", "500 Startups Japan"]
+    },
+    "investors": ["ジャフコ", "BEENEXT", "SMBCベンチャーキャピタル", "500 Startups Japan"],
+    "partners": ["丸紅情報システムズ"],
+    "awards": [],
+    "status": "ma",
+    "status_note": "2022年5月に株式会社キャリアインデックスがContractSの株式取得を発表（当時の調達はスタートアップとして独立時に実施）",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000013.000029225.html",
+      "https://tfa.co.jp/info/topics/2022/05/20/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%80%81%E5%A5%91%E7%B4%84%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%9E%E3%83%8D/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": "https://www.contracts.co.jp/",
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社openpage",
+    "website": "https://www.openpage.jp/",
+    "founded_year": 2018,
+    "hq": "東京都新宿区",
+    "representative": "藤島誓也",
+    "description": "SaaS事業者向けのカスタマーサクセスクラウド「openpage」を提供。顧客対応コンテンツの整理・共有とコミュニケーションのデータ化により、オンボーディングやカスタマーサクセスの標準化を支援する。",
+    "sectors": ["カスタマーサクセス", "B2B SaaS", "ホリゾンタルSaaS"],
+    "stage": null,
+    "total_raised_oku": 1.0,
+    "last_round": {
+      "date": "2021-06",
+      "round": null,
+      "amount_oku": 1.0,
+      "investors": ["伊藤忠テクノロジーベンチャーズ"]
+    },
+    "investors": ["伊藤忠テクノロジーベンチャーズ"],
+    "partners": ["セレブリックス"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000001.000081151.html",
+      "https://markezine.jp/news/detail/36611"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": "https://www.openpage.jp/",
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社STANDS",
+    "website": "https://onboarding.co.jp/",
+    "founded_year": 2018,
+    "hq": "東京都中央区",
+    "representative": "露木諒",
+    "description": "Webサービスにタグを一行設置するだけで、ノーコードでユーザー向けガイドを表示できるUI/UX改善SaaS「Onboarding」を提供。プロダクトの機能活用促進とカスタマーサクセスの効率化を支援する。",
+    "sectors": ["カスタマーサクセス", "UI/UX改善", "ノーコード", "ホリゾンタルSaaS"],
+    "stage": "プレシリーズA",
+    "total_raised_oku": 1.0,
+    "last_round": {
+      "date": "2022-02",
+      "round": "プレシリーズA",
+      "amount_oku": 1.0,
+      "investors": ["XTech Ventures", "Headline Asia"]
+    },
+    "investors": ["XTech Ventures", "Headline Asia"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000018.000048037.html",
+      "https://productzine.jp/article/detail/899"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  }
+]

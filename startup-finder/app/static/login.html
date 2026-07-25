@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ログイン — Startup Finder</title>
+<style>
+  :root {
+    --bg: #f4f6fa; --panel: #ffffff; --border: #e2e8f0; --border2: #cbd5e1;
+    --text: #16213a; --muted: #64748b; --accent: #2456d6; --accent-bg: #eef3fe;
+    --red: #d03c3c; --red-bg: #fdecec;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 38px 36px; width: min(400px, 94vw); box-shadow: 0 8px 40px rgba(22,33,58,.1); }
+  h1 { font-size: 20px; display: flex; align-items: center; gap: 9px; justify-content: center; }
+  .sub { color: var(--muted); font-size: 12px; text-align: center; margin: 8px 0 26px; }
+  label { display: block; font-size: 11.5px; color: var(--muted); font-weight: 700; margin: 14px 0 6px; letter-spacing: .03em; }
+  input { width: 100%; background: var(--panel); color: var(--text); border: 1.5px solid var(--border2); border-radius: 10px; padding: 11px 13px; font-size: 14px; font-family: inherit; transition: border-color .15s, box-shadow .15s; }
+  input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-bg); }
+  button { width: 100%; margin-top: 22px; background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 12px; font-size: 14.5px; cursor: pointer; font-weight: 700; font-family: inherit; }
+  button:hover { filter: brightness(1.08); }
+  button:disabled { opacity: .6; cursor: default; }
+  .error { display: none; background: var(--red-bg); color: var(--red); border-radius: 9px; padding: 10px 13px; font-size: 12.5px; margin-top: 16px; text-align: center; font-weight: 600; }
+  .hint { color: var(--muted); font-size: 11px; text-align: center; margin-top: 20px; line-height: 1.7; }
+  code { background: var(--bg); border-radius: 4px; padding: 1px 5px; font-size: 10.5px; }
+</style>
+</head>
+<body>
+<form class="card" id="form">
+  <h1>🔭 Startup Finder</h1>
+  <p class="sub">国内スタートアップDB — CVCソーシング支援</p>
+  <label for="username">ユーザー名</label>
+  <input type="text" id="username" autocomplete="username" autofocus required>
+  <label for="password">パスワード</label>
+  <input type="password" id="password" autocomplete="current-password" required>
+  <button type="submit" id="btn">ログイン</button>
+  <div class="error" id="error"></div>
+  <p class="hint">アカウントの追加・パスワード変更は管理者が<br><code>python3 -m app.scripts.create_user</code> で行えます</p>
+</form>
+<script>
+document.getElementById('form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = document.getElementById('btn');
+  const err = document.getElementById('error');
+  btn.disabled = true; err.style.display = 'none';
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value,
+      }),
+    });
+    if (res.ok) { location.href = '/'; return; }
+    const d = await res.json().catch(() => ({}));
+    err.textContent = d.detail || 'ログインに失敗しました';
+    err.style.display = 'block';
+  } catch (_) {
+    err.textContent = '通信エラーが発生しました';
+    err.style.display = 'block';
+  }
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>

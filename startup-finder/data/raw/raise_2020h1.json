@@ -1,0 +1,1103 @@
+[
+  {
+    "name": "Inagoraホールディングス株式会社",
+    "website": "https://www.inagora.com/",
+    "founded_year": null,
+    "hq": "東京都",
+    "representative": "翁永飆",
+    "description": "中国向け越境ECアプリ「豌豆公主（ワンドウ）」を運営。日本商品を中国の消費者に販売する越境ECプラットフォームを展開する。",
+    "sectors": ["EC", "越境EC"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-01",
+      "round": null,
+      "amount_oku": 53,
+      "investors": ["SBIホールディングス", "スギホールディングス", "信金投資控股有限公司（CITICグループ）"]
+    },
+    "investors": ["SBIホールディングス", "スギホールディングス", "CITICグループ（信金投資）"],
+    "partners": ["スギ薬局", "日本航空"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年上半期の国内調達額首位（53億円）。2022年に新アプリ「日淘市集」開始、2024年3月に日本航空と提携し中東進出など事業継続。",
+    "employee_count": null,
+    "sources": [
+      "https://forbesjapan.com/articles/detail/32329/2/1/1",
+      "https://forstartups.com/pressrelease/financing-ranking-20200213/",
+      "https://www.inagora.com/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "みんなのマーケット株式会社",
+    "website": "https://www.minma.jp/",
+    "founded_year": 2011,
+    "hq": "東京都品川区",
+    "representative": "浜野勇介",
+    "description": "ハウスクリーニングや引越しなど生活関連出張サービスのオンラインマーケットプレイス「くらしのマーケット」を運営。",
+    "sectors": ["マーケットプレイス", "生活サービス"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-01",
+      "round": "シリーズB",
+      "amount_oku": 40,
+      "investors": ["ニッセイ・キャピタル", "グロービス・キャピタル・パートナーズ", "ソニー", "Innovation Growth Ventures", "ゼンリンデータコム", "日本政策金融公庫（融資）"]
+    },
+    "investors": ["ニッセイ・キャピタル", "グロービス・キャピタル・パートナーズ", "ソニー", "Innovation Growth Ventures", "ゼンリンデータコム"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2021年3月末に累計出店登録店舗5万店を突破。事業継続中。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000020.000011530.html",
+      "https://www.minma.jp/news/40"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社FiNC Technologies",
+    "website": "https://company.finc.com/",
+    "founded_year": 2012,
+    "hq": "東京都",
+    "representative": "南野充則",
+    "description": "AIを活用したヘルスケア・フィットネスアプリ「FiNC」および法人向け健康経営サービス「FiNC for BUSINESS」を提供するモバイルヘルステック企業。",
+    "sectors": ["ヘルスケア", "ヘルステック"],
+    "stage": "レイター",
+    "total_raised_oku": 150,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-01",
+      "round": null,
+      "amount_oku": 50,
+      "investors": ["アイザワ・インベストメンツ", "伊藤忠食品", "大正製薬 ほか"]
+    },
+    "investors": ["アイザワ・インベストメンツ", "伊藤忠食品", "大正製薬"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年1月の約50億円調達で累計150億円強。同時に創業者・溝口勇児氏がCEO退任し南野充則氏が就任。2025年3月にメドレー子会社グッピーズのヘルスケア事業を吸収分割で譲受。",
+    "employee_count": null,
+    "sources": [
+      "https://thebridge.jp/2020/01/finc-technologies-5b-fundraised",
+      "https://prtimes.jp/main/html/rd/p/000000181.000027329.html",
+      "https://www.marr.jp/mainfo/news/entry/58024"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ビットキー",
+    "website": "https://bitkey.co.jp/",
+    "founded_year": 2018,
+    "hq": "東京都中央区",
+    "representative": "江尻祐樹",
+    "description": "独自のデジタルキー技術を核に、スマートロック「bitlock」「workhub」など住宅・オフィス向けのコネクトプラットフォームを開発・提供。",
+    "sectors": ["スマートロック", "IoT", "不動産テック"],
+    "stage": "レイター",
+    "total_raised_oku": 390,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-07",
+      "round": "追加調達（メザニン含む）",
+      "amount_oku": 40,
+      "investors": ["JICベンチャー・グロース・インベストメンツ（JIC VGI）"]
+    },
+    "investors": ["ゴールドマン・サックス", "阪急阪神不動産", "JICベンチャー・グロース・インベストメンツ", "りそな銀行（融資）", "みずほ銀行（融資）"],
+    "partners": ["Looop（2026年1月 資本業務提携）", "ソニーネットワークコミュニケーションズ（スマートロック事業の一部譲受）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年1月にシリーズA総額39億300万円（増資34.4億円＋融資4.6億円）をクローズ。2026年7月時点で累計調達390億円超。",
+    "employee_count": null,
+    "sources": [
+      "https://thebridge.jp/2020/01/bitkey-series-a2-round-funding",
+      "https://bitkey.co.jp/newsroom/20260701/",
+      "https://prtimes.jp/main/html/rd/p/000000207.000040203.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ネオキャリア",
+    "website": "https://www.neo-career.co.jp/",
+    "founded_year": 2000,
+    "hq": "東京都新宿区",
+    "representative": "西澤亮一",
+    "description": "新卒・中途採用支援、介護・保育など領域特化型人材サービスとHR Tech事業を展開する人材総合サービス企業。",
+    "sectors": ["HR", "人材サービス", "HR Tech"],
+    "stage": "レイター",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-02",
+      "round": null,
+      "amount_oku": 45,
+      "investors": ["Golden Asia Fund Ventures", "SBIインベストメント", "みずほキャピタル", "マイナビ", "リンクアンドモチベーション", "三菱UFJキャピタル"]
+    },
+    "investors": ["SBIインベストメント", "みずほキャピタル", "マイナビ", "リンクアンドモチベーション", "三菱UFJキャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "年商520億円超・グループ従業員3,000人超のメガベンチャーとして事業継続（2020年2月の45億円は増資と借入等の合計）。",
+    "employee_count": 3000,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000186.000011666.html",
+      "https://shikin-pro.com/news/18084"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "ベルフェイス株式会社",
+    "website": "https://corp.bell-face.com/",
+    "founded_year": 2015,
+    "hq": "東京都",
+    "representative": "中島一明",
+    "description": "電話面談・オンライン営業システム「bellFace」を開発・提供。現在はSalesforce入力を自動化するAIエージェント「bellSalesAI」に注力。",
+    "sectors": ["SaaS", "セールステック"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-02",
+      "round": "シリーズC",
+      "amount_oku": 52,
+      "investors": ["シニフィアン", "インキュベイトファンド", "YJキャピタル", "SMBCベンチャーキャピタル ほか"]
+    },
+    "investors": ["シニフィアン", "インキュベイトファンド", "YJキャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "コロナ禍後の解約増で100人規模の人員削減を実施。2025年に主力のbellFace事業を東証グロース上場のピアズへ譲渡し、AIエージェント事業へピボット（同年に総額7.5億円を調達）。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18084",
+      "https://prtimes.jp/main/html/rd/p/000000174.000033891.html",
+      "https://sairu.co.jp/method/59059/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "Repro株式会社",
+    "website": "https://repro.io/",
+    "founded_year": 2014,
+    "hq": "東京都",
+    "representative": "平田祐介",
+    "description": "アプリ・Web向けカスタマーエンゲージメントプラットフォーム「Repro」を提供。マーケティングオートメーションと分析を支援する。",
+    "sectors": ["SaaS", "マーケティングテック"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-02",
+      "round": "シリーズC",
+      "amount_oku": 30,
+      "investors": ["YJキャピタル", "SBIインベストメント", "NTTドコモ・ベンチャーズ", "KDDI", "DGベンチャーズ", "DG Daiwa Ventures", "ジャフコ"]
+    },
+    "investors": ["YJキャピタル", "SBIインベストメント", "NTTドコモ・ベンチャーズ", "KDDI", "ジャフコ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年2月にシリーズCで総額30億円（融資含む）を調達。事業継続中。",
+    "employee_count": null,
+    "sources": [
+      "https://jp.techcrunch.com/2020/02/13/repro-fundraising/",
+      "https://prtimes.jp/main/html/rd/p/000000131.000013569.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "Baseconnect株式会社",
+    "website": "https://company.baseconnect.in/",
+    "founded_year": 2017,
+    "hq": "京都府京都市",
+    "representative": "國重侑輝",
+    "description": "法人営業向け企業情報データベース「Musubu」を開発・提供。企業データの構造化と営業リスト作成を支援する。",
+    "sectors": ["SaaS", "営業支援", "データベース"],
+    "stage": "シリーズB",
+    "total_raised_oku": 82,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2023-02",
+      "round": "シリーズB",
+      "amount_oku": 54,
+      "investors": ["Z Venture Capital", "日本郵政キャピタル", "ジャフコ", "ユーザベース", "Salesforce Ventures", "NTTドコモ・ベンチャーズ", "エン・ジャパン", "京都信用金庫 ほか"]
+    },
+    "investors": ["Z Venture Capital", "YJキャピタル", "East Ventures", "みずほキャピタル", "ユーザベース", "日本郵政キャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年2月に18億円を調達。2023年2月のシリーズB（54億円）で累計調達額82億円。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18084",
+      "https://prtimes.jp/main/html/rd/p/000000037.000030679.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社OptoComb（旧・株式会社XTIA／光コム）",
+    "website": "https://xtia.co.jp/",
+    "founded_year": null,
+    "hq": "東京都墨田区",
+    "representative": null,
+    "description": "東京工業大学発の光コム技術を用いた3次元形状測定センサー・計測システムを開発・製造。産業用の高精度3Dスキャナーを提供する。",
+    "sectors": ["計測機器", "ディープテック", "製造業"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-02",
+      "round": null,
+      "amount_oku": 17,
+      "investors": ["ニコン", "JUKI", "双日"]
+    },
+    "investors": ["ニコン", "JUKI", "双日"],
+    "partners": ["ニコン", "JUKI"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年2月に光コムからXTIAへ社名変更し17億円を調達。2023年に約4.8億円の第三者割当増資を実施し、2024年1月にOptoCombへ再度社名変更。新製品を継続開発中。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18084",
+      "https://optronics-media.com/news/20200220/63016/",
+      "https://xtia.co.jp/about"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社FIXER",
+    "website": "https://www.fixer.co.jp/",
+    "founded_year": 2009,
+    "hq": "東京都港区",
+    "representative": "松岡清一",
+    "description": "クラウド基盤「cloud.config」を軸にエンタープライズ向けクラウドの設計・開発・運用サービスを提供。近年は生成AIサービスも展開。",
+    "sectors": ["クラウド", "エンタープライズIT"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-02",
+      "round": null,
+      "amount_oku": 12,
+      "investors": ["スパークス・グループ"]
+    },
+    "investors": ["スパークス・グループ"],
+    "partners": [],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2022年10月6日に東証グロース市場へ上場（証券コード5129、公開価格1,340円・初値1,822円）。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18084",
+      "https://ipokabu.net/ipo/5129"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社LegalOn Technologies（旧・株式会社LegalForce）",
+    "website": "https://legalontech.jp/",
+    "founded_year": 2017,
+    "hq": "東京都",
+    "representative": "角田望",
+    "description": "AI契約書レビュー支援ソフトウェア「LegalForce」（現LegalOn）や契約管理システムを開発・提供するリーガルテック企業。米国など海外展開も実施。",
+    "sectors": ["リーガルテック", "SaaS", "AI"],
+    "stage": "レイター",
+    "total_raised_oku": 286,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-07",
+      "round": "シリーズE",
+      "amount_oku": 71.4,
+      "investors": ["ゴールドマン・サックス", "WiL", "森・濱田松本法律事務所", "みずほ銀行（負債性優先株）", "商工組合中央金庫（負債性優先株）"]
+    },
+    "investors": ["WiL", "ゴールドマン・サックス", "ジャフコ", "三菱UFJキャピタル", "ソフトバンク・ビジョン・ファンド2", "セコイア・チャイナ"],
+    "partners": ["OpenAI（連携）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年2月に10億円を調達。2022年9月にLegalOn Technologiesへ商号変更。2025年7月のシリーズE（71.4億円）で全ラウンド総額約286億円。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18084",
+      "https://legalontech.jp/9581/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "MOON-X株式会社",
+    "website": "https://moon-x.com/",
+    "founded_year": 2019,
+    "hq": "東京都",
+    "representative": "長谷川晋",
+    "description": "元Facebook Japan代表の長谷川晋氏が創業。クラフトビール等のD2Cブランド運営から、共創型M&Aによるブランド価値構築事業（kerätä、ヒツジのいらない枕など）へ展開。",
+    "sectors": ["D2C", "ブランドM&A", "消費財"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": null,
+      "round": "シリーズC",
+      "amount_oku": 76.4,
+      "investors": []
+    },
+    "investors": ["ジャフコ", "島田亨（個人投資家）"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年2月、創業3ヶ月でシリーズA10億円超を調達。その後シリーズB34億円（2022年12月）、シリーズC総額76.4億円を調達し事業継続。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000002.000053318.html",
+      "https://digitalpr.jp/r/96717"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "VPP Japan株式会社",
+    "website": "https://www.igrid.co.jp/",
+    "founded_year": null,
+    "hq": "東京都",
+    "representative": null,
+    "description": "商業施設等の屋根に自家消費型太陽光発電を初期費用ゼロで導入する「オフグリッド電力サービス」（PPAモデル）を提供。アイ・グリッド・ソリューションズのグループ会社。",
+    "sectors": ["エネルギー", "再生可能エネルギー"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-03",
+      "round": "シンジケートローン（デット）",
+      "amount_oku": 100,
+      "investors": ["みずほ銀行（エージェント）", "千葉興業銀行", "北日本銀行", "きらぼし銀行", "商工組合中央金庫", "東和銀行", "京葉銀行"]
+    },
+    "investors": ["アイ・グリッド・ソリューションズ", "伊藤忠商事"],
+    "partners": ["伊藤忠商事（資本業務提携）", "アイ・グリッド・ソリューションズ"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年上半期の調達額ランキング首位（100億円）だが、内容はシンジケートローンによるデット調達＋資本業務提携。分散型太陽光事業を継続中。",
+    "employee_count": null,
+    "sources": [
+      "https://forbesjapan.com/articles/detail/32855",
+      "https://forbesjapan.com/articles/detail/33670",
+      "https://www.igrid.co.jp/2020/03/04/vpp_release20200304/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Kyash",
+    "website": "https://www.kyash.co/",
+    "founded_year": 2015,
+    "hq": "東京都港区",
+    "representative": "鷹取真一",
+    "description": "ウォレットアプリ「Kyash」とVisaカード発行基盤「Kyash Direct」を提供するフィンテック企業。個人向けデジタルバンキングを展開。",
+    "sectors": ["フィンテック", "決済"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 128,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2022-03",
+      "round": "シリーズD",
+      "amount_oku": 49,
+      "investors": ["Block（旧Square）", "Greyhound Capital", "Altos Ventures", "Goodwater Capital", "StepStone Group", "JPインベストメント", "SMBC日興証券", "ジャフコ ほか"]
+    },
+    "investors": ["Block", "Altos Ventures", "Goodwater Capital", "ジャフコ", "三井住友海上キャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年3月にシリーズCで約47億円を調達。2022年3月のシリーズD（49億円）で累計調達額約128億円。",
+    "employee_count": null,
+    "sources": [
+      "https://forbesjapan.com/articles/detail/33670",
+      "https://www.kyash.co/press-release/20220317"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "GO株式会社（旧・株式会社Mobility Technologies／JapanTaxi株式会社）",
+    "website": "https://goinc.jp/",
+    "founded_year": 1977,
+    "hq": "東京都港区",
+    "representative": "中島宏",
+    "description": "タクシー配車アプリ「GO」を運営するモビリティプラットフォーム企業。2020年4月にJapanTaxiとDeNAのMOV事業が統合して発足。交通事故削減支援「DRIVE CHART」等も展開。",
+    "sectors": ["モビリティ", "配車アプリ"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": 1800,
+    "valuation_source": "https://www.nikkei.com/article/DGXZQOUC148ZG0U6A510C2000000/",
+    "last_round": {
+      "date": "2020-07",
+      "round": "資本業務提携（第三者割当増資）",
+      "amount_oku": 226.25,
+      "investors": ["NTTドコモ（最大200億円）", "東京センチュリー（15.75億円）", "電通グループ（10億円）"]
+    },
+    "investors": ["NTTドコモ", "東京センチュリー", "電通グループ", "DeNA", "日本交通ホールディングス", "トヨタ自動車"],
+    "partners": ["NTTドコモ", "電通グループ", "東京センチュリー"],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2020年3〜4月に約40.5億円を調達（2020年累計は最大266.25億円）。2023年4月にGO株式会社へ商号変更。2026年6月16日に東証グロース市場へ上場（証券コード581A、想定時価総額約1,800億円規模）。",
+    "employee_count": null,
+    "sources": [
+      "https://lp.startup-db.com/media/articles/funding-ranking-202007",
+      "https://prtimes.jp/main/html/rd/p/000000068.000030664.html",
+      "https://www.nikkei.com/article/DGXZQOUC148ZG0U6A510C2000000/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "APB株式会社",
+    "website": null,
+    "founded_year": 2018,
+    "hq": "福井県越前市",
+    "representative": null,
+    "description": "元日産自動車の堀江英明氏が創業した、正極・負極とも樹脂製の次世代リチウムイオン電池「全樹脂電池」の開発・製造ベンチャー。",
+    "sectors": ["電池", "エネルギー", "ディープテック"],
+    "stage": "清算",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-04",
+      "round": null,
+      "amount_oku": 80,
+      "investors": ["JFEケミカル", "JXTGイノベーションパートナーズ", "大林組", "慶應イノベーション・イニシアティブ", "帝人", "長瀬産業", "横河電機"]
+    },
+    "investors": ["JFEケミカル", "JXTGイノベーションパートナーズ", "大林組", "帝人", "長瀬産業", "横河電機", "豊田通商"],
+    "partners": ["豊田通商", "帝人", "長瀬産業"],
+    "awards": [],
+    "status": "closed",
+    "status_note": "2020年3〜6月に総額約80億円を調達し2020年上半期2位。量産化の遅れと資金難、経営権を巡る対立（2024年6月に創業者・堀江英明氏を解任）を経て、2025年4月24日に破産手続開始決定（負債約34億8,500万円）。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18382",
+      "https://www.tsr-net.co.jp/news/tsr/detail/1201298_1521.html",
+      "https://www.nikkei.com/article/DGXZQOUC2096B0Q4A221C2000000/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Paidy",
+    "website": "https://paidy.com/",
+    "founded_year": 2008,
+    "hq": "東京都港区",
+    "representative": "杉江陸",
+    "description": "カード不要の後払い（BNPL）決済サービス「ペイディ」を提供。メールアドレスと携帯番号のみで利用できる翌月払い決済を展開。",
+    "sectors": ["フィンテック", "決済", "BNPL"],
+    "stage": "M&A済",
+    "total_raised_oku": 644,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2021-03",
+      "round": "シリーズD",
+      "amount_oku": 132,
+      "investors": ["Soros Capital Management", "JS Capital Management", "Tybourne Capital Management", "Wellington Management"]
+    },
+    "investors": ["伊藤忠商事", "Soros Capital Management", "Tybourne Capital Management", "Wellington Management", "PayPal（親会社）"],
+    "partners": ["伊藤忠商事", "Amazon.co.jp（加盟店）"],
+    "awards": [],
+    "status": "ma",
+    "status_note": "2020年4月に伊藤忠商事から約52億円（4,800万米ドル）を調達し累計300億円到達。2021年3月シリーズDで132億円を調達しユニコーン化（累計644億円・融資含む）。2021年9月に米PayPalが約3,000億円（27億ドル）で買収を発表、同年10月に完了。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18382",
+      "https://thebridge.jp/2021/03/paidy-usd1-2b-funding",
+      "https://newsroom.jp.paypal-corp.com/2021-09-07-PayPal-to-Acquire-Paidy"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "AnyMind Group株式会社",
+    "website": "https://anymindgroup.com/",
+    "founded_year": 2016,
+    "hq": "東京都港区",
+    "representative": "十河宏輔",
+    "description": "アジア各国でインフルエンサーマーケティング、D2C・EC支援、パブリッシャー支援を展開するブランドコマース／マーケティングテック企業。",
+    "sectors": ["マーケティングテック", "D2C", "EC支援"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-03",
+      "round": null,
+      "amount_oku": 29,
+      "investors": ["未来創生ファンド（スパークス・グループ運営）", "日本郵政キャピタル"]
+    },
+    "investors": ["未来創生ファンド", "日本郵政キャピタル", "LINE", "JAFCO Asia"],
+    "partners": ["LÝFT（エドワード加藤氏ブランド・資本業務提携）"],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2020年3月に約29億円を調達（当時累計約68.6億円）。2023年3月29日に東証グロース市場へ上場（証券コード5027）。",
+    "employee_count": null,
+    "sources": [
+      "https://thebridge.jp/2020/03/anymind-group-usd26-4m-funding",
+      "https://anymindgroup.com/ja/news/press-release/anymind-ipo"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "ANYCOLOR株式会社（旧・いちから株式会社）",
+    "website": "https://www.anycolor.co.jp/",
+    "founded_year": 2017,
+    "hq": "東京都港区",
+    "representative": "田角陸",
+    "description": "VTuberグループ「にじさんじ」を運営。バーチャルタレントのマネジメント、配信、グッズ・イベント事業を展開。",
+    "sectors": ["エンタメ", "VTuber", "コンテンツ"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-04",
+      "round": "シリーズB",
+      "amount_oku": 19,
+      "investors": ["Legend Capital", "ソニー・ミュージックエンタテインメント", "けいはんな学研都市ATRベンチャーNVCC投資事業有限責任組合", "伊藤忠商事"]
+    },
+    "investors": ["Legend Capital", "ソニー・ミュージックエンタテインメント", "伊藤忠商事"],
+    "partners": [],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2020年4月14日にシリーズBで約19億円を調達（創業以来累計30億円超）。2021年5月にANYCOLORへ社名変更、2022年6月8日に東証グロース市場へ上場（証券コード5032）。",
+    "employee_count": null,
+    "sources": [
+      "https://www.anycolor.co.jp/news/1057",
+      "https://prtimes.jp/main/html/rd/p/000000136.000030865.html",
+      "https://ja.wikipedia.org/wiki/ANYCOLOR"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社AppBrew",
+    "website": "https://appbrew.io/",
+    "founded_year": 2016,
+    "hq": "東京都",
+    "representative": "深澤雄太",
+    "description": "国内最大級のコスメ・美容クチコミアプリ「LIPS」を企画・開発・運営。",
+    "sectors": ["美容", "コミュニティアプリ", "EC"],
+    "stage": "M&A済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-04",
+      "round": null,
+      "amount_oku": 11,
+      "investors": ["SIG Japan", "三菱UFJキャピタル", "マイナビ", "みずほキャピタル"]
+    },
+    "investors": ["SIG Japan", "三菱UFJキャピタル", "マイナビ", "みずほキャピタル"],
+    "partners": [],
+    "awards": [],
+    "status": "ma",
+    "status_note": "2020年に約11億円を調達。2024年12月にマツキヨココカラ&カンパニー子会社のMCCマネジメントへ全株式を譲渡し同グループ入り。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18382",
+      "https://www.syogyo.jp/news/2020/05/post_027389",
+      "https://ja.wikipedia.org/wiki/AppBrew"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "五常・アンド・カンパニー株式会社",
+    "website": "https://gojo.co/",
+    "founded_year": 2014,
+    "hq": "東京都",
+    "representative": "慎泰俊",
+    "description": "「民間版の世界銀行」を掲げ、インド・カンボジア・ミャンマー等の新興国でマイクロファイナンス（小口融資）事業を展開する持株会社。",
+    "sectors": ["フィンテック", "マイクロファイナンス", "金融包摂"],
+    "stage": "レイター",
+    "total_raised_oku": 465,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-09",
+      "round": "シリーズF",
+      "amount_oku": 175,
+      "investors": ["アセットマネジメントOne", "レオス・キャピタルワークス", "三井住友トラスト・アセットマネジメント ほか"]
+    },
+    "investors": ["SBIホールディングス", "セブン銀行", "クレディセゾン", "アセットマネジメントOne", "レオス・キャピタルワークス"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年4月までに計23.3億円を調達（セブン銀行・SBI・クレディセゾン等）。2024年のシリーズF（175億円）で累計資本調達465億円。グループ従業員1万人超・顧客240万人（2024年3月末）。",
+    "employee_count": 10000,
+    "sources": [
+      "https://shikin-pro.com/news/18382",
+      "https://forbesjapan.com/articles/detail/34534",
+      "https://prtimes.jp/main/html/rd/p/000000031.000048303.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "Activ8株式会社",
+    "website": "https://activ8.co.jp/",
+    "founded_year": 2016,
+    "hq": "東京都",
+    "representative": "大坂武史",
+    "description": "バーチャルタレントのプロデュース・マネジメントとxRコンテンツ事業を展開。「キズナアイ」を生んだVTuber事業の草分け。",
+    "sectors": ["エンタメ", "VTuber", "xR"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-04",
+      "round": "シリーズC",
+      "amount_oku": 10,
+      "investors": ["小学館", "Too", "ホリプロ"]
+    },
+    "investors": ["小学館", "Too", "ホリプロ", "KDDI Open Innovation Fund 3号"],
+    "partners": ["KDDI（メタバースエンタメ事業を共同推進）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年4月にシリーズCで約10億円を調達。2020年5月にキズナアイ運営をKizuna AI株式会社として分社化。2023年10月にKDDI Open Innovation Fundから調達し事業継続。",
+    "employee_count": null,
+    "sources": [
+      "https://thebridge.jp/2020/04/activ8-series-c-round-funding",
+      "https://prtimes.jp/main/html/rd/p/000000101.000033882.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Sun Asterisk",
+    "website": "https://sun-asterisk.com/",
+    "founded_year": null,
+    "hq": "東京都千代田区",
+    "representative": "小林泰平",
+    "description": "デジタル・クリエイティブスタジオ。ベトナム等の開発拠点を活用したプロダクト開発支援とスタートアップスタジオ事業を展開。",
+    "sectors": ["受託開発", "DX支援"],
+    "stage": "IPO済",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-04",
+      "round": null,
+      "amount_oku": 10,
+      "investors": ["農林中央金庫", "ソニーネットワークコミュニケーションズ", "Sony Innovation Fund by IGV", "加賀電子", "リバネスキャピタル", "みずほ銀行（融資） ほか"]
+    },
+    "investors": ["農林中央金庫", "ソニーネットワークコミュニケーションズ", "Sony Innovation Fund by IGV", "加賀電子"],
+    "partners": [],
+    "awards": [],
+    "status": "ipo",
+    "status_note": "2020年4月に10億円を調達した直後、2020年7月31日に東証マザーズへ上場（証券コード4053、公開価格700円・初値1,209円）。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/18382",
+      "https://minkabu.jp/stock/4053/ipo"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "アリヴェクシス株式会社（旧・モジュラス株式会社／Modulus Discovery）",
+    "website": "https://alivexis.com/",
+    "founded_year": 2016,
+    "hq": "東京都",
+    "representative": null,
+    "description": "スーパーコンピュータと計算科学を駆使したインシリコ創薬プラットフォームを持つ創薬スタートアップ。自社ラボを持たないネットワーク型の研究開発を行う。",
+    "sectors": ["創薬", "バイオテック", "計算科学"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2022-03",
+      "round": "シリーズC",
+      "amount_oku": 23.4,
+      "investors": []
+    },
+    "investors": ["SBIインベストメント", "みずほキャピタル", "ジャフコ", "慶應イノベーション・イニシアティブ", "SMBCベンチャーキャピタル", "第一生命保険", "東京大学協創プラットフォーム開発"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月にシリーズBで総額27.1億円（2,550万米ドル）を調達。2022年3月にシリーズC23.4億円を調達し、その後アリヴェクシスへ社名変更して事業継続。",
+    "employee_count": null,
+    "sources": [
+      "https://forbesjapan.com/articles/detail/34563",
+      "https://www.businesswire.com/news/home/20200513005230/en/Modulus-Discovery-Closes-%2425.5M-USD-Series-B",
+      "https://alivexis.com/ja/press_release/23-4%E5%84%84%E5%86%86%E3%81%AEseries-c%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94%E5%AE%8C%E4%BA%86%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ギフトモール",
+    "website": "https://giftmallcorp.jp/",
+    "founded_year": null,
+    "hq": "東京都",
+    "representative": null,
+    "description": "ギフト特化型ECモール「Giftmall」を運営。ギフト検索・比較からパーソナライズドギフト提案までを提供する（LUCHE GROUP）。",
+    "sectors": ["EC", "ギフト"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-05",
+      "round": "シリーズA",
+      "amount_oku": 15,
+      "investors": ["ジャフコ"]
+    },
+    "investors": ["ジャフコ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月にジャフコから15億円を調達（初の外部調達）。東京・シンガポール拠点でグループ連結113名（会社サイト公表値）。",
+    "employee_count": 113,
+    "sources": [
+      "https://thebridge.jp/2020/05/giftmall-series-a-round-funding",
+      "https://giftmallcorp.jp/company/profile/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "ワンドット株式会社（Onedot）",
+    "website": "https://onedot-inc.com/",
+    "founded_year": null,
+    "hq": "東京都",
+    "representative": "鳥巣知得",
+    "description": "中国最大級の育児動画メディア「Babily（貝貝粒）」を運営し、日本企業の中国向けデジタルマーケティング支援も手がける。ユニ・チャームとBCG Digital Venturesの共同事業からカーブアウトして設立。",
+    "sectors": ["メディア", "育児", "中国マーケティング"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-05",
+      "round": null,
+      "amount_oku": 10.5,
+      "investors": ["東京大学協創プラットフォーム開発", "日本生命保険", "住友商事", "みずほキャピタル", "経営陣 ほか"]
+    },
+    "investors": ["ユニ・チャーム", "東京大学協創プラットフォーム開発", "日本生命保険", "住友商事", "みずほキャピタル"],
+    "partners": ["ユニ・チャーム", "BCG Digital Ventures"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月28日に総額10.5億円を調達。現在はBabilyに加えペットO2O「Petnote」、医療プラットフォーム「One Medica」等を展開。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000009.000029343.html",
+      "https://jp.techcrunch.com/2020/05/28/onedot-fundraising/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社div",
+    "website": "https://di-v.co.jp/",
+    "founded_year": 2012,
+    "hq": "東京都渋谷区",
+    "representative": null,
+    "description": "短期集中型プログラミングスクール「テックキャンプ（TECH CAMP）」を運営。エンジニア転職・教養向けプログラミング教育を提供。",
+    "sectors": ["教育", "EdTech", "プログラミングスクール"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-05",
+      "round": "シリーズC",
+      "amount_oku": 18.3,
+      "investors": ["Eight Roads Ventures Japan", "森トラスト", "価値共創ベンチャー2号ファンド", "SMBCベンチャーキャピタル", "ドリームインキュベータ", "商工中金（融資）", "きらぼし銀行（融資） ほか"]
+    },
+    "investors": ["Eight Roads Ventures Japan", "森トラスト", "SMBCベンチャーキャピタル", "ドリームインキュベータ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月29日にシリーズCで総額約18.3億円（増資＋借入）を調達。その後教室は全て閉鎖しオンライン化、創業者の真子就有氏は2023年3月に代表退任。会社は事業継続中。",
+    "employee_count": null,
+    "sources": [
+      "https://jp.techcrunch.com/2020/05/29/div-raises-1830-million-yen/",
+      "https://thebridge.jp/2020/05/div-series-c-round-funding",
+      "https://www.appbank.net/2023/01/06/youtubernews/2370626.php"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "シンクサイト株式会社（ThinkCyte）",
+    "website": "https://thinkcyte.com/",
+    "founded_year": 2016,
+    "hq": "東京都",
+    "representative": null,
+    "description": "東京大学発。AIとイメージング技術を組み合わせたラベルフリー細胞分析・分離装置「VisionSort」を開発・販売するライフサイエンス機器スタートアップ。",
+    "sectors": ["ライフサイエンス", "医療機器", "ディープテック"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 111.5,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-08",
+      "round": "シリーズC",
+      "amount_oku": 45,
+      "investors": ["日本政策金融公庫（融資）ほか（2023年11月ファーストクローズ含む）"]
+    },
+    "investors": ["スパークス・グループ", "伊藤忠テクノロジーベンチャーズ", "芙蓉総合リース"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月に16.5億円を調達。シリーズB28.5億円（2021年5月）、シリーズC合計約45億円（2024年8月完了）で累計調達111.5億円（補助金含む）。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/19124",
+      "https://thinkcyte.com/newsroom/20240829-jp/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "REVISIO株式会社（旧・TVISION INSIGHTS株式会社）",
+    "website": "https://revisio.co.jp/",
+    "founded_year": null,
+    "hq": "東京都",
+    "representative": "郡谷康士",
+    "description": "人体認識技術でテレビ・CMの「視聴質」（誰が・どの瞬間に画面を向いていたか）を計測し、広告・コンテンツ向け分析データを提供。",
+    "sectors": ["広告", "メディア分析", "データ"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-05",
+      "round": null,
+      "amount_oku": 10,
+      "investors": ["Spiral Capital", "DBJキャピタル", "みずほキャピタル", "日本ベンチャーキャピタル", "きらぼしキャピタル", "りそな銀行（融資）", "みずほ銀行（融資） ほか"]
+    },
+    "investors": ["Spiral Capital", "DBJキャピタル", "みずほキャピタル", "日本ベンチャーキャピタル"],
+    "partners": ["ビデオリサーチ（2025年 資本業務提携）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月に約10億円を調達。2022年10月1日にREVISIOへ商号変更。2025年7月にビデオリサーチと資本業務提携し事業継続。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/19124",
+      "https://www.videor.co.jp/press/2025/250708.html",
+      "https://prtimes.jp/main/html/rd/p/000000013.000051361.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社LayerX",
+    "website": "https://layerx.co.jp/",
+    "founded_year": 2018,
+    "hq": "東京都",
+    "representative": "福島良典",
+    "description": "支出管理SaaS「バクラク」を中心に、AI・LLM事業、アセットマネジメント（三井物産デジタル・アセットマネジメント）を展開。創業時はブロックチェーン技術開発が主力だった。",
+    "sectors": ["SaaS", "フィンテック", "AI"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": 1000,
+    "valuation_source": "https://www.nikkei.com/article/DGXZQOUC140PM0U6A110C2000000/",
+    "last_round": {
+      "date": "2025-09",
+      "round": "シリーズB",
+      "amount_oku": 150,
+      "investors": ["TCV（リード）", "三菱UFJ銀行", "三菱UFJイノベーション・パートナーズ", "Coreline Ventures", "ジャフコ グループ", "Keyrock Capital Management", "JPインベストメント"]
+    },
+    "investors": ["ジャフコ", "ANRI", "YJキャピタル", "三井物産", "TCV", "三菱UFJ銀行"],
+    "partners": ["三井物産（合弁：三井物産デジタル・アセットマネジメント）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月28日にシード期として約30億円を調達（ジャフコ・ANRI・YJキャピタル）。2025年9月のシリーズB150億円調達で評価額約1,000億円のユニコーンと報道。",
+    "employee_count": null,
+    "sources": [
+      "https://jp.cointelegraph.com/news/layerx-rised-3-biilion-yen-from-venture-capitals-for-digital-transformation",
+      "https://thebridge.jp/2020/05/layerx-raises-3-billion-yen-to-change-the-world-with-digitalization-of-economic-activities",
+      "https://layerx.co.jp/news/20250901-3/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "GVE株式会社",
+    "website": "https://gve.co.jp/",
+    "founded_year": 2017,
+    "hq": "東京都",
+    "representative": "房広治",
+    "description": "中央銀行デジタル通貨（CBDC）等に対応するデジタル通貨プラットフォームを開発するフィンテック企業。",
+    "sectors": ["フィンテック", "デジタル通貨", "CBDC"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": 2242,
+    "valuation_source": "https://prtimes.jp/main/html/rd/p/000000021.000002714.html",
+    "last_round": {
+      "date": "2022-01",
+      "round": "シリーズD",
+      "amount_oku": null,
+      "investors": []
+    },
+    "investors": ["エボリューション・ファイナンシャル・グループ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年5月に米エボリューション・ファイナンシャルグループ等から約2,500万ドル（約27.9億円）を調達（当時の想定時価総額558億円と発表）。2022年1月のシリーズD決議時に想定時価総額2,242億円と発表（いずれも関係会社発表ベースの報道値）。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000046.000032589.html",
+      "https://prtimes.jp/main/html/rd/p/000000021.000002714.html",
+      "https://gve.co.jp/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "Ubie株式会社",
+    "website": "https://ubie.life/",
+    "founded_year": 2017,
+    "hq": "東京都",
+    "representative": "阿部吉倫・久保恒太（共同代表）",
+    "description": "症状検索エンジン「ユビー」と医療機関向けAI問診「ユビーメディカルナビ」を開発・提供するヘルステック企業。製薬企業向け事業も展開。",
+    "sectors": ["ヘルステック", "AI", "医療"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 180,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-04",
+      "round": null,
+      "amount_oku": 35,
+      "investors": ["三井住友信託銀行", "JA三井リース ほか（融資含む）"]
+    },
+    "investors": ["スズケン", "三井住友信託銀行", "JA三井リース"],
+    "partners": ["スズケン"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年6月にスズケンを引受先とするシリーズBで20億円を調達。2025年5月時点で累計調達額約180億円（日本政策金融公庫から10億円の長期融資も獲得）。",
+    "employee_count": null,
+    "sources": [
+      "https://thebridge.jp/2020/06/ubie-jpy2b-funding",
+      "https://prtimes.jp/main/html/rd/p/000000151.000048083.html",
+      "https://thebridge.jp/2024/04/ubie-jpy3-5b-round-funding"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社アドインテ",
+    "website": "https://adinte.co.jp/",
+    "founded_year": null,
+    "hq": "京都府京都市",
+    "representative": null,
+    "description": "IoT端末「AIBeacon」と独自DMPを活用したリテールメディア・OMOマーケティング事業を展開。小売店舗の広告メディア化を支援する。",
+    "sectors": ["リテールメディア", "広告", "IoT"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-06",
+      "round": null,
+      "amount_oku": 21.25,
+      "investors": ["三井物産", "新生銀行", "グローリー", "ヒト・コミュニケーションズ・ホールディングス", "丸井グループ"]
+    },
+    "investors": ["三井物産", "新生銀行", "グローリー", "丸井グループ"],
+    "partners": ["ツルハホールディングス（データクリーンルーム構築）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年6月8日に総額21億2,500万円の調達を完了。リテールメディア大手として「BRAND LOOP Ads」が連携4万店舗超に拡大するなど事業継続。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000029.000007452.html",
+      "https://adinte.co.jp/news/1314/"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社センシンロボティクス",
+    "website": "https://www.sensyn-robotics.com/",
+    "founded_year": 2015,
+    "hq": "東京都",
+    "representative": null,
+    "description": "ドローン・ロボティクスによる設備点検・災害対応など業務自動化プラットフォーム「SENSYN CORE」を開発・提供。",
+    "sectors": ["ドローン", "ロボティクス", "インフラ点検"],
+    "stage": null,
+    "total_raised_oku": 36,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-06",
+      "round": null,
+      "amount_oku": 22,
+      "investors": ["ENEOSイノベーションパートナーズ", "コムチュア", "大豊産業", "カシワバラ・コーポレーション", "フューチャーベンチャーキャピタル", "大手銀行（デットファイナンス） ほか"]
+    },
+    "investors": ["ENEOSイノベーションパートナーズ", "コムチュア", "カシワバラ・コーポレーション"],
+    "partners": ["ENEOS", "カシワバラ・コーポレーション"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年6月30日に総額約22億円（増資＋デット）の調達を完了し、当時の累計調達約36億円。事業継続中。",
+    "employee_count": null,
+    "sources": [
+      "https://www.sensyn-robotics.com/news/post-19",
+      "https://thebridge.jp/2020/07/sensyn-robotics-raised-2-2byen"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社Looop",
+    "website": "https://looop.co.jp/",
+    "founded_year": 2011,
+    "hq": "東京都台東区",
+    "representative": "中村創一郎",
+    "description": "再生可能エネルギーの発電所開発・PPA・蓄電池事業と電力小売「Looopでんき」を展開する独立系エネルギー企業。",
+    "sectors": ["エネルギー", "再生可能エネルギー", "電力小売"],
+    "stage": "レイター",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2020-06",
+      "round": null,
+      "amount_oku": 28.3,
+      "investors": ["ENEOS", "NECキャピタルソリューション", "双日", "日本グリーン電力開発 ほか計6社"]
+    },
+    "investors": ["ENEOS", "NECキャピタルソリューション", "双日", "日本グリーン電力開発"],
+    "partners": ["ENEOS", "ビットキー（2026年1月 資本業務提携）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年6月に28.3億円を調達（同年5月にはグリーンボンド30億円も発行）。2025年3月期売上高505億円、低圧供給量で独立系新電力No.1として事業継続。",
+    "employee_count": null,
+    "sources": [
+      "https://shikin-pro.com/news/19304",
+      "https://looop.co.jp/company/about",
+      "https://prtimes.jp/main/html/rd/p/000000183.000058095.html"
+    ],
+    "last_verified": "2026-07"
+  },
+  {
+    "name": "株式会社ティアフォー",
+    "website": "https://tier4.jp/",
+    "founded_year": 2015,
+    "hq": "愛知県名古屋市",
+    "representative": "加藤真平",
+    "description": "世界初のオープンソース自動運転OS「Autoware」を開発する名古屋大学発の自動運転スタートアップ。自動運転タクシー・バス・物流向けソリューションを展開。",
+    "sectors": ["自動運転", "モビリティ", "ディープテック"],
+    "stage": "レイター",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2024-06",
+      "round": "シリーズB",
+      "amount_oku": 85,
+      "investors": ["いすゞ自動車", "スズキ ほか"]
+    },
+    "investors": ["SOMPOホールディングス", "ヤマハ発動機", "JAFCO", "いすゞ自動車", "スズキ"],
+    "partners": ["SOMPOホールディングス", "スズキ", "いすゞ自動車"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2020年上半期の調達額上位20社入り（INITIAL調べ）。2020年1〜8月に総額98億円を調達し累計175億円（SOMPO等）。2022年にSOMPOから100億円追加出資、2024年6月に85億円調達。2026年6月に有価証券届出書を提出し東証グロース上場を申請中。",
+    "employee_count": null,
+    "sources": [
+      "https://initial.inc/articles/startup-finance-2020h1",
+      "https://jidounten-lab.com/u_startup-2020-01-08",
+      "https://www.nikkei.com/article/DGXZQOUC1748D0X10C24A6000000/",
+      "https://ipokabu.net/yotei/tier4.html"
+    ],
+    "last_verified": "2026-07"
+  }
+]

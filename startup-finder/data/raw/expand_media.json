@@ -1,0 +1,493 @@
+[
+  {
+    "name": "Mantra株式会社",
+    "website": "https://mantra.co.jp/",
+    "founded_year": 2020,
+    "hq": "東京都文京区",
+    "representative": "石渡祥之佑",
+    "description": "マンガに特化したAI翻訳技術を開発し、マンガ翻訳ツール「Mantra Engine」やマンガ英語学習アプリ「Langaku」を提供。出版社の海外展開を支援する。",
+    "sectors": [
+      "翻訳・ローカライズ",
+      "出版DX"
+    ],
+    "stage": null,
+    "total_raised_oku": 8.6,
+    "last_round": {
+      "date": "2024-06",
+      "round": null,
+      "amount_oku": 7.8,
+      "investors": [
+        "集英社",
+        "小学館",
+        "KADOKAWA",
+        "スクウェア・エニックス・ホールディングス"
+      ]
+    },
+    "investors": [
+      "集英社",
+      "小学館",
+      "KADOKAWA",
+      "スクウェア・エニックス・ホールディングス",
+      "DEEPCORE",
+      "レジェンド・パートナーズ"
+    ],
+    "partners": [
+      "集英社",
+      "小学館"
+    ],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://mantra.co.jp/",
+      "https://prtimes.jp/main/html/rd/p/000000032.000059295.html",
+      "https://startup-station.jp/m2/case/r4-mantra/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": "https://mantra.co.jp/contact.html",
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社フーモア",
+    "website": "https://whomor.com/",
+    "founded_year": 2011,
+    "hq": "東京都中央区",
+    "representative": "芝辻幹也",
+    "description": "イラスト・マンガ制作、webtoon制作スタジオ、IPビジネスを展開するクリエイティブ制作会社。マンガ広告やゲーム向けクリエイティブ制作も手がける。",
+    "sectors": [
+      "コンテンツ制作支援",
+      "出版DX"
+    ],
+    "stage": null,
+    "total_raised_oku": 7.9,
+    "last_round": {
+      "date": "2024-09",
+      "round": null,
+      "amount_oku": 7.9,
+      "investors": [
+        "SIG Asia Investment",
+        "KADOKAWA",
+        "MAPPA",
+        "日本ベンチャーキャピタル"
+      ]
+    },
+    "investors": [
+      "SIG Asia Investment",
+      "KADOKAWA",
+      "MAPPA",
+      "日本ベンチャーキャピタル",
+      "サイバーエージェント・キャピタル"
+    ],
+    "partners": [
+      "KADOKAWA",
+      "MAPPA"
+    ],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://whomor.com/news/3596",
+      "https://prtimes.jp/main/html/rd/p/000000024.000030863.html"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": "https://whomor.com/contact",
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "コミックスマート株式会社",
+    "website": "https://www.comicsmart.co.jp/",
+    "founded_year": 2013,
+    "hq": "東京都千代田区",
+    "representative": "佐藤光紀",
+    "description": "累計1,800万DL超のマンガアプリ「GANMA!」を運営し、マンガ家の育成・支援とオリジナルIP創出を行う。デジタルアニメスタジオ「Qzil.la」やwebtoonスタジオも展開。",
+    "sectors": [
+      "電子書籍・出版DX",
+      "コンテンツ制作支援"
+    ],
+    "stage": "シリーズA",
+    "total_raised_oku": 28.0,
+    "last_round": {
+      "date": "2024-08",
+      "round": "シリーズA",
+      "amount_oku": 28.0,
+      "investors": [
+        "WiL",
+        "DIMENSION",
+        "第一生命保険",
+        "ブーストキャピタル"
+      ]
+    },
+    "investors": [
+      "WiL",
+      "DIMENSION",
+      "第一生命保険",
+      "ブーストキャピタル",
+      "セプテーニ・ホールディングス"
+    ],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000010.000139234.html",
+      "https://thebridge.jp/2024/08/comicsmart-series-a-round-funding"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社BookBase",
+    "website": "https://bookbase.jp/",
+    "founded_year": 2019,
+    "hq": "大阪府大阪市西区",
+    "representative": "近藤雅斗",
+    "description": "「電子書籍を主体とする次世代出版社」をコンセプトに小説・ライトノベルの制作・出版を行う出版スタートアップ。ライトノベルレーベル「ダンガン文庫」を運営し、コミカライズ事業にも参入。",
+    "sectors": [
+      "電子書籍・出版DX"
+    ],
+    "stage": "プレシリーズA",
+    "total_raised_oku": 2.94,
+    "last_round": {
+      "date": "2024-10",
+      "round": "プレシリーズA",
+      "amount_oku": 2.94,
+      "investors": [
+        "World Innovation Lab (WiL)",
+        "ユナイテッド",
+        "京信ソーシャルキャピタル"
+      ]
+    },
+    "investors": [
+      "World Innovation Lab (WiL)",
+      "ユナイテッド",
+      "京信ソーシャルキャピタル"
+    ],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000015.000104366.html",
+      "https://www.nikkei.com/article/DGXZQOUF26C9A0W4A920C2000000/",
+      "https://united.jp/news/release/20241030_bookbase.html"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "Radiotalk株式会社",
+    "website": "https://radiotalk.jp/",
+    "founded_year": 2019,
+    "hq": "東京都",
+    "representative": "井上佳央里",
+    "description": "誰でも1タップで音声配信を始められる音声配信プラットフォーム「Radiotalk」を運営。エキサイトの社内ベンチャー発でXTechグループとして独立した。",
+    "sectors": [
+      "ポッドキャスト・音声"
+    ],
+    "stage": null,
+    "total_raised_oku": 4.0,
+    "last_round": {
+      "date": "2020-10",
+      "round": null,
+      "amount_oku": 3.0,
+      "investors": [
+        "STRIVE",
+        "Gunosy Capital",
+        "オー・エル・エム・ベンチャーズ",
+        "マネックスベンチャーズ"
+      ]
+    },
+    "investors": [
+      "XTech",
+      "STRIVE",
+      "Gunosy Capital",
+      "オー・エル・エム・ベンチャーズ",
+      "マネックスベンチャーズ",
+      "MBSイノベーションドライブ"
+    ],
+    "partners": [
+      "毎日放送"
+    ],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000013.000043103.html",
+      "https://www.nikkei.com/article/DGXMZO65168510Z11C20A0XY0000/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "kamilas4am株式会社",
+    "website": "https://kamilas4am.com/",
+    "founded_year": 2021,
+    "hq": "愛知県名古屋市",
+    "representative": "堀真輔",
+    "description": "スモールビジネスと縦型ショート動画クリエイターをマッチングするショート動画マーケットプレイス「kamilas4am」を運営。海外ブランドからの制作受注も行う。",
+    "sectors": [
+      "コンテンツ制作支援",
+      "動画配信"
+    ],
+    "stage": "プレシード",
+    "total_raised_oku": 0.5,
+    "last_round": {
+      "date": "2023-11",
+      "round": "プレシード",
+      "amount_oku": 0.26,
+      "investors": [
+        "国内外の個人投資家・VC"
+      ]
+    },
+    "investors": [],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000011.000099546.html",
+      "https://sogyotecho.jp/news/20231107kamilas4am/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "AI Mage株式会社",
+    "website": "https://ai-mage.jp/",
+    "founded_year": 2024,
+    "hq": "東京都渋谷区",
+    "representative": "張鑫",
+    "description": "アニメ作品の理解に特化したAIを活用し、アニメIPのライセンス監修業務を効率化する「AI Mage - 監修システム」を開発・提供する東大発スタートアップ。",
+    "sectors": [
+      "コンテンツ制作支援"
+    ],
+    "stage": "シード",
+    "total_raised_oku": 1.7,
+    "last_round": {
+      "date": "2025-11",
+      "round": "シード",
+      "amount_oku": 1.7,
+      "investors": [
+        "ジェネシア・ベンチャーズ",
+        "Plug and Play Japan",
+        "Headline Japan"
+      ]
+    },
+    "investors": [
+      "ジェネシア・ベンチャーズ",
+      "Plug and Play Japan",
+      "Headline Japan"
+    ],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000005.000140844.html",
+      "https://www.nikkei.com/article/DGXZQOUC160FX0W5A111C2000000/",
+      "https://kepple.co.jp/articles/p4tei0s04b"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "AI model株式会社",
+    "website": "https://www.ai-model.jp/",
+    "founded_year": 2020,
+    "hq": "東京都港区",
+    "representative": "谷口大季",
+    "description": "独自の生成AI技術で実在しないAIモデル・AIタレントを生成し、広告・EC・販促のビジュアル制作を支援。アパレル着用画像生成クラウド「A/CLOUD」も提供する。",
+    "sectors": [
+      "広告テック",
+      "コンテンツ制作支援"
+    ],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "last_round": {
+      "date": "2026-01",
+      "round": "シリーズBファースト",
+      "amount_oku": null,
+      "investors": [
+        "SBIインベストメント",
+        "キヤノンマーケティングジャパン",
+        "三菱UFJキャピタル",
+        "パナソニックくらしビジョナリーファンド"
+      ]
+    },
+    "investors": [
+      "SBIインベストメント",
+      "キヤノンマーケティングジャパン",
+      "三菱UFJキャピタル",
+      "パナソニック",
+      "三越伊勢丹イノベーションズ"
+    ],
+    "partners": [
+      "伊藤園",
+      "三越伊勢丹",
+      "しまむら"
+    ],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://news.panasonic.com/jp/press/jn260123-1",
+      "https://prtimes.jp/main/html/rd/p/000000014.000097252.html",
+      "https://www.ai-model.jp/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "YLAB STUDIOS株式会社",
+    "website": "https://ylabstudios.jp/",
+    "founded_year": 2022,
+    "hq": "東京都",
+    "representative": null,
+    "description": "韓国大手webtoonスタジオYLABのノウハウを活用し、webtoon・マンガコンテンツの制作を行う日本法人。オリジナルコンテンツ制作体制を強化している。",
+    "sectors": [
+      "電子書籍・出版DX",
+      "コンテンツ制作支援"
+    ],
+    "stage": null,
+    "total_raised_oku": 19.1,
+    "last_round": {
+      "date": "2023-12",
+      "round": null,
+      "amount_oku": 15.0,
+      "investors": [
+        "バンダイ"
+      ]
+    },
+    "investors": [
+      "バンダイ",
+      "YLAB"
+    ],
+    "partners": [
+      "バンダイ"
+    ],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://www.nvv.genai.co.jp/2024/05/ylabstudios/",
+      "https://creatorzine.jp/tag/204/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社ライバー（Livestreamers Inc.）",
+    "website": "https://livestreamers.co.jp/",
+    "founded_year": 2015,
+    "hq": "東京都",
+    "representative": "飯田祐基",
+    "description": "ライバー事務所「Neolive」、Vライバー事務所「StartLive」等を運営するライブ配信特化企業。全身モーションキャプチャデバイス「Uni-motion」も展開する。",
+    "sectors": [
+      "動画配信",
+      "クリエイターエコノミー"
+    ],
+    "stage": null,
+    "total_raised_oku": 5.0,
+    "last_round": {
+      "date": "2021-05",
+      "round": null,
+      "amount_oku": 2.0,
+      "investors": [
+        "KDDI Open Innovation Fund 3号"
+      ]
+    },
+    "investors": [
+      "KDDI Open Innovation Fund"
+    ],
+    "partners": [
+      "KDDI"
+    ],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://livestreamers.co.jp/news/5845",
+      "https://initial.inc/companies/A-28791"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": "https://livestreamers.co.jp/contact",
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  },
+  {
+    "name": "株式会社Reelu",
+    "website": "https://reelu.jp/",
+    "founded_year": 2022,
+    "hq": "東京都",
+    "representative": "今野珠優",
+    "description": "15秒のショート動画を活用した新卒採用アプリ「Reelu」および多言語人材のスポットワークサービス「Reeluバイト」を運営する。",
+    "sectors": [
+      "動画配信",
+      "HRテック"
+    ],
+    "stage": "シード",
+    "total_raised_oku": 0.5,
+    "last_round": {
+      "date": "2022-09",
+      "round": "シード",
+      "amount_oku": 0.5,
+      "investors": [
+        "千葉道場ファンド",
+        "個人投資家"
+      ]
+    },
+    "investors": [
+      "千葉道場ファンド"
+    ],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000001.000107669.html",
+      "https://sogyotecho.jp/news/20220915reelu/"
+    ],
+    "last_verified": "2026-07",
+    "contact_url": null,
+    "rep_linkedin": null,
+    "rep_x": null,
+    "rep_facebook": null
+  }
+]
