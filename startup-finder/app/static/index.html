@@ -145,6 +145,18 @@
   .m-sec a { color: var(--accent); word-break: break-all; font-size: 12px; }
   .srcnote { margin-top: 18px; padding: 11px 14px; background: var(--amber-bg); border-radius: 10px; font-size: 11.5px; color: var(--amber); line-height: 1.7; }
   .more-status { text-align: center; padding: 16px 0 4px; min-height: 20px; }
+  .trend-controls { padding: 14px 16px; margin-bottom: 14px; }
+  .trend-controls .fldrow { display: flex; gap: 14px; flex-wrap: wrap; align-items: end; margin-bottom: 6px; }
+  .trend-controls .fld { display: flex; flex-direction: column; gap: 4px; }
+  .trend-controls .fld label { font-size: 10.5px; color: var(--accent); font-weight: 700; letter-spacing: .03em; }
+  #tr-chart svg { display: block; width: 100%; height: auto; }
+  #tr-chart .axis line, #tr-chart .axis path { stroke: var(--border2); }
+  #tr-chart text { font-family: inherit; }
+  #tr-tooltip { display: none; position: absolute; pointer-events: none; background: var(--panel);
+    border: 1.5px solid var(--border2); border-radius: 10px; padding: 9px 12px; font-size: 12px;
+    box-shadow: 0 6px 24px rgba(30,40,80,.14); z-index: 5; max-width: 280px; line-height: 1.6; }
+  .tr-legend { display: flex; gap: 12px; flex-wrap: wrap; padding: 8px 6px 0; font-size: 11.5px; color: var(--muted); }
+  .tr-legend .sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
   .more-status .more-note { color: var(--muted); font-size: 12px; font-weight: 500; }
   .statusline { margin-top: 4px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
 
@@ -167,6 +179,7 @@
 <div class="tabs">
   <div class="tab active" data-pane="search">🔍 企業検索</div>
   <div class="tab" data-pane="synergy">🤝 シナジー検索</div>
+  <div class="tab" data-pane="trends">📊 トレンド</div>
 </div>
 
 <div class="pane active" id="pane-search">
@@ -236,6 +249,39 @@
       </tr></thead>
       <tbody id="syn-tbody"></tbody>
     </table>
+  </div>
+</div>
+
+<div class="pane" id="pane-trends">
+  <div class="card trend-controls">
+    <div class="fldrow">
+      <div class="fld"><label>ビュー</label>
+        <select id="tr-view">
+          <option value="sector">分野バブル（分野ごとの勢い）</option>
+          <option value="company">企業マップ（1社=1点の相関図）</option>
+        </select>
+      </div>
+      <div class="fld"><label>X軸</label><select id="tr-x"></select></div>
+      <div class="fld"><label>Y軸</label><select id="tr-y"></select></div>
+      <div class="fld" id="tr-size-wrap"><label>バブルの大きさ</label><select id="tr-size"></select></div>
+      <div class="fld" id="tr-filter-wrap" style="display:none"><label>絞り込み</label>
+        <select id="tr-since">
+          <option value="">直近調達: すべて</option>
+          <option value="2024" selected>2024年以降に調達</option>
+          <option value="2025">2025年以降に調達</option>
+          <option value="2026">2026年に調達</option>
+        </select>
+      </div>
+      <div class="fld" id="tr-sector-wrap" style="display:none"><label>分野</label>
+        <select id="tr-sector"><option value="">全分野</option></select>
+      </div>
+    </div>
+    <div class="faint" id="tr-note" style="font-size:11.5px"></div>
+  </div>
+  <div class="card" style="padding:10px 14px 14px; position:relative;">
+    <div id="tr-chart"></div>
+    <div id="tr-tooltip"></div>
+    <div id="tr-legend" class="tr-legend"></div>
   </div>
 </div>
 </main>
@@ -566,6 +612,209 @@ for (const id of ['has_valuation','has_award','has_signal'])
 document.getElementById('assets').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); synergy(); }
 });
+
+/* ===== trends（📊 トレンドタブ） ===== */
+let TREND_DATA = null, TREND_READY = false;
+document.querySelector('.tab[data-pane="trends"]').addEventListener('click', initTrends);
+
+const SECTOR_METRICS = {
+  n2526: '直近ラウンド件数（2025-26）',
+  sum2526: '調達額合計（2025-26・億円）',
+  med2526: '調達額中央値（2025-26・億円）',
+  accel: '加速度（25-26 vs 22-24 年平均比）',
+  n2224: '直近ラウンド件数（2022-24）',
+  valSum: '公表評価額の合計（億円）',
+};
+const SIZE_METRICS = { sum2526: '調達額合計（25-26）', n2526: '件数（25-26）', valSum: '評価額合計' };
+const COMPANY_METRICS = {
+  total_raised_oku: '累計調達額（億円・対数）',
+  valuation_oku: '評価額（億円・対数）',
+  last_round_amount_oku: '直近調達額（億円・対数）',
+  founded_year: '設立年',
+  last_ym: '直近調達時期',
+};
+const LOG_AXES = new Set(['total_raised_oku', 'valuation_oku', 'last_round_amount_oku']);
+// 検証済みカテゴリカルパレット（散布図の全ペア判別はスロット1-4まで＋中立灰）
+const CAT_COLORS = ['#2a78d6', '#008300', '#e87ba4', '#eda100'];
+const GRAY = '#8b93a2';
+
+async function initTrends() {
+  if (!TREND_DATA) {
+    document.getElementById('tr-note').textContent = 'データ読み込み中…';
+    TREND_DATA = (await (await fetch('/api/trends')).json()).items;
+    const cnt = {};
+    TREND_DATA.forEach(c => { const s = (c.sectors || [])[0]; if (s) cnt[s] = (cnt[s] || 0) + 1; });
+    const sel = document.getElementById('tr-sector');
+    Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, 30)
+      .forEach(([s, n]) => sel.add(new Option(`${s} (${n})`, s)));
+  }
+  if (!TREND_READY) {
+    TREND_READY = true;
+    for (const id of ['tr-view', 'tr-x', 'tr-y', 'tr-size', 'tr-since', 'tr-sector'])
+      document.getElementById(id).addEventListener('change', e => {
+        if (e.target.id === 'tr-view') fillAxisOptions();
+        renderTrends();
+      });
+    fillAxisOptions();
+  }
+  renderTrends();
+}
+
+function fillAxisOptions() {
+  const view = document.getElementById('tr-view').value;
+  const fill = (id, obj, def) => {
+    const sel = document.getElementById(id); sel.innerHTML = '';
+    Object.entries(obj).forEach(([k, v]) => sel.add(new Option(v, k)));
+    sel.value = def;
+  };
+  const bubble = view === 'sector';
+  if (bubble) { fill('tr-x', SECTOR_METRICS, 'n2526'); fill('tr-y', SECTOR_METRICS, 'accel'); fill('tr-size', SIZE_METRICS, 'sum2526'); }
+  else { fill('tr-x', COMPANY_METRICS, 'total_raised_oku'); fill('tr-y', COMPANY_METRICS, 'valuation_oku'); }
+  document.getElementById('tr-size-wrap').style.display = bubble ? '' : 'none';
+  document.getElementById('tr-filter-wrap').style.display = bubble ? 'none' : '';
+  document.getElementById('tr-sector-wrap').style.display = bubble ? 'none' : '';
+}
+
+const medianOf = a => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m-1] + s[m]) / 2; };
+
+function sectorAgg() {
+  const m = {};
+  TREND_DATA.forEach(c => {
+    const y = (c.last_round_date || '').slice(0, 4);
+    (c.sectors || []).forEach(s => {
+      const o = m[s] || (m[s] = { sector: s, n2526: 0, n2224: 0, amts: [], valSum: 0 });
+      if (y >= '2025') { o.n2526++; if (c.last_round_amount_oku) o.amts.push(c.last_round_amount_oku); }
+      else if (y >= '2022' && y <= '2024') o.n2224++;
+      if (c.valuation_oku) o.valSum += c.valuation_oku;
+    });
+  });
+  return Object.values(m).filter(o => o.n2526 >= 5).map(o => ({
+    sector: o.sector, n2526: o.n2526, n2224: o.n2224,
+    sum2526: Math.round(o.amts.reduce((a, b) => a + b, 0)),
+    med2526: medianOf(o.amts),
+    accel: o.n2224 ? +(((o.n2526 / 1.6) / (o.n2224 / 3)).toFixed(2)) : null,
+    valSum: Math.round(o.valSum),
+  }));
+}
+
+function makeScale(vals, r0, r1, log) {
+  let min = Math.min(...vals), max = Math.max(...vals);
+  if (log) min = Math.max(min, 0.09);
+  if (min === max) { min -= 1; max += 1; }
+  if (!log) { const p = (max - min) * 0.07; min -= p; max += p; }
+  else { min /= 1.4; max *= 1.4; }
+  const lo = log ? Math.log10(min) : min, hi = log ? Math.log10(max) : max;
+  return { min, max, log, map: v => r0 + ((log ? Math.log10(v) : v) - lo) / (hi - lo) * (r1 - r0) };
+}
+function ticksOf(sc) {
+  if (sc.log) {
+    const t = [];
+    for (let e = Math.ceil(Math.log10(sc.min)); Math.pow(10, e) <= sc.max; e++) t.push(Math.pow(10, e));
+    return t;
+  }
+  const span = sc.max - sc.min, step = Math.pow(10, Math.floor(Math.log10(span / 5)));
+  const s = [1, 2, 5, 10].map(k => k * step).find(k => span / k <= 6) || step * 10;
+  const t = []; for (let v = Math.ceil(sc.min / s) * s; v <= sc.max; v += s) t.push(+v.toFixed(6));
+  return t;
+}
+const fmtN = v => v >= 10000 ? (v/10000)+'兆' : v >= 1000 ? (v/1000).toFixed(v%1000?1:0)+'千' : (Math.round(v*10)/10).toLocaleString();
+
+function chartFrame(sx, sy, xLabel, yLabel, W, H, ML, MB) {
+  let g = '';
+  ticksOf(sx).forEach(v => { const x = sx.map(v);
+    g += `<line class="axis" x1="${x}" y1="20" x2="${x}" y2="${H-MB}" stroke="#eef1f7"/>`
+       + `<text x="${x}" y="${H-MB+18}" text-anchor="middle" font-size="11" fill="#7a8494">${fmtN(v)}</text>`; });
+  ticksOf(sy).forEach(v => { const y = sy.map(v);
+    g += `<line class="axis" x1="${ML}" y1="${y}" x2="${W-16}" y2="${y}" stroke="#eef1f7"/>`
+       + `<text x="${ML-8}" y="${y+4}" text-anchor="end" font-size="11" fill="#7a8494">${fmtN(v)}</text>`; });
+  g += `<text x="${(ML+W-16)/2}" y="${H-8}" text-anchor="middle" font-size="11.5" fill="#5d6675" font-weight="600">${esc(xLabel)}</text>`
+     + `<text x="14" y="${(20+H-MB)/2}" text-anchor="middle" font-size="11.5" fill="#5d6675" font-weight="600" transform="rotate(-90 14 ${(20+H-MB)/2})">${esc(yLabel)}</text>`;
+  return g;
+}
+
+function showTip(evt, html) {
+  const tip = document.getElementById('tr-tooltip');
+  const wrap = tip.parentElement.getBoundingClientRect();
+  tip.innerHTML = html; tip.style.display = 'block';
+  tip.style.left = Math.min(evt.clientX - wrap.left + 14, wrap.width - 290) + 'px';
+  tip.style.top = (evt.clientY - wrap.top + 12) + 'px';
+}
+const hideTip = () => document.getElementById('tr-tooltip').style.display = 'none';
+
+function renderTrends() {
+  const view = document.getElementById('tr-view').value;
+  const W = 1160, H = 560, ML = 74, MB = 48;
+  const xKey = document.getElementById('tr-x').value, yKey = document.getElementById('tr-y').value;
+
+  if (view === 'sector') {
+    const data = sectorAgg().filter(d => d[xKey] != null && d[yKey] != null);
+    const sKey = document.getElementById('tr-size').value;
+    const sx = makeScale(data.map(d => d[xKey]), ML, W - 16, false);
+    const sy = makeScale(data.map(d => d[yKey]), H - MB, 20, false);
+    const smax = Math.max(...data.map(d => d[sKey] || 1));
+    const rOf = v => 7 + 33 * Math.sqrt((v || 1) / smax);
+    let marks = '', labels = '';
+    // ラベルは大きい順に上位14分野のみ（小バブル密集地帯の文字重なりを避ける。残りはホバーで確認）
+    const sorted = data.sort((a, b) => (b[sKey]||0) - (a[sKey]||0));
+    const labeled = new Set(sorted.slice(0, 14).map(d => d.sector));
+    sorted.forEach(d => {
+      const x = sx.map(d[xKey]), y = sy.map(d[yKey]), r = rOf(d[sKey]);
+      marks += `<circle cx="${x}" cy="${y}" r="${r}" fill="#2a78d6" fill-opacity="0.42" stroke="#1e5da8" stroke-width="1.5" data-tip="${esc(JSON.stringify({s:d.sector,n:d.n2526,p:d.n2224,a:d.accel,t:d.sum2526,m:d.med2526,v:d.valSum}))}"/>`;
+      if (labeled.has(d.sector))
+        labels += `<text x="${x}" y="${y - r - 5}" text-anchor="middle" font-size="11" font-weight="700" fill="#3c4657" pointer-events="none">${esc(d.sector)}</text>`;
+    });
+    marks += labels;
+    document.getElementById('tr-chart').innerHTML =
+      `<svg viewBox="0 0 ${W} ${H}">${chartFrame(sx, sy, SECTOR_METRICS[xKey], SECTOR_METRICS[yKey], W, H, ML, MB)}${marks}</svg>`;
+    document.getElementById('tr-legend').innerHTML =
+      `<span>● バブルの大きさ = ${esc(SIZE_METRICS[sKey])}（直近ラウンド5件以上の分野のみ・${data.length}分野）</span>`;
+    document.getElementById('tr-note').textContent =
+      '加速度 = 2025-26の年平均ラウンド数 ÷ 2022-24の年平均。1.0が横ばい、2.0なら2倍ペース。金額は各社の直近ラウンドのみを集計。';
+    bindTips('circle', d => `<b>${esc(d.s)}</b><br>25-26件数: ${d.n} ／ 22-24: ${d.p}<br>加速度: ${d.a ?? '—'}x<br>調達合計(25-26): ${d.t}億円<br>中央値: ${d.m ?? '—'}億円<br>評価額合計: ${d.v}億円`);
+  } else {
+    const since = document.getElementById('tr-since').value;
+    const secFilter = document.getElementById('tr-sector').value;
+    const topSec = [...document.getElementById('tr-sector').options].slice(1, 5).map(o => o.value);
+    const getV = (c, k) => k === 'last_ym'
+      ? (c.last_round_date ? +c.last_round_date.slice(0, 4) + (+c.last_round_date.slice(5, 7) - 1) / 12 : null)
+      : c[k];
+    let excluded = 0;
+    const pts = TREND_DATA.filter(c => {
+      if (since && !((c.last_round_date || '') >= since)) return false;
+      if (secFilter && !(c.sectors || []).includes(secFilter)) return false;
+      const vx = getV(c, xKey), vy = getV(c, yKey);
+      const ok = vx != null && vy != null && (!LOG_AXES.has(xKey) || vx > 0) && (!LOG_AXES.has(yKey) || vy > 0);
+      if (!ok) excluded++;
+      return ok;
+    });
+    if (!pts.length) { document.getElementById('tr-chart').innerHTML = '<div class="empty"><b>該当データがありません</b>軸や絞り込みを変えてください</div>'; return; }
+    const sx = makeScale(pts.map(c => getV(c, xKey)), ML, W - 16, LOG_AXES.has(xKey));
+    const sy = makeScale(pts.map(c => getV(c, yKey)), H - MB, 20, LOG_AXES.has(yKey));
+    const colorOf = c => { const s = (c.sectors || [])[0]; const i = topSec.indexOf(s); return i >= 0 ? CAT_COLORS[i] : GRAY; };
+    let marks = '';
+    pts.forEach(c => {
+      marks += `<circle cx="${sx.map(getV(c, xKey))}" cy="${sy.map(getV(c, yKey))}" r="5" fill="${colorOf(c)}" fill-opacity="0.62" stroke="#fff" stroke-width="1" style="cursor:pointer" data-id="${c.id}" data-tip="${esc(JSON.stringify({n:c.name,s:(c.sectors||[])[0]||'—',t:c.total_raised_oku,v:c.valuation_oku,l:c.last_round_amount_oku,d:c.last_round_date,f:c.founded_year}))}"/>`;
+    });
+    document.getElementById('tr-chart').innerHTML =
+      `<svg viewBox="0 0 ${W} ${H}">${chartFrame(sx, sy, COMPANY_METRICS[xKey], COMPANY_METRICS[yKey], W, H, ML, MB)}${marks}</svg>`;
+    document.getElementById('tr-legend').innerHTML =
+      topSec.map((s, i) => `<span><span class="sw" style="background:${CAT_COLORS[i]}"></span>${esc(s)}</span>`).join('')
+      + `<span><span class="sw" style="background:${GRAY}"></span>その他</span>`
+      + `<span style="margin-left:auto">${pts.length}社を表示（軸データ欠損等で${excluded}社を除外）・点クリックで詳細</span>`;
+    document.getElementById('tr-note').textContent =
+      '対数軸の項目は金額0・非公表の会社を表示できません。色は主要分野（上位4分野＋その他）。';
+    bindTips('circle', d => `<b>${esc(d.n)}</b><br>${esc(d.s)} ／ ${d.f ? d.f + '年設立' : '設立年不明'}<br>累計調達: ${d.t ?? '—'}億円 ／ 評価額: ${d.v ?? '—'}億円<br>直近: ${d.d ?? '—'}（${d.l ?? '—'}億円）`);
+    document.querySelectorAll('#tr-chart circle[data-id]').forEach(el =>
+      el.addEventListener('click', () => openDetail(+el.dataset.id)));
+  }
+}
+
+function bindTips(selector, fmt) {
+  document.querySelectorAll('#tr-chart ' + selector).forEach(el => {
+    el.addEventListener('mousemove', e => showTip(e, fmt(JSON.parse(el.dataset.tip))));
+    el.addEventListener('mouseleave', hideTip);
+  });
+}
 
 // 3つは互いに依存しないので並列に投げる（直列だと待ち時間が単純に足し算になる）
 loadMe();

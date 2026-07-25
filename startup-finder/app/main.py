@@ -85,6 +85,8 @@ def action_for(path: str) -> str:
         return "detail"
     if path == "/api/synergy":
         return "synergy_search"
+    if path == "/api/trends":
+        return "trends_view"
     if path == "/api/export.csv":
         return "csv_export"
     if path == "/api/logout":
@@ -511,6 +513,31 @@ def get_company(company_id: int, request: Request, db: Session = Depends(get_db)
     return to_dict(c, detail=True)
 
 
+@app.get("/api/trends")
+def trends(db: Session = Depends(get_db)):
+    """トレンド分析用の軽量データセット。集計・描画はフロント側で行う。
+
+    1社1行・描画に必要な列だけ返す（バブルチャート/散布図の軸切り替えを
+    クライアントで自由にできるよう、集計前の素データを渡す設計）。
+    """
+    rows = db.query(
+        Company.id, Company.name, Company.sectors, Company.stage, Company.status,
+        Company.founded_year, Company.total_raised_oku, Company.valuation_oku,
+        Company.last_round_date, Company.last_round_name, Company.last_round_amount_oku,
+    ).all()
+    items = []
+    for r in rows:
+        items.append({
+            "id": r[0], "name": r[1],
+            "sectors": [s.strip() for s in (r[2] or "").split(",") if s.strip()],
+            "stage": r[3], "status": r[4], "founded_year": r[5],
+            "total_raised_oku": r[6], "valuation_oku": r[7],
+            "last_round_date": r[8], "last_round_name": r[9],
+            "last_round_amount_oku": r[10],
+        })
+    return {"count": len(items), "items": items}
+
+
 @app.get("/api/synergy")
 def synergy(
     request: Request,
@@ -711,7 +738,7 @@ def export_logs_csv(
         "search": "企業検索", "detail": "企業詳細", "synergy_search": "シナジー検索",
         "csv_export": "CSV出力", "page_view": "ページ表示", "login": "ログイン",
         "login_failed": "ログイン失敗", "login_blocked": "ログイン遮断",
-        "logout": "ログアウト", "log_view": "ログ閲覧",
+        "logout": "ログアウト", "log_view": "ログ閲覧", "trends_view": "トレンド閲覧",
         "other": "その他",
     }
     for r in rows:
