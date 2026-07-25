@@ -1,0 +1,11 @@
+.venv
+__pycache__
+data/startup.db
+data/raw
+data/sns_batches
+data/enrich
+data/db_names.txt
+docs
+.claude
+.gitignore
+README.md

@@ -24,17 +24,21 @@ from app.models import AccessLog, Company
 
 Base.metadata.create_all(bind=engine)
 
-# 既存DBへの追いつきマイグレーション（不足カラムのみ追加）
-with engine.connect() as _conn:
-    _cols = [r[1] for r in _conn.execute(text("PRAGMA table_info(companies)"))]
-    for _col in ("contact_url", "rep_linkedin", "rep_x", "rep_facebook"):
-        if _col not in _cols:
-            _conn.execute(text("ALTER TABLE companies ADD COLUMN %s VARCHAR" % _col))
-    _cols = [r[1] for r in _conn.execute(text("PRAGMA table_info(access_logs)"))]
-    for _col, _typ in (("params", "VARCHAR"), ("result_count", "INTEGER"), ("company_id", "INTEGER")):
-        if _cols and _col not in _cols:
-            _conn.execute(text("ALTER TABLE access_logs ADD COLUMN %s %s" % (_col, _typ)))
-    _conn.commit()
+# 既存SQLite DBへの追いつきマイグレーション（不足カラムのみ追加）。
+# Postgres（Supabase）は create_all が全カラム込みで作るため不要。
+if engine.dialect.name == "sqlite":
+    with engine.connect() as _conn:
+        _cols = [r[1] for r in _conn.execute(text("PRAGMA table_info(companies)"))]
+        for _col in ("contact_url", "rep_linkedin", "rep_x", "rep_facebook"):
+            if _col not in _cols:
+                _conn.execute(text("ALTER TABLE companies ADD COLUMN %s VARCHAR" % _col))
+        _cols = [r[1] for r in _conn.execute(text("PRAGMA table_info(access_logs)"))]
+        for _col, _typ in (("params", "VARCHAR"), ("result_count", "INTEGER"), ("company_id", "INTEGER")):
+            if _cols and _col not in _cols:
+                _conn.execute(text("ALTER TABLE access_logs ADD COLUMN %s %s" % (_col, _typ)))
+        # ログイン制限がIPで引くのでインデックスを張る
+        _conn.execute(text("CREATE INDEX IF NOT EXISTS ix_access_logs_ip ON access_logs (ip)"))
+        _conn.commit()
 
 app = FastAPI(title="Startup Finder — 国内スタートアップDB")
 
@@ -49,10 +53,20 @@ LOG_SKIP_PATHS = {"/api/me", "/api/meta", "/favicon.ico"}
 
 
 def client_ip(request: Request):
-    """接続元IP。リバースプロキシ経由に備えて X-Forwarded-For を優先する。"""
+    """接続元IP。詐称できないプロキシヘッダを優先する。
+
+    x-vercel-forwarded-for / x-real-ip はプラットフォームが付与するので信頼できる。
+    x-forwarded-for はクライアントが自由に足せるため、直近プロキシが追記する
+    「最も右の値」を採る（左端はクライアント由来の偽装値になりうる）。
+    ※ログイン制限の土台になるので、プロキシ配下で運用すること。
+    """
+    for header in ("x-vercel-forwarded-for", "x-real-ip"):
+        value = request.headers.get(header)
+        if value:
+            return value.split(",")[0].strip()
     fwd = request.headers.get("x-forwarded-for")
     if fwd:
-        return fwd.split(",")[0].strip()
+        return fwd.split(",")[-1].strip()
     return request.client.host if request.client else None
 
 
@@ -176,9 +190,58 @@ class LoginBody(BaseModel):
     password: str
 
 
+# 総当たり対策: 同一IPからの連続失敗を一定時間ブロックする
+LOGIN_WINDOW_MIN = 15     # 失敗を数える時間窓（分）
+LOGIN_MAX_FAILURES = 5    # 窓内でこの回数失敗したらブロック
+
+
+def login_block_seconds(db: Session, ip):
+    """同一IPがブロック中なら解除までの残り秒数を返す（0ならログイン試行を許可）。
+
+    直近の成功ログインより後の失敗だけを数えるため、一度ログインできれば解除される。
+    ブロック中の試行はパスワード照合前に弾いて失敗として数えないので、
+    時間の経過とともに自然に解除される（永久ロックにはならない）。
+    """
+    if not ip:
+        return 0
+    now = datetime.now().astimezone()
+    rows = (
+        db.query(AccessLog)
+        .filter(AccessLog.ip == ip, AccessLog.action.in_(("login", "login_failed")))
+        .order_by(AccessLog.id.desc())
+        .limit(50)
+        .all()
+    )
+    recent_failures = []
+    for r in rows:
+        if r.action == "login":
+            break  # 成功にぶつかったら以前の失敗は無かったことにする
+        try:
+            t = datetime.fromisoformat(r.ts)
+        except (ValueError, TypeError):
+            continue
+        if (now - t).total_seconds() <= LOGIN_WINDOW_MIN * 60:
+            recent_failures.append(t)
+    if len(recent_failures) < LOGIN_MAX_FAILURES:
+        return 0
+    # 最も古い失敗が時間窓から外れれば解除
+    remain = LOGIN_WINDOW_MIN * 60 - (now - min(recent_failures)).total_seconds()
+    return max(1, int(remain))
+
+
 @app.post("/api/login")
 def login(body: LoginBody, request: Request, response: Response, db: Session = Depends(get_db)):
     from app.models import User
+    wait = login_block_seconds(db, client_ip(request))
+    if wait:
+        # パスワード照合前に弾く（この試行は失敗として数えない＝時間で自然解除）
+        log_access(request, body.username.strip(), "login_blocked", 429)
+        raise HTTPException(
+            429,
+            "ログインの失敗が続いたため一時的にロックしました。約%d分後にお試しください。"
+            % max(1, round(wait / 60)),
+            headers={"Retry-After": str(wait)},
+        )
     user = db.query(User).filter(User.username == body.username.strip()).first()
     if user is None or not verify_password(body.password, user.password_hash):
         log_access(request, body.username.strip(), "login_failed", 401)
@@ -343,22 +406,23 @@ def list_companies(
             if not term:
                 continue
             like = "%" + term + "%"
+            # ilike: Postgres/SQLiteの双方で英字の大文字小文字を無視した部分一致にする
             query = query.filter(or_(
-                Company.name.like(like),
-                Company.description.like(like),
-                Company.sectors.like(like),
-                Company.investors.like(like),
-                Company.partners.like(like),
-                Company.hq.like(like),
+                Company.name.ilike(like),
+                Company.description.ilike(like),
+                Company.sectors.ilike(like),
+                Company.investors.ilike(like),
+                Company.partners.ilike(like),
+                Company.hq.ilike(like),
             ))
     if sector:
-        query = query.filter(Company.sectors.like("%" + sector + "%"))
+        query = query.filter(Company.sectors.ilike("%" + sector + "%"))
     if stage:
         query = query.filter(Company.stage == stage)
     if status:
         query = query.filter(Company.status == status)
     if investor:
-        query = query.filter(Company.investors.like("%" + investor + "%"))
+        query = query.filter(Company.investors.ilike("%" + investor + "%"))
     if min_raised is not None:
         query = query.filter(Company.total_raised_oku >= min_raised)
     if has_valuation:
@@ -374,7 +438,8 @@ def list_companies(
         )
 
     col = getattr(Company, sort)
-    query = query.order_by(col.asc() if order == "asc" else col.desc())
+    # nullslast: NULLの並び位置がSQLite/Postgresで逆になるため明示する
+    query = query.order_by(col.asc().nullslast() if order == "asc" else col.desc().nullslast())
     companies = query.all()
     # NULLを末尾に（SQLiteのソートはNULLが端に来るため）
     if sort == "last_round_date":
@@ -476,7 +541,7 @@ def export_csv(db: Session = Depends(get_db)):
         "出典URL", "最終確認",
     ])
     status_ja = {"active": "存続", "ipo": "IPO済", "ma": "M&A済", "closed": "倒産・解散"}
-    for c in db.query(Company).order_by(Company.total_raised_oku.desc()).all():
+    for c in db.query(Company).order_by(Company.total_raised_oku.desc().nullslast()).all():
         awards_str = " / ".join(
             "%s %s %s" % (a.get("event", ""), a.get("year", ""), a.get("result", ""))
             if isinstance(a, dict) else str(a)
@@ -605,7 +670,8 @@ def export_logs_csv(
     action_ja = {
         "search": "企業検索", "detail": "企業詳細", "synergy_search": "シナジー検索",
         "csv_export": "CSV出力", "page_view": "ページ表示", "login": "ログイン",
-        "login_failed": "ログイン失敗", "logout": "ログアウト", "log_view": "ログ閲覧",
+        "login_failed": "ログイン失敗", "login_blocked": "ログイン遮断",
+        "logout": "ログアウト", "log_view": "ログ閲覧",
         "other": "その他",
     }
     for r in rows:

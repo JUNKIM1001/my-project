@@ -83,7 +83,7 @@ class AccessLog(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     ts = Column(String, nullable=False, index=True)   # ISO日時（TZ付き）
-    ip = Column(String, nullable=True)                # 接続元IP（X-Forwarded-For優先）
+    ip = Column(String, nullable=True, index=True)    # 接続元IP（プロキシヘッダ優先）
     username = Column(String, nullable=True)          # 未ログイン時はNone
     action = Column(String, nullable=False, index=True)  # search/detail/synergy_search/csv_export/login/...
     keywords = Column(Text, nullable=True)            # 分析対象の本体: 検索語(q)/シナジー語(assets)/閲覧した社名
