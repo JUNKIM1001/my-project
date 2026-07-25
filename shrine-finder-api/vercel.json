@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node scripts/build-data.mjs",
+  "regions": ["hnd1"],
+  "rewrites": [
+    { "source": "/", "destination": "/v1/meta" },
+    { "source": "/v1/shrines/:id", "destination": "/api/v1/shrines/[id]" },
+    { "source": "/v1/shrines", "destination": "/api/v1/shrines" },
+    { "source": "/v1/areas", "destination": "/api/v1/areas" },
+    { "source": "/v1/goriyaku", "destination": "/api/v1/goriyaku" },
+    { "source": "/v1/meta", "destination": "/api/v1/meta" }
+  ]
+}

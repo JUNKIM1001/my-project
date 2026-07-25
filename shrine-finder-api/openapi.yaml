@@ -1,0 +1,437 @@
+openapi: 3.1.0
+info:
+  title: おまいりナビ Open API
+  version: "1.0.0"
+  description: |
+    お出かけアプリ向けに、地域または粗い位置情報から近くの神社・お寺を返す公開API。
+    認証不要・無料。ユーザーの現在地を保護するため、座標は小数第2位（約1km四方）
+    に丸めて送ること。3位以下はサーバ側で切り捨て、保持しない。
+
+    出典表示が必要: 神社・お寺データ: おまいりナビ (https://omairi-navi.vercel.app)
+  license:
+    name: データ利用条件
+    url: https://api.omairi-navi.app/terms
+  contact:
+    name: おまいりナビ
+    url: https://omairi-navi.vercel.app
+
+servers:
+  - url: https://api.omairi-navi.app/v1
+    description: 本番
+
+tags:
+  - name: shrines
+    description: 社寺の検索・詳細
+  - name: reference
+    description: 地域・ご利益などのマスタ
+
+paths:
+  /shrines:
+    get:
+      tags: [shrines]
+      summary: 社寺を検索する
+      description: |
+        地域（pref/city）または粗い座標（lat/lng）から社寺を検索する。両方の併用も可。
+        座標を指定した場合は距離の近い順、それ以外は読み仮名順で返す。
+      operationId: searchShrines
+      parameters:
+        - { $ref: '#/components/parameters/Pref' }
+        - { $ref: '#/components/parameters/City' }
+        - name: lat
+          in: query
+          description: 緯度。小数第2位に丸めて送ること（3位以下は切り捨て）。lng と同時に指定する。
+          schema: { type: number, minimum: -90, maximum: 90 }
+          example: 34.89
+        - name: lng
+          in: query
+          description: 経度。小数第2位に丸めて送ること（3位以下は切り捨て）。lat と同時に指定する。
+          schema: { type: number, minimum: -180, maximum: 180 }
+          example: 135.81
+        - name: radius_km
+          in: query
+          description: 検索半径（km）。lat/lng 指定時のみ有効。
+          schema: { type: number, minimum: 0.5, maximum: 50, default: 10 }
+        - name: type
+          in: query
+          description: 種別で絞り込む。
+          schema: { type: string, enum: [shrine, temple] }
+        - name: goriyaku
+          in: query
+          description: ご利益ID。/goriyaku で取得できる id を指定する。
+          schema: { type: string }
+          example: enmusubi
+        - name: goshuin
+          in: query
+          description: true で御朱印を確認済みの社寺のみ。
+          schema: { type: boolean }
+        - name: national_treasure
+          in: query
+          description: true で国宝を有する社寺のみ。
+          schema: { type: boolean }
+        - name: tv
+          in: query
+          description: true で直近1年にテレビ放映された社寺のみ。
+          schema: { type: boolean }
+        - name: q
+          in: query
+          description: 名称・よみの部分一致。
+          schema: { type: string, maxLength: 50 }
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 100, default: 20 }
+        - name: offset
+          in: query
+          schema: { type: integer, minimum: 0, default: 0 }
+        - name: order
+          in: query
+          description: 並び順。distance は lat/lng 指定時のみ有効。既定は座標指定時 distance、それ以外 name。
+          schema: { type: string, enum: [distance, name] }
+      responses:
+        '200':
+          description: 検索結果
+          headers:
+            RateLimit-Limit:    { $ref: '#/components/headers/RateLimitLimit' }
+            RateLimit-Remaining:{ $ref: '#/components/headers/RateLimitRemaining' }
+            RateLimit-Reset:    { $ref: '#/components/headers/RateLimitReset' }
+            ETag:               { schema: { type: string } }
+            Cache-Control:      { schema: { type: string } }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ShrineSearchResponse' }
+        '304': { description: 変更なし（If-None-Match 一致） }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+
+  /shrines/{id}:
+    get:
+      tags: [shrines]
+      summary: 社寺の詳細を取得する
+      operationId: getShrine
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 社寺の安定ID（検索結果の id）。
+          schema: { type: string, pattern: '^[a-z0-9-]+$' }
+          example: byodoin
+      responses:
+        '200':
+          description: 社寺の詳細
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ShrineDetailResponse' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+
+  /areas:
+    get:
+      tags: [reference]
+      summary: 地域（都道府県・市区町村）の一覧と件数
+      description: 地域選択UIの構築に使う。pref を指定するとその都道府県のみ返す。
+      operationId: listAreas
+      parameters:
+        - { $ref: '#/components/parameters/Pref' }
+      responses:
+        '200':
+          description: 地域一覧
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AreasResponse' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+
+  /goriyaku:
+    get:
+      tags: [reference]
+      summary: ご利益カテゴリの一覧
+      operationId: listGoriyaku
+      responses:
+        '200':
+          description: ご利益一覧
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GoriyakuListResponse' }
+
+  /meta:
+    get:
+      tags: [reference]
+      summary: データ版・件数・ライセンス・レート制限
+      operationId: getMeta
+      responses:
+        '200':
+          description: メタ情報
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/MetaResponse' }
+
+components:
+  parameters:
+    Pref:
+      name: pref
+      in: query
+      description: 都道府県名。接尾辞（都/道/府/県）は省略可（例 京都府 / 京都）。
+      schema: { type: string, maxLength: 10 }
+      example: 京都府
+    City:
+      name: city
+      in: query
+      description: |
+        市区町村名。表記ゆれを吸収する（京都市 → 京都市◯◯区、美郷町 → 仙北郡美郷町）。
+        解決できない場合は都道府県全体を返し、meta.notice で通知する。
+      schema: { type: string, maxLength: 20 }
+      example: 宇治市
+
+  headers:
+    RateLimitLimit:
+      description: 現在の窓での上限リクエスト数
+      schema: { type: integer }
+    RateLimitRemaining:
+      description: 現在の窓での残りリクエスト数
+      schema: { type: integer }
+    RateLimitReset:
+      description: 窓がリセットされるまでの秒数
+      schema: { type: integer }
+
+  responses:
+    BadRequest:
+      description: パラメータが不正
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    NotFound:
+      description: 対象が存在しない
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    TooManyRequests:
+      description: レート制限超過
+      headers:
+        Retry-After:
+          description: 再試行までの秒数
+          schema: { type: integer }
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+
+  schemas:
+    Problem:
+      type: object
+      description: RFC 9457 Problem Details
+      required: [type, title, status]
+      properties:
+        type:     { type: string, format: uri }
+        title:    { type: string }
+        status:   { type: integer }
+        detail:   { type: string }
+        instance: { type: string }
+
+    Attribution:
+      type: object
+      description: 表示が必要な出典表記。
+      required: [text, required]
+      properties:
+        text:     { type: string, example: '神社・お寺データ: おまいりナビ (https://omairi-navi.vercel.app)' }
+        required: { type: boolean, example: true }
+
+    ResolvedArea:
+      type: object
+      description: 入力された地域名がどう解決されたか。
+      properties:
+        pref:  { type: string, example: 京都府 }
+        city:  { type: ['string', 'null'], example: 宇治市 }
+        match:
+          type: string
+          enum: [exact, prefix, contains, pref_only]
+          description: exact=完全一致 / prefix=前方一致 / contains=部分一致 / pref_only=市区町村を解決できず都道府県全体
+
+    SearchMeta:
+      type: object
+      required: [total, limit, offset, order, data_version]
+      properties:
+        total:   { type: integer, description: 条件に一致した総件数 }
+        limit:   { type: integer }
+        offset:  { type: integer }
+        order:   { type: string, enum: [distance, name] }
+        resolved_area: { $ref: '#/components/schemas/ResolvedArea' }
+        location_precision:
+          type: string
+          description: 座標指定時の精度。丸めにより約1kmの誤差を含む。
+          example: '~1km'
+        notice:  { type: string, description: 補足（市区町村を解決できなかった場合など） }
+        data_version: { type: string, format: date, example: '2026-07-25' }
+
+    DeityRef:
+      type: object
+      required: [id, name, kind]
+      properties:
+        id:   { type: string, example: amida-nyorai }
+        name: { type: string, example: 阿弥陀如来 }
+        kind: { type: string, enum: [kami, buddha], description: kami=神様 / buddha=仏様 }
+
+    GoriyakuRef:
+      type: object
+      required: [id, name]
+      properties:
+        id:   { type: string, example: enmusubi }
+        name: { type: string, example: 縁結び }
+
+    TVFeature:
+      type: object
+      description: 直近1年のテレビ放映情報。1年を過ぎると null になる。
+      required: [date]
+      properties:
+        date:    { type: string, format: date, example: '2026-06-06' }
+        program: { type: ['string', 'null'] }
+        source:  { type: ['string', 'null'], format: uri, description: 放映を確認できる出典URL }
+
+    Image:
+      type: object
+      description: 代表画像。表示時は license と author の併記が必要。
+      properties:
+        url:     { type: string, format: uri }
+        license: { type: string, example: 'CC BY-SA 4.0' }
+        author:  { type: ['string', 'null'] }
+
+    Shrine:
+      type: object
+      required: [id, name, kana, type, area, address, location, summary, goriyaku]
+      properties:
+        id:   { type: string, example: byodoin, description: 安定ID }
+        name: { type: string, example: 朝日山平等院 }
+        kana: { type: string, example: あさひさんびょうどういん }
+        type: { type: string, enum: [shrine, temple] }
+        sect: { type: ['string', 'null'], description: 宗派・系統 }
+        area:
+          type: object
+          required: [pref, city]
+          properties:
+            pref: { type: string, example: 京都府 }
+            city: { type: string, example: 宇治市 }
+        address:  { type: string }
+        location:
+          type: object
+          required: [lat, lng]
+          description: 社寺の所在地（公開情報のため丸めない）。
+          properties:
+            lat: { type: number }
+            lng: { type: number }
+        distance_m:
+          type: integer
+          description: 指定座標からの距離（メートル）。座標指定時のみ。約1kmの誤差を含む。
+        summary:
+          type: string
+          description: おまいりナビ自作の短い紹介文。
+        enshrined:
+          type: object
+          description: 祀られている神仏。
+          properties:
+            role:    { type: string, enum: [御祭神, 本尊] }
+            deities: { type: array, items: { $ref: '#/components/schemas/DeityRef' } }
+        goriyaku:
+          type: array
+          items: { $ref: '#/components/schemas/GoriyakuRef' }
+        national_treasure: { type: boolean }
+        goshuin:
+          type: boolean
+          description: 御朱印の授与を出典で確認できたもののみ true。false は「未確認」を含む。
+        tv:
+          oneOf:
+            - { $ref: '#/components/schemas/TVFeature' }
+            - { type: 'null' }
+        image:
+          oneOf:
+            - { $ref: '#/components/schemas/Image' }
+            - { type: 'null' }
+        links:
+          type: object
+          properties:
+            website:   { type: ['string', 'null'], format: uri }
+            wikipedia: { type: ['string', 'null'], format: uri }
+            detail:    { type: string, format: uri, description: おまいりナビの詳細ページ }
+
+    ShrineSearchResponse:
+      type: object
+      required: [meta, shrines, attribution]
+      properties:
+        meta:        { $ref: '#/components/schemas/SearchMeta' }
+        shrines:     { type: array, items: { $ref: '#/components/schemas/Shrine' } }
+        attribution: { $ref: '#/components/schemas/Attribution' }
+
+    ShrineDetailResponse:
+      type: object
+      required: [shrine, attribution]
+      properties:
+        shrine: { $ref: '#/components/schemas/Shrine' }
+        related:
+          type: array
+          description: 内容が近い社寺（最大8件）。
+          items: { $ref: '#/components/schemas/Shrine' }
+        attribution: { $ref: '#/components/schemas/Attribution' }
+
+    AreasResponse:
+      type: object
+      required: [meta, regions]
+      properties:
+        meta:
+          type: object
+          properties:
+            total_shrines: { type: integer, example: 2086 }
+            data_version:  { type: string, format: date }
+        regions:
+          type: array
+          items:
+            type: object
+            required: [name, prefectures]
+            properties:
+              name: { type: string, example: 近畿 }
+              prefectures:
+                type: array
+                items:
+                  type: object
+                  required: [name, count]
+                  properties:
+                    name:  { type: string, example: 京都府 }
+                    count: { type: integer, example: 121 }
+                    cities:
+                      type: array
+                      items:
+                        type: object
+                        required: [name, count]
+                        properties:
+                          name:  { type: string, example: 宇治市 }
+                          count: { type: integer, example: 8 }
+
+    GoriyakuListResponse:
+      type: object
+      required: [goriyaku]
+      properties:
+        goriyaku:
+          type: array
+          items:
+            allOf:
+              - { $ref: '#/components/schemas/GoriyakuRef' }
+              - type: object
+                properties:
+                  count: { type: integer, description: 該当する社寺の件数 }
+
+    MetaResponse:
+      type: object
+      properties:
+        data_version: { type: string, format: date }
+        counts:
+          type: object
+          properties:
+            shrines:           { type: integer, example: 2086 }
+            deities:           { type: integer, example: 481 }
+            goriyaku:          { type: integer, example: 30 }
+            prefectures:       { type: integer, example: 47 }
+            national_treasure: { type: integer, example: 46 }
+            goshuin:           { type: integer, example: 88 }
+        rate_limit:
+          type: object
+          properties:
+            per_minute: { type: integer, example: 60 }
+            per_day:    { type: integer, example: 10000 }
+            contact:    { type: string, description: 上限緩和の相談先 }
+        attribution:  { $ref: '#/components/schemas/Attribution' }
+        terms_url:     { type: string, format: uri }
+        changelog_url: { type: string, format: uri }

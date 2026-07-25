@@ -1,0 +1,14 @@
+{
+  "name": "shrine-finder-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "おまいりナビ Open API — 地域や粗い位置情報から近くの神社・お寺を返す公開API",
+  "scripts": {
+    "build:data": "node scripts/build-data.mjs",
+    "vercel-build": "node scripts/build-data.mjs",
+    "test": "node --test test/*.test.mjs",
+    "dev": "vercel dev"
+  },
+  "engines": { "node": ">=20" }
+}
