@@ -567,8 +567,10 @@ document.getElementById('assets').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); synergy(); }
 });
 
+// 3つは互いに依存しないので並列に投げる（直列だと待ち時間が単純に足し算になる）
 loadMe();
-loadMeta().then(search);
+loadMeta();
+search();
 </script>
 </body>
 </html>
