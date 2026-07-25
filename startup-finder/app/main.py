@@ -100,6 +100,8 @@ def log_access(request: Request, username, action, status, info=None):
     """
     try:
         info = info or {}
+        if info.get("skip"):
+            return  # 追加読み込みなど、分析対象にしない操作
         db = SessionLocal()
         try:
             path = request.url.path
@@ -398,6 +400,8 @@ def list_companies(
     has_signal: bool = False,
     sort: str = Query("total_raised_oku", pattern="^(total_raised_oku|valuation_oku|founded_year|name|last_round_date)$"),
     order: str = Query("desc", pattern="^(asc|desc)$"),
+    limit: int = Query(100, ge=1, le=2000),
+    offset: int = Query(0, ge=0),
     db: Session = Depends(get_db),
 ):
     query = db.query(Company)
@@ -437,28 +441,37 @@ def list_companies(
             Company.last_round_date <= ym_before(SIGNAL_MIN_MONTHS),
         )
 
+    # 並び順はSQLで確定させる（nullslast: NULLの位置はSQLite/Postgresで既定が異なる）。
+    # idを第2キーにするのは、同値の行がページ間で入れ替わって重複・欠落するのを防ぐため。
     col = getattr(Company, sort)
-    # nullslast: NULLの並び位置がSQLite/Postgresで逆になるため明示する
-    query = query.order_by(col.asc().nullslast() if order == "asc" else col.desc().nullslast())
-    companies = query.all()
-    # NULLを末尾に（SQLiteのソートはNULLが端に来るため）
-    if sort == "last_round_date":
-        dated = [c for c in companies if getattr(c, sort)]
-        dated.sort(key=lambda c: getattr(c, sort), reverse=(order == "desc"))
-        companies = dated + [c for c in companies if not getattr(c, sort)]
-    elif order == "desc" and sort in ("total_raised_oku", "valuation_oku", "founded_year"):
-        companies.sort(key=lambda c: (getattr(c, sort) is None, -(getattr(c, sort) or 0)))
+    query = query.order_by(
+        col.asc().nullslast() if order == "asc" else col.desc().nullslast(),
+        Company.id.asc(),
+    )
 
-    # アクセスログ用: 検索語と絞り込み条件を分離して渡す（sort/orderは分析ノイズなので除く）
-    filters = [("sector", sector), ("stage", stage), ("status", status), ("investor", investor),
-               ("min_raised", min_raised), ("has_valuation", has_valuation or None),
-               ("has_award", has_award or None), ("has_signal", has_signal or None)]
-    request.state.log_info = {
-        "keyword": (q or "").strip() or None,
-        "params": ", ".join("%s=%s" % (k, v) for k, v in filters if v is not None) or None,
-        "result_count": len(companies),
+    total = query.count()
+    companies = query.offset(offset).limit(limit).all()
+
+    # アクセスログ用: 検索語と絞り込み条件を分離して渡す（sort/orderは分析ノイズなので除く）。
+    # 2ページ目以降は「追加読み込み」であって新しい検索意図ではないので記録しない。
+    if offset:
+        request.state.log_info = {"skip": True}
+    else:
+        filters = [("sector", sector), ("stage", stage), ("status", status), ("investor", investor),
+                   ("min_raised", min_raised), ("has_valuation", has_valuation or None),
+                   ("has_award", has_award or None), ("has_signal", has_signal or None)]
+        request.state.log_info = {
+            "keyword": (q or "").strip() or None,
+            "params": ", ".join("%s=%s" % (k, v) for k, v in filters if v is not None) or None,
+            "result_count": total,
+        }
+    return {
+        "count": total,
+        "items": [to_dict(c) for c in companies],
+        "offset": offset,
+        "limit": limit,
+        "has_more": offset + len(companies) < total,
     }
-    return {"count": len(companies), "items": [to_dict(c) for c in companies]}
 
 
 @app.get("/api/companies/{company_id}")

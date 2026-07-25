@@ -144,6 +144,8 @@
   .m-sec .body { font-size: 13px; line-height: 1.8; }
   .m-sec a { color: var(--accent); word-break: break-all; font-size: 12px; }
   .srcnote { margin-top: 18px; padding: 11px 14px; background: var(--amber-bg); border-radius: 10px; font-size: 11.5px; color: var(--amber); line-height: 1.7; }
+  .more-status { text-align: center; padding: 16px 0 4px; min-height: 20px; }
+  .more-status .more-note { color: var(--muted); font-size: 12px; font-weight: 500; }
   .statusline { margin-top: 4px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
 
   @media (max-width: 720px) {
@@ -212,6 +214,7 @@
       <tbody id="tbody"></tbody>
     </table>
   </div>
+  <div id="more-status" class="more-status"></div>
 </div>
 
 <div class="pane" id="pane-synergy">
@@ -357,11 +360,12 @@ function clearFilter(id) {
   search();
 }
 
-/* ===== search ===== */
+/* ===== search（初回100社→スクロールで追加読み込み） ===== */
+const PAGE_SIZE = 100;
 let debounceTimer;
-async function search() {
-  renderChips();
-  document.querySelectorAll('select').forEach(s => s.classList.toggle('set', !!s.value));
+let listState = { params: null, loaded: 0, total: 0, hasMore: false, loading: false, seq: 0 };
+
+function currentQuery() {
   const p = new URLSearchParams();
   const q = document.getElementById('q').value.trim();
   if (q) p.set('q', q);
@@ -375,17 +379,11 @@ async function search() {
   if (document.getElementById('has_award').checked) p.set('has_award', 'true');
   if (document.getElementById('has_signal').checked) p.set('has_signal', 'true');
   p.set('sort', sortCol); p.set('order', sortOrder);
-  const data = await (await fetch('/api/companies?' + p)).json();
-  document.getElementById('count').textContent = `${data.count} 社`;
-  document.querySelectorAll('.arrow').forEach(a => a.textContent = '');
-  const ar = document.getElementById('ar-' + sortCol);
-  if (ar) ar.textContent = sortOrder === 'desc' ? '▼' : '▲';
-  const tbody = document.getElementById('tbody');
-  if (!data.items.length) {
-    tbody.innerHTML = `<tr><td colspan="9"><div class="empty"><b>該当する企業がありません</b>フィルタを解除するかキーワードを変えてみてください</div></td></tr>`;
-    return;
-  }
-  tbody.innerHTML = data.items.map(c => `
+  return p;
+}
+
+function rowsHtml(items) {
+  return items.map(c => `
     <tr class="row ${c.status === 'closed' ? 'closed-row' : ''}" onclick="openDetail(${c.id})">
       <td style="min-width:190px"><span class="name">${esc(c.name)}</span><div class="desc">${esc((c.description || '').slice(0, 52))}${(c.description || '').length > 52 ? '…' : ''}</div></td>
       <td style="min-width:120px">${c.sectors.slice(0, 3).map(sectorTag).join('')}</td>
@@ -398,6 +396,72 @@ async function search() {
       <td>${badge(c)}</td>
     </tr>`).join('');
 }
+
+function renderCount() {
+  const { loaded, total, loading, hasMore } = listState;
+  document.getElementById('count').textContent =
+    total > loaded ? `${total} 社（${loaded} 社を表示中）` : `${total} 社`;
+  const st = document.getElementById('more-status');
+  // スクロールでの自動読み込みに加えて、押せるボタンも必ず出す
+  // （環境によってIntersectionObserverが発火しないため、ここが確実な導線になる）
+  if (!total) st.innerHTML = '';
+  else if (loading) st.innerHTML = '<span class="more-note">読み込み中…</span>';
+  else if (hasMore) st.innerHTML =
+    `<button class="ghost" onclick="loadMore()">さらに ${Math.min(PAGE_SIZE, total - loaded)} 社を表示`
+    + `<span class="more-note"> （残り ${total - loaded} 社）</span></button>`;
+  else st.innerHTML = loaded > PAGE_SIZE ? '<span class="more-note">すべて表示しました</span>' : '';
+}
+
+async function search() {
+  renderChips();
+  document.querySelectorAll('select').forEach(s => s.classList.toggle('set', !!s.value));
+  document.querySelectorAll('.arrow').forEach(a => a.textContent = '');
+  const ar = document.getElementById('ar-' + sortCol);
+  if (ar) ar.textContent = sortOrder === 'desc' ? '▼' : '▲';
+
+  // 検索条件が変わるたびに世代番号を進め、古い応答が後から届いても捨てる
+  const seq = ++listState.seq;
+  listState.params = currentQuery();
+  listState.loading = true;
+  const p = new URLSearchParams(listState.params);
+  p.set('offset', 0); p.set('limit', PAGE_SIZE);
+  const data = await (await fetch('/api/companies?' + p)).json();
+  if (seq !== listState.seq) return;
+
+  listState.loaded = data.items.length;
+  listState.total = data.count;
+  listState.hasMore = data.has_more;
+  listState.loading = false;
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = data.items.length
+    ? rowsHtml(data.items)
+    : `<tr><td colspan="9"><div class="empty"><b>該当する企業がありません</b>フィルタを解除するかキーワードを変えてみてください</div></td></tr>`;
+  renderCount();
+}
+
+async function loadMore() {
+  if (listState.loading || !listState.hasMore || !listState.params) return;
+  const seq = listState.seq;
+  listState.loading = true;
+  renderCount();
+  const p = new URLSearchParams(listState.params);
+  p.set('offset', listState.loaded); p.set('limit', PAGE_SIZE);
+  try {
+    const data = await (await fetch('/api/companies?' + p)).json();
+    if (seq !== listState.seq) return;   // 途中で検索し直された
+    document.getElementById('tbody').insertAdjacentHTML('beforeend', rowsHtml(data.items));
+    listState.loaded += data.items.length;
+    listState.total = data.count;
+    listState.hasMore = data.has_more;
+  } finally {
+    if (seq === listState.seq) { listState.loading = false; renderCount(); }
+  }
+}
+
+// 一覧末尾が視界に入ったら次のページを取りに行く
+new IntersectionObserver(entries => {
+  if (entries.some(e => e.isIntersecting)) loadMore();
+}, { rootMargin: '300px' }).observe(document.getElementById('more-status'));
 function lastRoundCell(c) {
   if (!c.last_round_date) return '<span class="faint">—</span>';
   const m = c.months_since_last_round;
