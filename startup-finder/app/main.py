@@ -3,7 +3,9 @@ import io
 import json
 import os
 import re
+import sys
 import time
+import traceback
 import urllib.parse
 from datetime import date, datetime
 from typing import Optional
@@ -162,7 +164,10 @@ def log_access(request: Request, username, action, status, info=None):
             db.rollback()  # 共有セッションを壊れたまま残さない
             raise
     except Exception:
-        pass
+        # 本処理は落とさないが、黙って握りつぶすと障害調査ができないので
+        # stderr（Vercelの関数ログに出る）へは残す
+        print("[access-log] write failed: %s" % traceback.format_exc(limit=3),
+              file=sys.stderr)
 
 
 # ===== 認証 =====
@@ -498,7 +503,7 @@ def list_companies(
 
 @app.get("/api/companies/{company_id}")
 def get_company(company_id: int, request: Request, db: Session = Depends(get_db)):
-    c = db.query(Company).get(company_id)
+    c = db.get(Company, company_id)
     if not c:
         raise HTTPException(404, "not found")
     # アクセスログ用: どの企業が閲覧されたか（IDは社名変更に耐える集計キー）

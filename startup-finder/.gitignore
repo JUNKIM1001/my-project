@@ -2,6 +2,6 @@
 __pycache__/
 *.pyc
 data/startup.db
-.env
 .vercel
 .env*
+!.env.example

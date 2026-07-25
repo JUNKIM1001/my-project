@@ -51,7 +51,7 @@ def get_user_by_token(db: DBSession, token):
     sess = db.query(AuthSession).filter(AuthSession.token == token).first()
     if sess is None or sess.expires_at < datetime.utcnow():
         return None
-    return db.query(User).get(sess.user_id)
+    return db.get(User, sess.user_id)
 
 
 def delete_session(db: DBSession, token):
