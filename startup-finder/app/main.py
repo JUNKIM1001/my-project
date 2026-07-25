@@ -19,10 +19,14 @@ from app.auth import (
     SESSION_COOKIE, SESSION_DAYS, create_session, delete_session,
     get_user_by_token, verify_password,
 )
-from app.db import Base, SessionLocal, engine, get_db
+from app.db import IS_POSTGRES, Base, SessionLocal, engine, get_db
 from app.models import AccessLog, Company
 
-Base.metadata.create_all(bind=engine)
+# ローカルSQLiteは起動時にスキーマを作る。Postgres(本番)はコールドスタートの
+# たびに問い合わせが増えて遅くなるため行わない（スキーマ作成・更新は
+# app/scripts/migrate_to_postgres.py が担当。テーブル追加時は再実行すること）。
+if not IS_POSTGRES:
+    Base.metadata.create_all(bind=engine)
 
 # 既存SQLite DBへの追いつきマイグレーション（不足カラムのみ追加）。
 # Postgres（Supabase）は create_all が全カラム込みで作るため不要。
@@ -102,7 +106,9 @@ def log_access(request: Request, username, action, status, info=None):
         info = info or {}
         if info.get("skip"):
             return  # 追加読み込みなど、分析対象にしない操作
-        db = SessionLocal()
+        db = getattr(request.state, "db", None)  # リクエスト共有の接続を使う
+        if db is None:
+            return
         try:
             path = request.url.path
             keyword = info.get("keyword")
@@ -152,8 +158,9 @@ def log_access(request: Request, username, action, status, info=None):
                 status=status,
             ))
             db.commit()
-        finally:
-            db.close()
+        except Exception:
+            db.rollback()  # 共有セッションを壊れたまま残さない
+            raise
     except Exception:
         pass
 
@@ -165,26 +172,30 @@ async def auth_middleware(request: Request, call_next):
     path = request.url.path
     if path.startswith("/static"):
         return await call_next(request)
-    if path == "/api/login":
-        # ログイン試行はエンドポイント内で成否・ユーザー名込みで記録する
-        return await call_next(request)
+
+    # 認証・本処理・アクセスログでDBセッションを1本だけ共有する。
+    # 遠隔DBでは接続の確立が最も高くつくので、本数を増やさないことが効く。
     db = SessionLocal()
+    request.state.db = db
     try:
+        if path == "/api/login":
+            # ログイン試行はエンドポイント内で成否・ユーザー名込みで記録する
+            return await call_next(request)
         user = get_user_by_token(db, request.cookies.get(SESSION_COOKIE))
+        if user is None:
+            if path.startswith("/api/"):
+                if path not in LOG_SKIP_PATHS:
+                    log_access(request, None, action_for(path), 401)
+                return JSONResponse({"detail": "unauthorized"}, status_code=401)
+            return FileResponse(os.path.join(STATIC_DIR, "login.html"))
+        request.state.user = user
+        response = await call_next(request)
+        if path not in LOG_SKIP_PATHS:
+            log_access(request, user.username, action_for(path), response.status_code,
+                       info=getattr(request.state, "log_info", None))
+        return response
     finally:
         db.close()
-    if user is None:
-        if path.startswith("/api/"):
-            if path not in LOG_SKIP_PATHS:
-                log_access(request, None, action_for(path), 401)
-            return JSONResponse({"detail": "unauthorized"}, status_code=401)
-        return FileResponse(os.path.join(STATIC_DIR, "login.html"))
-    request.state.user = user
-    response = await call_next(request)
-    if path not in LOG_SKIP_PATHS:
-        log_access(request, user.username, action_for(path), response.status_code,
-                   info=getattr(request.state, "log_info", None))
-    return response
 
 
 class LoginBody(BaseModel):
@@ -363,25 +374,36 @@ def to_dict(c: Company, detail: bool = False):
 
 @app.get("/api/meta")
 def meta(db: Session = Depends(get_db)):
-    companies = db.query(Company).all()
+    # 集計に必要な列だけ取り出す（全カラムのORMオブジェクトを1846件作らない）
+    rows = db.query(
+        Company.sectors, Company.stage, Company.status,
+        Company.valuation_oku, Company.last_round_date,
+    ).all()
     sectors = {}
     stages = {}
     statuses = {}
-    for c in companies:
-        for s in (c.sectors or "").split(","):
+    with_valuation = 0
+    with_signal = 0
+    for sec, stage, status, valuation, last_round in rows:
+        for s in (sec or "").split(","):
             s = s.strip()
             if s:
                 sectors[s] = sectors.get(s, 0) + 1
-        if c.stage:
-            stages[c.stage] = stages.get(c.stage, 0) + 1
-        statuses[c.status] = statuses.get(c.status, 0) + 1
+        if stage:
+            stages[stage] = stages.get(stage, 0) + 1
+        statuses[status] = statuses.get(status, 0) + 1
+        if valuation:
+            with_valuation += 1
+        months = months_since_ym(last_round)
+        if status == "active" and months is not None and SIGNAL_MIN_MONTHS <= months < SIGNAL_MAX_MONTHS:
+            with_signal += 1
     return {
-        "total": len(companies),
+        "total": len(rows),
         "sectors": sorted(sectors.items(), key=lambda x: -x[1]),
         "stages": sorted(stages.items(), key=lambda x: -x[1]),
         "statuses": statuses,
-        "with_valuation": sum(1 for c in companies if c.valuation_oku),
-        "with_signal": sum(1 for c in companies if has_funding_signal(c)),
+        "with_valuation": with_valuation,
+        "with_signal": with_signal,
         "signal_months": [SIGNAL_MIN_MONTHS, SIGNAL_MAX_MONTHS],
     }
 
