@@ -261,6 +261,13 @@
           <option value="company">企業マップ（1社=1点の相関図）</option>
         </select>
       </div>
+      <div class="fld" id="tr-cut-wrap"><label>カット</label>
+        <select id="tr-cut">
+          <option value="">すべての分野タグ</option>
+          <option value="industry">インダストリー（業界の縦串）</option>
+          <option value="tech">テクノロジー・ビジネスモデル（横串）</option>
+        </select>
+      </div>
       <div class="fld"><label>X軸</label><select id="tr-x"></select></div>
       <div class="fld"><label>Y軸</label><select id="tr-y"></select></div>
       <div class="fld" id="tr-size-wrap"><label>バブルの大きさ</label><select id="tr-size"></select></div>
@@ -650,7 +657,7 @@ async function initTrends() {
   }
   if (!TREND_READY) {
     TREND_READY = true;
-    for (const id of ['tr-view', 'tr-x', 'tr-y', 'tr-size', 'tr-since', 'tr-sector'])
+    for (const id of ['tr-view', 'tr-cut', 'tr-x', 'tr-y', 'tr-size', 'tr-since', 'tr-sector'])
       document.getElementById(id).addEventListener('change', e => {
         if (e.target.id === 'tr-view') fillAxisOptions();
         renderTrends();
@@ -671,17 +678,42 @@ function fillAxisOptions() {
   if (bubble) { fill('tr-x', SECTOR_METRICS, 'n2526'); fill('tr-y', SECTOR_METRICS, 'accel'); fill('tr-size', SIZE_METRICS, 'sum2526'); }
   else { fill('tr-x', COMPANY_METRICS, 'total_raised_oku'); fill('tr-y', COMPANY_METRICS, 'valuation_oku'); }
   document.getElementById('tr-size-wrap').style.display = bubble ? '' : 'none';
+  document.getElementById('tr-cut-wrap').style.display = bubble ? '' : 'none';
   document.getElementById('tr-filter-wrap').style.display = bubble ? 'none' : '';
   document.getElementById('tr-sector-wrap').style.display = bubble ? 'none' : '';
 }
 
 const medianOf = a => { if (!a.length) return null; const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m-1] + s[m]) / 2; };
 
-function sectorAgg() {
+/* 分野タグの2軸分類。1社は「AI, 不動産テック」のように両方を併記するため、
+   テクノロジーカットではAIに、インダストリーカットでは不動産テックに計上される */
+const TECH_TAGS = new Set(['SaaS','AI','生成AI','AIエージェント','LLM','医療AI','ディープテック','ロボティクス',
+  'IoT','Web3','ブロックチェーン','メタバース','NFT','VR','AR','ドローン','半導体','ハードウェア',
+  'セキュリティ','量子コンピュータ','量子技術','自動運転','衛星データ','DX','業務DX','データ分析','ビッグデータ',
+  'クラウド','アプリ','SNS','動画','EC','越境EC','D2C','マーケットプレイス','プラットフォーム',
+  'サブスクリプション','シェアリングエコノミー','マッチング','マッチングプラットフォーム','API','ノーコード']);
+const INDUSTRY_TAGS = new Set(['ヘルスケア','ヘルステック','医療','医療機器','医療DX','創薬','創薬・バイオ','バイオ',
+  '再生医療','介護テック','介護','フェムテック','ウェルネス','美容','フィンテック','決済','資産運用','保険',
+  'インシュアテック','不動産テック','不動産','建設テック','建設','製造業DX','製造','製造業','素材','化学',
+  'エネルギー','再生可能エネルギー','脱炭素','気候テック','環境','サーキュラーエコノミー','EV','蓄電',
+  'モビリティ','物流','宇宙','航空','アグリテック','農業','フードテック','食品','水産','畜産',
+  'エンタメ','ゲーム','VTuber','コンテンツ','メディア','広告','マーケティング','セールステック',
+  'HRテック','HRTech','HR','採用','人材','福利厚生','EdTech','教育','保育','リーガルテック','GovTech',
+  '地方創生','観光','旅行','スポーツテック','スポーツ','小売','飲食','ホテル','ファッション','ペット','葬祭']);
+function sectorCutOf(tag) {
+  if (TECH_TAGS.has(tag)) return 'tech';
+  if (INDUSTRY_TAGS.has(tag)) return 'industry';
+  if (/AI|データ|デジタル|ソフトウェア/.test(tag)) return 'tech';
+  if (/テック|Tech/.test(tag)) return 'industry';  // ◯◯テック系は業界の縦串
+  return 'other';
+}
+
+function sectorAgg(cut) {
   const m = {};
   TREND_DATA.forEach(c => {
     const y = (c.last_round_date || '').slice(0, 4);
     (c.sectors || []).forEach(s => {
+      if (cut && sectorCutOf(s) !== cut) return;
       const o = m[s] || (m[s] = { sector: s, n2526: 0, n2224: 0, amts: [], valSum: 0 });
       if (y >= '2025') { o.n2526++; if (c.last_round_amount_oku) o.amts.push(c.last_round_amount_oku); }
       else if (y >= '2022' && y <= '2024') o.n2224++;
@@ -747,7 +779,8 @@ function renderTrends() {
   const xKey = document.getElementById('tr-x').value, yKey = document.getElementById('tr-y').value;
 
   if (view === 'sector') {
-    const data = sectorAgg().filter(d => d[xKey] != null && d[yKey] != null);
+    const cut = document.getElementById('tr-cut').value;
+    const data = sectorAgg(cut).filter(d => d[xKey] != null && d[yKey] != null);
     const sKey = document.getElementById('tr-size').value;
     const sx = makeScale(data.map(d => d[xKey]), ML, W - 16, false);
     const sy = makeScale(data.map(d => d[yKey]), H - MB, 20, false);
@@ -766,10 +799,13 @@ function renderTrends() {
     marks += labels;
     document.getElementById('tr-chart').innerHTML =
       `<svg viewBox="0 0 ${W} ${H}">${chartFrame(sx, sy, SECTOR_METRICS[xKey], SECTOR_METRICS[yKey], W, H, ML, MB)}${marks}</svg>`;
+    const cutName = { '': 'すべて', industry: 'インダストリーカット', tech: 'テクノロジーカット' }[cut];
     document.getElementById('tr-legend').innerHTML =
-      `<span>● バブルの大きさ = ${esc(SIZE_METRICS[sKey])}（直近ラウンド5件以上の分野のみ・${data.length}分野）</span>`;
+      `<span>● バブルの大きさ = ${esc(SIZE_METRICS[sKey])}（${cutName}・直近ラウンド5件以上の${data.length}分野）</span>`;
     document.getElementById('tr-note').textContent =
-      '加速度 = 2025-26の年平均ラウンド数 ÷ 2022-24の年平均。1.0が横ばい、2.0なら2倍ペース。金額は各社の直近ラウンドのみを集計。';
+      (cut ? '1社は「AI×不動産」のように技術タグと業界タグを併記するため、カットを切り替えると同じ会社が別の分野に計上されます。'
+           : '加速度 = 2025-26の年平均ラウンド数 ÷ 2022-24の年平均。1.0が横ばい、2.0なら2倍ペース。')
+      + ' 金額は各社の直近ラウンドのみを集計。';
     bindTips('circle', d => `<b>${esc(d.s)}</b><br>25-26件数: ${d.n} ／ 22-24: ${d.p}<br>加速度: ${d.a ?? '—'}x<br>調達合計(25-26): ${d.t}億円<br>中央値: ${d.m ?? '—'}億円<br>評価額合計: ${d.v}億円`);
   } else {
     const since = document.getElementById('tr-since').value;
