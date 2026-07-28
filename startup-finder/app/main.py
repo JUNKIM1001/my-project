@@ -87,6 +87,10 @@ def action_for(path: str) -> str:
         return "synergy_search"
     if path == "/api/trends":
         return "trends_view"
+    if path == "/api/compare/analyze":
+        return "compare_ai"
+    if path == "/api/compare":
+        return "compare"
     if path == "/api/export.csv":
         return "csv_export"
     if path == "/api/logout":
@@ -538,6 +542,40 @@ def trends(db: Session = Depends(get_db)):
     return {"count": len(items), "items": items}
 
 
+class CompareBody(BaseModel):
+    ids: list[int]
+
+
+def load_compare_companies(body: CompareBody, db: Session):
+    if not (2 <= len(set(body.ids)) <= 6):
+        raise HTTPException(422, "比較は2〜6社を選択してください")
+    companies = db.query(Company).filter(Company.id.in_(body.ids)).all()
+    if len(companies) != len(set(body.ids)):
+        raise HTTPException(404, "存在しない企業IDが含まれています")
+    order = {cid: i for i, cid in enumerate(body.ids)}
+    return sorted(companies, key=lambda c: order[c.id])
+
+
+@app.post("/api/compare")
+def compare(body: CompareBody, request: Request, db: Session = Depends(get_db)):
+    """選択企業の事実比較データ（詳細フィールド一式）を返す。"""
+    companies = load_compare_companies(body, db)
+    request.state.log_info = {"keyword": " vs ".join(c.name for c in companies)}
+    return {"items": [to_dict(c, detail=True) for c in companies]}
+
+
+@app.post("/api/compare/analyze")
+def compare_analyze(body: CompareBody, request: Request, db: Session = Depends(get_db)):
+    """KSF・ビジネスモデル・優位性のAI比較分析（Gemini・仮説として返す）。"""
+    from app.analysis import analyze_companies
+    companies = load_compare_companies(body, db)
+    request.state.log_info = {"keyword": " vs ".join(c.name for c in companies)}
+    result = analyze_companies(companies)
+    if "error" in result:
+        raise HTTPException(502, result["error"])
+    return result
+
+
 @app.get("/api/synergy")
 def synergy(
     request: Request,
@@ -739,6 +777,7 @@ def export_logs_csv(
         "csv_export": "CSV出力", "page_view": "ページ表示", "login": "ログイン",
         "login_failed": "ログイン失敗", "login_blocked": "ログイン遮断",
         "logout": "ログアウト", "log_view": "ログ閲覧", "trends_view": "トレンド閲覧",
+        "compare": "企業比較", "compare_ai": "比較AI分析",
         "other": "その他",
     }
     for r in rows:
