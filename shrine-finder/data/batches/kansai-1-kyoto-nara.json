@@ -1,0 +1,909 @@
+[
+  {
+    "slug": "seiryoji-saga",
+    "name": "清凉寺",
+    "kana": "せいりょうじ",
+    "type": "temple",
+    "sect": "浄土宗",
+    "pref": "京都府",
+    "city": "京都市右京区",
+    "address": "京都府京都市右京区嵯峨釈迦堂藤ノ木町46",
+    "lat": 35.023492,
+    "lng": 135.674289,
+    "deities": [
+      "shaka_nyorai"
+    ],
+    "website": "http://seiryoji.or.jp/",
+    "description": "嵯峨釈迦堂の名で親しまれる古刹。生身の釈迦と伝わる国宝の本尊を安置する。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%B8%85%E5%87%89%E5%AF%BA"
+  },
+  {
+    "slug": "mibudera",
+    "name": "壬生寺",
+    "kana": "みぶでら",
+    "type": "temple",
+    "sect": "律宗大本山",
+    "pref": "京都府",
+    "city": "京都市中京区",
+    "address": "京都府京都市中京区坊城通仏光寺上ル壬生梛ノ宮町31",
+    "lat": 35.0016,
+    "lng": 135.743339,
+    "deities": [
+      "jizo_bosatsu"
+    ],
+    "website": "https://www.mibudera.com/",
+    "description": "新選組ゆかりの寺として知られ、無言劇の壬生狂言と節分会でにぎわう。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%A3%AC%E7%94%9F%E5%AF%BA"
+  },
+  {
+    "slug": "myomanji",
+    "name": "妙満寺",
+    "kana": "みょうまんじ",
+    "type": "temple",
+    "sect": "顕本法華宗総本山",
+    "pref": "京都府",
+    "city": "京都市左京区",
+    "address": "京都府京都市左京区岩倉幡枝町91",
+    "lat": 35.067333,
+    "lng": 135.774972,
+    "deities": [
+      "sanbo_son"
+    ],
+    "website": "https://myomanji.jp/",
+    "description": "岩倉に建つ顕本法華宗の総本山。安珍清姫の鐘と枯山水の雪の庭で知られる。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%A6%99%E6%BA%80%E5%AF%BA"
+  },
+  {
+    "slug": "rokudo-chinnoji",
+    "name": "六道珍皇寺",
+    "kana": "ろくどうちんのうじ",
+    "type": "temple",
+    "sect": "臨済宗建仁寺派",
+    "pref": "京都府",
+    "city": "京都市東山区",
+    "address": "京都府京都市東山区大和大路通四条下ル4丁目小松町595",
+    "lat": 34.99845,
+    "lng": 135.775219,
+    "deities": [
+      "yakushi_nyorai"
+    ],
+    "website": "https://www.rokudou.jp/",
+    "description": "六道の辻に建ち、小野篁が冥界に通ったと伝わる井戸が残る。お盆の六道まいりで有名。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%85%AD%E9%81%93%E7%8F%8D%E7%9A%87%E5%AF%BA"
+  },
+  {
+    "slug": "kegonji-suzumushi",
+    "name": "華厳寺（鈴虫寺）",
+    "kana": "けごんじ",
+    "type": "temple",
+    "sect": "単立",
+    "pref": "京都府",
+    "city": "京都市西京区",
+    "address": "京都府京都市西京区松室地家町31",
+    "lat": 34.993625,
+    "lng": 135.684861,
+    "deities": [
+      "dainichi_nyorai"
+    ],
+    "website": "https://www.suzutera.or.jp/",
+    "description": "鈴虫寺の通称で親しまれ、一年中鳴く鈴虫の音色と住職の説法、幸福地蔵で人気。",
+    "source": "https://ja.wikipedia.org/wiki/%E8%8F%AF%E5%8E%B3%E5%AF%BA%20%28%E4%BA%AC%E9%83%BD%E5%B8%82%29"
+  },
+  {
+    "slug": "saimyoji-takao",
+    "name": "西明寺",
+    "kana": "さいみょうじ",
+    "type": "temple",
+    "sect": "真言宗大覚寺派準別格本山",
+    "pref": "京都府",
+    "city": "京都市右京区",
+    "address": "京都府京都市右京区梅ケ畑槇尾町1",
+    "lat": 35.057214,
+    "lng": 135.674969,
+    "deities": [
+      "shaka_nyorai"
+    ],
+    "website": "https://www.saimyoji.or.jp/",
+    "description": "神護寺・高山寺とともに高雄の三尾に数えられる古刹。清滝川沿いに静かに建つ。",
+    "source": "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%98%8E%E5%AF%BA%20%28%E4%BA%AC%E9%83%BD%E5%B8%82%29"
+  },
+  {
+    "slug": "yoshida-jinja-kyoto",
+    "name": "吉田神社",
+    "kana": "よしだじんじゃ",
+    "type": "shrine",
+    "sect": "旧官幣中社・別表神社",
+    "pref": "京都府",
+    "city": "京都市左京区",
+    "address": "京都府京都市左京区吉田神楽岡町30",
+    "lat": 35.02535,
+    "lng": 135.784633,
+    "deities": [
+      "takemikazuchi",
+      "futsunushi",
+      "ameno_koyane",
+      "himegami"
+    ],
+    "website": "https://www.yoshidajinja.com/",
+    "description": "吉田山に鎮座し春日の四神を祀る二十二社の一社。節分祭の賑わいで名高い。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%90%89%E7%94%B0%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "okazaki-jinja",
+    "name": "岡崎神社",
+    "kana": "おかざきじんじゃ",
+    "type": "shrine",
+    "sect": "旧郷社",
+    "pref": "京都府",
+    "city": "京都市左京区",
+    "address": "京都府京都市左京区岡崎東天王町51",
+    "lat": 35.017417,
+    "lng": 135.788778,
+    "deities": [
+      "susanoo",
+      "kushinadahime"
+    ],
+    "website": "https://okazakijinja.jp/",
+    "description": "東天王の名で親しまれる社。境内に並ぶうさぎ像と子授け・安産の信仰で人気。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%B2%A1%E5%B4%8E%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "awata-jinja",
+    "name": "粟田神社",
+    "kana": "あわたじんじゃ",
+    "type": "shrine",
+    "sect": "旧府社",
+    "pref": "京都府",
+    "city": "京都市東山区",
+    "address": "京都府京都市東山区粟田口鍛冶町1",
+    "lat": 35.008222,
+    "lng": 135.785417,
+    "deities": [
+      "susanoo",
+      "okuninushi"
+    ],
+    "website": "http://awatajinja.jp/",
+    "description": "京の七口・粟田口に鎮座し、古くから旅立ち守護の神として信仰を集める。",
+    "source": "https://ja.wikipedia.org/wiki/%E7%B2%9F%E7%94%B0%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "daishogun-hachi-jinja",
+    "name": "大将軍八神社",
+    "kana": "だいしょうぐんはちじんじゃ",
+    "type": "shrine",
+    "sect": "旧府社",
+    "pref": "京都府",
+    "city": "京都市上京区",
+    "address": "京都府京都市上京区一条通御前通西入3丁目西町55",
+    "lat": 35.026667,
+    "lng": 135.733944,
+    "deities": [
+      "susanoo",
+      "kanmu_tenno"
+    ],
+    "website": "https://daishogun.or.jp/",
+    "description": "平安京の天門を守る方位神・大将軍を祀った社。方除け厄除けの信仰で知られる。",
+    "source": "https://ja.wikipedia.org/wiki/大将軍八神社"
+  },
+  {
+    "slug": "shikichi-jinja",
+    "name": "敷地神社（わら天神宮）",
+    "kana": "しきちじんじゃ",
+    "type": "shrine",
+    "sect": "旧村社",
+    "pref": "京都府",
+    "city": "京都市北区",
+    "address": "京都府京都市北区衣笠天神森町10",
+    "lat": 35.036389,
+    "lng": 135.731528,
+    "deities": [
+      "konohanasakuyahime"
+    ],
+    "description": "わら天神の通称で知られる安産の社。木花開耶姫命を祀り妊婦の参拝が絶えない。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%95%B7%E5%9C%B0%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "mikane-jinja",
+    "name": "御金神社",
+    "kana": "みかねじんじゃ",
+    "type": "shrine",
+    "sect": "",
+    "pref": "京都府",
+    "city": "京都市中京区",
+    "address": "京都府京都市中京区西洞院通御池上る押西洞院町614",
+    "lat": 35.011833,
+    "lng": 135.754972,
+    "deities": [
+      "kanayamahiko",
+      "amaterasu",
+      "tsukuyomi"
+    ],
+    "website": "https://mikane-jinja.or.jp/",
+    "description": "金色の鳥居が目を引く金属と鉱山の神の社。金運を願う参拝者でにぎわう。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%BE%A1%E9%87%91%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "nagaoka-tenmangu",
+    "name": "長岡天満宮",
+    "kana": "ながおかてんまんぐう",
+    "type": "shrine",
+    "sect": "旧府社",
+    "pref": "京都府",
+    "city": "長岡京市",
+    "address": "京都府長岡京市天神2丁目15-13",
+    "lat": 34.922833,
+    "lng": 135.686333,
+    "deities": [
+      "michizane"
+    ],
+    "description": "菅原道真ゆかりの社。八条ヶ池のほとりを染める霧島躑躅の朱色で名高い。",
+    "source": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B2%A1%E5%A4%A9%E6%BA%80%E5%AE%AE"
+  },
+  {
+    "slug": "otokuni-dera",
+    "name": "乙訓寺",
+    "kana": "おとくにでら",
+    "type": "temple",
+    "sect": "真言宗豊山派",
+    "pref": "京都府",
+    "city": "長岡京市",
+    "address": "京都府長岡京市今里3丁目14-7",
+    "lat": 34.936278,
+    "lng": 135.689056,
+    "deities": [
+      "kobo_daishi",
+      "hachiman"
+    ],
+    "description": "牡丹寺と呼ばれる古刹。空海が別当を務め最澄と語り合った地と伝えられる。",
+    "source": "https://ja.wikipedia.org/wiki/%E4%B9%99%E8%A8%93%E5%AF%BA"
+  },
+  {
+    "slug": "muko-jinja",
+    "name": "向日神社",
+    "kana": "むこうじんじゃ",
+    "type": "shrine",
+    "sect": "式内社・旧府社",
+    "pref": "京都府",
+    "city": "向日市",
+    "address": "京都府向日市向日町北山65",
+    "lat": 34.944148,
+    "lng": 135.69712,
+    "deities": [
+      "tamayorihime",
+      "jinmu_tenno"
+    ],
+    "description": "長い参道の先に室町期の本殿が残る古社。明治神宮本殿の設計模範となった。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%90%91%E6%97%A5%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "hoshakuji",
+    "name": "宝積寺",
+    "kana": "ほうしゃくじ",
+    "type": "temple",
+    "sect": "真言宗智山派",
+    "pref": "京都府",
+    "city": "乙訓郡大山崎町",
+    "address": "京都府乙訓郡大山崎町大山崎銭原1",
+    "lat": 34.895797,
+    "lng": 135.678678,
+    "deities": [
+      "juichimen_kannon"
+    ],
+    "website": "https://takaradera.net/",
+    "description": "天王山の中腹に建ち、打出と小槌を伝えることから宝寺と呼ばれる古刹。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%AE%9D%E7%A9%8D%E5%AF%BA"
+  },
+  {
+    "slug": "rikyu-hachimangu",
+    "name": "離宮八幡宮",
+    "kana": "りきゅうはちまんぐう",
+    "type": "shrine",
+    "sect": "旧府社",
+    "pref": "京都府",
+    "city": "乙訓郡大山崎町",
+    "address": "京都府乙訓郡大山崎町大山崎西谷21-1",
+    "lat": 34.891806,
+    "lng": 135.679528,
+    "deities": [
+      "hachiman",
+      "sakatoke_no_kami"
+    ],
+    "website": "http://rikyuhachiman.org/",
+    "description": "荏胡麻油の搾油が始まった地とされ、製油発祥の社として油業者の信仰を集める。",
+    "source": "https://ja.wikipedia.org/wiki/%E9%9B%A2%E5%AE%AE%E5%85%AB%E5%B9%A1%E5%AE%AE"
+  },
+  {
+    "slug": "shuonan-ikkyuji",
+    "name": "酬恩庵（一休寺）",
+    "kana": "しゅうおんあん",
+    "type": "temple",
+    "sect": "臨済宗大徳寺派",
+    "pref": "京都府",
+    "city": "京田辺市",
+    "address": "京都府京田辺市薪里ノ内102",
+    "lat": 34.821028,
+    "lng": 135.757556,
+    "deities": [
+      "shaka_nyorai"
+    ],
+    "website": "https://www.ikkyuji.org",
+    "description": "一休宗純が晩年を過ごし墓所も残る寺。国の名勝の庭園と紅葉の参道が美しい。",
+    "source": "https://ja.wikipedia.org/wiki/%E9%85%AC%E6%81%A9%E5%BA%B5"
+  },
+  {
+    "slug": "kaijusenji",
+    "name": "海住山寺",
+    "kana": "かいじゅうせんじ",
+    "type": "temple",
+    "sect": "真言宗智山派",
+    "pref": "京都府",
+    "city": "木津川市",
+    "address": "京都府木津川市加茂町例幣海住山20",
+    "lat": 34.776867,
+    "lng": 135.861794,
+    "deities": [
+      "juichimen_kannon"
+    ],
+    "website": "http://www.kaijyusenji.jp/",
+    "description": "旧恭仁京を見下ろす山上の古刹。均整のとれた国宝の五重塔がそびえる。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%B5%B7%E4%BD%8F%E5%B1%B1%E5%AF%BA"
+  },
+  {
+    "slug": "kasagidera",
+    "name": "笠置寺",
+    "kana": "かさぎでら",
+    "type": "temple",
+    "sect": "真言宗智山派",
+    "pref": "京都府",
+    "city": "相楽郡笠置町",
+    "address": "京都府相楽郡笠置町笠置山29",
+    "lat": 34.7535,
+    "lng": 135.941472,
+    "deities": [
+      "miroku_bosatsu"
+    ],
+    "website": "https://kasagidera.net/",
+    "description": "巨岩の弥勒磨崖仏を本尊とする山岳寺院。後醍醐天皇が籠った笠置山の戦いの舞台。",
+    "source": "https://ja.wikipedia.org/wiki/%E7%AC%A0%E7%BD%AE%E5%AF%BA"
+  },
+  {
+    "slug": "uji-jinja",
+    "name": "宇治神社",
+    "kana": "うじじんじゃ",
+    "type": "shrine",
+    "sect": "式内社・旧府社",
+    "pref": "京都府",
+    "city": "宇治市",
+    "address": "京都府宇治市宇治山田1",
+    "lat": 34.891066,
+    "lng": 135.810767,
+    "deities": [
+      "uji_no_wakiiratsuko"
+    ],
+    "website": "http://uji-jinja.com/",
+    "description": "宇治上神社と対をなす古社。道を示したと伝わる「みかえり兎」で知られる。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%AE%87%E6%B2%BB%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "shojuin-ujitawara",
+    "name": "正寿院",
+    "kana": "しょうじゅいん",
+    "type": "temple",
+    "sect": "高野山真言宗",
+    "pref": "京都府",
+    "city": "綴喜郡宇治田原町",
+    "address": "京都府綴喜郡宇治田原町奥山田川上149",
+    "lat": 34.849722,
+    "lng": 135.920778,
+    "deities": [
+      "juichimen_kannon"
+    ],
+    "website": "http://shoujuin.boo.jp/",
+    "description": "客殿のハート形の猪目窓と、夏の風鈴まつりで知られる山あいの寺。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%AD%A3%E5%AF%BF%E9%99%A2%20%28%E4%BA%AC%E9%83%BD%E5%BA%9C%E5%AE%87%E6%B2%BB%E7%94%B0%E5%8E%9F%E7%94%BA%29"
+  },
+  {
+    "slug": "kuwayama-jinja",
+    "name": "鍬山神社",
+    "kana": "くわやまじんじゃ",
+    "type": "shrine",
+    "sect": "式内社・旧府社",
+    "pref": "京都府",
+    "city": "亀岡市",
+    "address": "京都府亀岡市上矢田町上垣内22",
+    "lat": 34.996247,
+    "lng": 135.577465,
+    "deities": [
+      "okuninushi",
+      "hachiman"
+    ],
+    "description": "亀岡盆地の開拓神話を伝える古社。亀岡祭の山鉾と境内を彩る紅葉で知られる。",
+    "source": "https://ja.wikipedia.org/wiki/%E9%8D%AC%E5%B1%B1%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "ikimi-tenmangu",
+    "name": "生身天満宮",
+    "kana": "いきみてんまんぐう",
+    "type": "shrine",
+    "sect": "旧府社",
+    "pref": "京都府",
+    "city": "南丹市",
+    "address": "京都府南丹市園部町美園町1-67",
+    "lat": 35.104156,
+    "lng": 135.474325,
+    "deities": [
+      "michizane"
+    ],
+    "description": "菅原道真の存命中に創建されたと伝わり、日本最古の天満宮を称する社。",
+    "source": "https://ja.wikipedia.org/wiki/%E7%94%9F%E8%BA%AB%E5%A4%A9%E6%BA%80%E5%AE%AE"
+  },
+  {
+    "slug": "kotai-jinja-oe",
+    "name": "皇大神社（元伊勢内宮）",
+    "kana": "こうたいじんじゃ",
+    "type": "shrine",
+    "sect": "旧府社",
+    "pref": "京都府",
+    "city": "福知山市",
+    "address": "京都府福知山市大江町内宮宮山217",
+    "lat": 35.430139,
+    "lng": 135.1545,
+    "deities": [
+      "amaterasu"
+    ],
+    "description": "大江山の麓に鎮座する元伊勢伝承地の一社。杉木立と黒木の鳥居が印象的。",
+    "source": "https://ja.wikipedia.org/wiki/%E7%9A%87%E5%A4%A7%E7%A5%9E%E7%A4%BE%20%28%E7%A6%8F%E7%9F%A5%E5%B1%B1%E5%B8%82%29"
+  },
+  {
+    "slug": "toyouke-daijinja-oe",
+    "name": "豊受大神社（元伊勢外宮）",
+    "kana": "とゆけだいじんじゃ",
+    "type": "shrine",
+    "sect": "旧府社",
+    "pref": "京都府",
+    "city": "福知山市",
+    "address": "京都府福知山市大江町天田内東平178-2",
+    "lat": 35.402556,
+    "lng": 135.151389,
+    "deities": [
+      "toyouke"
+    ],
+    "description": "元伊勢外宮と伝わる社。茅葺の社殿と黒木の鳥居が古式をとどめている。",
+    "source": "https://ja.wikipedia.org/wiki/%E8%B1%8A%E5%8F%97%E5%A4%A7%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "enryuji-maizuru",
+    "name": "円隆寺",
+    "kana": "えんりゅうじ",
+    "type": "temple",
+    "sect": "真言宗御室派",
+    "pref": "京都府",
+    "city": "舞鶴市",
+    "address": "京都府舞鶴市引土72",
+    "lat": 35.443333,
+    "lng": 135.323944,
+    "deities": [
+      "amida_nyorai",
+      "yakushi_nyorai",
+      "shaka_nyorai"
+    ],
+    "description": "西舞鶴の愛宕山麓に建つ古刹。三体の本尊と独創的な多宝塔を伝える。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%86%86%E9%9A%86%E5%AF%BA%20%28%E8%88%9E%E9%B6%B4%E5%B8%82%29"
+  },
+  {
+    "slug": "komyoji-ayabe",
+    "name": "君尾山光明寺",
+    "kana": "きみのおさんこうみょうじ",
+    "type": "temple",
+    "sect": "真言宗醍醐派",
+    "pref": "京都府",
+    "city": "綾部市",
+    "address": "京都府綾部市睦寄町君尾1-1",
+    "lat": 35.389889,
+    "lng": 135.442222,
+    "deities": [
+      "senju_kannon"
+    ],
+    "description": "君尾山の山中に建つ山岳寺院。鎌倉期の二王門は京都府北部唯一の国宝建築。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%85%89%E6%98%8E%E5%AF%BA%20%28%E7%B6%BE%E9%83%A8%E5%B8%82%29"
+  },
+  {
+    "slug": "chionji-miyazu",
+    "name": "智恩寺",
+    "kana": "ちおんじ",
+    "type": "temple",
+    "sect": "臨済宗妙心寺派",
+    "pref": "京都府",
+    "city": "宮津市",
+    "address": "京都府宮津市文珠466",
+    "lat": 35.558583,
+    "lng": 135.183778,
+    "deities": [
+      "monju_bosatsu"
+    ],
+    "website": "http://www.monjudo-chionji.jp/",
+    "description": "天橋立のたもとに建つ「切戸の文殊」。日本三文殊の一つに数えられる。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%99%BA%E6%81%A9%E5%AF%BA%20%28%E5%AE%AE%E6%B4%A5%E5%B8%82%29"
+  },
+  {
+    "slug": "takano-jinja-kyotango",
+    "name": "竹野神社",
+    "kana": "たかのじんじゃ",
+    "type": "shrine",
+    "sect": "式内大社・旧府社",
+    "pref": "京都府",
+    "city": "京丹後市",
+    "address": "京都府京丹後市丹後町宮249",
+    "lat": 35.736694,
+    "lng": 135.1125,
+    "deities": [
+      "amaterasu"
+    ],
+    "description": "丹後半島に鎮座し「斎宮」と呼ばれる式内大社。天照大神を祀る丹後の古社。",
+    "source": "https://ja.wikipedia.org/wiki/%E7%AB%B9%E9%87%8E%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "kangou-jinja",
+    "name": "漢國神社",
+    "kana": "かんごうじんじゃ",
+    "type": "shrine",
+    "sect": "式内社・旧県社",
+    "pref": "奈良県",
+    "city": "奈良市",
+    "address": "奈良県奈良市漢国町6",
+    "lat": 34.683488,
+    "lng": 135.825222,
+    "deities": [
+      "omononushi",
+      "okuninushi",
+      "sukunahikona"
+    ],
+    "website": "https://kangou-jinja.jp/",
+    "description": "奈良の街なかの古社。境内の林神社は饅頭の祖神を祀ることで知られる。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%BC%A2%E5%9C%8B%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "himuro-jinja-nara",
+    "name": "氷室神社",
+    "kana": "ひむろじんじゃ",
+    "type": "shrine",
+    "sect": "式内社（論社）・旧村社",
+    "pref": "奈良県",
+    "city": "奈良市",
+    "address": "奈良県奈良市春日野町1-4",
+    "lat": 34.684444,
+    "lng": 135.838056,
+    "deities": [
+      "nintoku"
+    ],
+    "website": "http://www.himurojinja.jp/",
+    "description": "平城京に氷を納めた氷室にゆかりの社。奈良で最も早く咲く枝垂桜が有名。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%B0%B7%E5%AE%A4%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "kikoji",
+    "name": "喜光寺",
+    "kana": "きこうじ",
+    "type": "temple",
+    "sect": "法相宗別格本山",
+    "pref": "奈良県",
+    "city": "奈良市",
+    "address": "奈良県奈良市菅原町508",
+    "lat": 34.684722,
+    "lng": 135.777778,
+    "deities": [
+      "amida_nyorai"
+    ],
+    "website": "http://www.kikouji.com/",
+    "description": "行基が没した地と伝わる寺。本堂は東大寺大仏殿の雛形「試みの大仏殿」と称される。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%96%9C%E5%85%89%E5%AF%BA"
+  },
+  {
+    "slug": "koninji",
+    "name": "弘仁寺",
+    "kana": "こうにんじ",
+    "type": "temple",
+    "sect": "高野山真言宗",
+    "pref": "奈良県",
+    "city": "奈良市",
+    "address": "奈良県奈良市虚空蔵町46",
+    "lat": 34.628944,
+    "lng": 135.853361,
+    "deities": [
+      "kokuzo_bosatsu"
+    ],
+    "website": "http://www.kouninji.org/",
+    "description": "「高樋の虚空蔵さん」と親しまれる山の寺。十三詣りと算額の奉納で知られる。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%BC%98%E4%BB%81%E5%AF%BA"
+  },
+  {
+    "slug": "sugawara-tenmangu-nara",
+    "name": "菅原天満宮",
+    "kana": "すがわらてんまんぐう",
+    "type": "shrine",
+    "sect": "式内社・旧郷社",
+    "pref": "奈良県",
+    "city": "奈良市",
+    "address": "奈良県奈良市菅原東1丁目15-1",
+    "lat": 34.685614,
+    "lng": 135.77839,
+    "deities": [
+      "amenohohi",
+      "nomi_no_sukune",
+      "michizane"
+    ],
+    "website": "http://www.sugawaratenmangu.com/",
+    "description": "古代氏族の土師氏・菅原氏ゆかりの古社。道真ら三柱の天神を祀る。",
+    "source": "https://ja.wikipedia.org/wiki/%E8%8F%85%E5%8E%9F%E5%A4%A9%E6%BA%80%E5%AE%AE%20%28%E5%A5%88%E8%89%AF%E5%B8%82%29"
+  },
+  {
+    "slug": "jikoin",
+    "name": "慈光院",
+    "kana": "じこういん",
+    "type": "temple",
+    "sect": "臨済宗大徳寺派",
+    "pref": "奈良県",
+    "city": "大和郡山市",
+    "address": "奈良県大和郡山市小泉町865",
+    "lat": 34.632028,
+    "lng": 135.758,
+    "deities": [
+      "shaka_nyorai"
+    ],
+    "description": "小泉藩主で茶人の片桐石州が開いた茶の湯の寺。書院と名勝庭園で一服できる。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%85%88%E5%85%89%E9%99%A2"
+  },
+  {
+    "slug": "chogakuji",
+    "name": "長岳寺",
+    "kana": "ちょうがくじ",
+    "type": "temple",
+    "sect": "高野山真言宗",
+    "pref": "奈良県",
+    "city": "天理市",
+    "address": "奈良県天理市柳本町508",
+    "lat": 34.560833,
+    "lng": 135.851944,
+    "deities": [
+      "amida_nyorai"
+    ],
+    "website": "https://www.chogakuji.or.jp/",
+    "description": "「釜口大師」と親しまれる古刹。制作年代の判明する最古の玉眼仏を伝える。",
+    "source": "https://ja.wikipedia.org/wiki/%E9%95%B7%E5%B2%B3%E5%AF%BA"
+  },
+  {
+    "slug": "horinji-ikaruga",
+    "name": "法輪寺",
+    "kana": "ほうりんじ",
+    "type": "temple",
+    "sect": "聖徳宗",
+    "pref": "奈良県",
+    "city": "生駒郡斑鳩町",
+    "address": "奈良県生駒郡斑鳩町三井1570",
+    "lat": 34.622433,
+    "lng": 135.738764,
+    "deities": [
+      "yakushi_nyorai"
+    ],
+    "description": "斑鳩三塔の一つ三重塔がそびえる古寺。飛鳥時代の仏像を伝える静かな境内。",
+    "source": "https://ja.wikipedia.org/wiki/%E6%B3%95%E8%BC%AA%E5%AF%BA%20%28%E5%A5%88%E8%89%AF%E7%9C%8C%E6%96%91%E9%B3%A9%E7%94%BA%29"
+  },
+  {
+    "slug": "tatsuta-jinja-ikaruga",
+    "name": "龍田神社",
+    "kana": "たつたじんじゃ",
+    "type": "shrine",
+    "sect": "式内社・旧県社",
+    "pref": "奈良県",
+    "city": "生駒郡斑鳩町",
+    "address": "奈良県生駒郡斑鳩町龍田1-5-6",
+    "lat": 34.608038,
+    "lng": 135.724951,
+    "deities": [
+      "amenomihashira",
+      "kunimihashira"
+    ],
+    "description": "斑鳩に鎮座する式内社。能楽金剛流発祥之地の碑とソテツの巨樹が境内に立つ。",
+    "source": "https://ja.wikipedia.org/wiki/%E9%BE%8D%E7%94%B0%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "darumaji-oji",
+    "name": "達磨寺",
+    "kana": "だるまじ",
+    "type": "temple",
+    "sect": "臨済宗南禅寺派",
+    "pref": "奈良県",
+    "city": "北葛城郡王寺町",
+    "address": "奈良県北葛城郡王寺町本町2丁目1-40",
+    "lat": 34.5897,
+    "lng": 135.7069,
+    "deities": [
+      "senju_kannon"
+    ],
+    "website": "http://www.darumaji.jp",
+    "description": "聖徳太子と達磨大師の出会いを伝える寺。本堂は古墳の上に建てられている。",
+    "source": "https://ja.wikipedia.org/wiki/%E9%81%94%E7%A3%A8%E5%AF%BA%20%28%E5%A5%88%E8%89%AF%E7%9C%8C%E7%8E%8B%E5%AF%BA%E7%94%BA%29"
+  },
+  {
+    "slug": "sekkoji",
+    "name": "石光寺",
+    "kana": "せっこうじ",
+    "type": "temple",
+    "sect": "浄土宗",
+    "pref": "奈良県",
+    "city": "葛城市",
+    "address": "奈良県葛城市染野387",
+    "lat": 34.523278,
+    "lng": 135.695083,
+    "deities": [
+      "amida_nyorai"
+    ],
+    "website": "https://sekkouji.or.jp/",
+    "description": "中将姫の蓮糸曼荼羅伝説が残る「染寺」。寒牡丹と芍薬の花で知られる。",
+    "source": "https://ja.wikipedia.org/wiki/%E7%9F%B3%E5%85%89%E5%AF%BA"
+  },
+  {
+    "slug": "katsuragi-honoikazuchi-jinja",
+    "name": "葛木坐火雷神社（笛吹神社）",
+    "kana": "かつらきにいますほのいかづちじんじゃ",
+    "type": "shrine",
+    "sect": "式内名神大社・旧郷社",
+    "pref": "奈良県",
+    "city": "葛城市",
+    "address": "奈良県葛城市笛吹448",
+    "lat": 34.47164,
+    "lng": 135.710049,
+    "deities": [
+      "amenokagoyama"
+    ],
+    "website": "http://fuefukijinja.org/",
+    "description": "笛吹神社の名で親しまれる古社。本殿の背後に笛吹神社古墳が残っている。",
+    "source": "https://ja.wikipedia.org/wiki/%E8%91%9B%E6%9C%A8%E5%9D%90%E7%81%AB%E9%9B%B7%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "kuhonji-gose",
+    "name": "九品寺",
+    "kana": "くほんじ",
+    "type": "temple",
+    "sect": "浄土宗",
+    "pref": "奈良県",
+    "city": "御所市",
+    "address": "奈良県御所市楢原1188",
+    "lat": 34.453639,
+    "lng": 135.712167,
+    "deities": [
+      "amida_nyorai"
+    ],
+    "description": "葛城山麓の古刹。境内と裏山に並ぶ「千体石仏」と大和盆地の眺めが見どころ。",
+    "source": "https://ja.wikipedia.org/wiki/%E4%B9%9D%E5%93%81%E5%AF%BA%20%28%E5%BE%A1%E6%89%80%E5%B8%82%29"
+  },
+  {
+    "slug": "kojimadera",
+    "name": "子嶋寺",
+    "kana": "こじまでら",
+    "type": "temple",
+    "sect": "高野山真言宗",
+    "pref": "奈良県",
+    "city": "高市郡高取町",
+    "address": "奈良県高市郡高取町観覚寺544",
+    "lat": 34.452167,
+    "lng": 135.798639,
+    "deities": [
+      "dainichi_nyorai"
+    ],
+    "description": "国宝の子島曼荼羅を伝えた古刹。清水寺を開いた延鎮ゆかりの寺とされる。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%AD%90%E5%B6%8B%E5%AF%BA"
+  },
+  {
+    "slug": "amanokaguyama-jinja",
+    "name": "天香山神社",
+    "kana": "あまのかぐやまじんじゃ",
+    "type": "shrine",
+    "sect": "式内大社・旧村社",
+    "pref": "奈良県",
+    "city": "橿原市",
+    "address": "奈良県橿原市南浦町608",
+    "lat": 34.49726,
+    "lng": 135.818307,
+    "deities": [
+      "kushimachi"
+    ],
+    "description": "大和三山の天香久山北麓に鎮座。占いの神を祀り、波波迦の木が自生する。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E9%A6%99%E5%B1%B1%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "oo-jinja-tawaramoto",
+    "name": "多坐弥志理都比古神社（多神社）",
+    "kana": "おおじんじゃ",
+    "type": "shrine",
+    "sect": "式内名神大社・旧県社",
+    "pref": "奈良県",
+    "city": "磯城郡田原本町",
+    "address": "奈良県磯城郡田原本町多宮ノ内569",
+    "lat": 34.535758,
+    "lng": 135.786714,
+    "deities": [
+      "jimmu",
+      "kamuyaimimi",
+      "tamayorihime"
+    ],
+    "description": "多氏の祖神を祀る古社。『古事記』を撰録した太安万侶ゆかりの地とされる。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%A4%9A%E5%9D%90%E5%BC%A5%E5%BF%97%E7%90%86%E9%83%BD%E6%AF%94%E5%8F%A4%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "butsuryuji",
+    "name": "仏隆寺",
+    "kana": "ぶつりゅうじ",
+    "type": "temple",
+    "sect": "真言宗室生寺派",
+    "pref": "奈良県",
+    "city": "宇陀市",
+    "address": "奈良県宇陀市榛原赤埴1684",
+    "lat": 34.515278,
+    "lng": 136.009722,
+    "deities": [
+      "juichimen_kannon"
+    ],
+    "description": "室生寺の南門とされる山寺。大和茶発祥の地で、千年桜と彼岸花が名高い。",
+    "source": "https://ja.wikipedia.org/wiki/%E4%BB%8F%E9%9A%86%E5%AF%BA"
+  },
+  {
+    "slug": "yoshimizu-jinja",
+    "name": "吉水神社",
+    "kana": "よしみずじんじゃ",
+    "type": "shrine",
+    "sect": "旧村社",
+    "pref": "奈良県",
+    "city": "吉野郡吉野町",
+    "address": "奈良県吉野郡吉野町吉野山579",
+    "lat": 34.367639,
+    "lng": 135.861875,
+    "deities": [
+      "godaigo_tenno",
+      "kusunoki_masashige"
+    ],
+    "website": "https://www.yoshimizu-shrine.com/",
+    "description": "南朝の皇居となった書院が残る世界遺産。一目千本と称される桜の眺めで有名。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%90%89%E6%B0%B4%E7%A5%9E%E7%A4%BE"
+  },
+  {
+    "slug": "tenkawa-daibenzaiten",
+    "name": "天河大弁財天社",
+    "kana": "てんかわだいべんざいてんしゃ",
+    "type": "shrine",
+    "sect": "旧郷社",
+    "pref": "奈良県",
+    "city": "吉野郡天川村",
+    "address": "奈良県吉野郡天川村坪内107",
+    "lat": 34.223312,
+    "lng": 135.841703,
+    "deities": [
+      "ichikishima"
+    ],
+    "website": "https://www.tenkawa-jinja.or.jp/",
+    "description": "大峯の山中に鎮座する弁財天の社。芸能の神として広く信仰を集めている。",
+    "source": "https://ja.wikipedia.org/wiki/%E5%A4%A9%E6%B2%B3%E5%A4%A7%E5%BC%81%E8%B2%A1%E5%A4%A9%E7%A4%BE"
+  },
+  {
+    "slug": "tamaki-jinja",
+    "name": "玉置神社",
+    "kana": "たまきじんじゃ",
+    "type": "shrine",
+    "sect": "旧郷社",
+    "pref": "奈良県",
+    "city": "吉野郡十津川村",
+    "address": "奈良県吉野郡十津川村玉置川1",
+    "lat": 33.924996,
+    "lng": 135.830685,
+    "deities": [
+      "kunitokotachi",
+      "izanagi",
+      "izanami",
+      "amaterasu",
+      "jimmu"
+    ],
+    "website": "http://www.tamakijinja.or.jp/",
+    "description": "熊野三山の奥院と称された玉置山の霊場。杉の巨木に囲まれた深い神域。",
+    "source": "https://ja.wikipedia.org/wiki/%E7%8E%89%E7%BD%AE%E7%A5%9E%E7%A4%BE"
+  }
+]

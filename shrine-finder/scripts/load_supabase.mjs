@@ -46,4 +46,39 @@ await upsert('deities', data.deities.map((d) => ({
   description: d.description, goriyaku: d.goriyaku || [],
 })))
 await upsert('shrines', data.shrines.map(shrineRow))
+
+// upsert は削除を反映しないため、appdata.json から消えた行を明示的に削除する。
+// これをしないと、重複解消などで削除したデータが Supabase 側に残り続ける。
+async function pruneDeleted(table, keepSlugs) {
+  // PostgREST は1回のリクエストで最大1000件しか返さないため、必ずページングする
+  const remote = []
+  for (let from = 0; ; from += 1000) {
+    const r = await fetch(`${URL}/rest/v1/${table}?select=slug`, {
+      headers: {
+        apikey: KEY, Authorization: `Bearer ${KEY}`,
+        'Range-Unit': 'items', Range: `${from}-${from + 999}`,
+      },
+    })
+    if (!r.ok) { console.error(`${table} の既存slug取得に失敗 (${r.status})`); return }
+    const batch = await r.json()
+    remote.push(...batch.map((x) => x.slug))
+    if (batch.length < 1000) break
+  }
+  const stale = remote.filter((s) => !keepSlugs.has(s))
+  if (!stale.length) { console.log(`  ${table}: 削除対象なし`); return }
+  for (let i = 0; i < stale.length; i += 100) {
+    const chunk = stale.slice(i, i + 100)
+    const list = chunk.map((s) => `"${s}"`).join(',')
+    const d = await fetch(`${URL}/rest/v1/${table}?slug=in.(${encodeURIComponent(list)})`, {
+      method: 'DELETE', headers: H,
+    })
+    if (!d.ok) { console.error(`${table} の削除に失敗 (${d.status}):`, await d.text()); process.exit(1) }
+  }
+  console.log(`  ${table}: ${stale.length} 件を削除（${stale.slice(0, 5).join(', ')}${stale.length > 5 ? ' …' : ''}）`)
+}
+
+console.log('ローカルから消えた行を削除中…')
+await pruneDeleted('shrines', new Set(data.shrines.map((s) => s.slug)))
+await pruneDeleted('deities', new Set(data.deities.map((d) => d.slug)))
+await pruneDeleted('goriyaku', new Set(data.goriyaku.map((g) => g.slug)))
 console.log('✅ 全データ投入完了')
