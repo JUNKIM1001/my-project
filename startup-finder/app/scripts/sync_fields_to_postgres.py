@@ -21,6 +21,15 @@ from app.models import Company
 SYNC_COLS = (
     "rep_x", "rep_linkedin", "rep_facebook", "contact_url", "representative",
     "website", "hq", "founded_year", "employee_count", "last_verified",
+    "corporate_number", "capital_oku", "patent_count", "subsidy_count",
+    "gbiz_json", "gbiz_updated",
+)
+
+# gBizINFO列は本番側に無ければ追加する（Postgresは起動時マイグレーションを行わないため）
+GBIZ_DDL = (
+    ("corporate_number", "VARCHAR"), ("capital_oku", "FLOAT8"),
+    ("patent_count", "INTEGER"), ("subsidy_count", "INTEGER"),
+    ("gbiz_json", "TEXT"), ("gbiz_updated", "VARCHAR"),
 )
 
 url = os.environ.get("DATABASE_URL", "").strip()
@@ -29,7 +38,12 @@ if not url:
 url = url.replace("postgres://", "postgresql://", 1)
 
 src = sessionmaker(bind=create_engine("sqlite:///" + DB_PATH))()
-dst = sessionmaker(bind=create_engine(url))()
+_dst_engine = create_engine(url)
+with _dst_engine.connect() as _conn:
+    for _col, _typ in GBIZ_DDL:
+        _conn.execute(text("ALTER TABLE companies ADD COLUMN IF NOT EXISTS %s %s" % (_col, _typ)))
+    _conn.commit()
+dst = sessionmaker(bind=_dst_engine)()
 
 local = {c.id: c for c in src.query(Company).all()}
 updated, filled, mismatched = 0, 0, []

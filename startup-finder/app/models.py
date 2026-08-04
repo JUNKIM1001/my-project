@@ -44,6 +44,14 @@ class Company(Base):
     sources = Column(Text, nullable=True)          # JSON: [url, ...]
     last_verified = Column(String, nullable=True)  # "YYYY-MM"
 
+    # 公的情報（gBizINFOバッチ enrich_gbizinfo.py が付与）
+    corporate_number = Column(String, nullable=True, index=True)  # 法人番号（13桁・名寄せキー）
+    capital_oku = Column(Float, nullable=True)       # 資本金（億円）
+    patent_count = Column(Integer, nullable=True)    # 特許・実用新案等の件数
+    subsidy_count = Column(Integer, nullable=True)   # 補助金・助成金の受給件数
+    gbiz_json = Column(Text, nullable=True)          # 詳細JSON（補助金明細・表彰・届出認定）
+    gbiz_updated = Column(String, nullable=True)     # 取得日 "YYYY-MM-DD"
+
     # 連絡先（CVCのアウトリーチ用）
     contact_url = Column(String, nullable=True)    # 問い合わせ・採用ページ等のURL
     rep_linkedin = Column(String, nullable=True)   # 代表者のLinkedIn URL

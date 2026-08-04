@@ -38,6 +38,11 @@ if engine.dialect.name == "sqlite":
         for _col in ("contact_url", "rep_linkedin", "rep_x", "rep_facebook"):
             if _col not in _cols:
                 _conn.execute(text("ALTER TABLE companies ADD COLUMN %s VARCHAR" % _col))
+        for _col, _typ in (("corporate_number", "VARCHAR"), ("capital_oku", "FLOAT"),
+                           ("patent_count", "INTEGER"), ("subsidy_count", "INTEGER"),
+                           ("gbiz_json", "TEXT"), ("gbiz_updated", "VARCHAR")):
+            if _col not in _cols:
+                _conn.execute(text("ALTER TABLE companies ADD COLUMN %s %s" % (_col, _typ)))
         _cols = [r[1] for r in _conn.execute(text("PRAGMA table_info(access_logs)"))]
         for _col, _typ in (("params", "VARCHAR"), ("result_count", "INTEGER"), ("company_id", "INTEGER")):
             if _cols and _col not in _cols:
@@ -336,6 +341,14 @@ def safe_json_list(value):
         return []
 
 
+def safe_json_dict(value):
+    try:
+        v = json.loads(value) if value else None
+        return v if isinstance(v, dict) else None
+    except (ValueError, TypeError):
+        return None
+
+
 def to_dict(c: Company, detail: bool = False):
     d = {
         "id": c.id,
@@ -379,6 +392,12 @@ def to_dict(c: Company, detail: bool = False):
             "rep_linkedin": c.rep_linkedin,
             "rep_x": c.rep_x,
             "rep_facebook": c.rep_facebook,
+            "corporate_number": c.corporate_number,
+            "capital_oku": c.capital_oku,
+            "patent_count": c.patent_count,
+            "subsidy_count": c.subsidy_count,
+            "gbiz": safe_json_dict(c.gbiz_json),
+            "gbiz_updated": c.gbiz_updated,
         })
     return d
 

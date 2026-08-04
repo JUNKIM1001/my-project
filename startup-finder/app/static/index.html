@@ -608,6 +608,7 @@ async function openDetail(id) {
       ${sec('直近ラウンド引受先', lr.investors && lr.investors.length ? lr.investors.map(i => `<span class="tag static">${esc(i)}</span>`).join('') : '')}
       ${sec('提携事業会社', c.partners.length ? c.partners.map(i => `<span class="tag static">${esc(i)}</span>`).join('') : '')}
       ${sec('受賞歴', c.awards.length ? c.awards.map(a => `🏆 ${esc(a.event || '')} ${esc(a.year || '')} <b>${esc(a.result || '')}</b>`).join('<br>') : '')}
+      ${gbizSec(c)}
       ${sec('連絡先（アウトリーチ用）', [
         c.contact_url ? linkify(c.contact_url, '✉️') : null,
         c.rep_linkedin ? linkify(c.rep_linkedin, '💼') : null,
@@ -623,6 +624,26 @@ async function openDetail(id) {
   document.getElementById('overlay').style.display = 'block';
   document.getElementById('modal').style.display = 'block';
 }
+function gbizSec(c) {
+  if (!c.corporate_number) return '';
+  const g = c.gbiz || {};
+  const parts = [];
+  const facts = [
+    c.capital_oku != null ? `資本金 ${c.capital_oku}億円` : null,
+    c.patent_count ? `特許・知財 ${c.patent_count}件` : null,
+    c.subsidy_count ? `補助金・助成金 ${c.subsidy_count}件` : null,
+  ].filter(Boolean);
+  if (facts.length) parts.push(`<div style="margin-bottom:6px">${facts.map(f => `<span class="tag static">${esc(f)}</span>`).join('')}</div>`);
+  (g.subsidies || []).slice(0, 5).forEach(s =>
+    parts.push(`<div style="font-size:12px">💰 ${esc(s.title || '')}${s.gov ? `<span class="faint">（${esc(s.gov)}）</span>` : ''}</div>`));
+  (g.commendations || []).slice(0, 5).forEach(x =>
+    parts.push(`<div style="font-size:12px">🏅 ${esc(x.title || '')}</div>`));
+  (g.certifications || []).slice(0, 5).forEach(x =>
+    parts.push(`<div style="font-size:12px">📜 ${esc(x.title || '')}</div>`));
+  parts.push(`<div class="desc" style="margin-top:6px">法人番号 ${esc(c.corporate_number)} ・ <a href="https://info.gbiz.go.jp/hojin/ichiran?hojinBango=${esc(c.corporate_number)}" target="_blank" rel="noopener noreferrer">gBizINFOで見る</a>${c.gbiz_updated ? `（取得: ${esc(c.gbiz_updated)}）` : ''}</div>`);
+  return `<div class="m-sec"><h3>公的情報（gBizINFO・経済産業省）</h3><div class="body">${parts.join('')}</div></div>`;
+}
+
 function closeModal() {
   document.getElementById('overlay').style.display = 'none';
   const m = document.getElementById('modal');
@@ -708,6 +729,15 @@ function renderCompare() {
           ${row('提携先', c => c.partners.map(p => invCount[p] >= 2 ? `<span class="common">${esc(p)}</span>` : esc(p)).join('、 ') || '—')}
           ${row('受賞歴', c => c.awards.map(a => `🏆 ${esc(a.event || '')} ${esc(a.result || '')}`).join('<br>') || '—')}
           ${row('従業員数', c => c.employee_count ? `約${c.employee_count}名` : '—')}
+          ${row('特許・知財', c => c.patent_count ? `${c.patent_count}件` : '—')}
+          ${row('補助金・認定', c => {
+            const g = c.gbiz || {};
+            const bits = [];
+            if (c.subsidy_count) bits.push(`補助金${c.subsidy_count}件`);
+            (g.commendations || []).slice(0, 2).forEach(x => bits.push(`🏅${esc(x.title || '')}`));
+            (g.certifications || []).slice(0, 2).forEach(x => bits.push(`📜${esc(x.title || '')}`));
+            return bits.join('<br>') || '—';
+          })}
           ${row('代表', c => esc(c.representative || '—') + [c.rep_x, c.rep_linkedin, c.rep_facebook].filter(Boolean).map(u => ` <a href="${esc(u)}" target="_blank" rel="noopener noreferrer">🔗</a>`).join(''))}
         </tbody>
       </table></div>

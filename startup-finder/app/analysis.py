@@ -94,6 +94,22 @@ def fact_sheet(c) -> str:
         lines.append(f"提携事業会社: {c.partners}")
     if c.awards:
         lines.append(f"受賞歴: {c.awards}")
+    # 公的情報（gBizINFO）— 技術力・公的評価の定量シグナル
+    if c.patent_count:
+        lines.append(f"特許・知財件数(gBizINFO): {c.patent_count}件")
+    if c.capital_oku:
+        lines.append(f"資本金: {c.capital_oku}億円")
+    if c.gbiz_json:
+        try:
+            g = json.loads(c.gbiz_json)
+            subs = [s.get("title") for s in g.get("subsidies", [])[:5] if s.get("title")]
+            if subs:
+                lines.append("補助金・助成金の採択: " + " / ".join(subs))
+            comms = [x.get("title") for x in g.get("commendations", [])[:3] if x.get("title")]
+            if comms:
+                lines.append("表彰: " + " / ".join(comms))
+        except (ValueError, TypeError):
+            pass
     return "\n".join(lines)
 
 
