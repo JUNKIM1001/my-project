@@ -18,25 +18,29 @@ export async function loadStoreFromSupabase() {
   if (!URL || !ANON) return null
   const headers = { apikey: ANON, Authorization: `Bearer ${ANON}` }
   try {
+    // PostgREST は1回のリクエストで最大1000件しか返さない。件数の少ないテーブルでも
+    // 必ずこの関数を通す（将来1000件を超えたときに黙って切り捨てられるのを防ぐため）。
     const getAll = async (path) => {
-      const r = await fetch(`${URL}/rest/v1/${path}`, { headers })
-      if (!r.ok) throw new Error(`${path}: ${r.status}`)
-      return r.json()
+      const out = []
+      const sep = path.includes('?') ? '&' : '?'
+      for (let from = 0; ; from += 1000) {
+        const r = await fetch(`${URL}/rest/v1/${path}${sep}`, {
+          headers: { ...headers, 'Range-Unit': 'items', Range: `${from}-${from + 999}` },
+        })
+        // 総件数がちょうど1000の倍数だと、最後に範囲外を1回要求することになる。
+        // この環境では200＋空配列が返るが、PostgRESTの版によっては416を返すため
+        // 416も「データの終わり」として扱う。
+        if (r.status === 416) break
+        if (!r.ok) throw new Error(`${path}: ${r.status}`)
+        const batch = await r.json()
+        out.push(...batch)
+        if (batch.length < 1000) break
+      }
+      return out
     }
     const goriyaku = await getAll('goriyaku?select=*&order=sort_order')
-    const deities = await getAll('deities?select=*')
-
-    // shrines は 1000件超のためページング取得
-    const shrines = []
-    for (let from = 0; ; from += 1000) {
-      const r = await fetch(`${URL}/rest/v1/shrines?select=*`, {
-        headers: { ...headers, 'Range-Unit': 'items', Range: `${from}-${from + 999}` },
-      })
-      if (!r.ok) throw new Error(`shrines: ${r.status}`)
-      const batch = await r.json()
-      shrines.push(...batch)
-      if (batch.length < 1000) break
-    }
+    const deities = await getAll('deities?select=*&order=slug')
+    const shrines = await getAll('shrines?select=*&order=slug')
     if (shrines.length === 0) return null
     return createStore({ goriyaku, deities, shrines: shrines.map(mapShrine) })
   } catch (e) {

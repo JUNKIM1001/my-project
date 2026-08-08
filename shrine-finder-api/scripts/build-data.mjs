@@ -36,23 +36,28 @@ const httpOnly = (u) => (typeof u === 'string' && /^https?:\/\//i.test(u) ? u : 
 
 async function fetchFromSupabase() {
   const headers = { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+  // PostgREST は1回のリクエストで最大1000件しか返さない。件数の少ないテーブルでも
+  // 必ずこの関数を通す（将来1000件を超えたときに黙って切り捨てられるのを防ぐため）。
   const all = async (path) => {
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, { headers })
-    if (!r.ok) throw new Error(`${path}: ${r.status}`)
-    return r.json()
+    const out = []
+    const sep = path.includes('?') ? '&' : '?'
+    for (let from = 0; ; from += 1000) {
+      const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}${sep}`, {
+        headers: { ...headers, 'Range-Unit': 'items', Range: `${from}-${from + 999}` },
+      })
+      // 総件数がちょうど1000の倍数のとき、最後に範囲外を1回要求することになる。
+      // 416（範囲外）は「データの終わり」として扱う。
+      if (r.status === 416) break
+      if (!r.ok) throw new Error(`${path}: ${r.status}`)
+      const batch = await r.json()
+      out.push(...batch)
+      if (batch.length < 1000) break
+    }
+    return out
   }
   const goriyaku = await all('goriyaku?select=*&order=sort_order')
-  const deities = await all('deities?select=*')
-  const shrines = []
-  for (let from = 0; ; from += 1000) {
-    const r = await fetch(`${SUPABASE_URL}/rest/v1/shrines?select=*`, {
-      headers: { ...headers, 'Range-Unit': 'items', Range: `${from}-${from + 999}` },
-    })
-    if (!r.ok) throw new Error(`shrines: ${r.status}`)
-    const batch = await r.json()
-    shrines.push(...batch)
-    if (batch.length < 1000) break
-  }
+  const deities = await all('deities?select=*&order=slug')
+  const shrines = await all('shrines?select=*&order=slug')
   // Supabase の列名(snake_case)を appdata.json 形式に寄せる
   return {
     goriyaku,

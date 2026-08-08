@@ -29,14 +29,21 @@ test('市区町村: 政令市は区も含めて返す（前方一致が第一段
   assert.ok(r.cities.includes('京都市'), '市名のみの表記を含むこと')
   assert.ok(r.cities.includes('京都市伏見区'), '区表記も含むこと')
 
+  // 件数は追加のたびに増えるため直書きしない。守りたいのは
+  // 「前方一致の結果が、完全一致だけの件数より必ず多い」という性質。
   const res = search(q('pref=京都府&city=京都市&limit=1'))
-  assert.equal(res.meta.total, 102, '区を含めた件数（81件ではない）')
+  const exactOnly = data.byPref.get('京都府').filter((s) => s.city === '京都市').length
+  const withWards = data.byPref.get('京都府').filter((s) => s.city.startsWith('京都市')).length
+  assert.ok(withWards > exactOnly, '区表記の社寺が存在すること（この前提が崩れたらテストの意味がなくなる）')
+  assert.equal(res.meta.total, withWards, `区を含めた件数（完全一致だけの${exactOnly}件ではない）`)
 })
 
 test('市区町村: 完全一致は exact', () => {
   const res = search(q('pref=京都府&city=宇治市&limit=1'))
   assert.equal(res.meta.resolved_area.match, 'exact')
-  assert.equal(res.meta.total, 6)
+  const expected = data.byPref.get('京都府').filter((s) => s.city === '宇治市').length
+  assert.equal(res.meta.total, expected)
+  assert.ok(expected > 0)
 })
 
 test('市区町村: 郡名の省略を吸収する（contains）', () => {

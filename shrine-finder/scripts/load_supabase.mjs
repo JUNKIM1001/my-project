@@ -53,12 +53,17 @@ async function pruneDeleted(table, keepSlugs) {
   // PostgREST は1回のリクエストで最大1000件しか返さないため、必ずページングする
   const remote = []
   for (let from = 0; ; from += 1000) {
-    const r = await fetch(`${URL}/rest/v1/${table}?select=slug`, {
+    // order を必ず付ける。順序が不定だとページ間で行が重複・欠落し、
+    // 削除対象を取りこぼしても気づけない。
+    const r = await fetch(`${URL}/rest/v1/${table}?select=slug&order=slug`, {
       headers: {
         apikey: KEY, Authorization: `Bearer ${KEY}`,
         'Range-Unit': 'items', Range: `${from}-${from + 999}`,
       },
     })
+    // 総件数がちょうど1000の倍数のとき、最後に範囲外を1回要求することになる。
+    // 416（範囲外）は「データの終わり」として扱う。
+    if (r.status === 416) break
     if (!r.ok) { console.error(`${table} の既存slug取得に失敗 (${r.status})`); return }
     const batch = await r.json()
     remote.push(...batch.map((x) => x.slug))
@@ -81,4 +86,30 @@ console.log('ローカルから消えた行を削除中…')
 await pruneDeleted('shrines', new Set(data.shrines.map((s) => s.slug)))
 await pruneDeleted('deities', new Set(data.deities.map((d) => d.slug)))
 await pruneDeleted('goriyaku', new Set(data.goriyaku.map((g) => g.slug)))
-console.log('✅ 全データ投入完了')
+
+// 投入結果の検証。件数がズレたまま成功扱いにすると、
+// アプリが古い/余分なデータを表示し続けても誰も気づけないため、必ず突き合わせる。
+async function verify(table, expected) {
+  // 総件数だけが欲しいので1行だけ要求する（Content-Range の分母を読む）
+  const r = await fetch(`${URL}/rest/v1/${table}?select=slug&order=slug`, {
+    headers: { apikey: KEY, Authorization: `Bearer ${KEY}`, Prefer: 'count=exact', Range: '0-0' },
+  })
+  const cr = r.headers.get('content-range') || ''
+  const actual = Number(cr.split('/')[1])
+  const ok = actual === expected
+  console.log(`  ${ok ? '✓' : '✗'} ${table}: Supabase ${actual} / ローカル ${expected}`)
+  return ok
+}
+
+console.log('件数を照合中…')
+const results = await Promise.all([
+  verify('shrines', data.shrines.length),
+  verify('deities', data.deities.length),
+  verify('goriyaku', data.goriyaku.length),
+])
+if (results.some((ok) => !ok)) {
+  console.error('\n❌ 件数が一致しません。Supabaseとローカルがズレた状態です。')
+  console.error('   同じ条件で再実行しても直らない場合は、pruneDeleted のページングを確認してください。')
+  process.exit(1)
+}
+console.log('✅ 全データ投入完了（件数一致を確認）')
