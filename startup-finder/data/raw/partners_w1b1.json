@@ -1,0 +1,224 @@
+[
+ {
+  "name": "株式会社Leafea",
+  "partners": ["京葉銀行", "関西みらい銀行"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000048.000105190.html", "https://leafea.co.jp/news/posts/kansaimirai-ginko"],
+  "note": "京葉銀行と提携し地域密着型福利厚生「ふくりっぺ」提供(2026-06プレス)。関西みらい銀行とは「ふくりポケット」提供。地銀向けOEM型福利厚生アプリを展開"
+ },
+ {
+  "name": "GVE株式会社",
+  "partners": ["ギフトパッド", "REVOLUTION", "シミックホールディングス"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000083.000049020.html", "https://www.nikkei.com/nkd/disclosure/tdnr/20241126529738/"],
+  "note": "ギフトパッドと業務提携（地域通貨等のセキュリティ強化）。REVOLUTIONと業務提携(2024-11適時開示)。シミックHDとはデジタルヘルス分野で提携"
+ },
+ {
+  "name": "スマートニュース株式会社",
+  "partners": ["NTTドコモ"],
+  "sources": ["https://www.docomo.ne.jp/info/news_release/2023/11/14_00.html", "https://about.smartnews.com/ja/20231114"],
+  "note": "NTTドコモと業務提携契約(2023-11)。dアカウント連携・「SmartNews for docomo」提供・広告事業での協業"
+ },
+ {
+  "name": "株式会社SmartHR",
+  "partners": ["リロクラブ", "ブレインコンサルティングオフィス", "SATO社会保険労務士法人", "インフォマート"],
+  "sources": ["https://smarthr.jp/release/15606/", "https://smarthr.jp/release/21199/", "https://smarthr.co.jp/news/press/20303/"],
+  "note": "リロクラブ（福利厚生倶楽部へのAPI連携）、ブレインコンサルティングオフィス、SATO社労士法人（社保手続き効率化）、インフォマート（業務提携基本合意）と提携"
+ },
+ {
+  "name": "株式会社TRIPLE-1",
+  "partners": ["東京電力パワーグリッド", "アジャイルエナジーX", "NEC", "中部テレコミュニケーション"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000017.000033229.html", "https://www.semiconportal.com/archive/editorial/technology/chips/200130-triple1.html"],
+  "note": "アジャイルエナジーX・東京電力PGと再エネ×先端半導体の分散コンピューティング実装で覚書。NECのSX-Aurora TSUBASA活用の実証、中部テレコミュニケーションとローカル5G共同実証"
+ },
+ {
+  "name": "Playco（Play Co., Ltd.）",
+  "partners": ["NowDo", "LINE", "Facebook（Meta）", "Zoom", "Discord", "Microsoft"],
+  "sources": ["https://www.gamer.ne.jp/news/202104220012/", "https://www.play.co/press/press-release-200921-jp"],
+  "note": "本田圭佑氏代表のNowDoと業務提携(2021-04)。Facebook・LINE・Zoom・Microsoft・Discord等プラットフォームと提携しインスタントプレイゲームを提供"
+ },
+ {
+  "name": "株式会社HIROTSUバイオサイエンス",
+  "partners": ["東急エージェンシー", "新生堂薬局", "トッパン・フォームズ", "横河電機", "三井住友海上あいおい生命保険"],
+  "sources": ["https://bio.nikkeibp.co.jp/atcl/release/22/08/23/14322/", "https://www.nikkei.com/article/DGXZRSP642305_Y2A011C2000000/", "https://www.edge.toppan.com/news/2020/0309.html"],
+  "note": "東急エージェンシーと資本業務提携(2022-08)。新生堂薬局と代理店契約(2022-10)。トッパン・フォームズが出資しライフケア分野で事業拡大支援。横河電機・三井住友海上あいおい生命とも提携報道"
+ },
+ {
+  "name": "株式会社アンドパッド",
+  "partners": ["コンベックス"],
+  "sources": ["https://andpad.jp/news/20240208", "https://prtimes.jp/main/html/rd/p/000000108.000018154.html"],
+  "note": "住宅・不動産特化MAツールのコンベックスと資本業務提携の基本合意(2024-02)、その後グループ会社化(2024-04)"
+ },
+ {
+  "name": "株式会社カケハシ",
+  "partners": ["メドレー"],
+  "sources": ["https://www.kakehashi.life/news-post/20211014"],
+  "note": "メドレーと連携し医療DXを促進(2021-10)。Musubiとかかりつけ薬局支援システム「Pharms」の連携"
+ },
+ {
+  "name": "株式会社データX",
+  "partners": ["TOPPAN", "手間いらず", "Shopify"],
+  "sources": ["https://www.holdings.toppan.com/ja/news/2024/04/newsrelease240426_1.html", "https://www.nikkei.com/article/DGXZRSP654705_Q3A510C2000000/", "https://prtimes.jp/main/html/rd/p/000000119.000013454.html"],
+  "note": "TOPPANと中堅企業向けデジタルマーケ支援で協業(2024-04)。手間いらず「TEMAIRAZU」とシステム連携(2023-05)。Shopifyと連携したEC統合データソリューション提供"
+ },
+ {
+  "name": "WHILL株式会社",
+  "partners": ["全日本空輸（ANA）", "日本空港ビルデング（羽田空港）", "関西エアポート（関西国際空港）"],
+  "sources": ["https://www.anahd.co.jp/group/pr/202106/20210610.html", "https://prtimes.jp/main/html/rd/p/000000156.000011151.html", "https://ligare.news/story/whill-1218/"],
+  "note": "ANAと羽田空港国内線での自動運行サービスを全面展開(2021-06)。羽田空港第3ターミナル・関西国際空港第1ターミナルにWHILL自動運転サービス導入"
+ },
+ {
+  "name": "株式会社CureApp",
+  "partners": ["第一三共", "サワイグループホールディングス", "カーライル・グループ"],
+  "sources": ["https://www.nikkei.com/article/DGXLRSP600321_Y0A111C2000000/", "https://www.sawaigroup.holdings/release/detail/47", "https://www.marr.jp/genre/study/marr_report/entry/39806"],
+  "note": "第一三共とがん治療支援アプリの共同開発契約。サワイグループHDと減酒治療アプリの販売ライセンス契約（国内独占販売権）。カーライルと戦略提携（約70億円出資）"
+ },
+ {
+  "name": "リージョナルフィッシュ株式会社",
+  "partners": ["ウシオ電機", "FOOD & LIFE COMPANIES", "セブン-イレブン・ジャパン", "Mizkan", "崎陽軒"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000020.000060432.html", "https://bio.nikkeibp.co.jp/atcl/release/25/01/06/22822/"],
+  "note": "シリーズBでウシオ電機・FOOD & LIFE COMPANIES（スシロー）等と資本提携し協業。シリーズCでセブン-イレブン・ジャパン、Mizkan、崎陽軒等が資本参加"
+ },
+ {
+  "name": "株式会社AIメディカルサービス",
+  "partners": ["エルピクセル"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000066.000010005.html", "https://www.ai-ms.com/news/global/20230824"],
+  "note": "エルピクセルと戦略的業務提携(2024-03)。ほかMemorial Sloan Kettering Cancer Center・スタンフォード大学医学部・マヒドン大学と内視鏡AIの共同研究契約（研究機関）"
+ },
+ {
+  "name": "NOT A HOTEL株式会社",
+  "partners": ["加森観光"],
+  "sources": ["https://notahotel.com/news"],
+  "note": "加森観光と北海道ルスツリゾートで「NOT A HOTEL RUSUTSU」を共同開発(2024-07発表)"
+ },
+ {
+  "name": "アスエネ株式会社",
+  "partners": ["三井住友銀行", "東邦銀行", "あおぞら銀行"],
+  "sources": ["https://www.nikkei.com/article/DGXZQOUC066Q10W3A001C2000000/", "https://www.tohobank.co.jp/cms_source/data/newsrelease/detail/2022/2717.html", "https://www.smfg.co.jp/dx_link/article/0150.html"],
+  "note": "三井住友銀行と業務提携(2023-10)→戦略的資本業務提携(2024-06)、SMBCの「Sustana」事業を買収・統合。東邦銀行(2022)・あおぞら銀行(2022)と顧客紹介等の業務提携"
+ },
+ {
+  "name": "株式会社TOKIUM",
+  "partners": ["ジェーシービー（JCB）", "アスエネ", "コクヨ"],
+  "sources": ["https://bestcalendar.jp/articles/press/45610", "https://prtimes.jp/main/html/rd/p/000000167.000058538.html", "https://www.kokuyo.co.jp/newsroom/news/category_other/20230222cs1.html"],
+  "note": "JCBと業務提携し法人カード明細のTOKIUM経費精算連携(2025-04)。アスエネと業務提携（請求書データのCO2排出量算定連携）。コクヨ「@Tovas」と相互提携・販売(2023-02)"
+ },
+ {
+  "name": "株式会社アークエッジ・スペース",
+  "partners": ["三菱UFJ銀行", "清水建設", "スカパーJSAT", "エイビット", "アクセルスペース"],
+  "sources": ["https://news.mynavi.jp/techplus/article/20250331-3169622/", "https://www.shimz.co.jp/company/about/news-release/2025/2024064.html", "https://abit.co.jp/01-6/"],
+  "note": "三菱UFJ銀行・清水建設とリモートセンシング分野で連携強化(2025-03)、清水建設は出資。スカパーJSATと衛星管制等で業務提携。エイビットと衛星通信機共同開発の業務提携覚書(2026-04)。アクセルスペース等とアフリカ市場共創コンソーシアム"
+ },
+ {
+  "name": "株式会社インフキュリオン",
+  "partners": ["NTTデータ", "三井住友カード", "三井住友銀行", "凸版印刷", "大日本印刷", "TIS", "セレス"],
+  "sources": ["https://www.nttdata.com/global/ja/news/services_info/2020/041500/", "https://prtimes.jp/main/html/rd/p/000000092.000031359.html", "https://www.nikkei.com/article/DGXZRSP679108_X20C24A9000000/"],
+  "note": "NTTデータと資本業務提携（オープンバンキング/BaaS基盤、2020-04）。三井住友カード・三井住友銀行と事業者向け決済・金融領域の協業で資本業務提携(2024-09)。凸版印刷・大日本印刷・TIS・セレスとも資本業務提携(2021)"
+ },
+ {
+  "name": "株式会社Kyulux",
+  "partners": ["日本曹達"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000001.000150638.html", "https://av.watch.impress.co.jp/docs/news/1641861.html"],
+  "note": "日本曹達と有機EL発光材料(TADF)の共同開発契約(2020-01)→量産体制構築に向け資本業務提携契約(2024-10)。LGディスプレイ・サムスンディスプレイは出資者"
+ },
+ {
+  "name": "ライフイズテック株式会社",
+  "partners": ["丸井グループ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000289.000019771.html", "https://life-is-tech.com/news/news/241015-release"],
+  "note": "丸井グループと2019年から戦略的資本業務提携、2024-10に提携強化を発表"
+ },
+ {
+  "name": "クラスター株式会社",
+  "partners": ["博報堂DYホールディングス"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000121.000017626.html"],
+  "note": "博報堂DYホールディングスと資本業務提携し、メタバース空間での生活者エクスペリエンスを共同研究"
+ },
+ {
+  "name": "株式会社hacomono",
+  "partners": ["両備システムズ", "GMOインターネットグループ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000160.000021418.html", "https://www.nikkei.com/article/DGXZQOUC03B4Y0T00C23A4000000/"],
+  "note": "両備システムズと基幹システム連携(2025-07)。GMOインターネットグループと組み金融サービス（レンディング等）提供、30億円調達(2023)"
+ },
+ {
+  "name": "株式会社ログラス",
+  "partners": ["エル・ティー・エス"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000020.000052025.html", "https://lt-s.jp/news/pressrelease/2021-02-03"],
+  "note": "エル・ティー・エスとバックオフィスDX推進事業で業務提携(2021-02)。「Loglass」活用の企業価値向上支援"
+ },
+ {
+  "name": "株式会社SUPER STUDIO",
+  "partners": ["三井不動産", "V", "PLAN-B"],
+  "sources": ["https://www.mitsuifudosan.co.jp/corporate/news/2025/0516/", "https://www.super-studio.jp/news/20240424_2", "https://prtimes.jp/main/html/rd/p/000000280.000068228.html"],
+  "note": "三井不動産と戦略的資本業務提携契約(2025-05、約17億円調達)、オムニチャネル推進で協業。V inc.と戦略的業務提携(2024-04)。PLAN-Bと業務提携"
+ },
+ {
+  "name": "株式会社お金のデザイン",
+  "partners": ["山口フィナンシャルグループ", "広島銀行", "十六銀行", "SBI新生銀行"],
+  "sources": ["https://news.money-design.com/2017-04-19", "https://www.hirogin.co.jp/lp/theo/", "https://www.juroku.co.jp/theo/"],
+  "note": "ロボアド「THEO+」を地銀等にOEM提供。初事例は山口フィナンシャルグループ(2017、山口銀行・もみじ銀行・北九州銀行)。広島銀行・十六銀行・SBI新生銀行等の顧客向けに投資一任運用サービスを提供"
+ },
+ {
+  "name": "MOON-X株式会社",
+  "partners": ["日本M&Aセンター", "CAMPFIRE"],
+  "sources": ["https://initial.inc/companies/A-35633", "https://markezine.jp/article/detail/37303"],
+  "note": "日本M&Aセンターと資本業務提携、CAMPFIREと業務提携（共創型M&A・ブランド育成での連携）"
+ },
+ {
+  "name": "株式会社IVRy",
+  "partners": ["福島銀行", "商工中金", "ジェーエムエス（JMS）", "ランプ"],
+  "sources": ["https://www.nikkinonline.com/article/229142", "https://strainer.jp/posts/479", "https://ivry.jp/pr/z9rnux34e/"],
+  "note": "福島銀行と業務提携（地域金融機関初、2024-11）。商工中金と業務提携契約（取引先中小企業のDX支援）。JMSとビジネスマッチング契約(2026-05)。ランプと業務提携しAI電話注文自動受付を共同開発(2025-11)"
+ },
+ {
+  "name": "ポケトーク株式会社",
+  "partners": ["ソフトバンク", "富士ソフト", "イーエムネットジャパン"],
+  "sources": ["https://www.softbank.jp/corp/news/press/sbkk/2023/20230725_01/", "https://www.fsi.co.jp/company/news/20240327.html", "https://www.nihon-ma.co.jp/news/20240515_7036-1/"],
+  "note": "ソフトバンクと「ポケトーク」展開の包括的業務提携(2023-07、IoT回線採用・法人拡販)。富士ソフトと資本業務提携(2024-03)。イーエムネットジャパンと資本業務提携(2024-05)"
+ },
+ {
+  "name": "株式会社プランテックス",
+  "partners": ["KOBASHIホールディングス", "ロート製薬", "クボタ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000010.000070420.html", "https://www.plantx.co.jp/yakuyoukenkyu_01/", "https://www.kubota.co.jp/kubotapress/life/plant-factory.html"],
+  "note": "KOBASHIホールディングス（小橋工業）と資本業務提携。ロート製薬・医薬基盤研と薬用植物の植物工場栽培で共同研究契約(2023-05)。クボタが米NY拠点にプランテックス製完全閉鎖型栽培システムを導入"
+ },
+ {
+  "name": "株式会社Global Mobility Service",
+  "partners": ["大垣共立銀行", "スルガ銀行"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000031.000029681.html", "https://news.global-mobility-service.com/.assets/20220210_Surugabank_jp.pdf"],
+  "note": "大垣共立銀行と包括業務提携（地銀初、2019-06）。スルガ銀行と業務提携しWeb完結型自動車ローン提供(2022-02)。IoT活用ローンで金融包摂型FinTechを展開"
+ },
+ {
+  "name": "WOTA株式会社",
+  "partners": ["ソフトバンク"],
+  "sources": ["https://www.businessinsider.jp/post-234504", "https://wota.co.jp/news-251204/"],
+  "note": "ソフトバンクと資本業務提携（水循環システムの全国販売代理）。ほか神奈川県など12都道府県と災害時協定、官民連携プラットフォーム「JWAD」始動（自治体連携）"
+ },
+ {
+  "name": "株式会社SODA",
+  "partners": ["KREAM"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000051.000043703.html", "https://www.nikkei.com/article/DGXZQOUC043200U3A001C2000000/"],
+  "note": "韓国KREAMと戦略的パートナーシップ構築（APAC最大のマーケットプレイスを目指す）。2023-10にKREAMの連結子会社化を発表"
+ },
+ {
+  "name": "フォロフライ株式会社",
+  "partners": ["丸紅", "ASF", "SBSホールディングス"],
+  "sources": ["https://www.marubeni.com/jp/news/2023/release/00012.html", "https://folofly.com/release-44/", "https://j-net21.smrj.go.jp/special/unicorn/20250508.html"],
+  "note": "丸紅と資本業務提携（丸紅オートモーティブが販売代理店）。ASFと国内EVスタートアップ間初の業務資本提携。SBSホールディングスが商用EV最大1万台導入を発表(2021-10)"
+ },
+ {
+  "name": "アトナープ株式会社（Atonarp Inc.）",
+  "partners": ["古河電気工業"],
+  "sources": ["https://ils.tokyo/performance/case/case24.php"],
+  "note": "古河電気工業と共同開発契約(2021-05)。ライフサイエンス向け測定プラットフォーム「ATON-360」（非侵襲血糖測定）の実用化に向け協業"
+ },
+ {
+  "name": "アイリス株式会社",
+  "partners": ["塩野義製薬", "レイヤード", "タウンズ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000038.000035813.html", "https://layered.inc/press-release/20241016/", "https://aillis.jp/news/post/20251027"],
+  "note": "塩野義製薬とAI医療機器「nodoca」のプロモーション協力契約(2023-11)。レイヤードと業務提携（WEB問診Symviewとの製品連携・共同マーケ、2024-10）。タウンズと資本業務提携(2025-04、約20.5億円調達)"
+ },
+ {
+  "name": "株式会社estie",
+  "partners": ["日本不動産研究所", "日鉄興和不動産"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000076.000040115.html", "https://www.nskre.co.jp/company/news/2025/20250217.html"],
+  "note": "日本不動産研究所と商業用不動産事業者向け新サービス開発で協業。日鉄興和不動産とオフィスリーシング業務DXで協業(2025-02)"
+ }
+]

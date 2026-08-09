@@ -1,0 +1,218 @@
+[
+ {
+  "name": "GITAI USA Inc.（GITAI Japan株式会社）",
+  "partners": ["スカパーJSAT", "宇宙航空研究開発機構（JAXA）"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000005.000042239.html", "https://thebridge.jp/2019/03/gitai-sptvjsat-jaxa-partnerships"],
+  "note": "スカパーJSATと業務提携検討の覚書、JAXAと共同研究契約。セイコーエプソン・日揮HDはCVC出資（純出資）"
+ },
+ {
+  "name": "株式会社スリーダムアライアンス",
+  "partners": ["アセンブルポイント", "noco-noco"],
+  "sources": ["https://www.data-max.co.jp/article/74231"],
+  "note": "アセンブルポイントと業務提携基本合意。noco-noco（シンガポール）へX-SEPA製造設備を譲渡し株式を取得する資本取引"
+ },
+ {
+  "name": "株式会社T2",
+  "partners": ["三井物産", "東急不動産", "三井不動産", "日本貨物鉄道（JR貨物）", "全国通運", "東罐ロジテック", "住友三井オートサービス"],
+  "sources": ["https://www.mitsuifudosan.co.jp/corporate/news/2026/0721_01/", "https://prtimes.jp/main/html/rd/p/000000017.000125267.html"],
+  "note": "三井物産系。東急不動産と業務提携（物流ネットワーク共同構築、北九州市とも官民連携協定）。JR貨物・全国通運・東罐ロジテックとモーダルコンビネーション実証。三井不動産・住友三井オートサービスは出資"
+ },
+ {
+  "name": "株式会社ハイレゾ香川",
+  "partners": ["豊田通商"],
+  "sources": ["https://www.toyota-tsusho.com/press/detail/250704_006635.html"],
+  "note": "親会社ハイレゾに豊田通商が出資(協業視野)。NVIDIA製GPU(HGX H200等)調達によるデータセンター運営。NEDO助成・経産省認定は公的支援のため対象外"
+ },
+ {
+  "name": "株式会社SHONAI（旧ヤマガタデザイン株式会社）",
+  "partners": ["日本エスコン"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000056.000027599.html"],
+  "note": "グループのヤマガタデザインリゾートが日本エスコンと業務提携契約を締結し、『農』をコンセプトにしたホテル「SUIDEN RESORT」を全国で共同開発"
+ },
+ {
+  "name": "avatarin株式会社",
+  "partners": ["アルティウスリンク", "オムロン", "Avaya", "ANAホールディングス", "みずほ銀行", "三井住友信託銀行", "三菱UFJ銀行", "日本政策投資銀行"],
+  "sources": ["https://about.avatarin.com/info-news/news-release/9612/", "https://prtimes.jp/main/html/rd/p/000000022.000057072.html"],
+  "note": "ANA発。アルティウスリンクと自治体支援事業の業務提携基本合意（遠隔BPO）。オムロンとエネルギーインフラ分野の自律AIロボット開発で連携。銀行等6社は出資と併せサービス創出で協働と発表"
+ },
+ {
+  "name": "株式会社エーアイ・アンド",
+  "partners": ["トゥモロー・ネット", "Voltaiq"],
+  "sources": ["https://www.tomorrow-net.co.jp/news/news-20260519/", "https://cafe-dc.com/japan/ai-announces-plans-to-install-voltaiqs-battery-energy-storage-system-at-its-ai-data-center/"],
+  "note": "トゥモロー・ネットとエンタープライズAI本番運用に向け業務提携。AIデータセンターへVoltaiq製蓄電システム導入を発表"
+ },
+ {
+  "name": "株式会社スマートバンク",
+  "partners": ["AGミライバライ", "日本電子決済推進機構（Bank Pay）"],
+  "sources": ["https://smartbank.co.jp/news/b43-postpay", "https://www.smartbank.co.jp/news/b43bank-pay/"],
+  "note": "AGミライバライ（アイフルグループ）と提携し後払いチャージ提供。Bank Pay連携で102金融機関からの入金に対応（Visaプリペイドで初）"
+ },
+ {
+  "name": "株式会社オープンエイト",
+  "partners": ["凸版印刷"],
+  "sources": ["https://open8.com/news/pressrelease/11985/"],
+  "note": "凸版印刷とVideo BRAINを活用した動画コミュニケーションサービスで業務提携。紹介・取次・再販の3種のセールスパートナープログラムも展開"
+ },
+ {
+  "name": "LocationMind株式会社",
+  "partners": ["日野自動車", "東京カンテイ", "マップマーケティング", "日本交通公社"],
+  "sources": ["https://www.hino.co.jp/corp/news/2022/20220630-003279.html", "https://locationmind.com/news/mm_lm_01/", "https://locationmind.com/news/locationai-lmjtbf2026/"],
+  "note": "日野自動車と資本業務提携（物流ソリューション）。東京カンテイと不動産情報で提携。マップマーケティングと人流分析SaaS協業。公益財団法人日本交通公社と包括連携協定"
+ },
+ {
+  "name": "株式会社ディーカレット",
+  "partners": ["Ondo Finance", "トランザクション・メディア・ネットワークス（TMN）", "アビームコンサルティング", "GMOあおぞらネット銀行", "インターネットイニシアティブ（IIJ）"],
+  "sources": ["https://www.nikkei.com/article/DGXZQOUB1860Q0Y6A210C2000000/", "https://www.abeam.com/jp/ja/news/2024/0913/", "https://paymentnavi.com/paymentnews/168851.html"],
+  "note": "米Ondo Financeと業務提携MOU（DCJPYエコシステム）。TMNと流通事業者向けサービスで協業。アビームは出資＋協業。GMOあおぞらネット銀行がDCJPY発行、IIJの環境価値取引で商用利用開始"
+ },
+ {
+  "name": "株式会社Antway",
+  "partners": ["菱彩", "鮮冷", "インテグリート"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000068.000039424.html", "https://integreat-corporation.jp/2024/11/27/%E3%83%86%E3%82%B9%E3%83%88%E3%83%BB%E3%83%BB%E3%83%BBthd%E5%BA%83%E5%A0%B1%E3%83%96%E3%83%A9%E3%83%B3%E3%83%89/"],
+  "note": "つくりおき.jpのFC製造パートナーとして菱彩（茨城・水戸）、鮮冷（宮城・女川）、インテグリート（西日本初）と業務提携契約"
+ },
+ {
+  "name": "株式会社トリファ",
+  "partners": ["カブ＆ピース", "日本旅行"],
+  "sources": ["https://x.com/trifa_travel/status/2050106034023493940", "https://trifa.co.jp/news"],
+  "note": "カブ＆ピースと提携し「KABU&海外eSIM powered by トリファ」提供（OEM型）。日本旅行グループと販売提携。ANA未来創造ファンドから出資（純出資）"
+ },
+ {
+  "name": "株式会社Helical Fusion",
+  "partners": ["鹿島建設", "大成建設", "清水建設", "安藤ハザマ", "東芝エネルギーシステムズ", "富士電機", "フジクラ", "金属技研", "三井金属鉱業", "MiRESSO", "ダウォンシス", "菱輝金型工業", "長谷虎紡績"],
+  "sources": ["https://monoist.itmedia.co.jp/mn/articles/2605/08/news013.html", "https://www.helicalfusion.com/news"],
+  "note": "Helixプログラム公式パートナーに大手ゼネコン（鹿島・大成・清水・安藤ハザマ）。ブランケット・超伝導マグネット等で東芝ESS・富士電機・フジクラ・金属技研・三井金属鉱業らと共同開発。核融合科学研究所・福井大・東北大金研とも連携（研究機関）"
+ },
+ {
+  "name": "オリヅルセラピューティクス株式会社",
+  "partners": ["武田薬品工業", "テクノプロ・ホールディングス（テクノプロR&D社）", "ペプチグロース", "セルファイバ", "Axcelead Drug Discovery Partners"],
+  "sources": ["https://www.link-j.org/bulletinboard/post-6601.html", "https://prtimes.jp/main/html/rd/p/000000016.000067783.html"],
+  "note": "武田薬品のT-CiRAプログラム成果を承継して設立。テクノプロR&Dと業務提携、ペプチグロースと成長因子代替ペプチドの共同開発契約、セルファイバと試験委託契約、Axceleadと協業。野村グループは株式取得（出資）"
+ },
+ {
+  "name": "株式会社Thirdverse",
+  "partners": ["サンリオ", "ベリサーブ", "OKX Ventures", "Polygon Studios", "Oasys"],
+  "sources": ["https://gamebiz.jp/news/383226", "https://gamebiz.jp/news/342881"],
+  "note": "サンリオIP「Hello Kitty Skyland」を共同展開。ベリサーブ・OKX Venturesと資本業務提携。Polygon Studiosと戦略的パートナーシップ、OasysブロックチェーンのValidator運用に参画"
+ },
+ {
+  "name": "株式会社ZEALS",
+  "partners": ["シルバーエッグ・テクノロジー", "LINEヤフー"],
+  "sources": ["https://www.silveregg.co.jp/archives/news/1972", "https://www.lycbiz.com/jp/partner/technology/line/zeals/"],
+  "note": "シルバーエッグ・テクノロジーと業務提携（One to One商品提案）。LINEヤフーの公式テクノロジーパートナー。Z Venture Capital・電通グループ・博報堂DY系CVCから出資"
+ },
+ {
+  "name": "Wovn Technologies株式会社",
+  "partners": ["凸版印刷"],
+  "sources": ["https://www.holdings.toppan.com/ja/news/2021/07/newsrelease210729_1.html"],
+  "note": "凸版印刷と資本業務提携しWebサイト多言語化事業で協業（2021年）"
+ },
+ {
+  "name": "株式会社ファームノートホールディングス",
+  "partners": ["丸紅", "明治ホールディングス"],
+  "sources": ["https://www.nikkei.com/article/DGXZQOUC181GB0Y1A810C2000000/", "https://sogyotecho.jp/news/20230804farmnote-hd/"],
+  "note": "丸紅と酪農・畜産DX推進で協業（全国営業を強化）。明治HDから資金調達（協業視野）。農水省の全国版畜産クラウドとデータ連携。日本政策投資銀行も出資"
+ },
+ {
+  "name": "株式会社電脳交通",
+  "partners": ["JapanTaxi", "Uber Technologies", "ENEOSホールディングス", "三菱商事"],
+  "sources": ["https://www.nikkan.co.jp/releases/view/49103", "https://cybertransporters.com/news/post-1269", "https://www.nikkei.com/article/DGXZQOUC101RY0Q5A410C2000000/"],
+  "note": "JapanTaxi・Uber・ENEOSと資本業務提携。三菱商事は累計19.3億円出資（比率約20%）で筆頭級株主として協業"
+ },
+ {
+  "name": "エクセルギー・パワー・システムズ株式会社",
+  "partners": ["関西電力", "三菱総合研究所", "凸版印刷"],
+  "sources": ["https://www.kepco.co.jp/corporate/pr/2019/1031_1j.html", "https://www.mri.co.jp/news/press/20190723.html"],
+  "note": "関西電力と資本業務提携（新サービス開発）。三菱総合研究所と業務資本提携（高速調整力の実装）。凸版印刷と資本業務提携（印刷技術応用電極でエクセルギー電池開発）。DBJ・三菱UFJ信託・三井住友信託も出資"
+ },
+ {
+  "name": "株式会社オッドナンバー",
+  "partners": ["バンダイナムコフィルムワークス", "バンダイナムコミュージックライブ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000002.000112245.html", "https://app.famitsu.com/20221214_2033663/"],
+  "note": "「ラブライブ！蓮ノ空女学院スクールアイドルクラブ」でバンダイナムコフィルムワークス・バンダイナムコミュージックライブと共同事業契約を締結し、「Link!Like!ラブライブ!」を3社で企画・共同開発（オッドナンバーがパブリッシャー）"
+ },
+ {
+  "name": "株式会社THINKR",
+  "partners": ["エイベックス"],
+  "sources": ["https://gamebiz.jp/news/388058", "https://prtimes.jp/main/html/rd/p/000000140.000106737.html"],
+  "note": "エイベックス・グループから独立（自社株買い）後も、エイベックスと業務提携に関する覚書を締結し関係を継続。阪急阪神HD・ジャフコ・Cygames Capital・KDDI Open Innovation Fund・Yostar・サードウェーブ等は第三者割当増資の引受（出資）、りそな銀行から融資"
+ },
+ {
+  "name": "株式会社ALE",
+  "partners": ["宇宙航空研究開発機構（JAXA）"],
+  "sources": ["https://www.jaxa.jp/press/2020/03/20200325-1_j.html", "https://aerospacebiz.jaxa.jp/topics/news/20190228_ale/"],
+  "note": "JAXAとJ-SPARCパートナーシップを締結し、宇宙デブリ拡散防止装置（導電性テザー）の事業化に向けた共同実証を実施。東北大学と衛星を共同開発（研究機関）。デブリ対策事業の関連資産は後に株式会社BULLへ承継"
+ },
+ {
+  "name": "ルカ・サイエンス株式会社",
+  "partners": ["協和キリン"],
+  "sources": ["https://www.kyowakirin.co.jp/pressroom/news_releases/2022/20220518_01.html"],
+  "note": "協和キリンとミトコンドリア病治療に関する共同研究契約を締結（2022年5月）"
+ },
+ {
+  "name": "マネーツリー株式会社",
+  "partners": ["横浜銀行", "山形銀行", "富山第一銀行", "碧海信用金庫", "トマト銀行", "ソニー生命保険", "TKC", "ウェルスナビ", "UPSIDER"],
+  "sources": ["https://getmoneytree.com/jp/link/case-studies", "https://getmoneytree.com/link-case-study-jp/yokohama"],
+  "note": "金融データプラットフォーム「Moneytree LINK」の公表済み導入・連携先（累計130社以上と発表）。横浜銀行は2017年3月に導入しアプリで他行残高照会等を提供"
+ },
+ {
+  "name": "SORABITO株式会社",
+  "partners": ["住友商事", "伊藤忠TC建機", "ENEOS", "ゼンリン"],
+  "sources": ["https://www.sorabito.com/news/20190513.html", "https://kepple.co.jp/articles/8usp-uz3ru"],
+  "note": "住友商事・伊藤忠TC建機と資本業務提携（グローバル展開視野、伊藤忠TC建機とは提携済みからの出資）。ENEOS・ゼンリンと連携し「はたらく機械のエコシステム」構築を推進"
+ },
+ {
+  "name": "株式会社カウシェ",
+  "partners": ["ディー・エヌ・エー（DeNA）"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000092.000064598.html", "https://www.nikkei.com/article/DGXZQOUC022YP0S6A300C2000000/"],
+  "note": "DeNAと資本業務提携（セカンダリー取引で株式取得、2026年3月）。プロダクト戦略・AI/ML技術提供等の業務支援を受け、DeNA幹部が社外取締役就任"
+ },
+ {
+  "name": "株式会社Cogent Labs",
+  "partners": ["NXワンビシアーカイブズ", "トランスコスモス", "ソフトバンク", "Automation Anywhere", "RPAテクノロジーズ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000169.000047901.html", "https://www.trans-cosmos.co.jp/company/news/230515.html"],
+  "note": "NXワンビシアーカイブズと資本業務提携（約5億円の第三者割当、業務自動化サービス）。トランスコスモスと資本業務提携（BPO×DX）。ソフトバンクとRPA分野で業務提携、Automation Anywhere・RPAテクノロジーズとAI-OCR/RPA分野で提携"
+ },
+ {
+  "name": "オーティファイ株式会社（Autify）",
+  "partners": ["DXCテクノロジー・ジャパン", "エーピーコミュニケーションズ"],
+  "sources": ["https://autify.jp/news/autify-dxc-strategic-partnership", "https://www.ap-com.co.jp/pressrelease/post-10382"],
+  "note": "DXCテクノロジー・ジャパンと生成AI活用アプリ開発領域で戦略的パートナーシップ契約。エーピーコミュニケーションズとAutify認定パートナー契約（E2Eテスト自動化の導入・内製化支援）"
+ },
+ {
+  "name": "WAmazing株式会社",
+  "partners": ["タイガーエア台湾", "JR東日本", "JR西日本"],
+  "sources": ["https://sg.wantedly.com/companies/wamazing/about", "https://corp.wamazing.com/local-cooperation/case"],
+  "note": "台湾最大のLCCタイガーエア台湾や、JR東日本・JR西日本グループとのアライアンスを公表（JR両社系CVCは出資も実施）。東京都・渋谷区の観光団体とインバウンドデジタルパス「SHIBUYA PASS」も展開"
+ },
+ {
+  "name": "SATORI株式会社",
+  "partners": ["ベーシック（ferret One）", "LIFULL Marketing Partners"],
+  "sources": ["https://ferret-one.com/info/171128_satori", "https://satori.marketing/informations/20170306/"],
+  "note": "ferret One（ベーシック）とMAツール機能連携。LIFULL Marketing Partnersの不動産販売事業者向け「LMP Marketing Journey」の連携MAツールに採用。販売代理店向けパートナープログラムを展開"
+ },
+ {
+  "name": "株式会社NOVARCA（旧・トレンドExpress）",
+  "partners": ["微店（Weidian）"],
+  "sources": ["https://www.novarca.jp/news/20190517-2/"],
+  "note": "中国最大級のCtoCコマースアプリ「微店」と日中間越境EC事業で業務提携契約（2018年4月、トレンドExpress時代）。NTTドコモ・ベンチャーズ等は出資"
+ },
+ {
+  "name": "株式会社SUN METALON",
+  "partners": ["トヨタ自動車", "住友商事グローバルメタルズ", "日本製鉄"],
+  "sources": ["https://www.scgm.co.jp/newsrelease/2024/10/%E9%87%91%E5%B1%9E%E6%A5%AD%E7%95%8C%E3%81%AE%E8%84%B1%E7%82%AD%E7%B4%A0%E5%AE%9F%E7%8F%BE%E3%82%92%E3%83%AA%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B%E7%B1%B3%E5%9B%BD%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88/", "https://prtimes.jp/main/html/rd/p/000000019.000107174.html"],
+  "note": "トヨタ自動車とアルミ合金リサイクル新プロセスを共同開発。住友商事グローバルメタルズは出資と併せ金属資源リサイクル事業で連携開始。日本製鉄・JBIC・Airbus Ventures・島津未来イノベーションファンドはシリーズA出資"
+ },
+ {
+  "name": "ソニア・セラピューティクス株式会社",
+  "partners": ["JA三井リース"],
+  "sources": ["https://kyodonewsprwire.jp/release/202212010659"],
+  "note": "JA三井リースが出資し、ファイナンス機能・営業ネットワーク提供等で連携。HIFU治療装置は東京女子医大・東北大・東京医大の技術を基に開発（研究機関連携）"
+ },
+ {
+  "name": "株式会社BALLAS",
+  "partners": ["MCデータプラス"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000045.000058133.html"],
+  "note": "MCデータプラス（三菱商事系）と提携し、「グリーンサイト」等利用の建設会社向けに「Made Metal調達サービス Powered by BALLAS」を2023年10月提供開始。商工中金から融資"
+ }
+]

@@ -1,0 +1,206 @@
+[
+ {
+  "name": "株式会社400F",
+  "partners": ["SBI証券", "SBIマネープラザ", "ファミリーマート", "ほけんの窓口グループ", "ニッセイアセットマネジメント", "住友生命保険"],
+  "sources": ["https://www.nam.co.jp/news/fund/240717.html", "https://www.sumitomolife.co.jp/about/newsrelease/pdf/2024/240829c.pdf"],
+  "note": "SBI証券・SBIマネープラザと資本業務提携に向けた基本合意。ファミリーマートと業務提携（オカネコ for ファミペイ）。ほけんの窓口グループと業務提携。ニッセイAMとファンドラップ「Goal Navi」提供。住友生命はCVCファンドから出資"
+ },
+ {
+  "name": "ファストドクター株式会社",
+  "partners": ["アフラック生命保険", "くすりの窓口", "KDDI", "ル・アンジェ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000117.000031533.html", "https://www.kddi.com/corporate/sustainability/regional-initiative/pressrelease/20240930/", "https://jp.investing.com/news/stock-market-news/article-1011655"],
+  "note": "アフラック医療保険契約者向けオンライン診療提供。くすりの窓口と業務提携（薬局受取連携）。KDDIとスマホdeドック後のオンライン受診相談サービス。ル・アンジェ（ベビーシッター）と提携"
+ },
+ {
+  "name": "株式会社モノクローム",
+  "partners": ["ダイキン工業", "ハチドリソーラー"],
+  "sources": ["https://sogyotecho.jp/news/20240209monochrome-daikin/", "https://hachidori-denryoku.jp/solar/news/%E3%83%A2%E3%83%8E%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%A0%E3%81%A8%E6%8F%90%E6%90%BA%E3%81%97%E5%B1%8B%E6%A0%B9%E4%B8%80%E4%BD%93%E5%9E%8B%E5%A4%AA%E9%99%BD%E5%85%89%E3%83%91%E3%83%8D%E3%83%AB%E3%81%AE/"],
+  "note": "ダイキン工業と資本業務提携（2024年2月）。ハチドリソーラーと提携し屋根一体型太陽光パネルのリースプラン提供"
+ },
+ {
+  "name": "株式会社クラス",
+  "partners": ["イトーキ", "LIFULL", "estie", "ユニオンテック", "アーキテクト・ディベロッパー"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000021.000033987.html", "https://architectdeveloper.com/news/581/"],
+  "note": "イトーキとサーキュラー領域で協業、LIFULLと新生活ユーザー向け優待提携、estieとオフィスサブスク展開、ユニオンテックとオフィス増床・移転支援で提携"
+ },
+ {
+  "name": "株式会社パトスロゴス",
+  "partners": ["ワークデイ", "グロービス", "ラキール", "メディフォン", "InfoDeliver"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000019.000141802.html"],
+  "note": "Workday HCMと給与サービス「Combosite」連携の戦略的協業。グロービス・ラキール・メディフォン・InfoDeliver等とHR共創プラットフォームで業務提携（パートナーSaaS 20社超）"
+ },
+ {
+  "name": "AIQ株式会社",
+  "partners": ["スパイスボックス", "Deep30", "KDDI", "パル", "カシオ計算機"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000042.000037916.html", "https://www.aiqlab.com/information/"],
+  "note": "博報堂グループのスパイスボックスと資本業務提携、東大松尾研系Deep30と資本提携。KDDIとPontaパス向けAIデジタルクローン協業、パル（PAL CLOSET）とAI接客実証、カシオとターゲット分析基盤を共同開発"
+ },
+ {
+  "name": "Global Vascular（日経NEXTユニコーン調査掲載名）",
+  "partners": ["山科精器", "三井住友信託銀行"],
+  "sources": ["https://www.yasec.co.jp/news/info/p6495/", "https://www.smtb.jp/-/media/tb/about/corporate/release/pdf/250630.pdf"],
+  "note": "山科精器とデリバリーシステムを共同研究開発し同社から出資も受領。三井住友信託銀行からインパクトエクイティ出資（2025年6月）"
+ },
+ {
+  "name": "Nature株式会社",
+  "partners": ["東京ガス", "中国電力", "エネクスライフサービス"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000119.000019285.html"],
+  "note": "東京ガスと分散型エネルギーリソースのデマンドレスポンスで業務提携。中国電力とHEMS「Nature Remo E」活用で連携。エネクスライフサービスとNature Remo販売促進で提携"
+ },
+ {
+  "name": "株式会社シェアダイン",
+  "partners": ["小田急電鉄", "ぐんぎんコンサルティング", "瀬戸内ブランドコーポレーション", "みずほキャピタル", "三井住友信託銀行"],
+  "sources": ["https://startup-db.com/companies/5DOdGA1UYD6GR0eM"],
+  "note": "小田急電鉄と地域密着型プラットフォームで出張料理サービス提供、ぐんぎんコンサルティング（群馬銀行グループ）と飲食・宿泊事業者への人材支援で提携、瀬戸内ブランドコーポレーションと提携。みずほキャピタル・三井住友信託銀行はシリーズB出資"
+ },
+ {
+  "name": "シコメルフードテック株式会社",
+  "partners": ["三井物産流通グループ", "ハウス食品グループ本社"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000036.000058297.html", "https://housefoods-group.com/newsrelease/pdf/newsrelease_20250613.pdf"],
+  "note": "三井物産流通グループと資本業務提携。ハウス食品グループ本社とCVCファンド出資に伴い業務提携合意（2025年6月）"
+ },
+ {
+  "name": "株式会社mov",
+  "partners": ["アリババグループ", "MS&Consulting", "Payke", "観光経済新聞社"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000371.000047342.html", "https://mov.am/"],
+  "note": "アリババグループと提携し「口コミコム」連携で中国インバウンド集客支援。MS&Consultingと業務提携（集客〜接客のワンストップ支援）。Payke・観光経済新聞社とも業務提携。通信キャリア4社から出資"
+ },
+ {
+  "name": "株式会社フェイガー",
+  "partners": ["鈴与商事", "クミアイ化学工業", "全国農業協同組合連合会", "筑邦銀行", "静岡県信用農業協同組合連合会", "井関農機", "FPT Information System"],
+  "sources": ["https://www.suzuyoshoji.co.jp/company/news/20250723.html", "https://www.agrinews.co.jp/news/prtimes/287685", "https://www.nikkei.com/prime/gx/article/DGXZQOUC072WB0X00C23A7000000"],
+  "note": "鈴与商事と資本業務提携（農業由来クレジット）。クミアイ化学工業と水田中干延長クレジット創出で連携。JA全農・筑邦銀行・静岡県信連・井関農機と業務提携。ベトナムFPT ISとグリーン農業推進で連携。東京海上系とも連携報道"
+ },
+ {
+  "name": "Lazuli株式会社",
+  "partners": ["トレジャーデータ", "ブレインパッド", "TOPPAN", "AWL"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000099.000068652.html", "https://lazuli.ninja/news/lazuli-and-brainpad-strengthen-business-collaboration/", "https://www.treasure.ai/ja/press-releases/20250930-lazuli-treasuredata-partnership/"],
+  "note": "トレジャーデータとCDP×PDPのソリューション連携。ブレインパッドと事業連携強化。TOPPAN・トレジャーAI・Shinker・AWLとの5社でリテールRX推進の業務提携"
+ },
+ {
+  "name": "ペイトナー株式会社",
+  "partners": ["クレディセゾン", "GIG", "Wewill", "ネクスライド", "Fixx"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000212.000047439.html"],
+  "note": "クレディセゾンと提携しファクタリングサービス提供（セゾンインボイス for 個人事業主）。GIG・Wewill・ネクスライド・Fixx等と業務提携（バックオフィス効率化支援）"
+ },
+ {
+  "name": "DIGGLE株式会社",
+  "partners": ["大塚商会"],
+  "sources": ["https://diggle.jp/news/pressrelease/20250408/"],
+  "note": "大塚商会とパートナー契約を締結（2025年4月）。基幹業務システム「SMILE」とDIGGLEのデータ連携実績あり"
+ },
+ {
+  "name": "株式会社LexxPluss",
+  "partners": ["三菱HCキャピタル", "ニフコ", "三櫻工業"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000032.000056714.html", "https://www.logi-today.com/747623"],
+  "note": "三菱HCキャピタル・ニフコ・三櫻工業の3社と資本業務提携（2024年9月）。三菱HCキャピタルとは自律搬送ロボットのサブスク提供でも協業"
+ },
+ {
+  "name": "リジェネフロ株式会社",
+  "partners": ["富士フイルム", "三井化学", "旭化成"],
+  "sources": ["https://www.innervision.co.jp/sp/products/topics/20200753", "https://prtimes.jp/main/html/rd/p/000000006.000129258.html", "https://globalbrains.com/posts/invested-in-regenephro"],
+  "note": "富士フイルムが1億円出資し業務提携契約（再生医療製品CDMO・創薬支援用細胞販売の優先交渉権）。三井化学と事業成長で連携。旭化成・三井化学はシリーズB出資者"
+ },
+ {
+  "name": "株式会社Facilo",
+  "partners": ["三菱地所ハウスネット", "野村不動産ソリューションズ", "長谷工リアルエステート", "大京穴吹不動産", "センチュリー21・ジャパン"],
+  "sources": ["https://www.facilo.jp/company/", "https://prtimes.jp/main/html/rd/p/000000028.000113384.html"],
+  "note": "大手不動産仲介への導入・連携（全国2,500店舗超・400社超に導入）。センチュリー21は営業支援システム「21Cloud」にFacilo機能を組込む提携"
+ },
+ {
+  "name": "エイターリンク株式会社",
+  "partners": ["SMC", "竹中工務店"],
+  "sources": ["https://monoist.itmedia.co.jp/mn/articles/2403/22/news102.html", "https://prtimes.jp/main/html/rd/p/000000042.000071264.html"],
+  "note": "SMCとワイヤレスエアシリンダ用センサを共同開発。竹中工務店と環境センサーのワイヤレス給電実証実験を実施"
+ },
+ {
+  "name": "株式会社Matchbox Technologies",
+  "partners": ["大光銀行", "農林中央金庫", "日本マクドナルド", "ローソンスタッフ", "フュージョンズ"],
+  "sources": ["https://www.taikobank.jp/news_release/detail.php?sn=1828", "https://www.matchboxtech.co.jp/"],
+  "note": "大光銀行と業務提携（地域企業の人材課題解決）。農林中央金庫と地域経済活性化で提携。日本マクドナルドがOBOG再雇用基盤としてmatchbox導入。ローソンFC大手フュージョンズ・ローソンスタッフとグループ形成"
+ },
+ {
+  "name": "株式会社インフォボックス",
+  "partners": ["エクネス"],
+  "sources": ["https://info-box.jp/corp/news/press/exness/"],
+  "note": "手書き手紙サービス「レターロボ」のエクネスと業務提携。Salesforce・HubSpotとはシステム連携"
+ },
+ {
+  "name": "オーナーズ株式会社",
+  "partners": ["楽天証券", "ゲンバト"],
+  "sources": ["https://owners-ma.jp/news/news-20230727/", "https://genbato.jp/partner_service/risonalma.html"],
+  "note": "楽天証券と業務委託契約を締結しIFA（金融商品仲介業者）登録。ゲンバトとパートナー提携（RISONAL M&Aをパートナーサービスとして提供）"
+ },
+ {
+  "name": "将来宇宙輸送システム株式会社",
+  "partners": ["JALエンジニアリング", "荏原製作所", "旭化成", "商船三井", "常石ソリューションズ東京ベイ", "日本旅行", "Ursa Major Technologies", "WAAM3D", "愛知産業"],
+  "sources": ["https://innovative-space-carrier.co.jp/articles/20240404/", "https://prtimes.jp/main/html/rd/p/000000105.000106229.html"],
+  "note": "JALエンジニアリングと資本業務提携（再使用ロケット運用体制）。荏原製作所と包括連携（電動ポンプ活用エンジン開発）。旭化成と次世代宇宙輸送で連携。商船三井・常石ソリューションズ東京ベイと洋上回収・打上げ船を検討。日本旅行と宇宙旅行で業務提携。米Ursa Majorと協業、WAAM3D・愛知産業等と推進剤タンク製造で提携"
+ },
+ {
+  "name": "株式会社DATAFLUCT",
+  "partners": ["アズビル", "国分グループ本社", "東芝デジタルソリューションズ", "竹中工務店", "FUJI", "Doconomy"],
+  "sources": ["https://datafluct.com/news/n0012/", "https://datafluct.com/news/aqz45n3tj/", "https://www.global.toshiba/jp/company/digitalsolution/news/2022/0302.html"],
+  "note": "アズビルと資本業務提携（建物運用AI、2025年12月）。国分グループ本社と資本業務提携（需要予測AI・青果サプライチェーン最適化）。東芝デジタルソリューションズ・竹中工務店・FUJI等とも資本業務提携。スウェーデンDoconomyと提携契約（カーボンニュートラル×消費）"
+ },
+ {
+  "name": "株式会社Acompany",
+  "partners": ["博報堂DYホールディングス", "中部テレコミュニケーション"],
+  "sources": ["https://www.acompany.tech/news/25-0225-1", "https://tomoruba.eiicon.net/articles/5011"],
+  "note": "博報堂DYホールディングスとプライバシーテック実用化で業務提携。中部テレコミュニケーション（CTC）と戦略的業務提携。秘密計算サービス「AutoPrivacy AI CleanRoom」で提携パートナー展開"
+ },
+ {
+  "name": "株式会社Hubble",
+  "partners": ["SBIビジネス・ソリューションズ", "アドビ"],
+  "sources": ["https://hubble-docs.com/about"],
+  "note": "SBIビジネス・ソリューションズと業務提携（契約書データベース構築）。Adobe Acrobat Signと連携（締結済契約書の自動取込・電帳法対応）"
+ },
+ {
+  "name": "株式会社justInCaseTechnologies",
+  "partners": ["アグレックス", "あいおいニッセイ同和損害保険", "電通総研", "GNUS", "オリコ"],
+  "sources": ["https://www.agrex.co.jp/news/detail/20241118_01.html", "https://prtimes.jp/main/html/rd/p/000000038.000046872.html"],
+  "note": "TISインテックグループのアグレックスと資本業務提携（保険BPaaS、2024年11月）。あいおいニッセイ同和損保と保険商品・サービス共同開発で提携。電通総研・GNUS等ソリューションプロバイダーと協業。保険SaaS「joinsure」をオリコ等へ提供"
+ },
+ {
+  "name": "バヅクリ株式会社",
+  "partners": ["JTBコミュニケーションデザイン", "チェンジ", "スタメン"],
+  "sources": ["https://presswalker.jp/company/13137", "https://buzzkuri.co.jp/"],
+  "note": "JTBコミュニケーションデザインと業務提携（インナーイベント効果最大化）。チェンジと業務提携し自律型人材育成プログラムを共同開発。スタメンと業務提携（労働組合向けレクプログラム）"
+ },
+ {
+  "name": "AGRIST株式会社",
+  "partners": ["日鉄興和不動産", "マクニカ", "日本マイクロソフト"],
+  "sources": ["https://agrist.com/portfolio", "https://prtimes.jp/main/html/rd/p/000000111.000050444.html"],
+  "note": "日鉄興和不動産と出資・事業連携（スマート農業パッケージ全国展開）。マクニカ・宮崎県と収穫ロボット社会実装の包括連携協定。マイクロソフトとロボット画像のAI解析で協業"
+ },
+ {
+  "name": "スペースワン株式会社",
+  "partners": ["JR西日本イノベーションズ", "Space BD", "キヤノン電子", "IHIエアロスペース", "清水建設", "日本政策投資銀行"],
+  "sources": ["https://space-connect.jp/spaceone-launch3/", "https://initial.inc/companies/A-37586"],
+  "note": "キヤノン電子・IHIエアロスペース・清水建設・日本政策投資銀行の出資により設立された合弁会社。JR西日本イノベーションズと業務提携（地域価値共創）。Space BDとカイロスによる衛星打上げ輸送サービス契約。防衛省の実証衛星打上げ関連契約も締結"
+ },
+ {
+  "name": "株式会社FLUX",
+  "partners": ["UNICORN", "Permutive", "GeoEdge"],
+  "sources": ["https://www.nikkan.co.jp/releases/view/113418"],
+  "note": "モバイルアプリ向け全自動マーケティングのUNICORNと戦略提携。英Permutive・イスラエルGeoEdgeとも戦略提携（FLUX Header Bidding Solution関連）"
+ },
+ {
+  "name": "株式会社エブリー",
+  "partners": ["味の素", "伊藤忠食品", "サミット", "カタリナマーケティングジャパン", "SOULA"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000253.000018729.html", "https://www.itochu-shokuhin.com/cms/uploads/2019/07/%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9_%E3%82%A8%E3%83%95%E3%82%99%E3%83%AA%E3%83%BC%E7%A4%BE%E3%81%A8%E3%81%AE%E5%87%BA%E8%B3%87%E3%80%81%E6%A5%AD%E5%8B%99%E6%8F%90%E6%90%BA_190717.pdf", "https://www.nikkei.com/article/DGXLRSP517655_Y9A820C1000000/"],
+  "note": "味の素と資本業務提携（2023年4月、食×健康のパーソナライズ）。伊藤忠食品と資本業務提携（店頭サイネージ）。スーパーのサミットと提携。カタリナマーケティングジャパンと業務提携（デジタルクーポン）。SOULAと業務提携（健康×食）"
+ },
+ {
+  "name": "株式会社Blue Planet-works",
+  "partners": ["森トラスト", "ANAホールディングス", "電通", "Blue Ridge Networks"],
+  "sources": ["https://www.prnewswire.com/news-releases/appguard-parent-company-blue-planet-works-establishes-a-distribution-agreement-with-mori-trust-co-ltd-one-of-japans-leading-real-estate-development-hotel-management-and-investment-businesses-301298591.html", "https://www.prnewswire.com/news-releases/blue-ridge-networks-announces-contribution-of-its-appguard-line-of-business-to-new-japanese-joint-venture-company-blue-planet-works-300443138.html"],
+  "note": "森トラストとAppGuardの販売代理店契約（2021年5月）。ANAホールディングス・電通など日本企業8社の出資で2017年設立、米Blue Ridge NetworksからAppGuard事業を承継した合弁会社"
+ },
+ {
+  "name": "株式会社Kyash",
+  "partners": ["ギフティ", "セブン銀行"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000146.000020416.html", "https://www.sevenbank.co.jp/corp/news/2018/pdf/2018102201.pdf"],
+  "note": "ギフティと資本業務提携（2026年5月、ギフティが19.07%取得・法人/自治体向け送金ソリューション連携）。セブン銀行とATM提携サービス（現金チャージ）"
+ }
+]

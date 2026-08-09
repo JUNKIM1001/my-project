@@ -1,0 +1,206 @@
+[
+ {
+  "name": "ジョーシス株式会社",
+  "partners": ["野村総合研究所", "マクニカ", "CTCエスピー", "CTCファーストコンタクト"],
+  "sources": ["https://corp.raksul.com/news/press/230221_josys_partners/", "https://corp.raksul.com/news/press/230412_josys_ctcsp/"],
+  "note": "製品提供・販売に関する業務提携（NRI・マクニカ2023年2月、CTCエスピー2023年4月）。CTCファーストコンタクトとはヘルプデスク協業"
+ },
+ {
+  "name": "ユニファ株式会社",
+  "partners": ["MIXI"],
+  "sources": ["https://www.marr.jp/genre/topics/news/entry/54188", "https://prtimes.jp/main/html/rd/p/000000130.000031858.html"],
+  "note": "2024年8月MIXIと資本業務提携。「ルクミー」と「家族アルバム みてね」の写真データ連携を展開"
+ },
+ {
+  "name": "シンクサイト株式会社（ThinkCyte）",
+  "partners": ["日立製作所", "シスメックス", "Axcelead Drug Discovery Partners", "PhoreMost", "ビジョンケア"],
+  "sources": ["https://thinkcyte.com/news_cat/news-jp/", "https://thinkcyte.com/newsroom/20221227-jp/"],
+  "note": "日立製作所とAI細胞分析システム共同開発、シスメックスと共同開発+資本提携、Axcelead DDPと表現型スクリーニング共同研究、PhoreMost・ビジョンケアと研究提携"
+ },
+ {
+  "name": "株式会社TERASS",
+  "partners": ["auフィナンシャルパートナー", "ホームネット", "Property Access", "FLIE", "カラダノート"],
+  "sources": ["https://terass.com/news/202410aufp", "https://terass.com/press"],
+  "note": "auフィナンシャルパートナーと業務連携（2024年10月）。ホームネット・Property Access（海外不動産）・FLIE（不動産DX）・カラダノート（子育て世帯住宅購入支援）と提携"
+ },
+ {
+  "name": "株式会社ナレッジワーク",
+  "partners": ["リコージャパン", "ユーザベース"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000149.000063428.html", "https://jp.ricoh.com/release/2026/0804_1", "https://www.uzabase.com/jp/info/uzabase-knowledgework/"],
+  "note": "リコージャパンと資本業務提携（2026年8月、AI商談記録販売・SI協業）。ユーザベースと資本業務提携"
+ },
+ {
+  "name": "株式会社Helpfeel",
+  "partners": ["カラクリ"],
+  "sources": ["https://corp.helpfeel.com/news/pressrelease-20260406", "https://karakuri.ai/news/helpfeel"],
+  "note": "2026年4月カラクリと戦略的パートナーシップ。KARAKURI chatbot等をHelpfeelが取り扱い"
+ },
+ {
+  "name": "株式会社EX-Fusion",
+  "partners": ["ジェイテックコーポレーション"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000019.000086624.html", "https://ex-fusion.com/news/pr20241223"],
+  "note": "ジェイテックコーポレーション（東証3446）と技術提携（2022年1月〜）、次世代高性能反射鏡の共同開発（2024年12月続報）"
+ },
+ {
+  "name": "forest株式会社",
+  "partners": ["ROSY LILY"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000010.000087610.html", "https://forest-inc.jp/news/663"],
+  "note": "シューケアブランドROSY LILY株式会社と資本業務提携（2024年7月）。その他はM&Aによるブランド承継が中心"
+ },
+ {
+  "name": "アリヴェクシス株式会社（旧・モジュラス株式会社／Modulus Discovery）",
+  "partners": ["アステラス製薬"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000021.000035986.html", "https://bio.nikkeibp.co.jp/atcl/release/24/06/17/20718/"],
+  "note": "アステラス製薬と創薬標的の共同研究（2024年6月開始、2026年3月に2プロジェクト目の共同研究契約）"
+ },
+ {
+  "name": "Turing株式会社",
+  "partners": ["東京アールアンドデー"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000020.000098132.html", "https://s.response.jp/article/2023/03/03/368214.html"],
+  "note": "2023年3月に東京アールアンドデーと戦略的パートナーシップ。自動運転EVの共同開発・生産"
+ },
+ {
+  "name": "ファンズ株式会社",
+  "partners": ["三井住友信託銀行", "中国銀行", "オリックス銀行", "福岡銀行", "みんなの銀行"],
+  "sources": ["https://www.chugin.co.jp/news/2947.html", "https://www.orixbank.co.jp/news/detail/20201106_608.html", "https://prtimes.jp/main/html/rd/p/000000184.000023781.html"],
+  "note": "三井住友信託銀行と資本業務提携。中国銀行と業務提携、オリックス銀行とビジネスマッチング契約、三井住友信託銀行・福岡銀行はベンチャーデットファンドに参画、みんなの銀行「Circle」と連携"
+ },
+ {
+  "name": "株式会社Hacobu",
+  "partners": ["ライナロジクス", "ネスレ日本"],
+  "sources": ["https://hacobu.jp/news/1410/", "https://hacobu.jp/news/19877/"],
+  "note": "ライナロジクスと業務提携（MOVOとLYNA CLOUDのAPI連携）。ネスレ日本がMOVO Vistaを導入（約7,000人のドライバーと情報連携）"
+ },
+ {
+  "name": "matsuri technologies株式会社",
+  "partners": ["SOMPOリスクマネジメント", "H.I.S.", "Airbnb Japan", "ユニオンテック", "ファンドクリエーション"],
+  "sources": ["https://prtimes.jp/main/html/searchrlp/company_id/22329"],
+  "note": "SOMPOリスクマネジメント（企業危機管理・BCP）、H.I.S.（自主隔離宿泊）、Airbnb Japan・G Plus Media（住まい領域包括連携）、ユニオンテック（消防設備工事）と提携、ファンドクリエーションと資本業務提携（シェア宿泊マンスリーファンド）"
+ },
+ {
+  "name": "レンティオ株式会社",
+  "partners": ["日鉄興和不動産", "SWALLOW"],
+  "sources": ["https://newswitch.jp/p/29208", "https://www.atpress.ne.jp/news/412031/amp"],
+  "note": "日鉄興和不動産と分譲マンション居住者向け家電レンタルで連携。SWALLOW合同会社と提携し電動キックボード取扱開始。家電メーカー向けECレンタル機能の外販も展開"
+ },
+ {
+  "name": "クラフトバンク株式会社",
+  "partners": ["信和建設"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000040.000080019.html", "https://shinwa-grp.co.jp/news/3020/"],
+  "note": "2022年7月に信和建設と業務提携、協力会社の人手不足解消支援プログラムへ発展"
+ },
+ {
+  "name": "OpenStreet株式会社",
+  "partners": ["東日本旅客鉄道", "ENEOSホールディングス", "サイクルベースあさひ", "シナネンサイクル", "JTBパブリッシング"],
+  "sources": ["https://ja.wikipedia.org/wiki/OpenStreet", "https://www.openstreet.co.jp/"],
+  "note": "2021年5月にJR東日本と資本業務提携、2020年1月にENEOSホールディングスと協業。あさひ・シナネンサイクル・JTBパブリッシング等のパートナー企業とHELLO CYCLINGを展開"
+ },
+ {
+  "name": "株式会社すむたす",
+  "partners": ["マネーフォワードホーム"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000057.000038198.html", "https://corp.moneyforward.com/news/release/corp/20260618-mf-press-1/"],
+  "note": "2026年6月マネーフォワードホームと住宅売却支援で提携。「マネーフォワード ME」上でマンションAI査定を提供"
+ },
+ {
+  "name": "AWL株式会社",
+  "partners": ["Idein", "クアルコム", "カタギリコーポレーション", "サイバーエージェント", "サッポロドラッグストアー"],
+  "sources": ["https://www.idein.jp/ja/news/230816-idein-awl-kyogyo", "https://prtimes.jp/main/html/rd/p/000000058.000046547.html"],
+  "note": "IdeinとエッジAI分野で協業（AWL Engine on Actcast）、クアルコムとISV契約・協業。カタギリコーポレーションと業務資本提携、サイバーエージェント・サッポロドラッグストアーと業務提携"
+ },
+ {
+  "name": "株式会社Leaner Technologies",
+  "partners": ["SUBARU"],
+  "sources": ["https://leaner.jp/news/20260325"],
+  "note": "SRMプラットフォーム「リーナーコネクト」をSUBARU調達部門が導入（2026年3月リリースにて発表）"
+ },
+ {
+  "name": "モノグサ株式会社",
+  "partners": ["住友商事", "Gakken", "首都圏中学模試センター", "ANA"],
+  "sources": ["https://www.nikkei.com/article/DGXZQOUC272K50X21C25A0000000/", "https://corp.monoxer.com/pr/250318/"],
+  "note": "住友商事と資本業務提携（傘下サミット等の従業員教育にMonoxer提供）。Gakkenと語彙学習コンテンツ提供で提携、首都圏中学模試センターと業務提携、ANAグループが従業員教育に2026年4月正式導入"
+ },
+ {
+  "name": "株式会社HQ",
+  "partners": ["カオナビ", "NTTデータ・ウィズ", "日本生命保険", "ツナググループ・ホールディングス", "プラスアルファ・コンサルティング", "百十四銀行"],
+  "sources": ["https://corp.kaonavi.jp/news/pr_20250530/", "https://prtimes.jp/main/html/rd/p/000000133.000089608.html", "https://corp.hq-hq.co.jp/news/posts/20241015-tsunagu-hq-alliance"],
+  "note": "カオナビ・NTTデータ・ウィズ・日本生命保険・ツナググループ2社・プラスアルファ・コンサルティング・百十四銀行と業務提携（カフェテリアHQの販売・共同展開）"
+ },
+ {
+  "name": "株式会社Scalar",
+  "partners": ["58株式会社", "LayerX", "Kong"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000062.000037795.html"],
+  "note": "58株式会社とAI駆動開発で協業（ScalarDB×dodoAI連携）。LayerX「Ai Workforce」と連携協業、Kongと提携しAPI基盤内製化支援サービスを提供"
+ },
+ {
+  "name": "株式会社スカイマティクス",
+  "partners": ["ブルーイノベーション", "アジア航測", "ワールドコーポレーション", "クラフティア"],
+  "sources": ["https://www.blue-i.co.jp/news/release/20240809.html", "https://drone-journal.impress.co.jp/docs/news/1186554.html", "https://prtimes.jp/main/html/rd/p/000000020.000137972.html"],
+  "note": "ブルーイノベーションと戦略的業務提携（2024年8月）、アジア航測と「くみき」販売代理店契約（2024年9月）、ワールドコーポレーションと戦略的業務提携（2025年10月）、クラフティアと資本業務提携（2024年9月）"
+ },
+ {
+  "name": "株式会社Pale Blue",
+  "partners": ["ソニー", "NanoAvionics"],
+  "sources": ["https://pale-blue.co.jp/jpn_news/301/", "https://thebridge.jp/2020/10/pale-blue-seed-round-funding"],
+  "note": "ソニーの衛星プロジェクト「STAR SPHERE」に水エンジンを搭載・提供。米小型衛星メーカーNanoAvionicsと合意書締結"
+ },
+ {
+  "name": "ナッジ株式会社",
+  "partners": ["伊藤忠商事", "能勢電鉄"],
+  "sources": ["https://www.itochu.co.jp/ja/news/press/2022/221012.html", "https://www.atpress.ne.jp/news/571636", "https://prtimes.jp/main/html/rd/p/000000076.000073456.html"],
+  "note": "伊藤忠商事と資本業務提携（2022年10月）。能勢電鉄（阪急阪神HDグループ）等と提携カード発行、カード提携先は100クラブに到達"
+ },
+ {
+  "name": "株式会社ビードットメディカル",
+  "partners": ["レイサーチ", "質達康（Quatherapy）", "江戸川病院"],
+  "sources": ["https://www.hokkoku.co.jp/ud/pressrelease/648a7493760b0675f8000000", "https://kyodonewsprwire.jp/release/202311243303", "https://www.newmed.co.jp/gakkai/9574"],
+  "note": "レイサーチと治療計画ソフトで戦略的パートナーシップ。台湾・質達康と販売代理店契約（2023年11月）、江戸川病院と超小型陽子線がん治療装置初号機導入の基本合意"
+ },
+ {
+  "name": "シンプルフォーム株式会社",
+  "partners": ["みずほ銀行", "PayPay銀行", "GMOあおぞらネット銀行"],
+  "sources": ["https://www.simpleform.co.jp/news/9bNSErAM", "https://www.simpleform.co.jp/news/YBDQOMn8"],
+  "note": "みずほ銀行にSimpleCheck提供（AML/CFT体制強化）、PayPay銀行にビジネスローン審査向け提供、GMOあおぞらネット銀行と法人口座開設審査のAI活用で実証"
+ },
+ {
+  "name": "株式会社リーディングマーク",
+  "partners": ["Hitotechnology", "リアライブ"],
+  "sources": ["https://hitotechnology.co.jp/topics/%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%BC%E3%82%AF%E7%A4%BE%EF%BC%88%E3%83%9F%E3%82%AD%E3%83%AF%E3%83%A1%EF%BC%89%E3%81%A8%E7%9B%B8%E4%BA%92%E3%82%AA%E3%83%95%E3%82%A3/", "https://hrog.net/news/trend/94706/"],
+  "note": "Hitotechnologyと相互オフィシャルパートナー（2025年6月）、リアライブと業務提携（2021年6月、性格検査ミキワメ）"
+ },
+ {
+  "name": "テックタッチ株式会社",
+  "partners": ["弁護士ドットコム", "PwCコンサルティング", "豊田通商", "神戸製鋼所", "ダイワボウ情報システム", "TIS", "JR北海道ホテルズ"],
+  "sources": ["https://techtouch.jp/news/"],
+  "note": "弁護士ドットコムと協業し「テックタッチ for クラウドサイン」提供、PwCコンサルティングと業務提携。豊田通商・神戸製鋼所（経費精算システム）・ダイワボウ情報システム（iKAZUCHI）・TIS・JR北海道ホテルズが導入（各社発表）"
+ },
+ {
+  "name": "株式会社KINS",
+  "partners": ["to clinic shibuya", "大漢酵素生物科技", "タウンズ", "aube", "医療法人三慧会"],
+  "sources": ["https://corporate.yourkins.com/news"],
+  "note": "to clinic shibuyaとメンズヘルス領域で事業提携。台湾・大漢酵素生物科技と業務提携（発酵技術×マイクロバイオーム）、タウンズと診断技術開発の業務提携、aubeと事業提携、医療法人三慧会HORACグランフロント大阪クリニックと不妊治療の共同研究"
+ },
+ {
+  "name": "株式会社カミナシ",
+  "partners": ["オイシス", "スキルディッシュ", "タイムマシーン"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000067.000054269.html", "https://corp.kaminashi.jp/news/pr_20251104", "https://tmcn.jp/press_release/ai%E3%82%AB%E3%83%A1%E3%83%A9%E3%81%AB%E3%82%88%E3%82%8B%E4%BD%93%E8%A1%A8%E6%B8%A9%E6%B8%AC%E5%AE%9A%EF%BC%86%E5%80%8B%E4%BA%BA%E8%AA%8D%E8%A8%BC%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0-acala-face/"],
+  "note": "オイシスと包括的パートナーシップ（全9工場・28店舗に導入、2023年11月）。スキルディッシュとパートナー契約（外国人材支援、2025年11月）、タイムマシーン（ACALA）と業務提携（2021年4月）"
+ },
+ {
+  "name": "株式会社シンプロジェン",
+  "partners": ["ARCALIS"],
+  "sources": ["https://corp.arcalis.co.jp/news/synplogenarcalis_businessallianceagreement-jp/"],
+  "note": "ARCALISとmRNA医薬の開発・製造の推進に関する業務提携契約を締結。富士フイルムからはCVC経由の出資を受領（提携ではなく出資）"
+ },
+ {
+  "name": "株式会社primeNumber",
+  "partners": ["Snowflake", "クラスメソッド", "Databricks"],
+  "sources": ["https://blog.trocco.io/releases/news_20220727", "https://port.creww.me/innovation/101068"],
+  "note": "Snowflakeテクノロジーパートナー認定（2022年7月）、クラスメソッドとパートナーシップ、日本初のDatabricks技術パートナー認定"
+ },
+ {
+  "name": "株式会社TRUSTDOCK",
+  "partners": ["東日本旅客鉄道", "三菱UFJ銀行", "ソフトバンク", "Shopee", "イデックスオート・ジャパン"],
+  "sources": ["https://biz.trustdock.io/news/jre", "https://biz.trustdock.io/news/ufj", "https://biz.trustdock.io/news/softbank_2026"],
+  "note": "JR東日本「HirakeBA」にeKYC提供（2026年7月）、三菱UFJ銀行「BizSaaFin 早払い」に導入、ソフトバンク法人向け本人確認に導入、Shopeeセラー登録・イデックスオート・ジャパンのカーシェアにも導入"
+ }
+]
