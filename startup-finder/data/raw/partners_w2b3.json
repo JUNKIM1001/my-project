@@ -1,0 +1,200 @@
+[
+ {
+  "name": "KGモーターズ株式会社",
+  "partners": ["ミツバ", "出光興産"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000031.000112621.html", "https://blog.evsmart.net/electric-vehicles/good-news-kg-motors-mibot-idemitsu-partnership-ev-sales-at-gas-stations/"],
+  "note": "ミツバ=mibot駆動システムの技術連携強化に向けた出資（資本提携）。出光興産=mibotの納車・点検整備等に関する業務提携"
+ },
+ {
+  "name": "Varinos株式会社",
+  "partners": ["三井化学", "ファミワン"],
+  "sources": ["https://thebridge.jp/2026/05/varinos-raises-series-d-funding-for-uterine-flora-testing", "https://varinos.com/contents/knowledge_checkkit20230510/"],
+  "note": "三井化学=シリーズD出資と同時に共同研究契約締結。ファミワン=子宮内フローラCHECK KITの協業事業"
+ },
+ {
+  "name": "Scalebase株式会社（旧・アルプ株式会社）",
+  "partners": ["ネットプロテクションズ"],
+  "sources": ["https://scalebase.com/news/release20231218"],
+  "note": "BtoB後払い決済「NP掛け払い」のネットプロテクションズと業務提携"
+ },
+ {
+  "name": "株式会社エアロネクスト",
+  "partners": ["ANAホールディングス", "セイノーホールディングス", "チェンジホールディングス", "マゼックス"],
+  "sources": ["https://www.anahd.co.jp/group/pr/202005/20200520.html", "https://prtimes.jp/main/html/rd/p/000000167.000032193.html", "https://voix.jp/business-cards/aeronext-changehd-partnership/"],
+  "note": "ANA HD=物流ドローン共同開発の業務提携。セイノーHD=新スマート物流の共同展開。チェンジHD=危機管理AXの業務提携。マゼックス=次世代AI農業ドローンの業務提携"
+ },
+ {
+  "name": "株式会社ANSeeN",
+  "partners": ["CYBERDYNE"],
+  "sources": ["https://www.cyberdyne.jp/company/PressReleases_detail.html?id=9672"],
+  "note": "CYBERDYNE=X線カラーイメージセンサのコア技術強化を目的とした資本出資（技術連携目的の資本提携）"
+ },
+ {
+  "name": "株式会社マイクロニティ",
+  "partners": ["SynX（ポールトゥウィンホールディングス子会社）", "アルファコックス"],
+  "sources": ["https://diamond.jp/zai/articles/-/1069227", "https://www.alphacox.com/news/20260204/"],
+  "note": "SynX=AI導入支援ビジネス拡大に向けたパートナーシップ契約。アルファコックス（SketchUp Pro Japan）=資本提携"
+ },
+ {
+  "name": "株式会社ジョリーグッド",
+  "partners": ["大塚製薬", "ExaMD", "京都科学", "インソース", "ネットアーツ"],
+  "sources": ["https://panora.tokyo/archives/42075", "https://thebridge.jp/2024/05/jollygood-partners-with-examd-to-develop-virtual-family"],
+  "note": "大塚製薬=SSTVRの国内独占的共同開発・販売契約（最大50億円規模）。ExaMD=在宅医療向け「バーチャルファミリー」共同開発。京都科学=看護教育VRの業務提携。インソース=販売提携。ネットアーツ=SST VRコンテンツ業務提携"
+ },
+ {
+  "name": "GROUND株式会社",
+  "partners": ["オートバックスセブン", "トラスコ中山", "オカムラ", "デジタルフォルン"],
+  "sources": ["https://www.groundinc.co.jp/newsroom/pressrelease/20250611", "https://prtimes.jp/main/html/searchrlp/company_id/19139"],
+  "note": "オートバックスセブン=GWESによる物流基盤構築・物流DXの戦略的提携。トラスコ中山・オカムラ=資本業務提携。デジタルフォルン=物流DXパートナーシップ契約"
+ },
+ {
+  "name": "株式会社ホワイトプラス",
+  "partners": ["積水ハウス不動産グループ", "東急住宅リース", "ソフトバンク", "KLD"],
+  "sources": ["https://www.wh-plus.co.jp/2021/06/pr-20210601/", "https://prtimes.jp/main/html/rd/p/000000050.000016048.html", "https://www.wwdjapan.com/articles/602019"],
+  "note": "積水ハウス不動産G=約65万戸の賃貸入居者向けリネット提供の業務提携。東急住宅リース=約10万戸向け業務提携。ソフトバンク=1時間単位集荷を実現する提携。KLD=リユース事業「FUKU BATON by Lenet」共同展開"
+ },
+ {
+  "name": "CONNEXX SYSTEMS株式会社",
+  "partners": ["NECネッツエスアイ", "サンフロンティア不動産", "レジル", "三菱マテリアル"],
+  "sources": ["https://www.nesic.co.jp/news/2022/20221115.html", "https://kyodonewsprwire.jp/release/202211180027", "https://www.connexxsys.com/notice/post-10479"],
+  "note": "NECネッツエスアイ・サンフロンティア不動産=第三者割当増資（総額5.75億円）と資本業務提携。レジル=マンション・ビル向け定置型蓄電池設置加速の業務提携。三菱マテリアル=バッテリーセカンドライフ事業の協業"
+ },
+ {
+  "name": "株式会社Zevero",
+  "partners": ["アサヒグループジャパン", "北海道銀行", "J-テック", "スタンダード石油大阪発売所"],
+  "sources": ["https://tokyo.publishing.3rd-in.co.jp/article/324f9746-0b80-11f0-a627-9ca3ba0a67df", "https://jtech-jp.com/%E8%84%B1%E7%82%AD%E7%B4%A0%E7%B5%8C%E5%96%B6%E3%82%92%E6%94%AF%E6%8F%B4%E3%81%99%E3%82%8B%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BEzevero%E3%81%A8%E5%8D%94%E6%A5%AD%E3%82%92%E9%96%8B%E5%A7%8B%E3%81%84/"],
+  "note": "アサヒグループジャパン=脱炭素戦略実行での提携。北海道銀行=地域企業の脱炭素経営支援で提携。J-テック=炭素会計プラットフォーム活用の協業。スタンダード石油大阪発売所=化学・製造業の脱炭素化で提携"
+ },
+ {
+  "name": "株式会社RABO",
+  "partners": ["ユニ・チャーム", "Moon Creative Ventures（三井物産子会社）", "ヤマト運輸"],
+  "sources": ["https://www.unicharm.co.jp/ja/company/news/2022/0406-01.html", "https://prtimes.jp/main/html/rd/p/000000081.000037478.html"],
+  "note": "ユニ・チャーム=資本業務提携（猫の健康支援サービス共同開発）。Moon Creative Ventures=資本業務提携（Catlog犬版の日米同時開発）。ヤマト運輸=Catlog販売・物流での協業"
+ },
+ {
+  "name": "OptQC株式会社",
+  "partners": ["NTT"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000030.000148901.html", "https://group.ntt/jp/newsrelease/2025/11/18/251118a.html"],
+  "note": "NTT=2025年11月に連携協定、2026年に資本業務提携契約。100万量子ビット級光量子コンピュータの実用化に向け共同研究・出資"
+ },
+ {
+  "name": "株式会社アルダグラム",
+  "partners": ["パナソニック"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000015.000058603.html", "https://aldagram.com/news/wln71hww9b/"],
+  "note": "パナソニック（エレクトリックワークス社）=資本業務提携。KANNAを含むDXソリューションをインド・トルコ・ベトナム等の海外顧客へ共同展開"
+ },
+ {
+  "name": "インスタリム株式会社",
+  "partners": ["アルケア", "NIPPON EXPRESSホールディングス", "オルトモスグループ"],
+  "sources": ["https://www.nipponexpress-holdings.com/ja/press/2024/20240306-1.html", "https://prtimes.jp/main/html/rd/p/000000011.000035921.html"],
+  "note": "アルケア=義肢装具デジタル製造の国内展開を共同検討する業務提携。NIPPON EXPRESS HD=出資しロジスティクス面から事業拡大を支援。オルトモスグループ=出資と義肢装具分野の基本合意書締結"
+ },
+ {
+  "name": "ArchiTek株式会社",
+  "partners": ["SiFive"],
+  "sources": ["https://www.sifive.com/press/sifive-and-architek-enable-secure-private-flexible", "https://www.businesswire.com/news/home/20210318005151/en/SiFive-and-ArchiTek-Enable-Secure-Private-Flexible-Edge-AI-Computing-With-AiOnIc-Processor"],
+  "note": "SiFive=エッジAIプロセッサAiOnIcにSiFive E3系RISC-VコアIPを採用した技術協業（共同発表）"
+ },
+ {
+  "name": "fermata株式会社",
+  "partners": ["伊藤忠商事", "KDDI", "Mistletoe Japan", "WTFC", "Convosphere"],
+  "sources": ["https://www.itochu.co.jp/ja/news/press/2023/230727.html", "https://fermata-inc.com/blogs/news/fcu", "https://prtimes.jp/main/html/rd/p/000000001.000053409.html"],
+  "note": "伊藤忠商事=バーチャルオフィスによるフェムテック取組強化で協業。KDDI=KDDI Open Innovation Fund 3出資とアジア太平洋でのフェムテック展開協業。Mistletoe Japan=fermata Fund共同設立。WTFC=フェムテック企業伴走クリエイティブチーム発足の業務提携。Convosphere=市場調査・マーケ戦略支援の業務提携"
+ },
+ {
+  "name": "taskey株式会社",
+  "partners": ["アカツキ", "and factory", "コルク"],
+  "sources": ["https://www.bunkanews.jp/article/245184/"],
+  "note": "Webtoon事業参入にあたりアカツキ・and factory・コルクと協業。Tencentからの出資は純出資のため除外"
+ },
+ {
+  "name": "セルアクシア株式会社",
+  "partners": ["メディネット", "FRONTEO"],
+  "sources": ["https://kabutan.jp/news/marketnews/?b=n202210050230", "https://bio.nikkeibp.co.jp/atcl/release/22/10/04/14721/"],
+  "note": "メディネット=歯科診療領域の骨造成治療法実用化に向けた基本合意書締結（事業提携）。FRONTEO=AI創薬支援「DDAIF」活用の細胞治療薬製造効率化PoC契約"
+ },
+ {
+  "name": "ViXion株式会社",
+  "partners": ["パイロットコーポレーション", "千寿製薬", "Spotlight"],
+  "sources": ["https://vixion.jp/news/page/3/?wovn=en", "https://initial.inc/companies/A-43130"],
+  "note": "パイロットコーポレーション=資本業務提携（新製品共同開発・製品販売）。千寿製薬=資本業務提携（見えづらさ対応でのウェルビーイング向上）。Spotlight=第三者割当増資とマーケティング連携"
+ },
+ {
+  "name": "Anique株式会社",
+  "partners": ["VRChat", "メタバースクリエイターズ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000158.000048489.html"],
+  "note": "VRChat社=オフィシャルパートナーシップ契約。メタバースクリエイターズ=戦略的業務提携（VRChat/Roblox等でのACGコンテンツ共同企画・制作）"
+ },
+ {
+  "name": "株式会社エー・スター・クォンタム",
+  "partners": ["電通", "大日本印刷"],
+  "sources": ["https://www.dentsu.co.jp/news/release/2020/1102-010268.html", "https://www.dnp.co.jp/news/detail/20169651_1587.html"],
+  "note": "電通=量子計算によるテレビ広告枠最適化ソリューション開発の業務提携。大日本印刷=製造・物流の組合せ最適化推進の資本業務提携"
+ },
+ {
+  "name": "株式会社HashPort",
+  "partners": ["KDDI"],
+  "sources": ["https://alpha-u.io/article/hashport"],
+  "note": "KDDI=メタバース・Web3サービス「αU」でのPalette Chain対応やWeb3コンテンツ共同検討の基本合意。子会社HashPaletteのAptos Labsへの譲渡はM&Aのため除外"
+ },
+ {
+  "name": "株式会社Unito",
+  "partners": ["大東建託", "インヴァランス", "グリーンズ"],
+  "sources": ["https://www.kentaku.co.jp/news/release/2025/release_unito_250610.html", "https://prtimes.jp/main/html/rd/p/000001578.000035668.html"],
+  "note": "大東建託=2024年3月に資本業務提携、2025年追加出資（リレントモデル全国展開の協業）。インヴァランス（大東建託グループ）=ホテル運営に関する連携協定。グリーンズ=提携ホテル掲載の業務提携"
+ },
+ {
+  "name": "株式会社HOKUTO",
+  "partners": ["ユーシービージャパン"],
+  "sources": ["https://corp.hokuto.app/news"],
+  "note": "ユーシービージャパン=化膿性汗腺炎領域における協働プロジェクト（2024年10月始動）。日本癌治療学会との包括的業務提携は学会のため対象外"
+ },
+ {
+  "name": "株式会社エマルションフローテクノロジーズ",
+  "partners": ["VTT技術研究センター"],
+  "sources": ["https://emulsion-flow.tech/2026/04/28/%e3%83%95%e3%82%a3%e3%83%b3%e3%83%a9%e3%83%b3%e3%83%89vtt%e6%8a%80%e8%a1%93%e7%a0%94%e7%a9%b6%e3%82%bb%e3%83%b3%e3%82%bf%e3%83%bc%e3%81%a8%e6%ac%a7%e5%b7%9e%e5%b8%82%e5%a0%b4%e5%b1%95%e9%96%8b/"],
+  "note": "フィンランド国営研究機関VTT（VTT Technical Research Centre of Finland Ltd）と欧州市場展開に向けた協業検討を開始（2026年4月公式発表）。KDDI・Hondaなどからの出資は純出資のため除外"
+ },
+ {
+  "name": "株式会社岩谷技研",
+  "partners": ["日本航空（JAL）", "松竹"],
+  "sources": ["https://press.jal.co.jp/ja/release/202501/008571.html", "https://www.travelvoice.jp/20250116-157028"],
+  "note": "JAL=気球による宇宙遊覧の事業化に向けた協業（2024年12月基本合意書締結、OPEN UNIVERSE PROJECT参画）。松竹=出資と新時代の「旅」創造に向けた連携"
+ },
+ {
+  "name": "株式会社mento",
+  "partners": ["コクヨ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000001135.000048998.html"],
+  "note": "コクヨの組織成長ソリューション「TEAMUS」とmentoのコーチングサービスが提携（組織課題可視化×行動変容コーチングの融合）"
+ },
+ {
+  "name": "株式会社アダコテック",
+  "partners": ["ヴィスコ・テクノロジーズ", "本田技研工業"],
+  "sources": ["https://adacotech.co.jp/news/6173/", "https://adacotech.co.jp/news/3596/"],
+  "note": "ヴィスコ・テクノロジーズ=画像処理検査装置VTV-9000シリーズへのアダコテック外観検査AI搭載（製品連携）。本田技研工業=異常検知AIの共同実証（精密機械工学会で発表）"
+ },
+ {
+  "name": "株式会社ベター・プレイス",
+  "partners": ["佐賀銀行", "福岡中央銀行", "東京スター銀行", "福岡銀行", "熊本銀行", "十八親和銀行"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000108.000074850.html", "https://bpcom.jp/newsrelease/pressrelease/20260526-7141/", "https://bpcom.jp/newsrelease/pressrelease/20240725-4256/"],
+  "note": "「はぐくみ企業年金」普及に向け地方銀行等と業務提携を多数締結。ふくおかFG3行（福岡銀行・熊本銀行・十八親和銀行）と2026年5月提携。2024年7月時点で金融機関20社と提携"
+ },
+ {
+  "name": "インテグリカルチャー株式会社",
+  "partners": ["日本ハム", "IDDK"],
+  "sources": ["https://lovetech-media.com/news/social/20190705_01/", "https://foodtech-japan.com/2025/11/28/integriculture-6/"],
+  "note": "日本ハム=動物細胞大量培養による食品製造の基盤技術を共同開発。IDDK=細胞培養機器・資材に関する基本合意書（MOU）締結、資本提携協議中。培養肉サプライチェーン構築の「CulNetコンソーシアム」も主宰（14社参画）"
+ },
+ {
+  "name": "EDGEMATRIX株式会社",
+  "partners": ["NTTドコモ", "清水建設", "日本郵政キャピタル", "西尾レントオール", "MSI", "INFINITIX"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000001.000048316.html", "https://www.kyushu.sojitz.com/news/article/20240404144338.html", "https://cloud.watch.impress.co.jp/docs/news/1255692.html"],
+  "note": "NTTドコモ=資本業務提携（映像エッジAIソリューション共同展開）。清水建設・日本郵政キャピタル=出資および協業（2019年スピンオフ時）。西尾レントオール=工事現場向け映像エッジAIレンタルサービス提携。MSI・INFINITIX=通信事業者向けAI-vRAN統合サーバーソリューションの提携"
+ },
+ {
+  "name": "株式会社天地人",
+  "partners": ["アイシン", "Premier Water Services"],
+  "sources": ["https://www.aisin.com/jp/news/uploads/20250807.pdf", "https://tenchijin.co.jp/pressrelease/5434/"],
+  "note": "アイシン=「宇宙水道局」×「みちログ」による日本初の道路・水道管理連携（磐田市で実証検証）。Premier Water Services=マレーシアでの現地展開加速の提携。静岡市上下水道局等の自治体導入は自治体のため対象外"
+ }
+]

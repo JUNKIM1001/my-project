@@ -2,12 +2,16 @@
 
 1. フィールド同期: ローカルで補完した値を、本番側が空欄の場合のみ埋める
    （id+name一致の行のみ・本番優先）
-2. 新規行の追加: ローカルにあって本番にない会社を丸ごとINSERTし、
+2. マージ同期: partners / sources / themes はリスト系のため「空欄のみ」ではなく
+   既存値保持・重複除去の追記マージで反映する
+3. 新規行の追加: ローカルにあって本番にない会社を丸ごとINSERTし、
    idシーケンスを進める（ローカルでのimport_json追加分を本番に反映する経路）
 
 usage:
   DATABASE_URL="postgresql://..." .venv/bin/python -m app.scripts.sync_fields_to_postgres
 """
+
+import json
 
 import os
 import sys
@@ -45,8 +49,29 @@ with _dst_engine.connect() as _conn:
     _conn.commit()
 dst = sessionmaker(bind=_dst_engine)()
 
+def merge_csv(a, b):
+    items = []
+    for part in (a or "").split(",") + (b or "").split(","):
+        p = part.strip()
+        if p and p not in items:
+            items.append(p)
+    return ",".join(items) if items else None
+
+
+def merge_json_list(a, b):
+    def load(v):
+        try:
+            x = json.loads(v) if v else []
+            return x if isinstance(x, list) else []
+        except (ValueError, TypeError):
+            return []
+    la = load(a)
+    out = la + [x for x in load(b) if x not in la]
+    return json.dumps(out, ensure_ascii=False) if out else None
+
+
 local = {c.id: c for c in src.query(Company).all()}
-updated, filled, mismatched = 0, 0, []
+updated, filled, merged, mismatched = 0, 0, 0, []
 for remote in dst.query(Company).all():
     l = local.get(remote.id)
     if l is None:
@@ -60,10 +85,21 @@ for remote in dst.query(Company).all():
             setattr(remote, col, getattr(l, col))
             filled += 1
             changed = True
+    for col in ("partners", "themes"):
+        m = merge_csv(getattr(remote, col), getattr(l, col))
+        if m != getattr(remote, col):
+            setattr(remote, col, m)
+            merged += 1
+            changed = True
+    m = merge_json_list(remote.sources, l.sources)
+    if m != remote.sources:
+        remote.sources = m
+        merged += 1
+        changed = True
     if changed:
         updated += 1
 dst.commit()
-print("updated companies=%d filled fields=%d" % (updated, filled))
+print("updated companies=%d filled fields=%d merged fields=%d" % (updated, filled, merged))
 if mismatched:
     print("SKIPPED (id/name mismatch):", mismatched[:10])
 

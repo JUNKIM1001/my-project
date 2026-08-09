@@ -1,0 +1,194 @@
+[
+ {
+  "name": "ヒューマンライフコード株式会社",
+  "partners": ["ロート製薬", "アルフレッサホールディングス", "ウェルネス", "持田製薬"],
+  "sources": ["https://www.nikkei.com/article/DGXMZO57382750Z20C20A3TJ1000/", "https://prtimes.jp/main/html/rd/p/000000026.000061963.html", "https://bio.nikkeibp.co.jp/atcl/release/24/09/27/21812/"],
+  "note": "ロート製薬・アルフレッサHDと資本業務提携。ウェルネスとデータトラッキング業務提携。持田製薬と共同事業化契約"
+ },
+ {
+  "name": "株式会社xenodata lab.",
+  "partners": ["エアトリ", "時事通信社", "ダウ・ジョーンズ", "ユーザベース", "富士通"],
+  "sources": ["https://www.airtrip.co.jp/news/4739/", "https://www.fujitsu.com/jp/innovation/venture/interview/xenodata/"],
+  "note": "エアトリと資本業務提携。時事通信・ダウ・ジョーンズとニュースデータ活用提携、ユーザベースSPEEDAへxenoFlash配信、富士通と協業"
+ },
+ {
+  "name": "株式会社スピークバディ",
+  "partners": ["リアブロード"],
+  "sources": ["https://jinjibu.jp/service/detl/17869/", "https://sbbiz.jp/"],
+  "note": "海外留学「スマ留」のリアブロードと業務提携。法人導入150社超（三井不動産・日立ソリューションズ・パーソルキャリア等は導入事例）"
+ },
+ {
+  "name": "カラクリ株式会社",
+  "partners": ["Helpfeel", "Upstage", "三井ダイレクト損害保険", "王子ネピア", "JTB"],
+  "sources": ["https://karakuri.ai/news/upstage_mou", "https://karakuri.ai/news"],
+  "note": "Helpfeelと戦略的パートナーシップ、韓国UpstageとMOU締結。三井ダイレクト損保・王子ネピアはコールセンター/相談室AI導入、JTBと国産LLM活用の協業"
+ },
+ {
+  "name": "HiJoJo Partners株式会社",
+  "partners": ["Nasdaq Private Market", "マネックス証券", "Scenic Advisement", "FNEX"],
+  "sources": ["https://info.monex.co.jp/nikoyuka/hijojo-partners.html", "https://www.hijojo-partners.com/news/b1"],
+  "note": "米Nasdaq Private Marketと資本業務提携。マネックス証券経由で個人向けファンド提供。米Scenic Advisement・FNEXと業務提携"
+ },
+ {
+  "name": "株式会社テックドクター",
+  "partners": ["伊藤忠テクノソリューションズ", "塩野義製薬", "資生堂", "損害保険ジャパン", "ロッテ"],
+  "sources": ["https://thebridge.jp/2025/05/techdoctor-raises-1-2-billion-yen-in-series-b-funding", "https://morningpitch.com/startups/32752/"],
+  "note": "設立以来100件超の企業・研究機関との共同研究。記載5社は共同研究・提携先として報道された企業"
+ },
+ {
+  "name": "アセンド株式会社",
+  "partners": ["北陸銀行", "沖縄銀行", "百十四銀行", "都築電気", "ぶぎんシステムサービス"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000044.000071415.html"],
+  "note": "地方銀行等とビジネスマッチング業務提携（運送事業者DX推進の顧客紹介）"
+ },
+ {
+  "name": "株式会社アペルザ",
+  "partners": ["2WINS", "JTBコミュニケーションデザイン", "イノベーション", "Octopart"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000126.000014995.html", "https://www.aperza.com/corp/20170123/", "https://www.aperza.com/corp/20170116/"],
+  "note": "2WINSと製造業向けAI共同開発の業務提携。JTBコミュニケーションデザインとオンライン展示会で協業。イノベーションと業務提携、米Octopartとデータ提携"
+ },
+ {
+  "name": "SecureNavi株式会社",
+  "partners": ["AppGuard", "TMIプライバシー＆セキュリティコンサルティング"],
+  "sources": ["https://thebridge.jp/2025/11/securenavi-raises-jpy-1-2-billion-series-b-business-side-security-dx", "https://prtimes.jp/main/html/rd/p/000000106.000089471.html"],
+  "note": "AppGuard社・TMIプライバシー＆セキュリティコンサルティングと業務提携（セキュリティ運用効率化・SaaS型セキュリティ管理の普及）と報道"
+ },
+ {
+  "name": "株式会社LIGHTz",
+  "partners": ["ストックマーク", "ライオン", "豊田通商", "東京貿易ホールディングス", "オルガノ"],
+  "sources": ["https://lightz-inc.com/press-release/20260121/", "https://lightz-inc.com/press-release/post_20/", "https://ils.tokyo/performance/case/case22.php"],
+  "note": "ストックマークと業務提携（技術マーケティング高度化）。豊田通商と資本業務提携、東京貿易HD・オルガノとも資本業務提携。ライオンと歯磨き粉香料開発AIで協業"
+ },
+ {
+  "name": "株式会社Chompy（旧・株式会社シン）",
+  "partners": ["LINEヤフー"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000018.000062766.html"],
+  "note": "モバイルオーダー「Chompy」がLINEミニアプリと連携開始（国内初の全UI対応）"
+ },
+ {
+  "name": "スタディプラス株式会社",
+  "partners": ["リクルート", "朝日新聞社", "Z会", "すららネット", "Digika", "KEC Miriz"],
+  "sources": ["https://www.nikkei.com/article/DGXZQOUC160DW0W2A910C2000000/", "https://markezine.jp/article/detail/22410", "https://www.zkai-gr.co.jp/news/1125/"],
+  "note": "リクルート・Z会グループと業務提携。朝日新聞社と業務・資本提携。教材各社とStudyplus for School連携"
+ },
+ {
+  "name": "株式会社Provigate",
+  "partners": ["シスメックス", "H.U.グループ中央研究所"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000001.000083778.html", "https://digital-shift.jp/flash_news/FN210927_5"],
+  "note": "シスメックスとグリコアルブミンPOCT共同開発の業務提携。H.U.グループ中央研究所と糖尿病行動変容プログラムで戦略的提携"
+ },
+ {
+  "name": "FastLabel株式会社",
+  "partners": ["菱洋エレクトロ", "アマナイメージズ", "ugo"],
+  "sources": ["https://fastlabel.ai/news", "https://www.weeklybcn.com/journal/news/detail/20230824_199947.html"],
+  "note": "菱洋エレクトロとアノテーションツール×ワークステーションで提携。アマナイメージズと機械学習用データ提供で業務提携。ugoとフィジカルAIロボティクスの研究開発・SIで業務提携"
+ },
+ {
+  "name": "株式会社GramEye",
+  "partners": ["富士フイルム和光純薬"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000010.000098814.html"],
+  "note": "染色試薬供給で富士フイルム和光純薬と提携（Mycriumの精度向上・運用最適化）"
+ },
+ {
+  "name": "Tensor Energy株式会社",
+  "partners": ["リミックスポイント", "シールエンジニアリング", "エナジー・ソリューションズ", "LC-JAPAN"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000019.000096424.html", "https://www.lcom-group.jp/news/news-4479"],
+  "note": "リミックスポイント・シールエンジニアリング・エナジー・ソリューションズとFIP発電事業最適化の共同実証で業務提携。LC-JAPANと低圧系統用蓄電池事業で協業"
+ },
+ {
+  "name": "株式会社ロボトラック",
+  "partners": ["オリックス", "オリックス自動車", "センコー", "豊田通商", "日野自動車"],
+  "sources": ["https://www.orix.co.jp/grp/company/newsroom/newsrelease/250714_ORIXJ.html", "https://kepple.co.jp/articles/gtua7gatf", "https://prtimes.jp/main/html/rd/p/000000002.000159893.html"],
+  "note": "オリックス・オリックス自動車と資本業務提携（物流自動運転の協業）。オリックス自動車・センコーとL4物流自動運転トレーラー推進協議会で公道実証。豊田通商・日野自動車らとコンソーシアムで国交省実証事業"
+ },
+ {
+  "name": "株式会社PeopleX",
+  "partners": ["エン・ジャパン", "ジェック", "TechBowl", "Hitotechnology", "プラリタウン", "イグニション・ポイント"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000239.000139786.html", "https://note.com/techbowl/n/n2414aee0801b"],
+  "note": "エン（エン・ジャパン）と合弁会社「エンPeopleX」設立。ジェックと資本業務提携。TechBowl等と業務提携"
+ },
+ {
+  "name": "Siiibo証券株式会社",
+  "partners": ["スピカコンサルティング", "FAMORE", "アセット・デザイナーズ", "ADワークスグループ", "バトンズ"],
+  "sources": ["https://spicon.co.jp/news/press-release/9cj2t28mlboj/"],
+  "note": "スピカコンサルティングとM&A後オーナー向け社債投資機会提供で業務提携。ADワークスグループ・バトンズ等とも業務提携"
+ },
+ {
+  "name": "スタートバーン株式会社",
+  "partners": ["電通", "電通イノベーションイニシアティブ", "SBIアートオークション", "SMADONA"],
+  "sources": ["https://www.dentsu.co.jp/news/release/2021/0709-010407.html", "https://gamebiz.jp/news/300193"],
+  "note": "電通・電通イノベーションイニシアティブと協業しNFT事業構築支援サービスを開発。SBIアートオークション・SMADONA等と事業提携"
+ },
+ {
+  "name": "パラレル株式会社",
+  "partners": ["GameTector"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000008.000056314.html"],
+  "note": "eスポーツ大会プラットフォーム「GameTector」と連携しボイスチャット機能を導入（サービス名での発表）"
+ },
+ {
+  "name": "株式会社ゼスト",
+  "partners": ["ワイズマン"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000057.000056654.html", "https://www.wiseman.co.jp/news/welfare/zest_2/"],
+  "note": "ワイズマンとデータ連携（SPシステム×ZESTで訪問看護DX）。エムスリーは出資のみのため除外"
+ },
+ {
+  "name": "株式会社タックスナップ",
+  "partners": ["はてなベース", "CAMELORS", "TxTo"],
+  "sources": ["https://hatenabase.jp/news/7581/", "https://sokudan.work/news/303"],
+  "note": "はてなベース・TxToと協業。CAMELORS運営「SOKUDAN」と業務提携（会員限定特典）"
+ },
+ {
+  "name": "H.I.F.株式会社",
+  "partners": ["エイチ・アイ・エス", "GMOあおぞらネット銀行", "大垣西濃信用金庫", "Quants", "ファブリカコミュニケーションズ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000076.000033718.html", "https://coki.jp/company/hif/"],
+  "note": "エイチ・アイ・エス・GMOあおぞらネット銀行と三社間包括業務提携の覚書。大垣西濃信用金庫と中小企業共同支援。QuantsとAI与信審査活用の融資保証で業務提携。ファブリカコミュニケーションズと中古車AI与信で業務提携"
+ },
+ {
+  "name": "株式会社Kort Valuta",
+  "partners": ["電通", "オリコ", "PST"],
+  "sources": ["https://www.nikkei.com/article/DGXLRSP613388_Y1A620C2000000/", "https://paymentnavi.com/paymentnews/146693.html"],
+  "note": "電通とTwooCa/TwooCa Ringの取次販売契約。オリコとTwooCa連携バーチャルプリペイドカード発行。PSTと資本業務提携"
+ },
+ {
+  "name": "株式会社PETOKOTO",
+  "partners": ["JR東日本スタートアップ", "楽天", "ベガコーポレーション", "エフアンドエフシステム", "HAVI Supply Chain Solutions Japan"],
+  "sources": ["https://www.nikkei.com/article/DGXZRSP651214_V10C23A3000000/", "https://netkeizai.com/articles/detail/8396"],
+  "note": "JR東日本スタートアップと資本業務提携（JRE MALL出店・地域食材フード開発）。楽天と旅行・保険領域、ベガコーポレーションと住宅・家具領域で業務提携。HAVIとアジア展開で提携"
+ },
+ {
+  "name": "株式会社アクセルラボ",
+  "partners": ["パーパス", "三協立山", "And Doホールディングス"],
+  "sources": ["https://www.purpose.co.jp/news/detail/227", "https://accel-lab.com/jp/archives/5079", "https://accel-lab.com/jp/archives/3877"],
+  "note": "「Works With SpaceCore」で20社以上のメーカーと連携。パーパス（給湯器）・三協アルミ（電動シャッター）と連携、And DoホールディングスがSpaceCoreエンジンを採用"
+ },
+ {
+  "name": "RUN.EDGE株式会社",
+  "partners": ["Inside Edge"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000023.000053881.html"],
+  "note": "米Inside Edge社と提携しMLB球団向け動画データ分析を強化"
+ },
+ {
+  "name": "株式会社チカク",
+  "partners": ["JCOM", "セコム"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000021.000015422.html", "https://www.chikaku.co.jp/journal"],
+  "note": "J:COMと販売パートナー契約（まごチャンネル提供）。セコムと新たな見守りサービスを共同開発"
+ },
+ {
+  "name": "株式会社HERP",
+  "partners": ["マネーフォワード"],
+  "sources": ["https://corp.moneyforward.com/news/release/corp/20211006-mf-press/"],
+  "note": "マネーフォワードと資本業務提携（ユーザー送客・ナレッジ共有等）"
+ },
+ {
+  "name": "株式会社インゲージ",
+  "partners": ["トライコーン"],
+  "sources": ["https://www.tricorn.co.jp/news/530/", "https://ingage.co.jp/archives/7860/"],
+  "note": "トライコーンのCRM「クライゼル」とRe:lationを連携。ほかInfiniTalk・TEMPOSTAR等複数システムと連携提携"
+ },
+ {
+  "name": "株式会社Payment Technology",
+  "partners": ["PayPay銀行", "新生銀行", "アプラス", "ビューティガレージ", "フィールズ", "e-web"],
+  "sources": ["https://www.paypay-bank.co.jp/company/press/2019/0205.html", "https://paymentnavi.com/paymentnews/104649.html", "https://prtimes.jp/main/html/rd/p/000000138.000019834.html"],
+  "note": "PayPay銀行（旧ジャパンネット銀行）と決済提携。新生銀行とマッチング契約、アプラスとクレジット加盟契約。ビューティガレージ・フィールズと販路開拓の業務提携、e-web「打刻Keeper」とアライアンス"
+ }
+]

@@ -1,0 +1,242 @@
+[
+ {
+  "name": "KGモーターズ株式会社",
+  "website": "https://kg-m.jp/",
+  "hq": "広島県",
+  "description": "1人乗り超小型EV（原付ミニカー規格）「mibot」を開発・量産するモビリティスタートアップ。航続100km・最高速60"
+ },
+ {
+  "name": "Varinos株式会社",
+  "website": "https://varinos.com",
+  "hq": "東京都江東区",
+  "description": "世界初の子宮内フローラ検査を事業化したゲノム検査企業。不妊治療領域を中心に臨床ゲノム検査の開発・提供を行う。導入医療機関"
+ },
+ {
+  "name": "Scalebase株式会社（旧・アルプ株式会社）",
+  "website": "https://scalebase.com/",
+  "hq": "東京都渋谷区",
+  "description": "サブスクリプション・SaaS事業者向けの販売・請求管理SaaS「Scalebase」を開発・提供。"
+ },
+ {
+  "name": "株式会社エアロネクスト",
+  "website": "https://aeronext.co.jp/",
+  "hq": "東京都渋谷区",
+  "description": "独自の機体構造設計技術「4D GRAVITY」の特許ライセンス事業と、子会社NEXT DELIVERYを通じたドローン配"
+ },
+ {
+  "name": "株式会社ANSeeN",
+  "website": "https://anseen.com/",
+  "hq": "静岡県浜松市中央区",
+  "description": "静岡大学発。化合物半導体を用いた直接変換型X線センサ・検出器を開発・製造。産業用非破壊検査、セキュリティ検査、医療イメー"
+ },
+ {
+  "name": "株式会社マイクロニティ",
+  "website": "https://micronity.com/",
+  "hq": "東京都渋谷区",
+  "description": "AI駆動型ソフトウェア事業承継プラットフォーム「Micronity」を運営。後継者不足の業界特化型ソフトウェア企業を買収"
+ },
+ {
+  "name": "株式会社ジョリーグッド",
+  "website": "https://jollygood.co.jp/",
+  "hq": "東京都中央区",
+  "description": "医療VR臨床教育プラットフォーム「オペクラウドVR」やデジタル治療VRなど、VR・AI技術を医療・障害福祉向けに開発提供"
+ },
+ {
+  "name": "AnotherBall Pte. Ltd.",
+  "website": "https://anotherball.com",
+  "hq": "シンガポール（日本に拠点・日本人創業）",
+  "description": "英語圏向けAI・Web3活用のVTuberプロジェクト「IZUMO」やVTuberアバター作成アプリ「Avvy」を展開。"
+ },
+ {
+  "name": "株式会社Mellow",
+  "website": "https://www.mellow.jp",
+  "hq": "東京都港区",
+  "description": "キッチンカー等の店舗型モビリティと空きスペースをマッチングするプラットフォーム「SHOP STOP」を運営。"
+ },
+ {
+  "name": "GROUND株式会社",
+  "website": "https://www.groundinc.co.jp",
+  "hq": "東京都千代田区",
+  "description": "AIとロボティクスで物流施設の統合管理・最適化を行う。倉庫実行システム「GWES」や自律協働搬送ロボット「PEER」シリ"
+ },
+ {
+  "name": "株式会社ホワイトプラス",
+  "website": "https://www.wh-plus.co.jp/",
+  "hq": "東京都品川区",
+  "description": "「WEB×クリーニング」の宅配クリーニング『リネット』を運営する。"
+ },
+ {
+  "name": "CONNEXX SYSTEMS株式会社",
+  "website": null,
+  "hq": "京都府相楽郡精華町",
+  "description": "リチウムイオン・鉛・燃料電池など複数種の二次電池を組み合わせたハイブリッド蓄電池や、鉄・空気電池など次世代の蓄電・発電シ"
+ },
+ {
+  "name": "株式会社Zevero",
+  "website": "https://www.zevero.earth",
+  "hq": "東京都港区赤坂５丁目２番３３号ＩｓａＩＡｋａｓａｋＡ１４０５室",
+  "description": "AIでScope1-3排出量算定を自動化するカーボンマネジメントプラットフォーム"
+ },
+ {
+  "name": "株式会社RABO",
+  "website": "https://rabo.cat",
+  "hq": "東京都渋谷区",
+  "description": "首輪型デバイスで猫の行動・健康データを記録・見守る「Catlog」を開発・提供。日本最大級の猫の行動データベースを保有。"
+ },
+ {
+  "name": "OptQC株式会社",
+  "website": "https://optqc.com/",
+  "hq": "東京都豊島区",
+  "description": "東京大学・古澤研究室の研究成果をもとに、常温常圧で動作しスケーラビリティに優れる光量子コンピュータの商用機開発を行う東大"
+ },
+ {
+  "name": "株式会社Light",
+  "website": "https://light-inc.com",
+  "hq": "東京都港区",
+  "description": "コミュニティ型ライブ配信プラットフォーム「Palmu」を企画・開発・運営。"
+ },
+ {
+  "name": "株式会社アルダグラム",
+  "website": "https://aldagram.com/",
+  "hq": "東京都港区",
+  "description": "建設・不動産・製造業などノンデスクワーク産業向けのプロジェクト管理アプリ「KANNA」を開発・提供。"
+ },
+ {
+  "name": "インスタリム株式会社",
+  "website": "https://www.instalimb.com/jp",
+  "hq": "東京都墨田区",
+  "description": "3DプリンターとAIで世界初の3Dプリント義足ソリューションを製造・販売。フィリピン等新興国を中心に低コストな義足を提供"
+ },
+ {
+  "name": "ArchiTek株式会社",
+  "website": "https://architek.ai/",
+  "hq": "大阪府大阪市西区",
+  "description": "小型・低消費電力・ファンレスを実現する独自アーキテクチャのエッジAIプロセッサ「AiOnIc」を開発する半導体ファブレス"
+ },
+ {
+  "name": "fermata株式会社",
+  "website": "https://fermata-inc.com/",
+  "hq": "東京都目黒区",
+  "description": "フェムテック領域に特化。国内外フェムテック製品の販売「fermata store」や企業向けワークショップ・コンサル・薬"
+ },
+ {
+  "name": "taskey株式会社",
+  "website": null,
+  "hq": "東京都新宿区",
+  "description": "マンガ・ノベルアプリ『peep（ピープ）』の運営、及びWebtoon・マンガの制作・原作開発を手がけるデジタルIPコンテ"
+ },
+ {
+  "name": "セルアクシア株式会社",
+  "website": "https://www.cellaxia.co.jp",
+  "hq": "東京都中央区",
+  "description": "難治性疾患向け新規細胞治療薬「E-MNC」（CA-702、シェーグレン症候群対象）等の研究開発を行う創薬バイオスタートア"
+ },
+ {
+  "name": "ViXion株式会社",
+  "website": "https://vixion.jp/",
+  "hq": "東京都中央区",
+  "description": "オートフォーカスアイウェア「ViXion01」シリーズや暗所視支援デバイス「MW10 HiKARI」等のウェアラブル視覚"
+ },
+ {
+  "name": "Anique株式会社",
+  "website": "https://anique.jp/",
+  "hq": "東京都千代田区",
+  "description": "日本のアニメ・マンガ・ゲームIPの体験価値を世界に届けるプラットフォーム。グッズ企画・販売、VR展覧会、体験型カフェを国"
+ },
+ {
+  "name": "株式会社Magic Moment",
+  "website": "https://magicmoment.jp/",
+  "hq": "東京都港区",
+  "description": "営業支援SaaS「Magic Moment Playbook」と営業オペレーション支援「Revenue BPaaS」を提"
+ },
+ {
+  "name": "株式会社エー・スター・クォンタム",
+  "website": "https://a-star-quantum.jp/",
+  "hq": "東京都港区",
+  "description": "量子AI高速計算プラットフォーム「AQCloud」を開発・提供。物流・製造・金融などの組合せ最適化ソリューションを展開。"
+ },
+ {
+  "name": "株式会社HashPort",
+  "website": "https://hashport.io",
+  "hq": "東京都港区",
+  "description": "Web3領域の企業向けコンサルティング・システム開発、IP×NFT事業、Paletteブロックチェーンを展開。"
+ },
+ {
+  "name": "株式会社Unito",
+  "website": "https://unito.life",
+  "hq": "東京都目黒区",
+  "description": "帰らない日は家賃がかからない「リレント（Re-rent）」型のサブスク住居「unito」の企画・開発・運営を行う。"
+ },
+ {
+  "name": "株式会社wevnal",
+  "website": "https://wevnal.co.jp",
+  "hq": "東京都渋谷区",
+  "description": "LTV最大化を実現するBX（Brand Experience）プラットフォーム「BOTCHAN」を開発・運営。チャットボ"
+ },
+ {
+  "name": "株式会社HOKUTO",
+  "website": "https://corp.hokuto.app",
+  "hq": "東京都",
+  "description": "医師向け臨床支援アプリ「HOKUTO」を提供。エビデンスに基づく医学情報アクセスと製薬向けデジタルマーケティング支援も展"
+ },
+ {
+  "name": "株式会社エマルションフローテクノロジーズ",
+  "website": "https://emulsion-flow.tech/",
+  "hq": "東京都",
+  "description": "日本原子力研究開発機構発。革新的溶媒抽出技術「エマルションフロー」でリチウムイオン電池からレアメタルを低コスト・高純度回"
+ },
+ {
+  "name": "株式会社ヘンリー",
+  "website": "https://henry.jp",
+  "hq": "東京都",
+  "description": "中小病院・クリニック向けのクラウド型電子カルテ・レセコン一体型システム「Henry」を開発・提供する。"
+ },
+ {
+  "name": "株式会社岩谷技研",
+  "website": "https://iwaya.biz/",
+  "hq": "北海道江別市",
+  "description": "気球による成層圏の遊覧旅行サービスを開発する北海道大学関連の宇宙スタートアップ。『OPEN UNIVERSE PROJE"
+ },
+ {
+  "name": "株式会社mento",
+  "website": "https://mento.co.jp",
+  "hq": "東京都",
+  "description": "法人・個人向けコーチングサービス「mento」を提供。AI×コーチのマネジメントサクセス基盤を開発。"
+ },
+ {
+  "name": "株式会社ガイアバイオメディシン",
+  "website": "https://gaia-biomed.com/",
+  "hq": "福岡県福岡市",
+  "description": "NK様細胞『GAIA-102』を用いた難治性がんに対する免疫細胞療法を開発する九州大学発バイオスタートアップ。"
+ },
+ {
+  "name": "株式会社アダコテック",
+  "website": "https://adacotech.co.jp/",
+  "hq": "東京都千代田区",
+  "description": "産総研発の画像解析技術HLACを用い、正常品のみを教師データとする製造業向け外観検査・異常検知AIソフトウェアを提供。"
+ },
+ {
+  "name": "株式会社ベター・プレイス",
+  "website": "https://bpcom.jp/",
+  "hq": "東京都新宿区",
+  "description": "中小企業でも導入できる確定給付企業年金「はぐくみ企業年金」の導入・設計支援を行う「お金の福利厚生」スタートアップ。加入者"
+ },
+ {
+  "name": "インテグリカルチャー株式会社",
+  "website": "https://integriculture.com",
+  "hq": "東京都",
+  "description": "独自の低コスト細胞培養技術「CulNet System」を基盤に、培養肉など細胞農業による食品・素材の産業化を目指すスタ"
+ },
+ {
+  "name": "EDGEMATRIX株式会社",
+  "website": "https://edgematrix.com/",
+  "hq": "東京都渋谷区",
+  "description": "映像エッジAIの現場実装を手がける。高性能エッジAIデバイス「Edge AI Box」とAIアプリの配信・遠隔管理を行う"
+ },
+ {
+  "name": "株式会社天地人",
+  "website": "https://tenchijin.co.jp",
+  "hq": "東京都",
+  "description": "衛星データとAIを活用し持続可能な水道事業を支援する「宇宙水道局」など土地評価サービスを提供するJAXA発宇宙ベンチャー"
+ }
+]

@@ -1,0 +1,242 @@
+[
+ {
+  "name": "キャディ株式会社",
+  "website": "https://caddi.com",
+  "hq": "東京都",
+  "description": "製造業向けAIデータプラットフォーム「CADDi」を提供し、図面データの資産化により調達・設計業務を変革する。米国など海"
+ },
+ {
+  "name": "株式会社Integral Geometry Science",
+  "website": "https://www.nikkei.com/telecom/company/q9PUUZVeGQGA1uCad8BqaU",
+  "hq": "兵庫県神戸市",
+  "description": "電池検査システム、マイクロ波マンモグラフィーなどを開発"
+ },
+ {
+  "name": "株式会社Linc'well",
+  "website": "https://linc-well.com",
+  "hq": "東京都港区",
+  "description": "クリニックチェーン「クリニックフォア」のDX支援・オンライン診療やヘルスケアECを展開する医療スタートアップ。東大病院出"
+ },
+ {
+  "name": "Fact Base（日経NEXTユニコーン調査掲載名）",
+  "website": "https://fact-base.com/",
+  "hq": "東京都港区",
+  "description": "製造業向け図面管理システムの開発・運営・販売"
+ },
+ {
+  "name": "コミューン株式会社",
+  "website": "https://communeinc.com",
+  "hq": "東京都",
+  "description": "企業とユーザーが繋がるコミュニティサクセスプラットフォーム「commmune（コミューン）」をSaaSとして提供。"
+ },
+ {
+  "name": "株式会社HYPERITHM",
+  "website": "https://www.hyperithm.com/",
+  "hq": "東京都千代田区",
+  "description": "日本と韓国を拠点に、機関投資家・富裕層向けの暗号資産ウェルスマネジメント（運用・管理）事業を展開する。"
+ },
+ {
+  "name": "株式会社リセ",
+  "website": "https://lisse-law.com/",
+  "hq": "東京都千代田区",
+  "description": "企業・法律事務所における法務業務の効率化システム開発、販売"
+ },
+ {
+  "name": "Nstockホールディングス株式会社",
+  "website": "https://www.nstock-hd.co.jp/",
+  "hq": "東京都中央区",
+  "description": "株式報酬（ストックオプション）管理SaaSと未上場株セカンダリー流通事業を展開。従業員の株式報酬による資産形成インフラを"
+ },
+ {
+  "name": "株式会社ロジレス",
+  "website": "https://corp.logiless.com",
+  "hq": "東京都豊島区",
+  "description": "EC事業者と倉庫事業者向けにOMS（受注管理）とWMS（倉庫管理）一体型の物流SaaS「LOGILESS」を提供。"
+ },
+ {
+  "name": "株式会社ユカシカド",
+  "website": "https://www.yukashikado.co.jp/",
+  "hq": "東京都渋谷区",
+  "description": "尿検査によるパーソナル栄養検査サービス「VitaNote」やカスタムメイドサプリ「VitaNote FOR」を提供する。"
+ },
+ {
+  "name": "大熊ダイヤモンドデバイス株式会社",
+  "website": "https://ookuma-dd.com/",
+  "hq": "北海道札幌市",
+  "description": "北海道大学・産業技術総合研究所発のダイヤモンド半導体スタートアップ。耐放射線・高出力に強いダイヤモンド半導体デバイスを開"
+ },
+ {
+  "name": "PIVOT株式会社",
+  "website": "https://pivot.inc",
+  "hq": "東京都渋谷区",
+  "description": "ビジネス映像メディアの配信、制作"
+ },
+ {
+  "name": "オシアナスバイオ株式会社",
+  "website": "https://oceanusbio.jp/",
+  "hq": "東京都港区",
+  "description": "欧米企業から有望なバイオ医薬候補を導入し、日本・アジア市場向けに臨床開発・承認・販売を行う製薬スタートアップ。"
+ },
+ {
+  "name": "株式会社StoreHero",
+  "website": null,
+  "hq": "東京都",
+  "description": "Shopify特化型グロースプラットフォームをベースとしたEC事業者向けグロース支援サービスを提供。"
+ },
+ {
+  "name": "株式会社大和インフラロボティクス",
+  "website": "https://www.yamato-robotics.com/",
+  "hq": "熊本県熊本市中央区",
+  "description": "熊本大学発ベンチャー。公共インフラの維持管理の効率化・高度化を目的にロボット・AI技術を研究開発する。"
+ },
+ {
+  "name": "Neusignal Therapeutics株式会社",
+  "website": "https://neusignal-tx.com/",
+  "hq": "東京都中央区",
+  "description": "東北大学発の創薬スタートアップ。アルツハイマー型認知症を中心とする認知症・精神疾患に対する低分子治療薬（リード候補NTX"
+ },
+ {
+  "name": "株式会社エニトグループ",
+  "website": "https://enito.co.jp",
+  "hq": "東京都渋谷区",
+  "description": "マッチングアプリ「with」「Omiai」を運営する株式会社with・株式会社Omiaiの持株会社。恋愛・婚活マッチング"
+ },
+ {
+  "name": "Tailor Technologies, Inc.（テイラー株式会社）",
+  "website": "https://www.tailor.tech",
+  "hq": "米国サンフランシスコ（日本法人は東京都港区）",
+  "description": "ヘッドレス/コンポーザブルERPプラットフォーム「Tailor Platform」と即導入型「Omakase ERP」を"
+ },
+ {
+  "name": "Notta株式会社",
+  "website": "https://www.notta.ai/",
+  "hq": "東京都千代田区",
+  "description": "音声認識・自然言語処理AIを活用したAI文字起こし・議事録作成サービス「Notta」を開発・提供。5,000社・1,50"
+ },
+ {
+  "name": "株式会社TriOrb",
+  "website": "https://triorb.co.jp",
+  "hq": "福岡県北九州市",
+  "description": "3つの球体と3基のモーターによる球駆動式全方向移動機構「TriOrb BASE」を開発・社会実装するロボットスタートアッ"
+ },
+ {
+  "name": "株式会社スムーズ",
+  "website": "https://smooth.jp/",
+  "hq": "東京都渋谷区",
+  "description": "賃貸契約時の初期費用をクレジットカード不要で分割・あと払いにできるサービス「スムーズ」を運営。登録者数47万人超。"
+ },
+ {
+  "name": "株式会社Goals",
+  "website": "https://goals.co.jp",
+  "hq": "東京都",
+  "description": "AI需要予測により飲食店の発注・シフト・原価管理を最適化するクラウド「HANZO」シリーズを提供し、食品産業の食品ロス削"
+ },
+ {
+  "name": "ユーザーライク株式会社（旧・株式会社Crunch Style）",
+  "website": "https://userlike.jp/",
+  "hq": "東京都渋谷区",
+  "description": "日本初・最大級の花のサブスクリプションサービス「ブルーミー（bloomee）」を運営。累計会員数35万世帯超。"
+ },
+ {
+  "name": "株式会社トリビュー",
+  "website": "https://corp.tribeau.jp/",
+  "hq": "東京都渋谷区",
+  "description": "美容医療の口コミ・予約アプリ「トリビュー」を運営。美容外科・美容皮膚科・審美歯科の口コミ検索からオンライン予約までアプリ"
+ },
+ {
+  "name": "じぶんde株式会社",
+  "website": "https://jibunde.co.jp/",
+  "hq": "東京都新宿区",
+  "description": "業界初の定額制セルフエステサロン「じぶんdeエステ」と業務用エステマシンのレンタル「自宅deエステ」を運営。駅直結型ファ"
+ },
+ {
+  "name": "株式会社Gaianixx",
+  "website": "https://gaianixx.com/",
+  "hq": "東京都文京区",
+  "description": "半導体製造の「格子不整合」を解消する独自の「万能中間層」技術を開発する東京大学発スタートアップ。次世代センサー、パワー半"
+ },
+ {
+  "name": "株式会社メトセラ",
+  "website": "https://www.metcela.com/",
+  "hq": "神奈川県川崎市",
+  "description": "筑波大学・慶應義塾大学発。線維芽細胞群（VCF）を用いた心不全治療のための再生医療製品を研究・開発する。"
+ },
+ {
+  "name": "株式会社Voicy",
+  "website": "https://corp.voicy.jp/",
+  "hq": "東京都渋谷区",
+  "description": "音声プラットフォーム「Voicy」を運営。厳選されたパーソナリティによる音声配信と、企業向け音声サービスを展開する。"
+ },
+ {
+  "name": "トリプル・ダブリュー・ジャパン株式会社（DFree株式会社）",
+  "website": "https://dfree.co.jp/",
+  "hq": "東京都港区",
+  "description": "超音波で膀胱の変化を捉え排泄タイミングを予測するウェアラブルデバイス『DFree』を開発・提供。介護者・被介護者の排泄ケ"
+ },
+ {
+  "name": "akippa株式会社",
+  "website": "https://akippa.co.jp/",
+  "hq": "大阪府大阪市浪速区",
+  "description": "空いている駐車場や個人の車庫を予約できる駐車場シェアリングサービス「アキッパ」を運営する大阪発のスタートアップ。"
+ },
+ {
+  "name": "bitBiome株式会社",
+  "website": "https://bitbiome.co.jp",
+  "hq": "東京都",
+  "description": "早稲田大学発。培養不要の微生物シングルセルゲノム解析技術「bit-MAP®」と微生物ゲノムデータベース「bit-GEM」"
+ },
+ {
+  "name": "株式会社ピーステックラボ",
+  "website": "https://www.corporate.alice.style",
+  "hq": "東京都",
+  "description": "モノの貸し借り（シェアリング）アプリ「アリススタイル（Alice.style）」を運営。家電等のレンタル・サブスクを展開"
+ },
+ {
+  "name": "MOSH株式会社",
+  "website": "https://mosh.jp",
+  "hq": "東京都渋谷区",
+  "description": "個人がネットでサービスを販売できるサービスEC/クリエイターエコノミープラットフォーム「MOSH」を運営。予約・決済・サ"
+ },
+ {
+  "name": "READYFOR株式会社",
+  "website": "https://corp.readyfor.jp/",
+  "hq": "東京都",
+  "description": "日本初のクラウドファンディングサービス「READYFOR」を運営。寄付・遺贈寄付や基金プログラムなど資金流通事業を展開す"
+ },
+ {
+  "name": "株式会社Logomix",
+  "website": "https://www.logomix.bio/",
+  "hq": "東京都",
+  "description": "ゲノム大規模構築技術「Geno-Writing」を核に、合成生物学で新規細胞型を創出しバイオ製品の商業化を目指す東京工業"
+ },
+ {
+  "name": "株式会社Shizen Connect",
+  "website": "https://se-digital.net",
+  "hq": "東京都中央区",
+  "description": "VPPプラットフォーム事業とIoT機器販売事業"
+ },
+ {
+  "name": "Sasuke Financial Lab株式会社",
+  "website": "https://sasukefinlab.com/",
+  "hq": "東京都千代田区大手町1-6-1 大手町ビル2F FINOLAB",
+  "description": "デジタル保険代理店「コのほけん！」を運営し、保険のオンライン比較・相談とAIを活用した保険コンサルティング、保険業界向け"
+ },
+ {
+  "name": "EF Polymer株式会社",
+  "website": "https://efpolymer.jp/",
+  "hq": "沖縄県国頭郡恩納村（OIST内）",
+  "description": "オレンジの皮など農産物残渣をアップサイクルした100%天然由来・生分解性の超吸水性ポリマー（SAP）を開発・製造。土壌の"
+ },
+ {
+  "name": "株式会社ヤマップ",
+  "website": "https://corporate.yamap.co.jp/",
+  "hq": "福岡県福岡市博多区",
+  "description": "登山・アウトドア向け地図アプリ「YAMAP」を運営。オフラインでも位置がわかる登山地図・安全機能・登山保険等を提供する。"
+ },
+ {
+  "name": "株式会社Rehab for JAPAN",
+  "website": "https://rehabforjapan.com",
+  "hq": "東京都千代田区",
+  "description": "介護事業所向けリハビリ支援SaaS「リハプラン」「リハブクラウド」を提供し、科学的介護（エビデンスベースドケア）の実現を"
+ }
+]

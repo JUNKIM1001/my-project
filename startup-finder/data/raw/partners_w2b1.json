@@ -1,0 +1,146 @@
+[
+ {
+  "name": "キャディ株式会社",
+  "partners": ["パナソニック オートモーティブシステムズ", "Astemo", "ヤンマー建機", "古河産機システムズ", "Neaton Auto Products Manufacturing", "川崎重工業", "スズキ", "SUBARU", "住友重機械工業", "YKK", "NSK"],
+  "sources": ["https://caddi.com/news/", "https://us.caddi.com/partnerships"],
+  "note": "CADDi Drawer/Quoteの大手製造業への導入発表（ニュースルーム掲載）"
+ },
+ {
+  "name": "コミューン株式会社",
+  "partners": ["アディッシュ"],
+  "sources": ["https://www.adish.co.jp/news/20241016cs/"],
+  "note": "Commune/SuccessHubの代理販売に関する事業連携（2024年10月）"
+ },
+ {
+  "name": "株式会社リセ",
+  "partners": ["Sansan", "マネーフォワード", "SB C&S"],
+  "sources": ["https://jp.corp-sansan.com/news/2025/0423.html", "https://corp.moneyforward.com/news/release/corp/20211124-mf-press/"],
+  "note": "Sansanと資本業務提携(2025)、マネーフォワードが出資し業務連携(2021)、SB C&Sと資本提携・販売網支援"
+ },
+ {
+  "name": "Nstockホールディングス株式会社",
+  "partners": ["AGSコンサルティング", "WARC", "ZeLo FAS"],
+  "sources": ["https://nstock.com/news/valuation"],
+  "note": "株価算定サービス提供でパートナー3社と提携"
+ },
+ {
+  "name": "株式会社ロジレス",
+  "partners": ["ACROVE", "Temu"],
+  "sources": ["https://acrove.co.jp/news/ecservice/2126/", "https://www.commercepick.com/archives/62025"],
+  "note": "ACROVEとパートナー契約、TemuとのAPI連携（国内初・2025年4月）"
+ },
+ {
+  "name": "Notta株式会社",
+  "partners": ["エクレクト", "ホリエモンAI学校"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000044.000106830.html", "https://eclect.co.jp/news/4005/"],
+  "note": "エクレクトとアライアンス契約（2025年8月・西日本DX推進）、ホリエモンAI学校とも提携発表"
+ },
+ {
+  "name": "株式会社TriOrb",
+  "partners": ["戸田建設"],
+  "sources": ["https://triorb.co.jp/213/"],
+  "note": "建設現場向け自律移動資材搬送装置の共同研究契約（2023年6月）"
+ },
+ {
+  "name": "株式会社スムーズ",
+  "partners": ["カンム", "Gardia", "マネーコミュニケーションズ"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000006.000058784.html", "https://gardia.jp/news/202006/smooth/"],
+  "note": "カンム（バンドルカード）と業務提携、伊藤忠グループGardia・マネーコミュニケーションズとリスク保証・資金調達契約"
+ },
+ {
+  "name": "株式会社Goals",
+  "partners": ["インフォマート", "シェアフル", "東芝テック"],
+  "sources": ["https://www.oalife.co.jp/keiei/1478/", "https://hanzo.goals.co.jp/connected"],
+  "note": "インフォマートが出資し協業強化（受発注システム連携）、シェアフル・東芝テックPOSとサービス連携"
+ },
+ {
+  "name": "株式会社Gaianixx",
+  "partners": ["三井金属鉱業", "JX金属"],
+  "sources": ["https://gaianixx.com/news/2025/04/1960/", "https://www.jx-nmm.com/newsrelease/2023/20230630_01.html"],
+  "note": "三井金属と機能性液体事業（LN/LT単結晶薄膜）で提携、JX金属と半導体形成技術の協業・共同開発（JX金属は株式追加取得も）"
+ },
+ {
+  "name": "株式会社メトセラ",
+  "partners": ["日本ライフライン", "CYBERDYNE"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000009.000027647.html", "https://www.cyberdyne.jp/company/PressReleases_detail.html?id=12532"],
+  "note": "日本ライフラインと心不全向け再生医療等製品の事業化で業務提携、CYBERDYNEと資本業務提携"
+ },
+ {
+  "name": "株式会社トリビュー",
+  "partners": ["GMOビューティー", "メディカルフォース", "B4A Technologies"],
+  "sources": ["https://corp.tribeau.jp/1103/", "https://group.gmo/news/article/9473/"],
+  "note": "電子カルテ・予約台帳データ連携シリーズ（キレイパスコネクト byGMO＝GMOビューティー、medicalforce、B4A等と連携）"
+ },
+ {
+  "name": "株式会社Voicy",
+  "partners": ["サニーサイドアップ", "SKIYAKI", "PR TIMES"],
+  "sources": ["https://corp.voicy.jp/2023/10/24/10414/"],
+  "note": "サニーサイドアップとパートナーシップ契約（2023年10月）、SKIYAKI・PR TIMESと資本提携"
+ },
+ {
+  "name": "トリプル・ダブリュー・ジャパン株式会社（DFree株式会社）",
+  "partners": ["Foxconn", "エコナビスタ"],
+  "sources": ["https://thebridge.jp/2016/07/triple-w-japan-secures-5-million-funding"],
+  "note": "Foxconnと開発・アジア展開で提携、エコナビスタ（ライフリズムナビ+Dr.）と業務提携"
+ },
+ {
+  "name": "akippa株式会社",
+  "partners": ["SOMPOホールディングス", "住友商事", "JR東日本スタートアップ"],
+  "sources": ["https://akippa.co.jp/press/%E4%BD%8F%E5%8F%8B%E5%95%86%E4%BA%8B%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E6%A7%98%E3%81%A8%E6%8F%90%E6%90%BA%E3%81%84%E3%81%9F%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82.html/", "https://www.sumitomocorp.com/ja/jp/news/release/2018/group/10250akippa"],
+  "note": "SOMPOホールディングスと資本業務提携（2019）、住友商事と提携（MaaSプラットフォーム構築・出資含む）、JR東日本スタートアップ等とも事業連携目的の調達"
+ },
+ {
+  "name": "bitBiome株式会社",
+  "partners": ["Twist Bioscience", "共立製薬", "三和澱粉工業", "花王"],
+  "sources": ["https://bitbiome.co.jp/news/news-press/3319/", "https://bitbiome.co.jp/news/news-press/3707/", "https://bitbiome.co.jp/news/news-press/3620/"],
+  "note": "Twist Bioscienceと戦略的提携（酵素スクリーニングキット共同開発）、共立製薬・三和澱粉工業と共同研究開発、花王とNEDOバイオものづくり事業で連携"
+ },
+ {
+  "name": "株式会社ピーステックラボ",
+  "partners": ["JR東日本スタートアップ", "ソニーペイメントサービス", "十六銀行", "トヨタモビリティパーツ"],
+  "sources": ["https://sogyotecho.jp/news/20230606peaceteclab-jrestartup/", "https://peaceteclab.co.jp/uncategorized/20220812/", "https://www.ma-cp.com/news/9354.html"],
+  "note": "JR東日本スタートアップと資本業務提携（JRE手ぶら旅）、ソニーペイメントサービスと資本業務提携、十六銀行とビジネスマッチング契約、トヨタモビリティパーツと共同事業"
+ },
+ {
+  "name": "READYFOR株式会社",
+  "partners": ["伊予銀行", "福島銀行", "北陸銀行", "千葉興業銀行", "南都銀行", "関西みらい銀行"],
+  "sources": ["https://corp.readyfor.jp/news/81", "https://prtimes.jp/main/html/rd/p/000000403.000031325.html", "https://readyfor.jp/corp/news/22"],
+  "note": "地銀等37以上の金融機関と業務提携（クラウドファンディング活用・遺贈寄付分野等）。代表例のみ記載"
+ },
+ {
+  "name": "株式会社Logomix",
+  "partners": ["トヨタ自動車", "味の素", "Somite Therapeutics"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000003.000081077.html", "https://kepple.co.jp/articles/9n11f31498"],
+  "note": "トヨタ自動車と合成生物学×マイクロ流体技術の共同開発契約、味の素とCO2資源循環型微生物生産の共同開発（2023）、米Somite Therapeuticsと提携"
+ },
+ {
+  "name": "株式会社Shizen Connect",
+  "partners": ["JERA", "四国電力", "北海道電力", "大阪ガス", "東京ガス", "BIPROGY", "パナソニック エレクトリックワークス", "九州電力", "東邦ガス", "西日本鉄道"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000125.000007130.html", "https://www.osakagas.co.jp/company/press/pr2024/1784731_56470.html", "https://www.tokyo-gas.co.jp/news/press/20250525_01.html"],
+  "note": "VPP社会実装に向け大手電力・ガス・IT等計16社と資本業務提携（2024年8社→2026年シリーズAで拡大）"
+ },
+ {
+  "name": "Sasuke Financial Lab株式会社",
+  "partners": ["読売広告社（YOMIKO）", "auフィナンシャルパートナー"],
+  "sources": ["https://www.yomiko.co.jp/news/release/202412056086/"],
+  "note": "YOMIKOと資本業務提携（保険業界DX）、auフィナンシャルパートナーへ「コのほけん！ホワイトレーベル」を提供"
+ },
+ {
+  "name": "EF Polymer株式会社",
+  "partners": ["サントリーホールディングス", "鈴与商事", "東邦ガス", "NADEC"],
+  "sources": ["https://sustainablejapan.jp/2026/07/10/suntory-efpolymer-alliance/127819", "https://efpolymer.jp/news/efp-cbround-finance"],
+  "note": "サントリーHDと資本業務提携・ゆず栽培で共同実証（2026年7月）、鈴与商事と資本業務提携、東邦ガスと農業・カーボンクレジット協業、サウジNADECと農業実証MOU"
+ },
+ {
+  "name": "株式会社ヤマップ",
+  "partners": ["石井スポーツ", "クラブツーリズム", "オマツリジャパン"],
+  "sources": ["https://www.nikkan.co.jp/releases/view/36969", "https://ja.wikipedia.org/wiki/%E3%83%A4%E3%83%9E%E3%83%83%E3%83%97"],
+  "note": "石井スポーツが第三者割当増資引受（資本提携）、クラブツーリズム・オマツリジャパン等と業務提携。自治体（27都道府県警等）との登山届連携協定は企業でないため除外"
+ },
+ {
+  "name": "株式会社Rehab for JAPAN",
+  "partners": ["日本生命保険", "ゆうちょ銀行", "北陸銀行", "Chatwork"],
+  "sources": ["https://prtimes.jp/main/html/rd/p/000000135.000027102.html", "https://www.jp-bank.japanpost.jp/aboutus/press/2023/abt_prs_id001828.html", "https://www.nissay.co.jp/kaisha/news/20260420.html"],
+  "note": "日本生命グループと資本提携（2026年4月）、ゆうちょ銀行と協業契約（2023）、北陸銀行・Chatwork等と業務提携"
+ }
+]
