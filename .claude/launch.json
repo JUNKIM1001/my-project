@@ -4,43 +4,83 @@
     {
       "name": "ridge-runner",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd /tmp/ridge-runner-preview && exec python3 -m http.server 5179"],
+      "runtimeArgs": [
+        "-c",
+        "cd /tmp/ridge-runner-preview && exec python3 -m http.server 5179"
+      ],
       "port": 5179
     },
     {
       "name": "ridge-runner-flutter",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd /Users/thisiskj/projects/ridge-runner/build/web && exec python3 -m http.server 5181"],
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/thisiskj/projects/ridge-runner/build/web && exec python3 -m http.server 5181"
+      ],
       "port": 5181
     },
     {
       "name": "location-rpg-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "location-rpg-app", "run", "dev", "--", "--host"],
+      "runtimeArgs": [
+        "--prefix",
+        "location-rpg-app",
+        "run",
+        "dev",
+        "--",
+        "--host"
+      ],
       "port": 5173
     },
     {
       "name": "shrine-finder-web",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "shrine-finder-web", "run", "dev", "--", "--host", "--port", "5183"],
+      "runtimeArgs": [
+        "--prefix",
+        "shrine-finder-web",
+        "run",
+        "dev",
+        "--",
+        "--host",
+        "--port",
+        "5183"
+      ],
       "port": 5183
     },
     {
       "name": "vc-finder",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/vc-finder\" && .venv/bin/uvicorn app.main:app --port 8420"],
+      "runtimeArgs": [
+        "-c",
+        "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/vc-finder\" && .venv/bin/uvicorn app.main:app --port 8420"
+      ],
       "port": 8420
     },
     {
       "name": "1024-ventures",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd /tmp/1024-ventures-preview && exec python3 -m http.server 8450"],
+      "runtimeArgs": [
+        "-c",
+        "cd /tmp/1024-ventures-preview && exec python3 -m http.server 8450"
+      ],
       "port": 8450
+    },
+    {
+      "name": "captable-sim",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /tmp/captable-sim-preview && exec python3 -m http.server 8470"
+      ],
+      "port": 8470
     },
     {
       "name": "startup-finder",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/startup-finder\" && .venv/bin/uvicorn app.main:app --port 8430"],
+      "runtimeArgs": [
+        "-c",
+        "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/startup-finder\" && .venv/bin/uvicorn app.main:app --port 8430"
+      ],
       "port": 8430
     }
   ]

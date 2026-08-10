@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cap Table Simulator — 資本政策シミュレーター</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7;
+    --surface: #fcfcfb;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11, 11, 11, 0.10);
+    --accent: #2a78d6;
+    --up: #006300;
+    --down: #d03b3b;
+    /* 系列色（役割固定・順序固定）*/
+    --series-own: #2a78d6;    /* 自社（新規） */
+    --series-other: #eb6834;  /* 他投資家（新規） */
+    --series-pool: #898781;   /* オプションプール（系列でなく予約枠） */
+    --holder-1: #1baf7a;
+    --holder-2: #eda100;
+    --holder-3: #e87ba4;
+    --holder-4: #008300;
+    --holder-5: #4a3aa7;
+    --holder-6: #e34948;
+    --holder-rest: #b5b3ac;   /* 7人目以降は「その他」扱いの中立色 */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page: #0d0d0d;
+      --surface: #1a1a19;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255, 255, 255, 0.10);
+      --accent: #3987e5;
+      --up: #0ca30c;
+      --down: #e66767;
+      --series-own: #3987e5;
+      --series-other: #d95926;
+      --holder-1: #199e70;
+      --holder-2: #c98500;
+      --holder-3: #d55181;
+      --holder-4: #008300;
+      --holder-5: #9085e9;
+      --holder-6: #e66767;
+      --holder-rest: #6b6a64;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: var(--page);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px 64px; }
+  header { margin-bottom: 24px; }
+  header h1 { font-size: 22px; font-weight: 700; }
+  header p { color: var(--text-secondary); font-size: 13px; margin-top: 2px; }
+
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 20px; align-items: start; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
+  .card h2 {
+    font-size: 13px; font-weight: 700; color: var(--text-secondary);
+    letter-spacing: 0.02em; margin-bottom: 12px;
+  }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+  .field .hint { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .input-wrap { display: flex; align-items: center; gap: 6px; }
+  input[type="text"] {
+    width: 100%; padding: 7px 10px; font-size: 14px;
+    border: 1px solid var(--baseline); border-radius: 6px;
+    background: var(--surface); color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+  }
+  input[type="text"]:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: transparent; }
+  .unit { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+
+  .mode-toggle { display: flex; gap: 0; border: 1px solid var(--baseline); border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
+  .mode-toggle button {
+    flex: 1; padding: 7px 4px; font-size: 12px; border: none; cursor: pointer;
+    background: var(--surface); color: var(--text-secondary); font-family: inherit;
+  }
+  .mode-toggle button.active { background: var(--accent); color: #fff; font-weight: 600; }
+
+  .holder-row { display: flex; gap: 6px; margin-bottom: 8px; align-items: center; }
+  .holder-row input.name { flex: 1; }
+  .holder-row input.ratio { width: 84px; text-align: right; }
+  .holder-row .pct { font-size: 12px; color: var(--text-muted); }
+  .holder-row button.del {
+    border: none; background: none; color: var(--text-muted); cursor: pointer;
+    font-size: 16px; padding: 2px 6px; border-radius: 4px;
+  }
+  .holder-row button.del:hover { color: var(--down); background: var(--page); }
+  .holders-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+  .holders-footer .sum { font-size: 12px; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .holders-footer .sum.bad { color: var(--down); font-weight: 700; }
+  button.add {
+    border: 1px dashed var(--baseline); background: none; color: var(--text-secondary);
+    font-size: 12px; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-family: inherit;
+  }
+  button.add:hover { border-color: var(--accent); color: var(--accent); }
+
+  .errors { border-left: 3px solid var(--down); padding: 10px 14px; margin-bottom: 16px;
+    background: var(--surface); border-radius: 0 8px 8px 0; }
+  .errors div { font-size: 13px; color: var(--down); }
+  .warnings { border-left: 3px solid var(--holder-2); padding: 10px 14px; margin-bottom: 16px;
+    background: var(--surface); border-radius: 0 8px 8px 0; }
+  .warnings div { font-size: 13px; color: var(--text-secondary); }
+  .hidden { display: none !important; }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .kpi .k-label { font-size: 11px; color: var(--text-muted); }
+  .kpi .k-value { font-size: 20px; font-weight: 700; margin-top: 2px; }
+  .kpi .k-sub { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 999px; vertical-align: 2px; margin-left: 6px; }
+  .badge.up { color: var(--up); border: 1px solid var(--up); }
+  .badge.down { color: var(--down); border: 1px solid var(--down); }
+  .badge.flat { color: var(--text-secondary); border: 1px solid var(--baseline); }
+
+  .bar-block { margin-bottom: 14px; }
+  .bar-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+  .bar { display: flex; gap: 2px; height: 34px; border-radius: 4px; overflow: hidden; }
+  .seg { position: relative; min-width: 0; display: flex; align-items: center; justify-content: center; }
+  .seg span { font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-shadow: 0 0 3px rgba(0,0,0,0.35); }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 10px; }
+  .legend .item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+  .legend .swatch { width: 10px; height: 10px; border-radius: 3px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 11px; color: var(--text-muted); font-weight: 600;
+    padding: 6px 8px; border-bottom: 1px solid var(--grid); }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--grid); }
+  tr:last-child td { border-bottom: none; }
+  td .dot { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 7px; vertical-align: 0; }
+  td.delta-down { color: var(--down); }
+  td.delta-up { color: var(--up); }
+  tr.total td { font-weight: 700; border-top: 1px solid var(--baseline); }
+  tr.highlight td { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+
+  footer.note { margin-top: 20px; font-size: 11px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Cap Table Simulator</h1>
+    <p>資本政策シミュレーター — 出資額・取得割合・希薄化を即時計算（金額の単位は百万円）</p>
+  </header>
+
+  <div class="layout">
+    <div class="inputs">
+      <div class="card">
+        <h2>今回ラウンド</h2>
+        <div class="field">
+          <label for="pre-money">プレマネー評価額</label>
+          <div class="input-wrap"><input type="text" id="pre-money" value="900" inputmode="decimal"><span class="unit">百万円</span></div>
+        </div>
+        <div class="mode-toggle" role="tablist">
+          <button type="button" id="mode-amount" class="active">出資額から計算</button>
+          <button type="button" id="mode-ratio">目標取得割合から逆算</button>
+        </div>
+        <div class="field" id="field-own-investment">
+          <label for="own-investment">自社出資額</label>
+          <div class="input-wrap"><input type="text" id="own-investment" value="100" inputmode="decimal"><span class="unit">百万円</span></div>
+        </div>
+        <div class="field hidden" id="field-target-ratio">
+          <label for="target-ratio">目標取得割合（ポストマネー基準）</label>
+          <div class="input-wrap"><input type="text" id="target-ratio" value="10" inputmode="decimal"><span class="unit">%</span></div>
+          <div class="hint">必要な出資額を逆算します</div>
+        </div>
+        <div class="field">
+          <label for="other-investment">他投資家の出資額（合計）</label>
+          <div class="input-wrap"><input type="text" id="other-investment" value="100" inputmode="decimal"><span class="unit">百万円</span></div>
+        </div>
+        <div class="field">
+          <label for="pool-ratio">オプションプール新設（ポストマネー基準・任意）</label>
+          <div class="input-wrap"><input type="text" id="pool-ratio" value="0" inputmode="decimal"><span class="unit">%</span></div>
+          <div class="hint">今回ラウンド前に設定され、既存株主のみを希薄化します</div>
+        </div>
+        <div class="field">
+          <label for="existing-shares">発行済株式数（完全希薄化ベース・任意）</label>
+          <div class="input-wrap"><input type="text" id="existing-shares" value="" inputmode="decimal" placeholder="例: 10,000"><span class="unit">株</span></div>
+          <div class="hint">入力すると株価と新規発行株式数も算出します</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>前回ラウンド（任意）</h2>
+        <div class="field">
+          <label for="prev-post-money">ポストマネー評価額</label>
+          <div class="input-wrap"><input type="text" id="prev-post-money" value="500" inputmode="decimal"><span class="unit">百万円</span></div>
+          <div class="hint">今回プレマネーと比較してアップ / ダウンラウンドを判定します</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>バリュエーション妥当性の参考情報（任意）</h2>
+        <div class="field">
+          <label for="revenue">直近売上高（年間）</label>
+          <div class="input-wrap"><input type="text" id="revenue" value="" inputmode="decimal" placeholder="例: 300"><span class="unit">百万円</span></div>
+          <div class="hint">入力すると売上マルチプル（プレマネー ÷ 売上高）を算出します</div>
+        </div>
+        <div class="field">
+          <label>参考売上マルチプル（類似企業・調達事例のレンジ）</label>
+          <div class="input-wrap">
+            <input type="text" id="ref-multiple-low" value="" inputmode="decimal" placeholder="下限 例: 3" aria-label="参考マルチプル下限">
+            <span class="unit">〜</span>
+            <input type="text" id="ref-multiple-high" value="" inputmode="decimal" placeholder="上限 例: 8" aria-label="参考マルチプル上限">
+            <span class="unit">倍</span>
+          </div>
+          <div class="hint">売上高と両方入力すると、逆算プレマネーレンジと比較します</div>
+        </div>
+        <div class="field">
+          <label for="months-since">前回ラウンドからの経過月数</label>
+          <div class="input-wrap"><input type="text" id="months-since" value="" inputmode="decimal" placeholder="例: 18"><span class="unit">ヶ月</span></div>
+          <div class="hint">評価額の成長率を年率換算します</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>既存株主構成（ラウンド前）</h2>
+        <div id="holder-rows"></div>
+        <div class="holders-footer">
+          <button type="button" class="add" id="add-holder">＋ 株主を追加</button>
+          <span class="sum" id="holder-sum">合計 100.00%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="results">
+      <div class="errors hidden" id="errors"></div>
+      <div class="warnings hidden" id="warnings"></div>
+      <div id="results-body">
+        <div class="kpis" id="kpis"></div>
+        <div class="card">
+          <h2>持分構成の変化</h2>
+          <div id="bars"></div>
+        </div>
+        <div class="card">
+          <h2>キャップテーブル（ラウンド前後）</h2>
+          <div id="captable"></div>
+        </div>
+        <div class="card" id="shares-card"></div>
+        <div class="card" id="validity-card"></div>
+        <div class="card">
+          <h2>出資額の感応度（自社出資額を変えた場合）</h2>
+          <div id="sensitivity"></div>
+        </div>
+        <div class="card">
+          <h2>プレマネー評価額の感応度（交渉レンジの検討用）</h2>
+          <div id="pre-sensitivity"></div>
+        </div>
+      </div>
+      <footer class="note">
+        本ツールは概算シミュレーションです。優先株の残余財産分配・希薄化防止条項・端数調整などは考慮していません。
+      </footer>
+    </div>
+  </div>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
