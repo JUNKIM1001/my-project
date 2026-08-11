@@ -10,6 +10,7 @@ import {
   preMoneySensitivity,
   parseNumeric,
   practicalWarnings,
+  exitAnalysis,
 } from "./calc.js";
 
 const HOLDERS = [
@@ -33,9 +34,26 @@ function baseInput(overrides = {}) {
     monthsSinceLastRound: null,
     refMultipleLow: null,
     refMultipleHigh: null,
+    exitYears: null,
+    exitRevenue: null,
+    exitMultipleLow: null,
+    exitMultipleHigh: null,
+    futureDilution: null,
+    targetMultiple: null,
     ...overrides,
   };
 }
+
+// Exit分析の標準入力: post 1000 / Exit売上5000 / マルチプル4〜8倍 / 5年 / 追加希薄化30% / 目標5x
+const EXIT_INPUT = {
+  otherInvestment: 0,
+  exitYears: 5,
+  exitRevenue: 5000,
+  exitMultipleLow: 4,
+  exitMultipleHigh: 8,
+  futureDilution: 0.3,
+  targetMultiple: 5,
+};
 
 const approx = (a, b, eps = 1e-9) =>
   assert.ok(Math.abs(a - b) < eps, `expected ${a} ≈ ${b}`);
@@ -265,6 +283,101 @@ test("妥当性バリデーション: 不正値と下限>上限を拒否", () =>
   assert.ok(
     validateInput(baseInput({ refMultipleLow: 5, refMultipleHigh: 2 })).length > 0
   );
+});
+
+// ---------- Exit分析（VC法） ----------
+
+test("Exit分析: シナリオ別のExit価値・MOIC・IRR", () => {
+  // post = 900 + 100 = 1000, ret = 0.7
+  const a = exitAnalysis(baseInput(EXIT_INPUT));
+  approx(a.retention, 0.7);
+  // 保守: E = 5000×4 = 20000, MOIC = 20000×0.7/1000 = 14
+  approx(a.scenarios[0].exitValue, 20000);
+  approx(a.scenarios[0].moic, 14);
+  approx(a.scenarios[0].irr, Math.pow(14, 1 / 5) - 1);
+  // 自社持分のExit時価値 = E × ret × 取得割合(10%) = MOIC × 出資額100
+  approx(a.scenarios[0].ownExitValue, 1400);
+  // 強気: E = 40000, MOIC = 28
+  approx(a.scenarios[1].exitValue, 40000);
+  approx(a.scenarios[1].moic, 28);
+});
+
+test("Exit分析: 妥当ポストマネー上限と判定（below/within/above）", () => {
+  const a = exitAnalysis(baseInput(EXIT_INPUT));
+  // fairPost = E×ret/M → 保守 20000×0.7/5 = 2800, 強気 5600
+  approx(a.fairPostRange.low, 2800);
+  approx(a.fairPostRange.high, 5600);
+  assert.equal(a.verdict, "below"); // post 1000 ≤ 2800: 保守でも目標達成
+  // post 4000 (pre 3900) → within
+  const w = exitAnalysis(baseInput({ ...EXIT_INPUT, preMoney: 3900 }));
+  assert.equal(w.verdict, "within");
+  // post 6000 → above
+  const ab = exitAnalysis(baseInput({ ...EXIT_INPUT, preMoney: 5900 }));
+  assert.equal(ab.verdict, "above");
+});
+
+test("Exit分析: 必要Exit価値の逆算", () => {
+  const a = exitAnalysis(baseInput(EXIT_INPUT));
+  // 必要E = post×M/ret = 1000×5/0.7 = 7142.86, 必要マルチプル = /5000 = 1.43x
+  approx(a.requiredExitValue, 5000 / 0.7);
+  approx(a.requiredExitMultiple, 1 / 0.7);
+});
+
+test("Exit分析: MOICは自社出資額に依存しない（ポストマネーで決まる）", () => {
+  const a1 = exitAnalysis(baseInput({ ...EXIT_INPUT, preMoney: 900, ownInvestment: 100 }));
+  const a2 = exitAnalysis(
+    baseInput({ ...EXIT_INPUT, preMoney: 500, ownInvestment: 300, otherInvestment: 200 })
+  );
+  approx(a1.scenarios[0].moic, a2.scenarios[0].moic); // どちらも post 1000
+});
+
+test("Exit分析: 追加希薄化未入力は 0 扱い、必須項目欠落は null", () => {
+  const a = exitAnalysis(baseInput({ ...EXIT_INPUT, futureDilution: null }));
+  approx(a.retention, 1);
+  approx(a.scenarios[0].moic, 20); // 20000/1000
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, exitRevenue: null })), null);
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, targetMultiple: null })), null);
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, preMoney: -1 })), null);
+});
+
+test("Exit分析バリデーション: 不正値を拒否", () => {
+  assert.ok(validateInput(baseInput({ exitYears: 0 })).length > 0);
+  assert.ok(validateInput(baseInput({ exitRevenue: -100 })).length > 0);
+  assert.ok(validateInput(baseInput({ exitMultipleLow: 8, exitMultipleHigh: 4 })).length > 0);
+  assert.ok(validateInput(baseInput({ exitMultipleLow: 0 })).length > 0);
+  assert.ok(validateInput(baseInput({ exitMultipleHigh: -2 })).length > 0);
+  assert.ok(validateInput(baseInput({ futureDilution: 1 })).length > 0);
+  assert.ok(validateInput(baseInput({ futureDilution: -0.1 })).length > 0);
+  assert.ok(validateInput(baseInput({ targetMultiple: 1 })).length > 0); // 1倍以下は無意味
+  assert.ok(validateInput(baseInput({ targetMultiple: 0.5 })).length > 0);
+  assert.equal(validateInput(baseInput(EXIT_INPUT)).length, 0);
+});
+
+test("Exit分析: 不正なExit入力は computeRound 経由の検証で null になる", () => {
+  // exitAnalysis は冒頭の computeRound → validateInput でExit項目も検証しており、
+  // 不正値では計算に到達しない（retention=0 や Infinity は発生しない）
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, futureDilution: 1 })), null);
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, futureDilution: -0.1 })), null);
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, targetMultiple: 1 })), null);
+  assert.equal(
+    exitAnalysis(baseInput({ ...EXIT_INPUT, exitMultipleLow: 8, exitMultipleHigh: 4 })),
+    null
+  );
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, exitYears: null })), null);
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, exitMultipleLow: null })), null);
+  assert.equal(exitAnalysis(baseInput({ ...EXIT_INPUT, exitMultipleHigh: null })), null);
+});
+
+test("Exit分析: verdict の境界値（post == 上限ちょうどは達成扱い）", () => {
+  // fairPost: 保守 2800 / 強気 5600（EXIT_INPUT 基準）
+  // post == 2800（pre 2700 + 出資100）→ 保守ちょうど達成 = below
+  const atLow = exitAnalysis(baseInput({ ...EXIT_INPUT, preMoney: 2700 }));
+  approx(atLow.currentPost, 2800);
+  assert.equal(atLow.verdict, "below");
+  // post == 5600 → 強気ちょうど達成 = within
+  const atHigh = exitAnalysis(baseInput({ ...EXIT_INPUT, preMoney: 5500 }));
+  approx(atHigh.currentPost, 5600);
+  assert.equal(atHigh.verdict, "within");
 });
 
 test("プレマネー感応度: 出資額モードでは取得割合が動く", () => {

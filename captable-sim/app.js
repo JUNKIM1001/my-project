@@ -4,6 +4,7 @@ import {
   sensitivityTable,
   valuationDiagnostics,
   preMoneySensitivity,
+  exitAnalysis,
   practicalWarnings,
   parseNumeric as parseNum,
   TYPICAL_DILUTION_RANGE,
@@ -56,6 +57,15 @@ function readInput() {
     monthsSinceLastRound: parseNum($("months-since").value),
     refMultipleLow: parseNum($("ref-multiple-low").value),
     refMultipleHigh: parseNum($("ref-multiple-high").value),
+    exitYears: parseNum($("exit-years").value),
+    exitRevenue: parseNum($("exit-revenue").value),
+    exitMultipleLow: parseNum($("exit-multiple-low").value),
+    exitMultipleHigh: parseNum($("exit-multiple-high").value),
+    futureDilution: (() => {
+      const d = parseNum($("future-dilution").value);
+      return d === null ? null : d / 100;
+    })(),
+    targetMultiple: parseNum($("target-multiple").value),
   };
 }
 
@@ -113,6 +123,7 @@ function render() {
   renderCaptable(r);
   renderShares(r);
   renderValidity(input, r);
+  renderExit(input);
   renderSensitivity(input);
   renderPreSensitivity(input);
 }
@@ -342,6 +353,55 @@ function renderPreSensitivity(input) {
       .join("")}</tbody></table>
     <div style="font-size:11px;color:var(--text-muted);margin-top:8px">
       ${input.mode === "ratio" ? "目標取得割合を維持したまま、必要出資額の変化を表示しています。" : "自社出資額を維持したまま、取得割合の変化を表示しています。"}</div>`;
+}
+
+function renderExit(input) {
+  const card = $("exit-card");
+  const a = exitAnalysis(input);
+  if (!a) {
+    card.classList.add("hidden");
+    card.innerHTML = "";
+    return;
+  }
+  card.classList.remove("hidden");
+
+  const verdictBadge = {
+    below: `<span class="badge up">保守シナリオでも目標達成圏</span>`,
+    within: `<span class="badge flat">強気シナリオなら目標達成圏</span>`,
+    above: `<span class="badge down">強気シナリオでも目標未達</span>`,
+  }[a.verdict];
+
+  const scenarioLabel = { conservative: "保守", aggressive: "強気" };
+  const rows = a.scenarios.map(
+    (s) => `<tr>
+      <td>${scenarioLabel[s.label]}（${s.multiple}倍）</td>
+      <td class="num">${fmt(s.exitValue, 0)}百万円</td>
+      <td class="num">${fmt(s.ownExitValue, 0)}百万円</td>
+      <td class="num">${s.moic.toFixed(1)}x</td>
+      <td class="num">${(s.irr * 100).toFixed(1)}%</td>
+    </tr>`
+  );
+
+  card.innerHTML = `<h2>Exitマルチプル妥当性（VC法）</h2>
+    <div style="padding:6px 0 10px">
+      <div style="font-size:11px;color:var(--text-muted)">目標 ${a.targetMultiple}x を満たすポストマネー上限（将来希薄化 ${((1 - a.retention) * 100).toFixed(0)}% 考慮）</div>
+      <div style="font-size:18px;font-weight:700;margin-top:2px">
+        ${fmt(a.fairPostRange.low, 0)}〜${fmt(a.fairPostRange.high, 0)}百万円 ${verdictBadge}
+      </div>
+      <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">
+        今回ポストマネー: ${fmt(a.currentPost, 0)}百万円</div>
+    </div>
+    <table>
+      <thead><tr><th>シナリオ</th><th class="num">Exit企業価値</th><th class="num">自社持分価値</th>
+        <th class="num">MOIC</th><th class="num">IRR（${a.exitYears}年）</th></tr></thead>
+      <tbody>${rows.join("")}</tbody>
+    </table>
+    <div style="font-size:12px;color:var(--text-secondary);margin-top:10px">
+      今回の条件で目標 ${a.targetMultiple}x を達成するには、Exit時企業価値 ${fmt(a.requiredExitValue, 0)}百万円
+      （Exit想定売上の ${a.requiredExitMultiple.toFixed(1)}倍）が必要です。
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:6px">
+      MOIC = Exit企業価値 × 残存率 ÷ ポストマネー（優先分配・清算優先権は考慮しない普通株換算の概算）。</div>`;
 }
 
 function renderSensitivity(input) {

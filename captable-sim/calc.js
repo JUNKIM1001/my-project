@@ -69,6 +69,13 @@ export function practicalWarnings(input) {
  *   monthsSinceLastRound, // 前回ラウンドからの経過月数（>0）
  *   refMultipleLow,    // 参考売上マルチプル下限（倍, >0）
  *   refMultipleHigh,   // 参考売上マルチプル上限（倍, >0, 下限以上）
+ *   // ▼ Exit分析（VC法）用（すべて省略可: null）
+ *   exitYears,         // Exitまでの想定年数（>0）
+ *   exitRevenue,       // Exit想定年度の売上計画（百万円, >0）
+ *   exitMultipleLow,   // Exitマルチプル下限（倍, >0）＝保守シナリオ
+ *   exitMultipleHigh,  // Exitマルチプル上限（倍, >0, 下限以上）＝強気シナリオ
+ *   futureDilution,    // 今後のラウンドで見込む追加希薄化（0<=d<1）未入力は 0 扱い
+ *   targetMultiple,    // 目標リターン倍率（グロス MOIC, >1）
  * }
  */
 export function validateInput(input) {
@@ -131,6 +138,36 @@ export function validateInput(input) {
     refLow > refHigh
   ) {
     errors.push("参考マルチプルは下限 ≤ 上限で入力してください。");
+  }
+
+  if (input.exitYears != null && (!isNum(input.exitYears) || input.exitYears <= 0)) {
+    errors.push("Exitまでの想定年数は正の数値で入力してください（未入力も可）。");
+  }
+  if (input.exitRevenue != null && (!isNum(input.exitRevenue) || input.exitRevenue <= 0)) {
+    errors.push("Exit想定年度の売上計画は正の数値で入力してください（未入力も可）。");
+  }
+  const exLow = input.exitMultipleLow;
+  const exHigh = input.exitMultipleHigh;
+  if (exLow != null && (!isNum(exLow) || exLow <= 0)) {
+    errors.push("Exitマルチプル下限は正の数値で入力してください（未入力も可）。");
+  }
+  if (exHigh != null && (!isNum(exHigh) || exHigh <= 0)) {
+    errors.push("Exitマルチプル上限は正の数値で入力してください（未入力も可）。");
+  }
+  if (isNum(exLow) && exLow > 0 && isNum(exHigh) && exHigh > 0 && exLow > exHigh) {
+    errors.push("Exitマルチプルは下限 ≤ 上限で入力してください。");
+  }
+  if (
+    input.futureDilution != null &&
+    (!isNum(input.futureDilution) || input.futureDilution < 0 || input.futureDilution >= 1)
+  ) {
+    errors.push("将来の追加希薄化は 0% 以上 100% 未満で入力してください（未入力も可）。");
+  }
+  if (
+    input.targetMultiple != null &&
+    (!isNum(input.targetMultiple) || input.targetMultiple <= 1)
+  ) {
+    errors.push("目標リターン倍率は 1 倍より大きい数値で入力してください（未入力も可）。");
   }
 
   if (!Array.isArray(input.holders) || input.holders.length === 0) {
@@ -309,6 +346,86 @@ export function valuationDiagnostics(input) {
     annualizedGrowth,
     dilutionVerdict,
     existingDilution: d,
+  };
+}
+
+/**
+ * Exitマルチプル起点のバリュエーション妥当性評価（VC法 / ターゲット倍率法）。
+ *
+ * モデル:
+ * - Exit時企業価値 E = Exit想定売上 × Exitマルチプル（下限=保守 / 上限=強気の2シナリオ）
+ * - 将来ラウンドの追加希薄化後の残存率 ret = 1 − futureDilution
+ * - 自社持分のExit時価値 = E × 今回取得割合 × ret
+ * - MOIC = E × ret ÷ 今回ポストマネー（出資額に依存しない点がこの式の要）
+ * - IRR = MOIC^(1/年数) − 1
+ * - 目標倍率 M を満たす妥当ポストマネー上限 = E × ret ÷ M
+ * - 今回ポストで目標達成に必要なExit企業価値 = ポスト × M ÷ ret（必要マルチプル = それ ÷ Exit売上）
+ *
+ * 必須: exitYears, exitRevenue, exitMultipleLow/High, targetMultiple（いずれか欠けると null）
+ * futureDilution は未入力（null）なら 0 扱い。
+ * 戻り値: null または {
+ *   retention, exitYears, targetMultiple,
+ *   scenarios: [{ label: 'conservative'|'aggressive', multiple, exitValue, ownExitValue, moic, irr }],
+ *   fairPostRange: { low, high },   // 目標倍率を満たすポストマネー上限（保守〜強気）
+ *   currentPost,
+ *   verdict: 'below' | 'within' | 'above',  // below=保守でも目標達成 / within=強気なら達成 / above=強気でも未達
+ *   requiredExitValue, requiredExitMultiple,
+ * }
+ */
+export function exitAnalysis(input) {
+  const r = computeRound(input);
+  if (!r.ok) return null;
+  if (
+    input.exitYears == null ||
+    input.exitRevenue == null ||
+    input.exitMultipleLow == null ||
+    input.exitMultipleHigh == null ||
+    input.targetMultiple == null
+  ) {
+    return null;
+  }
+
+  const retention = 1 - (input.futureDilution ?? 0);
+  const n = input.exitYears;
+  const M = input.targetMultiple;
+  const post = r.postMoney;
+
+  const scenario = (label, multiple) => {
+    const exitValue = input.exitRevenue * multiple;
+    const moic = (exitValue * retention) / post;
+    return {
+      label,
+      multiple,
+      exitValue,
+      ownExitValue: exitValue * retention * r.ownRatio,
+      moic,
+      irr: Math.pow(moic, 1 / n) - 1,
+    };
+  };
+  const scenarios = [
+    scenario("conservative", input.exitMultipleLow),
+    scenario("aggressive", input.exitMultipleHigh),
+  ];
+
+  const fairPostRange = {
+    low: (scenarios[0].exitValue * retention) / M,
+    high: (scenarios[1].exitValue * retention) / M,
+  };
+  const verdict =
+    post <= fairPostRange.low ? "below" : post <= fairPostRange.high ? "within" : "above";
+
+  const requiredExitValue = (post * M) / retention;
+
+  return {
+    retention,
+    exitYears: n,
+    targetMultiple: M,
+    scenarios,
+    fairPostRange,
+    currentPost: post,
+    verdict,
+    requiredExitValue,
+    requiredExitMultiple: requiredExitValue / input.exitRevenue,
   };
 }
 
