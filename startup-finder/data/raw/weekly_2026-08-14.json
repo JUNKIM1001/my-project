@@ -1,0 +1,300 @@
+[
+  {
+    "name": "SURF MUSIC株式会社",
+    "website": null,
+    "founded_year": 2019,
+    "hq": null,
+    "representative": null,
+    "description": "音楽クリエイターが未発表楽曲を登録し、レーベル・出版社・広告代理店などが検索・採用できるクリエイターエコノミー型のデジタル音楽マーケットプレイスを運営。AI検索機能「Magic Search」を提供する。",
+    "sectors": ["音楽", "マーケットプレイス", "クリエイターエコノミー", "AI"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "プレシリーズA（総額）",
+      "amount_oku": 13,
+      "investors": ["Cherubic Ventures", "YG PLUS", "エニグモ", "agehasprings", "ヒップランドミュージック", "Rainbow Entertainment"]
+    },
+    "investors": ["Cherubic Ventures", "YG PLUS", "エニグモ", "agehasprings", "ヒップランドミュージック", "Rainbow Entertainment"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://entamerush.jp/706180/amp/",
+      "https://prtimes.jp/main/html/rd/p/000000043.000118440.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "クレアトゥラ株式会社",
+    "website": "https://creattura.com/",
+    "founded_year": null,
+    "hq": "東京都中央区",
+    "representative": "服部倫康",
+    "description": "国内外でカーボンクレジット創出事業を開発・運営し、デジタルMRV・SaaSプラットフォームとコンサルティングを提供。フィリピンを中心にAWD（水稲の間断灌漑）事業、国内でJ-クレジット創出事業を展開する。",
+    "sectors": ["気候テック", "カーボンクレジット", "SaaS", "農業"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズB",
+      "amount_oku": 10,
+      "investors": ["DBJキャピタル", "三井住友海上キャピタル（MSIVC2025V）", "ONEカーボンニュートラルファンド1号", "東京ガス"]
+    },
+    "investors": ["DBJキャピタル", "三井住友海上キャピタル", "ONEカーボンニュートラルファンド1号", "東京ガス"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://creattura.com/news/260807",
+      "https://prtimes.jp/main/html/rd/p/000000034.000119392.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社ADVATEC",
+    "website": "https://www.advatec.co.jp/",
+    "founded_year": null,
+    "hq": null,
+    "representative": null,
+    "description": "音声AIによる医療カルテ作成支援サービス「コエカル」を提供。2026年6月の正式提供開始から導入医療機関は300院に達している。",
+    "sectors": ["ヘルスケア", "医療DX", "AI", "SaaS"],
+    "stage": "シリーズB",
+    "total_raised_oku": 7.6,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "プレシリーズB",
+      "amount_oku": 1.6,
+      "investors": ["複数の個人投資家"]
+    },
+    "investors": ["複数の個人投資家"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000015.000072949.html",
+      "https://www.advatec.co.jp/post/%E3%83%97%E3%83%AC%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BAb%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%E3%81%A7%E7%B7%8F%E9%A1%8D%E7%B4%841-6%E5%84%84%E5%86%86%E3%81%AE%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94%E3%82%92%E5%AE%9F%E6%96%BD"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社ATOMica",
+    "website": null,
+    "founded_year": 2019,
+    "hq": "宮崎県宮崎市",
+    "representative": null,
+    "description": "コミュニティマネージャーを各拠点に配置する「ソーシャルコワーキング」事業を運営。全国70拠点以上を展開し、企業・自治体・大学向けにコミュニティ運営支援を提供する。",
+    "sectors": ["コワーキング", "地域創生", "コミュニティ"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資",
+      "amount_oku": null,
+      "investors": ["北海道共創パートナーズ（ほくようスタートアップ1号ファンド）"]
+    },
+    "investors": ["北海道共創パートナーズ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "調達額は非開示。地域金融機関系VCからの出資は通算20件目と発表。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000213.000045593.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "オーガイホールディングス株式会社",
+    "website": null,
+    "founded_year": 2025,
+    "hq": "大阪府堺市堺区",
+    "representative": null,
+    "description": "歯科医療領域でデジタル技術・モビリティを組み合わせたインフラを開発。医療MaaS（訪問歯科）、デジタル義歯「Cloud Fit」、歯科DXプラットフォーム「おくちみる」を展開する。",
+    "sectors": ["ヘルスケア", "歯科", "医療MaaS", "医療DX"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "追加増資（第三者割当増資）",
+      "amount_oku": 0.511,
+      "investors": ["創業関係者", "パワーパートナー"]
+    },
+    "investors": [],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "本増資完了時点の資本金は8,010万円。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000030.000162719.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社Nobest",
+    "website": null,
+    "founded_year": 2022,
+    "hq": null,
+    "representative": "石井宏一良",
+    "description": "AIと気象データを活用した太陽光発電の発電量予測・監視システム「Nobest IoT」を提供。AIによるインフラ設備の異常検知・原因特定にも展開する。",
+    "sectors": ["エネルギー", "AI", "IoT", "防災"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "プレAラウンド",
+      "amount_oku": 1.3,
+      "investors": []
+    },
+    "investors": [],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "引受先はベンチャーキャピタルと個人投資家（具体名は非開示）。",
+    "employee_count": null,
+    "sources": [
+      "https://compalyze.co.jp/journal/weekly-funding-20260801",
+      "https://sogyotecho.jp/nobest-ishii-interview/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社Ashirase",
+    "website": null,
+    "founded_year": null,
+    "hq": null,
+    "representative": null,
+    "description": "視覚障がい者向け歩行支援デバイス「あしらせ」を提供。専用工事なしでカメラ画像から屋内空間を高精度にデータ化する屋内空間データ基盤「IndoorFlow」を開発する。",
+    "sectors": ["ヘルスケア", "アクセシビリティ", "空間データ", "ハードウェア"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズA",
+      "amount_oku": 3.4,
+      "investors": ["Wing3号G投資事業有限責任組合（ウイング・キャピタル・パートナーズ）", "復建調査設計", "SUMISEI INNOVATION FUND（住友生命）", "飯田橋クロスパートナーズ（ピー・シー・エー）"]
+    },
+    "investors": ["ウイング・キャピタル・パートナーズ", "復建調査設計", "SUMISEI INNOVATION FUND", "飯田橋クロスパートナーズ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000041.000080967.html",
+      "https://www.projectdesign.jp/articles/news/c8478e98-3f26-4022-84b2-e5849e3654d5"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社cosmobloom",
+    "website": null,
+    "founded_year": null,
+    "hq": null,
+    "representative": null,
+    "description": "独自の柔軟構造（ゴッサマー構造）解析技術を核に、宇宙空間の大規模構造物を解析・設計・開発。衛星ダイレクト通信向けアンテナや宇宙データセンター向け大型太陽電池パドルの軌道上実証を目指す。",
+    "sectors": ["宇宙", "ディープテック", "通信"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シード",
+      "amount_oku": 3.3,
+      "investors": ["セガサミーホールディングス", "ポーラ・オルビスホールディングス", "トヨタ・インベンション・パートナーズ", "太陽工業", "アニマルスピリッツ26投資事業有限責任組合", "ZVC2号投資事業組合", "Asia Defense Innovation Fund"]
+    },
+    "investors": ["セガサミーホールディングス", "ポーラ・オルビスホールディングス", "トヨタ・インベンション・パートナーズ", "太陽工業", "アニマルスピリッツ", "ZVC", "Asia Defense Innovation Fund"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000013.000148294.html",
+      "https://spacemedia.jp/news/20285"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社TriOrb",
+    "website": "https://triorb.co.jp/",
+    "founded_year": null,
+    "hq": "福岡県北九州市",
+    "representative": null,
+    "description": "独自の球駆動式360°全方向移動プラットフォーム「TriOrb BASE」を開発し、次世代産業向けの移動基盤として社会実装を進める。",
+    "sectors": ["ロボティクス", "物流", "製造", "ハードウェア"],
+    "stage": "シリーズB",
+    "total_raised_oku": 45.3,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズB セカンドクローズ",
+      "amount_oku": 3,
+      "investors": ["国際協力銀行（JBIC）", "豊田通商", "三井住友銀行（融資）"]
+    },
+    "investors": ["国際協力銀行", "豊田通商", "三井住友銀行"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "シリーズBはファーストクローズ28.8億円と合わせ累計調達額45.3億円。",
+    "employee_count": null,
+    "sources": [
+      "https://triorb.co.jp/news/series-b2_jp/",
+      "https://prtimes.jp/main/html/rd/p/000000037.000120742.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社Quemix",
+    "website": "https://www.quemix.com/",
+    "founded_year": null,
+    "hq": null,
+    "representative": null,
+    "description": "量子コンピューター・量子センサー・材料計算のアルゴリズムおよびソフトウェアを研究開発。量子化学計算アルゴリズム「確率的虚時間発展法（PITE）」を開発し国内特許を取得している。",
+    "sectors": ["量子コンピューティング", "ディープテック", "材料"],
+    "stage": null,
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資",
+      "amount_oku": null,
+      "investors": ["本田技研工業"]
+    },
+    "investors": ["テラスカイ", "本田技研工業"],
+    "partners": ["本田技研工業"],
+    "awards": [],
+    "status": "active",
+    "status_note": "上場企業テラスカイの子会社。今回の調達額は非開示。",
+    "employee_count": null,
+    "sources": [
+      "https://www.quemix.com/post/20260807-honda",
+      "https://sogyotecho.jp/news/20260810quemix/"
+    ],
+    "last_verified": "2026-08"
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "name": "NOT A HOTEL株式会社",
+    "website": null,
+    "founded_year": 2020,
+    "hq": "東京都中央区",
+    "representative": "濵渦伸次",
+    "description": "世界的建築家によるデザイン住宅を1年365日を分割して共同所有する「NOT A HOTEL」を企画・開発・運営。ジェットやヘリ、クルーザーを共同所有する「NOT A GARAGE」も推進する。",
+    "sectors": ["不動産", "旅行・ホスピタリティ", "シェアリングエコノミー"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズD",
+      "amount_oku": 100,
+      "investors": ["トヨタ・インベンション・パートナーズ", "SBIホールディングス", "SBIインベストメント", "セコイア", "TTライオンパートナーズ"]
+    },
+    "investors": ["トヨタ・インベンション・パートナーズ", "SBIホールディングス", "SBIインベストメント", "セコイア", "TTライオンパートナーズ"],
+    "partners": ["トヨタ・インベンション・パートナーズ", "Gライオングループ", "SBI新生銀行"],
+    "awards": [],
+    "status": "active",
+    "status_note": "新株発行による調達100億円に加え既存株主保有株式のセカンダリー取引65億円を含め、シリーズDラウンド全体の取引総額は165億円",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000086.000080389.html",
+      "https://www.neweconomy.jp/posts/598461",
+      "https://lp.startup-db.com/media/articles/20260803-0807"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社ナレッジワーク",
+    "website": "https://knowledgework.com/",
+    "founded_year": 2020,
+    "hq": "東京都港区",
+    "representative": "麻野耕司",
+    "description": "営業組織の生産性向上を支援するセールスイネーブルメントSaaSを提供。2026年8月に営業業務向けAI基盤「セールスAIエージェントOS」の提供を開始した。",
+    "sectors": ["SaaS", "セールスイネーブルメント", "AIエージェント"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 97,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズC 1stクローズ",
+      "amount_oku": 35,
+      "investors": ["グロービス・キャピタル・パートナーズ", "リコージャパン", "三井住友銀行", "三井住友信託銀行", "キヤノンマーケティングジャパン MIRAIファンド", "NTTドコモ・ベンチャーズ", "JPインベストメントグロース", "三菱UFJイノベーション・パートナーズ", "富国生命CVCファンド", "電通ベンチャーズ", "博報堂DYベンチャーズ", "DNX Ventures", "WiL", "Salesforce Ventures", "フォースタートアップスキャピタル"]
+    },
+    "investors": ["グロービス・キャピタル・パートナーズ", "DNX Ventures", "WiL", "Salesforce Ventures", "フォースタートアップスキャピタル", "リコージャパン", "三井住友銀行", "三井住友信託銀行", "NTTドコモ・ベンチャーズ", "三菱UFJイノベーション・パートナーズ", "電通ベンチャーズ", "博報堂DYベンチャーズ"],
+    "partners": ["リコージャパン"],
+    "awards": [],
+    "status": "active",
+    "status_note": "リコージャパンとAIによる営業現場のDX支援に向けた資本業務提携を締結",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000148.000063428.html",
+      "https://jp.ricoh.com/release/2026/0804_1",
+      "https://lp.startup-db.com/media/articles/20260803-0807"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "XMile株式会社",
+    "website": null,
+    "founded_year": 2019,
+    "hq": "東京都新宿区",
+    "representative": "野呂寛之",
+    "description": "物流・建設・製造などノンデスク産業に特化した経営プラットフォームを展開。人材紹介・派遣、DX/AIソリューション、経営支援プラットフォームの3領域を手がける。",
+    "sectors": ["HR・人材", "物流", "建設", "バーティカルSaaS"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 69.6,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズC",
+      "amount_oku": 31.7,
+      "investors": ["Vertex Growth", "ALPHA", "SMBC日興証券", "SOMPO Growth Partners", "東京大学エッジキャピタルパートナーズ(UTEC)", "SMBCベンチャーキャピタル", "Minerva Growth Partners", "日本郵政キャピタル", "JPS Growth Investment"]
+    },
+    "investors": ["Vertex Growth", "東京大学エッジキャピタルパートナーズ(UTEC)", "SMBCベンチャーキャピタル", "日本郵政キャピタル", "SMBC日興証券", "ALPHA", "Minerva Growth Partners", "SOMPO Growth Partners"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000214.000063503.html",
+      "https://thebridge.jp/2026/08/x-mile-raises-series-c-funding-for-non-desk-industry-platform"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社Polyuse",
+    "website": null,
+    "founded_year": 2019,
+    "hq": "東京都港区",
+    "representative": "岩本卓也",
+    "description": "建設用3Dプリンター「Polyuse One」を開発・製造・提供。建設業界の人手不足解消と生産性向上を目指す。",
+    "sectors": ["建設テック", "3Dプリンター", "製造"],
+    "stage": "シリーズB",
+    "total_raised_oku": 50,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "デットファイナンス（無担保・無保証）",
+      "amount_oku": 11,
+      "investors": ["みずほ銀行", "商工組合中央金庫"]
+    },
+    "investors": [],
+    "partners": ["みずほ銀行", "商工組合中央金庫"],
+    "awards": [],
+    "status": "active",
+    "status_note": "エクイティではなくデットによる調達。2025年12月のシリーズB約27億円と合わせ累計調達額は約50億円",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000035.000049711.html",
+      "https://sogyotecho.jp/news/20260805polyuse/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社JIJ",
+    "website": "https://www.j-ij.com/ja",
+    "founded_year": 2018,
+    "hq": "東京都港区",
+    "representative": "山城悠",
+    "description": "数理最適化と量子コンピューティング技術を活用し、製造・物流・交通・通信・エネルギー分野の大規模計算問題を解くソリューションを提供。数理最適化プラットフォーム「JijZept」を展開。",
+    "sectors": ["量子コンピューティング", "数理最適化", "ディープテック"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資",
+      "amount_oku": 8.4,
+      "investors": ["グローバル・ブレイン", "KDDI Open Innovation Fund 3号", "ME Innovation Fund", "ANAの未来創造ファンド", "KURONEKOイノベーションファンド2号", "富士通ベンチャーズファンド"]
+    },
+    "investors": ["グローバル・ブレイン", "KDDI Open Innovation Fund", "ME Innovation Fund", "ANAの未来創造ファンド", "KURONEKOイノベーションファンド", "富士通ベンチャーズファンド"],
+    "partners": ["Quantinuum"],
+    "awards": [],
+    "status": "active",
+    "status_note": "調達額は約520万ドル相当と海外向けにも発表",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000023.000046947.html",
+      "https://www.prnewswire.com/news-releases/jij-raises-us5-2-million-in-funding-led-by-global-brain-302842000.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "FLASH株式会社",
+    "website": null,
+    "founded_year": 2024,
+    "hq": "東京都目黒区",
+    "representative": "和田崎達也",
+    "description": "ショートドラマアプリ「Million（ミリオン）」を開発・運営。映像領域に特化したAIプロダクト開発およびIP・出版事業も手がける。",
+    "sectors": ["エンタメ", "動画・メディア", "アプリ"],
+    "stage": "シード",
+    "total_raised_oku": 13,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シードエクステンション",
+      "amount_oku": null,
+      "investors": ["Sony Innovation Fund", "グローバル・ブレイン", "有安伸宏", "NANKAI NEXT Ventures", "サイドウェイズ"]
+    },
+    "investors": ["Sony Innovation Fund", "グローバル・ブレイン", "有安伸宏", "NANKAI NEXT Ventures", "サイドウェイズ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "本ラウンド単体の調達額は非公表。シードラウンド累計調達額が約13億円と発表された",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000010.000151405.html",
+      "https://sogyotecho.jp/news/20260806flash/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "モルゲンロット株式会社",
+    "website": "https://morgenrot.net/",
+    "founded_year": 2019,
+    "hq": "東京都千代田区",
+    "representative": "中村昌道",
+    "description": "AIデータセンターや企業が保有するGPUリソースを管理し、ユーザーが計算リソースを柔軟に利活用できるソフトウェアソリューションを開発・提供。パブリックGPUクラウドプラットフォームも展開。",
+    "sectors": ["GPUクラウド", "AIインフラ", "データセンター"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-07",
+      "round": "シリーズB エクステンション",
+      "amount_oku": 1,
+      "investors": ["三井住友信託銀行"]
+    },
+    "investors": ["三井住友信託銀行", "日本投資アドバイザー", "電源開発", "三菱HCキャピタル", "ミライト・ワン", "SB C&S"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "本トランシェは1億円（2026年7月15日実行、2026年8月4日発表）。シリーズBラウンドの累計調達額は13.5億円",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000099.000053470.html",
+      "https://sogyotecho.jp/news/20260804morgenrot/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "megli株式会社",
+    "website": "https://www.megli.jp/",
+    "founded_year": 2026,
+    "hq": "東京都中央区",
+    "representative": "秋山広行",
+    "description": "AIを前提としたエンタテインメント制作を手がけ、音楽・ミュージックビデオ・アニメ・ゲームなどを開発。自社IPブランド「megli-ai」でAIシンガー「coyane」をプロデュース。",
+    "sectors": ["エンタメ", "生成AI", "IP・コンテンツ"],
+    "stage": "シード",
+    "total_raised_oku": 1,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-07",
+      "round": "シードラウンド",
+      "amount_oku": 1,
+      "investors": ["Asu Capital Partners", "PixAI（Metanomaly）", "jig.jp", "Brave group"]
+    },
+    "investors": ["Asu Capital Partners", "PixAI（Metanomaly）", "jig.jp", "Brave group"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "2026年8月4日発表",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000002.000187253.html",
+      "https://startuplog.com/n/n620417011ee6"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社ニュートリベース",
+    "website": null,
+    "founded_year": 2023,
+    "hq": "東京都中央区",
+    "representative": "佐藤英明",
+    "description": "無味無臭の栄養パウダー「Ayo（アヨ）」を開発・販売。不足しがちな15種類の栄養素を料理や飲み物に混ぜて補える「調栄料」市場の創出を目指す。",
+    "sectors": ["フードテック", "ヘルスケア", "D2C"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資",
+      "amount_oku": 0.5,
+      "investors": ["インキュベイトファンド"]
+    },
+    "investors": ["インキュベイトファンド"],
+    "partners": ["赤ちゃん本舗", "イオン"],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000016.000125852.html",
+      "https://www.nikkei.com/article/DGXZQOUC287X40Y6A720C2000000/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社NexusAdvisors",
+    "website": "https://nexusadvisors.co.jp/",
+    "founded_year": 2024,
+    "hq": "東京都港区",
+    "representative": "山本稔",
+    "description": "AIエージェント専用の求人媒体「AVACAREER」を開発・運営。企業側と求職者側のAIエージェント同士が相談し、採用業務と就職活動を自動化する。",
+    "sectors": ["HR・人材", "AIエージェント", "SaaS"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シードラウンド",
+      "amount_oku": 0.5,
+      "investors": ["ANOBAKA", "East Ventures", "Skyland Ventures"]
+    },
+    "investors": ["ANOBAKA", "East Ventures", "Skyland Ventures"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000008.000153411.html",
+      "https://sogyotecho.jp/news/20260805nexusadvisors/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "クリエイピア株式会社",
+    "website": null,
+    "founded_year": 2024,
+    "hq": "北海道札幌市中央区",
+    "representative": "藤井優",
+    "description": "北海道発の事業承継スタートアップ。フランチャイズ本部の買収・ロールアップを行い、再生ノウハウを横展開する。",
+    "sectors": ["事業承継・M&A", "フランチャイズ"],
+    "stage": "シード",
+    "total_raised_oku": 0.26,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シードラウンド セカンドクローズ",
+      "amount_oku": 0.1,
+      "investors": ["THE SEED", "国内ベンチャーキャピタル1社（非公表）"]
+    },
+    "investors": ["THE SEED"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "セカンドクローズで1,000万円を追加調達し、シードラウンド累計調達額は2,000万円。全調達手段を含む総額は2,624万円",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000012.000160310.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社ナースX",
+    "website": null,
+    "founded_year": 2025,
+    "hq": "愛知県あま市",
+    "representative": "中道嘉総",
+    "description": "オンラインプリセプターサービスを運営し、看護師支援AIアプリ「マイプリ」を開発。看護師が臨床経験を振り返りAIからフィードバックを受けられる。",
+    "sectors": ["ヘルスケア", "看護・介護", "AI"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-06",
+      "round": "融資（金額非公表）",
+      "amount_oku": null,
+      "investors": ["十六銀行"]
+    },
+    "investors": [],
+    "partners": ["十六銀行", "愛知県", "STATION Ai"],
+    "awards": ["STATION Ai主催 Activation Lab 第4期採択"],
+    "status": "active",
+    "status_note": "エクイティではなく融資。2026年6月30日実行、2026年8月10日発表。調達額は非公表",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000001.000187987.html"
+    ],
+    "last_verified": "2026-08"
+  }
+]
