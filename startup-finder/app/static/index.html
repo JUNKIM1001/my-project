@@ -601,7 +601,7 @@ async function openDetail(id) {
       <div class="m-grid">
         <div class="m-stat"><div class="k">累計調達額</div><div class="v">${oku(c.total_raised_oku)}</div></div>
         <div class="m-stat"><div class="k">評価額（公表・報道）</div><div class="v">${oku(c.valuation_oku)}</div>${c.valuation_source ? `<div class="note">出典: ${esc(c.valuation_source)}</div>` : ''}</div>
-        <div class="m-stat"><div class="k">直近ラウンド</div><div class="v" style="font-size:14px">${lr.date ? `${esc(lr.date)}　${esc(lr.round || '')}` : '<span class="faint">—</span>'}</div>${lr.amount_oku != null ? `<div class="note">調達額 ${lr.amount_oku}億円</div>` : ''}${c.funding_signal ? `<div style="margin-top:5px"><span class="signal">🔔 調達シグナル（${c.months_since_last_round}ヶ月経過）</span></div>` : ''}</div>
+        <div class="m-stat"><div class="k">直近ラウンド</div><div class="v" style="font-size:14px">${lr.date ? `${esc(lr.date)}　${esc(lr.round || '')}` : '<span class="faint">—</span>'}</div>${lr.amount_oku != null ? `<div class="note">調達額 ${lr.amount_oku}億円</div>` : ''}${lr.lead ? `<div class="note">リード: ${esc(lr.lead)}</div>` : ''}${c.funding_signal ? `<div style="margin-top:5px"><span class="signal">🔔 調達シグナル（${c.months_since_last_round}ヶ月経過）</span></div>` : ''}</div>
         <div class="m-stat"><div class="k">ステージ</div><div class="v" style="font-size:14px">${esc(c.stage || '—')}</div></div>
       </div>
       ${sec('主要株主・投資家（VC・CVC・事業会社）', c.investors.length ? c.investors.map(i => `<span class="tag static">${esc(i)}</span>`).join('') : '')}
@@ -707,7 +707,7 @@ function renderCompare() {
   const invHtml = c => c.investors.map(i =>
     invCount[i] >= 2 ? `<span class="common" title="複数社に共通">${esc(i)}</span>` : esc(i)).join('、 ') || '—';
   const row = (label, fn) => `<tr><th class="attr">${label}</th>${items.map(c => `<td>${fn(c)}</td>`).join('')}</tr>`;
-  const lr = c => c.last_round?.date ? `${esc(c.last_round.date)} ${esc(c.last_round.round || '')}${c.last_round.amount_oku != null ? ` / ${c.last_round.amount_oku}億円` : ''}` : '—';
+  const lr = c => c.last_round?.date ? `${esc(c.last_round.date)} ${esc(c.last_round.round || '')}${c.last_round.amount_oku != null ? ` / ${c.last_round.amount_oku}億円` : ''}${c.last_round.lead ? ` / リード: ${esc(c.last_round.lead)}` : ''}` : '—';
   document.getElementById('modal').innerHTML = `
     <div class="m-head">
       <button class="close" onclick="closeModal()">✕</button>

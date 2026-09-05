@@ -1,6 +1,8 @@
 """data/raw/*.json（リサーチ結果）をSQLiteに取り込む。
 
 - 同名企業はマージ（後から来たデータで null 埋め・sources/themes は結合）
+- 直近ラウンドが既存より新しい（last_round.date が後の月）場合は、ラウンド情報・
+  ステージ・累計調達額を新データで上書きする（週次クロールの反映漏れ対策）
 - 法人格の表記ゆれ（株式会社の前後）を正規化して名寄せする
 
 usage: .venv/bin/python3 -m app.scripts.import_json
@@ -12,8 +14,10 @@ import os
 import re
 import sys
 
-from app.db import BASE_DIR, Base, SessionLocal, engine
+from app.db import BASE_DIR, SessionLocal, engine
 from app.models import Company
+from app.rounds import keep_max_total, round_is_newer, should_replace_round, stage_for_status
+from app.schema import ensure_sqlite_schema
 
 RAW_DIR = os.path.join(BASE_DIR, "data", "raw")
 
@@ -77,6 +81,58 @@ def merge_json_list(a, b):
 
 VALID_STATUS = {"active", "ipo", "ma", "closed"}
 
+# 既存が空欄のときだけ新データで埋める列
+FILL_COLS = (
+    "website", "founded_year", "hq", "representative",
+    "description", "stage", "total_raised_oku",
+    "valuation_oku", "valuation_source", "last_round_date",
+    "last_round_name", "last_round_amount_oku",
+    "last_round_investors", "last_round_lead", "status_note", "employee_count",
+    "last_verified", "contact_url", "rep_linkedin", "rep_x",
+    "rep_facebook",
+)
+# 直近ラウンドが新しいときにまとめて差し替える列（古いラウンドの引受先を残さない）
+ROUND_COLS = (
+    "last_round_date", "last_round_name", "last_round_amount_oku",
+    "last_round_investors", "last_round_lead",
+)
+
+
+def merge_into(existing, fields):
+    """既存レコードへ新データをマージする。戻り値: ラウンド情報を上書きしたか。
+
+    - 新データの直近ラウンドが既存より新しい月なら ROUND_COLS を差し替え、
+      stage / total_raised_oku / status_note / last_verified も（値がある時だけ）上書き
+    - それ以外の列は既存の値を優先し、空欄のみ新データで埋める。リスト系は結合。
+    """
+    newer = should_replace_round(fields["last_round_date"], existing.last_round_date,
+                                 fields["last_round_name"], existing.last_round_name,
+                                 fields["last_round_amount_oku"], existing.last_round_amount_oku)
+    if newer:
+        # 年のみ日付の月補完（同一ラウンド）ではステージを動かさない。差し替え前に判定する
+        meta = ("stage", "status_note", "last_verified") if round_is_newer(
+            fields["last_round_date"], existing.last_round_date) else ("status_note", "last_verified")
+        for col in ROUND_COLS:
+            setattr(existing, col, fields[col])
+        existing.total_raised_oku = keep_max_total(existing.total_raised_oku, fields["total_raised_oku"])
+        for col in meta:
+            if fields[col] not in (None, ""):
+                setattr(existing, col, fields[col])
+    for col in FILL_COLS:
+        if getattr(existing, col) in (None, "") and fields[col] not in (None, ""):
+            setattr(existing, col, fields[col])
+    existing.sectors = merge_csv(existing.sectors, fields["sectors"])
+    existing.themes = merge_csv(existing.themes, fields["themes"])
+    existing.investors = merge_csv(existing.investors, fields["investors"])
+    existing.partners = merge_csv(existing.partners, fields["partners"])
+    existing.awards = merge_json_list(existing.awards, fields["awards"])
+    existing.sources = merge_json_list(existing.sources, fields["sources"])
+    # closed/ipo/ma の情報は active より優先（存続状況の正確性重視）。ステージも整合させる
+    if existing.status == "active" and fields["status"] != "active":
+        existing.status = fields["status"]
+        existing.stage = stage_for_status(fields["status"], fields["stage"] or existing.stage)
+    return newer
+
 
 def record_to_fields(rec, theme):
     lr = rec.get("last_round") or {}
@@ -102,6 +158,7 @@ def record_to_fields(rec, theme):
         "last_round_name": lr.get("round"),
         "last_round_amount_oku": lr.get("amount_oku"),
         "last_round_investors": join_list(lr.get("investors")),
+        "last_round_lead": lr.get("lead") or None,
         "investors": join_list(rec.get("investors")),
         "partners": join_list(rec.get("partners")),
         "awards": json.dumps(awards, ensure_ascii=False) if awards else None,
@@ -118,7 +175,7 @@ def record_to_fields(rec, theme):
 
 
 def main():
-    Base.metadata.create_all(bind=engine)
+    ensure_sqlite_schema(engine)
     db = SessionLocal()
 
     files = sorted(glob.glob(os.path.join(RAW_DIR, "*.json")))
@@ -128,7 +185,7 @@ def main():
 
     # 既存レコードの名寄せインデックス
     index = {norm_name(c.name): c for c in db.query(Company).all()}
-    inserted, merged, skipped = 0, 0, 0
+    inserted, merged, round_updated, skipped = 0, 0, 0, 0
 
     for path in files:
         theme = os.path.splitext(os.path.basename(path))[0]
@@ -155,32 +212,14 @@ def main():
                 index[key] = company
                 inserted += 1
             else:
-                # 既存の値を優先し、空欄のみ新データで埋める。リスト系は結合。
-                for col in (
-                    "website", "founded_year", "hq", "representative",
-                    "description", "stage", "total_raised_oku",
-                    "valuation_oku", "valuation_source", "last_round_date",
-                    "last_round_name", "last_round_amount_oku",
-                    "last_round_investors", "status_note", "employee_count",
-                    "last_verified", "contact_url", "rep_linkedin", "rep_x",
-                    "rep_facebook",
-                ):
-                    if getattr(existing, col) in (None, "") and fields[col] not in (None, ""):
-                        setattr(existing, col, fields[col])
-                existing.sectors = merge_csv(existing.sectors, fields["sectors"])
-                existing.themes = merge_csv(existing.themes, fields["themes"])
-                existing.investors = merge_csv(existing.investors, fields["investors"])
-                existing.partners = merge_csv(existing.partners, fields["partners"])
-                existing.awards = merge_json_list(existing.awards, fields["awards"])
-                existing.sources = merge_json_list(existing.sources, fields["sources"])
-                # closed/ipo/ma の情報は active より優先（存続状況の正確性重視）
-                if existing.status == "active" and fields["status"] != "active":
-                    existing.status = fields["status"]
+                if merge_into(existing, fields):
+                    round_updated += 1
                 merged += 1
 
     db.commit()
     total = db.query(Company).count()
-    print("inserted=%d merged=%d skipped=%d total=%d" % (inserted, merged, skipped, total))
+    print("inserted=%d merged=%d round_updated=%d skipped=%d total=%d"
+          % (inserted, merged, round_updated, skipped, total))
     db.close()
 
 

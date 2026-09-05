@@ -1,0 +1,595 @@
+[
+ {
+  "id": 382,
+  "name": "株式会社FiNC Technologies",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2024-03",
+   "round": "第三者割当増資",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "ロート製薬"
+   ]
+  },
+  "investors_added": [
+   "ロート製薬"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": 51,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000324.000027329.html",
+   "https://startup-db.com/companies/7LPWpoVUO2PGz5Em",
+   "https://gamebiz.jp/news/396239"
+  ],
+  "note": "2024-03-28発表、既存株主ロート製薬からの追加出資（金額非公開）。従業員数51名は2024-03-01時点（PR TIMES）。2024-11-21に資本金5億9,500万円の減資を官報公告、2023年12月期は最終損失3.17億円・債務超過との報道（gamebiz）。2025年3月にグッピーズのヘルスケア事業を吸収分割で譲受（FiNCが譲受側）。PR TIMESでは2026-09-03まで配信継続中。"
+ },
+ {
+  "id": 399,
+  "name": "シンクサイト株式会社（ThinkCyte）",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://thinkcyte.com/newsroom/20240829-jp/",
+   "https://thinkcyte.com/language/ja/"
+  ],
+  "note": "2024-08のシリーズC（合計45億円・累計111.5億円）以降の新規調達発表は確認できず。2025-08にNEDOディープテック事業開発支援に採択。"
+ },
+ {
+  "id": 304,
+  "name": "Heartseed株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "IPO済",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2024-07",
+   "round": "IPO（公募）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [],
+  "status": "ipo",
+  "status_note": "2024-07-30 東証グロース上場（証券コード219A、公開価格1,160円、主幹事SMBC日興証券）",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://heartseed.jp/news/listing-approval.html",
+   "https://www.ipokiso.com/company/2024/heartseed.html"
+  ],
+  "note": "IPO公募による調達額は約24億円との報道（ipokiso）。"
+ },
+ {
+  "id": 205,
+  "name": "株式会社TOKIUM",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://startup-db.com/companies/x8eqpwjUYOMGg1mN",
+   "https://www.nikkei.com/article/DGXZRSP673534_R20C24A6000000/"
+  ],
+  "note": "STARTUP DB・検索結果とも最新は2024-06のTGVest Capital約15億円（累計約66億円）。従業員数は同DBで約1,000人（2026-08-04時点、推計値のため未反映）。"
+ },
+ {
+  "id": 1594,
+  "name": "株式会社ファームノートホールディングス",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [
+   "オハヨー乳業",
+   "札幌イノベーションファンド",
+   "トモヱ乳業",
+   "千葉道場2号ファンド",
+   "KOBASHI HOLDINGS"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.farmnote.com/news/20240419/688/",
+   "https://corp.farmnote.com/info/press/",
+   "https://prtimes.jp/main/html/rd/p/000000025.000039111.html"
+  ],
+  "note": "DBの2024-02（8.4億円）ラウンドは、2023-05〜2024-02にグループ全体で実施し2024-04-19に発表した総額8.4億円（日本政策金融公庫・帯広信用金庫からの借入を含む、累計約53億円）と同一。それ以降の新規調達は公式プレス一覧に無し。"
+ },
+ {
+  "id": 172,
+  "name": "ルカ・サイエンス株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://ja.luca-science.com/news",
+   "https://ja.luca-science.com/news/220606-01"
+  ],
+  "note": "公式ニュース・検索結果とも2022-06のシリーズB（38.6億円）以降の調達発表なし。2024-07-01に新CEO就任を発表。"
+ },
+ {
+  "id": 702,
+  "name": "matsuri technologies株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-07",
+   "round": "デットファイナンス",
+   "amount_oku": 15.0,
+   "lead": null,
+   "investors": [
+    "りそな銀行",
+    "みずほ銀行",
+    "商工組合中央金庫",
+    "北國銀行",
+    "東日本銀行",
+    "千葉銀行",
+    "三井住友銀行"
+   ]
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000001053.000022329.html",
+   "https://www.matsuri.tech/news/2775"
+  ],
+  "note": "2026-07-06発表。銀行7行からの融資15億円（デット、エクイティなし）に加え融資枠6億円を契約。累計調達額の記載なし。公式サイトは matsuri.tech（DBのmatsuri-tech.comは名前解決不可）。DBの2024年シリーズD13.4億円は2024-02〜06発表・累計43.2億円との検索結果あり。"
+ },
+ {
+  "id": 971,
+  "name": "akippa株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [
+   "日本駐車場開発",
+   "ディー・エヌ・エー",
+   "住友商事",
+   "グロービス5号ファンド",
+   "トリドールホールディングス",
+   "JR東日本スタートアップ",
+   "日本郵政キャピタル",
+   "ABCドリームファンド1号",
+   "FFGベンチャー投資事業有限責任組合第1号",
+   "SI地域創生ファンド",
+   "SI創業応援ファンド",
+   "ニッポンレンタカーサービス",
+   "中部日本放送",
+   "千島土地"
+  ],
+  "status": "active",
+  "status_note": "2026-08-18 東証スタンダード市場への新規上場承認、上場予定日2026-09-18（証券コード627A、主幹事SBI証券）。2026-09-04時点では上場前",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://akippa.co.jp/news/12520/",
+   "https://akippa.co.jp/news/12536/",
+   "https://akippa.co.jp/wp-content/uploads/2026/09/e183f96922bce01513ec1ed91ccf178a-2.pdf"
+  ],
+  "note": "2026-09-01付仮条件540〜570円、公募378,000株・売出1,833,100株・OA上限331,600株、価格決定日2026-09-10。上場後はstatus=ipo・stage=IPO済へ更新要。investors_addedは仮条件決定資料の大株主・ロックアップ対象株主から（SOMPOホールディングス29.12%、DeNA14.47%等）。2019-10以降の私募ラウンドは確認できず。"
+ },
+ {
+  "id": 215,
+  "name": "株式会社THIRD",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://startup-db.com/companies/E6XeJWkUEnOJLWNM",
+   "https://japan.cnet.com/article/35192599/"
+  ],
+  "note": "検索結果は2022-08のシリーズB（26億円）が最新。公式サイトのニュース一覧はJS描画のため取得不可。"
+ },
+ {
+  "id": 337,
+  "name": "株式会社フィナンシェ",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-32640",
+   "https://prtimes.jp/main/html/rd/p/000000574.000042665.html"
+  ],
+  "note": "2023-07以降の資金調達発表は検索結果に無し（公式ニュースページは404、FIRST CVCは403）。"
+ },
+ {
+  "id": 784,
+  "name": "株式会社Azit",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000014.000063656.html",
+   "https://startup-db.com/companies/Ao31G8nUgm8ZkwyX"
+  ],
+  "note": "DBの2024-09ラウンドは2024-09-09発表（Monoful Venture Partners 1号ファンド、Logistics Innovation Fund＝2回目の出資、金額非公開、サービス名をDeliveryXに変更）と一致。それ以降の調達は確認できず。2025-09-02に需給予測基盤ForecastXをリリース。"
+ },
+ {
+  "id": 576,
+  "name": "株式会社miive",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 24.8,
+  "last_round": {
+   "date": "2025-11",
+   "round": "シリーズB 1st",
+   "amount_oku": 15.0,
+   "lead": "DNX Ventures",
+   "investors": [
+    "DNX Ventures",
+    "あおぞら企業投資",
+    "三井住友銀行",
+    "みずほ銀行",
+    "北國銀行",
+    "十六銀行"
+   ]
+  },
+  "investors_added": [
+   "DNX Ventures",
+   "あおぞら企業投資",
+   "三井住友銀行",
+   "みずほ銀行",
+   "北國銀行",
+   "十六銀行"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000051.000074177.html"
+  ],
+  "note": "2025-11-05発表。「第三者割当増資、および金融機関からの融資を含む総額約15億円」（デット込み、内訳非公開）。既存株主DNX Venturesを「リード投資家」と明記。累計24.8億円。DBのtotal_raised_oku 24.8はこの累計と一致しており、DBには累計のみ先行反映されていた模様。"
+ },
+ {
+  "id": 294,
+  "name": "株式会社ジョリーグッド",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://jollygood.co.jp/news",
+   "https://jollygood.co.jp/news/2567/"
+  ],
+  "note": "公式ニュース・検索結果とも2021-01の10億円調達が最新。"
+ },
+ {
+  "id": 584,
+  "name": "セルアクシア株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.cellaxia.co.jp/news/",
+   "https://www.cellaxia.co.jp/news/361"
+  ],
+  "note": "公式お知らせ・検索結果とも2022-08-19の第三者割当増資（約6.4億円・累計約20.5億円）が最新。"
+ },
+ {
+  "id": 628,
+  "name": "EDGEMATRIX株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://edgematrix.com/news/release/2151/",
+   "https://edgematrix.com/news/release/"
+  ],
+  "note": "2021-03-23のシリーズB（約10億円・累計19億円）以降の調達発表は公式リリース一覧・検索結果に無し。"
+ },
+ {
+  "id": 433,
+  "name": "株式会社Chompy（旧・株式会社シン）",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://chompy-inc.com/news",
+   "https://prtimes.jp/main/html/searchrlp/company_id/62766",
+   "https://suan.tokyo/chompyend/"
+  ],
+  "note": "2021-06の7.8億円以降の調達なし。フードデリバリー「Chompy」は2023-05-15にサービス終了し、飲食店向けアプリ/POS（Chompy Studio）へ転換。PR TIMES最終配信は2023-05-22。解散・清算の事実は確認できず（公式サイトは稼働中）。"
+ },
+ {
+  "id": 1598,
+  "name": "ベジタリア株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2021-03",
+   "round": "新株予約権付社債（資本業務提携）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "石垣食品"
+   ]
+  },
+  "investors_added": [
+   "石垣食品"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.marr.jp/mainfo/news/entry/27751",
+   "http://ke.kabupro.jp/tsp/20210311/140120210311477246.pdf",
+   "https://www.vegetalia.co.jp/information/"
+  ],
+  "note": "2021-03-11に石垣食品（東証2901）がベジタリアと資本業務提携し同社の新株予約権付社債を引受（金額は開示PDFを取得できず未確認）。2026-04にベジタリアが稲作生産法人ライスフィールドへ資本参加（出資側）。公式お知らせ2024-11以降に資金調達の掲載なし。"
+ },
+ {
+  "id": 1225,
+  "name": "株式会社LabBase",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000080.000020282.html",
+   "https://labbase.co.jp/news/"
+  ],
+  "note": "2022-09-15のシリーズB（金額非公開、JICベンチャー・グロース・インベストメンツがリード）以降の調達発表なし。"
+ },
+ {
+  "id": 1235,
+  "name": "株式会社Timers",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000118.000037972.html",
+   "https://timers-inc.com/news"
+  ],
+  "note": "2024-04の加賀電子への第三者割当増資以降、資金調達の発表なし（公式ニュースは2026-05まで確認）。"
+ },
+ {
+  "id": 829,
+  "name": "株式会社GOKKO",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000023.000090916.html",
+   "https://www.nikkei.com/article/DGXZQOUC11AL60R10C24A7000000/"
+  ],
+  "note": "2024-07のシリーズB（11億円、ジャフコ・日本テレビ・i-nest capital等）以降の調達発表なし。"
+ },
+ {
+  "id": 589,
+  "name": "セレイドセラピューティクス株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 25.2,
+  "last_round": {
+   "date": "2025-10",
+   "round": "シリーズB（1stクローズ）",
+   "amount_oku": 10.55,
+   "lead": null,
+   "investors": [
+    "大阪大学ベンチャーキャピタル（OUVC2号ファンド）",
+    "東京大学エッジキャピタルパートナーズ（UTEC5号ファンド）",
+    "テクノサイエンス",
+    "常陽キャピタルパートナーズ（つくばエクシード2号ファンド）"
+   ]
+  },
+  "investors_added": [
+   "大阪大学ベンチャーキャピタル",
+   "常陽キャピタルパートナーズ",
+   "神戸大学キャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://celaidtx.com/2025/10/07/1009/",
+   "https://celaidtx.com/2024/10/31/899/",
+   "https://celaidtx.com/2024/05/08/819/",
+   "https://celaidtx.com/category/financing/"
+  ],
+  "note": "2025-10-07発表。10.55億円は第三者割当増資5.55億円＋AMED助成金約5億円の合計、累計25.2億円は補助金を含む。前史：2024-05-08にシリーズA累計12億円相当を完了、2024-10-31に神戸大学キャピタル・テクノサイエンスから追加1.4億円。"
+ },
+ {
+  "id": 671,
+  "name": "メディフォン株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-11",
+   "round": "第三者割当増資",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "Aflac Ventures Japan（AVJ2号投資事業有限責任組合）"
+   ]
+  },
+  "investors_added": [
+   "Aflac Ventures Japan"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000033.000046468.html",
+   "https://sogyotecho.jp/news/20251118mediphone/",
+   "https://mediphone.co.jp/news/"
+  ],
+  "note": "2025-11-14発表。Aflac Ventures Japanからの出資（金額非公開）とアフラック生命保険との業務提携。2025-06-17にインフォコムからクラウド健康管理システムWELSA事業を譲受（メディフォンが譲受側）。"
+ },
+ {
+  "id": 1855,
+  "name": "エシカル・スピリッツ株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000086.000054781.html",
+   "https://thebridge.jp/2024/09/ethical-spirits-jpy380m-round-funding"
+  ],
+  "note": "DBの2024-09ラウンドは2024-09-17発表の総額3.8億円（サントリーHD増資＋Siiibo証券私募社債＋三井住友銀行・日本政策金融公庫融資）と一致。同リリースは累計約5.8億円（2022-08約2億円＋今回3.8億円）と記載しており、DBのtotal_raised_oku 10.3と不一致のため要確認。それ以降の調達発表なし。"
+ },
+ {
+  "id": 915,
+  "name": "株式会社Quollio Technologies",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://quollio.com/news/release_20240626",
+   "https://quollio.com/news"
+  ],
+  "note": "2024-06のシリーズA（7.5億円・累計10億円超）以降の調達発表は公式ニュース・検索結果に無し。"
+ }
+]

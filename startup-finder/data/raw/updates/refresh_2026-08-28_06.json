@@ -1,0 +1,699 @@
+[
+ {
+  "id": 103,
+  "name": "Telexistence株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-07",
+   "round": "第三者割当増資（リコーとの資本提携・RICOH Innovation Fund）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "リコー（RICOH Innovation Fund）"
+   ]
+  },
+  "investors_added": [
+   "リコー（RICOH Innovation Fund）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://jp.ricoh.com/release/2026/0716_1",
+   "https://startup-db.com/companies/A50WZ9PU0M9p4LVk",
+   "https://initial.inc/companies/A-28075",
+   "https://tx-inc.com/ja/"
+  ],
+  "note": "2026-07-16 リコーがCVC「RICOH Innovation Fund」を通じ資本提携（出資額非公開）。ステージ変更なし。2025-08の追加投資報道は一次ソース未確認。"
+ },
+ {
+  "id": 85,
+  "name": "株式会社Kyash",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-06",
+   "round": "資本業務提携（第三者割当増資＋既存株式買付）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "ギフティ"
+   ]
+  },
+  "investors_added": [
+   "ギフティ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://finance.biggo.jp/news/IuxYXJ4BrAZSr0oSYc9R",
+   "https://initial.inc/companies/A-17223",
+   "https://www.kyash.co/press-release/20220317"
+  ],
+  "note": "ギフティが取得総額約16億円（第三者割当増資17,778株＋既存株式買付50,350株、内訳金額非公表）で持株比率19.07%取得。契約締結2026-06-01、実行2026-06-10予定。新株発行分の金額は非公表のためamountはnull。"
+ },
+ {
+  "id": 245,
+  "name": "株式会社ハイレゾ香川",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-04",
+   "round": "第三者割当増資（戸田建設）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "戸田建設"
+   ]
+  },
+  "investors_added": [
+   "WCP HR投資事業有限責任組合",
+   "サードウェーブ",
+   "長瀬産業",
+   "豊田通商",
+   "三菱HCキャピタル",
+   "きんでん",
+   "三菱UFJキャピタル（三菱UFJキャピタル10号投資事業有限責任組合）",
+   "戸田建設"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://ascii.jp/elem/000/004/226/4226344/",
+   "https://highreso.jp/press/20647",
+   "https://prtimes.jp/main/html/rd/p/000000115.000058027.html",
+   "https://prtimes.jp/main/html/rd/p/000000133.000058027.html",
+   "https://initial.inc/companies/A-38562"
+  ],
+  "note": "【注意】以下は親会社「株式会社ハイレゾ」の調達で、DB上の主体（ハイレゾ香川）固有の新規調達は未確認。親会社: 2024-10 第三者割当増資 約12億円（WCP HR・サードウェーブ・長瀬産業、融資含む累計約41億円）／2025-07 豊田通商（非公開）／2025-11 三菱HCキャピタル資本業務提携／2025-12 きんでん資本業務提携／2026-02 三菱UFJキャピタル（非公開）／2026-04 戸田建設（非公開）。2025-11・2025-12はRSS見出しベース。"
+ },
+ {
+  "id": 373,
+  "name": "株式会社HIKKY",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 70.0,
+  "last_round": {
+   "date": "2022-02",
+   "round": "シリーズA（セカンドクローズ）",
+   "amount_oku": 5.0,
+   "lead": null,
+   "investors": [
+    "メディアドゥ"
+   ]
+  },
+  "investors_added": [
+   "メディアドゥ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-37759",
+   "https://www.moguravr.com/hikky-funding-2/",
+   "https://saleszine.jp/news/detail/3224"
+  ],
+  "note": "2022-02-08 メディアドゥ引受の第三者割当増資5億円でシリーズA総額70億円で完了（DBの累計70億円と整合）。2022年3月以降の新規調達は確認できず。"
+ },
+ {
+  "id": 328,
+  "name": "株式会社Thirdverse",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-09",
+   "round": "第三者割当増資",
+   "amount_oku": 2.0,
+   "lead": null,
+   "investors": [
+    "D4V（Design for Ventures）",
+    "ユナイテッド",
+    "サイバーエージェント・キャピタル",
+    "マシ・オカ（個人・戦略的投資家）",
+    "個人投資家"
+   ]
+  },
+  "investors_added": [
+   "D4V（Design for Ventures）",
+   "ユナイテッド",
+   "サイバーエージェント・キャピタル",
+   "マシ・オカ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000116.000024885.html",
+   "https://sogyotecho.jp/news/20250905thirdverse/",
+   "https://initial.inc/companies/A-TECKF"
+  ],
+  "note": "2025-09-05発表、2億円。ラウンド名・累計は非公表。"
+ },
+ {
+  "id": 319,
+  "name": "menu株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": "清算",
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "closed",
+  "status_note": "2026-08-19 KDDIがフードデリバリー「menu」の提供終了とmenu株式会社の解散・清算を発表。2026-08-31 KDDIがレアゾンHD保有株を取得し完全子会社化、2026-09-30サービス終了、その後解散・清算予定。",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://newsroom.kddi.com/news/detail/kddi_nr_s-75_4679.html",
+   "https://k-tai.watch.impress.co.jp/docs/news/2133853.html",
+   "https://initial.inc/companies/A-34293"
+  ],
+  "note": "スピーダは2026-08-26で調査終了。2021-06以降の新規調達ラウンドは確認できず。"
+ },
+ {
+  "id": 442,
+  "name": "SATORI株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-16904",
+   "https://prtimes.jp/main/html/rd/p/000000160.000015718.html"
+  ],
+  "note": "2022-01以降の新規調達は確認できず。"
+ },
+ {
+  "id": 632,
+  "name": "株式会社Showcase Gig",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2022-12",
+   "round": "第三者割当増資",
+   "amount_oku": null,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-12300",
+   "https://tomoruba.eiicon.net/articles/1365"
+  ],
+  "note": "スピーダに2022-12-15 第三者割当増資（調達額非公開）の記載あり。引受先は未確認。日経テレコン検索見出しでは2023年1月時点の累計59億円とあるが本文未確認のため累計は更新せず。2019-12のNTTドコモ10億円出資はDBの累計に含まれている可能性あり。"
+ },
+ {
+  "id": 696,
+  "name": "株式会社Rehab for JAPAN",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "第三者割当増資（小野デジタルヘルス投資）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "小野デジタルヘルス投資"
+   ]
+  },
+  "investors_added": [
+   "日本生命保険（ニッセイ・ストラテジック1号投資事業有限責任組合）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://rehabforjapan.com/news/202605141239/",
+   "https://rehabforjapan.com/news/202604201413/",
+   "https://www.nissay.co.jp/kaisha/news/20260420.html",
+   "https://startup-db.com/companies/yKEMpjXUOekJQPej"
+  ],
+  "note": "2026-04-20 日本生命グループ（ニッセイ・ストラテジック1号ファンド）と資本提携、2026-05-14 小野デジタルヘルス投資から第三者割当増資。いずれも金額非公開。"
+ },
+ {
+  "id": 651,
+  "name": "株式会社KOMPEITO",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-13023",
+   "https://prtimes.jp/main/html/rd/p/000000096.000015058.html"
+  ],
+  "note": "2024-08 シリーズD以降の新規調達は確認できず。"
+ },
+ {
+  "id": 1266,
+  "name": "株式会社東北マグネットインスティテュート",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": "清算",
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "closed",
+  "status_note": "2024-01-05 仙台地裁より破産手続開始決定（負債約8億2,900万円・2023年3月末時点）。STARTUP DBでは2025-05-02解散と記載。",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://kahoku.news/articles/20240105khn000050.html",
+   "https://startup-db.com/companies/94dzpVmUm0lGjWkY",
+   "https://info.gbiz.go.jp/hojin/ichiran?hojinBango=7370001038797"
+  ],
+  "note": "gBizINFOでも「閉鎖」表示。"
+ },
+ {
+  "id": 291,
+  "name": "株式会社SODA",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "M&A済",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2021-12",
+   "round": "シリーズD",
+   "amount_oku": null,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [
+   "KREAM",
+   "SB Investment Advisers (UK)",
+   "ジャフコ グループ",
+   "Altos Ventures"
+  ],
+  "status": "ma",
+  "status_note": "2023-10-04 韓国KREAM（NAVER系）がSODA株を追加取得し持分65%で連結子会社化（報道評価額530億円）。数年内のスウィングバイIPOを目指すと報道。",
+  "employee_count": null,
+  "valuation_oku": 530.0,
+  "valuation_source": "https://www.fashionsnap.com/article/2023-10-04/soda-kream/",
+  "sources": [
+   "https://initial.inc/companies/A-34234",
+   "https://www.fashionsnap.com/article/2023-10-04/soda-kream/",
+   "https://startup-db.com/companies/x8eqpwjUzEMGg1mN",
+   "https://markezine.jp/news/detail/72559"
+  ],
+  "note": "DB未反映: 2021-07 シリーズC 約62億円、2021-12 シリーズD（非公開、調達後評価額368.37億円・スピーダ）。累計は非公表のため更新せず。"
+ },
+ {
+  "id": 190,
+  "name": "株式会社CLUE",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.aozora-ci.co.jp/news/investee_clue.html",
+   "https://initial.inc/companies/A-16512"
+  ],
+  "note": "あおぞら企業投資の社債・新株予約権引受は2020-12-07でDBのシリーズBと同時期。2021年以降の新規調達は確認できず。"
+ },
+ {
+  "id": 467,
+  "name": "株式会社アルダグラム",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 51.3,
+  "last_round": {
+   "date": "2026-09",
+   "round": "シリーズB",
+   "amount_oku": 20.0,
+   "lead": null,
+   "investors": [
+    "ジャフコ グループ",
+    "MonotaRO",
+    "パナソニック エレクトリックワークス"
+   ]
+  },
+  "investors_added": [
+   "パナソニック エレクトリックワークス"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000128.000058603.html",
+   "https://sogyotecho.jp/news/20260902aldagram/"
+  ],
+  "note": "2026-09-02発表。既存株主3社の参加、リード明記なし。"
+ },
+ {
+  "id": 977,
+  "name": "株式会社エマルションフローテクノロジーズ",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-39803",
+   "https://prtimes.jp/main/html/rd/p/000000015.000082075.html"
+  ],
+  "note": "2024-03 シリーズB以降の新規調達は確認できず。"
+ },
+ {
+  "id": 522,
+  "name": "HiJoJo Partners株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 28.0,
+  "last_round": {
+   "date": "2026-02",
+   "round": "シリーズB1",
+   "amount_oku": 10.0,
+   "lead": null,
+   "investors": [
+    "ALHD Pegasus Tech Ventures, L.P.",
+    "i-nest capital（i-nest2号投資事業有限責任組合）",
+    "SMBCベンチャーキャピタル（SMBC事業開発4号投資事業有限責任組合）",
+    "エイチ・アイ・エス",
+    "David Heller（個人）",
+    "その他法人・個人26者"
+   ]
+  },
+  "investors_added": [
+   "ALHD Pegasus Tech Ventures",
+   "i-nest capital",
+   "SMBCベンチャーキャピタル",
+   "エイチ・アイ・エス",
+   "David Heller"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.hijojo-partners.com/news/b1",
+   "https://www.hijojo-partners.com/news?page=2"
+  ],
+  "note": "2026-02-19発表、約10億円、計31者から。累計約28億円。"
+ },
+ {
+  "id": 348,
+  "name": "株式会社PeopleX",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズA",
+  "total_raised_oku": 78.2,
+  "last_round": {
+   "date": "2026-09",
+   "round": "シリーズA（エクイティ＋デット）",
+   "amount_oku": 54.5,
+   "lead": null,
+   "investors": [
+    "エン",
+    "Angel Bridge",
+    "オープンアップグループ",
+    "WiL",
+    "One Capital"
+   ]
+  },
+  "investors_added": [
+   "エン",
+   "オープンアップグループ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000290.000139786.html"
+  ],
+  "note": "デット込み54.5億円（内訳非公表）。累計78.2億円もデット込み。日経見出しによると三井住友銀行・みずほ銀行から計20億円借入（本文未確認）。"
+ },
+ {
+  "id": 464,
+  "name": "株式会社インゲージ",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://ingage.co.jp/news/"
+  ],
+  "note": "2022-05 総額10億円調達以降の新規調達は確認できず。"
+ },
+ {
+  "id": 417,
+  "name": "株式会社FUNDINNO（旧・株式会社日本クラウドキャピタル）",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 84.0,
+  "last_round": {
+   "date": "2023-08",
+   "round": "第三者割当増資（コンバーチブルエクイティ転換含む）",
+   "amount_oku": 46.0,
+   "lead": null,
+   "investors": [
+    "個人・法人投資家（株主数206名）"
+   ]
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000222.000021941.html"
+  ],
+  "note": "2023-08-29発表、総額約46億円、累計約84億円。引受先の個社名は非公表。2023-08以降の新規調達は確認できず。"
+ },
+ {
+  "id": 723,
+  "name": "メタジェンセラピューティクス株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 56.4,
+  "last_round": {
+   "date": "2026-09",
+   "round": "シリーズBエクステンション（ファーストクローズ）",
+   "amount_oku": 2.0,
+   "lead": null,
+   "investors": [
+    "北海道大学Green Frontier Fund1号投資事業有限責任組合",
+    "東海研究開発1号投資事業有限責任組合"
+   ]
+  },
+  "investors_added": [
+   "みずほキャピタル",
+   "SMBCベンチャーキャピタル",
+   "スパークス・アセット・マネジメント",
+   "Arcus South East Asia",
+   "みらい創造インベストメンツ",
+   "電通ベンチャーズSGPファンド",
+   "国際協力銀行",
+   "あすか製薬",
+   "ミライドア",
+   "Canon Marketing Japan MIRAI Fund",
+   "フジタ・イノベーション・キャピタル",
+   "東海東京インベストメント",
+   "グリーンコインベスト投資事業有限責任組合",
+   "マツキヨココカラ＆カンパニー",
+   "メディパルホールディングス",
+   "日本ベンチャーキャピタル",
+   "北海道大学Green Frontier Fund1号",
+   "東海研究開発1号"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000059.000075935.html",
+   "https://prtimes.jp/main/html/rd/p/000000047.000075935.html",
+   "https://prtimes.jp/main/html/rd/p/000000034.000075935.html"
+  ],
+  "note": "2026-09-04 エクステンション1stクローズ199,962,954円（PR表記1.9億円）。累計は投資家からの調達56.4億円、助成金（AMED/NEDO 11.7億円）込みで68.4億円。経緯: 2025-09 シリーズB 1st/2ndクローズ23.2億円（リード投資家: ファストトラックイニシアティブ、累計42.6億円）、2026-02 シリーズB 3rdクローズ11.9億円でシリーズB総額35.2億円（累計54.6億円）。"
+ },
+ {
+  "id": 316,
+  "name": "株式会社L is B",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": "IPO済",
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "ipo",
+  "status_note": "2024-03-26 東京証券取引所グロース市場に上場（証券コード145A）。",
+  "employee_count": 189,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://finance.yahoo.co.jp/quote/145A.T/profile",
+   "https://l-is-b.com/ja/ir/stock/",
+   "https://minkabu.jp/stock/145A/ipo"
+  ],
+  "note": "従業員数189名は連結（単体120名、Yahoo!ファイナンス）。上場後の資金調達ラウンドは対象外。"
+ },
+ {
+  "id": 593,
+  "name": "株式会社スナックミー",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://news.google.com/rss/search?q=%E3%82%B9%E3%83%8A%E3%83%83%E3%82%AF%E3%83%9F%E3%83%BC+%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "note": "Googleニュース検索で2023-03 約5.5億円以降の調達・M&A記事は確認できず。"
+ },
+ {
+  "id": 1808,
+  "name": "株式会社インキュベーション・アライアンス",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": "M&A済",
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "ma",
+  "status_note": "2023-04-20 ADEKAが株式78.3%を取得し子会社化（スピーダ記載: 子会社化2023-04-19）。",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-10646",
+   "https://www.nihon-ma.co.jp/news/20230420_4401-1/",
+   "https://www.firstcvc.jp/story/ma-241"
+  ],
+  "note": "2023-02-24 INCJ保有株を創業者へ譲渡（INCJリリース）。直近の調達ラウンドはスピーダ上2016-03 第三者割当増資7億円のみ。"
+ },
+ {
+  "id": 636,
+  "name": "クモノスコーポレーション株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 17.65,
+  "last_round": {
+   "date": "2026-03",
+   "round": "第三者割当増資",
+   "amount_oku": 1.65,
+   "lead": null,
+   "investors": [
+    "光洋商事ホールディングス"
+   ]
+  },
+  "investors_added": [
+   "パソナグループ",
+   "SGインキュベート",
+   "光洋商事ホールディングス"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://thebridge.jp/2026/04/kumonos-corporation-raises-165-million-yen-from-koyo-shoji-holdings",
+   "https://kumonos.co.jp/news/pr_20240717/"
+  ],
+  "note": "DB未反映: 2024-07 パソナグループ 5億円（第三者割当増資、累計15億円）、2024-11 SGインキュベート 1億円（BRIDGE記載）。2026-03-31 光洋商事HD 1.65億円で累計17.65億円。"
+ },
+ {
+  "id": 1634,
+  "name": "株式会社High Link",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://high-link.co.jp/news"
+  ],
+  "note": "Googleニュース検索で確認できた直近はDBと同じ2024-11-28のBRICKS FUND TOKYO出資（PR TIMES）。それ以降の新規調達は確認できず。"
+ }
+]

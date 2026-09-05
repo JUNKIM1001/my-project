@@ -1,0 +1,567 @@
+[
+ {
+  "id": 49,
+  "name": "エレファンテック株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-03",
+   "round": "シリーズF",
+   "amount_oku": 40,
+   "lead": null,
+   "investors": [
+    "三菱電機"
+   ]
+  },
+  "investors_added": [
+   "三菱電機"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://elephantech.com/news/press_release_20260312/",
+   "https://www.excite.co.jp/news/article/Prtimes_2026-03-12-36441-20/"
+  ],
+  "note": "2026-03-12発表。三菱電機からシリーズFラウンドで40億円の出資受入と事業提携契約。リード明記なし（唯一の記載投資家）。累計調達額の記載なし。"
+ },
+ {
+  "id": 1825,
+  "name": "株式会社スリーダムアライアンス",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://3dom.co.jp/news/",
+   "https://3dom.co.jp/"
+  ],
+  "note": "公式ニュースは2024-04が最新。2024-01にSinjia Land（シンガポール上場）との逆買収前提の株式売買契約を解約。新規調達・上場・清算の公表情報は確認できず。"
+ },
+ {
+  "id": 358,
+  "name": "atama plus株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": "M&A済",
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "ma",
+  "status_note": "2026-07-05付で株式会社公文教育研究会（KUMON）が株式100%を取得しKUMONグループに参画（2026-07-06発表）。取得価格非公表",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.atama.plus/news/3283/",
+   "https://corp.atama.plus/news/"
+  ],
+  "note": "2021-07シリーズB以降の新規調達ラウンドは公式ニュース上確認できず。"
+ },
+ {
+  "id": 211,
+  "name": "oVice株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.ovice.com/ja/press-media-jp"
+  ],
+  "note": "2022-08シリーズB（45億円・One Capital等）以降の新規調達は公式プレス一覧・ニュース検索で確認できず。"
+ },
+ {
+  "id": 1244,
+  "name": "Gaussy株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.gaussy.com/",
+   "https://www.jiji.com/jc/article?k=000000041.000103326&g=prt"
+  ],
+  "note": "公式ニュース（2026-09まで）に資金調達の記載なし。2026-02に新経営体制（CSO/CBO/CFO新設）発表のみ。"
+ },
+ {
+  "id": 229,
+  "name": "シンプルフォーム株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.simpleform.co.jp/news"
+  ],
+  "note": "2024-11シリーズB以降の新規調達はニュース検索で確認できず（公式ニュースページはJS描画のため取得不可）。"
+ },
+ {
+  "id": 82,
+  "name": "株式会社Goals",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-02",
+   "round": "デット調達",
+   "amount_oku": 10,
+   "lead": null,
+   "investors": [
+    "みずほ銀行",
+    "あおぞら企業投資",
+    "商工組合中央金庫",
+    "東京スター銀行",
+    "静岡銀行",
+    "福岡銀行"
+   ]
+  },
+  "investors_added": [
+   "みずほ銀行",
+   "あおぞら企業投資",
+   "商工組合中央金庫",
+   "東京スター銀行",
+   "静岡銀行",
+   "福岡銀行"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://goals.co.jp/news/pr/entry-1519/",
+   "https://thebridge.jp/2026/02/goals-raises-1-billion-yen-in-debt-financing-for-hanzo-expansion",
+   "https://prtimes.jp/main/html/rd/p/000000089.000083706.html"
+  ],
+  "note": "全額デット（総額10億円のデット調達）。エクイティではない。累計調達額の記載なし。リリースに「昨年の調達に続き」とあるが前回調達の詳細は未確認。"
+ },
+ {
+  "id": 359,
+  "name": "株式会社ピーステックラボ",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 42,
+  "last_round": {
+   "date": "2024-11",
+   "round": "資本業務提携（第三者割当）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "ソニーペイメントサービス"
+   ]
+  },
+  "investors_added": [
+   "日本郵政キャピタル",
+   "JR東日本スタートアップ",
+   "イノベーション・エンジン",
+   "阪急阪神イノベーションパートナーズ投資事業有限責任組合",
+   "JR四国・リレーションシップ1号投資事業有限責任組合",
+   "ソニーペイメントサービス"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.corporate.alice.style/topics/237/",
+   "https://www.corporate.alice.style/topics/228/",
+   "https://www.corporate.alice.style/topics/234/",
+   "https://www.corporate.alice.style/topics/241/",
+   "https://www.corporate.alice.style/topics/250/",
+   "https://www.corporate.alice.style/topics/273/",
+   "https://www.corporate.alice.style/news/page/2/"
+  ],
+  "note": "2023-06-06シリーズE1stクローズで総額10億円（日本郵政キャピタル・JR東日本スタートアップが新規、イノベーション・エンジンが既存）、この時点で累計42億円。以降2023-08阪急阪神イノベーションパートナーズ、2024-03 JR四国・リレーションシップ1号ファンド、2024-11ソニーペイメントサービスと資本提携（いずれも金額非公表）。total_raised_oku=42は2023-06時点の公表値で、その後の非公表分は含まず。2024-08に「株式会社アリススタイル」へ社名変更。"
+ },
+ {
+  "id": 851,
+  "name": "TYPICA Holdings株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.bing.com/news/search?q=TYPICA%20%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94&setlang=ja&cc=jp"
+  ],
+  "note": "2024-03以降の新規調達はニュース検索で確認できず（公式サイトは403、PR TIMES企業ページは取得不可）。"
+ },
+ {
+  "id": 1101,
+  "name": "株式会社BitStar",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://bitstar.tokyo/corp/news_release"
+  ],
+  "note": "公式ニュースリリース（2026-09まで）に2023-10以降の資金調達・IPOの記載なし。"
+ },
+ {
+  "id": 1431,
+  "name": "株式会社NEWGREEN",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://newgreen.inc/news/"
+  ],
+  "note": "2024-11シリーズB以降の新規調達はニュース検索で確認できず（公式ニュースページは取得不可）。"
+ },
+ {
+  "id": 680,
+  "name": "株式会社KabuK Style",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://kabuk.co.jp/news",
+   "https://kabuk.co.jp/press"
+  ],
+  "note": "2023-12以降の新規調達はニュース検索で確認できず（公式ニュース・プレスページはJS描画で取得不可）。"
+ },
+ {
+  "id": 332,
+  "name": "AnotherBall Pte. Ltd.",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 47,
+  "last_round": {
+   "date": "2026-05",
+   "round": "デットファイナンス",
+   "amount_oku": 25,
+   "lead": null,
+   "investors": [
+    "商工組合中央金庫",
+    "三菱UFJ銀行",
+    "三井住友銀行",
+    "みずほ銀行"
+   ]
+  },
+  "investors_added": [
+   "商工組合中央金庫",
+   "三菱UFJ銀行",
+   "三井住友銀行",
+   "みずほ銀行"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://anotherball.com/news/en/2026/05/debt-financing-25b-all-japan.html",
+   "https://anotherball.com/"
+  ],
+  "note": "2026-05-18発表の25億円は全額デット。累計47億円はデット込みの公表値。2023-11シード以降のエクイティラウンドは確認できず。2025-05にアニメスタジオMayflowerを買収（買い手側）。"
+ },
+ {
+  "id": 32,
+  "name": "株式会社Algomatic",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://algomatic.jp/news"
+  ],
+  "note": "2023-04のDMM.com 20億円以降の新規調達は公式ニュース・ニュース検索で確認できず。2026-04に代表交代および3社体制への移行を発表。"
+ },
+ {
+  "id": 1639,
+  "name": "株式会社xenodata lab.",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.xenodata-lab.com/news"
+  ],
+  "note": "2024-10以降の新規調達はニュース検索で確認できず（公式ニュースページは取得不可）。"
+ },
+ {
+  "id": 701,
+  "name": "スタディプラス株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://info.studyplus.co.jp/news"
+  ],
+  "note": "公式ニュース（2026年分）に資金調達・IPOの記載なし。"
+ },
+ {
+  "id": 53,
+  "name": "株式会社PETOKOTO",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-05",
+   "round": "第三者割当増資（Spotlight）＋株式投資型クラウドファンディング",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "Spotlight（日本テレビ・博報堂）"
+   ]
+  },
+  "investors_added": [
+   "Spotlight（日本テレビ・博報堂）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.petokoto.com/%E3%83%97%E3%83%AC%E3%82%B9%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%9A%E3%83%83%E3%83%88%E3%82%A6%E3%82%A7%E3%83%AB%E3%83%8D%E3%82%B9%E3%82%AB%E3%83%B3%E3%83%91%E3%83%8B%E3%83%BC-5/",
+   "https://prtimes.jp/main/html/rd/p/000000152.000015317.html"
+  ],
+  "note": "2025-05-02発表：Spotlightを引受先とする第三者割当増資（2024年に完了、金額非公表）。別途2025-05にイークラウドで2回目の株式投資型CFを実施し目標募集額1,000万円に到達（約200名）。1回目CFは2023年末に約3,500万円（150名）。累計調達額の記載なし。"
+ },
+ {
+  "id": 1293,
+  "name": "SOELU株式会社（旧・株式会社ワクテク）",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://about.soelu.com/news"
+  ],
+  "note": "公式ニュース（2025-2026年は店舗開設情報中心）に資金調達の記載なし。ニュース検索も該当なし。"
+ },
+ {
+  "id": 1245,
+  "name": "株式会社Yoii",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://yoii.jp/news",
+   "https://www.excite.co.jp/news/article/Prtimes_2025-04-15-78333-17/"
+  ],
+  "note": "会社自体の新規エクイティ調達は確認できず。2024-12に三菱UFJ信託銀行等の出資でRBFファンド（Yoii RBF Fund 1）設立、2025-04に日本政策投資銀行が同ファンド2ndクローズに参画（いずれもファンドへの出資で会社への調達ではない）。2026-01リリースで累計14億円と記載（DB値と一致）。"
+ },
+ {
+  "id": 981,
+  "name": "株式会社Luxonus",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.luxonus.jp/news/"
+  ],
+  "note": "公式ニュースに2023-07シリーズC1以降の資金調達の記載なし。"
+ },
+ {
+  "id": 591,
+  "name": "株式会社アジラ",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 30,
+  "last_round": {
+   "date": "2026-08",
+   "round": "第三者割当増資",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "日鉄興和不動産",
+    "チャームケア"
+   ]
+  },
+  "investors_added": [
+   "日鉄興和不動産",
+   "チャームケア"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://jp.asilla.com/post/news-funding-20260805"
+  ],
+  "note": "2026-08-05発表。今回調達額は非公表、累計調達額は約30億円と明記。来期黒字化を視野。ARRは直近1年で約1.9倍。"
+ },
+ {
+  "id": 799,
+  "name": "xID株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "第三者割当増資（資本提携）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "日本郵政キャピタル"
+   ]
+  },
+  "investors_added": [
+   "日本郵政キャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000166.000037505.html"
+  ],
+  "note": "2026-05-14発表。日本郵政キャピタルを引受先とする第三者割当増資。金額・累計は非公表。"
+ },
+ {
+  "id": 305,
+  "name": "Fairy Devices株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://fairydevices.jp/news"
+  ],
+  "note": "2021-02シリーズB以降の新規調達はニュース検索で確認できず（公式ニュースページは一覧取得不可）。2026年はダイキンとのAIエージェント開発（NEDO採択）等の発表のみ。"
+ },
+ {
+  "id": 958,
+  "name": "株式会社アラヤ",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.araya.org/news/"
+  ],
+  "note": "2019-10シリーズA（総額10億円）以降の新規調達は公式ニュース・ニュース検索で確認できず。"
+ }
+]

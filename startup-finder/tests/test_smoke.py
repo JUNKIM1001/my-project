@@ -18,11 +18,15 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 def client():
     from fastapi.testclient import TestClient
 
-    # アプリ本体のDBを一時ファイルに差し替えてからimportする
+    # アプリ本体のDBを一時ファイルに差し替えてからimportする。
+    # app.db の reload は Base を作り直してしまい、先に import 済みの app.models
+    # （他テストが読み込む）と食い違って create_all が空振りするため、
+    # Postgres向けに初期化されていた場合だけ reload し、通常は engine の差し替えで済ませる。
     tmp = tempfile.mkdtemp()
     os.environ.pop("DATABASE_URL", None)
     import app.db as app_db
-    importlib.reload(app_db)
+    if app_db.IS_POSTGRES:
+        importlib.reload(app_db)
     app_db.DB_PATH = os.path.join(tmp, "test.db")
     app_db.engine = app_db.create_engine(
         "sqlite:///" + app_db.DB_PATH, connect_args={"check_same_thread": False})
@@ -92,7 +96,9 @@ def test_search_and_filter(client):
 
 def test_detail_and_404(client):
     login(client)
-    assert client.get("/api/companies/1").json()["name"] == "株式会社Alpha"
+    d = client.get("/api/companies/1").json()
+    assert d["name"] == "株式会社Alpha"
+    assert "lead" in d["last_round"]  # 直近ラウンドのリード投資家を詳細APIで返す
     assert client.get("/api/companies/999").status_code == 404
 
 
@@ -118,6 +124,11 @@ def test_csv_exports(client):
     login(client)
     csv_text = client.get("/api/export.csv").text
     assert "企業名" in csv_text and "面談日" not in csv_text
+    import csv as _csv
+    import io as _io
+    rows = list(_csv.reader(_io.StringIO(csv_text.lstrip("\ufeff"))))
+    assert "直近リード投資家" in rows[0]
+    assert all(len(r) == len(rows[0]) for r in rows[1:])  # ヘッダと行の列数が一致（列ずれ防止）
     log_csv = client.get("/api/logs/export.csv").text
     assert "キーワード・内容" in log_csv
 

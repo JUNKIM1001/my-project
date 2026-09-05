@@ -1,0 +1,332 @@
+[
+  {
+    "name": "Craif株式会社",
+    "website": "https://craif.com/",
+    "founded_year": 2018,
+    "hq": "東京都新宿区",
+    "representative": "小野瀨隆一",
+    "description": "マイクロRNAとAIを活用し、尿によるがんリスク検査「マイシグナル・スキャン」を提供。膵臓がんを含む10種のがんについてステージ1から非侵襲でリスクを評価する。",
+    "sectors": ["ヘルスケア", "バイオ", "AI", "がん検査"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズD",
+      "amount_oku": 53,
+      "investors": ["Granite Integral Capital", "タウンズ", "Unreasonable Group", "X&KSK", "こどもの森", "ほくようスタートアップファンド1号"]
+    },
+    "investors": ["Granite Integral Capital", "タウンズ", "Unreasonable Group", "X&KSK", "こどもの森", "ほくようスタートアップファンド1号"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": null,
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000431.000041883.html",
+      "https://sogyotecho.jp/news/20260818craif/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "Carbon Xtract株式会社",
+    "website": "https://c-xtract.com/",
+    "founded_year": 2023,
+    "hq": "福岡県福岡市西区",
+    "representative": "森山哲雄",
+    "description": "ガス分離膜を用いて大気中からCO2を直接回収するm-DAC®（membrane-based Direct Air Capture）技術を開発。九州大学カーボンニュートラル・エネルギー国際研究所発のスタートアップ。",
+    "sectors": ["気候テック", "カーボンリサイクル", "素材", "大学発"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "プレシリーズA（1stクローズ）",
+      "amount_oku": null,
+      "investors": ["フェムトパートナーズ", "GxPartners", "九州大学"]
+    },
+    "investors": ["フェムトパートナーズ", "GxPartners", "九州大学"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "調達額は非公表",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000004.000184495.html",
+      "https://sogyotecho.jp/news/20260818c-xtract/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "OLTA株式会社",
+    "website": "https://corp.olta.co.jp/",
+    "founded_year": 2017,
+    "hq": "東京都港区",
+    "representative": "澤岻優紀",
+    "description": "オンライン完結のクラウドファクタリングと、クラウド請求書プラットフォーム「INVOY」を運営。中小企業の資金繰り支援を手がける。",
+    "sectors": ["フィンテック", "SaaS", "ファクタリング"],
+    "stage": "レイター",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資（りそなHDとの資本業務提携）",
+      "amount_oku": 25,
+      "investors": ["りそなホールディングス"]
+    },
+    "investors": ["りそなホールディングス"],
+    "partners": ["りそなホールディングス"],
+    "awards": [],
+    "status": "active",
+    "status_note": "りそなHDの持分法適用会社となる予定（2026年9月30日までに株式取得）。経営の独立性は維持し上場を目指すと発表。",
+    "employee_count": null,
+    "sources": [
+      "https://www.resona-gr.co.jp/holdings/news/newsrelease_c/detail/20260814_1004.html",
+      "https://sogyotecho.jp/news/20260814olta/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社Shizen Connect",
+    "website": "https://www.se-digital.net/",
+    "founded_year": 2023,
+    "hq": "東京都中央区",
+    "representative": "松村宗和",
+    "description": "IoT/AIでエネルギー機器を統合制御するVPP（仮想発電所）プラットフォーム「Shizen Connect」を開発・運用。自然電力グループ。",
+    "sectors": ["エネルギー", "VPP", "SaaS", "気候テック"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズA（三菱HCキャピタルの資本業務提携による第三者割当増資）",
+      "amount_oku": null,
+      "investors": ["三菱HCキャピタル"]
+    },
+    "investors": ["三菱HCキャピタル", "自然電力"],
+    "partners": ["三菱HCキャピタル"],
+    "awards": [],
+    "status": "active",
+    "status_note": "調達額は非公表。シリーズA1stクローズ（2026年5月）では約27億円を調達。",
+    "employee_count": null,
+    "sources": [
+      "https://www.shizenenergy.net/2026/08/14/pressrelease_sc_series-a-capital-alliance-mhc-capital/",
+      "https://prtimes.jp/main/html/rd/p/000000049.000168657.html",
+      "https://www.mitsubishi-hc-capital.com/news/assets/pdf/2026081401.pdf"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社PURMX Therapeutics",
+    "website": "https://www.purmx.com/",
+    "founded_year": 2021,
+    "hq": "広島県広島市南区",
+    "representative": "田原栄俊",
+    "description": "広島大学発の臨床ステージ創薬ベンチャー。無修飾天然型マイクロRNA核酸医薬を開発し、悪性胸膜中皮腫や頭頸部扁平上皮がんを対象とする。",
+    "sectors": ["創薬", "バイオ", "大学発", "核酸医薬"],
+    "stage": "シリーズA",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資（FRONTEOとの資本提携）",
+      "amount_oku": null,
+      "investors": ["FRONTEO"]
+    },
+    "investors": ["FRONTEO"],
+    "partners": ["FRONTEO"],
+    "awards": [],
+    "status": "active",
+    "status_note": "調達額は非公表。FRONTEOのAI創薬支援「DDAIF」を用いたPoCを同時に開始。",
+    "employee_count": null,
+    "sources": [
+      "https://www.fronteo.com/news/pr/20260813",
+      "https://prtimes.jp/main/html/rd/p/000000759.000006776.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "アドバンスコンポジット株式会社",
+    "website": "https://advance-composite.co.jp/",
+    "founded_year": 2015,
+    "hq": "静岡県富士市",
+    "representative": "庄司隆敏",
+    "description": "独自の溶湯鍛造法による金属基複合素材の開発・製造・販売。単一素材では実現できない特性を実現し、AI・半導体・空調分野へ展開する。",
+    "sectors": ["素材", "製造", "半導体"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズB",
+      "amount_oku": null,
+      "investors": ["環境エネルギー投資"]
+    },
+    "investors": ["環境エネルギー投資", "信越化学工業", "ダイキン工業", "電気興業", "電通グループ"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "今回の調達額は非公表。過去に環境エネルギー投資らから総額15億円を調達。",
+    "employee_count": null,
+    "sources": [
+      "https://sogyotecho.jp/news/20260817advance-composite/",
+      "https://prtimes.jp/main/html/rd/p/000000001.000152154.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社recri",
+    "website": "https://corp.recri.jp/",
+    "founded_year": 2020,
+    "hq": "東京都港区",
+    "representative": "栗林嶺",
+    "description": "演劇・ミュージカル・コンサート・伝統芸能などライブエンターテインメントのチケットのサブスクリプションサービス「recri」を運営。",
+    "sectors": ["エンタメ", "サブスクリプション", "チケット"],
+    "stage": "シリーズA",
+    "total_raised_oku": 4,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資",
+      "amount_oku": null,
+      "investors": ["GENDA Capital", "NES", "Headline Asia", "Kulture", "dof", "Carbon Ventures", "QRインベストメント"]
+    },
+    "investors": ["GENDA Capital", "NES", "Headline Asia", "Kulture", "dof", "Carbon Ventures", "QRインベストメント", "ユナイテッド"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "今回ラウンド単独の金額は非公表。累計調達額は約4億円。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000035.000069506.html",
+      "https://sogyotecho.jp/news/20260817recri/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社BiPSEE",
+    "website": "https://bipsee.com/",
+    "founded_year": 2017,
+    "hq": "東京都渋谷区",
+    "representative": "松村雅代",
+    "description": "うつ病を中心とした精神疾患を対象に、VRとスマートフォンアプリを用いた「VRデジタル療法（VRx）」を開発。反すう思考に着目した治療法で治験を進める。",
+    "sectors": ["ヘルスケア", "デジタル療法", "VR", "メンタルヘルス"],
+    "stage": "シリーズA",
+    "total_raised_oku": 9.9,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズA 2ndクローズ",
+      "amount_oku": null,
+      "investors": []
+    },
+    "investors": ["Beyond Next Ventures"],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "今回ラウンドの金額・引受先は非公表。NEDO助成金を含む累計調達額は9.9億円。開発中のVRxは厚生労働省のプログラム医療機器の優先審査対象品目に指定。",
+    "employee_count": null,
+    "sources": [
+      "https://www.moguravr.com/bipsee-series-a-2nd-close/",
+      "https://sogyotecho.jp/news/20260817bipsee/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社アークネイ",
+    "website": "https://arkney.co.jp/",
+    "founded_year": 2021,
+    "hq": "愛知県刈谷市",
+    "representative": null,
+    "description": "自動車の手洗い洗車とセラミックコーティングの専門店「Plus手洗い洗車コーティング専門店」を愛知県で展開。カーケミカル製品の企画・販売も手がける。",
+    "sectors": ["モビリティ", "店舗サービス", "カーケア"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資",
+      "amount_oku": null,
+      "investors": []
+    },
+    "investors": [],
+    "partners": [],
+    "awards": [],
+    "status": "active",
+    "status_note": "調達額・引受先は非公表。資金は人材採用・育成と直営店出店に充当。",
+    "employee_count": null,
+    "sources": [
+      "https://sogyotecho.jp/news/20260813pluscardetail/"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "株式会社イーハイブ",
+    "website": null,
+    "founded_year": null,
+    "hq": null,
+    "representative": null,
+    "description": "Web制作・システム開発を手がけるIT企業。障がい者就労支援のカムラックと資本提携し「IT×福祉」でAI時代の新しい職域づくりに取り組む。",
+    "sectors": ["IT", "Web制作", "福祉"],
+    "stage": "シード",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "第三者割当増資（資本提携）",
+      "amount_oku": 0.01,
+      "investors": ["カムラック"]
+    },
+    "investors": ["カムラック"],
+    "partners": ["カムラック"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2026年8月8日に総数引受契約を締結。資本金は1,120万円から1,220万円に。カムラックの増資後持株比率は8.2%。",
+    "employee_count": null,
+    "sources": [
+      "https://www.dreamnews.jp/press/0000358881",
+      "https://www.comeluck.jp/180682.html"
+    ],
+    "last_verified": "2026-08"
+  },
+  {
+    "name": "JPYC株式会社",
+    "website": "https://jpyc.co.jp/",
+    "founded_year": null,
+    "hq": null,
+    "representative": null,
+    "description": "日本円と1対1で交換できる日本円建てステーブルコイン「JPYC」を発行。裏付け資産は日本円の預貯金や国債で、Avalanche・Ethereum・Polygon・Kaiaの4チェーンで発行する。",
+    "sectors": ["web3", "フィンテック", "ステーブルコイン"],
+    "stage": "シリーズB",
+    "total_raised_oku": null,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2026-08",
+      "round": "シリーズBエクステンション（シリーズB累計約60億円）",
+      "amount_oku": null,
+      "investors": ["AZ-COM丸和ホールディングス"]
+    },
+    "investors": ["AZ-COM丸和ホールディングス"],
+    "partners": ["AZ-COM丸和ホールディングス"],
+    "awards": [],
+    "status": "active",
+    "status_note": "エクステンション単独の金額は非公表。シリーズB累計で約60億円。AZ-COM丸和HDとは資本業務提携も締結。",
+    "employee_count": null,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000328.000054018.html",
+      "https://thebridge.jp/2026/08/jpyc-raises-series-b-extension-for-jpy-stablecoin"
+    ],
+    "last_verified": "2026-08"
+  }
+]

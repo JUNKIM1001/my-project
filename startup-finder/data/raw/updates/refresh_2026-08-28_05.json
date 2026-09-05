@@ -1,0 +1,768 @@
+[
+ {
+  "id": 1,
+  "name": "株式会社SmartHR",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [
+   "General Atlantic"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://nstock.com/journal/coralcapital_generalatlantic_smarthr_secondarydeal",
+   "https://ja.wikipedia.org/wiki/SmartHR",
+   "https://prtimes.jp/main/html/rd/p/000000422.000015987.html"
+  ],
+  "note": "2024-07シリーズE以降に新規増資（プライマリー）の公表なし。2025-11-18にCoral Capitalが保有株の半分をGeneral Atlanticへセカンダリー譲渡（約150億円、日本最大級）。2026-04-01にSUNITED株式会社を興和から全株取得しグループ会社化（SmartHRが買い手）。上場の事実は確認できず。"
+ },
+ {
+  "id": 69,
+  "name": "DAIZ株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": "2025年4月、子会社DAIZエンジニアリングがDAIZ株式会社を吸収合併しSprouTx株式会社に社名変更（グループ内再編・事業は継続。第三者へのM&Aではないため status は active のまま）。",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://kepple.co.jp/corporates/7330001022318/page/1",
+   "https://sproutx.co.jp/"
+  ],
+  "note": "2023-10シリーズC以降の新規調達は確認できず。「DAIZ株式会社」という法人が消滅したためstatus=maとしたが、実態はグループ内再編。DB上の社名をSprouTx株式会社へ変更する対応も検討余地あり。"
+ },
+ {
+  "id": 125,
+  "name": "株式会社MICIN",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-27269",
+   "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=MICIN%20%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94"
+  ],
+  "note": "2023-10シリーズC（40.5億円）以降の新規調達・上場は確認できず。"
+ },
+ {
+  "id": 293,
+  "name": "株式会社オープンエイト",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 80.0,
+  "last_round": {
+   "date": "2024-01",
+   "round": "シリーズD",
+   "amount_oku": 8.5,
+   "lead": "三菱UFJキャピタル",
+   "investors": [
+    "三菱UFJキャピタル",
+    "かんぽNEXTパートナーズ",
+    "アイドマ・ホールディングス",
+    "静岡キャピタル",
+    "クオンタムリープキャピタル（しがぎん地方創生SDファンド）",
+    "エイチ・アイ・エス"
+   ]
+  },
+  "investors_added": [
+   "三菱UFJキャピタル",
+   "かんぽNEXTパートナーズ",
+   "アイドマ・ホールディングス",
+   "静岡キャピタル",
+   "クオンタムリープキャピタル",
+   "エイチ・アイ・エス"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": 80,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://open8.com/news/pressrelease/14712/",
+   "https://thebridge.jp/2024/01/open-8-a-story-of-series-d-round",
+   "https://thebridge.jp/2024/01/open8-series-d-round-funding",
+   "https://startup-db.com/companies/7jKLpOYUjADJPO1Y"
+  ],
+  "note": "発表2024-01-22。ラウンド単体8.5億円・リード三菱UFJキャピタル・従業員約80名はBRIDGE記事の記載（公式PRには金額・リードの明記なし、投資家は順不同表記）。累計約80億円は公式PR記載。2024-02以降の新規調達は確認できず。"
+ },
+ {
+  "id": 93,
+  "name": "OLTA株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 107.3,
+  "last_round": {
+   "date": "2026-08",
+   "round": "第三者割当増資（りそなHDとの資本業務提携・持分法適用会社化）",
+   "amount_oku": 25.0,
+   "lead": null,
+   "investors": [
+    "りそなホールディングス"
+   ]
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000131.000045310.html",
+   "https://initial.inc/companies/A-27486"
+  ],
+  "note": "発表2026-08-14。りそなHDへの第三者割当増資25.0億円でOLTAはりそなHDの持分法適用会社に。累計はエクイティ70.5億円、融資等含め107.3億円（PR記載）。total_raised_okuは融資込みの107.3を採用。"
+ },
+ {
+  "id": 232,
+  "name": "株式会社THINKR",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-27944",
+   "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=THINKR%20%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94"
+  ],
+  "note": "2024-07シリーズA（総額約50億円・融資含む）以降の新規調達は確認できず。"
+ },
+ {
+  "id": 421,
+  "name": "WAmazing株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 45.3,
+  "last_round": {
+   "date": "2026-04",
+   "round": "資本業務提携（アイティフォー）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "アイティフォー"
+   ]
+  },
+  "investors_added": [
+   "ひょうご地域活性化ファンド（みなと銀行）",
+   "ちゅうぎんインフィニティファンド2号（中国銀行）",
+   "セガサミーホールディングス",
+   "佐銀ベンチャーキャピタル（佐賀銀行）",
+   "SuMi TRUSTイノベーション投資事業有限責任組合（三井住友信託銀行）",
+   "岩手新事業創造ファンド3号（岩手銀行）",
+   "日本郵政キャピタル",
+   "CS-C",
+   "アイティフォー"
+  ],
+  "status": "active",
+  "status_note": "2025-07-31に「地域観光DX事業」「訪日マーケティングパートナー事業」を株式会社Onwordsへ事業譲渡（一部事業譲渡、法人は存続・活動継続）。",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.atpress.ne.jp/news/378343",
+   "https://initial.inc/companies/A-27454",
+   "https://prtimes.jp/main/html/rd/p/000000036.000029037.html",
+   "https://prtimes.jp/main/html/rd/p/000000011.000023660.html"
+  ],
+  "note": "DB最終ラウンド(2020-11)以降: 2022-12 シリーズC 1stクローズ約3.7億円→2023-04 2ndクローズ2.4億円→2023-12-08 シリーズC追加14億円（日本政策金融公庫の新株予約権付融資含む、シリーズC累計20.1億円、創業来累計45.3億円、リード明記なし）→2024-11-14 CS-Cとの資本業務提携（第三者割当増資、金額非公開）→2026-04-01 アイティフォーと資本業務提携（金額非公開）。total_raised_oku=45.3は2023-12時点の値（以降は非公開）。initial.incの推定評価額は推定のため不採用。"
+ },
+ {
+  "id": 338,
+  "name": "株式会社フォトラクション",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-27044",
+   "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E3%83%95%E3%82%A9%E3%83%88%E3%83%A9%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%20%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94"
+  ],
+  "note": "2023-07（17億円、累計38億円）以降の新規調達は確認できず。"
+ },
+ {
+  "id": 969,
+  "name": "株式会社ヤマップ",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2024-05",
+   "round": "シリーズD",
+   "amount_oku": 20.4,
+   "lead": "MCPグループ（九州発ジャパン・エボリューション・ファンド投資事業有限責任組合）",
+   "investors": [
+    "MCPグループ（九州発ジャパン・エボリューション・ファンド）",
+    "丸井グループ",
+    "豊島株式会社運営CVCファンド",
+    "15th Rock Ventures",
+    "三菱UFJキャピタル",
+    "いよぎんキャピタル",
+    "三井住友信託銀行",
+    "SGインキュベート（西部ガスグループ）",
+    "ゼンリンフューチャーパートナーズ",
+    "山梨中銀経営コンサルティング",
+    "個人投資家2名",
+    "SDFキャピタル（スタートアップ・デットファンド、融資）",
+    "福岡銀行（融資）"
+   ]
+  },
+  "investors_added": [
+   "MCPグループ",
+   "丸井グループ",
+   "豊島",
+   "15th Rock Ventures",
+   "三菱UFJキャピタル",
+   "いよぎんキャピタル",
+   "三井住友信託銀行",
+   "SGインキュベート",
+   "ゼンリンフューチャーパートナーズ",
+   "山梨中銀経営コンサルティング",
+   "SDFキャピタル",
+   "福岡銀行"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000218.000011352.html",
+   "https://initial.inc/companies/A-11928",
+   "https://sogyotecho.jp/news/20240529yamap/"
+  ],
+  "note": "DB既存のシリーズD（20.4億円）と同一ラウンド。日付(2024-05-28発表)・引受先・リード（PRにリード投資家として記載）を補完。総額20.4億円はベンチャーデット（SDFキャピタル・福岡銀行）込み。2024-06以降の新規調達は確認できず。"
+ },
+ {
+  "id": 631,
+  "name": "株式会社ネクイノ（旧・ネクストイノベーション株式会社）",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 35.0,
+  "last_round": {
+   "date": "2021-09",
+   "round": "シリーズB（ENEOSからの追加調達、ラウンド累計約27.5億円）",
+   "amount_oku": 27.5,
+   "lead": null,
+   "investors": [
+    "ENEOS",
+    "ジャフコ グループ",
+    "アカツキ"
+   ]
+  },
+  "investors_added": [
+   "ENEOS"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000069.000021661.html",
+   "https://initial.inc/companies/A-28960"
+  ],
+  "note": "2021-09-15発表。ENEOS単独の出資額は非公開。amount_okuはシリーズBラウンド累計（約27.5億円）、創業来累計約35億円（PR記載）。2020-12発表分ではジャフコがリードインベスターと明記。2021-10以降の新規調達は確認できず。"
+ },
+ {
+  "id": 54,
+  "name": "リージョナルフィッシュ株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 67.1,
+  "last_round": {
+   "date": "2024-12",
+   "round": "シリーズC",
+   "amount_oku": 40.7,
+   "lead": null,
+   "investors": [
+    "中信ベンチャーキャピタル",
+    "SMBCベンチャーキャピタル",
+    "CBC",
+    "セブン-イレブン・ジャパン",
+    "大和ハウスベンチャーズ",
+    "Mizkan",
+    "崎陽軒",
+    "ヨシコン",
+    "いよぎんキャピタル",
+    "三井住友銀行（融資枠）",
+    "京都中央信用金庫（融資枠）",
+    "京都信用金庫（融資枠）"
+   ]
+  },
+  "investors_added": [
+   "中信ベンチャーキャピタル",
+   "SMBCベンチャーキャピタル",
+   "CBC",
+   "セブン-イレブン・ジャパン",
+   "大和ハウスベンチャーズ",
+   "Mizkan",
+   "崎陽軒",
+   "ヨシコン",
+   "いよぎんキャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000031.000060432.html",
+   "https://thebridge.jp/2025/01/regional-fish-a-developer-of-genome-edited-farmed-fish-raises-approximately-4-billion-yen-in-series-c-funding"
+  ],
+  "note": "発表2024-12-26。総額40.7億円＝第三者割当増資30.2億円＋融資枠10.5億円。累計67.1億円はPR記載。リード明記なし。"
+ },
+ {
+  "id": 164,
+  "name": "株式会社ビービット",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 37.0,
+  "last_round": {
+   "date": "2025-03",
+   "round": "資本提携（みずほフィナンシャルグループ・みずほ銀行）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "みずほフィナンシャルグループ",
+    "みずほ銀行"
+   ]
+  },
+  "investors_added": [
+   "山陰合同銀行",
+   "ベネッセホールディングス",
+   "三菱地所",
+   "楽天証券",
+   "Turn Cloud Technology Service",
+   "セプテーニ・ホールディングス",
+   "みずほフィナンシャルグループ",
+   "みずほ銀行"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.bebit.co.jp/news/article/20240110/",
+   "https://initial.inc/companies/A-05812"
+  ],
+  "note": "DB最終ラウンド(2020-07)以降: 2024-01-10 シリーズB 12億円（第三者割当増資、引受先: 山陰合同銀行・ベネッセHD・三菱地所・楽天証券・Turn Cloud Technology Service、リード明記なし、累計約37億円）→2025-02-11 セプテーニ・ホールディングスと資本業務提携（金額非公開）→2025-03-27 みずほFG・みずほ銀行と資本提携（金額非公開、initial.inc記載）。total_raised_oku=37は2024-01時点。"
+ },
+ {
+  "id": 581,
+  "name": "Varinos株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "シリーズD",
+   "amount_oku": 12.5,
+   "lead": "みらい創造インベストメンツ",
+   "investors": [
+    "みらい創造インベストメンツ",
+    "三井化学",
+    "横浜キャピタル",
+    "りそな銀行（リードレンダー・融資）",
+    "静岡銀行（融資）",
+    "商工組合中央金庫（融資）",
+    "常陽銀行（融資）",
+    "東日本銀行（融資）"
+   ]
+  },
+  "investors_added": [
+   "みらい創造インベストメンツ",
+   "三井化学",
+   "横浜キャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://varinos.com/funding2026/",
+   "https://prtimes.jp/main/html/rd/p/000000023.000054568.html"
+  ],
+  "note": "発表2026-05-12。総額約12.5億円は融資（デット）込み。リードはみらい創造インベストメンツと明記。2025-10-31付で経営体制刷新（代表取締役CEO 齊藤洋一・代表取締役社長 平川秀年・取締役会長 桜庭喜行）。"
+ },
+ {
+  "id": 430,
+  "name": "株式会社RABO",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 30.0,
+  "last_round": {
+   "date": "2025-02",
+   "round": "資金調達（ラウンド名非公表、融資含む総額8億円）",
+   "amount_oku": 8.0,
+   "lead": null,
+   "investors": [
+    "Moon Creative Ventures",
+    "キヤノンマーケティングジャパン MIRAI Fund",
+    "ユナイテッド",
+    "STRIVE",
+    "MPower Partners",
+    "金融機関（融資）"
+   ]
+  },
+  "investors_added": [
+   "Moon Creative Ventures",
+   "キヤノンマーケティングジャパン MIRAI Fund",
+   "ユナイテッド",
+   "MPower Partners"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000081.000037478.html",
+   "https://sogyotecho.jp/news/20250221rabo/"
+  ],
+  "note": "発表2025-02-21。総額8億円は金融機関融資込み。累計30億円（PR記載、国内ペットテック最大規模）。Moon Creative Ventures（三井物産子会社）と資本業務提携。リード明記なし。ラウンド名不明のためstageは据え置き。"
+ },
+ {
+  "id": 917,
+  "name": "株式会社HOKUTO",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-29520",
+   "https://thebridge.jp/2024/03/hokuto-series-b-round-funding",
+   "https://bio.nikkeibp.co.jp/atcl/release/24/03/06/19658/"
+  ],
+  "note": "2024-03（9億円）以降の新規調達は確認できず。参考: 当該2024-03ラウンドはBRIDGE報道では「シリーズB」でグローバル・ブレインがリード、ジェネシア・ベンチャーズ/GMO VenturePartners/グリーベンチャーズ/HERO Impact Capital/90sが参加（DBの「シリーズA」「90s,HERO」と齟齬あり、要確認）。initial.incの評価額は推定値のため不採用。"
+ },
+ {
+  "id": 457,
+  "name": "株式会社DATAFLUCT",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2022-12",
+   "round": "資本業務提携（エアトリ・ハイブリッドテクノロジーズ）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "エアトリ",
+    "ハイブリッドテクノロジーズ"
+   ]
+  },
+  "investors_added": [
+   "エアトリ",
+   "ハイブリッドテクノロジーズ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000147.000046062.html",
+   "https://initial.inc/companies/A-33351"
+  ],
+  "note": "2022-12-21 PR TIMES「DATAFLUCT、エアトリおよびハイブリッドテクノロジーズと資本業務提携を締結」（タイトルで確認、出資額は未確認）。2023年以降の新規調達・シリーズCは確認できず。"
+ },
+ {
+  "id": 1212,
+  "name": "Tensor Energy株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 17.0,
+  "last_round": {
+   "date": "2026-04",
+   "round": "シリーズA",
+   "amount_oku": 9.5,
+   "lead": "グローバル・ブレイン（共同リードインベスター）",
+   "investors": [
+    "グローバル・ブレイン（グローバル・ブレイン9号ファンド）",
+    "グロービス・キャピタル・パートナーズ",
+    "デライト・ベンチャーズ"
+   ]
+  },
+  "investors_added": [
+   "グローバル・ブレイン"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": 18,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000031.000096424.html",
+   "https://prtimes.jp/main/html/rd/p/000000577.000047342.html",
+   "https://initial.inc/companies/A-41638",
+   "https://startup-db.com/companies/7LPWpoVUwEeGz5Em"
+  ],
+  "note": "発表2026-04-02。累計17億円・18名はPR記載。グローバル・ブレインは自社PRで「共同リードインベスター」と明記（他の共同リードは未記載）。これに先立ち2025-03-03にプレシリーズA追加1億円（グロービス・キャピタル・パートナーズ、プレA累計5.7億円・融資含む）。initial.incの評価額は推定値のため不採用。"
+ },
+ {
+  "id": 438,
+  "name": "株式会社HERP",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 34.0,
+  "last_round": {
+   "date": "2026-08",
+   "round": "シリーズC",
+   "amount_oku": 19.0,
+   "lead": "JICベンチャー・グロース・インベストメンツ",
+   "investors": [
+    "JICベンチャー・グロース・インベストメンツ",
+    "DNX Ventures"
+   ]
+  },
+  "investors_added": [
+   "JICベンチャー・グロース・インベストメンツ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://sogyotecho.jp/news/20260825herp/",
+   "https://note.com/dnx_vc/n/nc52e88185a5d"
+  ],
+  "note": "発表2026-08-25。約19億円はエクイティ＋デット合算（DNX Ventures記事）。累計34億円・リードJIC VGIはDNX記事記載。他の参加投資家は未確認。参考: 2024-03にParame Recruitを買収（HERPが買い手）。"
+ },
+ {
+  "id": 1506,
+  "name": "株式会社スペースデータ",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%83%87%E3%83%BC%E3%82%BF%20%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94"
+  ],
+  "note": "2022-03シード以降の新規調達はPR TIMES検索・公式サイトで確認できず（2026年も人事・協業リリースのみ）。"
+ },
+ {
+  "id": 1509,
+  "name": "株式会社POCKET RD",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://pocket-rd.com/information/20240521_bs-asahi_gcp-j/"
+  ],
+  "note": "2024-05-21 シリーズAファイナルクローズ（BS朝日・Global Catalyst Partners Japanと資本提携、累計13.4億円）はDB既存値と一致。以降の新規調達は確認できず。"
+ },
+ {
+  "id": 644,
+  "name": "株式会社M&Aクラウド",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-04",
+   "round": "シリーズD",
+   "amount_oku": 5.1,
+   "lead": null,
+   "investors": [
+    "かんぽNEXTパートナーズ",
+    "正栄産業",
+    "三菱UFJキャピタル"
+   ]
+  },
+  "investors_added": [
+   "かんぽNEXTパートナーズ",
+   "正栄産業",
+   "三菱UFJキャピタル",
+   "きらぼし銀行（融資）",
+   "静岡銀行（融資）",
+   "日本政策金融公庫（融資）",
+   "みずほ銀行（融資）",
+   "三井住友銀行（融資）",
+   "Fivot（融資）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.macloud.jp/2025/04/28/pressreleasecorporate/",
+   "https://corp.macloud.jp/2024/03/04/debt/"
+  ],
+  "note": "2025-04-28 シリーズD約5.1億円（リード明記なし、累計非記載）。これに先立ち2024-03-04にデットファイナンス12.5億円（きらぼし銀行・静岡銀行・日本政策金融公庫・みずほ銀行・三井住友銀行・Fivot）。2026-04-02に代表取締役異動の発表あり（内容未確認）。"
+ },
+ {
+  "id": 789,
+  "name": "フルカイテン株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 23.0,
+  "last_round": {
+   "date": "2023-11",
+   "round": "シリーズB追加（日本政策金融公庫 新株予約権付融資3.5億円、ラウンド合計11.6億円）",
+   "amount_oku": 3.5,
+   "lead": "ジャフコ グループ",
+   "investors": [
+    "日本政策金融公庫",
+    "ジャフコ グループ"
+   ]
+  },
+  "investors_added": [
+   "日本政策金融公庫"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000112.000025713.html"
+  ],
+  "note": "発表2023-11-27。追加3.5億円はデット（新株予約権付融資）。ジャフコは同PRでリードインベスターと明記（2023-06までに8.1億円）。累計23億円はPR記載。2024年以降の新規調達は確認できず。"
+ },
+ {
+  "id": 502,
+  "name": "シコメルフードテック株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-08",
+   "round": "資本業務提携（日清オイリオグループ）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "日清オイリオグループ"
+   ]
+  },
+  "investors_added": [
+   "日清オイリオグループ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.shikomel.com/news/press_release/2112"
+  ],
+  "note": "発表2026-08-27。出資金額・方法・累計は非記載。2022-09シリーズB以降でこれ以外の新規調達は確認できず。"
+ },
+ {
+  "id": 586,
+  "name": "株式会社Jiksak Bioengineering",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/action.php?run=html&page=searchkey&search_word=Jiksak%20%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94"
+  ],
+  "note": "2022-08-29 シリーズB 8億円以降の新規調達はPR TIMES・公式サイトで確認できず。"
+ },
+ {
+  "id": 1388,
+  "name": "株式会社HACARUS",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2023-05",
+   "round": "資本業務提携（ダイキン工業、第三者割当増資）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "ダイキン工業"
+   ]
+  },
+  "investors_added": [
+   "ダイキン工業"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000082.000026090.html"
+  ],
+  "note": "発表2023-05-10。第三者割当増資による出資だが金額・累計・ラウンド名は非記載。DBの最終ラウンド日付がnullのため前後関係は要確認。2024年以降の新規調達は公式ニュース・PR TIMESで確認できず。"
+ }
+]

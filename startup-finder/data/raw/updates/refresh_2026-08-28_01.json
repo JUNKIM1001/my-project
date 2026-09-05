@@ -1,0 +1,551 @@
+[
+ {
+  "id": 204,
+  "name": "自然電力株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://enehub.jp/news/cdpq_%E8%87%AA%E7%84%B6%E9%9B%BB%E5%8A%9B%E3%81%B8%E3%81%AE%E6%8A%95%E8%B3%87%E3%82%92%E6%A0%AA%E5%BC%8F%E8%BB%A2%E6%8F%9B/",
+   "https://www.shizenenergy.net/2025/01/31/se_pj_finance_daishi_hokuestu/"
+  ],
+  "note": "新規エクイティラウンドは確認できず。2022年のCDPQ転換社債200億円は2025-11にA1種優先株へ転換（エネハブ2026-05-10記事、登記簿ベース。同記事の持分46%・評価額430億円は推定値のため未採用）。2025-01に太陽光4カ所向けプロジェクトファイナンス10億円（第四北越銀行、SPC向けデット）。"
+ },
+ {
+  "id": 199,
+  "name": "株式会社AIメディカルサービス",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.ai-ms.com/news/corporate/",
+   "https://www.ai-ms.com/news/corporate/20250520-1"
+  ],
+  "note": "2022-04シリーズC以降の新規ラウンドは公式ニュース・検索とも確認できず。2025-05にNEDOディープテック・スタートアップ支援事業に採択（助成金、最大6.3億円）。"
+ },
+ {
+  "id": 111,
+  "name": "ラピュタロボティクス株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "融資（UPSIDER BLUE DREAM Fund・ベンチャーデット）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": ["UPSIDER BLUE DREAM Fund（UPSIDER Capital）"]
+  },
+  "investors_added": ["UPSIDER BLUE DREAM Fund（UPSIDER Capital）"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000264.000076272.html",
+   "https://thebridge.jp/2026/05/rapyuta-robotics-secures-debt-financing-from-upsider-blue-dream-fund",
+   "https://www.rapyuta-robotics.com/ja/tag/%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94/"
+  ],
+  "note": "デットのみ（2026-05-08発表、融資額非公表）。エクイティの新規ラウンドは確認できず。"
+ },
+ {
+  "id": 667,
+  "name": "スターフェスティバル株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://startup-db.com/companies/5DOdGA1UDgBGR0eM"
+  ],
+  "note": "2025〜2026年の新規調達・上場・M&Aは確認できず。"
+ },
+ {
+  "id": 195,
+  "name": "株式会社オープンロジ",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.openlogi.com/news/20240205-news/"
+  ],
+  "note": "2024-02シリーズD（35.5億円、累計約63億円）以降の新規ラウンドは確認できず。"
+ },
+ {
+  "id": 9,
+  "name": "株式会社estie",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-11",
+   "round": "デットファイナンス（4金融機関）",
+   "amount_oku": 22.0,
+   "lead": null,
+   "investors": ["商工組合中央金庫", "三菱UFJ銀行", "りそな銀行", "日本政策金融公庫"]
+  },
+  "investors_added": ["三菱UFJ信託銀行", "SuMi TRUSTイノベーションファンド", "ゼンリンフューチャーパートナーズ", "商工組合中央金庫", "三菱UFJ銀行", "りそな銀行", "日本政策金融公庫"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000181.000040115.html",
+   "https://sogyotecho.jp/news/20250108estie/"
+  ],
+  "note": "直近はデット22億円（2025-11-17発表）。エクイティは2025-01-08にシリーズB追加クローズ（三菱UFJ信託銀行・SuMi TRUSTイノベーションファンド・ゼンリンフューチャーパートナーズ、今回額非公表、シリーズB累計30億円超）。デット込みで待機資金50億円超。累計エクイティ調達は30億円超と記載（正確な累計額の明記なしのためtotal_raisedはnull）。"
+ },
+ {
+  "id": 309,
+  "name": "マネーツリー株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": "M&A済",
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "ma",
+  "status_note": "2025-08-29 三菱UFJ銀行が株式取得を完了し連結子会社化（2025-05-27 株式譲渡に向けた基本合意書締結）。取得比率・金額は非公表。",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://thebridge.jp/2025/12/mufg-moneytree-acquisition-fintech-dx-strategy",
+   "https://getmoneytree.com/jp/company/press-releases"
+  ],
+  "note": "2021-05シリーズC2以降の新規ラウンドはなく、MUFGによる買収でエグジット。"
+ },
+ {
+  "id": 444,
+  "name": "ユーザーライク株式会社（旧・株式会社Crunch Style）",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-16434",
+   "https://sogyotecho.jp/news/20220114userlike/"
+  ],
+  "note": "2022-01の21億円（累計40億円）以降の新規ラウンドは確認できず。"
+ },
+ {
+  "id": 567,
+  "name": "MOSH株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 32.0,
+  "last_round": {
+   "date": "2025-02",
+   "round": "シリーズC",
+   "amount_oku": 22.5,
+   "lead": "グローバル・ブレイン",
+   "investors": ["グローバル・ブレイン（8号ファンド）", "明治安田未来共創投資事業有限責任組合", "KDDI新規事業育成3号投資事業有限責任組合", "KIRIN・GB投資事業有限責任組合", "DBJキャピタル", "千葉道場3号投資事業有限責任組合", "BRICKS FUND TOKYO 1号投資事業有限責任組合", "JICベンチャー・グロース・ファンド2号", "住商ベンチャー・パートナーズ", "みずほ成長支援第5号投資事業有限責任組合"]
+  },
+  "investors_added": ["明治安田未来共創投資事業有限責任組合", "KIRIN・GB投資事業有限責任組合", "BRICKS FUND TOKYO 1号投資事業有限責任組合", "JICベンチャー・グロース・ファンド2号", "住商ベンチャー・パートナーズ", "みずほ成長支援第5号投資事業有限責任組合"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://mosh.jp/magazine/news/series-c/",
+   "https://kepple.co.jp/articles/r99zargdi"
+  ],
+  "note": "2025-02-05発表。リードはグローバル・ブレインと明記。新規6社・既存4社の計10社。累計調達額32億円。"
+ },
+ {
+  "id": 481,
+  "name": "ポケトーク株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.nikkei.com/article/DGXZQOUC1034M0Q5A111C2000000/",
+   "https://ipokabu.net/yotei/pocketalk.html"
+  ],
+  "note": "2022-11以降の新規ラウンドは確認できず。上場は当初2025年予定から後ろ倒しで、2025-11報道では2026年秋めど東証グロース上場を目指し申請予定（主幹事みずほ証券予定）。2026-04時点で上場承認は未確認、本調査時点でも上場は確認できず。"
+ },
+ {
+  "id": 1304,
+  "name": "コミックスマート株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000010.000139234.html",
+   "https://startup-db.com/companies/QnbKG12Ub0Qp39D2"
+  ],
+  "note": "2024-08シリーズA（28億円）以降の新規ラウンドは確認できず。現社名は「コミスマ株式会社」（STARTUP DB・PR TIMES表記）。"
+ },
+ {
+  "id": 1837,
+  "name": "株式会社DROBE",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000045.000054174.html",
+   "https://initial.inc/companies/A-39653"
+  ],
+  "note": "2022シリーズB（10.6億円）以降の新規ラウンドは確認できず。"
+ },
+ {
+  "id": 1589,
+  "name": "ウミトロン株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://pr-en.umitron.com/",
+   "https://thebridge.jp/2022/06/umitron-pre-series-b-round-funding"
+  ],
+  "note": "公式ニュース（2026-07まで掲載）に2022-06プレシリーズB以降の資金調達発表なし。2025-03にJAXA宇宙戦略基金事業に採択（助成）。"
+ },
+ {
+  "id": 407,
+  "name": "株式会社Mellow",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 22.0,
+  "last_round": {
+   "date": "2022-06",
+   "round": "シリーズB",
+   "amount_oku": 10.0,
+   "lead": "トヨタファイナンシャルサービス",
+   "investors": ["トヨタファイナンシャルサービス", "損害保険ジャパン", "東京海上日動火災保険", "三菱地所", "清水建設", "東急不動産ホールディングス", "電通ベンチャーズ", "博報堂DYベンチャーズ", "PKSHAスパークスアルゴリズム1号"]
+  },
+  "investors_added": ["損害保険ジャパン", "東京海上日動火災保険", "三菱地所", "清水建設", "東急不動産ホールディングス", "電通ベンチャーズ", "博報堂DYベンチャーズ"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://thebridge.jp/2022/06/mellow-series-b-round-funding",
+   "https://sogyotecho.jp/news/20220629mellow/"
+  ],
+  "note": "DBの前回ラウンド（2020-02）より後の2022-06-28にシリーズB約10億円を確認（リード：トヨタファイナンシャルサービスと明記）。累計約22億円はデット含む。2023年以降の新規ラウンドは確認できず。"
+ },
+ {
+  "id": 527,
+  "name": "株式会社Magic Moment",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://magicmoment.jp/announcements",
+   "https://initial.inc/companies/A-35096"
+  ],
+  "note": "公式お知らせに2024年以降の資金調達発表なし。2022-09シリーズB以降の新規ラウンドは確認できず。"
+ },
+ {
+  "id": 299,
+  "name": "株式会社スタディスト",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-09",
+   "round": "第三者割当増資（岩手新事業創造ファンド3号）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": ["岩手新事業創造ファンド3号投資事業有限責任組合"]
+  },
+  "investors_added": ["岩手新事業創造ファンド3号投資事業有限責任組合"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": 300,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://startup-db.com/companies/0E12JgEUqlop4LVa",
+   "https://initial.inc/companies/A-12486"
+  ],
+  "note": "STARTUP DBに「2025年9月、岩手新事業創造ファンド3号投資事業有限責任組合を引受先とする資金調達を実施」と記載（金額非公表）。2025-06-30にBizMowと資本業務提携し連結子会社化（INITIAL）。従業員数はSTARTUP DB「約300人（2026-08-04時点）」。"
+ },
+ {
+  "id": 1011,
+  "name": "株式会社Provigate",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://provigate.com/news/provigate-reaches-basic-agreement-on-capital-and-business-alliance-with-leading-poct-company-tauns/",
+   "https://provigate.com/news/provigate-which-helps-prevent-the-onset-and-severity-of-diabetes-raises-2-billion-yen-in-funding/"
+  ],
+  "note": "2024-11の20億円（助成金12億円＋エクイティ8.3億円）以降の実行済みラウンドはなし。2026-07-15にタウンズ（POCT）との資本業務提携について基本合意（タウンズがC3種優先株を引受予定、金額・比率・実行時期は未公表、未実行）。"
+ },
+ {
+  "id": 312,
+  "name": "株式会社アクセルラボ",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-06",
+   "round": "株式投資型クラウドファンディング（FUNDINNO）",
+   "amount_oku": 0.4833,
+   "lead": null,
+   "investors": ["個人投資家（FUNDINNO）"]
+  },
+  "investors_added": ["大東建託", "個人投資家（FUNDINNO）"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://startup-db.com/companies/kjlVZLoUk8Wp9q3E",
+   "https://initial.inc/companies/A-29266",
+   "https://www.kentaku.co.jp/corporate/pr/info/2022/information_accellab_20220722.html"
+  ],
+  "note": "DBの前回ラウンド（2021-03）以降に複数ラウンドあり：2022-07 シリーズA追加3.5億円（大東建託の追加出資）、2023-01 シリーズB 7.8億円、2023-07 シリーズB追加3.9億円（INITIAL、引受先は有料限定で未確認）、2025-06 FUNDINNOで4,833万円（STARTUP DB）。累計調達額は出典に明記なし。"
+ },
+ {
+  "id": 1002,
+  "name": "株式会社EXORPHIA",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-08",
+   "round": "資本業務提携（ロート製薬）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": ["ロート製薬"]
+  },
+  "investors_added": ["ロート製薬", "共立ホールディングス", "共立製薬", "Coral Capital"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://exorphia.com/news/news/4665/",
+   "https://www.nihon-ma.co.jp/news/20240523_1-1210/",
+   "https://startup-db.com/companies/E0zvGDyU5PepNnMa",
+   "https://initial.inc/companies/A-40344"
+  ],
+  "note": "DBの前回ラウンド（2022-05）以降：2024-05-23 共立HD・共立製薬と業務資本提携（INITIALでは2億円と記載、日本M&Aセンター記事では金額非公表）、2024-12 Coral Capitalが参画（STARTUP DB、金額は有料限定で未確認）、2025-08-20 ロート製薬と資本業務提携締結（金額非公表）。"
+ },
+ {
+  "id": 681,
+  "name": "株式会社アドレス",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-04",
+   "round": "シリーズB（資本提携）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": ["ANA未来創造ファンド", "ガイアックス", "AgVenture Lab"]
+  },
+  "investors_added": ["ANA未来創造ファンド", "ガイアックス", "AgVenture Lab"],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-32086"
+  ],
+  "note": "INITIALに2026-04-15付でANA未来創造ファンド・ガイアックス・AgVenture Labからの資金調達（シリーズB、金額非公開）を記載。一次ソース（PR TIMES）は取得できず。"
+ },
+ {
+  "id": 1085,
+  "name": "株式会社SQUEEZE",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "IPO済",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-04",
+   "round": "IPO（東証グロース）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [],
+  "status": "ipo",
+  "status_note": "2026-04-22 東京証券取引所グロース市場に上場（証券コード558A）。本社は北海道北広島市。",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://squeeze-inc.co.jp/archives/3982/",
+   "https://squeeze-inc.co.jp/news/"
+  ],
+  "note": "公開価格・調達額は上場のお知らせに記載なし。2025年12月期連結売上高53億円超（前年比74.9%増）、運営ホテル約40施設。"
+ },
+ {
+  "id": 773,
+  "name": "LAPRAS株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.lapras.com/news/"
+  ],
+  "note": "公式ニュース（2025-10〜2026-08掲載分）に資金調達発表なし。2024-09以降の新規ラウンドは確認できず。"
+ },
+ {
+  "id": 1009,
+  "name": "株式会社Zehitomo",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [],
+  "note": "公式サイトは403で取得不可、検索枠枯渇のため未確認（新しい情報なし扱い）。要再調査。"
+ },
+ {
+  "id": 669,
+  "name": "株式会社フライヤー",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.flierinc.com/"
+  ],
+  "note": "公式サイトのお知らせに資金調達・上場・M&Aの記載なし。2022-05以降の新規ラウンドは確認できず。"
+ },
+ {
+  "id": 990,
+  "name": "株式会社ムスカ",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://musca.info/news/"
+  ],
+  "note": "公式ニュース（2023-10〜2025-09掲載分）に資金調達発表なし。"
+ }
+]

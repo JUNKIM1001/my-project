@@ -32,6 +32,7 @@ class Company(Base):
     last_round_name = Column(String, nullable=True)    # シリーズB など
     last_round_amount_oku = Column(Float, nullable=True)
     last_round_investors = Column(Text, nullable=True)  # comma-separated
+    last_round_lead = Column(String, nullable=True)     # 直近ラウンドのリード投資家（出典に明記がある場合のみ）
 
     investors = Column(Text, nullable=True)        # 主要株主・投資家 comma-separated
     partners = Column(Text, nullable=True)         # 提携事業会社 comma-separated

@@ -1,0 +1,718 @@
+[
+ {
+  "id": 102,
+  "name": "株式会社ティアフォー",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "IPO済",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-07",
+   "round": "IPO（東証グロース）",
+   "amount_oku": 250,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [],
+  "status": "ipo",
+  "status_note": "2026-07-22 東証グロース上場（証券コード593A、公開価格1,085円、吸収金額約250億円、主幹事 三菱UFJモルガン・スタンレー証券）",
+  "employee_count": null,
+  "valuation_oku": 644.8,
+  "valuation_source": "https://www.ipokiso.com/company/2026/tier4.html",
+  "sources": [
+   "https://www.ipokiso.com/company/2026/tier4.html",
+   "https://ipokabu.net/yotei/tier4.html"
+  ],
+  "note": "amount_okuはIPO吸収金額（想定時価総額644.8億円は上場時の想定値）"
+ },
+ {
+  "id": 523,
+  "name": "株式会社エブリー",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "IPO済",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-08",
+   "round": "IPO（東証グロース）",
+   "amount_oku": 15.7,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [],
+  "status": "ipo",
+  "status_note": "2026-08-04 東証グロース上場（証券コード607A、公開価格230円、吸収金額約15.7億円、主幹事 SMBC日興証券）",
+  "employee_count": null,
+  "valuation_oku": 47.7,
+  "valuation_source": "https://www.ipokiso.com/company/2026/every.html",
+  "sources": [
+   "https://www.ipokiso.com/company/2026/every.html",
+   "https://initial.inc/companies/A-25946"
+  ],
+  "note": "amount_okuはIPO吸収金額。上場時想定時価総額47.7億円。2022-08の24億円調達以降、上場前の新規エクイティ調達は確認できず（2023-04に味の素・セイノーHDと資本業務提携）"
+ },
+ {
+  "id": 340,
+  "name": "株式会社ニーリー",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 102,
+  "last_round": {
+   "date": "2024-08",
+   "round": "シリーズB",
+   "amount_oku": 45.7,
+   "lead": "JPインベストメント",
+   "investors": [
+    "JPインベストメント",
+    "日本政策投資銀行",
+    "Keyrock Capital Management",
+    "SBIインベストメント",
+    "全国保証イノベーションファンド（Spiral Capital）",
+    "Value Chain Innovation Fund（セイノーHD CVC / Spiral Capital）",
+    "tb innovations（東京貿易グループCVC）",
+    "サカイ引越センター",
+    "BRICKS FUND TOKYO（三菱地所CVC）"
+   ]
+  },
+  "investors_added": [
+   "JPインベストメント",
+   "日本政策投資銀行",
+   "SBIインベストメント",
+   "全国保証イノベーションファンド",
+   "Value Chain Innovation Fund",
+   "tb innovations",
+   "サカイ引越センター",
+   "BRICKS FUND TOKYO"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000099.000045188.html",
+   "https://initial.inc/companies/A-35918"
+  ],
+  "note": "累計102億円は銀行借入を含む。initial.incによれば2026-06-25にコミットメントライン契約を含む総額34億円のデットファイナンスを実施（エクイティラウンドではないためlast_roundには含めず）"
+ },
+ {
+  "id": 347,
+  "name": "つばめBHB株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-27961",
+   "https://tsubame-bhb.co.jp/news/cat01/4539/"
+  ],
+  "note": "initial.inc上の最新は2024-02のシリーズC（53億円）で、それ以降の調達は確認できず"
+ },
+ {
+  "id": 641,
+  "name": "オリヅルセラピューティクス株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 95,
+  "last_round": {
+   "date": "2024-02",
+   "round": "シリーズB",
+   "amount_oku": 33,
+   "lead": null,
+   "investors": [
+    "日本グロースキャピタル投資法人",
+    "京都大学イノベーションキャピタル",
+    "武田薬品工業",
+    "三菱UFJ銀行",
+    "SMBCベンチャーキャピタル",
+    "JDRF T1D Fund"
+   ]
+  },
+  "investors_added": [
+   "日本グロースキャピタル投資法人",
+   "京都大学イノベーションキャピタル",
+   "武田薬品工業",
+   "三菱UFJ銀行",
+   "SMBCベンチャーキャピタル",
+   "JDRF T1D Fund"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://orizuru-therapeutics.com/newsroom/20240229268/",
+   "https://initial.inc/companies/A-40020",
+   "https://bio.nikkeibp.co.jp/atcl/news/p1/24/02/26/11631/"
+  ],
+  "note": "発表日2024-02-29。累計は「第三者割当増資による調達総額95億円超」（AMED補助金等を含めると100億円超）。2024-03以降の新規調達は確認できず"
+ },
+ {
+  "id": 1823,
+  "name": "エクセルギー・パワー・システムズ株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-05",
+   "round": "第三者割当増資（ラウンド名非公表）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "三井不動産&イノベーションファンド（MF-GB3号投資事業有限責任組合／GP: グローバル・ブレイン）"
+   ]
+  },
+  "investors_added": [
+   "三井不動産&イノベーションファンド（グローバル・ブレイン）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": 50,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://sogyotecho.jp/news/20260511exergyworld/",
+   "https://startup-db.com/companies/OlBVGEVUjVjp5WqM"
+  ],
+  "note": "2026-05-11発表、調達額非公表。従業員数~50人はSTARTUP DB表示（2026-08-04時点）"
+ },
+ {
+  "id": 77,
+  "name": "株式会社カウシェ",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 46,
+  "last_round": {
+   "date": "2025-06",
+   "round": "シリーズC",
+   "amount_oku": 13.81,
+   "lead": "デライト・ベンチャーズ",
+   "investors": [
+    "デライト・ベンチャーズ",
+    "三井住友海上キャピタル",
+    "AGキャピタル",
+    "ポーラ・オルビスホールディングス",
+    "NOBUNAGAキャピタルビレッジ",
+    "Asu Capital Partners",
+    "New Commerce Ventures",
+    "UPSIDER Capital（融資）",
+    "日本政策金融公庫（融資）"
+   ]
+  },
+  "investors_added": [
+   "UPSIDER Capital（融資）",
+   "日本政策金融公庫（融資）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://thebridge.jp/2025/06/kauche-surpasses-4-6-billion-jpy-in-total-funding-with-series-c-round-accelerating-its-ai-driven-discovery-e-commerce-for-growth",
+   "https://kepple.co.jp/articles/f6yi3okg25e"
+  ],
+  "note": "2025-06-24発表。13.81億円はエクイティ3.81億円＋融資10億円（UPSIDER Capital・日本政策金融公庫）の合計。DB既存の投資家リストと同一で日付のみ補完"
+ },
+ {
+  "id": 449,
+  "name": "株式会社トリビュー",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 40,
+  "last_round": {
+   "date": "2025-01",
+   "round": "シリーズC（セカンドクローズ）",
+   "amount_oku": 6,
+   "lead": null,
+   "investors": [
+    "日本ベンチャーキャピタル（NVCC）",
+    "ユナイテッド",
+    "韓国系VC（社名非公表）"
+   ]
+  },
+  "investors_added": [
+   "日本ベンチャーキャピタル（NVCC）",
+   "ユナイテッド"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.tribeau.jp/947/",
+   "https://kepple.co.jp/articles/q8-xk5wum",
+   "https://thebridge.jp/2025/01/tribeau-a-beauty-medical-platform-raises-an-additional-600-million-yen-in-series-c-funding"
+  ],
+  "note": "2025-01-29発表。6億円には金融機関融資を含む。シリーズC合計23億円（1stクローズ2024-10 約17億円＋2ndクローズ6億円）、累計約40億円"
+ },
+ {
+  "id": 515,
+  "name": "READYFOR株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-16438"
+  ],
+  "note": "initial.inc上の最新は2022-07のシリーズC（17億円）で、以降の調達は確認できず"
+ },
+ {
+  "id": 323,
+  "name": "株式会社KINS",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-04",
+   "round": "シリーズC（ファーストクローズ）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "タウンズ"
+   ]
+  },
+  "investors_added": [
+   "タウンズ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.excite.co.jp/news/article/Prtimes_2025-04-02-48644-88/",
+   "https://sogyotecho.jp/news/20240703yourkins/",
+   "https://initial.inc/companies/A-37728"
+  ],
+  "note": "2025-04-02発表（initial.inc上は2025-03-31）、調達額非公表。タウンズとは事業提携基本合意も締結。加えて2024-07-02に約5億円の調達を発表（引受先非公表）"
+ },
+ {
+  "id": 1241,
+  "name": "X Mile株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 69.6,
+  "last_round": {
+   "date": "2026-08",
+   "round": "シリーズC",
+   "amount_oku": 31.7,
+   "lead": "Vertex Growth",
+   "investors": [
+    "Vertex Growth",
+    "ALPHA",
+    "SMBC日興証券",
+    "SOMPO Growth Partners",
+    "東京大学エッジキャピタルパートナーズ",
+    "SMBCベンチャーキャピタル",
+    "Minerva Growth Partners",
+    "日本郵政キャピタル",
+    "JPSグロース・インベストメント"
+   ]
+  },
+  "investors_added": [
+   "Vertex Growth",
+   "ALPHA",
+   "SMBC日興証券",
+   "SOMPO Growth Partners",
+   "SMBCベンチャーキャピタル",
+   "Minerva Growth Partners",
+   "日本郵政キャピタル",
+   "JPSグロース・インベストメント"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000214.000063503.html",
+   "https://online.logi-biz.com/148462/"
+  ],
+  "note": "2026-08-04発表。累計69.6億円"
+ },
+ {
+  "id": 409,
+  "name": "ルクサナバイオテク株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 26.9,
+  "last_round": {
+   "date": "2025-08",
+   "round": "シリーズC（セカンドクローズ）",
+   "amount_oku": 1.5,
+   "lead": null,
+   "investors": [
+    "三菱UFJキャピタル",
+    "住商ファーマインターナショナル",
+    "神戸大学キャピタル",
+    "SBI大学発ベンチャー育成支援",
+    "ミライドア"
+   ]
+  },
+  "investors_added": [
+   "三菱UFJキャピタル",
+   "神戸大学キャピタル",
+   "SBI大学発ベンチャー育成支援",
+   "ミライドア"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://bio.nikkeibp.co.jp/atcl/release/25/08/07/25213/",
+   "https://luxnabiotech.co.jp/wp/wp-content/uploads/2025/08/JP_Press-release-for-Series-C1-2nd_20250807.pdf",
+   "https://bio.nikkeibp.co.jp/atcl/release/24/09/06/21553/"
+  ],
+  "note": "2025-08-07発表。累計26.9億円は日本政策金融公庫の資本性ローンを含む。シリーズC 1stクローズは2024-09-06に2.4億円（累計25.4億円）"
+ },
+ {
+  "id": 10,
+  "name": "テックタッチ株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-33095",
+   "https://startup-db.com/companies/PMb8p0WU6q6GgNdv"
+  ],
+  "note": "initial.inc上の最新は2023-01のシリーズB（17.8億円）で、以降の調達は確認できず"
+ },
+ {
+  "id": 1234,
+  "name": "株式会社ホワイトプラス",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.wh-plus.co.jp/2020/03/pr-20200327-2/",
+   "https://initial.inc/companies/A-11749"
+  ],
+  "note": "2020-03の総額約15億円（GCP・YJキャピタル・ラクスル＋みずほ銀行融資）以降の調達は確認できず"
+ },
+ {
+  "id": 715,
+  "name": "株式会社Unito",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": 20,
+  "last_round": {
+   "date": "2025-06",
+   "round": "シリーズD",
+   "amount_oku": 10,
+   "lead": null,
+   "investors": [
+    "Animal Spirits",
+    "AGキャピタル",
+    "みずほキャピタル",
+    "田中圭（個人投資家）",
+    "大東建託",
+    "エイチ・アイ・エス（HIS）"
+   ]
+  },
+  "investors_added": [
+   "Animal Spirits",
+   "AGキャピタル",
+   "みずほキャピタル",
+   "田中圭（個人投資家）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000155.000033908.html",
+   "https://initial.inc/companies/A-30496"
+  ],
+  "note": "2025-06-10にシリーズD完了を発表。総額約10億円は第三者割当増資＋金融機関からの融資を含む。1stクローズ（2025-04）はAnimal Spirits・AGキャピタル・みずほキャピタル・田中圭氏、2ndクローズ（2025-06）は大東建託・HIS。累計約20億円（2020-02のサービス開始以降）。DBの既存値（シリーズD/10億円）と整合し、日付・投資家を補完"
+ },
+ {
+  "id": 29,
+  "name": "カラクリ株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://sogyotecho.jp/news/20230209karakuri/",
+   "https://about.karakuri.ai/?m=202302"
+  ],
+  "note": "2023-02の10億円調達（累計約18.1億円）以降の調達は確認できず"
+ },
+ {
+  "id": 1302,
+  "name": "株式会社ACCELStars",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://accelstars.com/news/2024-11-29.html",
+   "https://accelstars.com/news/"
+  ],
+  "note": "2024-11のシリーズA（1st・2ndクローズ計10.9億円、累計16.8億円）以降、サードクローズ・シリーズBの発表は公式ニュース一覧で確認できず"
+ },
+ {
+  "id": 408,
+  "name": "RUN.EDGE株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.run-edge.com/about/",
+   "https://speakerdeck.com/runedge/20221014-run-dot-edge-hui-she-shao-jie-zi-liao-4426feb2-3a7f-4674-af69-afe7e11199ff"
+  ],
+  "note": "検索要約では2022-01にプレシリーズB約7.7億円・2024年時点の累計14.3億円（資本性ローン等含む）との記述があったが、出典ページ本文で確認できなかったため未反映（公式サイト・NIKKEI COMPASSは取得不可）。要再確認"
+ },
+ {
+  "id": 1051,
+  "name": "株式会社ailead",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-32641",
+   "https://aileadinc.com/news/36"
+  ],
+  "note": "initial.inc上の最新は2022-04-27の約14.6億円（融資含む、引受先: スパークス・アセット・マネジメント、ポーラ・オルビスHD、個人投資家3名）。DBのlast_round_dateは2022-04で補完可。以降の調達は確認できず"
+ },
+ {
+  "id": 1337,
+  "name": "株式会社pafin",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-01",
+   "round": "第三者割当増資（ラウンド名非公表）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "コインチェック"
+   ]
+  },
+  "investors_added": [
+   "コインチェック",
+   "大和証券グループ本社"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.pafin.com/news/pr-fundraising202601",
+   "https://initial.inc/companies/A-29726",
+   "https://sogyotecho.jp/news/20230804pafin/"
+  ],
+  "note": "2026-01-14にコインチェックからの出資を発表（金額非公表）。initial.incによれば2023-08-03（大和証券グループ本社出資）・2023-09-12にも第三者割当増資（いずれも金額非公表）、2023-10にbitFlyer Holdingsと資本業務提携"
+ },
+ {
+  "id": 1595,
+  "name": "デザミス株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-26441"
+  ],
+  "note": "initial.inc上の最新は2024-03-17の6.2億円で、以降の調達は確認できず"
+ },
+ {
+  "id": 1401,
+  "name": "株式会社バッカス・バイオイノベーション",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-10",
+   "round": "シリーズD",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "みずほ銀行"
+   ]
+  },
+  "investors_added": [
+   "みずほ銀行",
+   "日本曹達",
+   "雪印メグミルク",
+   "出光興産",
+   "神戸大学キャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-38860",
+   "https://www.mizuhobank.co.jp/release/pdf/20251024release_jp.pdf",
+   "https://www.meg-snow.com/news/2024/24424/",
+   "https://www.nihon-ma.co.jp/news/20230517_5019-14/",
+   "https://www.jacom.or.jp/nouyaku/news/2025/04/250418-81078.php",
+   "https://kuc.vc/news/603/"
+  ],
+  "note": "2025-10-23のシリーズD（initial.inc表記）は金額非公表、みずほ銀行が出資（みずほ銀行リリース2025-10-24）。ほか出光興産（2023-05）、神戸大学キャピタル（2023-05）、雪印メグミルク（2024-11-01）、日本曹達（2025-04）が個別出資を発表（各金額非公表）。NEDO受託（2023-08 約49.5億円、2025-03 約42.7億円）は補助金のため調達額に含めず"
+ },
+ {
+  "id": 1279,
+  "name": "ユナイテッド・イミュニティ株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2023-09",
+   "round": "第三者割当増資（ラウンド名非公表）",
+   "amount_oku": 8,
+   "lead": null,
+   "investors": [
+    "Saisei Bioventures",
+    "東京大学エッジキャピタルパートナーズ（UTEC5号）",
+    "東邦ホールディングス",
+    "リコーバイオメディカルスタートアップファンド"
+   ]
+  },
+  "investors_added": [
+   "Saisei Bioventures",
+   "東邦ホールディングス",
+   "リコーバイオメディカルスタートアップファンド",
+   "あおぞら企業投資（ベンチャーデット）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://unitedimmunity.co.jp/news/detail/successful-completion-of-fund-raising-and-grant-approval-more-than-11-billion-yen-value",
+   "https://startup-db.com/companies/BXP5J5rUvNzGqo6L",
+   "https://sogyotecho.jp/news/20230912unitedimmunity/"
+  ],
+  "note": "2023-09-11発表。第三者割当増資「8億円強」（amount_okuは8と記載）＋NEDO助成金交付決定額を含め合計11億円相当。加えて2024-03-18にあおぞら企業投資からベンチャーデット1.8億円を調達"
+ },
+ {
+  "id": 569,
+  "name": "株式会社パンフォーユー",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-31200"
+  ],
+  "note": "initial.inc上の最新は2022-06のシリーズB（約6億円）で、以降の調達は確認できず"
+ },
+ {
+  "id": 1199,
+  "name": "株式会社EventHub",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-26567"
+  ],
+  "note": "initial.inc上の最新は2022-11のシリーズA（約6.5億円）で、以降の調達は確認できず"
+ }
+]

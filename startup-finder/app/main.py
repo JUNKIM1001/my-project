@@ -21,35 +21,14 @@ from app.auth import (
     SESSION_COOKIE, SESSION_DAYS, create_session, delete_session,
     get_user_by_token, verify_password,
 )
-from app.db import IS_POSTGRES, Base, SessionLocal, engine, get_db
+from app.db import IS_POSTGRES, SessionLocal, engine, get_db
 from app.models import AccessLog, Company
+from app.schema import ensure_sqlite_schema
 
-# ローカルSQLiteは起動時にスキーマを作る。Postgres(本番)はコールドスタートの
-# たびに問い合わせが増えて遅くなるため行わない（スキーマ作成・更新は
-# app/scripts/migrate_to_postgres.py が担当。テーブル追加時は再実行すること）。
-if not IS_POSTGRES:
-    Base.metadata.create_all(bind=engine)
-
-# 既存SQLite DBへの追いつきマイグレーション（不足カラムのみ追加）。
-# Postgres（Supabase）は create_all が全カラム込みで作るため不要。
-if engine.dialect.name == "sqlite":
-    with engine.connect() as _conn:
-        _cols = [r[1] for r in _conn.execute(text("PRAGMA table_info(companies)"))]
-        for _col in ("contact_url", "rep_linkedin", "rep_x", "rep_facebook"):
-            if _col not in _cols:
-                _conn.execute(text("ALTER TABLE companies ADD COLUMN %s VARCHAR" % _col))
-        for _col, _typ in (("corporate_number", "VARCHAR"), ("capital_oku", "FLOAT"),
-                           ("patent_count", "INTEGER"), ("subsidy_count", "INTEGER"),
-                           ("gbiz_json", "TEXT"), ("gbiz_updated", "VARCHAR")):
-            if _col not in _cols:
-                _conn.execute(text("ALTER TABLE companies ADD COLUMN %s %s" % (_col, _typ)))
-        _cols = [r[1] for r in _conn.execute(text("PRAGMA table_info(access_logs)"))]
-        for _col, _typ in (("params", "VARCHAR"), ("result_count", "INTEGER"), ("company_id", "INTEGER")):
-            if _cols and _col not in _cols:
-                _conn.execute(text("ALTER TABLE access_logs ADD COLUMN %s %s" % (_col, _typ)))
-        # ログイン制限がIPで引くのでインデックスを張る
-        _conn.execute(text("CREATE INDEX IF NOT EXISTS ix_access_logs_ip ON access_logs (ip)"))
-        _conn.commit()
+# ローカルSQLiteは起動時にスキーマを作り、不足列を追いつき追加する（app/schema.py）。
+# Postgres(本番)はコールドスタートのたびに問い合わせが増えて遅くなるため行わない
+# （スキーマ作成は app/scripts/migrate_to_postgres.py、列追加は sync_fields_to_postgres が担当）。
+ensure_sqlite_schema(engine)
 
 app = FastAPI(title="Startup Finder — 国内スタートアップDB")
 
@@ -382,6 +361,7 @@ def to_dict(c: Company, detail: bool = False):
                 "round": c.last_round_name,
                 "amount_oku": c.last_round_amount_oku,
                 "investors": [s for s in (c.last_round_investors or "").split(",") if s],
+                "lead": c.last_round_lead,
             },
             "partners": [s for s in (c.partners or "").split(",") if s],
             "employee_count": c.employee_count,
@@ -659,7 +639,7 @@ def export_csv(db: Session = Depends(get_db)):
     w = csv.writer(buf)
     w.writerow([
         "企業名", "分野", "ステージ", "設立年", "所在地", "代表者", "事業内容",
-        "累計調達額(億円)", "評価額(億円)", "評価額出典", "直近ラウンド", "直近調達額(億円)",
+        "累計調達額(億円)", "評価額(億円)", "評価額出典", "直近ラウンド", "直近調達額(億円)", "直近リード投資家",
         "主要株主・投資家", "提携先", "受賞歴", "ステータス", "備考", "従業員数",
         "Webサイト", "問い合わせ", "代表LinkedIn", "代表X", "代表Facebook",
         "出典URL", "最終確認",
@@ -676,7 +656,7 @@ def export_csv(db: Session = Depends(get_db)):
             c.name, c.sectors, c.stage, c.founded_year, c.hq, c.representative,
             c.description, c.total_raised_oku, c.valuation_oku, c.valuation_source,
             "%s %s" % (c.last_round_date or "", c.last_round_name or ""),
-            c.last_round_amount_oku, c.investors, c.partners, awards_str,
+            c.last_round_amount_oku, c.last_round_lead, c.investors, c.partners, awards_str,
             status_ja.get(c.status, c.status), c.status_note, c.employee_count,
             c.website, c.contact_url, c.rep_linkedin, c.rep_x, c.rep_facebook,
             " ".join(str(s) for s in sources), c.last_verified,

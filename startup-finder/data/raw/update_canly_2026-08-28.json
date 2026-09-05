@@ -1,0 +1,35 @@
+[
+  {
+    "name": "株式会社カンリー",
+    "website": "https://biz.can-ly.com/",
+    "founded_year": 2018,
+    "hq": "東京都品川区",
+    "representative": "辰巳衛・秋山祐太朗（共同代表）",
+    "description": "店舗情報一元管理SaaS「カンリー」を中核に、国内約11万店舗が導入。福利厚生サービス「カンリー福利厚生」やSNS運用支援も展開。",
+    "sectors": ["店舗DX", "SaaS", "MEO", "AI"],
+    "stage": "シリーズC以降",
+    "total_raised_oku": 35,
+    "valuation_oku": null,
+    "valuation_source": null,
+    "last_round": {
+      "date": "2025-11",
+      "round": "シリーズC 1stクローズ",
+      "amount_oku": 20,
+      "investors": ["ジャフコ グループ", "Carbide Ventures", "JICベンチャー・グロース・インベストメンツ"]
+    },
+    "investors": ["ジャフコ グループ", "Carbide Ventures", "JICベンチャー・グロース・インベストメンツ", "UB Ventures", "DEEPCORE", "みずほキャピタル", "東芝テック", "オリエンタルランド・イノベーションズ"],
+    "partners": ["Uberall（日本国内独占販売契約）"],
+    "awards": [],
+    "status": "active",
+    "status_note": "2025年11月4日にシリーズC 1stクローズ約20億円を調達し累計約35億円。リードはジャフコ グループ（3回連続リード）。ポストマネー評価額は非公表。2026年2月に3件のM&A（リカバリー／オプトのトストア事業／J&IのWeb制作事業）を完了し、Uberallの日本国内独占販売契約を締結。",
+    "employee_count": 300,
+    "sources": [
+      "https://prtimes.jp/main/html/rd/p/000000441.000037205.html",
+      "https://biz.can-ly.com/news/seriesC1stClosed_Funding",
+      "https://kepple.co.jp/articles/l1hpu3u4w7",
+      "https://prtimes.jp/main/html/rd/p/000000492.000037205.html",
+      "https://startup-db.com/companies/kjlVZLoUk3dp9q3E"
+    ],
+    "last_verified": "2026-08"
+  }
+]

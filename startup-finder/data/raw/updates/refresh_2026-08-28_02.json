@@ -1,0 +1,708 @@
+[
+ {
+  "id": 152,
+  "name": "五常・アンド・カンパニー株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://gojo.co/category/jp-press-releases/",
+   "https://www.nomuraholdings.com/jp/news/nr/nsc20250722.html"
+  ],
+  "note": "2024-09以降の公式プレスリリースに新規エクイティ調達・IPO等の発表なし。2025-07にソーシャルファイナンス・フレームワーク策定（債券・ローン・エクイティ対応）を公表したのみ"
+ },
+ {
+  "id": 123,
+  "name": "株式会社CureApp",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-16412"
+  ],
+  "note": "INITIAL上の最終ラウンドは2022-08シリーズG（約70億円）。以降の調達・上場の記録なし"
+ },
+ {
+  "id": 192,
+  "name": "Playco（Play Co., Ltd.）",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://tracxn.com/d/companies/playco/__WrOHyqAD28nYO1EZ2eBMlQVnGuKuLMPAAjJm1-J0XGI/funding-and-investors",
+   "https://www.cbinsights.com/company/playco/financials"
+  ],
+  "note": "TracxnはシリーズA（2020-09）のみ記載。CB Insightsは2021-03「Series B」を掲載するが金額・投資家非開示で一次出典未確認のため未反映"
+ },
+ {
+  "id": 957,
+  "name": "avatarin株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://about.avatarin.com/info-news/news-release/8757/",
+   "https://kepple.co.jp/articles/85ef4lbp1p"
+  ],
+  "note": "2024-07シリーズB（37億円・累計77億円）以降の新規調達の発表は確認できず"
+ },
+ {
+  "id": 326,
+  "name": "株式会社ナレッジワーク",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2026-08",
+   "round": "シリーズC（1stクローズ）",
+   "amount_oku": 35.0,
+   "lead": "グロービス・キャピタル・パートナーズ",
+   "investors": [
+    "グロービス・キャピタル・パートナーズ",
+    "DNX Ventures",
+    "WiL",
+    "Salesforce Ventures",
+    "フォースタートアップスキャピタル",
+    "リコージャパン",
+    "キヤノンマーケティングジャパン未来投資事業有限責任組合",
+    "NTTドコモ・ベンチャーズ",
+    "三井住友銀行",
+    "JPSグロース・インベストメント投資事業有限責任組合",
+    "三菱UFJイノベーション・パートナーズ",
+    "三井住友信託銀行",
+    "富国-GB投資事業有限責任組合",
+    "電通ベンチャーズSGP投資事業有限責任組合",
+    "博報堂DYベンチャーズ"
+   ]
+  },
+  "investors_added": [
+   "DNX Ventures",
+   "Salesforce Ventures",
+   "リコージャパン",
+   "キヤノンマーケティングジャパン未来投資事業有限責任組合",
+   "NTTドコモ・ベンチャーズ",
+   "三井住友銀行",
+   "JPSグロース・インベストメント投資事業有限責任組合",
+   "三菱UFJイノベーション・パートナーズ",
+   "三井住友信託銀行",
+   "富国-GB投資事業有限責任組合",
+   "電通ベンチャーズSGP投資事業有限責任組合",
+   "博報堂DYベンチャーズ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000148.000063428.html"
+  ],
+  "note": "シリーズC 1stクローズ（2026-08-04発表）。累計調達額はリリースに記載なし。同日リコージャパンと資本業務提携"
+ },
+ {
+  "id": 418,
+  "name": "株式会社電脳交通",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 52.0,
+  "last_round": {
+   "date": "2025-04",
+   "round": "シリーズD",
+   "amount_oku": 25.0,
+   "lead": "三菱商事",
+   "investors": [
+    "三菱商事",
+    "Uber Technologies",
+    "国際自動車",
+    "大和自動車交通",
+    "つばめ自動車",
+    "阿波銀キャピタル",
+    "いよぎんキャピタル",
+    "エムケイ",
+    "三和交通",
+    "JPインベストメント",
+    "第一交通産業",
+    "徳島大正銀行"
+   ]
+  },
+  "investors_added": [
+   "Uber Technologies",
+   "国際自動車",
+   "大和自動車交通",
+   "つばめ自動車",
+   "三和交通",
+   "JPインベストメント",
+   "徳島大正銀行",
+   "阿波銀キャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": 201,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000125.000053640.html",
+   "https://thebridge.jp/2025/04/dennokotsu-a-company-driving-digital-transformation-for-taxi-operators-has-raised-2-5-billion-yen-in-series-d-funding"
+  ],
+  "note": "累計約52億円は融資（デット）込み。従業員201名は2024-11時点"
+ },
+ {
+  "id": 335,
+  "name": "Allganize Holdings, Inc.（Allganize Japan株式会社）",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://tracxn.com/d/companies/allganize/__E0QL13OCpQzDkWl5RR5XMtByRZso_R9xkR2KY427PzA/funding-and-investors",
+   "https://www.allganize.ai/en/blog/allganize-secures-20-million-in-series-b-funding-to-propel-ai-solutions-and-target-japanese-stock-exchange-listing-by-2025"
+  ],
+  "note": "2023-12シリーズB以降の新規ラウンドは確認できず（2025年の東証上場目標を掲げていたが上場は未確認）"
+ },
+ {
+  "id": 292,
+  "name": "ユニファ株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 93.0,
+  "last_round": {
+   "date": "2024-08",
+   "round": "シリーズE",
+   "amount_oku": 5.0,
+   "lead": null,
+   "investors": [
+    "MIXI",
+    "MPower Partners",
+    "富士通ベンチャーズ",
+    "八十二インベストメント"
+   ]
+  },
+  "investors_added": [
+   "MIXI",
+   "富士通ベンチャーズ",
+   "八十二インベストメント"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://thebridge.jp/2024/08/unifa-series-e-round-funding",
+   "https://sg.wantedly.com/companies/unifa-e/post_articles/921824",
+   "https://www.marr.jp/mainfo/news/entry/54188"
+  ],
+  "note": "MIXIと資本業務提携。累計93億円は出典記載値（DBの40億円から大幅更新）"
+ },
+ {
+  "id": 1804,
+  "name": "アイオーコア株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズC以降",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2024-09",
+   "round": "シリーズC",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "みらい創造インベストメンツ"
+   ]
+  },
+  "investors_added": [
+   "みらい創造インベストメンツ",
+   "ヒロセ電機"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-31782",
+   "https://miraisozo.co.jp/vc/investaiocore/",
+   "https://www.nihon-ma.co.jp/news/20240905_6806-5/"
+  ],
+  "note": "INITIAL上のシリーズC（2024-09-29）は調達額非公開。みらい創造2号ファンドが出資。2024-09-05にヒロセ電機と資本業務提携（金額非公開）。INITIALに2025-04-08の調達（非公開）の記載もあるが詳細未確認"
+ },
+ {
+  "id": 101,
+  "name": "株式会社400F",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://400f.jp/news",
+   "https://prtimes.jp/main/html/rd/p/000000163.000038217.html"
+  ],
+  "note": "2024-08-29発表の11.4億円（増資＋プロパー融資）がDB登録済みの最終ラウンド。以降の調達発表なし"
+ },
+ {
+  "id": 499,
+  "name": "Global Vascular（日経NEXTユニコーン調査掲載名）",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 27.7,
+  "last_round": {
+   "date": "2025-06",
+   "round": "シリーズB",
+   "amount_oku": 10.0,
+   "lead": null,
+   "investors": [
+    "Diamond Medino Capital",
+    "三菱UFJキャピタル",
+    "三井住友信託銀行",
+    "三井住友海上キャピタル",
+    "メディキット",
+    "ファストトラックイニシアティブ",
+    "東京理科大学イノベーション・キャピタル",
+    "東京理科大インベストメント・マネジメント"
+   ]
+  },
+  "investors_added": [
+   "Diamond Medino Capital",
+   "三菱UFJキャピタル",
+   "三井住友信託銀行",
+   "三井住友海上キャピタル",
+   "メディキット",
+   "ファストトラックイニシアティブ",
+   "東京理科大学イノベーション・キャピタル",
+   "東京理科大インベストメント・マネジメント"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000006.000121727.html",
+   "https://www.smtb.jp/-/media/tb/about/corporate/release/pdf/250630.pdf"
+  ],
+  "note": "2025-06-30発表。リード投資家の明記なし。投資家名の一部は英語表記の要約から転記（正式表記は要確認）"
+ },
+ {
+  "id": 415,
+  "name": "ClipLine株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 31.5,
+  "last_round": {
+   "date": "2022-03",
+   "round": "シリーズE（エクステンション）",
+   "amount_oku": 6.0,
+   "lead": null,
+   "investors": [
+    "インキュベイトファンド",
+    "MPower Partners Fund",
+    "アイザワ・アセットマネジメント",
+    "Axiom Asia Private Capital",
+    "DG Daiwa Ventures",
+    "SMBCベンチャーキャピタル",
+    "やまぐちキャピタル"
+   ]
+  },
+  "investors_added": [
+   "MPower Partners Fund",
+   "アイザワ・アセットマネジメント",
+   "DG Daiwa Ventures",
+   "SMBCベンチャーキャピタル",
+   "やまぐちキャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000122.000011390.html",
+   "https://corp.clipline.com/3090734"
+  ],
+  "note": "シリーズE合計16.5億円（累計31.5億円）。投資家リストはシリーズE全体の引受先。2022-03以降の新規ラウンドは確認できず"
+ },
+ {
+  "id": 517,
+  "name": "株式会社KAKEAI",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 24.28,
+  "last_round": {
+   "date": "2024-09",
+   "round": "プレシリーズB",
+   "amount_oku": 9.7,
+   "lead": "モバイル・インターネットキャピタル",
+   "investors": [
+    "モバイル・インターネットキャピタル",
+    "DBJキャピタル"
+   ]
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://thebridge.jp/2024/09/kakeai-pre-series-b-round-funding",
+   "https://prtimes.jp/main/html/rd/p/000000129.000041953.html"
+  ],
+  "note": "9.7億円はエクイティ4.2億円＋デット5.5億円。リードはBRIDGE記事に「MICがリード」と明記。PR TIMES掲載日は2024-10-09だがBRIDGE報道は2024-09。ステージ選択肢に「プレシリーズB」がないため stage は据え置き"
+ },
+ {
+  "id": 781,
+  "name": "GROUND株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-16663?from=suggest"
+  ],
+  "note": "INITIAL上の最終ラウンドは2021-06シリーズB。以降の調達記録なし"
+ },
+ {
+  "id": 700,
+  "name": "株式会社HashPort",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-11",
+   "round": "第三者割当増資（KDDI）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "KDDI"
+   ]
+  },
+  "investors_added": [
+   "KDDI"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000152.000046288.html",
+   "https://newsroom.kddi.com/news/detail/kddi_nr_s-51_4208.html"
+  ],
+  "note": "KDDIを割当先とする第三者割当増資でKDDIが発行済株式の20%超を取得し持分法適用会社化。金額非公開。発表日は取得ページ上2025-11-11（一部報道は2025-10-24）"
+ },
+ {
+  "id": 764,
+  "name": "株式会社スピークバディ",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-12",
+   "round": "第三者割当増資",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "ディ・ポップスグループ"
+   ]
+  },
+  "investors_added": [
+   "ディ・ポップスグループ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://d-pops-group.co.jp/column/speakbuddy/",
+   "https://initial.inc/companies/A-17151"
+  ],
+  "note": "ディ・ポップスグループ発表（2025-12-08）。金額・ラウンド名非公開"
+ },
+ {
+  "id": 1094,
+  "name": "株式会社TWO",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 17.0,
+  "last_round": {
+   "date": "2025-04",
+   "round": "第三者割当増資",
+   "amount_oku": 7.5,
+   "lead": "環境エネルギー投資",
+   "investors": [
+    "環境エネルギー投資"
+   ]
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000173.000043581.html",
+   "https://kepple.co.jp/articles/sr96tx9tea"
+  ],
+  "note": "2025-04-22発表。リリース上で名指しされた引受先は環境エネルギー投資（リード）のみ。累計17億円。DBの「2022年・7.5億円」はこのラウンドと混同の可能性あり"
+ },
+ {
+  "id": 315,
+  "name": "株式会社ユカシカド",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-08",
+   "round": "第三者割当増資",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "信州スタートアップ・承継支援2号投資事業有限責任組合（ミライドア）"
+   ]
+  },
+  "investors_added": [
+   "信州スタートアップ・承継支援2号投資事業有限責任組合（ミライドア）"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.fvc.co.jp/item/news/sites/2/invest_yukashikado_20250829.pdf"
+  ],
+  "note": "ミライドア2025-08-29発表。金額・ラウンド名非公開（リリースは「投資を実行」の表現）"
+ },
+ {
+  "id": 1045,
+  "name": "amptalk株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 14.0,
+  "last_round": {
+   "date": "2024-12",
+   "round": "シリーズA",
+   "amount_oku": 10.0,
+   "lead": "グローバル・ブレイン, Angel Bridge（共同リード）",
+   "investors": [
+    "グローバル・ブレイン",
+    "Angel Bridge",
+    "Scrum Ventures",
+    "モバイル・インターネットキャピタル",
+    "明治安田未来共創ファンド",
+    "福島良典",
+    "麻野耕司"
+   ]
+  },
+  "investors_added": [
+   "グローバル・ブレイン",
+   "Angel Bridge",
+   "モバイル・インターネットキャピタル",
+   "明治安田未来共創ファンド",
+   "福島良典",
+   "麻野耕司"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000045.000084890.html"
+  ],
+  "note": "DB既存のシリーズA（10億円・Scrum Ventures）と同一ラウンドとみられる。日付（2024-12-04発表）・共同リード・投資家リストを補完。累計14億円"
+ },
+ {
+  "id": 933,
+  "name": "株式会社Sprocket",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-16525"
+  ],
+  "note": "INITIAL上の最終ラウンドは2021-08シリーズC（7.6億円）。以降の調達記録なし"
+ },
+ {
+  "id": 302,
+  "name": "株式会社Clear",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 24.4,
+  "last_round": {
+   "date": "2025-03",
+   "round": "第三者割当増資",
+   "amount_oku": null,
+   "lead": "HIRAC FUND",
+   "investors": [
+    "HIRAC FUND",
+    "SMBCベンチャーキャピタル"
+   ]
+  },
+  "investors_added": [
+   "HIRAC FUND"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000127.000034181.html",
+   "https://kepple.co.jp/articles/bgowhn3z96r"
+  ],
+  "note": "2025-03-03発表。今回ラウンドの調達額非公開、累計24.4億円。HIRAC FUNDはリリースで「リード投資家」と明記"
+ },
+ {
+  "id": 1180,
+  "name": "ひむかAMファーマ株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-28921"
+  ],
+  "note": "INITIAL上の最終ラウンドは2022-01シリーズB追加。以降の調達記録なし"
+ },
+ {
+  "id": 1183,
+  "name": "Beatrust株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://corp.beatrust.com/news",
+   "https://initial.inc/companies/A-37196"
+  ],
+  "note": "公式ニュースにシリーズA（2022・8億円・JAFCOリード）以降の調達発表なし"
+ },
+ {
+  "id": 1271,
+  "name": "Mantra株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-34087"
+  ],
+  "note": "INITIAL上の最終ラウンドは2024-06（約7.8億円）。以降の調達記録なし"
+ },
+ {
+  "id": 1027,
+  "name": "CAPS株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://initial.inc/companies/A-16866",
+   "https://caps365.jp/post/210224-release/"
+  ],
+  "note": "2021-02の約10億円（金融機関中心）以降の調達発表なし"
+ }
+]

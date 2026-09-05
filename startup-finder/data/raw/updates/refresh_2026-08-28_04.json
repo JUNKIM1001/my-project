@@ -1,0 +1,710 @@
+[
+ {
+  "id": 46,
+  "name": "株式会社TBM",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://tb-m.com/news/",
+   "https://tb-m.com/eng/news/news-897/",
+   "https://www.marr.jp/shared_files/contents/manews/65/65743/65743.pdf"
+  ],
+  "note": "2021-07以降の新規調達発表は公式ニュース一覧で確認できず。2025-12-18にリグア（東証グロース7090）がTBMを割当先とする第三者割当増資（TBMがリグアに9,140万円出資・6.20%）を発表＝TBM側の資金調達ではない。同開示でTBMの純資産は2022年12月期106.4億円→2024年12月期33.3億円"
+ },
+ {
+  "id": 801,
+  "name": "株式会社Blue Planet-works",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": "2026-04-01付で商号を株式会社AppGuardに変更（公式サイトも appguard.co.jp へ移転）",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.appguard.co.jp/news/news-release.html"
+  ],
+  "note": "2019-08の第3ラウンド以降、新規の資金調達発表は確認できず。2026-02-13にグループ再編（子会社ITガード→AppGuardジャパン）を発表"
+ },
+ {
+  "id": 7,
+  "name": "株式会社ログラス",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000132.000052025.html",
+   "https://www.loglass.co.jp/news/press-20241211"
+  ],
+  "note": "2024-07のシリーズB（70億円）以降の新ラウンドは確認できず"
+ },
+ {
+  "id": 256,
+  "name": "株式会社令和トラベル",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000139.000077082.html",
+   "https://www.travelvoice.jp/20240910-156305"
+  ],
+  "note": "2024-09のシリーズA（約48億円）以降の新ラウンドは確認できず"
+ },
+ {
+  "id": 327,
+  "name": "株式会社センシンロボティクス",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-06",
+   "round": "資本業務提携（竹中工務店による出資）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "竹中工務店"
+   ]
+  },
+  "investors_added": [
+   "竹中工務店"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000124.000028447.html",
+   "https://www.nikkei.com/article/DGXZQOUC1035J0Q5A610C2000000/"
+  ],
+  "note": "2025-06-10発表。出資額・ラウンド名は非公表"
+ },
+ {
+  "id": 536,
+  "name": "株式会社オッドナンバー",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "清算",
+  "total_raised_oku": 50.5,
+  "last_round": {
+   "date": "2024-03",
+   "round": "新株予約権付社債",
+   "amount_oku": 19.5,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [],
+  "status": "closed",
+  "status_note": "2026-08-05 東京地裁より破産開始決定（負債約107億2,700万円・債権者約153名。持株会社イグニス、関連会社パルスと3社合計約297億円）。主力タイトル「Link！Like！ラブライブ！」は2026-06-30にサービス終了",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://gamebiz.jp/news/383274",
+   "https://news.yahoo.co.jp/articles/afa7fd605ae006e658c070d43f414bf5a2a5960a",
+   "https://news.yahoo.co.jp/articles/b39b9fedab9ae443ece324003d2cdcc0f52114a5",
+   "https://initial.inc/companies/A-44344"
+  ],
+  "note": "最終ラウンドは2024-03-15発表の新株予約権付社債19.5億円（引受先は「ファンド等」で非公表）。PR TIMES題名の累計は50.5億円（gamebiz記事は61.5億円と記載が割れるため公式値を採用）。2024年12月期時点の債務超過額は約96億円（TDB報道）"
+ },
+ {
+  "id": 369,
+  "name": "オーティファイ株式会社（Autify）",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 45.0,
+  "last_round": {
+   "date": "2024-06",
+   "round": "シリーズB",
+   "amount_oku": 20.0,
+   "lead": "グロービス・キャピタル・パートナーズ／LG Technology Ventures（共同リード）",
+   "investors": [
+    "グロービス・キャピタル・パートナーズ",
+    "LG Technology Ventures",
+    "WiL",
+    "Salesforce Ventures",
+    "Archetype Ventures",
+    "Uncorrelated Ventures",
+    "商工組合中央金庫"
+   ]
+  },
+  "investors_added": [
+   "グロービス・キャピタル・パートナーズ",
+   "LG Technology Ventures",
+   "商工組合中央金庫"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://autify.jp/news/seriesb",
+   "https://prtimes.jp/main/html/rd/p/000000068.000049466.html",
+   "https://autify.jp/news"
+  ],
+  "note": "2024-06-18発表。約20億円（1,300万米ドル）、累計約45億円（3,000万米ドル）。商工中金分は融資の可能性あり（リリースは「新規」投資家として列挙）。2024-07以降の新ラウンドは確認できず"
+ },
+ {
+  "id": 633,
+  "name": "じぶんde株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000020.000040196.html"
+  ],
+  "note": "2021-02の総額40億円以降、新規の資金調達発表は確認できず"
+ },
+ {
+  "id": 320,
+  "name": "株式会社パトスロゴス",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 68.0,
+  "last_round": {
+   "date": "2026-04",
+   "round": "シリーズB",
+   "amount_oku": 31.0,
+   "lead": "SBIインベストメント",
+   "investors": [
+    "SBIインベストメント",
+    "レオス・キャピタルパートナーズ"
+   ]
+  },
+  "investors_added": [
+   "SBIインベストメント",
+   "レオス・キャピタルパートナーズ",
+   "SMBCベンチャーキャピタル",
+   "りそなキャピタル",
+   "FFGベンチャービジネスパートナーズ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.pathoslogos.jp/news/press-release/seriesb.html",
+   "https://thebridge.jp/2026/04/pathoslogos-series-b-funding-31-billion-yen",
+   "https://www.pathoslogos.jp/news/press-release/chotatsu-37okuyen.html",
+   "https://prtimes.jp/main/html/rd/p/000000028.000078735.html"
+  ],
+  "note": "2026-04-28発表。内訳: 第三者割当増資約16億円（2026年3月末）＋J-KISS転換分約15億円（2025-05）。累計68億円。中間ラウンドとして2024-07にシリーズA完了（2023-08分と合わせ総額24.5億円、SMBC VC・りそなキャピタル・FFG VBP・グロービス、累計37億円）"
+ },
+ {
+  "id": 570,
+  "name": "株式会社シナモン",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://aismiley.co.jp/ai_news/cinnamonai-finance/",
+   "https://prtimes.jp/main/html/searchrlp/company_id/28252"
+  ],
+  "note": "第一生命5億円（2022-06-28実施）以降の新規調達は確認できず（2024-02の記事は同ラウンドの再掲）"
+ },
+ {
+  "id": 301,
+  "name": "AWL株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 45.0,
+  "last_round": {
+   "date": "2024-05",
+   "round": "第三者割当増資＋融資",
+   "amount_oku": 4.7,
+   "lead": null,
+   "investors": [
+    "S Ventures",
+    "札幌イノベーションファンド",
+    "谷岡緑化",
+    "北洋SDGs推進2号投資事業有限責任組合",
+    "北海道ベンチャーキャピタル",
+    "エフ・シー・シー",
+    "ボーンレックス",
+    "日本政策金融公庫（融資）"
+   ]
+  },
+  "investors_added": [
+   "S Ventures",
+   "札幌イノベーションファンド",
+   "谷岡緑化",
+   "北洋SDGs推進2号投資事業有限責任組合",
+   "北海道ベンチャーキャピタル",
+   "エフ・シー・シー",
+   "ボーンレックス"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000053.000046547.html",
+   "https://www.nikkei.com/article/DGXZQOFC190OG0Z10C24A5000000/"
+  ],
+  "note": "2024-05-21発表。総額4.7億円は日本政策金融公庫の融資込み（エクイティ内訳非公表）。累計45.0億円はリリース記載値（融資等込みの可能性）。ラウンド名は記載なし"
+ },
+ {
+  "id": 99,
+  "name": "株式会社Fivot",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 25.0,
+  "last_round": {
+   "date": "2025-11",
+   "round": "シリーズB",
+   "amount_oku": 20.0,
+   "lead": "Angel Bridge／ニッセイ・キャピタル（共同リード）",
+   "investors": [
+    "Angel Bridge",
+    "ニッセイ・キャピタル",
+    "DGりそなベンチャーズ1号投資事業有限責任組合",
+    "T&Dイノベーション投資事業有限責任組合",
+    "ほくほくキャピタル",
+    "日本ベンチャーキャピタル",
+    "SBIインベストメント",
+    "DG Daiwa Ventures",
+    "SMBCベンチャーキャピタル"
+   ]
+  },
+  "investors_added": [
+   "DGりそなベンチャーズ",
+   "T&Dイノベーション投資事業有限責任組合",
+   "ほくほくキャピタル",
+   "日本ベンチャーキャピタル",
+   "SBIインベストメント",
+   "DG Daiwa Ventures",
+   "SMBCベンチャーキャピタル"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000035.000078718.html",
+   "https://fivot.co.jp/news/series_b/",
+   "https://thebridge.jp/2025/11/fivot-raises-2-billion-yen-series-b-ai-credit-model"
+  ],
+  "note": "2025-11-05発表。総額20億円は第三者割当増資10億円＋デットファイナンス10億円。累計25億円は創業以来のエクイティ調達額。DBに日付がなかったシリーズBの日付を補完"
+ },
+ {
+  "id": 297,
+  "name": "株式会社インフキュリオン",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "IPO済",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-10",
+   "round": "IPO（東証グロース）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [
+   "三井住友銀行",
+   "三井住友カード"
+  ],
+  "status": "ipo",
+  "status_note": "2025-10-24 東証グロース上場（証券コード438A、公開価格1,680円、想定時価総額304.5億円）",
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://www.ipokiso.com/company/2025/infcurion.html",
+   "https://www.excite.co.jp/news/article/Prtimes_2025-10-25-32321-774/",
+   "https://www.buffett-code.com/company/6ll9yl67y9/"
+  ],
+  "note": "上場前の2024-08に三井住友銀行・三井住友カードと資本業務提携（上場時の株主構成: 三井住友カード12.52%、三井住友銀行12.52%）。IPO調達額は未確認"
+ },
+ {
+  "id": 1822,
+  "name": "CONNEXX SYSTEMS株式会社",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2022-11",
+   "round": "第三者割当増資（資本業務提携）",
+   "amount_oku": 5.75,
+   "lead": null,
+   "investors": [
+    "NECネッツエスアイ",
+    "サンフロンティア不動産"
+   ]
+  },
+  "investors_added": [
+   "NECネッツエスアイ",
+   "サンフロンティア不動産"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://kyodonewsprwire.jp/release/202211180027",
+   "https://www.connexxsys.com/news/notice"
+  ],
+  "note": "2022-11-18発表。総額5億7,500万円。2023年以降の資金調達発表は公式お知らせ一覧で確認できず（2023-10 レジルと業務提携、2025-01 三菱ふそうと協業）"
+ },
+ {
+  "id": 730,
+  "name": "株式会社wevnal",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズB",
+  "total_raised_oku": 26.0,
+  "last_round": {
+   "date": "2023-04",
+   "round": "シリーズB（セカンドクローズ）",
+   "amount_oku": 10.0,
+   "lead": null,
+   "investors": [
+    "Sony Innovation Fund",
+    "あおぞら企業投資（融資）",
+    "静岡銀行（融資）",
+    "日本政策金融公庫（融資）",
+    "みずほ銀行（融資）"
+   ]
+  },
+  "investors_added": [
+   "Sony Innovation Fund"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000139.000015648.html",
+   "https://eczine.jp/news/detail/12698"
+  ],
+  "note": "2023-04-12発表。セカンドクローズ10億円はSony Innovation Fundの第三者割当増資＋金融機関融資の合算。シリーズB総額20億円、累計26億円。2023-05以降の新ラウンドは確認できず"
+ },
+ {
+  "id": 197,
+  "name": "Bodygram Japan株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://news.google.com/rss/search?q=Bodygram+%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "note": "2020-10のシリーズB（18億円）以降の資金調達・買収・清算報道は確認できず"
+ },
+ {
+  "id": 330,
+  "name": "FastLabel株式会社",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://news.google.com/rss/search?q=FastLabel+%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "note": "2023-11のシリーズB以降の新ラウンドは確認できず（2025-11 ugoと業務提携、2026-04 フィジカルAI事業本格展開）"
+ },
+ {
+  "id": 429,
+  "name": "株式会社チカク",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://news.google.com/rss/search?q=%E3%83%81%E3%82%AB%E3%82%AF+%E3%81%BE%E3%81%94%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB+%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "note": "2021-04以降の新規調達報道は確認できず"
+ },
+ {
+  "id": 1026,
+  "name": "株式会社justInCaseTechnologies",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://justincase-tech.com/press/news",
+   "https://sony-sasti.jp/",
+   "https://news.google.com/rss/search?q=justInCase+%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "note": "2023-01のシリーズB 1st以降、当社（Technologies）自身の新規調達・買収は確認できず。姉妹会社の少額短期保険会社「株式会社justInCase」はソニーフィナンシャルグループが買収（2024-11報道）し2025-09-01に「ソニー少額短期保険株式会社」へ商号変更。Technologies社は引き続き独立して事業継続（2026-09時点で公式サイト更新あり）"
+ },
+ {
+  "id": 170,
+  "name": "株式会社GO TODAY SHAiRE SALON",
+  "checked": true,
+  "newer_round_found": false,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": null,
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://news.google.com/rss/search?q=%22GO+TODAY+SHAiRE+SALON%22&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "note": "2020-08のシリーズB（10億円）以降の資金調達・買収報道は確認できず"
+ },
+ {
+  "id": 728,
+  "name": "株式会社レストアビジョン",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 35.0,
+  "last_round": {
+   "date": "2026-04",
+   "round": "PreシリーズB",
+   "amount_oku": 13.0,
+   "lead": null,
+   "investors": [
+    "肥銀キャピタル",
+    "京都大学イノベーションキャピタル",
+    "JICベンチャー・グロース・インベストメンツ",
+    "科学技術振興機構",
+    "Remiges Ventures",
+    "Astellas Venture Management",
+    "味の素",
+    "塩野義製薬",
+    "日本ベンチャーキャピタル"
+   ]
+  },
+  "investors_added": [
+   "肥銀キャピタル",
+   "京都大学イノベーションキャピタル",
+   "JICベンチャー・グロース・インベストメンツ",
+   "科学技術振興機構",
+   "Astellas Venture Management",
+   "味の素",
+   "塩野義製薬",
+   "日本ベンチャーキャピタル",
+   "京都キャピタルパートナーズ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://restore-vis.com/news/3229037.html",
+   "https://restore-vis.com/news/3268600.html",
+   "https://restore-vis.com/news/2543168.html",
+   "https://restore-vis.com/news"
+  ],
+  "note": "2026-04-15発表のPreシリーズB 13億円（既存5社・新規4社）。2026-06-12に京都キャピタルパートナーズから追加調達（金額非公表）。累計はエクイティ約35億円、補助金約23億円を含め58億円以上。中間として2023-12-15にシリーズA総額18.7億円で完了。ステージ「プレシリーズB」は許容値にないためstageはnull"
+ },
+ {
+  "id": 1755,
+  "name": "株式会社SOXAI",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-09",
+   "round": "社債（少人数私募・Siiibo証券）",
+   "amount_oku": null,
+   "lead": null,
+   "investors": []
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000033.000089024.html",
+   "https://prtimes.jp/main/html/rd/p/000000092.000045441.html",
+   "https://soxai.co.jp/blogs/news"
+  ],
+  "note": "2025-09-30発表。社債発行額は非公表。第三者割当増資・金融機関借入を含む累計資金調達額は「20億円超」（正確な数値非公表のためtotal_raised_okuはnull）。エクイティの新ラウンドは確認できず"
+ },
+ {
+  "id": 1746,
+  "name": "株式会社トライエッティング",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": 12.3,
+  "last_round": {
+   "date": "2025-12",
+   "round": "協調融資",
+   "amount_oku": 1.0,
+   "lead": null,
+   "investors": [
+    "名古屋銀行（融資）",
+    "日本政策金融公庫（融資）"
+   ]
+  },
+  "investors_added": [
+   "アオキスーパー",
+   "三栄商事"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000061.000029446.html",
+   "https://prtimes.jp/main/html/rd/p/000000057.000029446.html",
+   "https://prtimes.jp/main/html/rd/p/000000049.000029446.html",
+   "https://news.google.com/rss/search?q=%E3%83%88%E3%83%A9%E3%82%A4%E3%82%A8%E3%83%83%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0+%E8%B3%87%E9%87%91%E8%AA%BF%E9%81%94&hl=ja&gl=JP&ceid=JP:ja"
+  ],
+  "note": "デット。2025-12-08発表の名古屋銀行・日本政策金融公庫（2事業）協調融資で累計約12.3億円（融資額はPR TIMES本文に非記載、日経見出しは「1億円」）。エクイティは2025-07-08発表のアオキスーパー・三栄商事からの出資（金額非公表、累計約11.3億円）。DBの「2024 融資1.3億円」は2025-01-31発表（三菱UFJ銀行・名古屋銀行・あいち銀行8,000万円＋名古屋銀行・日本公庫5,000万円、全額デット、累計約11億円）に相当"
+ },
+ {
+  "id": 574,
+  "name": "株式会社Buzzreach",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": null,
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-11",
+   "round": "資本業務提携・第三者割当増資",
+   "amount_oku": null,
+   "lead": null,
+   "investors": [
+    "メドレー",
+    "エムスリー",
+    "DGりそなベンチャーズ1号投資事業有限責任組合"
+   ]
+  },
+  "investors_added": [
+   "メドレー",
+   "エムスリー",
+   "DGりそなベンチャーズ",
+   "住商ベンチャー・パートナーズ"
+  ],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000079.000036622.html",
+   "https://prtimes.jp/main/html/rd/p/000000139.000013108.html",
+   "https://prtimes.jp/main/html/rd/p/000000058.000036622.html"
+  ],
+  "note": "2025-11-06発表。メドレー・エムスリーと資本業務提携、DGりそなベンチャーズから資金調達（金額・ラウンド名・累計は非公表）。中間として2024-05-23に住商ベンチャー・パートナーズの出資決定（金額非公表）、2023-05にシリーズAエクステンション（marr.jp報道、詳細未確認）"
+ },
+ {
+  "id": 1230,
+  "name": "株式会社iFactory",
+  "checked": true,
+  "newer_round_found": true,
+  "stage": "シリーズA",
+  "total_raised_oku": null,
+  "last_round": {
+   "date": "2025-10",
+   "round": "シリーズA",
+   "amount_oku": 10.0,
+   "lead": "グロービス・キャピタル・パートナーズ／SBIインベストメント（Coリード）",
+   "investors": [
+    "グロービス・キャピタル・パートナーズ",
+    "SBIインベストメント"
+   ]
+  },
+  "investors_added": [],
+  "status": "active",
+  "status_note": null,
+  "employee_count": null,
+  "valuation_oku": null,
+  "valuation_source": null,
+  "sources": [
+   "https://prtimes.jp/main/html/rd/p/000000001.000124811.html",
+   "https://ifactory.tokyo/news"
+  ],
+  "note": "2025-10-30発表。総額10億円（エクイティ・融資の内訳非記載）。Coリード2社以外の投資家名は非公表。DBに日付がなかったシリーズAの日付を補完。前段として2023-07-03に総額2億円の第三者割当増資"
+ }
+]
