@@ -5,3 +5,4 @@ data/startup.db
 .vercel
 .env*
 !.env.example
+data/reports/
