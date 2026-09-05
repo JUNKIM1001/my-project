@@ -114,6 +114,8 @@ def build(base):
     # ---------- HTML ----------
     td = 'style="padding:8px 10px;border-bottom:1px solid #e6e9f0;vertical-align:top;font-size:13px"'
     th = 'style="padding:8px 10px;border-bottom:2px solid #c9d3e6;text-align:left;font-size:12px;color:#5d6675;background:#f3f5fa"'
+    td_amt = td[:-1] + ';white-space:nowrap;font-weight:700;text-align:right"'
+    th_amt = th.replace("text-align:left", "text-align:right")
     kpi = lambda label, val: (
         '<td style="padding:10px 14px;background:#f3f5fa;border-radius:10px;text-align:center">'
         '<div style="font-size:22px;font-weight:700;color:#1f2a44">%s</div>'
@@ -133,12 +135,12 @@ def build(base):
             "<tr>"
             "<td %s>%s<div style=\"color:#7a8494;font-size:11.5px;margin-top:2px\">%s</div></td>"
             "<td %s>%s</td><td %s>%s<br><span style=\"color:#7a8494;font-size:11px\">%s</span></td>"
-            "<td %s style=\"white-space:nowrap;font-weight:700;text-align:right\">%s</td>"
+            "<td %s>%s</td>"
             "<td %s>%s</td><td %s>%s</td></tr>"
             % (td, name_html, desc,
                td, esc("・".join((r.get("sectors") or [])[:2])),
                td, esc(lr.get("round") or r.get("stage") or "—"), esc(lr.get("date") or ""),
-               td.replace('style="', 'style="', 1), esc(oku(lr.get("amount_oku"))),
+               td_amt, esc(oku(lr.get("amount_oku"))),
                td, esc(invs) or "—",
                td, src_html or "—"))
 
@@ -178,8 +180,8 @@ def build(base):
 
     body.append('<h3 style="font-size:14px;margin:22px 0 8px">今週の資金調達（金額順）</h3>')
     if rows:
-        body.append('<table style="border-collapse:collapse;width:100%%"><thead><tr><th %s>企業</th><th %s>分野</th><th %s>ラウンド</th><th %s style="text-align:right">金額</th><th %s>投資家</th><th %s>出典</th></tr></thead><tbody>%s</tbody></table>'
-                    % (th, th, th, th, th, th, "".join(rows)))
+        body.append('<table style="border-collapse:collapse;width:100%%"><thead><tr><th %s>企業</th><th %s>分野</th><th %s>ラウンド</th><th %s>金額</th><th %s>投資家</th><th %s>出典</th></tr></thead><tbody>%s</tbody></table>'
+                    % (th, th, th, th_amt, th, th, "".join(rows)))
     else:
         body.append('<p style="font-size:13px;color:#7a8494">今週は該当する資金調達の発表を検出しませんでした。</p>')
 
