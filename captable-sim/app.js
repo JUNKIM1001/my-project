@@ -8,7 +8,9 @@ import {
   practicalWarnings,
   parseNumeric as parseNum,
   TYPICAL_DILUTION_RANGE,
+  ipoDilutionPosition,
 } from "./calc.js";
+import { normalizeSnapshot, searchCompanies, monthsBetween } from "./companies.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -314,10 +316,19 @@ function renderValidity(input, r) {
     typical: `<span class="badge up">一般的レンジ内</span>`,
     high: `<span class="badge down">一般的レンジより高い</span>`,
   }[d.dilutionVerdict];
+  let ipoNote = "";
+  const ipoPos = ipoDilutionPosition(d.existingDilution, ipoBench.data?.dilution_per_round);
+  if (ipoPos) {
+    const posLabel = { below: "実績分布より控えめ", within: "実績の四分位レンジ内", above: "実績分布より大きい希薄化" }[ipoPos.position];
+    const s = ipoBench.data.stats || {};
+    const med = (k, unit, digits = 1) => (s[k] && typeof s[k].median === "number" ? `${s[k].median.toFixed(digits)}${unit}` : "—");
+    ipoNote = `<br>IPO企業実績（Ⅰの部 ${ipoBench.data.count}社・${ipoPos.n}ラウンド）: 1ラウンド希薄化 中央値 ${(ipoPos.median * 100).toFixed(1)}%（四分位 ${(ipoPos.q1 * 100).toFixed(1)}〜${(ipoPos.q3 * 100).toFixed(1)}%）→ <b>${posLabel}</b>`
+      + `<br>上場時の実績中央値: 創業者持株 ${med("founder_pct", "%")} / VC ${med("vc_pct", "%")} / ラウンド数 ${med("rounds_count", "回", 1)} / 設立→IPO ${med("years_to_ipo", "年")}`;
+  }
   items.push({
     label: "既存株主の希薄化率",
     value: `${pct(d.existingDilution, 1)} ${dilutionBadge}`,
-    note: `1ラウンドあたり ${TYPICAL_DILUTION_RANGE.low * 100}〜${TYPICAL_DILUTION_RANGE.high * 100}% が一般的な目安`,
+    note: `1ラウンドあたり ${TYPICAL_DILUTION_RANGE.low * 100}〜${TYPICAL_DILUTION_RANGE.high * 100}% が一般的な目安${ipoNote}`,
   });
 
   card.classList.remove("hidden");
@@ -422,6 +433,133 @@ function renderSensitivity(input) {
       .join("")}</tbody></table>`;
 }
 
+// ---------- startup-finder 連携 ----------
+// スナップショット JSON を読み、企業選択→「反映」ボタンの明示操作でのみ入力欄へ転記する。
+// DB値は報道・推計ベースの参考値のため、反映欄には要確認マーク（.autofilled）を付け、
+// 利用者が手で編集した時点で解除する。
+
+const finder = { companies: [], generatedAt: null, selected: null };
+// IPO企業の資本政策ベンチマーク（startup-finder の Ⅰの部抽出から生成したスナップショット）
+const ipoBench = { data: null };
+
+async function loadIpoBenchmarks() {
+  try {
+    const res = await fetch("data/ipo_benchmarks.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const j = await res.json();
+    if (j && typeof j === "object" && j.dilution_per_round) ipoBench.data = j;
+  } catch {
+    ipoBench.data = null; // 無くても手入力・一般目安で動く
+  }
+}
+let programmaticFill = false;
+
+async function loadCompanies() {
+  const status = $("finder-status");
+  try {
+    const res = await fetch("data/companies.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const snap = normalizeSnapshot(await res.json());
+    finder.companies = snap.companies;
+    finder.generatedAt = snap.generatedAt;
+    const date = snap.generatedAt ? snap.generatedAt.slice(0, 10) : "不明";
+    status.textContent = `${snap.companies.length}社（評価額あり）・スナップショット: ${date}時点`;
+  } catch {
+    status.textContent = "企業データを読み込めませんでした（手入力は通常どおり使えます）。";
+  }
+}
+
+function renderFinderResults() {
+  // 検索語が変わったら旧選択を破棄する（画面上の結果一覧と選択中企業の不一致を防ぐ）
+  finder.selected = null;
+  renderCompanyDetail();
+  const q = $("company-search").value;
+  const hits = searchCompanies(finder.companies, q);
+  $("company-results").innerHTML = hits
+    .map(
+      (c, i) => `<button type="button" class="company-result" data-idx="${i}">
+        ${esc(c.name)}
+        <span class="meta">｜${esc(c.stage ?? "ステージ不明")}｜評価額 ${fmt(c.valuationOku)}億円</span>
+      </button>`
+    )
+    .join("");
+  [...$("company-results").querySelectorAll("button")].forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      finder.selected = hits[i];
+      renderCompanyDetail();
+    });
+  });
+}
+
+function currentYm() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+}
+
+function renderCompanyDetail() {
+  const c = finder.selected;
+  const box = $("company-detail");
+  if (!c) {
+    box.innerHTML = "";
+    return;
+  }
+  const round = [
+    c.lastRoundName ? esc(c.lastRoundName) : null,
+    c.lastRoundDate ? esc(c.lastRoundDate) : null,
+    c.lastRoundAmountOku !== null ? `${fmt(c.lastRoundAmountOku)}億円` : null,
+  ].filter(Boolean).join(" / ") || "—";
+  const links = c.sources
+    .map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">出典${i + 1}</a>`)
+    .join("・");
+  box.innerHTML = `<div class="company-detail">
+    <strong>${esc(c.name)}</strong>
+    <dl>
+      <dt>ステージ</dt><dd>${esc(c.stage ?? "—")}</dd>
+      <dt>評価額（参考）</dt><dd>${fmt(c.valuationOku)}億円</dd>
+      <dt>直近ラウンド</dt><dd>${round}</dd>
+      <dt>評価額の出典</dt><dd>${c.valuationSource ? esc(c.valuationSource) : "—"}</dd>
+      <dt>参照リンク</dt><dd>${links || "—"}</dd>
+      <dt>最終検証</dt><dd>${esc(c.lastVerified ?? "—")}</dd>
+    </dl>
+    <button type="button" class="apply" id="apply-company">前回ラウンド欄に反映（要確認値）</button>
+    <div class="caution">評価額は報道・推計ベースの参考値で、厳密な前回ラウンドのポストマネーとは限りません。
+      出典を確認し、必要に応じて手で修正してください。</div>
+  </div>`;
+  $("apply-company").addEventListener("click", applyCompany);
+}
+
+function applyCompany() {
+  const c = finder.selected;
+  if (!c) return;
+  const months = monthsBetween(c.lastRoundDate, currentYm());
+  programmaticFill = true;
+  try {
+    const setField = (id, value) => {
+      const el = $(id);
+      el.value = value;
+      el.classList.toggle("autofilled", value !== "");
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+    };
+    setField("prev-post-money", fmt(c.valuationOku * 100, 0));
+    // 経過月数: 1ヶ月以上なら転記。同月(0)やラウンド日不明の場合は、
+    // 前の企業の値が残らないようクリアする（年率換算には1ヶ月以上が必要）
+    setField("months-since", months !== null && months > 0 ? String(months) : "");
+  } finally {
+    programmaticFill = false;
+  }
+}
+
+// 反映値をユーザーが手で編集したら要確認マークを外す
+for (const id of ["prev-post-money", "months-since"]) {
+  $(id).addEventListener("input", () => {
+    if (!programmaticFill) $(id).classList.remove("autofilled");
+  });
+}
+
+$("company-search").addEventListener("input", renderFinderResults);
+loadCompanies();
+
+loadIpoBenchmarks();
 // ---------- 株主行の管理 ----------
 
 function addHolderRow(name = "", ratio = "") {

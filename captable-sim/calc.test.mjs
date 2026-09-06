@@ -11,6 +11,7 @@ import {
   parseNumeric,
   practicalWarnings,
   exitAnalysis,
+  ipoDilutionPosition,
 } from "./calc.js";
 
 const HOLDERS = [
@@ -518,4 +519,21 @@ test("プレマネー感応度: 目標割合モードでは必要出資額が動
   approx(rows[1].ownRatio, 0.1); // 割合は固定
   approx(rows[0].ownInvestment, 100);
   approx(rows[1].ownInvestment, (0.1 * 1080) / 0.9); // 120
+});
+
+
+test("ipoDilutionPosition: 四分位に対する位置づけ", () => {
+  const bench = { n: 43, q1: 0.013, median: 0.055, q3: 0.091 };
+  assert.equal(ipoDilutionPosition(0.005, bench).position, "below");
+  assert.equal(ipoDilutionPosition(0.05, bench).position, "within");
+  assert.equal(ipoDilutionPosition(0.091, bench).position, "within"); // 境界は within
+  assert.equal(ipoDilutionPosition(0.15, bench).position, "above");
+  assert.equal(ipoDilutionPosition(0.05, bench).n, 43);
+});
+
+test("ipoDilutionPosition: 欠損・少数サンプルは null", () => {
+  assert.equal(ipoDilutionPosition(0.1, null), null);
+  assert.equal(ipoDilutionPosition(0.1, { n: 3, q1: 0.01, median: 0.05, q3: 0.09 }), null);
+  assert.equal(ipoDilutionPosition(0.1, { n: 10, q1: null, median: 0.05, q3: 0.09 }), null);
+  assert.equal(ipoDilutionPosition(NaN, { n: 10, q1: 0.01, median: 0.05, q3: 0.09 }), null);
 });

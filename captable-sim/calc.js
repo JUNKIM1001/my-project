@@ -482,3 +482,20 @@ export function sensitivityTable(input, multipliers) {
   }
   return rows;
 }
+
+
+/**
+ * IPO企業の実績分布（1ラウンドあたり希薄化率の四分位）に対する今回希薄化の位置づけ。
+ * bench は { n, q1, median, q3 }（比率 0〜1）。欠損・n<5 なら null（判断材料にしない）。
+ * 戻り値: { position: "below" | "within" | "above", n, q1, median, q3 }
+ *   below  = Q1 未満（実績より控えめ） / within = Q1〜Q3 / above = Q3 超（実績より大きい希薄化）
+ */
+export function ipoDilutionPosition(dilution, bench) {
+  if (typeof dilution !== "number" || !Number.isFinite(dilution)) return null;
+  if (!bench || typeof bench !== "object") return null;
+  const { n, q1, median, q3 } = bench;
+  if (![n, q1, median, q3].every((v) => typeof v === "number" && Number.isFinite(v)) || n < 5) return null;
+  const eps = 1e-9;
+  const position = dilution < q1 - eps ? "below" : dilution > q3 + eps ? "above" : "within";
+  return { position, n, q1, median, q3 };
+}

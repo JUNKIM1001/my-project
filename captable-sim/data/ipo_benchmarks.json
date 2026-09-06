@@ -1,0 +1,234 @@
+{
+ "generated_at": "2026-09-06T14:25:32Z",
+ "source": "startup-finder ipo_analysis（JPX公開のⅠの部をAI抽出・届出書記載値ベース）",
+ "count": 8,
+ "dilution_per_round": {
+  "n": 43,
+  "min": 0.0031,
+  "q1": 0.013,
+  "median": 0.055,
+  "q3": 0.091,
+  "max": 0.6141
+ },
+ "stats": {
+  "founder_pct": {
+   "n": 8,
+   "min": 11.0,
+   "q1": 13.8,
+   "median": 22.3,
+   "q3": 40.35,
+   "max": 71.0
+  },
+  "vc_pct": {
+   "n": 8,
+   "min": 8.1,
+   "q1": 12.0,
+   "median": 19.25,
+   "q3": 26.125,
+   "max": 55.6
+  },
+  "corporate_pct": {
+   "n": 8,
+   "min": 0.9,
+   "q1": 7.35,
+   "median": 15.3,
+   "q3": 28.45,
+   "max": 46.4
+  },
+  "rounds_count": {
+   "n": 8,
+   "min": 2,
+   "q1": 2.75,
+   "median": 4.5,
+   "q3": 6.25,
+   "max": 8
+  },
+  "price_multiple": {
+   "n": 8,
+   "min": 0.6,
+   "q1": 1.6,
+   "median": 2.45,
+   "q3": 11.5,
+   "max": 220.3
+  },
+  "years_to_ipo": {
+   "n": 8,
+   "min": 5.5,
+   "q1": 6.75,
+   "median": 8.8,
+   "q3": 9.4,
+   "max": 10.8
+  },
+  "so_pct": {
+   "n": 8,
+   "min": 6.9,
+   "q1": 9.648,
+   "median": 11.1,
+   "q3": 12.925,
+   "max": 19.8
+  }
+ },
+ "companies": [
+  {
+   "name": "株式会社ティアフォー",
+   "code": "593A",
+   "listing_date": "2026-07-22",
+   "market": "グロース",
+   "founder_pct": 11.0,
+   "vc_pct": 12.6,
+   "corporate_pct": 46.4,
+   "rounds_count": 5,
+   "price_multiple": 5.8,
+   "years_to_ipo": 10.6,
+   "so_pct": 11.7,
+   "dilution_per_round": [
+    0.1518,
+    0.0123,
+    0.0742,
+    0.0113,
+    0.0112
+   ]
+  },
+  {
+   "name": "株式会社Synspective",
+   "code": "290A",
+   "listing_date": "2024-12-19",
+   "market": "グロース",
+   "founder_pct": 14.0,
+   "vc_pct": 55.6,
+   "corporate_pct": 13.1,
+   "rounds_count": 8,
+   "price_multiple": 3.0,
+   "years_to_ipo": 6.8,
+   "so_pct": 9.73,
+   "dilution_per_round": [
+    0.2609,
+    0.0489,
+    0.0479,
+    0.0908,
+    0.1175,
+    0.0824,
+    0.0753,
+    0.0659,
+    0.0554,
+    0.0137,
+    0.0188,
+    0.0337,
+    0.0433,
+    0.0134,
+    0.0767
+   ]
+  },
+  {
+   "name": "Terra Drone株式会社",
+   "code": "278A",
+   "listing_date": "2024-11-29",
+   "market": "グロース",
+   "founder_pct": 58.5,
+   "vc_pct": 10.2,
+   "corporate_pct": 17.5,
+   "rounds_count": 4,
+   "price_multiple": 1.9,
+   "years_to_ipo": 8.8,
+   "so_pct": 16.3,
+   "dilution_per_round": [
+    0.0577,
+    0.0128,
+    0.1254,
+    0.0092,
+    0.0046
+   ]
+  },
+  {
+   "name": "株式会社アストロスケールホールディングス",
+   "code": "186A",
+   "listing_date": "2024-06-05",
+   "market": "グロース",
+   "founder_pct": 26.8,
+   "vc_pct": 19.3,
+   "corporate_pct": 9.3,
+   "rounds_count": 6,
+   "price_multiple": 1.8,
+   "years_to_ipo": 5.5,
+   "so_pct": 11.8,
+   "dilution_per_round": [
+    0.0254,
+    0.067,
+    0.0031,
+    0.0751,
+    0.1343,
+    0.0093,
+    0.0896,
+    0.0088
+   ]
+  },
+  {
+   "name": "株式会社雨風太陽",
+   "code": "5616",
+   "listing_date": "2023-12-18",
+   "market": "グロース",
+   "founder_pct": 13.2,
+   "vc_pct": 19.2,
+   "corporate_pct": 27.2,
+   "rounds_count": 2,
+   "price_multiple": 0.6,
+   "years_to_ipo": 8.8,
+   "so_pct": 10.5,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社クラダシ",
+   "code": "5884",
+   "listing_date": "2023-06-30",
+   "market": "グロース",
+   "founder_pct": 71.0,
+   "vc_pct": 8.1,
+   "corporate_pct": 1.5,
+   "rounds_count": 3,
+   "price_multiple": 220.3,
+   "years_to_ipo": 9.0,
+   "so_pct": 6.9,
+   "dilution_per_round": [
+    0.6141,
+    0.0952,
+    0.0079
+   ]
+  },
+  {
+   "name": "株式会社ABEJA",
+   "code": "5574",
+   "listing_date": "2023-06-13",
+   "market": "グロース",
+   "founder_pct": 17.8,
+   "vc_pct": 21.8,
+   "corporate_pct": 32.2,
+   "rounds_count": 2,
+   "price_multiple": 1.0,
+   "years_to_ipo": 10.8,
+   "so_pct": 19.8,
+   "dilution_per_round": []
+  },
+  {
+   "name": "ベースフード株式会社",
+   "code": "2936",
+   "listing_date": "2022-11-15",
+   "market": "グロース",
+   "founder_pct": 34.3,
+   "vc_pct": 39.1,
+   "corporate_pct": 0.9,
+   "rounds_count": 7,
+   "price_multiple": 28.6,
+   "years_to_ipo": 6.6,
+   "so_pct": 9.4,
+   "dilution_per_round": [
+    0.0906,
+    0.009,
+    0.0924,
+    0.1024,
+    0.1054,
+    0.0267,
+    0.022
+   ]
+  }
+ ]
+}
