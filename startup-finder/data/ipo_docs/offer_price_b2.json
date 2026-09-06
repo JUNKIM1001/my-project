@@ -1,0 +1,198 @@
+[
+ {
+  "company_id": 410,
+  "name": "株式会社キャスター",
+  "code": "9331",
+  "listing_date": "2023-10-04",
+  "market": "グロース"
+ },
+ {
+  "company_id": 463,
+  "name": "株式会社ケイファーマ",
+  "code": "4896",
+  "listing_date": "2023-10-17",
+  "market": "グロース"
+ },
+ {
+  "company_id": 83,
+  "name": "株式会社雨風太陽",
+  "code": "5616",
+  "listing_date": "2023-12-18",
+  "market": "グロース"
+ },
+ {
+  "company_id": 209,
+  "name": "ナイル株式会社",
+  "code": "5618",
+  "listing_date": "2023-12-20",
+  "market": "グロース"
+ },
+ {
+  "company_id": 316,
+  "name": "株式会社L is B",
+  "code": "145A",
+  "listing_date": "2024-03-26",
+  "market": "グロース"
+ },
+ {
+  "company_id": 634,
+  "name": "株式会社ハッチ・ワーク",
+  "code": "148A",
+  "listing_date": "2024-03-26",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1771,
+  "name": "株式会社学びエイド",
+  "code": "184A",
+  "listing_date": "2024-05-28",
+  "market": "グロース"
+ },
+ {
+  "company_id": 48,
+  "name": "株式会社アストロスケールホールディングス",
+  "code": "186A",
+  "listing_date": "2024-06-05",
+  "market": "グロース"
+ },
+ {
+  "company_id": 908,
+  "name": "Chordia Therapeutics株式会社",
+  "code": "190A",
+  "listing_date": "2024-06-14",
+  "market": "グロース"
+ },
+ {
+  "company_id": 427,
+  "name": "株式会社MFS",
+  "code": "196A",
+  "listing_date": "2024-06-21",
+  "market": "グロース"
+ },
+ {
+  "company_id": 643,
+  "name": "株式会社PRISM BioLab",
+  "code": "206A",
+  "listing_date": "2024-07-02",
+  "market": "グロース"
+ },
+ {
+  "company_id": 177,
+  "name": "株式会社タイミー",
+  "code": "215A",
+  "listing_date": "2024-07-26",
+  "market": "グロース"
+ },
+ {
+  "company_id": 214,
+  "name": "株式会社ROXX",
+  "code": "241A",
+  "listing_date": "2024-09-25",
+  "market": "グロース"
+ },
+ {
+  "company_id": 191,
+  "name": "Aiロボティクス株式会社",
+  "code": "247A",
+  "listing_date": "2024-09-27",
+  "market": "グロース"
+ },
+ {
+  "company_id": 721,
+  "name": "株式会社Schoo",
+  "code": "264A",
+  "listing_date": "2024-10-22",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1845,
+  "name": "株式会社TMH",
+  "code": "280A",
+  "listing_date": "2024-12-04",
+  "market": "グロース"
+ },
+ {
+  "company_id": 37,
+  "name": "株式会社Synspective",
+  "code": "290A",
+  "listing_date": "2024-12-19",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1798,
+  "name": "株式会社TalentX（旧・株式会社MyRefer）",
+  "code": "330A",
+  "listing_date": "2025-03-18",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1522,
+  "name": "株式会社トヨコー",
+  "code": "341A",
+  "listing_date": "2025-03-28",
+  "market": "グロース"
+ },
+ {
+  "company_id": 887,
+  "name": "株式会社ジグザグ",
+  "code": "340A",
+  "listing_date": "2025-03-31",
+  "market": "グロース"
+ },
+ {
+  "company_id": 318,
+  "name": "株式会社アクセルスペース",
+  "code": "402A",
+  "listing_date": "2025-08-13",
+  "market": "グロース"
+ },
+ {
+  "company_id": 217,
+  "name": "株式会社ミラティブ",
+  "code": "472A",
+  "listing_date": "2025-12-18",
+  "market": "グロース"
+ },
+ {
+  "company_id": 137,
+  "name": "株式会社パワーエックス",
+  "code": "485A",
+  "listing_date": "2025-12-19",
+  "market": "グロース"
+ },
+ {
+  "company_id": 198,
+  "name": "PRONI株式会社（旧・株式会社ユニラボ）",
+  "code": "479A",
+  "listing_date": "2025-12-24",
+  "market": "グロース"
+ },
+ {
+  "company_id": 485,
+  "name": "イノバセル株式会社",
+  "code": "504A",
+  "listing_date": "2026-02-24",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1085,
+  "name": "株式会社SQUEEZE",
+  "code": "558A",
+  "listing_date": "2026-04-22",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1286,
+  "name": "犬猫生活株式会社（旧・オネストフード株式会社）",
+  "code": "556A",
+  "listing_date": "2026-04-23",
+  "market": "グロース"
+ },
+ {
+  "company_id": 222,
+  "name": "GO株式会社",
+  "code": "581A",
+  "listing_date": "2026-06-16",
+  "market": "グロース"
+ }
+]

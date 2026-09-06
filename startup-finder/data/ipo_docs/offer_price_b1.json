@@ -1,0 +1,205 @@
+[
+ {
+  "company_id": 1793,
+  "name": "株式会社CaSy",
+  "code": "9215",
+  "listing_date": "2022-02-22",
+  "market": "マザーズ"
+ },
+ {
+  "company_id": 1693,
+  "name": "株式会社メンタルヘルステクノロジーズ",
+  "code": "9218",
+  "listing_date": "2022-03-28",
+  "market": "マザーズ"
+ },
+ {
+  "company_id": 1519,
+  "name": "モイ株式会社",
+  "code": "5031",
+  "listing_date": "2022-04-27",
+  "market": "グロース"
+ },
+ {
+  "company_id": 391,
+  "name": "ANYCOLOR株式会社（旧・いちから株式会社）",
+  "code": "5032",
+  "listing_date": "2022-06-08",
+  "market": "グロース"
+ },
+ {
+  "company_id": 907,
+  "name": "株式会社坪田ラボ",
+  "code": "4890",
+  "listing_date": "2022-06-23",
+  "market": "グロース"
+ },
+ {
+  "company_id": 905,
+  "name": "マイクロ波化学株式会社",
+  "code": "9227",
+  "listing_date": "2022-06-24",
+  "market": "グロース"
+ },
+ {
+  "company_id": 403,
+  "name": "株式会社ヌーラボ",
+  "code": "5033",
+  "listing_date": "2022-06-28",
+  "market": "グロース"
+ },
+ {
+  "company_id": 995,
+  "name": "株式会社unerry",
+  "code": "5034",
+  "listing_date": "2022-07-28",
+  "market": "グロース"
+ },
+ {
+  "company_id": 411,
+  "name": "リンカーズ株式会社",
+  "code": "5131",
+  "listing_date": "2022-10-26",
+  "market": "グロース"
+ },
+ {
+  "company_id": 72,
+  "name": "ベースフード株式会社",
+  "code": "2936",
+  "listing_date": "2022-11-15",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1762,
+  "name": "株式会社POPER",
+  "code": "5134",
+  "listing_date": "2022-11-15",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1828,
+  "name": "tripla株式会社",
+  "code": "5136",
+  "listing_date": "2022-11-25",
+  "market": "グロース"
+ },
+ {
+  "company_id": 994,
+  "name": "株式会社サイフューズ",
+  "code": "4892",
+  "listing_date": "2022-12-01",
+  "market": "グロース"
+ },
+ {
+  "company_id": 970,
+  "name": "株式会社スマートドライブ",
+  "code": "5137",
+  "listing_date": "2022-12-15",
+  "market": "グロース"
+ },
+ {
+  "company_id": 451,
+  "name": "株式会社トリドリ",
+  "code": "9337",
+  "listing_date": "2022-12-19",
+  "market": "グロース"
+ },
+ {
+  "company_id": 298,
+  "name": "株式会社INFORICH",
+  "code": "9338",
+  "listing_date": "2022-12-20",
+  "market": "グロース"
+ },
+ {
+  "company_id": 909,
+  "name": "株式会社ELEMENTS",
+  "code": "5246",
+  "listing_date": "2022-12-27",
+  "market": "グロース"
+ },
+ {
+  "company_id": 1146,
+  "name": "カバー株式会社",
+  "code": "5253",
+  "listing_date": "2023-03-27",
+  "market": "グロース"
+ },
+ {
+  "company_id": 169,
+  "name": "株式会社モンスターラボ",
+  "code": "5255",
+  "listing_date": "2023-03-28",
+  "market": "グロース"
+ },
+ {
+  "company_id": 374,
+  "name": "株式会社Arent",
+  "code": "5254",
+  "listing_date": "2023-03-28",
+  "market": "グロース"
+ },
+ {
+  "company_id": 220,
+  "name": "AnyMind Group株式会社",
+  "code": "5027",
+  "listing_date": "2023-03-29",
+  "market": "グロース"
+ },
+ {
+  "company_id": 448,
+  "name": "株式会社トランザクション・メディア・ネットワークス",
+  "code": "5258",
+  "listing_date": "2023-04-04",
+  "market": "グロース"
+ },
+ {
+  "company_id": 171,
+  "name": "株式会社ispace",
+  "code": "9348",
+  "listing_date": "2023-04-12",
+  "market": "グロース"
+ },
+ {
+  "company_id": 424,
+  "name": "株式会社Ridge-i",
+  "code": "5572",
+  "listing_date": "2023-04-26",
+  "market": "グロース"
+ },
+ {
+  "company_id": 33,
+  "name": "株式会社ABEJA",
+  "code": "5574",
+  "listing_date": "2023-06-13",
+  "market": "グロース"
+ },
+ {
+  "company_id": 182,
+  "name": "クオリプス株式会社",
+  "code": "4894",
+  "listing_date": "2023-06-27",
+  "market": "グロース"
+ },
+ {
+  "company_id": 303,
+  "name": "ノイルイミューン・バイオテック株式会社",
+  "code": "4893",
+  "listing_date": "2023-06-28",
+  "market": "グロース"
+ },
+ {
+  "company_id": 70,
+  "name": "株式会社クラダシ",
+  "code": "5884",
+  "listing_date": "2023-06-30",
+  "market": "グロース"
+ },
+ {
+  "company_id": 308,
+  "name": "株式会社ネットスターズ",
+  "code": "5590",
+  "listing_date": "2023-09-26",
+  "market": "グロース"
+ }
+]

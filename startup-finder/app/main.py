@@ -23,6 +23,7 @@ from app.auth import (
 )
 from app.db import IS_POSTGRES, SessionLocal, engine, get_db
 from app.models import AccessLog, Company, IpoAnalysis
+from app.ipo_stats import aggregate_investors, company_events
 from app.schema import ensure_sqlite_schema
 
 # ローカルSQLiteは起動時にスキーマを作り、不足列を追いつき追加する（app/schema.py）。
@@ -73,6 +74,10 @@ def action_for(path: str) -> str:
         return "trends_view"
     if path == "/api/ipo/summary":
         return "ipo_summary"
+    if path == "/api/ipo/rounds":
+        return "ipo_rounds"
+    if path == "/api/ipo/investors":
+        return "ipo_investors"
     if re.fullmatch(r"/api/companies/\d+/ipo", path):
         return "ipo_view"
     if path == "/api/compare/analyze":
@@ -628,6 +633,7 @@ def get_company_ipo(company_id: int, request: Request, db: Session = Depends(get
         "company_id": company_id, "code": row.code, "listing_date": row.listing_date, "market": row.market,
         "source_pdf": row.source_pdf, "extracted_at": row.extracted_at, "model": row.model,
         "analysis": safe_json_dict(row.analysis_json) or {},
+        "investor_returns": [e for e in company_events(c, row) if e["investors"]] if c else [],
     }
 
 
@@ -642,6 +648,37 @@ def ipo_summary(request: Request, db: Session = Depends(get_db)):
         "rounds_count", "price_multiple", "years_to_ipo", "total_raised_oku")}
     request.state.log_info = {"keyword": None, "result_count": len(items)}
     return {"count": len(items), "items": items, "benchmarks": bench}
+
+
+@app.get("/api/ipo/rounds")
+def ipo_rounds(request: Request, db: Session = Depends(get_db)):
+    """全IPO企業の第三者割当イベント（ラウンド名・ポストマネー推定・業種・引受先付き）。箱ひげ図の素データ。"""
+    rows = db.query(IpoAnalysis, Company).join(Company, Company.id == IpoAnalysis.company_id).all()
+    events = []
+    for r, c in rows:
+        events.extend(company_events(c, r))
+    sectors = {}
+    for e in events:
+        for s in e["sectors"]:
+            sectors[s] = sectors.get(s, 0) + 1
+    request.state.log_info = {"keyword": None, "result_count": len(events)}
+    return {"count": len(events), "items": events,
+            "sectors": sorted(sectors.items(), key=lambda x: -x[1])[:40],
+            "note": "ラウンド名は種類株（A種=シリーズA…）から推定。ポストマネーは発行価格×発行後株式総数の推定値（分割調整後）。"}
+
+
+@app.get("/api/ipo/investors")
+def ipo_investors(request: Request, db: Session = Depends(get_db)):
+    """投資家（VC/CVC）別: 参画社数・ラウンド分布・公開価格ベースのMOIC/IRR見込み中央値・案件一覧。"""
+    rows = db.query(IpoAnalysis, Company).join(Company, Company.id == IpoAnalysis.company_id).all()
+    events = []
+    for r, c in rows:
+        events.extend(company_events(c, r))
+    items = aggregate_investors(events)
+    with_irr = sum(1 for e in events if e["irr"] is not None)
+    request.state.log_info = {"keyword": None, "result_count": len(items)}
+    return {"count": len(items), "items": items, "events": len(events), "events_with_irr": with_irr,
+            "note": "IRR見込み = (公開価格 ÷ 参画時の1株発行価格)^(1/保有年数) − 1。公開価格ベースの理論値でロックアップ・実売却価格は考慮しない。"}
 
 
 @app.get("/api/synergy")
@@ -845,7 +882,7 @@ def export_logs_csv(
         "csv_export": "CSV出力", "page_view": "ページ表示", "login": "ログイン",
         "login_failed": "ログイン失敗", "login_blocked": "ログイン遮断",
         "logout": "ログアウト", "log_view": "ログ閲覧", "trends_view": "トレンド閲覧",
-        "compare": "企業比較", "compare_ai": "比較AI分析", "ipo_view": "IPO分析閲覧", "ipo_summary": "IPO横断分析",
+        "compare": "企業比較", "compare_ai": "比較AI分析", "ipo_view": "IPO分析閲覧", "ipo_summary": "IPO横断分析", "ipo_rounds": "ラウンド別評価額", "ipo_investors": "VC/CVC参画分析",
         "other": "その他",
     }
     for r in rows:
