@@ -1,74 +1,108 @@
 {
- "generated_at": "2026-09-06T14:25:32Z",
+ "generated_at": "2026-09-06T14:58:06Z",
  "source": "startup-finder ipo_analysis（JPX公開のⅠの部をAI抽出・届出書記載値ベース）",
- "count": 8,
+ "count": 73,
  "dilution_per_round": {
-  "n": 43,
-  "min": 0.0031,
+  "n": 299,
+  "min": 0.0002,
   "q1": 0.013,
-  "median": 0.055,
-  "q3": 0.091,
+  "median": 0.038,
+  "q3": 0.089,
   "max": 0.6141
  },
  "stats": {
   "founder_pct": {
-   "n": 8,
-   "min": 11.0,
-   "q1": 13.8,
-   "median": 22.3,
-   "q3": 40.35,
-   "max": 71.0
+   "n": 72,
+   "min": 0.0,
+   "q1": 17.2,
+   "median": 30.3,
+   "q3": 45.475,
+   "max": 81.8
   },
   "vc_pct": {
-   "n": 8,
-   "min": 8.1,
-   "q1": 12.0,
-   "median": 19.25,
-   "q3": 26.125,
-   "max": 55.6
+   "n": 72,
+   "min": 0.0,
+   "q1": 13.4,
+   "median": 27.4,
+   "q3": 38.625,
+   "max": 67.6
   },
   "corporate_pct": {
-   "n": 8,
-   "min": 0.9,
-   "q1": 7.35,
-   "median": 15.3,
-   "q3": 28.45,
-   "max": 46.4
+   "n": 72,
+   "min": 0.0,
+   "q1": 4.325,
+   "median": 12.0,
+   "q3": 22.0,
+   "max": 71.3
   },
   "rounds_count": {
-   "n": 8,
-   "min": 2,
-   "q1": 2.75,
-   "median": 4.5,
-   "q3": 6.25,
-   "max": 8
+   "n": 70,
+   "min": 1,
+   "q1": 3.0,
+   "median": 4.0,
+   "q3": 6.0,
+   "max": 14
   },
   "price_multiple": {
-   "n": 8,
-   "min": 0.6,
-   "q1": 1.6,
-   "median": 2.45,
-   "q3": 11.5,
-   "max": 220.3
+   "n": 70,
+   "min": 0.25,
+   "q1": 1.1,
+   "median": 2.0,
+   "q3": 4.3,
+   "max": 573.3
   },
   "years_to_ipo": {
-   "n": 8,
-   "min": 5.5,
-   "q1": 6.75,
+   "n": 67,
+   "min": 3.2,
+   "q1": 6.9,
    "median": 8.8,
-   "q3": 9.4,
-   "max": 10.8
+   "q3": 12.25,
+   "max": 29.0
   },
   "so_pct": {
-   "n": 8,
-   "min": 6.9,
-   "q1": 9.648,
-   "median": 11.1,
-   "q3": 12.925,
+   "n": 71,
+   "min": 3.7,
+   "q1": 8.3,
+   "median": 9.8,
+   "q3": 12.05,
    "max": 19.8
   }
  },
  "companies": [
+  {
+   "name": "株式会社エブリー",
+   "code": "607A",
+   "listing_date": "2026-08-04",
+   "market": "グロース",
+   "founder_pct": 21.5,
+   "vc_pct": 27.0,
+   "corporate_pct": 38.5,
+   "rounds_count": 5,
+   "price_multiple": 3.8,
+   "years_to_ipo": 10.9,
+   "so_pct": 8.9,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社アイ・グリッド・ソリューションズ",
+   "code": "603A",
+   "listing_date": "2026-07-29",
+   "market": "グロース",
+   "founder_pct": 0.0,
+   "vc_pct": 24.8,
+   "corporate_pct": 39.9,
+   "rounds_count": 5,
+   "price_multiple": 1.1,
+   "years_to_ipo": null,
+   "so_pct": 12.0,
+   "dilution_per_round": [
+    0.1412,
+    0.0407,
+    0.0134,
+    0.1576,
+    0.2132
+   ]
+  },
   {
    "name": "株式会社ティアフォー",
    "code": "593A",
@@ -87,6 +121,344 @@
     0.0742,
     0.0113,
     0.0112
+   ]
+  },
+  {
+   "name": "GO株式会社",
+   "code": "581A",
+   "listing_date": "2026-06-16",
+   "market": "グロース",
+   "founder_pct": 2.2,
+   "vc_pct": 7.3,
+   "corporate_pct": 71.3,
+   "rounds_count": 3,
+   "price_multiple": 1.0,
+   "years_to_ipo": 6.2,
+   "so_pct": 10.0,
+   "dilution_per_round": [
+    0.0013,
+    0.0035,
+    0.0004
+   ]
+  },
+  {
+   "name": "犬猫生活株式会社（旧・オネストフード株式会社）",
+   "code": "556A",
+   "listing_date": "2026-04-23",
+   "market": "グロース",
+   "founder_pct": 36.2,
+   "vc_pct": 44.6,
+   "corporate_pct": 2.1,
+   "rounds_count": 4,
+   "price_multiple": 2.5,
+   "years_to_ipo": 7.9,
+   "so_pct": 10.7,
+   "dilution_per_round": [
+    0.3049,
+    0.0708,
+    0.0275,
+    0.0472
+   ]
+  },
+  {
+   "name": "株式会社SQUEEZE",
+   "code": "558A",
+   "listing_date": "2026-04-22",
+   "market": "グロース",
+   "founder_pct": 33.2,
+   "vc_pct": 23.9,
+   "corporate_pct": 33.8,
+   "rounds_count": 1,
+   "price_multiple": 1.0,
+   "years_to_ipo": 11.6,
+   "so_pct": 12.9,
+   "dilution_per_round": [
+    0.0117
+   ]
+  },
+  {
+   "name": "株式会社ベーシック",
+   "code": "519A",
+   "listing_date": "2026-03-25",
+   "market": "グロース",
+   "founder_pct": 34.7,
+   "vc_pct": 22.0,
+   "corporate_pct": 12.7,
+   "rounds_count": null,
+   "price_multiple": null,
+   "years_to_ipo": 22.0,
+   "so_pct": 7.7,
+   "dilution_per_round": []
+  },
+  {
+   "name": "イノバセル株式会社",
+   "code": "504A",
+   "listing_date": "2026-02-24",
+   "market": "グロース",
+   "founder_pct": 0.0,
+   "vc_pct": 16.9,
+   "corporate_pct": 4.5,
+   "rounds_count": 13,
+   "price_multiple": 1.18,
+   "years_to_ipo": 5.1,
+   "so_pct": 12.7,
+   "dilution_per_round": [
+    0.0412,
+    0.0149,
+    0.0074,
+    0.0282,
+    0.0107,
+    0.003,
+    0.0069
+   ]
+  },
+  {
+   "name": "PRONI株式会社（旧・株式会社ユニラボ）",
+   "code": "479A",
+   "listing_date": "2025-12-24",
+   "market": "グロース",
+   "founder_pct": 35.9,
+   "vc_pct": 36.6,
+   "corporate_pct": 5.9,
+   "rounds_count": 4,
+   "price_multiple": 1.83,
+   "years_to_ipo": 13.2,
+   "so_pct": 12.0,
+   "dilution_per_round": [
+    0.1952,
+    0.0327
+   ]
+  },
+  {
+   "name": "株式会社フツパー",
+   "code": "478A",
+   "listing_date": "2025-12-24",
+   "market": "グロース",
+   "founder_pct": 46.3,
+   "vc_pct": 32.0,
+   "corporate_pct": 3.6,
+   "rounds_count": 4,
+   "price_multiple": 22.2,
+   "years_to_ipo": 5.7,
+   "so_pct": 12.2,
+   "dilution_per_round": [
+    0.1,
+    0.1667,
+    0.1992,
+    0.053
+   ]
+  },
+  {
+   "name": "株式会社パワーエックス",
+   "code": "485A",
+   "listing_date": "2025-12-19",
+   "market": "グロース",
+   "founder_pct": 21.8,
+   "vc_pct": 7.4,
+   "corporate_pct": 23.4,
+   "rounds_count": 13,
+   "price_multiple": 143.0,
+   "years_to_ipo": 4.7,
+   "so_pct": 16.3,
+   "dilution_per_round": [
+    0.6,
+    0.2912,
+    0.0043,
+    0.0417,
+    0.034,
+    0.0044,
+    0.0596,
+    0.0692,
+    0.0494,
+    0.0123,
+    0.0024,
+    0.0126,
+    0.0142,
+    0.0105,
+    0.0194,
+    0.0033,
+    0.0032
+   ]
+  },
+  {
+   "name": "株式会社ミラティブ",
+   "code": "472A",
+   "listing_date": "2025-12-18",
+   "market": "グロース",
+   "founder_pct": 19.8,
+   "vc_pct": 67.6,
+   "corporate_pct": 3.2,
+   "rounds_count": 5,
+   "price_multiple": 2.93,
+   "years_to_ipo": 7.8,
+   "so_pct": 11.0,
+   "dilution_per_round": [
+    0.1069,
+    0.0223,
+    0.0153,
+    0.0087,
+    0.0022
+   ]
+  },
+  {
+   "name": "株式会社インフキュリオン",
+   "code": "438A",
+   "listing_date": "2025-10-24",
+   "market": "グロース",
+   "founder_pct": 11.3,
+   "vc_pct": 21.0,
+   "corporate_pct": 18.0,
+   "rounds_count": 3,
+   "price_multiple": 1.14,
+   "years_to_ipo": null,
+   "so_pct": 13.5,
+   "dilution_per_round": [
+    0.0187,
+    0.0081,
+    0.0612
+   ]
+  },
+  {
+   "name": "株式会社アクセルスペース",
+   "code": "402A",
+   "listing_date": "2025-08-13",
+   "market": "グロース",
+   "founder_pct": 17.2,
+   "vc_pct": 53.6,
+   "corporate_pct": 8.0,
+   "rounds_count": 3,
+   "price_multiple": 1.6,
+   "years_to_ipo": 17.0,
+   "so_pct": 11.1,
+   "dilution_per_round": [
+    0.2338,
+    0.0641,
+    0.253
+   ]
+  },
+  {
+   "name": "株式会社アクセルスペースホールディングス",
+   "code": "402A",
+   "listing_date": "2025-08-13",
+   "market": "グロース",
+   "founder_pct": 17.2,
+   "vc_pct": 49.3,
+   "corporate_pct": 8.6,
+   "rounds_count": 3,
+   "price_multiple": 1.6,
+   "years_to_ipo": 5.4,
+   "so_pct": 11.1,
+   "dilution_per_round": [
+    0.2338,
+    0.0641,
+    0.253
+   ]
+  },
+  {
+   "name": "デジタルグリッド株式会社",
+   "code": "350A",
+   "listing_date": "2025-04-22",
+   "market": "グロース",
+   "founder_pct": 2.0,
+   "vc_pct": 9.0,
+   "corporate_pct": 47.9,
+   "rounds_count": 6,
+   "price_multiple": 2.0,
+   "years_to_ipo": 7.5,
+   "so_pct": 19.8,
+   "dilution_per_round": [
+    0.039,
+    0.0375,
+    0.1012,
+    0.0205,
+    0.0201,
+    0.1468,
+    0.0085
+   ]
+  },
+  {
+   "name": "株式会社ジグザグ",
+   "code": "340A",
+   "listing_date": "2025-03-31",
+   "market": "グロース",
+   "founder_pct": 46.8,
+   "vc_pct": 27.8,
+   "corporate_pct": 1.3,
+   "rounds_count": 3,
+   "price_multiple": 2.4,
+   "years_to_ipo": 9.8,
+   "so_pct": 14.3,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社トヨコー",
+   "code": "341A",
+   "listing_date": "2025-03-28",
+   "market": "グロース",
+   "founder_pct": 47.2,
+   "vc_pct": 7.8,
+   "corporate_pct": 21.4,
+   "rounds_count": 7,
+   "price_multiple": 0.25,
+   "years_to_ipo": 29.0,
+   "so_pct": 8.8,
+   "dilution_per_round": [
+    0.0224,
+    0.0174,
+    0.0431,
+    0.0457,
+    0.0063,
+    0.0314,
+    0.0547
+   ]
+  },
+  {
+   "name": "株式会社ミライロ",
+   "code": "335A",
+   "listing_date": "2025-03-24",
+   "market": "グロース",
+   "founder_pct": 70.0,
+   "vc_pct": 0.0,
+   "corporate_pct": 12.0,
+   "rounds_count": 4,
+   "price_multiple": 1.04,
+   "years_to_ipo": 14.8,
+   "so_pct": 4.2,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社TalentX（旧・株式会社MyRefer）",
+   "code": "330A",
+   "listing_date": "2025-03-18",
+   "market": "グロース",
+   "founder_pct": 47.6,
+   "vc_pct": 28.5,
+   "corporate_pct": 14.0,
+   "rounds_count": 2,
+   "price_multiple": 4.5,
+   "years_to_ipo": 6.8,
+   "so_pct": 3.7,
+   "dilution_per_round": [
+    0.3854,
+    0.1057
+   ]
+  },
+  {
+   "name": "株式会社TENTIAL",
+   "code": "325A",
+   "listing_date": "2025-02-28",
+   "market": "グロース",
+   "founder_pct": 38.4,
+   "vc_pct": 29.1,
+   "corporate_pct": 17.9,
+   "rounds_count": 5,
+   "price_multiple": 14.8,
+   "years_to_ipo": 7.1,
+   "so_pct": 9.7,
+   "dilution_per_round": [
+    0.1334,
+    0.1213,
+    0.0237
    ]
   },
   {
@@ -120,6 +492,20 @@
    ]
   },
   {
+   "name": "株式会社TMH",
+   "code": "280A",
+   "listing_date": "2024-12-04",
+   "market": "グロース",
+   "founder_pct": 66.6,
+   "vc_pct": 17.5,
+   "corporate_pct": 1.7,
+   "rounds_count": 1,
+   "price_multiple": 1.0,
+   "years_to_ipo": 12.7,
+   "so_pct": 7.41,
+   "dilution_per_round": []
+  },
+  {
    "name": "Terra Drone株式会社",
    "code": "278A",
    "listing_date": "2024-11-29",
@@ -137,6 +523,194 @@
     0.1254,
     0.0092,
     0.0046
+   ]
+  },
+  {
+   "name": "株式会社Schoo",
+   "code": "264A",
+   "listing_date": "2024-10-22",
+   "market": "グロース",
+   "founder_pct": 24.6,
+   "vc_pct": 50.8,
+   "corporate_pct": 6.4,
+   "rounds_count": 5,
+   "price_multiple": 3.1,
+   "years_to_ipo": 12.9,
+   "so_pct": 10.9,
+   "dilution_per_round": [
+    0.0801,
+    0.0507,
+    0.0113
+   ]
+  },
+  {
+   "name": "Aiロボティクス株式会社",
+   "code": "247A",
+   "listing_date": "2024-09-27",
+   "market": "グロース",
+   "founder_pct": 19.1,
+   "vc_pct": 32.7,
+   "corporate_pct": 13.3,
+   "rounds_count": 2,
+   "price_multiple": 1.0,
+   "years_to_ipo": 8.5,
+   "so_pct": 13.1,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社ROXX",
+   "code": "241A",
+   "listing_date": "2024-09-25",
+   "market": "グロース",
+   "founder_pct": 17.9,
+   "vc_pct": 38.6,
+   "corporate_pct": 24.9,
+   "rounds_count": 8,
+   "price_multiple": 1.8,
+   "years_to_ipo": 10.9,
+   "so_pct": 9.8,
+   "dilution_per_round": [
+    0.0458,
+    0.0224,
+    0.0429,
+    0.1617,
+    0.0089,
+    0.0088,
+    0.0341,
+    0.0749,
+    0.0393,
+    0.0147,
+    0.0128,
+    0.0235
+   ]
+  },
+  {
+   "name": "Heartseed株式会社",
+   "code": "219A",
+   "listing_date": "2024-07-30",
+   "market": "グロース",
+   "founder_pct": 15.1,
+   "vc_pct": 36.8,
+   "corporate_pct": 10.9,
+   "rounds_count": 4,
+   "price_multiple": 416.0,
+   "years_to_ipo": 8.7,
+   "so_pct": 4.7,
+   "dilution_per_round": [
+    0.0396,
+    0.0071,
+    0.0016
+   ]
+  },
+  {
+   "name": "株式会社Liberaware",
+   "code": "218A",
+   "listing_date": "2024-07-29",
+   "market": "グロース",
+   "founder_pct": 18.3,
+   "vc_pct": 49.8,
+   "corporate_pct": 6.3,
+   "rounds_count": 13,
+   "price_multiple": 2.0,
+   "years_to_ipo": 7.9,
+   "so_pct": 9.0,
+   "dilution_per_round": [
+    0.0076,
+    0.0859,
+    0.0376,
+    0.1002,
+    0.0075,
+    0.0074,
+    0.0122,
+    0.0073,
+    0.0048,
+    0.0235,
+    0.0047,
+    0.0777,
+    0.0107,
+    0.0429,
+    0.0101,
+    0.0389
+   ]
+  },
+  {
+   "name": "株式会社タイミー",
+   "code": "215A",
+   "listing_date": "2024-07-26",
+   "market": "グロース",
+   "founder_pct": 30.2,
+   "vc_pct": 31.3,
+   "corporate_pct": 19.3,
+   "rounds_count": 4,
+   "price_multiple": 10.7,
+   "years_to_ipo": 6.9,
+   "so_pct": 13.0,
+   "dilution_per_round": [
+    0.2308,
+    0.3204,
+    0.0147,
+    0.0558,
+    0.1543
+   ]
+  },
+  {
+   "name": "株式会社PRISM BioLab",
+   "code": "206A",
+   "listing_date": "2024-07-02",
+   "market": "グロース",
+   "founder_pct": 5.2,
+   "vc_pct": 53.5,
+   "corporate_pct": 22.0,
+   "rounds_count": 3,
+   "price_multiple": 2.67,
+   "years_to_ipo": 12.2,
+   "so_pct": 12.3,
+   "dilution_per_round": [
+    0.1902,
+    0.0172,
+    0.2508,
+    0.0189,
+    0.0181,
+    0.1196
+   ]
+  },
+  {
+   "name": "株式会社MFS",
+   "code": "196A",
+   "listing_date": "2024-06-21",
+   "market": "グロース",
+   "founder_pct": 23.1,
+   "vc_pct": 53.2,
+   "corporate_pct": 3.8,
+   "rounds_count": 6,
+   "price_multiple": 4.3,
+   "years_to_ipo": 14.9,
+   "so_pct": 9.0,
+   "dilution_per_round": [
+    0.0685,
+    0.035,
+    0.0971,
+    0.1082,
+    0.0833,
+    0.0819
+   ]
+  },
+  {
+   "name": "Chordia Therapeutics株式会社",
+   "code": "190A",
+   "listing_date": "2024-06-14",
+   "market": "グロース",
+   "founder_pct": 6.1,
+   "vc_pct": 53.3,
+   "corporate_pct": 22.6,
+   "rounds_count": 3,
+   "price_multiple": 1.72,
+   "years_to_ipo": 6.7,
+   "so_pct": 12.2,
+   "dilution_per_round": [
+    0.2815,
+    0.0025,
+    0.2983
    ]
   },
   {
@@ -163,6 +737,80 @@
    ]
   },
   {
+   "name": "株式会社学びエイド",
+   "code": "184A",
+   "listing_date": "2024-05-28",
+   "market": "グロース",
+   "founder_pct": 52.9,
+   "vc_pct": 32.2,
+   "corporate_pct": 3.2,
+   "rounds_count": 3,
+   "price_multiple": 3.0,
+   "years_to_ipo": 9.0,
+   "so_pct": 6.0,
+   "dilution_per_round": [
+    0.3481,
+    0.1788,
+    0.0968
+   ]
+  },
+  {
+   "name": "株式会社カウリス",
+   "code": "153A",
+   "listing_date": "2024-03-28",
+   "market": "グロース",
+   "founder_pct": 59.0,
+   "vc_pct": 5.5,
+   "corporate_pct": 9.4,
+   "rounds_count": 3,
+   "price_multiple": 1.0,
+   "years_to_ipo": 8.3,
+   "so_pct": 12.0,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社L is B",
+   "code": "145A",
+   "listing_date": "2024-03-26",
+   "market": "グロース",
+   "founder_pct": 48.6,
+   "vc_pct": 8.0,
+   "corporate_pct": 21.4,
+   "rounds_count": 1,
+   "price_multiple": 1.0,
+   "years_to_ipo": null,
+   "so_pct": 8.9,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社ハッチ・ワーク",
+   "code": "148A",
+   "listing_date": "2024-03-26",
+   "market": "グロース",
+   "founder_pct": 38.4,
+   "vc_pct": 12.8,
+   "corporate_pct": 9.4,
+   "rounds_count": 4,
+   "price_multiple": 1.5,
+   "years_to_ipo": 23.8,
+   "so_pct": 10.0,
+   "dilution_per_round": []
+  },
+  {
+   "name": "ナイル株式会社",
+   "code": "5618",
+   "listing_date": "2023-12-20",
+   "market": "グロース",
+   "founder_pct": 43.1,
+   "vc_pct": 33.8,
+   "corporate_pct": 10.7,
+   "rounds_count": 2,
+   "price_multiple": 1.0,
+   "years_to_ipo": 16.9,
+   "so_pct": 9.1,
+   "dilution_per_round": []
+  },
+  {
    "name": "株式会社雨風太陽",
    "code": "5616",
    "listing_date": "2023-12-18",
@@ -175,6 +823,87 @@
    "years_to_ipo": 8.8,
    "so_pct": 10.5,
    "dilution_per_round": []
+  },
+  {
+   "name": "株式会社QPS研究所",
+   "code": "5595",
+   "listing_date": "2023-12-06",
+   "market": "グロース",
+   "founder_pct": 7.2,
+   "vc_pct": 49.9,
+   "corporate_pct": 13.5,
+   "rounds_count": 6,
+   "price_multiple": 2.24,
+   "years_to_ipo": 18.5,
+   "so_pct": 12.1,
+   "dilution_per_round": [
+    0.4845,
+    0.0202,
+    0.1026,
+    0.2376,
+    0.0609,
+    0.0548
+   ]
+  },
+  {
+   "name": "株式会社ケイファーマ",
+   "code": "4896",
+   "listing_date": "2023-10-17",
+   "market": "グロース",
+   "founder_pct": 45.2,
+   "vc_pct": 44.1,
+   "corporate_pct": 0.0,
+   "rounds_count": 3,
+   "price_multiple": 1.2,
+   "years_to_ipo": 6.9,
+   "so_pct": 10.7,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社キャスター",
+   "code": "9331",
+   "listing_date": "2023-10-04",
+   "market": "グロース",
+   "founder_pct": 23.6,
+   "vc_pct": 61.8,
+   "corporate_pct": 3.6,
+   "rounds_count": 10,
+   "price_multiple": 3.8,
+   "years_to_ipo": 9.0,
+   "so_pct": 8.1,
+   "dilution_per_round": [
+    0.1427,
+    0.0277,
+    0.0439,
+    0.0133,
+    0.0164,
+    0.0757,
+    0.0149,
+    0.0442,
+    0.0464,
+    0.0271
+   ]
+  },
+  {
+   "name": "株式会社ネットスターズ",
+   "code": "5590",
+   "listing_date": "2023-09-26",
+   "market": "グロース",
+   "founder_pct": 18.3,
+   "vc_pct": 20.4,
+   "corporate_pct": 23.3,
+   "rounds_count": 6,
+   "price_multiple": 1.1,
+   "years_to_ipo": null,
+   "so_pct": 12.8,
+   "dilution_per_round": [
+    0.0366,
+    0.0267,
+    0.0218,
+    0.0604,
+    0.1313,
+    0.0318
+   ]
   },
   {
    "name": "株式会社クラダシ",
@@ -195,6 +924,36 @@
    ]
   },
   {
+   "name": "ノイルイミューン・バイオテック株式会社",
+   "code": "4893",
+   "listing_date": "2023-06-28",
+   "market": "グロース",
+   "founder_pct": 9.9,
+   "vc_pct": 6.5,
+   "corporate_pct": 27.3,
+   "rounds_count": 6,
+   "price_multiple": 3.6,
+   "years_to_ipo": 8.2,
+   "so_pct": 6.7,
+   "dilution_per_round": [
+    0.0157
+   ]
+  },
+  {
+   "name": "クオリプス株式会社",
+   "code": "4894",
+   "listing_date": "2023-06-27",
+   "market": "グロース",
+   "founder_pct": 0.0,
+   "vc_pct": 39.1,
+   "corporate_pct": 44.1,
+   "rounds_count": 2,
+   "price_multiple": 1.0,
+   "years_to_ipo": 6.3,
+   "so_pct": 8.0,
+   "dilution_per_round": []
+  },
+  {
    "name": "株式会社ABEJA",
    "code": "5574",
    "listing_date": "2023-06-13",
@@ -206,6 +965,254 @@
    "price_multiple": 1.0,
    "years_to_ipo": 10.8,
    "so_pct": 19.8,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社Ridge-i",
+   "code": "5572",
+   "listing_date": "2023-04-26",
+   "market": "グロース",
+   "founder_pct": 55.4,
+   "vc_pct": 9.6,
+   "corporate_pct": 16.5,
+   "rounds_count": 1,
+   "price_multiple": 1.0,
+   "years_to_ipo": 6.7,
+   "so_pct": 6.3,
+   "dilution_per_round": []
+  },
+  {
+   "name": "株式会社ispace",
+   "code": "9348",
+   "listing_date": "2023-04-12",
+   "market": "グロース",
+   "founder_pct": 19.1,
+   "vc_pct": 24.1,
+   "corporate_pct": 14.9,
+   "rounds_count": 3,
+   "price_multiple": 40.1,
+   "years_to_ipo": 12.6,
+   "so_pct": 14.1,
+   "dilution_per_round": [
+    0.0726,
+    0.012,
+    0.0034,
+    0.0667,
+    0.0167,
+    0.0039
+   ]
+  },
+  {
+   "name": "株式会社トランザクション・メディア・ネットワークス",
+   "code": "5258",
+   "listing_date": "2023-04-04",
+   "market": "グロース",
+   "founder_pct": 0.0,
+   "vc_pct": 0.0,
+   "corporate_pct": 68.7,
+   "rounds_count": 1,
+   "price_multiple": 1.0,
+   "years_to_ipo": 15.1,
+   "so_pct": 8.5,
+   "dilution_per_round": [
+    0.0205
+   ]
+  },
+  {
+   "name": "AnyMind Group株式会社",
+   "code": "5027",
+   "listing_date": "2023-03-29",
+   "market": "グロース",
+   "founder_pct": 37.2,
+   "vc_pct": 33.6,
+   "corporate_pct": 2.7,
+   "rounds_count": 4,
+   "price_multiple": 11.2,
+   "years_to_ipo": 3.2,
+   "so_pct": 10.8,
+   "dilution_per_round": [
+    0.0808
+   ]
+  },
+  {
+   "name": "株式会社モンスターラボ",
+   "code": "5255",
+   "listing_date": "2023-03-28",
+   "market": "グロース",
+   "founder_pct": null,
+   "vc_pct": null,
+   "corporate_pct": null,
+   "rounds_count": 14,
+   "price_multiple": 3.2,
+   "years_to_ipo": null,
+   "so_pct": null,
+   "dilution_per_round": [
+    0.0023,
+    0.039,
+    0.0078,
+    0.0077,
+    0.0036,
+    0.0249,
+    0.0013,
+    0.1299,
+    0.0002,
+    0.1149,
+    0.0204,
+    0.0288
+   ]
+  },
+  {
+   "name": "株式会社Arent",
+   "code": "5254",
+   "listing_date": "2023-03-28",
+   "market": "グロース",
+   "founder_pct": 47.3,
+   "vc_pct": 13.4,
+   "corporate_pct": 1.9,
+   "rounds_count": 3,
+   "price_multiple": 1.1,
+   "years_to_ipo": null,
+   "so_pct": 11.8,
+   "dilution_per_round": [
+    0.0235,
+    0.0254,
+    0.1215
+   ]
+  },
+  {
+   "name": "カバー株式会社",
+   "code": "5253",
+   "listing_date": "2023-03-27",
+   "market": "グロース",
+   "founder_pct": 39.8,
+   "vc_pct": 35.1,
+   "corporate_pct": 4.7,
+   "rounds_count": 6,
+   "price_multiple": 4.9,
+   "years_to_ipo": 6.8,
+   "so_pct": 9.1,
+   "dilution_per_round": [
+    0.0453,
+    0.0378,
+    0.0143,
+    0.2447,
+    0.0215,
+    0.0211,
+    0.1914
+   ]
+  },
+  {
+   "name": "株式会社ELEMENTS",
+   "code": "5246",
+   "listing_date": "2022-12-27",
+   "market": "グロース",
+   "founder_pct": 0.0,
+   "vc_pct": 0.0,
+   "corporate_pct": 0.0,
+   "rounds_count": 5,
+   "price_multiple": 1.1,
+   "years_to_ipo": 9.0,
+   "so_pct": null,
+   "dilution_per_round": [
+    0.0321,
+    0.0256,
+    0.0407,
+    0.0561,
+    0.0068
+   ]
+  },
+  {
+   "name": "株式会社INFORICH",
+   "code": "9338",
+   "listing_date": "2022-12-20",
+   "market": "グロース",
+   "founder_pct": 17.2,
+   "vc_pct": 14.8,
+   "corporate_pct": 10.3,
+   "rounds_count": 8,
+   "price_multiple": 573.3,
+   "years_to_ipo": 7.3,
+   "so_pct": 13.9,
+   "dilution_per_round": [
+    0.0035,
+    0.0086,
+    0.0211,
+    0.0215,
+    0.0033,
+    0.0012,
+    0.0119,
+    0.0767,
+    0.0317,
+    0.0363,
+    0.0338,
+    0.0562,
+    0.0241,
+    0.0827
+   ]
+  },
+  {
+   "name": "株式会社トリドリ",
+   "code": "9337",
+   "listing_date": "2022-12-19",
+   "market": "グロース",
+   "founder_pct": 36.4,
+   "vc_pct": 23.6,
+   "corporate_pct": 7.8,
+   "rounds_count": 2,
+   "price_multiple": 1.6,
+   "years_to_ipo": 6.5,
+   "so_pct": 9.7,
+   "dilution_per_round": [
+    0.1239,
+    0.1528
+   ]
+  },
+  {
+   "name": "株式会社スマートドライブ",
+   "code": "5137",
+   "listing_date": "2022-12-15",
+   "market": "グロース",
+   "founder_pct": 48.0,
+   "vc_pct": 30.8,
+   "corporate_pct": 12.0,
+   "rounds_count": 5,
+   "price_multiple": 2.5,
+   "years_to_ipo": 9.2,
+   "so_pct": 9.3,
+   "dilution_per_round": [
+    0.0588,
+    0.0772,
+    0.0513,
+    0.0102,
+    0.0454
+   ]
+  },
+  {
+   "name": "株式会社サイフューズ",
+   "code": "4892",
+   "listing_date": "2022-12-01",
+   "market": "グロース",
+   "founder_pct": 10.5,
+   "vc_pct": 34.5,
+   "corporate_pct": 22.0,
+   "rounds_count": 4,
+   "price_multiple": 1.05,
+   "years_to_ipo": 12.3,
+   "so_pct": 12.7,
+   "dilution_per_round": []
+  },
+  {
+   "name": "tripla株式会社",
+   "code": "5136",
+   "listing_date": "2022-11-25",
+   "market": "グロース",
+   "founder_pct": 39.8,
+   "vc_pct": 38.7,
+   "corporate_pct": 10.5,
+   "rounds_count": 3,
+   "price_multiple": 1.9,
+   "years_to_ipo": 7.6,
+   "so_pct": 8.9,
    "dilution_per_round": []
   },
   {
@@ -229,6 +1236,214 @@
     0.0267,
     0.022
    ]
+  },
+  {
+   "name": "株式会社POPER",
+   "code": "5134",
+   "listing_date": "2022-11-15",
+   "market": "グロース",
+   "founder_pct": 30.4,
+   "vc_pct": 37.6,
+   "corporate_pct": 16.7,
+   "rounds_count": 7,
+   "price_multiple": 11.3,
+   "years_to_ipo": 7.8,
+   "so_pct": 7.5,
+   "dilution_per_round": [
+    0.1182,
+    0.0374,
+    0.1389,
+    0.05,
+    0.234,
+    0.0505,
+    0.0972,
+    0.0107,
+    0.0315,
+    0.0334
+   ]
+  },
+  {
+   "name": "リンカーズ株式会社",
+   "code": "5131",
+   "listing_date": "2022-10-26",
+   "market": "グロース",
+   "founder_pct": 41.7,
+   "vc_pct": 39.5,
+   "corporate_pct": 3.0,
+   "rounds_count": 6,
+   "price_multiple": 2.2,
+   "years_to_ipo": 11.15,
+   "so_pct": 7.0,
+   "dilution_per_round": [
+    0.1035
+   ]
+  },
+  {
+   "name": "株式会社FIXER",
+   "code": "5129",
+   "listing_date": "2022-10-06",
+   "market": "グロース",
+   "founder_pct": 70.9,
+   "vc_pct": 4.8,
+   "corporate_pct": 0.0,
+   "rounds_count": 2,
+   "price_multiple": 22.5,
+   "years_to_ipo": 14.1,
+   "so_pct": 8.9,
+   "dilution_per_round": [
+    0.0305,
+    0.0488
+   ]
+  },
+  {
+   "name": "株式会社unerry",
+   "code": "5034",
+   "listing_date": "2022-07-28",
+   "market": "グロース",
+   "founder_pct": 49.1,
+   "vc_pct": 20.4,
+   "corporate_pct": 13.9,
+   "rounds_count": 4,
+   "price_multiple": 4.3,
+   "years_to_ipo": 6.9,
+   "so_pct": 9.8,
+   "dilution_per_round": [
+    0.2288,
+    0.0308,
+    0.0299,
+    0.1028
+   ]
+  },
+  {
+   "name": "株式会社ヌーラボ",
+   "code": "5033",
+   "listing_date": "2022-06-28",
+   "market": "グロース",
+   "founder_pct": 25.4,
+   "vc_pct": 13.4,
+   "corporate_pct": 24.0,
+   "rounds_count": 4,
+   "price_multiple": 84.0,
+   "years_to_ipo": 18.2,
+   "so_pct": 9.0,
+   "dilution_per_round": [
+    0.0303,
+    0.0323,
+    0.043,
+    0.1002
+   ]
+  },
+  {
+   "name": "マイクロ波化学株式会社",
+   "code": "9227",
+   "listing_date": "2022-06-24",
+   "market": "グロース",
+   "founder_pct": 19.3,
+   "vc_pct": 62.4,
+   "corporate_pct": 7.7,
+   "rounds_count": 6,
+   "price_multiple": 1.5,
+   "years_to_ipo": 14.9,
+   "so_pct": 10.7,
+   "dilution_per_round": [
+    0.0103,
+    0.0102,
+    0.0134,
+    0.0067,
+    0.0241,
+    0.0065
+   ]
+  },
+  {
+   "name": "株式会社坪田ラボ",
+   "code": "4890",
+   "listing_date": "2022-06-23",
+   "market": "グロース",
+   "founder_pct": 81.8,
+   "vc_pct": 0.0,
+   "corporate_pct": 0.0,
+   "rounds_count": null,
+   "price_multiple": null,
+   "years_to_ipo": 10.1,
+   "so_pct": 6.0,
+   "dilution_per_round": [
+    0.0104
+   ]
+  },
+  {
+   "name": "ANYCOLOR株式会社（旧・いちから株式会社）",
+   "code": "5032",
+   "listing_date": "2022-06-08",
+   "market": "グロース",
+   "founder_pct": 43.1,
+   "vc_pct": 21.5,
+   "corporate_pct": 17.6,
+   "rounds_count": 6,
+   "price_multiple": 100.0,
+   "years_to_ipo": 5.1,
+   "so_pct": 8.0,
+   "dilution_per_round": [
+    0.1304,
+    0.08,
+    0.1071,
+    0.0538,
+    0.0847,
+    0.1319,
+    0.0234,
+    0.0656
+   ]
+  },
+  {
+   "name": "モイ株式会社",
+   "code": "5031",
+   "listing_date": "2022-04-27",
+   "market": "グロース",
+   "founder_pct": 55.3,
+   "vc_pct": 28.5,
+   "corporate_pct": 0.0,
+   "rounds_count": 1,
+   "price_multiple": 1.0,
+   "years_to_ipo": 11.9,
+   "so_pct": 7.4,
+   "dilution_per_round": [
+    0.0896
+   ]
+  },
+  {
+   "name": "株式会社メンタルヘルステクノロジーズ",
+   "code": "9218",
+   "listing_date": "2022-03-28",
+   "market": "マザーズ",
+   "founder_pct": 37.3,
+   "vc_pct": 28.2,
+   "corporate_pct": 11.4,
+   "rounds_count": 5,
+   "price_multiple": 3.3,
+   "years_to_ipo": 11.0,
+   "so_pct": 7.9,
+   "dilution_per_round": [
+    0.0892,
+    0.1447,
+    0.1026,
+    0.0326,
+    0.0058,
+    0.0126,
+    0.0046
+   ]
+  },
+  {
+   "name": "株式会社CaSy",
+   "code": "9215",
+   "listing_date": "2022-02-22",
+   "market": "マザーズ",
+   "founder_pct": 43.1,
+   "vc_pct": 21.0,
+   "corporate_pct": 24.7,
+   "rounds_count": null,
+   "price_multiple": null,
+   "years_to_ipo": 8.1,
+   "so_pct": 6.2,
+   "dilution_per_round": []
   }
  ]
 }
