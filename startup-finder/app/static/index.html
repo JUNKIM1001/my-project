@@ -327,6 +327,26 @@
     <div class="faint" id="ipo-note" style="font-size:11.5px;margin-top:4px"></div>
   </div>
   <div class="kpi-row" id="ipo-bench" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"></div>
+  <div class="card" style="padding:10px 14px 14px;margin-bottom:14px">
+    <div style="display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:6px">
+      <div style="font-weight:700;font-size:13.5px">ラウンド別バリュエーションの相場観（ポストマネー・億円）</div>
+      <div class="fld" style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10.5px;color:var(--accent);font-weight:700">業種</label><select id="ipo-box-sector"><option value="">全業種</option></select></div>
+      <label class="chk"><input type="checkbox" id="ipo-box-log" checked>対数軸</label>
+      <span class="faint" style="font-size:11.5px" id="ipo-box-note"></span>
+    </div>
+    <div id="ipo-box"></div>
+    <div class="faint" style="font-size:11px;margin-top:4px">箱=四分位（Q1〜Q3）、中の線=中央値、ひげ=箱の1.5倍以内の最小/最大、点=個別ラウンド（ホバーで社名）。ラウンド名は種類株（A種=シリーズA…）から推定。ポストマネー＝発行価格×発行後株式総数の推定値（分割調整後）。</div>
+  </div>
+  <div class="card" style="padding:10px 14px 14px;margin-bottom:14px">
+    <div style="display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:6px">
+      <div style="font-weight:700;font-size:13.5px">VC / CVC のラウンド別参画と IRR見込み</div>
+      <div class="fld" style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10.5px;color:var(--accent);font-weight:700">種別</label><select id="ipo-inv-kind"><option value="">すべて</option><option value="VC">VC</option><option value="CVC・事業会社">CVC・事業会社</option><option value="金融機関">金融機関</option></select></div>
+      <div class="fld" style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10.5px;color:var(--accent);font-weight:700">並び順</label><select id="ipo-inv-sort"><option value="companies">参画社数</option><option value="irr">IRR中央値</option><option value="moic">MOIC中央値</option></select></div>
+      <span class="faint" style="font-size:11.5px" id="ipo-inv-note"></span>
+    </div>
+    <div style="overflow-x:auto"><table class="cmp-table" id="ipo-inv-table"><thead><tr><th>投資家</th><th>種別</th><th style="text-align:right">参画社数</th><th>ラウンド分布</th><th style="text-align:right">MOIC中央値</th><th style="text-align:right">IRR見込み中央値</th><th style="text-align:right">IRR算出可</th></tr></thead><tbody id="ipo-inv-tbody"></tbody></table></div>
+    <div class="faint" style="font-size:11px;margin-top:4px">IRR見込み = (公開価格 ÷ 参画ラウンドの1株発行価格)^(1/保有年数) − 1。公開価格ベースの理論値でロックアップ・実売却は考慮しない。行クリックで案件一覧。</div>
+  </div>
   <div class="card" style="padding:10px 14px 14px;position:relative;margin-bottom:14px">
     <div style="display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:6px">
       <div class="fld" style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10.5px;color:var(--accent);font-weight:700">X軸</label><select id="ipo-x"></select></div>
@@ -1127,6 +1147,7 @@ async function loadIpoSection(id) {
     ${so.potential_pct != null ? `<div class="desc" style="margin-top:6px">SO等の潜在株: ${so.potential_pct}%（${(so.potential_shares || 0).toLocaleString()}株）</div>` : ''}
     <h4>資本政策タイムライン（設立→上場申請）</h4>
     <div style="overflow-x:auto"><table class="cmp-table"><thead><tr><th>日付</th><th>イベント</th><th style="text-align:right">株数</th><th style="text-align:right">1株価格(円)</th><th style="text-align:right">ポストマネー</th><th>引受先・備考</th></tr></thead><tbody>${hist || '<tr><td colspan="6" class="faint">記載なし</td></tr>'}</tbody></table></div>
+    ${ipoInvestorReturnsHtml(d.investor_returns)}
     <h4>財務（百万円）</h4>
     <table class="cmp-table"><thead><tr><th>決算期</th><th style="text-align:right">売上高</th><th style="text-align:right">当期純利益</th><th style="text-align:right">従業員</th></tr></thead><tbody>${fins || '<tr><td colspan="4" class="faint">記載なし</td></tr>'}</tbody></table>
     <h4>戦略（Ⅰの部「経営方針」より要約）</h4>
@@ -1186,6 +1207,105 @@ function renderIpo() {
   });
 }
 
+
+/* ===== IPO: ラウンド別バリュエーション（箱ひげ） & 投資家別IRR ===== */
+let IPO_ROUNDS = null, IPO_INV = null, IPO_EXTRA_READY = false;
+const ROUND_ORDER = ['シード','シリーズA','シリーズB','シリーズC','シリーズD','シリーズE+','普通株(追加)'];
+const pctS = v => v == null ? '—' : `${(v * 100).toFixed(1)}%`;
+
+async function initIpoExtras() {
+  if (!IPO_ROUNDS) {
+    [IPO_ROUNDS, IPO_INV] = await Promise.all([fetch('/api/ipo/rounds').then(r => r.json()), fetch('/api/ipo/investors').then(r => r.json())]);
+    const sel = document.getElementById('ipo-box-sector');
+    IPO_ROUNDS.sectors.forEach(([s, n]) => sel.add(new Option(`${s} (${n})`, s)));
+  }
+  if (!IPO_EXTRA_READY) {
+    IPO_EXTRA_READY = true;
+    for (const id of ['ipo-box-sector', 'ipo-box-log']) document.getElementById(id).addEventListener('change', renderIpoBox);
+    for (const id of ['ipo-inv-kind', 'ipo-inv-sort']) document.getElementById(id).addEventListener('change', renderIpoInvestors);
+  }
+  renderIpoBox(); renderIpoInvestors();
+}
+document.querySelector('.tab[data-pane="ipo"]').addEventListener('click', initIpoExtras);
+
+function quart(sorted, p) { const k = (sorted.length - 1) * p, lo = Math.floor(k), hi = Math.min(lo + 1, sorted.length - 1); return sorted[lo] + (sorted[hi] - sorted[lo]) * (k - lo); }
+
+function renderIpoBox() {
+  const sector = document.getElementById('ipo-box-sector').value, useLog = document.getElementById('ipo-box-log').checked;
+  const ev = IPO_ROUNDS.items.filter(e => e.post_money_oku > 0 && (!sector || e.sectors.includes(sector)));
+  const groups = ROUND_ORDER.map(r => ({ round: r, ev: ev.filter(e => e.round === r) })).filter(g => g.ev.length);
+  document.getElementById('ipo-box-note').textContent = `${ev.length}ラウンド・${new Set(ev.map(e => e.company_id)).size}社${sector ? `（${sector}）` : ''}`;
+  if (!groups.length) { document.getElementById('ipo-box').innerHTML = '<div class="empty"><b>該当データなし</b></div>'; return; }
+  const W = 1160, H = 400, ML = 74, MB = 44, top = 20;
+  const vals = ev.map(e => e.post_money_oku);
+  const sy = makeScale(vals, H - MB, top, useLog);
+  const slot = (W - 16 - ML) / groups.length, bw = Math.min(90, slot * 0.5);
+  let g = '';
+  ticksOf(sy).forEach(v => { const y = sy.map(v); g += `<line x1="${ML}" y1="${y}" x2="${W-16}" y2="${y}" stroke="#eef1f7"/><text x="${ML-8}" y="${y+4}" text-anchor="end" font-size="11" fill="#7a8494">${fmtN(v)}</text>`; });
+  g += `<text x="14" y="${(top+H-MB)/2}" text-anchor="middle" font-size="11.5" fill="#5d6675" font-weight="600" transform="rotate(-90 14 ${(top+H-MB)/2})">ポストマネー（億円${useLog ? '・対数' : ''}）</text>`;
+  groups.forEach((grp, i) => {
+    const cx = ML + slot * (i + 0.5);
+    const s = grp.ev.map(e => e.post_money_oku).sort((a, b) => a - b);
+    const q1 = quart(s, .25), med = quart(s, .5), q3 = quart(s, .75), iqr = q3 - q1;
+    const lo = Math.min(...s.filter(v => v >= q1 - 1.5 * iqr)), hi = Math.max(...s.filter(v => v <= q3 + 1.5 * iqr));
+    if (s.length >= 3) {
+      g += `<line x1="${cx}" y1="${sy.map(lo)}" x2="${cx}" y2="${sy.map(hi)}" stroke="#2a78d6" stroke-width="1.5"/>`
+         + `<line x1="${cx-bw/4}" y1="${sy.map(lo)}" x2="${cx+bw/4}" y2="${sy.map(lo)}" stroke="#2a78d6" stroke-width="1.5"/><line x1="${cx-bw/4}" y1="${sy.map(hi)}" x2="${cx+bw/4}" y2="${sy.map(hi)}" stroke="#2a78d6" stroke-width="1.5"/>`
+         + `<rect x="${cx-bw/2}" y="${sy.map(q3)}" width="${bw}" height="${Math.max(2, sy.map(q1)-sy.map(q3))}" fill="#2a78d6" fill-opacity="0.18" stroke="#2a78d6" stroke-width="1.5" rx="3"/>`
+         + `<line x1="${cx-bw/2}" y1="${sy.map(med)}" x2="${cx+bw/2}" y2="${sy.map(med)}" stroke="#1e5da8" stroke-width="2.5"/>`;
+    }
+    grp.ev.forEach((e, j) => { const jx = cx + ((j * 7919) % 100 / 100 - 0.5) * bw * 0.9;
+      g += `<circle cx="${jx}" cy="${sy.map(e.post_money_oku)}" r="3.5" fill="#1e5da8" fill-opacity="0.45" style="cursor:pointer" data-id="${e.company_id}" data-tip="${esc(JSON.stringify({n:e.name, r:e.round, v:e.post_money_oku, d:e.date, p:e.price_yen}))}"/>`; });
+    g += `<text x="${cx}" y="${H-MB+18}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3c4657">${esc(grp.round)}</text>`
+       + `<text x="${cx}" y="${H-MB+32}" text-anchor="middle" font-size="10.5" fill="#7a8494">n=${s.length}${s.length >= 3 ? `・中央値 ${fmtN(Math.round(med*10)/10)}億` : ''}</text>`;
+  });
+  document.getElementById('ipo-box').innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">${g}</svg>`;
+  const tip = document.getElementById('ipo-tooltip');
+  document.querySelectorAll('#ipo-box circle').forEach(el => {
+    el.addEventListener('mousemove', e => { const d = JSON.parse(el.dataset.tip); const wrap = document.getElementById('ipo-box').getBoundingClientRect();
+      tip.innerHTML = `<b>${esc(d.n)}</b><br>${esc(d.r)}（${esc(d.d || '')}）<br>ポストマネー est ${fmtN(Math.round(d.v*10)/10)}億円 / 1株 ${d.p ? d.p.toLocaleString() + '円' : '—'}`;
+      tip.style.display = 'block'; tip.style.left = Math.min(e.clientX - wrap.left + 14, wrap.width - 290) + 'px'; tip.style.top = (e.clientY - wrap.top + 12) + 'px';
+      tip.parentElement !== document.getElementById('ipo-box') && document.getElementById('ipo-box').appendChild(tip); });
+    el.addEventListener('mouseleave', () => tip.style.display = 'none');
+    el.addEventListener('click', () => openDetail(+el.dataset.id));
+  });
+}
+
+function renderIpoInvestors() {
+  const kind = document.getElementById('ipo-inv-kind').value, sort = document.getElementById('ipo-inv-sort').value;
+  let items = IPO_INV.items.filter(i => !kind || i.kind === kind);
+  if (sort === 'irr') items = items.filter(i => i.irr_median != null).sort((a, b) => b.irr_median - a.irr_median);
+  else if (sort === 'moic') items = items.filter(i => i.moic_median != null).sort((a, b) => b.moic_median - a.moic_median);
+  items = items.slice(0, 60);
+  document.getElementById('ipo-inv-note').textContent = `${IPO_INV.count}投資家・${IPO_INV.events}ラウンド（IRR算出可 ${IPO_INV.events_with_irr}ラウンド）`;
+  const rdist = r => ROUND_ORDER.filter(k => r[k]).map(k => `<span class="tag static" style="font-size:10.5px">${esc(k.replace('シリーズ',''))}×${r[k]}</span>`).join('');
+  document.getElementById('ipo-inv-tbody').innerHTML = items.map((i, idx) => `
+    <tr class="row" onclick="toggleInvDeals(${idx})" data-idx="${idx}">
+      <td><b>${esc(i.name)}</b></td><td><span class="tag static">${esc(i.kind)}</span></td>
+      <td style="text-align:right">${i.companies}</td><td>${rdist(i.rounds)}</td>
+      <td style="text-align:right">${i.moic_median != null ? i.moic_median.toFixed(2) + 'x' : '—'}</td>
+      <td style="text-align:right;font-weight:700;${i.irr_median != null ? (i.irr_median >= 0 ? 'color:#0a7d38' : 'color:#c62828') : ''}">${pctS(i.irr_median)}</td>
+      <td style="text-align:right">${i.irr_n}/${i.deals_count}</td>
+    </tr>
+    <tr class="inv-deals" id="inv-deals-${idx}" style="display:none"><td colspan="7" style="background:#f7f9fd">
+      <table class="cmp-table" style="font-size:12px"><thead><tr><th>企業</th><th>ラウンド</th><th>参画日</th><th style="text-align:right">参画時1株</th><th style="text-align:right">公開価格</th><th style="text-align:right">MOIC</th><th style="text-align:right">IRR見込み</th><th style="text-align:right">保有年数</th></tr></thead>
+      <tbody>${i.deals.map(d => `<tr><td><a href="#" onclick="event.preventDefault();openDetail(${d.company_id})">${esc(d.company)}</a><div class="desc">${esc(d.sector || '')}</div></td><td>${esc(d.round)}</td><td>${esc(d.date || '')}</td><td style="text-align:right">${d.entry_price_yen ? d.entry_price_yen.toLocaleString() + '円' : '—'}</td><td style="text-align:right">${d.offer_price_yen ? d.offer_price_yen.toLocaleString() + '円' : '<span class="faint">未取得</span>'}</td><td style="text-align:right">${d.moic != null ? d.moic.toFixed(2) + 'x' : '—'}</td><td style="text-align:right">${pctS(d.irr)}</td><td style="text-align:right">${d.years ?? '—'}</td></tr>`).join('')}</tbody></table>
+    </td></tr>`).join('');
+  IPO_INV._shown = items;
+}
+function toggleInvDeals(idx) { const el = document.getElementById(`inv-deals-${idx}`); el.style.display = el.style.display === 'none' ? '' : 'none'; }
+
+function ipoInvestorReturnsHtml(rows) {
+  if (!rows || !rows.length) return '';
+  const trs = rows.map(e => `<tr><td style="white-space:nowrap">${esc(e.round)}<div class="desc">${esc(e.date || '')}</div></td>
+      <td>${e.investors.map(i => `<span class="tag static" title="${esc(i.raw)}">${esc(i.name)}</span>`).join(' ')}</td>
+      <td style="text-align:right">${e.price_yen ? e.price_yen.toLocaleString() + '円' : '—'}${e.price_is_est ? '<span class="faint">est</span>' : ''}</td>
+      <td style="text-align:right">${e.post_money_oku != null ? fmtN(Math.round(e.post_money_oku*10)/10) + '億' : '—'}</td>
+      <td style="text-align:right">${e.moic != null ? e.moic.toFixed(2) + 'x' : '—'}</td>
+      <td style="text-align:right;font-weight:700">${pctS(e.irr)}</td></tr>`).join('');
+  return `<h4>ラウンド別の参画VC/CVCとIRR見込み${rows[0].offer_price_yen ? `（公開価格 ${rows[0].offer_price_yen.toLocaleString()}円ベース）` : '（公開価格未取得のためIRRなし）'}</h4>
+    <div style="overflow-x:auto"><table class="cmp-table"><thead><tr><th>ラウンド</th><th>参画投資家</th><th style="text-align:right">1株価格</th><th style="text-align:right">ポストマネーest</th><th style="text-align:right">MOIC</th><th style="text-align:right">IRR見込み</th></tr></thead><tbody>${trs}</tbody></table></div>`;
+}
 // 3つは互いに依存しないので並列に投げる（直列だと待ち時間が単純に足し算になる）
 loadMe();
 loadMeta();
