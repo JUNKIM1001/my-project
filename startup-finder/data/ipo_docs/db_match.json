@@ -279,6 +279,15 @@
   "outline_pdf": null
  },
  {
+  "company_id": 377,
+  "name": "デジタルグリッド株式会社",
+  "code": "350A",
+  "listing_date": "2025-04-22",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc0000011ktv-att/04DIGITALGRID-1s.pdf",
+  "outline_pdf": null
+ },
+ {
   "company_id": 386,
   "name": "株式会社FIXER",
   "code": "5129",
@@ -313,6 +322,15 @@
   "market": "グロース",
   "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/jr4eth00000012l8-att/10Caster-1s.pdf",
   "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/jr4eth00000012l8-att/10Caster-Outline.pdf"
+ },
+ {
+  "company_id": 411,
+  "name": "リンカーズ株式会社",
+  "code": "5131",
+  "listing_date": "2022-10-26",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006ncop-att/10Linkers-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006ncop-att/10Linkers-Outline.pdf"
  },
  {
   "company_id": 424,
@@ -387,6 +405,15 @@
   "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/skc8fn0000002it0-att/03HATCHWORK-Outline.pdf"
  },
  {
+  "company_id": 642,
+  "name": "株式会社アイ・グリッド・ソリューションズ",
+  "code": "603A",
+  "listing_date": "2026-07-29",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000001ib4r-att/07iGRIDSOLUTIONS-1s.pdf",
+  "outline_pdf": null
+ },
+ {
   "company_id": 643,
   "name": "株式会社PRISM BioLab",
   "code": "206A",
@@ -414,6 +441,24 @@
   "outline_pdf": null
  },
  {
+  "company_id": 725,
+  "name": "株式会社TENTIAL",
+  "code": "325A",
+  "listing_date": "2025-02-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000qmse-att/02TENTIAL-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000qmse-att/02TENTIAL-Outline.pdf"
+ },
+ {
+  "company_id": 803,
+  "name": "株式会社カウリス",
+  "code": "153A",
+  "listing_date": "2024-03-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/skc8fn0000002q3a-att/03Caulis-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/skc8fn0000002q3a-att/03Caulis-Outline.pdf"
+ },
+ {
   "company_id": 887,
   "name": "株式会社ジグザグ",
   "code": "340A",
@@ -430,6 +475,15 @@
   "market": "グロース",
   "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006etw7-att/06MicrowaveChemical-1s.pdf",
   "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006etw7-att/06MicrowaveChemical-Outline.pdf"
+ },
+ {
+  "company_id": 906,
+  "name": "株式会社ミライロ",
+  "code": "335A",
+  "listing_date": "2025-03-24",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000000t4lh-att/03Mirairo-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000000t4lh-att/03Mirairo-Outline.pdf"
  },
  {
   "company_id": 907,
@@ -558,6 +612,15 @@
   "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006oel1-att/11POPER-Outline.pdf"
  },
  {
+  "company_id": 1771,
+  "name": "株式会社学びエイド",
+  "code": "184A",
+  "listing_date": "2024-05-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp7700000055ar-att/04Manabi-aid-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp7700000055ar-att/04Manabi-aid-Outline.pdf"
+ },
+ {
   "company_id": 1793,
   "name": "株式会社CaSy",
   "code": "9215",
@@ -565,6 +628,15 @@
   "market": "マザーズ",
   "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu0000064il5-att/02CaSy-1s.pdf",
   "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu0000064il5-att/02CaSy-Outline.pdf"
+ },
+ {
+  "company_id": 1798,
+  "name": "株式会社TalentX（旧・株式会社MyRefer）",
+  "code": "330A",
+  "listing_date": "2025-03-18",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000000m7m8-att/03TalentX-1s.pdf",
+  "outline_pdf": null
  },
  {
   "company_id": 1828,
