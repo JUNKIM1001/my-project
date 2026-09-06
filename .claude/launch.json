@@ -66,6 +66,28 @@
       "port": 8450
     },
     {
+      "name": "aqua-showcase",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "aqua-showcase",
+        "run",
+        "dev"
+      ],
+      "port": 8460
+    },
+    {
+      "name": "aqua-showcase-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "aqua-showcase",
+        "run",
+        "preview"
+      ],
+      "port": 8461
+    },
+    {
       "name": "captable-sim",
       "runtimeExecutable": "bash",
       "runtimeArgs": [
@@ -82,6 +104,15 @@
         "cd \"/Users/thisiskj/Library/Mobile Documents/com~apple~CloudDocs/Clode code/startup-finder\" && .venv/bin/uvicorn app.main:app --port 8430"
       ],
       "port": 8430
+    },
+    {
+      "name": "jam-lab",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /tmp/jam-lab-preview && exec python3 -m http.server 8480"
+      ],
+      "port": 8480
     }
   ]
 }
