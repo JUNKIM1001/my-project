@@ -162,6 +162,16 @@
   .m-sec a { color: var(--accent); word-break: break-all; font-size: 12px; }
   .srcnote { margin-top: 18px; padding: 11px 14px; background: var(--amber-bg); border-radius: 10px; font-size: 11.5px; color: var(--amber); line-height: 1.7; }
   .more-status { text-align: center; padding: 16px 0 4px; min-height: 20px; }
+  .ipo-sec { margin-top: 16px; border: 1.5px solid #cfe3d6; border-radius: 12px; padding: 14px 16px; background: #f4faf6; }
+  .ipo-sec h4 { font-size: 12px; color: #1f6b3a; margin: 12px 0 6px; }
+  .ipo-badge { display: inline-block; background: #1f6b3a; color: #fff; border-radius: 6px; font-size: 10.5px; padding: 2px 7px; font-weight: 700; letter-spacing: .03em; }
+  .ipo-bar { display: flex; height: 18px; border-radius: 6px; overflow: hidden; margin: 6px 0 4px; }
+  .ipo-bar span { display: block; height: 100%; }
+  .ipo-legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11px; color: var(--muted); }
+  .ipo-legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 3px; vertical-align: -1px; }
+  .kpi-row .bench { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; min-width: 150px; }
+  .kpi-row .bench b { font-size: 20px; display: block; color: var(--text); }
+  .kpi-row .bench span { font-size: 11px; color: var(--muted); }
   .trend-controls { padding: 14px 16px; margin-bottom: 14px; }
   .trend-controls .fldrow { display: flex; gap: 14px; flex-wrap: wrap; align-items: end; margin-bottom: 6px; }
   .trend-controls .fld { display: flex; flex-direction: column; gap: 4px; }
@@ -197,6 +207,7 @@
   <div class="tab active" data-pane="search">🔍 企業検索</div>
   <div class="tab" data-pane="synergy">🤝 シナジー検索</div>
   <div class="tab" data-pane="trends">📊 トレンド</div>
+  <div class="tab" data-pane="ipo">🏛 IPO分析</div>
 </div>
 
 <div class="pane active" id="pane-search">
@@ -308,6 +319,33 @@
     <div id="tr-chart"></div>
     <div id="tr-tooltip"></div>
     <div id="tr-legend" class="tr-legend"></div>
+  </div>
+</div>
+<div class="pane" id="pane-ipo">
+  <div class="card trend-controls">
+    <div style="font-size:13px;line-height:1.7"><b>IPO企業の資本政策ベンチマーク</b> — 上場時のⅠの部（新規上場申請のための有価証券報告書）から株主構成・資本政策・財務をAI抽出し、横断比較します。値は届出書記載値（推定は「est」表記）。</div>
+    <div class="faint" id="ipo-note" style="font-size:11.5px;margin-top:4px"></div>
+  </div>
+  <div class="kpi-row" id="ipo-bench" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px"></div>
+  <div class="card" style="padding:10px 14px 14px;position:relative;margin-bottom:14px">
+    <div style="display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:6px">
+      <div class="fld" style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10.5px;color:var(--accent);font-weight:700">X軸</label><select id="ipo-x"></select></div>
+      <div class="fld" style="display:flex;flex-direction:column;gap:4px"><label style="font-size:10.5px;color:var(--accent);font-weight:700">Y軸</label><select id="ipo-y"></select></div>
+      <span class="faint" style="font-size:11.5px">点クリックで詳細（IPO分析セクション付き）</span>
+    </div>
+    <div id="ipo-chart"></div>
+    <div id="ipo-tooltip" style="display:none;position:absolute;pointer-events:none;background:var(--panel);border:1.5px solid var(--border2);border-radius:10px;padding:9px 12px;font-size:12px;box-shadow:0 6px 24px rgba(30,40,80,.14);z-index:5;max-width:280px;line-height:1.6"></div>
+  </div>
+  <div class="card tablewrap">
+    <table>
+      <thead><tr>
+        <th>企業名</th><th>上場日</th><th>市場</th>
+        <th style="text-align:right">創業者%</th><th style="text-align:right">VC%</th><th style="text-align:right">事業会社%</th>
+        <th style="text-align:right">ラウンド数</th><th style="text-align:right">株価倍率</th><th style="text-align:right">設立→IPO</th>
+        <th style="text-align:right">吸収金額</th><th style="text-align:right">直近売上</th>
+      </tr></thead>
+      <tbody id="ipo-tbody"></tbody>
+    </table>
   </div>
 </div>
 </main>
@@ -609,6 +647,7 @@ async function openDetail(id) {
       ${sec('提携事業会社', c.partners.length ? c.partners.map(i => `<span class="tag static">${esc(i)}</span>`).join('') : '')}
       ${sec('受賞歴', c.awards.length ? c.awards.map(a => `🏆 ${esc(a.event || '')} ${esc(a.year || '')} <b>${esc(a.result || '')}</b>`).join('<br>') : '')}
       ${gbizSec(c)}
+      <div id="ipo-sec"></div>
       ${sec('連絡先（アウトリーチ用）', [
         c.contact_url ? linkify(c.contact_url, '✉️') : null,
         c.rep_linkedin ? linkify(c.rep_linkedin, '💼') : null,
@@ -623,6 +662,7 @@ async function openDetail(id) {
     </div>`;
   document.getElementById('overlay').style.display = 'block';
   document.getElementById('modal').style.display = 'block';
+  if (c.status === 'ipo') loadIpoSection(c.id);
 }
 function gbizSec(c) {
   if (!c.corporate_number) return '';
@@ -1044,6 +1084,105 @@ function bindTips(selector, fmt) {
   document.querySelectorAll('#tr-chart ' + selector).forEach(el => {
     el.addEventListener('mousemove', e => showTip(e, fmt(JSON.parse(el.dataset.tip))));
     el.addEventListener('mouseleave', hideTip);
+  });
+}
+
+
+/* ===== IPO分析（Ⅰの部 AI抽出） ===== */
+const IPO_CATS = [['founders_pct','創業者','#2a78d6'],['management_pct','経営陣','#4a3aa7'],['vc_pct','VC','#008300'],
+  ['corporate_pct','事業会社','#eda100'],['financial_pct','金融機関','#1baf7a'],['employee_so_pct','従業員・SO','#e87ba4'],['other_pct','その他','#8b93a2']];
+const yenOku = v => v == null ? '—' : (Math.round(v / 1e7) / 10).toLocaleString() + '億円';
+const pct = v => v == null ? '—' : `${v}%`;
+
+async function loadIpoSection(id) {
+  const box = document.getElementById('ipo-sec');
+  if (!box) return;
+  box.innerHTML = '<div class="ipo-sec"><span class="ipo-badge">IPO分析</span> <span class="muted" style="font-size:12px">Ⅰの部を読み込み中…</span></div>';
+  const res = await fetch(`/api/companies/${id}/ipo`);
+  if (!res.ok) { box.innerHTML = ''; return; }
+  const d = await res.json(); const a = d.analysis || {};
+  const ss = a.shareholder_summary || {}, terms = a.ipo_terms || {}, dv = a.derived || {}, so = a.stock_options || {}, st = a.strategy || {};
+  const bar = IPO_CATS.filter(([k]) => ss[k]).map(([k, l, col]) => `<span style="width:${ss[k]}%;background:${col}" title="${l} ${ss[k]}%"></span>`).join('');
+  const legend = IPO_CATS.filter(([k]) => ss[k]).map(([k, l, col]) => `<span><i style="background:${col}"></i>${l} ${ss[k]}%</span>`).join('');
+  const top = (a.shareholders || []).slice(0, 10).map(s => `<tr><td>${esc(s.name)}</td><td><span class="tag static">${esc(s.category || '')}</span></td><td style="text-align:right">${pct(s.pct)}</td></tr>`).join('');
+  const hist = (a.capital_history || []).map(r => {
+    const price = r.price_per_share_yen ?? (r.price_per_share_yen_est != null ? `${r.price_per_share_yen_est}<span class="faint">est</span>` : '—');
+    return `<tr><td style="white-space:nowrap">${esc(r.date || '')}</td><td>${esc(r.event || '')}<div class="desc">${esc(r.share_class || '')}</div></td><td style="text-align:right">${r.shares ? r.shares.toLocaleString() : '—'}</td><td style="text-align:right">${price}</td><td style="text-align:right">${r.post_money_yen_est != null ? yenOku(r.post_money_yen_est) + '<span class="faint">est</span>' : '—'}</td><td>${esc((r.investors || []).slice(0, 3).join('、'))}${r.note ? `<div class="desc">${esc(r.note)}</div>` : ''}</td></tr>`;
+  }).join('');
+  const fins = (a.financials || []).map(f => `<tr><td>${esc(f.fiscal_year || '')}</td><td style="text-align:right">${f.revenue_myen != null ? f.revenue_myen.toLocaleString() : '—'}</td><td style="text-align:right">${f.net_income_myen != null ? f.net_income_myen.toLocaleString() : '—'}</td><td style="text-align:right">${f.employees ?? '—'}</td></tr>`).join('');
+  const li = arr => (arr || []).map(x => `<li>${esc(x)}</li>`).join('');
+  box.innerHTML = `
+  <div class="ipo-sec">
+    <span class="ipo-badge">IPO分析</span>
+    <span class="muted" style="font-size:12px">　${esc(d.listing_date || '')} ${esc(d.market || '')}上場（${esc(d.code || '')}）・<a href="${esc(d.source_pdf || '#')}" target="_blank" rel="noopener noreferrer">Ⅰの部PDF（JPX）</a></span>
+    <div class="m-grid" style="margin-top:10px">
+      <div class="m-stat"><div class="k">公開価格</div><div class="v">${terms.offer_price_yen != null ? terms.offer_price_yen.toLocaleString() + '円' : '—'}</div></div>
+      <div class="m-stat"><div class="k">吸収金額</div><div class="v">${yenOku(terms.raised_total_yen)}</div>${terms.lead_underwriter ? `<div class="note">主幹事 ${esc(terms.lead_underwriter)}</div>` : ''}</div>
+      <div class="m-stat"><div class="k">設立→IPO</div><div class="v">${dv.years_founding_to_ipo != null ? dv.years_founding_to_ipo + '年' : '—'}</div><div class="note">ラウンド ${dv.rounds_count ?? '—'}回</div></div>
+      <div class="m-stat"><div class="k">株価倍率（初回→最終）</div><div class="v">${dv.price_multiple_first_to_last_est != null ? dv.price_multiple_first_to_last_est + 'x' : '—'}</div><div class="note">分割調整後・est</div></div>
+    </div>
+    <h4>上場直前の株主構成（潜在株含まず）</h4>
+    <div class="ipo-bar">${bar}</div><div class="ipo-legend">${legend}</div>
+    <table class="cmp-table" style="margin-top:8px"><thead><tr><th>大株主 上位10</th><th>属性</th><th style="text-align:right">持株比率</th></tr></thead><tbody>${top}</tbody></table>
+    ${so.potential_pct != null ? `<div class="desc" style="margin-top:6px">SO等の潜在株: ${so.potential_pct}%（${(so.potential_shares || 0).toLocaleString()}株）</div>` : ''}
+    <h4>資本政策タイムライン（設立→上場申請）</h4>
+    <div style="overflow-x:auto"><table class="cmp-table"><thead><tr><th>日付</th><th>イベント</th><th style="text-align:right">株数</th><th style="text-align:right">1株価格(円)</th><th style="text-align:right">ポストマネー</th><th>引受先・備考</th></tr></thead><tbody>${hist || '<tr><td colspan="6" class="faint">記載なし</td></tr>'}</tbody></table></div>
+    <h4>財務（百万円）</h4>
+    <table class="cmp-table"><thead><tr><th>決算期</th><th style="text-align:right">売上高</th><th style="text-align:right">当期純利益</th><th style="text-align:right">従業員</th></tr></thead><tbody>${fins || '<tr><td colspan="4" class="faint">記載なし</td></tr>'}</tbody></table>
+    <h4>戦略（Ⅰの部「経営方針」より要約）</h4>
+    <div style="font-size:12.5px;line-height:1.7">${st.mission ? `<p style="margin:0 0 6px"><b>${esc(st.mission)}</b></p>` : ''}
+      ${st.growth_strategy?.length ? `<div><b>成長戦略</b><ul style="margin:2px 0 6px 18px">${li(st.growth_strategy)}</ul></div>` : ''}
+      ${st.ksf?.length ? `<div><b>KSF</b><ul style="margin:2px 0 6px 18px">${li(st.ksf)}</ul></div>` : ''}
+      ${st.risks?.length ? `<div><b>主なリスク</b><ul style="margin:2px 0 6px 18px">${li(st.risks)}</ul></div>` : ''}
+      ${st.use_of_proceeds ? `<div><b>資金使途</b>: ${esc(st.use_of_proceeds)}</div>` : ''}</div>
+    <p class="muted" style="font-size:11px;margin-top:10px">⚠️ ${esc(a.quality_note || '')}　本セクションはⅠの部からのAI抽出です。数値は届出書記載値（est=推定）。投資判断の際は原本をご確認ください。</p>
+  </div>`;
+}
+
+let IPO_DATA = null, IPO_READY = false;
+const IPO_AXES = { years_to_ipo: '設立→IPO（年）', founder_pct: '創業者持株比率（%）', vc_pct: 'VC持株比率（%）', corporate_pct: '事業会社持株比率（%）',
+  rounds_count: 'ラウンド数', price_multiple: '株価倍率（初回→最終・est）', total_raised_oku: '累計調達額（億円）', revenue_myen: '直近売上高（百万円）', so_pct: 'SO潜在株比率（%）' };
+document.querySelector('.tab[data-pane="ipo"]').addEventListener('click', initIpo);
+async function initIpo() {
+  if (!IPO_DATA) {
+    IPO_DATA = await (await fetch('/api/ipo/summary')).json();
+    for (const id of ['ipo-x', 'ipo-y']) { const s = document.getElementById(id); s.innerHTML = ''; Object.entries(IPO_AXES).forEach(([k, v]) => s.add(new Option(v, k))); }
+    document.getElementById('ipo-x').value = 'years_to_ipo'; document.getElementById('ipo-y').value = 'founder_pct';
+  }
+  if (!IPO_READY) { IPO_READY = true; for (const id of ['ipo-x', 'ipo-y']) document.getElementById(id).addEventListener('change', renderIpo); }
+  renderIpo();
+}
+function renderIpo() {
+  const { items, benchmarks } = IPO_DATA;
+  const b = benchmarks || {};
+  const card = (label, k, unit) => b[k] ? `<div class="bench"><b>${b[k].median}${unit}</b><span>${label}（中央値・n=${b[k].n}）<br>四分位 ${b[k].q1}〜${b[k].q3}${unit}</span></div>` : '';
+  document.getElementById('ipo-bench').innerHTML = card('創業者持株比率', 'founder_pct', '%') + card('VC持株比率', 'vc_pct', '%') + card('事業会社持株比率', 'corporate_pct', '%')
+    + card('ラウンド数', 'rounds_count', '回') + card('株価倍率（初回→最終）', 'price_multiple', 'x') + card('設立→IPO', 'years_to_ipo', '年') + card('SO潜在株比率', 'so_pct', '%');
+  document.getElementById('ipo-note').textContent = `${items.length}社（Ⅰの部を取得できた2022年以降の上場企業）。ベンチマークは資本政策シミュレーターの妥当性判定にも使えます。`;
+  document.getElementById('ipo-tbody').innerHTML = items.map(i => `
+    <tr class="row" onclick="openDetail(${i.company_id})">
+      <td><span class="name">${esc(i.name)}</span><div class="desc">${esc((i.sectors || []).slice(0, 2).join('・'))} ${esc(i.code || '')}</div></td>
+      <td class="muted">${esc(i.listing_date || '')}</td><td class="muted">${esc(i.market || '')}</td>
+      <td class="num">${pct(i.founder_pct)}</td><td class="num">${pct(i.vc_pct)}</td><td class="num">${pct(i.corporate_pct)}</td>
+      <td class="num">${i.rounds_count ?? '—'}</td><td class="num">${i.price_multiple != null ? i.price_multiple + 'x' : '—'}</td><td class="num">${i.years_to_ipo != null ? i.years_to_ipo + '年' : '—'}</td>
+      <td class="num">${yenOku(i.raised_total_yen)}</td><td class="num">${i.revenue_myen != null ? i.revenue_myen.toLocaleString() + '<span class="unit"> 百万円</span>' : '—'}</td>
+    </tr>`).join('');
+  // 散布図
+  const xk = document.getElementById('ipo-x').value, yk = document.getElementById('ipo-y').value;
+  const pts = items.filter(i => i[xk] != null && i[yk] != null);
+  const W = 1160, H = 420, ML = 74, MB = 48;
+  if (!pts.length) { document.getElementById('ipo-chart').innerHTML = '<div class="empty"><b>データなし</b></div>'; return; }
+  const sx = makeScale(pts.map(i => i[xk]), ML, W - 16, false), sy = makeScale(pts.map(i => i[yk]), H - MB, 20, false);
+  const marks = pts.map(i => `<circle cx="${sx.map(i[xk])}" cy="${sy.map(i[yk])}" r="6" fill="#1f6b3a" fill-opacity="0.6" stroke="#fff" stroke-width="1" style="cursor:pointer" data-id="${i.company_id}" data-tip="${esc(JSON.stringify({ n: i.name, x: i[xk], y: i[yk] }))}"/>`
+    + `<text x="${sx.map(i[xk]) + 8}" y="${sy.map(i[yk]) + 4}" font-size="10" fill="#3c4657">${esc(i.name.replace(/株式会社/g, '').slice(0, 8))}</text>`).join('');
+  document.getElementById('ipo-chart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">${chartFrame(sx, sy, IPO_AXES[xk], IPO_AXES[yk], W, H, ML, MB)}${marks}</svg>`;
+  const tip = document.getElementById('ipo-tooltip');
+  document.querySelectorAll('#ipo-chart circle').forEach(el => {
+    el.addEventListener('mousemove', e => { const d = JSON.parse(el.dataset.tip); const wrap = tip.parentElement.getBoundingClientRect();
+      tip.innerHTML = `<b>${esc(d.n)}</b><br>${esc(IPO_AXES[xk])}: ${d.x}<br>${esc(IPO_AXES[yk])}: ${d.y}`; tip.style.display = 'block';
+      tip.style.left = Math.min(e.clientX - wrap.left + 14, wrap.width - 290) + 'px'; tip.style.top = (e.clientY - wrap.top + 12) + 'px'; });
+    el.addEventListener('mouseleave', () => tip.style.display = 'none');
+    el.addEventListener('click', () => openDetail(+el.dataset.id));
   });
 }
 

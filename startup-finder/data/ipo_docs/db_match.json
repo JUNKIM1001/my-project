@@ -1,0 +1,587 @@
+[
+ {
+  "company_id": 33,
+  "name": "株式会社ABEJA",
+  "code": "5574",
+  "listing_date": "2023-06-13",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000006e6s-att/06ABEJA-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000006e6s-att/06ABEJA-Outline.pdf"
+ },
+ {
+  "company_id": 37,
+  "name": "株式会社Synspective",
+  "code": "290A",
+  "listing_date": "2024-12-19",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000lfsq-att/12Synspective-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000lfsq-att/12Synspective-Outline.pdf"
+ },
+ {
+  "company_id": 48,
+  "name": "株式会社アストロスケールホールディングス",
+  "code": "186A",
+  "listing_date": "2024-06-05",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp7700000063wj-att/06AstroscaleHoldings-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 70,
+  "name": "株式会社クラダシ",
+  "code": "5884",
+  "listing_date": "2023-06-30",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su000000806q-att/06KURADASHI-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su000000806q-att/06KURADASHI-Outline.pdf"
+ },
+ {
+  "company_id": 72,
+  "name": "ベースフード株式会社",
+  "code": "2936",
+  "listing_date": "2022-11-15",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006oiac-att/11BASEFOOD-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006oiac-att/11BASEFOOD-Outline.pdf"
+ },
+ {
+  "company_id": 83,
+  "name": "株式会社雨風太陽",
+  "code": "5616",
+  "listing_date": "2023-12-18",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/bkk2ed0000001y1x-att/12AmeKazeTaiyo-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/bkk2ed0000001y1x-att/12AmeKazeTaiyo-Outline.pdf"
+ },
+ {
+  "company_id": 102,
+  "name": "株式会社ティアフォー",
+  "code": "593A",
+  "listing_date": "2026-07-22",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000001ihj9-att/07TIERIV-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 106,
+  "name": "Terra Drone株式会社",
+  "code": "278A",
+  "listing_date": "2024-11-29",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000jo2s-att/11TerraDrone-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000jo2s-att/11TerraDrone-Outline.pdf"
+ },
+ {
+  "company_id": 107,
+  "name": "株式会社Liberaware",
+  "code": "218A",
+  "listing_date": "2024-07-29",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000a0p2-att/07Liberaware-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000a0p2-att/07Liberaware-Outline.pdf"
+ },
+ {
+  "company_id": 137,
+  "name": "株式会社パワーエックス",
+  "code": "485A",
+  "listing_date": "2025-12-19",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt0000004rz0-att/12PowerX-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 169,
+  "name": "株式会社モンスターラボ",
+  "code": "5255",
+  "listing_date": "2023-03-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000001lw5-att/03MonstarlabHoldings-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 171,
+  "name": "株式会社ispace",
+  "code": "9348",
+  "listing_date": "2023-04-12",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000002db9-att/04ispace-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 177,
+  "name": "株式会社タイミー",
+  "code": "215A",
+  "listing_date": "2024-07-26",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp770000009tk0-att/07Timee-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 182,
+  "name": "クオリプス株式会社",
+  "code": "4894",
+  "listing_date": "2023-06-27",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000007qm2-att/06Cuorips-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000007qm2-att/06Cuorips-Outline.pdf"
+ },
+ {
+  "company_id": 191,
+  "name": "Aiロボティクス株式会社",
+  "code": "247A",
+  "listing_date": "2024-09-27",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000evg1-att/09AiROBOTICS-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000evg1-att/09AiROBOTICS-Outline.pdf"
+ },
+ {
+  "company_id": 198,
+  "name": "PRONI株式会社（旧・株式会社ユニラボ）",
+  "code": "479A",
+  "listing_date": "2025-12-24",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt0000004n9a-att/12PRONI-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt0000004n9a-att/12PRONI-Outline.pdf"
+ },
+ {
+  "company_id": 209,
+  "name": "ナイル株式会社",
+  "code": "5618",
+  "listing_date": "2023-12-20",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/bkk2ed0000002f27-att/12Nyle-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/bkk2ed0000002f27-att/12Nyle-Outline.pdf"
+ },
+ {
+  "company_id": 214,
+  "name": "株式会社ROXX",
+  "code": "241A",
+  "listing_date": "2024-09-25",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000eglo-att/09ROXX-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000eglo-att/09ROXX-Outline.pdf"
+ },
+ {
+  "company_id": 217,
+  "name": "株式会社ミラティブ",
+  "code": "472A",
+  "listing_date": "2025-12-18",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt00000047q1-att/12Mirrativ-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 220,
+  "name": "AnyMind Group株式会社",
+  "code": "5027",
+  "listing_date": "2023-03-29",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000001tck-att/03AnyMindGroup-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000001tck-att/03AnyMindGroup-Outline.pdf"
+ },
+ {
+  "company_id": 222,
+  "name": "GO株式会社",
+  "code": "581A",
+  "listing_date": "2026-06-16",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt0000016v9l-att/06GO-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 297,
+  "name": "株式会社インフキュリオン",
+  "code": "438A",
+  "listing_date": "2025-10-24",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc0000023u9l-att/10Infcurion-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 298,
+  "name": "株式会社INFORICH",
+  "code": "9338",
+  "listing_date": "2022-12-20",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt0000001oy6-att/12INFORICH-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt0000001oy6-att/12INFORICH-Outline.pdf"
+ },
+ {
+  "company_id": 303,
+  "name": "ノイルイミューン・バイオテック株式会社",
+  "code": "4893",
+  "listing_date": "2023-06-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000007x87-att/06Noile-ImmuneBiotech-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 304,
+  "name": "Heartseed株式会社",
+  "code": "219A",
+  "listing_date": "2024-07-30",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000a7nw-att/07Heartseed-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000a7nw-att/07Heartseed-Outline.pdf"
+ },
+ {
+  "company_id": 308,
+  "name": "株式会社ネットスターズ",
+  "code": "5590",
+  "listing_date": "2023-09-26",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/jr4eth0000000jxz-att/09NETSTARS-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 316,
+  "name": "株式会社L is B",
+  "code": "145A",
+  "listing_date": "2024-03-26",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/skc8fn0000002j4b-att/03LisB-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 318,
+  "name": "株式会社アクセルスペース",
+  "code": "402A",
+  "listing_date": "2025-08-13",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000001qhs3-att/08AxelspaceHoldings-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 322,
+  "name": "株式会社QPS研究所",
+  "code": "5595",
+  "listing_date": "2023-12-06",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/bkk2ed0000000vob-att/12InstituteforQ-shuPioneersofSpace-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 333,
+  "name": "株式会社アクセルスペースホールディングス",
+  "code": "402A",
+  "listing_date": "2025-08-13",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000001qhs3-att/08AxelspaceHoldings-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 374,
+  "name": "株式会社Arent",
+  "code": "5254",
+  "listing_date": "2023-03-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000001cdq-att/03Arent-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 386,
+  "name": "株式会社FIXER",
+  "code": "5129",
+  "listing_date": "2022-10-06",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006lqgt-att/10FIXER-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006lqgt-att/10FIXER-Outline.pdf"
+ },
+ {
+  "company_id": 391,
+  "name": "ANYCOLOR株式会社（旧・いちから株式会社）",
+  "code": "5032",
+  "listing_date": "2022-06-08",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006da6d-att/06ANYCOLOR-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 403,
+  "name": "株式会社ヌーラボ",
+  "code": "5033",
+  "listing_date": "2022-06-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006f4cu-att/06Nulab-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006f4cu-att/06Nulab-Outline.pdf"
+ },
+ {
+  "company_id": 410,
+  "name": "株式会社キャスター",
+  "code": "9331",
+  "listing_date": "2023-10-04",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/jr4eth00000012l8-att/10Caster-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/jr4eth00000012l8-att/10Caster-Outline.pdf"
+ },
+ {
+  "company_id": 424,
+  "name": "株式会社Ridge-i",
+  "code": "5572",
+  "listing_date": "2023-04-26",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000003gv9-att/04Ridge-i-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000003gv9-att/04Ridge-i-Outline.pdf"
+ },
+ {
+  "company_id": 427,
+  "name": "株式会社MFS",
+  "code": "196A",
+  "listing_date": "2024-06-21",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp7700000074ax-att/06MFS-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 448,
+  "name": "株式会社トランザクション・メディア・ネットワークス",
+  "code": "5258",
+  "listing_date": "2023-04-04",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000001pyd-att/04TransactionMediaNetworks-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su0000001pyd-att/04TransactionMediaNetworks-Outline.pdf"
+ },
+ {
+  "company_id": 451,
+  "name": "株式会社トリドリ",
+  "code": "9337",
+  "listing_date": "2022-12-19",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt0000001iym-att/12toridori-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt0000001iym-att/12toridori-Outline.pdf"
+ },
+ {
+  "company_id": 463,
+  "name": "株式会社ケイファーマ",
+  "code": "4896",
+  "listing_date": "2023-10-17",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/jr4eth00000021f4-att/10KPharma-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/jr4eth00000021f4-att/10KPharma-Outline.pdf"
+ },
+ {
+  "company_id": 485,
+  "name": "イノバセル株式会社",
+  "code": "504A",
+  "listing_date": "2026-02-24",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000000gy7b-att/02Innovacell-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000000gy7b-att/02Innovacell-Outline.pdf"
+ },
+ {
+  "company_id": 523,
+  "name": "株式会社エブリー",
+  "code": "607A",
+  "listing_date": "2026-08-04",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000001ilil-att/08every-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000001ilil-att/08every-Outline.pdf"
+ },
+ {
+  "company_id": 634,
+  "name": "株式会社ハッチ・ワーク",
+  "code": "148A",
+  "listing_date": "2024-03-26",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/skc8fn0000002it0-att/03HATCHWORK-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/skc8fn0000002it0-att/03HATCHWORK-Outline.pdf"
+ },
+ {
+  "company_id": 643,
+  "name": "株式会社PRISM BioLab",
+  "code": "206A",
+  "listing_date": "2024-07-02",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp770000007ph1-att/07PRISMBioLab-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp770000007ph1-att/07PRISMBioLab-Outline.pdf"
+ },
+ {
+  "company_id": 648,
+  "name": "株式会社ベーシック",
+  "code": "519A",
+  "listing_date": "2026-03-25",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000000nehx-att/03Basic-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 721,
+  "name": "株式会社Schoo",
+  "code": "264A",
+  "listing_date": "2024-10-22",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000h2ny-att/10Schoo-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 887,
+  "name": "株式会社ジグザグ",
+  "code": "340A",
+  "listing_date": "2025-03-31",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000000xxhg-att/03zig-zag-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000000xxhg-att/03zig-zag-Outline.pdf"
+ },
+ {
+  "company_id": 905,
+  "name": "マイクロ波化学株式会社",
+  "code": "9227",
+  "listing_date": "2022-06-24",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006etw7-att/06MicrowaveChemical-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006etw7-att/06MicrowaveChemical-Outline.pdf"
+ },
+ {
+  "company_id": 907,
+  "name": "株式会社坪田ラボ",
+  "code": "4890",
+  "listing_date": "2022-06-23",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006ewnx-att/06TsubotaLaboratory-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006ewnx-att/06TsubotaLaboratory-Outline.pdf"
+ },
+ {
+  "company_id": 908,
+  "name": "Chordia Therapeutics株式会社",
+  "code": "190A",
+  "listing_date": "2024-06-14",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp770000006kh4-att/06ChordiaTherapeutics-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp770000006kh4-att/06ChordiaTherapeutics-Outline.pdf"
+ },
+ {
+  "company_id": 909,
+  "name": "株式会社ELEMENTS",
+  "code": "5246",
+  "listing_date": "2022-12-27",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt00000023ne-att/12ELEMENTS-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt00000023ne-att/12ELEMENTS-Outline.pdf"
+ },
+ {
+  "company_id": 970,
+  "name": "株式会社スマートドライブ",
+  "code": "5137",
+  "listing_date": "2022-12-15",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt0000001bms-att/12SmartDrive-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/co3pgt0000001bms-att/12SmartDrive-Outline.pdf"
+ },
+ {
+  "company_id": 994,
+  "name": "株式会社サイフューズ",
+  "code": "4892",
+  "listing_date": "2022-12-01",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006pdk4-att/12CyfuseBiomedical-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006pdk4-att/12CyfuseBiomedical-Outline.pdf"
+ },
+ {
+  "company_id": 995,
+  "name": "株式会社unerry",
+  "code": "5034",
+  "listing_date": "2022-07-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006hbwr-att/07unerry-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006hbwr-att/07unerry-Outline.pdf"
+ },
+ {
+  "company_id": 1085,
+  "name": "株式会社SQUEEZE",
+  "code": "558A",
+  "listing_date": "2026-04-22",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000000pxz5-att/04SQUEEZE-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 1146,
+  "name": "カバー株式会社",
+  "code": "5253",
+  "listing_date": "2023-03-27",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su000000198z-att/03COVER-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/cg27su000000198z-att/03COVER-Outline.pdf"
+ },
+ {
+  "company_id": 1286,
+  "name": "犬猫生活株式会社（旧・オネストフード株式会社）",
+  "code": "556A",
+  "listing_date": "2026-04-23",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000000psxh-att/04INUNEKO-SEIKATSU-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt000000psxh-att/04INUNEKO-SEIKATSU-Outline.pdf"
+ },
+ {
+  "company_id": 1314,
+  "name": "株式会社フツパー",
+  "code": "478A",
+  "listing_date": "2025-12-24",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt0000004i6b-att/12Hutzper-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/t13vrt0000004i6b-att/12Hutzper-Outline.pdf"
+ },
+ {
+  "company_id": 1519,
+  "name": "モイ株式会社",
+  "code": "5031",
+  "listing_date": "2022-04-27",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu00000692rk-att/04moi-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 1522,
+  "name": "株式会社トヨコー",
+  "code": "341A",
+  "listing_date": "2025-03-28",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000000xxmb-att/03TOYOKOH-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/um3qrc000000xxmb-att/03TOYOKOH-Outline.pdf"
+ },
+ {
+  "company_id": 1693,
+  "name": "株式会社メンタルヘルステクノロジーズ",
+  "code": "9218",
+  "listing_date": "2022-03-28",
+  "market": "マザーズ",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu0000066p8r-att/03MentalHealthTechnologies-1s.pdf",
+  "outline_pdf": null
+ },
+ {
+  "company_id": 1762,
+  "name": "株式会社POPER",
+  "code": "5134",
+  "listing_date": "2022-11-15",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006oel1-att/11POPER-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006oel1-att/11POPER-Outline.pdf"
+ },
+ {
+  "company_id": 1793,
+  "name": "株式会社CaSy",
+  "code": "9215",
+  "listing_date": "2022-02-22",
+  "market": "マザーズ",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu0000064il5-att/02CaSy-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu0000064il5-att/02CaSy-Outline.pdf"
+ },
+ {
+  "company_id": 1828,
+  "name": "tripla株式会社",
+  "code": "5136",
+  "listing_date": "2022-11-25",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006oz6i-att/11tripla-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/nlsgeu000006oz6i-att/11tripla-Outline.pdf"
+ },
+ {
+  "company_id": 1845,
+  "name": "株式会社TMH",
+  "code": "280A",
+  "listing_date": "2024-12-04",
+  "market": "グロース",
+  "ichi_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000k5xs-att/12TMH-1s.pdf",
+  "outline_pdf": "https://www.jpx.co.jp/listing/stocks/new/mklp77000000k5xs-att/12TMH-Outline.pdf"
+ }
+]

@@ -102,3 +102,24 @@ class AccessLog(Base):
     method = Column(String, nullable=False)
     path = Column(String, nullable=False)
     status = Column(Integer, nullable=True)           # HTTPステータスコード
+
+
+class IpoAnalysis(Base):
+    """IPO企業のⅠの部（新規上場申請のための有価証券報告書）からの構造化抽出結果。
+
+    analysis_json は Gemini による抽出（株主構成・資本政策履歴・SO・財務・戦略・IPO条件）。
+    値は届出書記載値のみ（推定はフィールド名に _est を付けて区別）。1社1行。
+    """
+
+    __tablename__ = "ipo_analysis"
+
+    id = Column(Integer, primary_key=True, index=True)
+    company_id = Column(Integer, nullable=False, unique=True, index=True)
+    code = Column(String, nullable=True)          # 証券コード
+    listing_date = Column(String, nullable=True)  # "YYYY-MM-DD"
+    market = Column(String, nullable=True)        # グロース/スタンダード/プライム
+    source_pdf = Column(String, nullable=True)    # Ⅰの部PDF(JPX)
+    outline_pdf = Column(String, nullable=True)   # 新規上場会社概要PDF(JPX)
+    analysis_json = Column(Text, nullable=True)
+    extracted_at = Column(String, nullable=True)
+    model = Column(String, nullable=True)

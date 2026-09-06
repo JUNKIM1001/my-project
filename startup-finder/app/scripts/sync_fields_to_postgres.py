@@ -24,7 +24,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 
 from app.db import DB_PATH
-from app.models import Company
+from app.models import Company, IpoAnalysis
 from app.rounds import keep_max_total, round_is_newer, should_replace_round, stage_for_status, valid_ym
 from app.schema import ensure_sqlite_schema
 
@@ -139,6 +139,8 @@ def main():
         for col, typ in EXTRA_DDL:
             conn.execute(text("ALTER TABLE companies ADD COLUMN IF NOT EXISTS %s %s" % (col, typ)))
         conn.commit()
+    # ipo_analysis テーブルは本番で create_all を走らせない方針のため、ここで作る（冪等）
+    IpoAnalysis.__table__.create(bind=dst_engine, checkfirst=True)
     dst = sessionmaker(bind=dst_engine)()
 
     local = {c.id: c for c in src.query(Company).all()}
@@ -181,6 +183,23 @@ def main():
             "COALESCE((SELECT MAX(id) FROM companies), 1))"))
         dst.commit()
     print("inserted new companies=%d" % inserted)
+
+    # IPO分析（1社1行）: ローカルの抽出結果を company_id で upsert（extracted_at が同じならスキップ）
+    remote_ipo = {r.company_id: r for r in dst.query(IpoAnalysis).all()}
+    ipo_up = 0
+    for l in src.query(IpoAnalysis).all():
+        r = remote_ipo.get(l.company_id)
+        if r is None:
+            r = IpoAnalysis(company_id=l.company_id)
+            dst.add(r)
+        elif r.extracted_at == l.extracted_at:
+            continue
+        for col in ("code", "listing_date", "market", "source_pdf", "outline_pdf",
+                    "analysis_json", "extracted_at", "model"):
+            setattr(r, col, getattr(l, col))
+        ipo_up += 1
+    dst.commit()
+    print("ipo_analysis synced=%d (prod total %d)" % (ipo_up, dst.query(IpoAnalysis).count()))
     print("prod total:", dst.query(Company).count())
 
     n = dst.query(Company).filter(

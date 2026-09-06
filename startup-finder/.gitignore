@@ -6,3 +6,4 @@ data/startup.db
 .env*
 !.env.example
 data/reports/
+data/ipo_docs/*.pdf

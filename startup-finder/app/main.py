@@ -22,7 +22,7 @@ from app.auth import (
     get_user_by_token, verify_password,
 )
 from app.db import IS_POSTGRES, SessionLocal, engine, get_db
-from app.models import AccessLog, Company
+from app.models import AccessLog, Company, IpoAnalysis
 from app.schema import ensure_sqlite_schema
 
 # ローカルSQLiteは起動時にスキーマを作り、不足列を追いつき追加する（app/schema.py）。
@@ -71,6 +71,10 @@ def action_for(path: str) -> str:
         return "synergy_search"
     if path == "/api/trends":
         return "trends_view"
+    if path == "/api/ipo/summary":
+        return "ipo_summary"
+    if re.fullmatch(r"/api/companies/\d+/ipo", path):
+        return "ipo_view"
     if path == "/api/compare/analyze":
         return "compare_ai"
     if path == "/api/compare":
@@ -575,6 +579,71 @@ def compare_analyze(body: CompareBody, request: Request, db: Session = Depends(g
     return result
 
 
+def _ipo_metrics(row: IpoAnalysis, company: Company):
+    """横断分析用に、1社の抽出JSONから主要指標だけを平坦化する。"""
+    d = safe_json_dict(row.analysis_json) or {}
+    ss = d.get("shareholder_summary") or {}
+    dv = d.get("derived") or {}
+    terms = d.get("ipo_terms") or {}
+    fins = d.get("financials") or []
+    last_fin = fins[-1] if fins else {}
+    so = d.get("stock_options") or {}
+    return {
+        "company_id": row.company_id, "name": company.name, "code": row.code,
+        "listing_date": row.listing_date, "market": row.market,
+        "sectors": [s for s in (company.sectors or "").split(",") if s],
+        "founder_pct": ss.get("founders_pct"), "management_pct": ss.get("management_pct"),
+        "vc_pct": ss.get("vc_pct"), "corporate_pct": ss.get("corporate_pct"),
+        "top10_pct": ss.get("top10_pct"), "so_pct": so.get("potential_pct"),
+        "rounds_count": dv.get("rounds_count"), "price_multiple": dv.get("price_multiple_first_to_last_est"),
+        "years_to_ipo": dv.get("years_founding_to_ipo"),
+        "offer_price_yen": terms.get("offer_price_yen"), "raised_total_yen": terms.get("raised_total_yen"),
+        "market_cap_yen_est": terms.get("market_cap_at_ipo_yen_est"),
+        "revenue_myen": last_fin.get("revenue_myen"), "net_income_myen": last_fin.get("net_income_myen"),
+        "employees": last_fin.get("employees"), "fiscal_year": last_fin.get("fiscal_year"),
+        "total_raised_oku": company.total_raised_oku,
+    }
+
+
+def _quantiles(values):
+    vals = sorted(v for v in values if isinstance(v, (int, float)))
+    if not vals:
+        return None
+    def q(p):
+        k = (len(vals) - 1) * p
+        lo, hi = int(k), min(int(k) + 1, len(vals) - 1)
+        return round(vals[lo] + (vals[hi] - vals[lo]) * (k - lo), 1)
+    return {"n": len(vals), "min": vals[0], "q1": q(0.25), "median": q(0.5), "q3": q(0.75), "max": vals[-1]}
+
+
+@app.get("/api/companies/{company_id}/ipo")
+def get_company_ipo(company_id: int, request: Request, db: Session = Depends(get_db)):
+    """IPO企業のⅠの部から抽出した株主構成・資本政策・戦略（AI抽出・届出書記載値ベース）。"""
+    row = db.query(IpoAnalysis).filter(IpoAnalysis.company_id == company_id).first()
+    if not row:
+        raise HTTPException(404, "IPO分析データがありません")
+    c = db.query(Company).get(company_id)
+    request.state.log_info = {"keyword": c.name if c else None, "company_id": company_id}
+    return {
+        "company_id": company_id, "code": row.code, "listing_date": row.listing_date, "market": row.market,
+        "source_pdf": row.source_pdf, "extracted_at": row.extracted_at, "model": row.model,
+        "analysis": safe_json_dict(row.analysis_json) or {},
+    }
+
+
+@app.get("/api/ipo/summary")
+def ipo_summary(request: Request, db: Session = Depends(get_db)):
+    """IPO企業横断: 各社の主要指標一覧と、資本政策のベンチマーク分布（四分位）。"""
+    rows = db.query(IpoAnalysis, Company).join(Company, Company.id == IpoAnalysis.company_id).all()
+    items = [_ipo_metrics(r, c) for r, c in rows]
+    items.sort(key=lambda x: x["listing_date"] or "", reverse=True)
+    bench = {k: _quantiles([i[k] for i in items]) for k in (
+        "founder_pct", "vc_pct", "corporate_pct", "top10_pct", "so_pct",
+        "rounds_count", "price_multiple", "years_to_ipo", "total_raised_oku")}
+    request.state.log_info = {"keyword": None, "result_count": len(items)}
+    return {"count": len(items), "items": items, "benchmarks": bench}
+
+
 @app.get("/api/synergy")
 def synergy(
     request: Request,
@@ -776,7 +845,7 @@ def export_logs_csv(
         "csv_export": "CSV出力", "page_view": "ページ表示", "login": "ログイン",
         "login_failed": "ログイン失敗", "login_blocked": "ログイン遮断",
         "logout": "ログアウト", "log_view": "ログ閲覧", "trends_view": "トレンド閲覧",
-        "compare": "企業比較", "compare_ai": "比較AI分析",
+        "compare": "企業比較", "compare_ai": "比較AI分析", "ipo_view": "IPO分析閲覧", "ipo_summary": "IPO横断分析",
         "other": "その他",
     }
     for r in rows:
