@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="渋滞のしくみを RX-7 (FD3S) で走って学ぶ、ブラウザ完結型の 3D 渋滞学習ゲーム。">
+<title>JAM LAB — 渋滞のしくみを RX-7 で走って学ぶ</title>
+<style>
+/* ============================================================
+   JAM LAB — UI シェル
+   暗いシネマティックな「研究計器」調。全画面 canvas の上にガラス風パネルを重ねる。
+   ============================================================ */
+:root {
+  --panel: rgba(10, 14, 22, 0.72);
+  --panel-strong: rgba(10, 14, 22, 0.9);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hi: rgba(255, 255, 255, 0.16);
+  --text: #e8ecf3;
+  --muted: rgba(232, 236, 243, 0.62);
+  --faint: rgba(232, 236, 243, 0.38);
+  --accent: #3F5AA6;          /* 計器風の青（赤は「停止」の意味で使うためアクセントには使わない） */
+  --accent-hi: #8ea4ea;       /* 文字・輝線用の明色 */
+  --accent-soft: rgba(63, 90, 166, 0.35);
+  --amber: #f5a524;           /* 警告・注目 */
+  --red: #e5484d;             /* 停止 */
+  --teal: #2dd4bf;            /* 流れている */
+  --radius: 12px;
+  --log-h: clamp(150px, 20vh, 200px);
+  --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Noto Sans JP", "Segoe UI", Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: #05070c; color: var(--text);
+  font-family: var(--font); font-size: 14px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
+}
+[hidden] { display: none !important; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 2px; }
+p { margin: 0; }
+
+/* ---- 3D シーン（最背面） ---- */
+#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+
+/* ---- 共通パーツ ---- */
+.label { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+/* パネル見出し: 日本語主体 + 小さな英字サブタイトル */
+.ph { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; min-width: 0; }
+.ph-ja { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ph-ja .muted { font-weight: 500; font-size: 11.5px; margin-left: 6px; }
+.ph-en { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); font-weight: 600; white-space: nowrap; flex-shrink: 0; }
+.num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+.muted { color: var(--muted); }
+kbd {
+  font: inherit; font-size: 10px; line-height: 1; padding: 2px 5px; margin-left: 6px; vertical-align: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.18); border-bottom-width: 2px; border-radius: 4px; color: var(--muted);
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+  padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border-hi);
+  background: rgba(255, 255, 255, 0.06); font-weight: 600; transition: background .15s, transform .1s;
+}
+.btn:hover { background: rgba(255, 255, 255, 0.11); }
+.btn:active { transform: scale(0.98); }
+.btn[disabled] { opacity: 0.45; cursor: default; }
+.btn-primary { background: var(--accent); border-color: transparent; color: #fff; }
+.btn-primary:hover { background: #4c6bc2; }
+.btn-primary kbd { color: rgba(255, 255, 255, 0.7); border-color: rgba(255, 255, 255, 0.35); }
+.btn-ghost { background: transparent; border-color: var(--border); font-weight: 500; padding: 6px 10px; font-size: 12.5px; color: var(--muted); }
+.btn-ghost:hover { color: var(--text); background: rgba(255, 255, 255, 0.06); }
+.btn-danger { color: #ffb3b6; border-color: rgba(229, 72, 77, 0.5); }
+.panel {
+  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  pointer-events: auto; padding: 14px 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- HUD グリッド ---- */
+.hud {
+  position: fixed; inset: 0; display: grid; gap: 12px; padding: 12px; pointer-events: none;
+  grid-template-columns: 300px minmax(0, 1fr) 300px;
+  grid-template-rows: auto minmax(0, 1fr) auto var(--log-h);
+  grid-template-areas:
+    "top  top  top"
+    "left .    ring"
+    "left car  impact"
+    "log  log  log";
+  transition: opacity .4s;
+}
+.hud.is-hidden { opacity: 0; }
+.hud.is-hidden .panel, .hud.is-hidden .touch button { pointer-events: none; }
+.hud.is-dim { opacity: 0.35; }
+
+/* 上部バー: ロゴ / レベルタブ / タイマー */
+.topbar { grid-area: top; display: flex; align-items: center; gap: 16px; padding: 8px 14px 8px 18px; }
+.logo { font-weight: 800; letter-spacing: 0.16em; font-size: 16px; white-space: nowrap; line-height: 1.1; }
+.logo span { color: var(--accent-hi); }
+.logo small { display: block; font-size: 9.5px; letter-spacing: 0.24em; color: var(--faint); font-weight: 500; }
+.tabs { display: flex; gap: 4px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  min-width: 46px; padding: 5px 10px; border-radius: 8px; border: 1px solid transparent; background: transparent;
+  color: var(--muted); font-weight: 600; font-size: 12.5px; letter-spacing: 0.06em; line-height: 1.2; text-align: center;
+  transition: background .15s, color .15s;
+}
+.tab:hover { background: rgba(255, 255, 255, 0.06); color: var(--text); }
+.tab.is-active { background: var(--accent-soft); border-color: rgba(142, 164, 234, 0.5); color: #fff; }
+.tab-stars { display: block; font-size: 9px; line-height: 1; margin-top: 3px; color: var(--amber); letter-spacing: 0.05em; min-height: 9px; }
+.tab-stars:empty::before { content: "\00a0"; }
+.timer { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+.timer .num { font-size: 22px; font-weight: 600; line-height: 1; }
+.timer .num.is-warn { color: var(--amber); }
+.timer .total { font-size: 12px; color: var(--faint); }
+.tag { font-size: 10px; letter-spacing: 0.16em; padding: 3px 8px; border-radius: 6px; background: rgba(245, 165, 36, 0.18); color: var(--amber); font-weight: 700; }
+.sheet-toggle { display: none; }
+
+/* 左: 実験パネル */
+.panel-left { grid-area: left; display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow-y: auto; }
+.panel-left h2 { margin: 2px 0 0; font-size: 20px; line-height: 1.3; font-weight: 700; }
+.question { font-size: 15px; line-height: 1.6; }
+.howto { font-size: 12.5px; color: var(--muted); padding-left: 10px; border-left: 2px solid var(--accent-hi); line-height: 1.6; }
+.actions { display: flex; flex-direction: column; gap: 8px; }
+.btn-main { width: 100%; height: 46px; font-size: 15px; }
+.btn-main.is-flash { animation: flash .5s ease-out; }
+@keyframes flash { 0% { box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.8); } 100% { box-shadow: 0 0 0 14px rgba(229, 72, 77, 0); } }
+.manual-hint { font-size: 12px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.manual-hint kbd { margin-left: 0; margin-right: 3px; }
+.sliders { display: flex; flex-direction: column; gap: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.slider { display: grid; grid-template-columns: 1fr auto; gap: 0 8px; font-size: 12px; color: var(--muted); }
+.slider output { color: var(--text); font-variant-numeric: tabular-nums; }
+.slider input { grid-column: 1 / -1; width: 100%; margin: 4px 0 0; accent-color: var(--accent-hi); }
+.check { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+.check input { accent-color: var(--accent-hi); width: 16px; height: 16px; }
+.exp-footer { display: flex; gap: 8px; margin-top: auto; padding-top: 8px; }
+.exp-footer .btn-ghost { flex: 1; }
+
+/* 右下: あなたが起こした波（WAVE IMPACT）— 左に細いベイサイドブルーの罫、主要数値はアクセント色 */
+.panel-impact {
+  grid-area: impact; align-self: end; display: flex; flex-direction: column; min-height: 0; max-height: 52vh; overflow-y: auto;
+  border-left: 3px solid var(--accent); padding-left: 15px;
+}
+.stat { padding: 9px 0; border-bottom: 1px solid var(--border); }
+.stat:last-of-type { border-bottom: 0; }
+.stat-num { font-size: 32px; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; }
+.stat-num small { font-size: 13px; color: var(--muted); margin-left: 4px; font-weight: 400; letter-spacing: 0; }
+.stat.is-primary .stat-num { color: var(--accent-hi); }
+.stat-num.is-hot, .stat.is-primary .stat-num.is-hot { color: var(--amber); }
+.stat-cap { font-size: 12px; color: var(--muted); }
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+.stat-grid b { display: block; font-size: 15px; font-weight: 600; color: var(--text); }
+.stat-grid b.is-red { color: var(--red); }
+
+/* 右上: 周回路のいま（RING STATUS）ミニマップ */
+.panel-ring { grid-area: ring; display: flex; flex-direction: column; gap: 8px; align-self: start; }
+.flow-body { position: relative; height: 118px; }
+.flow-body canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.legend { display: flex; gap: 12px; font-size: 11px; color: var(--muted); }
+.legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 0; }
+
+/* 中央下: 車情報 */
+.panel-car {
+  grid-area: car; justify-self: center; align-self: end;
+  display: flex; align-items: center; gap: 20px; padding: 10px 20px; min-width: 380px;
+}
+.car-name { font-weight: 700; letter-spacing: 0.08em; font-size: 15px; line-height: 1.2; }
+.car-name small { display: block; font-size: 9.5px; color: var(--muted); letter-spacing: 0.22em; font-weight: 600; }
+.speed { display: flex; align-items: baseline; }
+.speed .num { font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; transition: color .15s; }
+.speed small { font-size: 12px; color: var(--muted); margin-left: 6px; }
+.speed.is-braking .num { color: var(--red); }
+.hud.is-paused .speed .num { opacity: 0.5; }
+.car-sub { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+.car-sub b { color: var(--text); font-weight: 600; }
+.car-sub b.is-warn { color: var(--amber); }
+.car-btns { display: flex; flex-direction: column; gap: 6px; margin-left: auto; }
+
+/* 下: 観察記録（TIMELINE） */
+.panel-log { grid-area: log; display: flex; flex-direction: column; gap: 8px; min-height: 0; padding: 12px 16px; }
+.log-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.log-ctl { display: flex; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.seg button { background: transparent; border: 0; padding: 5px 11px; color: var(--muted); font-weight: 600; font-size: 12px; }
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button.is-active { background: var(--accent-soft); color: #fff; }
+#btn-pause { white-space: nowrap; }
+.log-charts { flex: 1; display: grid; grid-template-columns: 1fr 1.5fr; gap: 14px; min-height: 0; }
+.chart { display: flex; flex-direction: column; min-height: 0; }
+.chart-title { font-size: 11px; color: var(--muted); margin-bottom: 4px; display: flex; justify-content: space-between; gap: 8px; white-space: nowrap; overflow: hidden; }
+.chart-title b { color: var(--teal); font-weight: 600; font-variant-numeric: tabular-nums; }
+.chart-title .t-short { display: none; }
+.chart-body { flex: 1; position: relative; min-height: 0; }
+.chart-body canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* タッチ操作（粗いポインタのみ） */
+.touch {
+  position: fixed; left: 0; right: 0; bottom: calc(var(--log-h) + 32px); z-index: 5;
+  display: none; justify-content: space-between; align-items: flex-end; padding: 0 20px; pointer-events: none;
+}
+.touch button {
+  pointer-events: auto; width: 96px; height: 96px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2); background: var(--panel);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  font-weight: 700; font-size: 15px; -webkit-user-select: none; user-select: none; touch-action: none; -webkit-touch-callout: none;
+}
+.touch button:active { background: rgba(255, 255, 255, 0.16); }
+#touch-brake { border-color: rgba(229, 72, 77, 0.65); color: #ffb3b6; }
+#touch-throttle { border-color: rgba(45, 212, 191, 0.65); color: #a7f3ea; }
+#touch-pulse { width: auto; height: 64px; padding: 0 30px; border-radius: 32px; background: var(--accent); border-color: transparent; color: #fff; margin: 0 auto; }
+.hud.mode-auto #touch-brake, .hud.mode-auto #touch-throttle { display: none; }
+.hud.mode-manual #touch-pulse { display: none; }
+@media (pointer: coarse) { .touch { display: flex; } }
+
+/* トースト（ヒント / イベント通知） */
+.toast {
+  position: fixed; top: 76px; left: 50%; z-index: 9; max-width: min(560px, 92vw);
+  transform: translate(-50%, -10px); opacity: 0; transition: opacity .3s, transform .3s; pointer-events: none;
+  background: var(--panel-strong); border: 1px solid rgba(245, 165, 36, 0.4); border-left: 3px solid var(--amber);
+  padding: 10px 16px; border-radius: 10px; font-size: 13.5px; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+.toast.is-show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---- モーダル ---- */
+.modal {
+  position: fixed; inset: 0; z-index: 20; display: flex; align-items: center; justify-content: center; padding: 16px;
+  background: rgba(4, 6, 12, 0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); animation: fade .3s;
+}
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.card {
+  width: min(680px, 100%); max-height: 92vh; overflow-y: auto;
+  background: var(--panel-strong); border: 1px solid var(--border); border-radius: 16px; padding: 28px 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55); animation: rise .4s cubic-bezier(.2, .9, .3, 1);
+}
+@keyframes rise { from { transform: translateY(18px); opacity: 0; } to { transform: none; opacity: 1; } }
+.eyebrow { display: flex; align-items: baseline; gap: 10px; font-size: 12.5px; letter-spacing: 0.08em; color: var(--accent-hi); font-weight: 700; }
+.eyebrow small { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+.card h1 { font-size: 46px; letter-spacing: 0.22em; margin: 6px 0 4px; line-height: 1; font-weight: 800; }
+.card h1 span { color: var(--accent-hi); }
+.card h2 { font-size: 24px; margin: 4px 0 10px; line-height: 1.3; }
+.lead { font-size: 16px; line-height: 1.7; }
+.bullets { padding-left: 1.3em; margin: 12px 0; color: var(--muted); line-height: 1.7; }
+.bullets li + li { margin-top: 4px; }
+.box { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); }
+.box p, .box ul { margin: 6px 0 0; color: var(--text); }
+.box ul { padding-left: 1.2em; }
+.meta { margin-top: 12px; font-size: 12px; color: var(--faint); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+.keys { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12px; color: var(--muted); margin-top: 18px; }
+.keys kbd { margin-left: 0; margin-right: 3px; }
+.credit { font-size: 11px; color: var(--faint); margin-top: 18px; line-height: 1.6; }
+.progress-list { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+.progress-list span { font-size: 11px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); color: var(--muted); }
+.progress-list span b { color: var(--amber); margin-left: 4px; font-weight: 600; }
+
+/* リザルト */
+.stars { font-size: 42px; letter-spacing: 0.08em; line-height: 1; margin: 8px 0 4px; color: rgba(255, 255, 255, 0.14); }
+.stars span { display: inline-block; }
+.stars span.lit { color: var(--amber); text-shadow: 0 0 18px rgba(245, 165, 36, 0.55); animation: pop .55s cubic-bezier(.2, 1.6, .4, 1) both; }
+.stars span:nth-child(2).lit { animation-delay: .18s; }
+.stars span:nth-child(3).lit { animation-delay: .36s; }
+@keyframes pop { from { transform: scale(0.2) rotate(-20deg); opacity: 0; } to { transform: none; opacity: 1; } }
+.stars-cap { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.incomplete { font-size: 12.5px; color: var(--amber); margin: 6px 0; }
+.headline {
+  font-size: 16.5px; line-height: 1.8; padding: 14px 16px; margin: 14px 0 16px;
+  border-left: 3px solid var(--accent-hi); background: rgba(63, 90, 166, 0.14); border-radius: 0 10px 10px 0;
+}
+.headline b { color: #fff; font-weight: 700; font-variant-numeric: tabular-nums; }
+.numgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px; }
+.cell { padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; background: rgba(255, 255, 255, 0.03); }
+.cell .v { font-size: 26px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.cell .v small { font-size: 12px; color: var(--muted); margin-left: 3px; font-weight: 400; }
+.cell .l { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.lines { margin: 14px 0 0; padding: 0; list-style: none; color: var(--muted); line-height: 1.7; font-size: 13.5px; }
+.lines li::before { content: "— "; color: var(--faint); }
+.lesson { margin-top: 18px; padding: 16px 18px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); }
+.lesson h3 { margin: 6px 0 8px; font-size: 17px; line-height: 1.4; }
+.lesson p { margin: 6px 0; line-height: 1.75; }
+.fact { margin-top: 12px !important; padding-top: 10px; border-top: 1px dashed var(--border-hi); font-size: 13px; color: var(--muted); }
+.fact b { color: var(--amber); font-weight: 700; margin-right: 6px; }
+.quiz .choice {
+  display: block; width: 100%; text-align: left; padding: 12px 14px; margin: 8px 0; border-radius: 10px;
+  border: 1px solid var(--border-hi); background: rgba(255, 255, 255, 0.04); line-height: 1.5;
+}
+.quiz .choice:hover:not([disabled]) { background: rgba(255, 255, 255, 0.09); }
+.quiz .choice[disabled] { cursor: default; opacity: 0.75; }
+.quiz .choice.is-correct { border-color: var(--teal); background: rgba(45, 212, 191, 0.14); opacity: 1; }
+.quiz .choice.is-wrong { border-color: var(--red); background: rgba(229, 72, 77, 0.14); opacity: 1; }
+.quiz-explain { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: rgba(63, 90, 166, 0.14); line-height: 1.7; }
+.quiz-verdict { font-weight: 700; margin-right: 6px; }
+.quiz-verdict.ok { color: var(--teal); }
+.quiz-verdict.ng { color: var(--amber); }
+
+/* ---- レスポンシブ: 1100px 未満は側面パネルをボトムシートに ---- */
+@media (min-width: 1100px) {
+  .side { display: contents; }
+}
+@media (max-width: 1099px) {
+  :root { --log-h: clamp(120px, 18vh, 170px); }
+  .hud {
+    /* minmax(0, 1fr): 1fr は min-content 未満に縮まないため、狭い画面で HUD がはみ出すのを防ぐ */
+    grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 8px;
+    grid-template-rows: auto minmax(0, 1fr) auto var(--log-h);
+    grid-template-areas: "top" "." "car" "log";
+  }
+  .topbar { padding: 6px 10px; gap: 10px; }
+  .logo small { display: none; }
+  .sheet-toggle { display: inline-flex; white-space: nowrap; }
+  .side {
+    position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 12; max-height: 74vh; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 8px; pointer-events: auto;
+    transform: translateY(105%); transition: transform .35s cubic-bezier(.2, .9, .3, 1);
+  }
+  .hud.sheet-open .side { transform: none; }
+  .side .panel { flex-shrink: 0; align-self: stretch; }
+  .panel-car { min-width: 0; width: 100%; justify-self: stretch; gap: 14px; padding: 10px 14px; flex-wrap: wrap; }
+  .car-btns { flex-direction: row; }
+  .log-charts { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card { padding: 22px 20px; }
+  .card h1 { font-size: 36px; }
+  .touch { bottom: calc(var(--log-h) + 24px); }
+}
+@media (max-width: 640px) {
+  .timer .total { display: none; }
+  .tab { min-width: 36px; padding: 4px 6px; font-size: 12px; }
+  /* タッチボタンは車情報パネルの上に置く（重なり防止）。ボタンも少し小さく */
+  .touch { bottom: calc(var(--log-h) + 118px); padding: 0 12px; }
+  .touch button { width: 84px; height: 84px; font-size: 14px; }
+  .panel-car { gap: 10px; padding: 8px 12px; }
+  .car-btns { width: 100%; justify-content: flex-end; }
+  .timer .label, .log-ctl kbd { display: none; }
+  .log-ctl button { white-space: nowrap; }
+  .seg button { padding: 5px 8px; }
+  /* 時空間図は学習の根拠なので消さない: 2 つのチャートを縦に積み、ログ欄を少し高くする */
+  :root { --log-h: clamp(190px, 26vh, 240px); }
+  .panel-log { gap: 6px; padding: 10px 12px; }
+  .log-charts { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; }
+  .chart-title { font-size: 10.5px; margin-bottom: 2px; }
+  .chart-title .t-long { display: none; }
+  .chart-title .t-short { display: inline; }
+  .ph-en { display: none; }
+  .speed .num { font-size: 36px; }
+}
+/* 横向きの低い画面: 縦積みだと潰れるので横並びに戻す */
+@media (max-width: 640px) and (max-height: 480px) {
+  :root { --log-h: clamp(120px, 34vh, 170px); }
+  .log-charts { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: none; }
+}
+/* 高さの低いデスクトップ（〜820px）: 影響パネルを圧縮し、右上のミニマップ行を潰さない */
+@media (min-width: 1100px) and (max-height: 820px) {
+  .stat { padding: 5px 0; }
+  .stat-num { font-size: 24px; }
+  .stat-cap { font-size: 11px; line-height: 1.3; }
+  .stat-grid { margin-top: 6px; padding-top: 6px; }
+  .stat-grid b { font-size: 13px; }
+  .panel-impact { padding: 10px 14px; }
+}
+/* 万一行が足りない場合は重ねずにクリップする */
+.panel-ring { min-height: 0; overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="scene" role="img" aria-label="3D シーン: 海沿いの周回路を走る車列（装飾。数値はパネルに表示）"></canvas>
+
+<!-- ============ HUD ============ -->
+<div id="hud" class="hud is-hidden mode-auto">
+
+  <header class="panel topbar">
+    <div class="logo">JAM <span>LAB</span><small>渋滞研究所</small></div>
+    <nav class="tabs" id="level-tabs" aria-label="レベル"></nav>
+    <span class="tag" id="paused-tag" hidden>PAUSED</span>
+    <div class="timer">
+      <span class="label">Time</span>
+      <span class="num" id="timer">00:00</span>
+      <span class="total num" id="timer-total"></span>
+    </div>
+    <button class="btn btn-ghost sheet-toggle" id="sheet-toggle">パネル</button>
+  </header>
+
+  <div class="side" id="side">
+    <!-- 左: 実験 -->
+    <aside class="panel panel-left" id="panel-experiment">
+      <div class="ph"><span class="ph-ja">実験 <span id="exp-no">01</span></span><span class="ph-en">Experiment</span></div>
+      <h2 id="exp-title">—</h2>
+      <p class="question" id="exp-question">—</p>
+      <p class="howto" id="exp-howto">—</p>
+      <div class="actions">
+        <button class="btn btn-primary btn-main" id="btn-pulse">ブレーキを踏む（2 秒）<kbd>B</kbd></button>
+        <div class="manual-hint" id="manual-hint">
+          <span><kbd>W</kbd><kbd>↑</kbd>アクセル</span>
+          <span><kbd>S</kbd><kbd>↓</kbd>ブレーキ</span>
+          <span class="muted">押し続けると強くなります</span>
+        </div>
+      </div>
+      <div class="sliders" id="sliders">
+        <label class="slider" data-param="carCount"><span>車の台数（密度）</span><output>48 台/km</output><input type="range" min="20" max="100" step="1" value="48"></label>
+        <label class="slider" data-param="T"><span>目標車間時間 T</span><output>1.05 s</output><input type="range" min="0.6" max="2.5" step="0.05" value="1.05"></label>
+        <label class="slider" data-param="tau"><span>反応の遅れ τ</span><output>0.65 s</output><input type="range" min="0" max="2" step="0.05" value="0.65"></label>
+        <label class="slider" data-param="v0"><span>希望速度</span><output>80 km/h</output><input type="range" min="50" max="100" step="1" value="80"></label>
+        <label class="slider" data-param="noise"><span>運転のばらつき（ノイズ）</span><output>0.00 m/s²</output><input type="range" min="0" max="0.5" step="0.01" value="0"></label>
+        <label class="check" data-toggle="sag"><span>サグ部（下り→上りの谷）を有効化</span><input type="checkbox"></label>
+        <label class="check" data-toggle="auto"><span>自動運転（RX-7 も車列に従う）</span><input type="checkbox"></label>
+      </div>
+      <div class="exp-footer">
+        <button class="btn btn-ghost" id="btn-restart">やり直す</button>
+        <button class="btn btn-ghost" id="btn-finish">結果を見る</button>
+      </div>
+    </aside>
+
+    <!-- 右上: 周回路のいま（ミニマップ） -->
+    <aside class="panel panel-ring" id="panel-ring">
+      <div class="ph"><span class="ph-ja">周回路のいま<span class="muted num" id="flow-density"></span></span><span class="ph-en">Ring Status</span></div>
+      <div class="flow-body"><canvas id="chart-minimap" role="img" aria-label="周回路の地図。各車の位置を点で、速度を色で示す（青緑=流れている、橙=減速、赤=停止、青=あなた）"></canvas></div>
+      <div class="legend">
+        <span><i style="background:#2dd4bf"></i>流れている</span>
+        <span><i style="background:#f5a524"></i>減速</span>
+        <span><i style="background:#e5484d"></i>停止</span>
+        <span><i style="background:#8ea4ea"></i>あなた</span>
+      </div>
+    </aside>
+
+    <!-- 右下: あなたが起こした波 -->
+    <aside class="panel panel-impact" id="panel-impact">
+      <div class="ph"><span class="ph-ja">あなたが起こした波</span><span class="ph-en">Wave Impact</span></div>
+      <div class="stat is-primary">
+        <div class="stat-num num" id="inf-affected">0<small>台</small></div>
+        <div class="stat-cap">影響を受けた後続車（速度が 30% 以上落ちた車）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num num" id="inf-loss">0<small>秒</small></div>
+        <div class="stat-cap">後続車の総時間損失（本来より遅れた時間の合計）</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num num" id="inf-wave">—<small>km/h</small></div>
+        <div class="stat-cap">渋滞波の速度（負の値 = 後方へ伝わる）</div>
+      </div>
+      <div class="stat-grid num">
+        <div>停止した車<b id="inf-stopped">0</b></div>
+        <div>平均速度<b id="inf-mean">— km/h</b></div>
+        <div>交通流率<b id="inf-flow">— 台/時</b></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 中央下: 車情報 -->
+  <div class="panel panel-car" id="panel-car">
+    <div class="car-name">あなたの車<small>RX-7 FD3S</small></div>
+    <div class="speed" id="car-speed-wrap"><span class="num" id="car-speed">0</span><small>km/h</small></div>
+    <div class="car-sub">
+      前の車まで <b class="num" id="car-gap">—</b> m<br>
+      車間時間 <b class="num" id="car-gaptime">—</b> 秒
+    </div>
+    <div class="car-btns">
+      <button class="btn btn-ghost" id="btn-camera">視点: <span id="camera-mode">追従</span><kbd>C</kbd></button>
+      <button class="btn btn-ghost" id="btn-tod">時刻: <span id="tod-label">朝</span></button>
+    </div>
+  </div>
+
+  <!-- 下: 観察ログ -->
+  <section class="panel panel-log" id="panel-log">
+    <div class="log-head">
+      <div class="ph"><span class="ph-ja">観察記録</span><span class="ph-en">Timeline</span></div>
+      <div class="log-ctl">
+        <button class="btn btn-ghost" id="btn-pause"><span id="pause-label">一時停止</span><kbd>Space</kbd></button>
+        <div class="seg" id="speed-seg" aria-label="再生速度">
+          <button data-speed="1" class="is-active">×1</button>
+          <button data-speed="2">×2</button>
+          <button data-speed="4">×4</button>
+        </div>
+      </div>
+    </div>
+    <div class="log-charts">
+      <div class="chart">
+        <div class="chart-title"><span><span class="t-long">車列の平均速度</span><span class="t-short">平均速度</span></span><b id="chart-mean-now"></b></div>
+        <div class="chart-body"><canvas id="chart-timeline" role="img" aria-label="折れ線グラフ: 車列の平均速度の推移（km/h）。橙の点線はブレーキ等のイベント時刻"></canvas></div>
+      </div>
+      <div class="chart chart-spacetime">
+        <div class="chart-title"><span><span class="t-long">時空間図（縦: あなた→後方の車、横: 時間）</span><span class="t-short">時空間図（縦: 後方の車）</span></span><span class="muted">色 = 速度</span></div>
+        <div class="chart-body"><canvas id="chart-spacetime" role="img" aria-label="時空間図: 縦にあなたから後方の車、横に時間を並べ、各車の速度を色で示す。赤い帯が斜め後方へ伸びれば渋滞の波が後ろへ伝わっている"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- タッチ操作 -->
+  <div class="touch" id="touch">
+    <button id="touch-brake" aria-label="ブレーキ">ブレーキ</button>
+    <button id="touch-pulse" aria-label="ブレーキを踏む">ブレーキを踏む</button>
+    <button id="touch-throttle" aria-label="アクセル">アクセル</button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<!-- ============ モーダル ============ -->
+<div class="modal" id="modal-title">
+  <div class="card" role="dialog" aria-modal="true" aria-labelledby="title-h1">
+    <div class="eyebrow">渋滞研究所<small>Traffic Jam Lab</small></div>
+    <h1 id="title-h1">JAM <span>LAB</span></h1>
+    <p class="lead">渋滞のしくみを、RX-7 (FD3S) で走って学ぶ。</p>
+    <p class="muted" style="margin-top:10px;line-height:1.8">
+      海沿いの 1 km 周回路。数十台の車列の中で、あなたのブレーキ 1 回が後ろの車列に何を起こすかを計測します。
+      5 つの実験を通して「誰も悪くないのに渋滞が生まれる」しくみを体験しましょう。
+    </p>
+    <div class="progress-list" id="title-progress"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="title-start">実験をはじめる<kbd>Enter</kbd></button>
+      <button class="btn" id="title-free">フリーラボ</button>
+    </div>
+    <div class="keys">
+      <span><kbd>W</kbd><kbd>↑</kbd> アクセル</span>
+      <span><kbd>S</kbd><kbd>↓</kbd> ブレーキ</span>
+      <span><kbd>B</kbd> ブレーキを踏む</span>
+      <span><kbd>C</kbd> カメラ</span>
+      <span><kbd>Space</kbd> 一時停止</span>
+      <span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> 倍速</span>
+    </div>
+    <p class="credit">
+      3D 描画に three.js（MIT License）を同梱。外部通信・アナリティクスはありません。
+      「マツダ RX-7 (FD3S)」は車名の表記のみで、ロゴ・エンブレム等の商標画像は使用していません。
+    </p>
+  </div>
+</div>
+
+<div class="modal" id="modal-briefing" hidden>
+  <div class="card" role="dialog" aria-modal="true" aria-labelledby="brief-title">
+    <div class="eyebrow">実験 <span id="brief-no"></span><small>Experiment</small></div>
+    <h2 id="brief-title"></h2>
+    <p class="lead" id="brief-question"></p>
+    <ul class="bullets" id="brief-bullets"></ul>
+    <div class="box"><span class="label">操作</span><p id="brief-howto"></p></div>
+    <div class="box" id="brief-goals-box"><span class="label">目標</span><ul id="brief-goals"></ul></div>
+    <div class="meta" id="brief-meta"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="brief-start">スタート<kbd>Enter</kbd></button>
+      <button class="btn" id="brief-back">タイトルへ</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-result" hidden>
+  <div class="card" role="dialog" aria-modal="true" aria-labelledby="res-title">
+    <div class="eyebrow">結果 <span id="res-no"></span><small>Result</small></div>
+    <h2 id="res-title"></h2>
+
+    <section class="quiz" id="res-quiz" hidden>
+      <div class="ph"><span class="ph-ja">クイズ — 観察したことから考えてみよう</span><span class="ph-en">Quiz</span></div>
+      <p class="lead" id="quiz-q" style="margin-top:6px"></p>
+      <div id="quiz-choices"></div>
+      <p class="quiz-explain" id="quiz-explain" hidden></p>
+      <div class="btn-row"><button class="btn btn-primary" id="quiz-done" disabled>結果を見る<kbd>Enter</kbd></button></div>
+    </section>
+
+    <section id="res-body" hidden>
+      <div class="stars" id="res-stars" role="img" aria-label="星 0 つ"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></div>
+      <div class="stars-cap" id="res-stars-cap"></div>
+      <p class="incomplete" id="res-incomplete" hidden>制限時間の前に終了したため、観察は「未完了」として採点しています。</p>
+      <p class="headline" id="res-headline"></p>
+      <div class="numgrid" id="res-numbers"></div>
+      <ul class="lines" id="res-lines"></ul>
+      <div class="lesson" id="res-lesson">
+        <div class="ph"><span class="ph-ja">この実験の学び</span><span class="ph-en">Lesson</span></div>
+        <h3 id="lesson-title"></h3>
+        <div id="lesson-body"></div>
+        <p class="fact" id="lesson-fact"></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="res-next">次へ<kbd>Enter</kbd></button>
+        <button class="btn" id="res-retry">もう一度</button>
+        <button class="btn" id="res-title-btn">タイトルへ</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

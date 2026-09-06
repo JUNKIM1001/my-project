@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>GLB viewer</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #b6bbc2; overflow: hidden; font-family: system-ui, sans-serif; }
+  canvas { display: block; width: 100vw; height: 100vh; }
+  #hud { position: fixed; left: 10px; top: 10px; padding: 8px 12px; background: rgba(10,14,22,.65); color: #e8eef5; font-size: 13px; border-radius: 8px; white-space: pre; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">loading…</div>
+<script type="module">
+// GLB を素のまま確認するためのビューア。?f=../assets/rx7-fd3s.glb&az=0.6&el=0.25
+import * as THREE from '../vendor/three.module.js';
+import { GLTFLoader } from '../vendor/GLTFLoader.js';
+
+const p = new URLSearchParams(location.search);
+const file = p.get('f') || '../assets/rx7-fd3s.glb';
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xb6bbc2);
+const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 100);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x70757c, 1.2));
+const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(3, 5, 4); scene.add(key);
+const fill = new THREE.DirectionalLight(0xdfe8ff, 0.8); fill.position.set(-4, 2, -3); scene.add(fill);
+
+const state = { az: Number(p.get('az') ?? 0.7), el: Number(p.get('el') ?? 0.25), dist: 2.2, target: new THREE.Vector3() };
+window.__view = state;
+const loader = new GLTFLoader();
+loader.load(file, (gltf) => {
+  const obj = gltf.scene;
+  const box = new THREE.Box3().setFromObject(obj);
+  const size = new THREE.Vector3(); box.getSize(size);
+  const center = new THREE.Vector3(); box.getCenter(center);
+  obj.position.sub(center);              // 原点へ寄せる
+  const s = 1 / Math.max(size.x, size.y, size.z);
+  obj.scale.setScalar(s);                // 最大辺 1 に正規化
+  scene.add(obj);
+  let tris = 0, meshes = 0;
+  obj.traverse((o) => { if (o.isMesh) { meshes++; tris += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; } });
+  document.getElementById('hud').textContent =
+    `${file}\nsize=[${size.toArray().map(v=>v.toFixed(3))}]  meshes=${meshes} tris=${Math.round(tris)}`;
+  window.__loaded = { size: size.toArray(), tris };
+}, undefined, (e) => { document.getElementById('hud').textContent = 'ERROR ' + e.message; });
+
+function frame() {
+  const w = innerWidth, h = innerHeight;
+  if (renderer.domElement.width !== w * renderer.getPixelRatio()) { renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+  const { az, el, dist } = state;
+  camera.position.set(Math.cos(az) * Math.cos(el) * dist, Math.sin(el) * dist, Math.sin(az) * Math.cos(el) * dist);
+  camera.lookAt(state.target);
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JAM LAB — render dev</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; font-family: system-ui, sans-serif; }
+  #scene { display: block; width: 100vw; height: 100vh; }
+  #garage { display: none; position: fixed; inset: 0; width: 100vw; height: 100vh; }
+  body.garage #garage { display: block; }
+  body.garage #scene { display: none; }
+  #hud {
+    position: fixed; left: 12px; top: 12px; padding: 10px 14px; border-radius: 10px;
+    background: rgba(10, 14, 22, 0.6); color: #e8eef5; font-size: 13px; line-height: 1.6;
+    backdrop-filter: blur(8px); white-space: pre; pointer-events: none;
+  }
+  #hud b { color: #9fd0ff; }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<canvas id="garage"></canvas>
+<div id="hud"></div>
+<script type="module">
+  // レンダー層の単体確認ページ。sim は使わず、等速で回る偽の車列を与える。
+  import * as THREE from '../vendor/three.module.js';
+  import { LENGTH, wrap } from '../src/shared/track.js';
+  import { createScene } from '../src/render/scene.js';
+  import { CAMERA_MODES } from '../src/render/camera.js';
+  import { setBrake } from '../src/render/carkit.js';
+  import { createRX7 } from '../src/render/rx7.js';
+
+  const canvas = document.getElementById('scene');
+  const hud = document.getElementById('hud');
+
+  // --- 偽 sim: N 台を等間隔に置き、全車 22 m/s で周回。車 0 がプレイヤー ---
+  const fakeSim = { cars: [], playerIndex: 0, time: 0 };
+  function resetCars(n) {
+    fakeSim.cars = Array.from({ length: n }, (_, i) => ({
+      s: (i * LENGTH) / n, v: 22, a: 0, id: i, isPlayer: i === 0, braking: false,
+    }));
+  }
+  resetCars(48);
+
+  const state = { camIdx: 0, tod: 'morning', sag: false, braking: false, paused: false, speed: 1, garage: false, view: 'front', orbit: false };
+  const scene = createScene(canvas, { sag: state.sag, timeOfDay: state.tod });
+  // コンソールから触れるように公開（計測用: __dev.bench(60) で 60 フレーム分の描画時間を測る）
+  window.__dev = {
+    scene, fakeSim, state,
+    bench(n = 60) {
+      const gl = scene.renderer.getContext();
+      const t0 = performance.now();
+      for (let i = 0; i < n; i++) { scene.update(fakeSim, 1 / 60, { cameraMode: CAMERA_MODES[state.camIdx], playerIndex: 0 }); gl.finish(); }
+      return (performance.now() - t0) / n;
+    },
+  };
+
+  // --- ガレージモード（V）: RX-7 1 台を中立な床で単体確認。F/R/S/T で視点、O で回転、B でブレーキ ---
+  const garageCanvas = document.getElementById('garage');
+  let garage = null;
+  function buildGarage() {
+    const renderer = new THREE.WebGLRenderer({ canvas: garageCanvas, antialias: true, preserveDrawingBuffer: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    const sc = new THREE.Scene();
+    sc.background = new THREE.Color(0xb6bbc2);
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+    const ground = new THREE.Mesh(new THREE.CircleGeometry(14, 48).rotateX(-Math.PI / 2),
+      new THREE.MeshStandardMaterial({ color: 0x8b9096, roughness: 0.92 }));
+    ground.receiveShadow = true;
+    sc.add(ground);
+    sc.add(new THREE.HemisphereLight(0xffffff, 0x70757c, 0.7));
+    const key = new THREE.DirectionalLight(0xffffff, 2.4);
+    key.position.set(5, 8, 4);
+    key.castShadow = true;
+    key.shadow.mapSize.set(2048, 2048);
+    Object.assign(key.shadow.camera, { left: -4, right: 4, top: 4, bottom: -4, near: 1, far: 30 });
+    key.shadow.bias = -0.0005; key.shadow.normalBias = 0.02;
+    sc.add(key);
+    const fill = new THREE.DirectionalLight(0xdfe8ff, 0.7);
+    fill.position.set(-6, 4, -5);
+    sc.add(fill);
+    // 環境マップ: 灰色の部屋 + 発光パネル（RoomEnvironment 風）から PMREM を作る
+    const room = new THREE.Scene();
+    room.add(new THREE.Mesh(new THREE.BoxGeometry(24, 12, 24), new THREE.MeshBasicMaterial({ color: 0x555b63, side: THREE.BackSide })));
+    const panel = (w, h, d, x, y, z, i) => {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), new THREE.MeshBasicMaterial({ color: new THREE.Color(i, i, i) }));
+      m.position.set(x, y, z); room.add(m);
+    };
+    panel(10, 0.1, 1.5, 0, 5.9, -3, 8); panel(10, 0.1, 1.5, 0, 5.9, 3, 8);
+    panel(0.1, 4, 10, -11.9, 3, 0, 4); panel(0.1, 3, 8, 11.9, 3, 0, 2.5);
+    const pm = new THREE.PMREMGenerator(renderer);
+    sc.environment = pm.fromScene(room, 0.04).texture;
+    pm.dispose();
+    const car = createRX7();
+    sc.add(car);
+    return { renderer, scene: sc, camera, car, t: 0 };
+  }
+  // 視点: az は +X（前）から +Z（右）へ回る方位角
+  const VIEWS = {
+    front: { az: -0.62, h: 1.6, d: 8.5 },          // 3/4 フロント（左前）
+    rear: { az: Math.PI - 0.62, h: 0.9, d: 8.5 },  // 3/4 リア低め（右後ろ）
+    side: { az: Math.PI / 2, h: 1.2, d: 9.0 },
+    top: { az: 0, h: 15, d: 0.01 },
+  };
+  function placeCam(g, az, h, d, top) {
+    g.camera.position.set(Math.cos(az) * d, h, Math.sin(az) * d);
+    g.camera.up.set(top ? 1 : 0, top ? 0 : 1, 0);
+    g.camera.lookAt(0, top ? 0 : 0.55, 0);
+  }
+  function renderGarage(dt) {
+    if (!garage) garage = buildGarage();
+    const g = garage;
+    g.t += dt;
+    setBrake(g.car, state.braking);
+    const w = garageCanvas.clientWidth, h = garageCanvas.clientHeight;
+    const pr = Math.min(window.devicePixelRatio || 1, 2);
+    if (garageCanvas.width !== Math.round(w * pr) || garageCanvas.height !== Math.round(h * pr)) {
+      g.renderer.setPixelRatio(pr); g.renderer.setSize(w, h, false);
+    }
+    g.camera.aspect = w / h; g.camera.updateProjectionMatrix();
+    const v = VIEWS[state.view];
+    placeCam(g, state.orbit ? g.t * 0.5 : v.az, v.h, v.d, state.view === 'top');
+    g.renderer.render(g.scene, g.camera);
+  }
+  /** 合成スナップショット（左: 3/4 リア低め、右: 3/4 フロント）を data URL で返す */
+  function snapshot(w = 1200, h = 700, type = 'image/png', quality = 0.85) {
+    if (!garage) garage = buildGarage();
+    const g = garage, r = g.renderer;
+    r.setPixelRatio(1); r.setSize(w, h, false);
+    r.setScissorTest(true);
+    for (const [name, x0] of [['rear', 0], ['front', w / 2]]) {
+      r.setViewport(x0, 0, w / 2, h); r.setScissor(x0, 0, w / 2, h);
+      g.camera.aspect = (w / 2) / h; g.camera.updateProjectionMatrix();
+      const v = VIEWS[name];
+      placeCam(g, v.az, v.h * 1.1, v.d * 1.32, false); // 半分幅のビューポートに車全体が収まる距離
+      r.render(g.scene, g.camera);
+    }
+    r.setScissorTest(false); r.setViewport(0, 0, w, h);
+    return garageCanvas.toDataURL(type, quality);
+  }
+  window.__dev.snapshot = snapshot;
+  window.__dev.garage = () => garage;
+
+  window.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if (k === 'v') { state.garage = !state.garage; document.body.classList.toggle('garage', state.garage); return; }
+    if (state.garage && VIEWS[{ f: 'front', r: 'rear', s: 'side', t: 'top' }[k]]) { state.view = { f: 'front', r: 'rear', s: 'side', t: 'top' }[k]; return; }
+    if (state.garage && k === 'o') { state.orbit = !state.orbit; return; }
+    switch (k) {
+      case 'c': state.camIdx = (state.camIdx + 1) % CAMERA_MODES.length; scene.setCameraMode(CAMERA_MODES[state.camIdx]); break;
+      case 'd': state.tod = state.tod === 'morning' ? 'dusk' : 'morning'; scene.setTimeOfDay(state.tod); break;
+      case 'g': state.sag = !state.sag; scene.setSag(state.sag); break;
+      case 'b': state.braking = !state.braking; break;
+      case ' ': state.paused = !state.paused; e.preventDefault(); break;
+      case '+': case '=': resetCars(Math.min(96, fakeSim.cars.length + 12)); scene.setCarCount(fakeSim.cars.length); break;
+      case '-': resetCars(Math.max(1, fakeSim.cars.length - 12)); scene.setCarCount(fakeSim.cars.length); break;
+      case '1': case '2': case '4': state.speed = Number(e.key); break;
+    }
+  });
+
+  let last = performance.now();
+  let frames = 0, fpsT = last, fps = 0;
+  function frame(now) {
+    const dtReal = Math.min((now - last) / 1000, 0.25);
+    last = now;
+    if (!state.paused) {
+      const dt = dtReal * state.speed;
+      for (const car of fakeSim.cars) {
+        // プレイヤーはブレーキ中だけ少し減速して見せる（フラグの確認用）
+        car.braking = car.isPlayer && state.braking;
+        car.a = car.braking ? -2 : (car.v < 22 ? 1 : 0);
+        car.v = Math.max(0, Math.min(22, car.v + car.a * dt));
+        car.s = wrap(car.s + car.v * dt);
+      }
+      fakeSim.time += dt;
+    }
+    if (state.garage) renderGarage(dtReal);
+    else scene.update(fakeSim, dtReal, { cameraMode: CAMERA_MODES[state.camIdx], playerIndex: 0, speed: state.speed });
+
+    frames++;
+    if (now - fpsT > 500) { fps = Math.round(frames * 1000 / (now - fpsT)); frames = 0; fpsT = now; }
+    const info = state.garage && garage ? garage.renderer.info.render : scene.renderer ? scene.renderer.info.render : { calls: 0, triangles: 0 };
+    hud.innerHTML =
+      `<b>JAM LAB render dev</b>  three r${THREE.REVISION}\n` +
+      `fps ${fps}  calls ${info.calls}  tris ${info.triangles}\n` +
+      `cars ${fakeSim.cars.length}  camera <b>${CAMERA_MODES[state.camIdx]}</b>  ${state.tod}  sag ${state.sag ? 'on' : 'off'}  brake ${state.braking ? 'ON' : 'off'}\n` +
+      `player s=${fakeSim.cars[0].s.toFixed(1)} v=${(fakeSim.cars[0].v * 3.6).toFixed(0)} km/h  ${state.paused ? '[PAUSED]' : `x${state.speed}`}\n` +
+      (state.garage ? `<b>GARAGE</b> view ${state.view}${state.orbit ? ' (orbit)' : ''}  keys: V exit  F front  R rear  S side  T top  O orbit  B brake\n` : '') +
+      `keys: V garage  C camera  D morning/dusk  G sag  B brake  +/- cars  Space pause  1/2/4 speed`;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+</script>
+</body>
+</html>

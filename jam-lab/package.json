@@ -1,0 +1,11 @@
+{
+  "name": "jam-lab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "渋滞のしくみを RX-7 (FD3S) で走って学ぶ 3D 学習ゲーム（ビルド不要・静的サイト）",
+  "scripts": {
+    "test": "node --test tests/",
+    "serve": "python3 -m http.server 8480"
+  }
+}
