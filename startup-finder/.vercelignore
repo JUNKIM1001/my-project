@@ -9,3 +9,6 @@ docs
 .claude
 .gitignore
 README.md
+data/ipo_docs
+data/reports
+data/sns_batches
