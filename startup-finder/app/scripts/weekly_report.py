@@ -141,13 +141,13 @@ def build(base):
                td, esc("・".join((r.get("sectors") or [])[:2])),
                td, esc(lr.get("round") or r.get("stage") or "—"), esc(lr.get("date") or ""),
                td_amt, esc(oku(lr.get("amount_oku"))),
-               td, esc(invs) or "—",
+               td, ("出資: " + esc(invs)) if invs else "—",
                td, src_html or "—"))
 
     exit_rows = []
     for x in exits:
         srcs = [u for u in (x.get("sources") or []) if safe_url(u)]
-        label = {"ma": "M&A", "ipo": "IPO", "closed": "解散"}.get(x.get("status"), x.get("status"))
+        label = {"ma": "M&A", "ipo": "IPO", "closed": "解散", "invest": "出資（スタートアップが出資側）"}.get(x.get("status"), x.get("status"))
         exit_rows.append("<tr><td %s><b>%s</b></td><td %s>%s</td><td %s>%s</td><td %s>%s</td></tr>" % (
             td, esc(x["name"]), td, esc(label), td, esc(x.get("status_note") or ""),
             td, " ".join('<a href="%s" style="color:#7a8494;font-size:11px">出典%d</a>' % (esc(u), i + 1) for i, u in enumerate(srcs[:2])) or "—"))
@@ -179,13 +179,14 @@ def build(base):
     body.append(ctx_html)
 
     body.append('<h3 style="font-size:14px;margin:22px 0 8px">今週の資金調達（金額順）</h3>')
+    body.append('<p style="font-size:12px;color:#7a8494;margin:0 0 6px">左列＝資金を受け取った企業（被出資側）、「出資:」＝資金を出した投資家・事業会社（出資側）</p>')
     if rows:
-        body.append('<table style="border-collapse:collapse;width:100%%"><thead><tr><th %s>企業</th><th %s>分野</th><th %s>ラウンド</th><th %s>金額</th><th %s>投資家</th><th %s>出典</th></tr></thead><tbody>%s</tbody></table>'
+        body.append('<table style="border-collapse:collapse;width:100%%"><thead><tr><th %s>被出資側（調達した企業）</th><th %s>分野</th><th %s>ラウンド</th><th %s>金額</th><th %s>出資側（投資家）</th><th %s>出典</th></tr></thead><tbody>%s</tbody></table>'
                     % (th, th, th, th_amt, th, th, "".join(rows)))
     else:
         body.append('<p style="font-size:13px;color:#7a8494">今週は該当する資金調達の発表を検出しませんでした。</p>')
 
-    body.append('<h3 style="font-size:14px;margin:22px 0 8px">M&A・IPO（exit）</h3>')
+    body.append('<h3 style="font-size:14px;margin:22px 0 8px">M&A・IPO・スタートアップによる出資</h3>')
     if exit_rows:
         body.append('<table style="border-collapse:collapse;width:100%%"><thead><tr><th %s>企業</th><th %s>種別</th><th %s>内容</th><th %s>出典</th></tr></thead><tbody>%s</tbody></table>'
                     % (th, th, th, th, "".join(exit_rows)))
@@ -204,11 +205,11 @@ def build(base):
     lines.append("")
     for r in raises:
         lr = r.get("last_round") or {}
-        lines.append("- %s | %s %s | %s | %s" % (r["name"], lr.get("round") or "", oku(lr.get("amount_oku")),
-                                                 "、".join((lr.get("investors") or [])[:3]), safe_url(r.get("website")) or (r.get("sources") or [""])[0]))
+        lines.append("- 被出資: %s | %s %s | 出資: %s | %s" % (r["name"], lr.get("round") or "", oku(lr.get("amount_oku")),
+                                                 "、".join((lr.get("investors") or [])[:3]) or "—", safe_url(r.get("website")) or (r.get("sources") or [""])[0]))
     if exits:
         lines.append("")
-        lines.append("M&A・IPO:")
+        lines.append("M&A・IPO・スタートアップによる出資:")
         for x in exits:
             lines.append("- %s [%s] %s" % (x["name"], x.get("status"), x.get("status_note") or ""))
     if ctx:
