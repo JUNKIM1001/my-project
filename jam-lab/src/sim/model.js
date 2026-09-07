@@ -20,8 +20,8 @@ const A_MAX_CLAMP = 4;
 /** これ未満には物理的に詰まらない最小バンパー間距離 [m] */
 export const MIN_GAP = 0.3;
 const GRAVITY = 9.81;
-/** ブレーキランプ点灯のしきい値 [m/s²] */
-const BRAKE_LAMP_A = -0.5;
+/** ブレーキランプの点灯 / 消灯しきい値 [m/s²]。ヒステリシスを持たせてチラつきを防ぐ */
+const BRAKE_LAMP_ON = -0.7, BRAKE_LAMP_OFF = -0.25;
 /** 手動運転の上限速度（v0 比）。無限加速を避けるだけの緩い上限 */
 const MANUAL_VMAX_RATIO = 1.5;
 
@@ -336,7 +336,11 @@ export function createSim(options = {}) {
     }
     for (let i = 0; i < n; i++) cars[i].s = wrap(u[i]);
 
-    for (let i = 0; i < n; i++) cars[i].braking = cars[i].a < BRAKE_LAMP_A;
+    // 点灯は -0.7 未満、消灯は -0.25 超え。境界付近で毎ステップ切り替わるのを防ぐ
+    for (let i = 0; i < n; i++) {
+      const c = cars[i];
+      c.braking = c.braking ? c.a < BRAKE_LAMP_OFF : c.a < BRAKE_LAMP_ON;
+    }
     time += dt;
   }
 

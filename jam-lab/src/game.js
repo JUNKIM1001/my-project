@@ -102,7 +102,30 @@ export function createGame({ hud, charts, scene }) {
     scene.setSag(!!cfg.sag);
     scene.setCarCount(g.sim.cars.length);
     lastControl.mode = null;
+    interp.curS = new Float64Array(0);   // 台数が変わるので作り直す
+    captureInterp(false);
     return cfg;
+  }
+
+  // ---- 描画補間 ----
+  // シムは 0.05 秒の固定ステップで進むが、描画は 60 fps。位置をそのまま描くと 3 フレームに 1 回しか
+  // 動かず、カクついて見える。そこで直前 2 つのシム状態の位置を保持し、main が渡す alpha で
+  // 線形補間して描く（定番の fixed-timestep + interpolation）。シムの決定性には影響しない。
+  const interp = { prevS: new Float64Array(0), curS: new Float64Array(0), alpha: 1, ready: false };
+  /** 車列の位置を curS に取り込む。shift = true なら現在値を prevS へ送ってから取り込む */
+  function captureInterp(shift) {
+    const cars = g.sim?.cars;
+    if (!cars) { interp.ready = false; return; }
+    if (interp.curS.length !== cars.length) {
+      interp.prevS = new Float64Array(cars.length);
+      interp.curS = new Float64Array(cars.length);
+      for (let i = 0; i < cars.length; i++) { interp.prevS[i] = cars[i].s; interp.curS[i] = cars[i].s; }
+      interp.ready = true;
+      return;
+    }
+    if (shift) interp.prevS.set(interp.curS);
+    for (let i = 0; i < cars.length; i++) interp.curS[i] = cars[i].s;
+    interp.ready = true;
   }
 
   function markEvent(opts) {
@@ -466,6 +489,7 @@ export function createGame({ hud, charts, scene }) {
   function step(dt) {
     const sim = g.sim;
     if (!sim) return;
+    captureInterp(true);   // 進める前の状態を prevS へ送る
     if (g.phase === 'playing') {
       updatePlayerControl(dt);
       sim.step(dt);
@@ -476,6 +500,7 @@ export function createGame({ hud, charts, scene }) {
     } else {
       sim.step(dt); // タイトル / ブリーフィングの背景（アトラクト）
     }
+    captureInterp(false);  // 進めた後の状態を curS に
   }
 
   function isSimRunning() {
@@ -520,7 +545,7 @@ export function createGame({ hud, charts, scene }) {
   }
 
   return {
-    boot, step, refreshHud, isSimRunning,
+    boot, step, refreshHud, isSimRunning, interp,
     get sim() { return g.sim; },
     get speed() { return g.speed; },
     get cameraMode() { return g.cameraMode; },

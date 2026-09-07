@@ -376,10 +376,11 @@ export function setBrake(group, on) {
 /** 1 台分の個別リソース（テール材・プレイヤー車の塗装材 / 追加材と専用ジオメトリ）を解放 */
 export function disposeCar(group) {
   const u = group.userData || {};
-  u.tailMaterial?.dispose();
-  u.tailMaterials?.forEach((m) => m.dispose());
-  u.paintMaterial?.dispose();
-  u.extraMaterials?.forEach((m) => m.dispose());
+  u.disposed = true;   // 非同期ロードの完了コールバックが後から中身を足さないようにする印
+  // tailMaterial / tailMaterials / paintMaterial は同じ材を指すことがある（GLB 車は 1 材で全部を賄う）。
+  // 重複 dispose を避けるため一度集めてから解放する
+  const mats = new Set([u.tailMaterial, u.paintMaterial, ...(u.tailMaterials || []), ...(u.extraMaterials || [])]);
+  for (const m of mats) m?.dispose();
   // sharedGeometry: GLB から複製した車は元のジオメトリを共有しているので解放しない
   if (u.kind !== 'traffic' && !u.sharedGeometry) group.traverse((o) => o.geometry?.dispose());
   group.removeFromParent();

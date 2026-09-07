@@ -2,7 +2,7 @@
 // sim からは cars[i].{s, v, a, isPlayer, braking} と playerIndex だけを読む。
 // ジオメトリは起動時 / setSag 時にだけ構築し、毎フレームは行列更新と描画のみ。
 import * as THREE from '../../vendor/three.module.js';
-import { LENGTH, CAR_LENGTH, pointAt, elevationAt, wrap } from '../shared/track.js';
+import { LENGTH, CAR_LENGTH, pointAt, elevationAt, wrap, lerpAlong } from '../shared/track.js';
 import { createTrafficCar, setBrake, disposeCar, disposeCarAssets, CAR_COLORS } from './carkit.js';
 import { createRX7, WHEEL_R } from './rx7.js';
 import { createCameraRig, CAMERA_MODES } from './camera.js';
@@ -444,6 +444,7 @@ export function createScene(canvas, { sag = false, shadows = true, timeOfDay = '
   // --- 車の配置 ---
   const pose = { x: 0, y: 0, z: 0, fx: 0, fz: -1 };
   let prevPlayerS = null;
+  let prevSimTime = null;   // シムが作り直されたか（時刻が巻き戻ったか）の判定用
   const _p = new THREE.Vector3();
 
   /** s と勾配から車を置く。ピッチは車長分の標高差から取り、勾配の折れ目で滑らかに変わる */
@@ -467,26 +468,41 @@ export function createScene(canvas, { sag = false, shadows = true, timeOfDay = '
     const cars = sim?.cars || [];
     const playerIndex = opts.playerIndex ?? sim?.playerIndex ?? 0;
     if (cars.length !== activeCount) ensurePool(cars.length);
+    // シムが作り直された（時刻が巻き戻った）ら、ホイールの転がり基準を捨てる。
+    // setCarCount 経由でもリセットしているが、台数が同じレベルへ切り替えた場合の保険。
+    const simTime = sim?.time ?? 0;
+    if (prevSimTime == null || simTime < prevSimTime) prevPlayerS = null;
+    prevSimTime = simTime;
+
+    // シムは 20 Hz、描画は 60 fps。直前 2 状態を alpha で補間して滑らかに描く。
+    // 車は前進しかしないので、進んだ距離は forwardDistance で取る（1 周またぎでも正しい）。
+    const it = opts.interp;
+    const useInterp = !!(it && it.ready && it.curS.length === cars.length && it.prevS.length === cars.length);
+    const alpha = useInterp ? Math.min(1, Math.max(0, it.alpha ?? 1)) : 1;
+    const renderS = (i, car) => (useInterp ? lerpAlong(it.prevS[i], it.curS[i], alpha) : car.s);
 
     let playerFound = false;
     for (let i = 0; i < cars.length; i++) {
       const car = cars[i];
+      const s = renderS(i, car);
       if (i === playerIndex) {
-        const p = placeCar(gtr, car.s, car.braking);
+        const p = placeCar(gtr, s, car.braking);
         pose.x = p.x; pose.y = gtr.position.y; pose.z = p.z; pose.fx = p.fx; pose.fz = p.fz;
         traffic[i].visible = false;
-        // ホイールは s の増分から転がす（倍速・一時停止にそのまま追従）
+        // ホイールは描画位置の増分から転がす（補間後の値なのでフレームごとに滑らかに回る）
         if (prevPlayerS != null) {
-          const ds = wrap(car.s - prevPlayerS);
-          if (ds < LENGTH / 2) for (const w of gtr.userData.wheels) w.rotation.z -= ds / WHEEL_R;
-          // 1 フレームで 60 m 超のジャンプ（レベルリセット等）はカメラを補間せずスナップ
-          if (Math.min(ds, LENGTH - ds) > SNAP_JUMP_M) rig.snap();
+          const ds = wrap(s - prevPlayerS);
+          // 1 フレームで 60 m 超のジャンプ（レベルリセット・やり直し等）はワープ扱い:
+          // カメラをスナップし、ホイールも回さない（巨大な回転量が入るのを防ぐ）
+          const jumped = Math.min(ds, LENGTH - ds) > SNAP_JUMP_M;
+          if (jumped) rig.snap();
+          else for (const w of gtr.userData.wheels) w.rotation.z -= ds / WHEEL_R;
         }
-        prevPlayerS = car.s;
+        prevPlayerS = s;
         playerFound = true;
       } else {
         traffic[i].visible = true;
-        placeCar(traffic[i], car.s, car.braking);
+        placeCar(traffic[i], s, car.braking);
       }
     }
     gtr.visible = playerFound;
@@ -521,6 +537,7 @@ export function createScene(canvas, { sag = false, shadows = true, timeOfDay = '
 
   function setCarCount(n) {
     ensurePool(Math.max(0, n | 0));
+    prevPlayerS = null;   // レベル切替で位置が飛ぶので、ホイールの転がり基準を取り直す
   }
 
   function resize() {
@@ -573,6 +590,7 @@ export function createScene(canvas, { sag = false, shadows = true, timeOfDay = '
     get cameraMode() { return rig.mode; },
     get contextLost() { return contextLost; },
     get renderer() { return renderer; },
+    get playerCar() { return gtr; },   // 描画位置の確認用（テスト・開発）
     CAMERA_MODES,
   };
 }

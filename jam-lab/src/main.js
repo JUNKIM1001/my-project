@@ -1,6 +1,7 @@
 // src/main.js — 起点。canvas / scene / hud / charts / game を結線し、rAF ループを回す。
 //   - 実時間 dt は 1 フレーム最大 0.25 s（タブ復帰時の暴走防止）
 //   - dt × 倍速 を 0.05 s のサブステップに分割して game.step → (sim.step → metrics.update)
+//   - 未消化分は alpha として scene に渡し、描画側で直前 2 状態を線形補間する（カクつき防止）
 //   - scene.update は毎フレーム、HUD / チャートは ~10 Hz（CPU 節約）
 
 import { createScene } from './render/scene.js';
@@ -46,7 +47,9 @@ function frame(now) {
   const dtReal = Math.min(MAX_FRAME_DT, Math.max(0, (now - last) / 1000));
   last = now;
 
+  let running = false;
   if (game.isSimRunning()) {
+    running = true;
     acc += dtReal * game.speed;
     let n = 0;
     while (acc >= STEP && n < MAX_SUBSTEPS) {
@@ -59,9 +62,17 @@ function frame(now) {
     acc = 0;
   }
 
+  // 未消化分 acc を alpha にして、描画側で直前 2 つのシム状態の間を補間させる（カクつき防止）。
+  // 描画は最大 1 ステップ（0.05 秒）遅れるが、位置が毎フレーム動くので滑らかに見える。
+  game.interp.alpha = running ? Math.min(1, acc / STEP) : 1;
+
   const sim = game.sim;
   // speed: カメラ追従の平滑化をゲーム倍速に合わせる（×2/×4 で追従距離が伸びないように）
-  if (sim) scene.update(sim, dtReal, { cameraMode: game.cameraMode, playerIndex: sim.playerIndex, speed: game.speed });
+  if (sim) {
+    scene.update(sim, dtReal, {
+      cameraMode: game.cameraMode, playerIndex: sim.playerIndex, speed: game.speed, interp: game.interp,
+    });
+  }
 
   hudAcc += dtReal;
   if (hudAcc >= HUD_INTERVAL) {

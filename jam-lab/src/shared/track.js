@@ -59,6 +59,16 @@ export function gradeAt(s, sag = false) {
 }
 
 /**
+ * 周回路に沿った線形補間。車は前進しかしないので、a → b は forwardDistance で測る。
+ * これにより 1 周またぎ（例: 995 m → 5 m）でも逆走せず正しく間を取れる。
+ * t は 0..1 にクランプする。描画がシムより細かい時刻で位置を求めるのに使う。
+ */
+export function lerpAlong(a, b, t) {
+  const k = t < 0 ? 0 : t > 1 ? 1 : t;
+  return wrap(a + forwardDistance(a, b) * k);
+}
+
+/**
  * 閉曲線の平面座標（スタジアム形: 直線 2 本 + 半円 2 つ）。
  * three.js の XZ 平面（y が上）を使う。
  * 戻り値 {x, z, fx, fz, heading}

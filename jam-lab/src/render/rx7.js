@@ -24,22 +24,30 @@ let cached = null;   // 読み込み済み gltf.scene（2 台目以降は clone 
 
 function applyToScene(group, root) {
   const wheels = group.userData.wheels;
+  // clone(true) はマテリアルを共有するので、この 1 台専用に複製してから使う。
+  // （disposeCar が解放するのはこの複製で、キャッシュ側の元マテリアルは無傷のまま残る）
+  let mat = null;
   root.traverse((o) => {
     if (!o.isMesh) return;
     o.castShadow = true;
     o.receiveShadow = false;   // 自己影は形状が細かく破綻しやすいので切る
     o.frustumCulled = false;   // 追従カメラで車体が消えないように
-    const m = o.material;
-    if (m && !group.userData.tailMaterial) {
+    if (!o.material) return;
+    if (!mat) {
+      mat = o.material.clone();  // テクスチャは参照が共有されるだけ（複製されない）
       // emissiveMap はテールランプ以外が黒いので、強度だけでブレーキ点灯を表現できる
-      m.emissiveIntensity = EMISSIVE_IDLE;
-      m.envMapIntensity = 1.1;
-      group.userData.tailMaterial = m;
-      group.userData.tailMaterials = [m];
-      group.userData.paintMaterial = m;
-      group.userData.emissiveLevels = { idle: EMISSIVE_IDLE, brake: EMISSIVE_BRAKE };
+      mat.emissiveIntensity = EMISSIVE_IDLE;
+      mat.envMapIntensity = 1.1;
     }
+    o.material = mat;
   });
+  if (mat) {
+    group.userData.tailMaterial = mat;
+    group.userData.tailMaterials = [mat];
+    group.userData.paintMaterial = mat;
+    group.userData.emissiveLevels = { idle: EMISSIVE_IDLE, brake: EMISSIVE_BRAKE };
+    group.userData.brakeOn = false;   // 新しいマテリアルなので点灯状態を取り直す
+  }
   for (const name of ['wheel_FL', 'wheel_FR', 'wheel_RL', 'wheel_RR']) {
     const w = root.getObjectByName(name);
     if (w) wheels.push(w);
@@ -62,12 +70,18 @@ export function createRX7() {
     kind: 'rx7', wheels: [], tailMaterial: null, tailMaterials: [], paintMaterial: null, brakeOn: false, loaded: false,
     sharedGeometry: true,   // GLB を clone して使うのでジオメトリは carkit.disposeCar で解放しない
   };
-  // 読み込み前のプレースホルダ（白い簡易セダン）
+  // 読み込み前のプレースホルダ（白い簡易セダン）。ブレーキ灯も動くよう、その材を親に委譲しておく
   const placeholder = createTrafficCar(0xe9eaea);
   group.add(placeholder);
+  group.userData.tailMaterial = placeholder.userData.tailMaterial;
+  group.userData.tailMaterials = [placeholder.userData.tailMaterial];
 
   const finish = (root) => {
+    if (group.userData.disposed) return;   // すでに破棄済みなら中身を足さない
     group.remove(placeholder);
+    placeholder.userData.tailMaterial?.dispose();
+    group.userData.tailMaterial = null;    // GLB のマテリアルで置き換える
+    group.userData.tailMaterials = [];
     applyToScene(group, root);
   };
   if (cached) {
@@ -75,6 +89,7 @@ export function createRX7() {
   } else {
     new GLTFLoader().load(MODEL_URL, (gltf) => {
       cached = gltf.scene;
+      if (group.userData.disposed) return;
       finish(cached.clone(true));
     }, undefined, (err) => {
       console.error('jam-lab: RX-7 モデルを読み込めませんでした。簡易表示のまま続行します。', err);

@@ -1,7 +1,7 @@
 // shared/track.js の幾何・標高の整合性テスト（完成済みモジュールの回帰確認）
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { LENGTH, RADIUS, STRAIGHT, wrap, forwardDistance, pointAt, elevationAt, gradeAt } from '../src/shared/track.js';
+import { LENGTH, RADIUS, STRAIGHT, wrap, forwardDistance, pointAt, elevationAt, gradeAt, lerpAlong } from '../src/shared/track.js';
 
 const near = (a, b, eps = 1e-6) => assert.ok(Math.abs(a - b) < eps, `${a} != ${b}`);
 
@@ -51,4 +51,30 @@ test('標高は区間境界 250/400/650 で連続、勾配は定義どおり', (
   near(gradeAt(500, true), 0.015);
   near(gradeAt(100, true), 0);
   near(gradeAt(500, false), 0);
+});
+
+test('lerpAlong: 周回路をまたいでも前進方向に補間する', () => {
+  // 通常区間
+  assert.ok(Math.abs(lerpAlong(100, 200, 0.5) - 150) < 1e-9);
+  assert.ok(Math.abs(lerpAlong(100, 200, 0) - 100) < 1e-9);
+  assert.ok(Math.abs(lerpAlong(100, 200, 1) - 200) < 1e-9);
+  // 1 周またぎ（995 → 5 は前へ 10 m。逆走して 495 になってはいけない）
+  assert.ok(Math.abs(lerpAlong(995, 5, 0.5) - 0) < 1e-9);
+  assert.ok(Math.abs(lerpAlong(995, 5, 0.25) - 997.5) < 1e-9);
+  assert.ok(Math.abs(lerpAlong(995, 5, 0.75) - 2.5) < 1e-9);
+  // t はクランプされ、結果は必ず [0, LENGTH)
+  for (const t of [-1, 0.3, 2]) {
+    const r = lerpAlong(980, 30, t);
+    assert.ok(r >= 0 && r < LENGTH, `${t} -> ${r}`);
+  }
+  assert.ok(Math.abs(lerpAlong(980, 30, -1) - 980) < 1e-9);
+  assert.ok(Math.abs(lerpAlong(980, 30, 2) - 30) < 1e-9);
+});
+
+test('lerpAlong: 補間の刻みは一定（描画のカクつき防止）', () => {
+  // 20 Hz のシム 1 ステップ（22 m/s → 1.1 m）を 60 fps で 3 分割したときの移動量が均等
+  const a = 100, b = 101.1;
+  const d = [];
+  for (let i = 1; i <= 3; i++) d.push(lerpAlong(a, b, i / 3) - lerpAlong(a, b, (i - 1) / 3));
+  for (const x of d) assert.ok(Math.abs(x - 0.36666666) < 1e-6, `step ${x}`);
 });
