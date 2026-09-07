@@ -1,7 +1,10 @@
-// src/ui/charts.js — Canvas 2D チャート 3 種。
+// src/ui/charts.js — Canvas 2D チャート 4 種。
 //   (a) timeline : 車列の平均速度の時系列（metrics.history）
 //   (b) spaceTime: 時空間図（metrics.spaceTime）。横 = 時間（右が最新）、縦 = プレイヤーから後方の車
 //   (c) minimap  : 周回路ミニマップ（shared/track.js の pointAt を使う）
+//   (d) scatter  : 用量反応（横 = 踏んだ秒数、縦 = 後続車の総時間損失）。試行ごとに点が増える。
+//                 縦軸に台数ではなく損失秒を使うのは、台数が閾値判定で頭打ちになる一方、
+//                 損失秒は踏んだ長さに対して滑らかに増えるため（BRAKE_REDESIGN.md の実測）
 // すべて DPR 対応。描画は ~10 Hz 想定。毎フレームの大量アロケーションを避けるため、
 // 時空間図は ImageData を再利用し、ミニマップの道路形状は Path2D をキャッシュする。
 
@@ -59,7 +62,7 @@ function placeholder(ctx, w, h, text) {
   ctx.fillText(text, w / 2, h / 2);
 }
 
-export function createCharts({ timeline, spaceTime, minimap }) {
+export function createCharts({ timeline, spaceTime, minimap, scatter }) {
   let lastArgs = null;
 
   // ---------------------------------------------------------------
@@ -334,8 +337,130 @@ export function createCharts({ timeline, spaceTime, minimap }) {
     }
   }
 
+  // ---------------------------------------------------------------
+  // (d) 用量反応の散布図（踏んだ秒数 → 後続車の総時間損失）
+  // ---------------------------------------------------------------
+  const SCAT_SEC_MAX = 6;
+
+  /** 目盛りの上限を切りのよい値に丸める（18 → 20、4 → 5） */
+  function niceMax(v) {
+    if (!(v > 0)) return 5;
+    const pow = Math.pow(10, Math.floor(Math.log10(v)));
+    const n = v / pow;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * pow;
+  }
+
+  function drawScatter({ attempts }) {
+    if (!scatter) return;
+    const f = fit(scatter);
+    if (!f) return;
+    const { ctx, w, h } = f;
+    ctx.clearRect(0, 0, w, h);
+    const padL = 30, padR = 12, padT = 10, padB = 20;
+    const pw = w - padL - padR, ph = h - padT - padB;
+    if (pw <= 0 || ph <= 0) return;
+
+    // 軸の範囲（点がなくても枠と目盛りは出す）
+    const list = attempts || [];
+    let maxSec = 0, maxAff = 0, n = 0;
+    for (let i = 0; i < list.length; i++) {
+      const a = list[i];
+      if (!a || !Number.isFinite(a.sec) || !Number.isFinite(a.timeLoss)) continue;
+      if (a.sec > maxSec) maxSec = a.sec;
+      if (a.timeLoss > maxAff) maxAff = a.timeLoss;
+      n++;
+    }
+    const xMax = Math.max(SCAT_SEC_MAX, Math.ceil(maxSec));
+    const yMax = Math.max(30, niceMax(maxAff));
+    const xOf = (s) => padL + pw * clamp01(s / xMax);
+    const yOf = (c) => padT + ph * (1 - clamp01(c / yMax));
+
+    // 目盛り（横線 4 本 + 秒の刻み）
+    ctx.font = `10px ${FONT}`;
+    ctx.lineWidth = 1;
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    const yStep = yMax / (ph < 70 ? 2 : 4);
+    for (let g = 0; g <= yMax + 1e-6; g += yStep) {
+      const y = Math.round(yOf(g)) + 0.5;
+      ctx.strokeStyle = GRID;
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(padL + pw, y); ctx.stroke();
+      ctx.fillStyle = TEXT_FAINT;
+      ctx.fillText(String(Math.round(g)), padL - 5, y);
+    }
+    ctx.strokeStyle = GRID;
+    ctx.strokeRect(padL + 0.5, padT + 0.5, pw - 1, ph - 1);
+
+    const xStep = xMax > 8 ? 2 : 1;
+    ctx.fillStyle = TEXT_FAINT;
+    ctx.textBaseline = 'top';
+    for (let s = 0; s <= xMax + 1e-6; s += xStep) {
+      const x = Math.round(xOf(s)) + 0.5;
+      if (s > 0 && s < xMax) {
+        ctx.strokeStyle = GRID;
+        ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, padT + ph); ctx.stroke();
+      }
+      ctx.textAlign = s === 0 ? 'left' : (s >= xMax ? 'right' : 'center');
+      ctx.fillText(String(s), x, padT + ph + 4);
+    }
+    // 軸の名前（目盛りと重ならないよう作図域の上端に置く）
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillText('縦: 損失 秒', padL + 4, padT + 3);
+    ctx.textAlign = 'right';
+    ctx.fillText('横: 踏んだ秒数', padL + pw - 4, padT + 3);
+
+    if (n === 0) { placeholder(ctx, w, h, 'ブレーキを踏むと、ここに点が増えます'); return; }
+
+    // 3 点以上たまったら最小二乗の近似線
+    if (n >= 3) {
+      let sx = 0, sy = 0, sxx = 0, sxy = 0;
+      for (let i = 0; i < list.length; i++) {
+        const a = list[i];
+        if (!a || !Number.isFinite(a.sec) || !Number.isFinite(a.timeLoss)) continue;
+        sx += a.sec; sy += a.timeLoss; sxx += a.sec * a.sec; sxy += a.sec * a.timeLoss;
+      }
+      const den = n * sxx - sx * sx;
+      if (Math.abs(den) > 1e-9) {
+        const slope = (n * sxy - sx * sy) / den;
+        const inter = (sy - slope * sx) / n;
+        ctx.save();
+        ctx.beginPath(); ctx.rect(padL, padT, pw, ph); ctx.clip();
+        ctx.strokeStyle = 'rgba(142,164,234,0.55)';
+        ctx.setLineDash([4, 3]);
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(xOf(0), padT + ph * (1 - inter / yMax));
+        ctx.lineTo(xOf(xMax), padT + ph * (1 - (inter + slope * xMax) / yMax));
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+      }
+    }
+
+    // 点（直近は大きくアクセント色で強調）
+    let last = null;
+    for (let i = 0; i < list.length; i++) {
+      const a = list[i];
+      if (!a || !Number.isFinite(a.sec) || !Number.isFinite(a.timeLoss)) continue;
+      last = a;
+      if (i === list.length - 1) continue;
+      ctx.fillStyle = 'rgba(142,164,234,0.42)';
+      ctx.beginPath(); ctx.arc(xOf(a.sec), yOf(a.timeLoss), 3, 0, Math.PI * 2); ctx.fill();
+    }
+    if (last) {
+      const x = xOf(last.sec), y = yOf(last.timeLoss);
+      ctx.fillStyle = ACCENT_HI;
+      ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.75)';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.arc(x, y, 7.5, 0, Math.PI * 2); ctx.stroke();
+    }
+  }
+
   /**
-   * 全チャートを描く。args = { sim, metrics, v0, eventTime, sag }
+   * 全チャートを描く。args = { sim, metrics, v0, eventTime, sag, attempts }
+   * attempts = [{ sec, timeLoss }]（散布図用。空配列 / 省略なら空の枠を描く）
    * metrics が null（タイトル / ブリーフィング中）でもミニマップは描く。
    */
   function draw(args) {
@@ -343,6 +468,7 @@ export function createCharts({ timeline, spaceTime, minimap }) {
     drawTimeline(args);
     drawSpaceTime(args);
     drawMinimap(args);
+    drawScatter(args);
   }
 
   /** リサイズ時: サイズは fit() が毎回追従するので、直近の引数で再描画するだけ */

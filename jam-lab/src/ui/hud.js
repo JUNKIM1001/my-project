@@ -71,11 +71,13 @@ export function createHud(doc = document) {
   const els = {
     tabs: $('level-tabs'), timer: $('timer'), timerTotal: $('timer-total'), pausedTag: $('paused-tag'),
     expNo: $('exp-no'), expTitle: $('exp-title'), expQuestion: $('exp-question'), expHowto: $('exp-howto'),
-    btnPulse: $('btn-pulse'), manualHint: $('manual-hint'), btnRestart: $('btn-restart'), btnFinish: $('btn-finish'),
+    btnBrake: $('btn-brake'), manualHint: $('manual-hint'), btnRestart: $('btn-restart'), btnFinish: $('btn-finish'),
     sliders: $('sliders'),
     infAffected: $('inf-affected'), infLoss: $('inf-loss'), infWave: $('inf-wave'),
     infStopped: $('inf-stopped'), infMean: $('inf-mean'), infFlow: $('inf-flow'), flowDensity: $('flow-density'),
     carSpeedWrap: $('car-speed-wrap'), carSpeed: $('car-speed'), carGap: $('car-gap'), carGapTime: $('car-gaptime'),
+    brakeGauge: $('brake-gauge'), brakeNum: $('brake-num'), brakeValue: $('brake-value'),
+    brakeLabel: $('brake-label'), brakeBar: $('brake-bar'), brakeBarFill: $('brake-bar-fill'),
     cameraMode: $('camera-mode'), todLabel: $('tod-label'),
     pauseLabel: $('pause-label'), speedSeg: $('speed-seg'), chartMeanNow: $('chart-mean-now'),
     toast: $('toast'),
@@ -91,18 +93,19 @@ export function createHud(doc = document) {
     resNext: $('res-next'), resRetry: $('res-retry'), resTitleBtn: $('res-title-btn'),
   };
 
+  els.btnPulse = els.btnBrake; // 旧名の別名（互換用）
+
   const chartCanvases = {
     timeline: $('chart-timeline'),
     spaceTime: $('chart-spacetime'),
     minimap: $('chart-minimap'),
+    scatter: $('chart-scatter'),
   };
 
   // ---------------------------------------------------------------
   // 静的なイベント結線（1 回だけ）
   // ---------------------------------------------------------------
   const click = (elm, name, ...args) => elm && elm.addEventListener('click', (e) => { e.currentTarget.blur(); emit(name, ...args); });
-  click(els.btnPulse, 'pulse');
-  click($('touch-pulse'), 'pulse');
   click(els.btnRestart, 'restart');
   click(els.btnFinish, 'finish');
   click($('btn-camera'), 'camera');
@@ -137,20 +140,35 @@ export function createHud(doc = document) {
     input.addEventListener('change', () => { emit('toggle', row.dataset.toggle, input.checked); input.blur(); });
   }
 
-  // タッチ長押し（アクセル / ブレーキ）
-  const bindHold = (id, which) => {
-    const b = $(id);
-    if (!b) return;
-    const down = (e) => { e.preventDefault(); emit('hold', which, true); };
-    const up = () => emit('hold', which, false);
-    b.addEventListener('pointerdown', down);
-    b.addEventListener('pointerup', up);
-    b.addEventListener('pointercancel', up);
-    b.addEventListener('pointerleave', up);
-    b.addEventListener('contextmenu', (e) => e.preventDefault());
+  // ブレーキボタン（マウス / タッチとも「押している間」だけ有効）。
+  // 押し下げ = brakeDown、離す / 指が外れる = brakeUp。旧 'hold' も互換のため併せて通知する。
+  const bindBrake = (elm) => {
+    if (!elm) return;
+    let down = false;
+    const press = (e) => {
+      e.preventDefault();
+      if (down) return;
+      down = true;
+      elm.classList.add('is-down');
+      emit('hold', 'brake', true);
+      emit('brakeDown');
+    };
+    const release = () => {
+      if (!down) return;
+      down = false;
+      elm.classList.remove('is-down');
+      emit('hold', 'brake', false);
+      emit('brakeUp');
+    };
+    elm.addEventListener('pointerdown', press);
+    elm.addEventListener('pointerup', release);
+    elm.addEventListener('pointercancel', release);
+    elm.addEventListener('pointerleave', release);
+    elm.addEventListener('blur', release);
+    elm.addEventListener('contextmenu', (e) => e.preventDefault());
   };
-  bindHold('touch-throttle', 'throttle');
-  bindHold('touch-brake', 'brake');
+  bindBrake(els.btnBrake);
+  bindBrake($('touch-brake'));
 
   // クイズ: 選択肢クリック → 判定 → 「結果を見る」へ
   let quizCallback = null;
@@ -195,15 +213,13 @@ export function createHud(doc = document) {
   // ---------------------------------------------------------------
   // 左パネル（実験）
   // ---------------------------------------------------------------
-  function setExperiment(level, { free = false, mode = 'auto' } = {}) {
+  // ブレーキのみの操作系なので、ブレーキボタンとキー説明は常に出す（mode による出し分けはしない）
+  function setExperiment(level, { free = false } = {}) {
     setText(els.expNo, level.no);
     setText(els.expTitle, level.title);
     setText(els.expQuestion, level.question || '');
     setText(els.expHowto, level.howTo || '');
-    els.btnPulse.hidden = !(mode === 'auto' || free);
-    els.manualHint.hidden = mode !== 'manual';
     els.btnFinish.hidden = free;
-    setMode(mode);
   }
 
   /**
@@ -232,17 +248,15 @@ export function createHud(doc = document) {
     els.sliders.hidden = visible.size === 0 && toggles.size === 0;
   }
 
-  /** 操作モードに応じてタッチボタンの種類を切替 */
-  function setMode(mode) {
-    hud.classList.toggle('mode-manual', mode === 'manual');
-    hud.classList.toggle('mode-auto', mode !== 'manual');
-  }
+  /** 旧 API 互換のダミー（操作はブレーキのみになり、モードによる出し分けは廃止） */
+  function setMode() {}
 
+  /** ブレーキボタンを光らせる（外部からのブレーキ通知用） */
   function flashPulse() {
-    els.btnPulse.classList.remove('is-flash');
+    els.btnBrake.classList.remove('is-flash');
     // reflow を挟んでアニメーションを再開
-    void els.btnPulse.offsetWidth;
-    els.btnPulse.classList.add('is-flash');
+    void els.btnBrake.offsetWidth;
+    els.btnBrake.classList.add('is-flash');
   }
 
   // ---------------------------------------------------------------
@@ -296,6 +310,47 @@ export function createHud(doc = document) {
     els.carGapTime.classList.toggle('is-warn', gapTime != null && gapTime < 1.0);
     setText(els.cameraMode, CAMERA_LABEL[cameraMode] || cameraMode);
     setText(els.todLabel, TOD_LABEL[timeOfDay] || timeOfDay);
+  }
+
+  // ---------------------------------------------------------------
+  // 中央下: ブレーキ計（踏んでいる長さ → 観察中 → 結果）
+  // ---------------------------------------------------------------
+  let brakePhase = '';   // 直前のフェーズ（変化時だけクラス / hidden を触る）
+  let obsTotal = 0;      // 観察フェーズの全体秒数（進捗バーの分母）
+  let barPct = -1;       // 直前のバー幅（%）
+
+  /**
+   * state = { phase: 'idle'|'braking'|'observing'|'result', holdSec, remainSec,
+   *           result: { sec, affected, timeLoss, stopped } }
+   * ~10 Hz で呼ばれる前提。textContent の差分書き込みのみ。
+   */
+  function setBrakeState(state) {
+    const s = state || {};
+    const phase = s.phase || 'idle';
+    if (phase !== brakePhase) {
+      els.brakeGauge.className = `brake is-${phase}`;
+      els.brakeNum.hidden = phase !== 'braking';
+      els.brakeBar.hidden = phase !== 'observing';
+      if (phase === 'observing') { obsTotal = Math.max(0.001, s.remainSec || 0); barPct = -1; }
+      brakePhase = phase;
+    }
+    if (phase === 'braking') {
+      setText(els.brakeValue, Math.max(0, s.holdSec || 0).toFixed(1));
+      setText(els.brakeLabel, 'ブレーキ中');
+    } else if (phase === 'observing') {
+      const remain = Math.max(0, s.remainSec || 0);
+      setText(els.brakeLabel, `観察中 残り ${Math.ceil(remain)} 秒`);
+      const pct = Math.round(Math.min(1, remain / obsTotal) * 100);
+      if (pct !== barPct) { barPct = pct; els.brakeBarFill.style.width = `${pct}%`; }
+    } else if (phase === 'result') {
+      const r = s.result || {};
+      const stopped = r.stopped > 0 ? `・停止 ${r.stopped} 台` : '';
+      setText(els.brakeLabel,
+        // 車情報パネルは幅が限られるので短く。詳しくはリザルトと散布図で見せる
+        `${Number(r.sec || 0).toFixed(1)} 秒 → ${r.affected || 0} 台・遅れ ${Math.round(r.timeLoss || 0)} 秒${stopped}`);
+    } else {
+      setText(els.brakeLabel, 'S / ↓ を押している間ブレーキ');
+    }
   }
 
   // ---------------------------------------------------------------
@@ -460,7 +515,7 @@ export function createHud(doc = document) {
     on(name, fn) { handlers.set(name, fn); return api; },
     setLevels, setActiveLevel, setLevelStars,
     setExperiment, setSliders, setMode, flashPulse,
-    setTimer, setPaused, setSpeed, setInfluence, setCar,
+    setTimer, setPaused, setSpeed, setInfluence, setCar, setBrakeState,
     setHudVisible, toggleSheet, toast,
     hideModals, isModalOpen, pressPrimary, showTitle, showBriefing, showQuiz, showResult,
   };

@@ -15,6 +15,10 @@
 2. 車列シミュレーション（IDM + 反応遅れ）が単体テストで検証されている（`node --test`）
 3. Codex 独立レビュー（デザイン / コード / システムの 3 観点）で P0/P1 ゼロに収束
 
+**2026-09-08 の方針転換**: アクセルを廃止し「ブレーキを踏む長さ」を学ぶゲームへ作り替えた。
+レベル構成・操作・評価の現行仕様は [BRAKE_REDESIGN.md](BRAKE_REDESIGN.md) を参照（本書の
+レベル案の表は初版のもの）。
+
 ## スタック / 構成
 
 - 静的サイト・ビルド無し・ES Modules。three.js r185 は `vendor/` に同梱（MIT、`vendor/THREE-LICENSE`）
@@ -79,9 +83,10 @@ sim.setParams({ T, tau, v0, noise })   // 走行中に変更可（carCount / sag
 sim.reset(overrides?)                  // 初期化（均等配置、全車 v0×initialSpeedRatio）
 
 sim.setPlayerControl({ mode: 'auto' | 'manual', throttle: 0..1, brake: 0..1 })
-  // auto: プレイヤー車も IDM で走る（レベル 1 の「ボタンでブレーキ」用）
-  // manual: a = throttle*A_MAX - brake*B_MAX、ただし前方衝突は物理的に防ぐ（gap<0.3m で v=leader.v に飽和）
-  // A_MAX = 3.0, B_MAX = 6.0（スポーツカーらしく強めだが、衝突は起こさない）
+  // ※ 2026-09-08 の作り替え（BRAKE_REDESIGN.md）以降、ゲームは常に mode:'auto' を使う。
+  //    auto では IDM の出力に対し、brake>0 の間だけ -PLAYER_BRAKE_DECEL(3.0 m/s²) を重ねる。
+  //    プレイヤーが操作する変数は「踏んでいた長さ」だけで、強さは固定。
+  //    manual（throttle*A_MAX - brake*B_MAX）はモデル側に残っているが、ゲームからは使わない。
 sim.pulseBrake({ decel: 2.0, duration: 2.0 })
   // 「ブレーキを踏む」ボタン。auto モードでもプレイヤー車に duration 秒間 -decel を強制
 sim.triggerLeaderBrake({ aheadIndex: 3, decel: 3.0, duration: 2.5 })

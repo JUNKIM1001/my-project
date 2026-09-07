@@ -18,6 +18,8 @@ const SPACETIME_MAX = 240;
 const WAVE_MIN_SAMPLES = 4;
 /** 直前の波標本よりこの距離 [m] 以上「手前」に戻る到達標本は別の波 / ノイズ起因とみなして捨てる */
 const WAVE_BACKJUMP_M = 50;
+/** 渋滞波の回帰をこの決定係数未満で棄却する（標本が散らばりすぎ = 波として読めない） */
+const WAVE_MIN_R2 = 0.5;
 /** サグの上り区間 [m]（shared/track.js の勾配定義と同じ 400〜650） */
 const SAG_CLIMB = [400, 650];
 
@@ -177,7 +179,15 @@ export function createMetrics(sim, { freeFlowSpeed } = {}) {
     let sxx = 0;
     for (let i = 0; i < n; i++) { sxy += (waveT[i] - mt) * (waveD[i] - md); sxx += (waveT[i] - mt) ** 2; }
     if (sxx < 1e-6) return null; // 全標本がほぼ同時刻 → 回帰不能
-    return -(sxy / sxx) * 3.6;
+    const slope = sxy / sxx;
+    // 当てはまりが悪いときは「測定できなかった」とする。標本が少なく散らばっていると
+    // 見かけ上プラス（＝前方へ進む波）になり、物理的にありえない値を表示してしまうため。
+    let syy = 0;
+    for (let i = 0; i < n; i++) syy += (waveD[i] - md) ** 2;
+    const r2 = syy > 1e-6 ? (sxy * sxy) / (sxx * syy) : 0;
+    if (r2 < WAVE_MIN_R2) return null;
+    if (slope <= 0) return null;   // 後方へ進んでいない（= 波として伝わっていない）
+    return -slope * 3.6;
   }
 
   function summary() {

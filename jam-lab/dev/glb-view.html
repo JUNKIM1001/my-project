@@ -37,9 +37,9 @@ loader.load(file, (gltf) => {
   const box = new THREE.Box3().setFromObject(obj);
   const size = new THREE.Vector3(); box.getSize(size);
   const center = new THREE.Vector3(); box.getCenter(center);
-  obj.position.sub(center);              // 原点へ寄せる
   const s = 1 / Math.max(size.x, size.y, size.z);
-  obj.scale.setScalar(s);                // 最大辺 1 に正規化
+  obj.scale.setScalar(s);                       // 最大辺 1 に正規化
+  obj.position.copy(center).multiplyScalar(-s); // 原点へ寄せる（scale 後の座標系で）
   scene.add(obj);
   let tris = 0, meshes = 0;
   obj.traverse((o) => { if (o.isMesh) { meshes++; tris += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; } });

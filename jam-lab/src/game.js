@@ -13,8 +13,8 @@ export const STEP = 0.05;
 /** 「ブレーキを踏む」ボタン / B キーの既定パルス */
 const PULSE = { decel: 2.0, duration: 2.0 };
 const CAMERA_CYCLE = ['chase', 'overhead', 'overview', 'cockpit'];
-/** キー押し続けでアクセル / ブレーキが最大になるまでの秒数（タップ = 弱く、長押し = 強く） */
-const RAMP_SEC = 0.6;
+/** 1 回のブレーキの結果を見るための観察時間 [シム秒]。この間は次のブレーキを受け付けない */
+const OBSERVE_SEC = 20;
 const STORAGE_KEY = 'jamlab.progress.v1';
 /** サグ部の上り区間 [m]（shared/track.js の定義と一致させる） */
 const SAG_UP_FROM = 400, SAG_UP_TO = 650;
@@ -54,14 +54,13 @@ export function createGame({ hud, charts, scene }) {
   let script = [];         // [{ at, action, args, fired }]
   let ctx = null;          // 採点コンテキスト（evaluate に渡す）
   let finalSummary = null;
-  let freeAuto = false;    // フリーラボの自動運転トグル
   let booted = false;      // boot() の再呼び出しガード（リスナー多重登録防止）
   const progress = loadProgress();
   const allLevels = [...LEVELS, FREE_LEVEL];
   const findLevel = (id) => allLevels.find((l) => l.id === id) || LEVELS[0];
 
   // ---- プレイヤー入力 ----
-  const input = { keyThrottle: false, keyBrake: false, touchThrottle: false, touchBrake: false, throttle: 0, brake: 0 };
+  const input = { keyBrake: false, touchBrake: false, brake: 0 };
   const lastControl = { mode: null, throttle: -1, brake: -1 };
 
   function sendControl(mode, throttle, brake) {
@@ -71,18 +70,19 @@ export function createGame({ hud, charts, scene }) {
   }
 
   /** 押している間なだらかに強くなる（タップ = 軽いブレーキ、長押し = 強いブレーキ） */
-  function updatePlayerControl(dt) {
-    if (g.mode !== 'manual') return;
-    const wantT = input.keyThrottle || input.touchThrottle;
-    const wantB = input.keyBrake || input.touchBrake;
-    input.throttle = wantT ? Math.min(1, input.throttle + dt / RAMP_SEC) : 0;
-    input.brake = wantB ? Math.min(1, input.brake + dt / RAMP_SEC) : 0;
-    sendControl('manual', input.throttle, input.brake);
+  // 車は常に自動運転（IDM）。試行が「踏んでいる」状態の間だけ一定の減速を重ねる。
+  // 強さは固定で、プレイヤーが操作するのは「踏んでいる長さ」だけ（BRAKE_REDESIGN.md）。
+  // 観察中は踏んでも効かない（1 回ずつ結果を確かめてもらうため）。
+  function updatePlayerControl() {
+    input.brake = trial && trial.phase === 'braking' ? 1 : 0;
+    sendControl('auto', 0, input.brake);
   }
 
   function releaseInputs() {
-    input.keyThrottle = input.keyBrake = input.touchThrottle = input.touchBrake = false;
-    input.throttle = input.brake = 0;
+    trial = null;
+    input.keyBrake = input.touchBrake = false;
+    input.brake = 0;
+    if (g.sim) sendControl('auto', 0, 0);
   }
 
   function applyMode(mode) {
@@ -139,13 +139,17 @@ export function createGame({ hud, charts, scene }) {
   // ここに持ち越す。ブリーフィングを開く / タイトルへ戻るまで（= そのレベルの 1 セッション）保持し、
   // ctx.densitiesTried / ctx.densityRuns として levels.evaluate に渡す。
   const densityLog = { densitiesTried: [], densityRuns: [] };
+  // 試行（ブレーキ 1 回ごとの結果）も同じレベルのセッション内では持ち越す。
+  // 03 は密度スライダーで再スタートしながら比べるので、ここで消えると成立しない。
+  const attemptLog = { attempts: [] };
   function resetDensityLog() {
     densityLog.densitiesTried = [];
     densityLog.densityRuns = [];
+    attemptLog.attempts = [];
   }
-  /** 現在の走行結果を記録（スライダー再スタート / やり直し / 完了時）。density レベルの走行中だけ */
+  /** 現在の走行結果を記録（スライダー再スタート / やり直し / 完了時）。密度を変えられるレベルだけ */
   function recordDensityRun() {
-    if (!g.level || g.level.id !== 'density' || !g.sim || !g.metrics) return;
+    if (!g.level || !g.level.densityRange || !g.sim || !g.metrics) return;
     const s = g.metrics.summary();
     densityLog.densityRuns.push({
       carCount: g.sim.carCount,
@@ -159,10 +163,11 @@ export function createGame({ hud, charts, scene }) {
   function sliderSpec(level, cfg) {
     const values = { carCount: cfg.carCount, T: cfg.T, tau: cfg.tau, v0: cfg.v0 * 3.6, noise: cfg.noise ?? 0 };
     if (level === FREE_LEVEL) {
-      return { visible: ['carCount', 'T', 'tau', 'v0', 'noise'], toggles: ['sag', 'auto'], values, toggleValues: { sag: !!cfg.sag, auto: freeAuto }, ranges: { carCount: { min: 20, max: 100 } } };
+      return { visible: ['carCount', 'T', 'tau', 'v0', 'noise'], toggles: ['sag'], values, toggleValues: { sag: !!cfg.sag }, ranges: { carCount: { min: 20, max: 100 } } };
     }
-    if (level.id === 'density') {
-      return { visible: ['carCount', 'T', 'tau'], toggles: [], values, ranges: { carCount: { min: 40, max: 90 } } };
+    if (level.densityRange) {
+      const [min, max] = level.densityRange;
+      return { visible: ['carCount', 'T', 'tau'], toggles: [], values, ranges: { carCount: { min, max } } };
     }
     return { visible: ['T', 'tau'], toggles: [], values, ranges: {} };
   }
@@ -196,7 +201,7 @@ export function createGame({ hud, charts, scene }) {
     hud.setPaused(false);
     hud.setHudVisible(true, true);
     const meta = Number.isFinite(level.durationSec)
-      ? `${level.simConfig.carCount} 台の車列 ・ 制限時間 ${level.durationSec} 秒 ・ ${level.playerMode === 'manual' ? '自分で運転' : '自動運転（ボタンでブレーキ）'}`
+      ? `${level.simConfig.carCount} 台の車列 ・ 制限時間 ${level.durationSec} 秒 ・ 自動運転（あなたはブレーキだけ）`
       : `${level.simConfig.carCount} 台の車列 ・ 時間無制限`;
     hud.showBriefing(level, meta);
   }
@@ -204,10 +209,13 @@ export function createGame({ hud, charts, scene }) {
   function startLevel(level, overrides = {}) {
     // 走行中の再スタート（密度スライダー / やり直し）なら、置き換える前の走行を記録しておく
     if (g.phase === 'playing' && g.level === level) recordDensityRun();
+    // sim を作り直す前に入力と試行を捨てる。踏みっぱなし / 観察中のまま新しい車列へ持ち越すと、
+    // 旧 sim の時刻で観察が完了したり、開始直後からブレーキが入ったりする
+    releaseInputs();
     g.level = level;
     g.overrides = overrides;
     const cfg = buildSim(level, overrides);
-    if (level.id === 'density' && !densityLog.densitiesTried.includes(cfg.carCount)) densityLog.densitiesTried.push(cfg.carCount);
+    if (level.densityRange && !densityLog.densitiesTried.includes(cfg.carCount)) densityLog.densitiesTried.push(cfg.carCount);
     g.phase = 'playing';
     g.paused = false;
     g.speed = 1;
@@ -217,8 +225,11 @@ export function createGame({ hud, charts, scene }) {
       completed: false,
       quizCorrect: null,
       playerSagMinSpeedRatio: 1,
-      playerPulses: 0,
-      pulseDuration: PULSE.duration,
+      attempts: attemptLog.attempts,   // 1 回のブレーキごとの結果（レベル内で持ち越す）
+      brakeCount: attemptLog.attempts.length,
+      totalBrakeSec: attemptLog.attempts.reduce((t, a) => t + a.sec, 0),
+      longestSec: attemptLog.attempts.reduce((m, a) => Math.max(m, a.sec), 0),
+      shortestSec: attemptLog.attempts.reduce((m, a) => Math.min(m, a.sec), Infinity),
       leaderAhead: null,
       eventTime: null,
       carCount: cfg.carCount,
@@ -226,17 +237,16 @@ export function createGame({ hud, charts, scene }) {
       densitiesTried: densityLog.densitiesTried, // 03: このレベルで試した台数（初期値を含む・重複なし）
       densityRuns: densityLog.densityRuns,       // 03: 再スタート前の各走行 { carCount, sec, stoppedCount, totalTimeLoss, density }
     };
-    // 強制イベント（ブレーキパルス / 先行車ブレーキ）を持たないレベルは開始時点から計測。
-    // 01 はプレイヤーが B を押した瞬間、02/04 は台本の先行車ブレーキ時刻を「イベント」とする。
+    // レベル全体の累積計測の開始時刻。台本の強制イベントを持つレベルはその時刻を、
+    // 持たないレベルは開始時点を「イベント」とする（プレイヤーのブレーキでも markEvent される）。
     const hasForcedEvent = script.some((e) => e.action === 'pulseBrake' || e.action === 'leaderBrake');
-    if (!hasForcedEvent && level.id !== 'brake-once') markEvent();
+    if (!hasForcedEvent) markEvent();
 
-    const mode = level === FREE_LEVEL ? (freeAuto ? 'auto' : 'manual') : level.playerMode;
-    applyMode(mode);
+    applyMode('auto');   // 車は常に自動運転。プレイヤーの操作はブレーキだけ
     hud.hideModals();
     hud.setHudVisible(true, false);
     hud.setActiveLevel(level.id);
-    hud.setExperiment(level, { free: level === FREE_LEVEL, mode });
+    hud.setExperiment(level, { free: level === FREE_LEVEL, mode: 'auto' });
     hud.setSliders(sliderSpec(level, cfg));
     hud.setPaused(false);
     hud.setSpeed(1);
@@ -288,52 +298,70 @@ export function createGame({ hud, charts, scene }) {
   }
 
   // ---- リザルト文（プレイヤーの操作と数字を結びつける） ----
+  /**
+   * リザルトの 1 行目。「踏んだ長さ → 起きた渋滞」を主役にする（BRAKE_REDESIGN.md）。
+   * 2 回以上試していれば、最短と最長を並べて用量反応を見せる。
+   */
   function buildHeadline(level, s, c) {
-    const n = s.affectedCount ?? 0;
-    const loss = Math.round(s.totalTimeLoss ?? 0);
-    const stopped = s.stoppedCount ?? 0;
-    const w = s.waveSpeed;
-    const waveTxt = w == null || !Number.isFinite(w)
-      ? '渋滞波の速度は測れませんでした（減速した車が少なすぎるため）'
-      : `波は ${fmtSigned1(w)} km/h で${w < 0 ? '後方' : '前方'}へ進みました`;
-    switch (level.id) {
-      case 'brake-once':
-        if (!c.playerPulses) return 'ブレーキを一度も踏まなかったので、車列は静かに流れ続けました。次は B キーで踏んで、後ろに何が起きるか見てみましょう。';
-        return `あなたの ${c.pulseDuration} 秒のブレーキ（${c.playerPulses} 回）で、後ろの ${n} 台が減速し、合計 ${loss} 秒が失われました。${waveTxt}。`;
-      case 'absorb-wave': {
-        const ahead = c.leaderAhead ?? 3;
-        const gt = s.playerMinGapTime;
-        return `前方 ${ahead} 台目の急ブレーキに対して、あなたの後ろでは ${n} 台が減速し、${stopped} 台が止まりました。失われた時間は合計 ${loss} 秒。あなたの車間時間は最小 ${fmt1(gt)} 秒でした。`;
-      }
-      case 'density':
-        return `${fmt0(s.density ?? c.carCount)} 台/km の車列は平均 ${fmt0((s.meanSpeed ?? 0) * 3.6)} km/h、${fmt0(s.flow)} 台/時で流れました。` +
-          (stopped ? `${stopped} 台が一度は止まり、` : '') + `合計 ${loss} 秒が失われました。` +
-          (w != null && w < 0 ? `${waveTxt}。` : '');
-      case 'reaction':
-        return `反応の遅れ ${fmt1(c.tau)} 秒の車列で、前方の急ブレーキは後ろの ${n} 台に広がり、${stopped} 台が止まりました。失われた時間は合計 ${loss} 秒。${waveTxt}。`;
-      case 'sag': {
-        const pct = Math.round((c.playerSagMinSpeedRatio ?? 1) * 100);
-        return `サグ部（上り坂）でのあなたの最低速度は希望速度の ${pct}% でした。後ろの ${n} 台が減速し、${stopped} 台が止まり、合計 ${loss} 秒が失われました。`;
-      }
-      default:
-        return `後ろの ${n} 台が減速し、合計 ${loss} 秒が失われました。${waveTxt}。`;
+    const at = c.attempts || [];
+    if (at.length === 0) {
+      return 'ブレーキを一度も踏まなかったので、車列は静かに流れ続けました。'
+        + '次は S / ↓ を押している間だけ踏んで、後ろに何が起きるか見てみましょう。';
     }
+    if (at.length === 1) {
+      const a = at[0];
+      const w = a.waveSpeed;
+      const waveTxt = w == null || !Number.isFinite(w)
+        ? '減速した車が少なく、渋滞波の速度は測れませんでした'
+        : `波は ${fmtSigned1(w)} km/h で${w < 0 ? '後方' : '前方'}へ進みました`;
+      return `${fmt1(a.sec)} 秒のブレーキで、後ろの ${a.affected} 台が減速し、`
+        + `合計 ${Math.round(a.timeLoss)} 秒が失われました。${waveTxt}。`;
+    }
+    const sorted = [...at].sort((x, y) => x.sec - y.sec);
+    const lo = sorted[0], hi = sorted[sorted.length - 1];
+    const secRatio = lo.sec > 0.05 ? hi.sec / lo.sec : null;
+    const affRatio = lo.affected > 0 ? hi.affected / lo.affected : null;
+    let cmp = '';
+    if (secRatio && affRatio && hi.sec - lo.sec > 0.3) {
+      cmp = `踏んだ時間が ${fmt1(secRatio)} 倍で、影響は ${fmt1(affRatio)} 倍に広がりました。`;
+    }
+    // 合計は「試行の合計」を出す。レベル全体の累積（loss）は桁が大きく、
+    // 上に並べた 1 回ごとの数字と食い違って見えるため使わない
+    const trialLoss = Math.round(at.reduce((t, a) => t + (a.timeLoss || 0), 0));
+    return `${fmt1(lo.sec)} 秒 → ${lo.affected} 台、${fmt1(hi.sec)} 秒 → ${hi.affected} 台。${cmp}`
+      + `${at.length} 回のブレーキで、後続に合計 ${trialLoss} 秒の遅れが出ました。`;
   }
 
+  /**
+   * リザルトの数値タイル。ブレーキを踏んだ回があれば「最後の 1 回」を主役にする。
+   * レベル全体の累積は、時間がたつほど波が周回して積み上がり、1 回ごとの数字と桁が
+   * 食い違って読みにくいため、副次的な行（buildLines 側）に回す。
+   */
   function buildNumbers(level, s, c) {
+    const at = (c && c.attempts) || [];
+    if (at.length) {
+      const a = at[at.length - 1];
+      const out = [
+        { label: '最後に踏んだ長さ', value: fmt1(a.sec), unit: '秒' },
+        { label: 'その 1 回で減速した後続車', value: fmt0(a.affected), unit: '台' },
+        { label: 'その 1 回で生まれた遅れ', value: fmt0(a.timeLoss), unit: '秒' },
+        { label: 'そのときの渋滞波', value: a.waveSpeed == null ? '—' : fmtSigned1(a.waveSpeed), unit: 'km/h' },
+      ];
+      if (at.length > 1) out.push({ label: 'ブレーキを踏んだ回数', value: fmt0(at.length), unit: '回' });
+      if (level.simConfig?.sag) out.push({ label: 'サグ部での最低速度比', value: fmt0((c.playerSagMinSpeedRatio ?? 1) * 100), unit: '%' });
+      return out;
+    }
     const out = [
       { label: '影響を受けた後続車', value: fmt0(s.affectedCount), unit: '台' },
       { label: '後続車の総時間損失', value: fmt0(s.totalTimeLoss), unit: '秒' },
       { label: '渋滞波の速度', value: s.waveSpeed == null ? '—' : fmtSigned1(s.waveSpeed), unit: 'km/h' },
       { label: '停止した車', value: fmt0(s.stoppedCount), unit: '台' },
     ];
-    if (level.id === 'absorb-wave' || level.id === 'reaction') out.push({ label: 'あなたの最小車間時間', value: fmt1(s.playerMinGapTime), unit: '秒' });
-    if (level.id === 'density') {
+    if (level.densityRange) {
       out.push({ label: '車列の平均速度', value: fmt0((s.meanSpeed ?? 0) * 3.6), unit: 'km/h' });
       out.push({ label: '交通流率', value: fmt0(s.flow), unit: '台/時' });
     }
-    if (level.id === 'sag') out.push({ label: 'サグ部での最低速度比', value: fmt0((c.playerSagMinSpeedRatio ?? 1) * 100), unit: '%' });
-    if (level.playerMode === 'manual') out.push({ label: 'あなたの強いブレーキ', value: fmt0(s.playerBrakeEvents), unit: '回' });
+    if (level.simConfig?.sag) out.push({ label: 'サグ部での最低速度比', value: fmt0((c.playerSagMinSpeedRatio ?? 1) * 100), unit: '%' });
     return out;
   }
 
@@ -344,12 +372,8 @@ export function createGame({ hud, charts, scene }) {
       if (e.fired || sim.time < e.at) continue;
       e.fired = true;
       if (e.action === 'pulseBrake') {
-        const args = e.args || PULSE;
-        sim.pulseBrake(args);
-        ctx.playerPulses++;
-        ctx.pulseDuration = args.duration ?? PULSE.duration;
+        sim.pulseBrake(e.args || PULSE);   // 台本による強制ブレーキ（プレイヤー操作ではない）
         markEvent();
-        hud.flashPulse();
       } else if (e.action === 'leaderBrake') {
         const args = e.args || { aheadIndex: 3, decel: 3.0, duration: 2.5 };
         const braked = sim.triggerLeaderBrake(args);
@@ -374,15 +398,74 @@ export function createGame({ hud, charts, scene }) {
     }
   }
 
-  // ---- 操作 ----
-  function pulse() {
-    if (g.phase !== 'playing' || g.paused) return;
-    if (g.mode !== 'auto' && g.level !== FREE_LEVEL) return;
-    g.sim.pulseBrake(PULSE);
-    ctx.playerPulses++;
-    markEvent();
-    hud.flashPulse();
+  // ---- 試行（1 回のブレーキ = 1 試行）----
+  // 押した瞬間に専用の計測器を作り、離してから OBSERVE_SEC 秒観察して 1 点を記録する。
+  // 観察中は次のブレーキを受け付けない（1 回ずつ結果を確かめてもらうため）。
+  let trial = null;
+
+  /** src: 'key' | 'touch'。押した瞬間に試行を始める（観察中・一時停止中は始まらない） */
+  function brakeDown(src) {
+    if (src === 'touch') input.touchBrake = true; else input.keyBrake = true;
+    if (g.phase !== 'playing' || g.paused || !g.sim) return;
+    if (trial && (trial.phase === 'braking' || trial.phase === 'observing')) return;
+    trial = {
+      phase: 'braking',
+      startTime: g.sim.time,
+      sec: 0,
+      metrics: createMetrics(g.sim, { freeFlowSpeed: g.sim.params.v0 }),
+      carCount: g.sim.cars.length,
+      tau: g.sim.params.tau,
+    };
+    trial.metrics.markEvent();
+    markEvent();                                       // レベル全体の計測もここから
   }
+
+  function brakeUp(src) {
+    if (src === 'touch') input.touchBrake = false; else input.keyBrake = false;
+    if (input.keyBrake || input.touchBrake) return;   // まだ別の入力で踏んでいる
+    if (!trial || trial.phase !== 'braking') return;
+    trial.sec = Math.max(0, g.sim.time - trial.startTime);
+    trial.phase = 'observing';
+    trial.observeUntil = g.sim.time + OBSERVE_SEC;
+  }
+
+  /** 観察が終わった試行を 1 点として記録する（step から毎サブステップ呼ばれる） */
+  function updateTrial() {
+    if (!trial) return;
+    if (trial.phase === 'braking') {
+      trial.sec = Math.max(0, g.sim.time - trial.startTime);
+      return;
+    }
+    if (trial.phase !== 'observing' || g.sim.time < trial.observeUntil) return;
+    const sm = trial.metrics.summary();
+    const rec = {
+      sec: +trial.sec.toFixed(2),
+      affected: sm.affectedCount,
+      timeLoss: sm.totalTimeLoss,
+      stopped: sm.stoppedCount,
+      waveSpeed: sm.waveSpeed,
+      carCount: trial.carCount,
+      tau: trial.tau,
+    };
+    ctx.attempts.push(rec);
+    ctx.brakeCount = ctx.attempts.length;
+    ctx.totalBrakeSec += rec.sec;
+    ctx.longestSec = Math.max(ctx.longestSec, rec.sec);
+    ctx.shortestSec = Math.min(ctx.shortestSec, rec.sec);
+    trial = { phase: 'result', result: rec };
+  }
+
+  /** HUD に渡すブレーキ計の状態 */
+  function brakeState() {
+    if (!trial) return { phase: 'idle' };
+    if (trial.phase === 'braking') return { phase: 'braking', holdSec: trial.sec };
+    if (trial.phase === 'observing') {
+      return { phase: 'observing', holdSec: trial.sec, remainSec: Math.max(0, trial.observeUntil - g.sim.time) };
+    }
+    return { phase: 'result', result: trial.result };
+  }
+
+  // ---- 操作 ----
   function togglePause() {
     if (g.phase !== 'playing') return;
     g.paused = !g.paused;
@@ -415,11 +498,6 @@ export function createGame({ hud, charts, scene }) {
   function onToggle(name, checked) {
     if (g.phase !== 'playing' || g.level !== FREE_LEVEL) return;
     if (name === 'sag') startLevel(g.level, { ...g.overrides, sag: checked });
-    if (name === 'auto') {
-      freeAuto = checked;
-      applyMode(checked ? 'auto' : 'manual');
-      hud.setExperiment(g.level, { free: true, mode: g.mode });
-    }
   }
 
   function firstLevelToPlay() {
@@ -434,9 +512,9 @@ export function createGame({ hud, charts, scene }) {
       return;
     }
     switch (e.code) {
-      case 'ArrowUp': case 'KeyW': input.keyThrottle = true; e.preventDefault(); break;
-      case 'ArrowDown': case 'KeyS': input.keyBrake = true; e.preventDefault(); break;
-      case 'KeyB': if (!e.repeat) pulse(); break;
+      case 'ArrowDown': case 'KeyS': case 'KeyB':
+        if (!e.repeat) brakeDown('key');
+        e.preventDefault(); break;
       case 'KeyC': if (!e.repeat) cycleCamera(); break;
       case 'Space': if (!e.repeat) togglePause(); e.preventDefault(); break;
       case 'Digit1': setSpeed(1); break;
@@ -447,8 +525,8 @@ export function createGame({ hud, charts, scene }) {
   }
   function onKeyUp(e) {
     switch (e.code) {
-      case 'ArrowUp': case 'KeyW': input.keyThrottle = false; break;
-      case 'ArrowDown': case 'KeyS': input.keyBrake = false; break;
+      case 'ArrowDown': case 'KeyS': case 'KeyB':
+        brakeUp('key'); break;
       default: break;
     }
   }
@@ -479,9 +557,12 @@ export function createGame({ hud, charts, scene }) {
     if (playing) {
       hud.setInfluence(g.metrics.summary());
       hud.setTimer(sim.time, g.level.durationSec);
-      charts.draw({ sim, metrics: g.metrics, v0: sim.params.v0, eventTime: ctx ? ctx.eventTime : null, sag: !!g.cfg.sag });
+      hud.setBrakeState(brakeState());
+      charts.draw({ sim, metrics: g.metrics, v0: sim.params.v0, eventTime: ctx ? ctx.eventTime : null,
+        sag: !!g.cfg.sag, attempts: ctx ? ctx.attempts : [] });
     } else {
-      charts.draw({ sim, metrics: null, v0: sim.params.v0, eventTime: null, sag: !!g.cfg.sag });
+      hud.setBrakeState({ phase: 'idle' });
+      charts.draw({ sim, metrics: null, v0: sim.params.v0, eventTime: null, sag: !!g.cfg.sag, attempts: [] });
     }
   }
 
@@ -491,9 +572,11 @@ export function createGame({ hud, charts, scene }) {
     if (!sim) return;
     captureInterp(true);   // 進める前の状態を prevS へ送る
     if (g.phase === 'playing') {
-      updatePlayerControl(dt);
+      updatePlayerControl();
       sim.step(dt);
       g.metrics.update(sim);
+      if (trial && trial.metrics) trial.metrics.update(sim);
+      updateTrial();
       fireScript();
       trackCtx();
       if (sim.time >= g.level.durationSec) finish(true);
@@ -517,7 +600,8 @@ export function createGame({ hud, charts, scene }) {
     hud.on('titleFree', () => openBriefing(FREE_LEVEL));
     hud.on('briefStart', () => startLevel(g.level, {}));
     hud.on('briefBack', showTitle);
-    hud.on('pulse', pulse);
+    hud.on('brakeDown', () => brakeDown('touch'));
+    hud.on('brakeUp', () => brakeUp('touch'));
     hud.on('restart', () => { if (g.level) startLevel(g.level, g.overrides); });
     // 「結果を見る」で途中終了: イベント（ブレーキ / 先行車ブレーキ / 計測開始）から
     // OBSERVED_SEC 以上たっていれば観察完了として採点する（時間切れを待たせない）
@@ -529,9 +613,10 @@ export function createGame({ hud, charts, scene }) {
     hud.on('slider', onSlider);
     hud.on('toggle', onToggle);
     hud.on('sheet', () => hud.toggleSheet());
+    // 旧 API の保険（hud 側が hold を出す場合も brakeDown/Up と同じ扱いにする）
     hud.on('hold', (which, down) => {
-      if (which === 'throttle') input.touchThrottle = down;
-      if (which === 'brake') input.touchBrake = down;
+      if (which !== 'brake') return;
+      if (down) brakeDown('touch'); else brakeUp('touch');
     });
     hud.on('resultRetry', () => startLevel(g.level, g.overrides));
     hud.on('resultNext', () => openBriefing(g.nextLevel || FREE_LEVEL));

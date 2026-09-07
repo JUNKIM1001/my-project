@@ -12,6 +12,8 @@
 import { LENGTH, CAR_LENGTH, wrap, forwardDistance, gradeAt } from '../shared/track.js';
 
 /** 手動運転のアクセル最大加速 / ブレーキ最大減速 [m/s²]（スポーツカーらしく強め。衝突は別途防ぐ） */
+/** プレイヤーがブレーキを踏んでいる間の減速度 [m/s²]（強さは固定。学ぶ変数は「長さ」） */
+export const PLAYER_BRAKE_DECEL = 3.0;
 export const A_MAX = 3.0;
 export const B_MAX = 6.0;
 /** 加速度クランプ [m/s²] */
@@ -296,6 +298,9 @@ export function createSim(options = {}) {
       } else {
         histGet(hist[i], k, sample);
         a = idmAccel(params, c.v, sample.gap, sample.dv);
+        // プレイヤーのブレーキ介入: 自動運転（IDM）の上に一定の減速を重ねる。
+        // 強さは固定で、プレイヤーが操作するのは「踏んでいる長さ」だけ。
+        if (c.isPlayer && player.brake > 0) a = Math.min(a, -PLAYER_BRAKE_DECEL * player.brake);
       }
       a -= GRAVITY * gradeAt(c.s, params.sag);
       if (params.noise > 0) a += params.noise * gaussian(rng);
