@@ -554,6 +554,38 @@ function doseLine(ctx) {
  * 表示行: 途中終了の注記 → 数値行 → 踏んだ長さの記録 → クイズ → サグ速度比 →
  *         星ごとの理由（★ 達成 / ☆ 未達成と条件）→ 評価
  */
+/**
+ * スコア（0〜100）。「実験の達成度」で、星と矛盾しないように criteria をそのまま点数化する
+ * （CASUAL_POLISH.md §2）。FREE は null。
+ *  - criteria 3 件: クイズありレベルは 20 点 × 3、なしは 30 点 × 3（未完走 / ゲート未達は 0）
+ *  - 探究度: 試行回数 min(n, 3) / 3 × 満点（クイズあり 20 / なし 10）。
+ *    05 dont-brake だけは逆で、踏んだ合計 0 秒で満点・1 秒以下で半分・それ以上で 0
+ *  - クイズ: 正解で 20
+ */
+export function scoreOf(level, summary, ctx = {}) {
+  if (!level || level.id === 'free' || typeof level.criteria !== 'function') return null;
+  let cs;
+  try { cs = level.criteria(summary, ctx) || []; } catch { cs = []; }
+  const hasQuiz = !!level.quiz;
+  const gateOk = ctx.completed !== false && !cs.some((c) => c.gate && !c.ok);
+  const critPts = gateOk ? cs.filter((c) => c.ok).length * (hasQuiz ? 20 : 30) : 0;
+  const exploreMax = hasQuiz ? 20 : 10;
+  let explore;
+  if (level.id === 'dont-brake') {
+    const sec = Number.isFinite(ctx.totalBrakeSec) ? ctx.totalBrakeSec : attemptsOf(ctx).reduce((t, a) => t + a.sec, 0);
+    explore = sec <= 0.05 ? exploreMax : sec <= 1.0 ? exploreMax / 2 : 0;
+  } else {
+    explore = Math.min(attemptsOf(ctx).length, 3) / 3 * exploreMax;
+  }
+  const quiz = hasQuiz && ctx.quizCorrect === true ? 20 : 0;
+  // 未完走 / ゲート未達（= 星 0）のときは、探究度とクイズだけで高得点にならないよう上限を置く。
+  // 星 1 の最低点（criteria 20 + 試行 1 回 ≒ 27）を下回る 25 にして、星とスコアの順序を保つ
+  if (!gateOk) return Math.min(ZERO_STAR_MAX, Math.round(explore + quiz));
+  return Math.max(0, Math.min(100, Math.round(critPts + explore + quiz)));
+}
+/** 星 0 のときのスコア上限 */
+const ZERO_STAR_MAX = 25;
+
 export function evaluate(level, summary, ctx = {}) {
   const stars = Math.max(0, Math.min(3, level.stars(summary, ctx) | 0));
   const lines = [];

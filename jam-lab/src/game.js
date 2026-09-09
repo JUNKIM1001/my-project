@@ -5,7 +5,8 @@
 
 import { createSim } from './sim/model.js';
 import { createMetrics } from './sim/metrics.js';
-import { PLAY_LEVELS as LEVELS, FREE_LEVEL, evaluate } from './sim/levels.js';
+import { PLAY_LEVELS as LEVELS, FREE_LEVEL, evaluate, scoreOf } from './sim/levels.js';
+import { createSound } from './ui/sound.js';
 import { CAR_LENGTH, forwardDistance } from './shared/track.js';
 
 /** sim のサブステップ幅 [s]（DESIGN.md 推奨値） */
@@ -25,18 +26,45 @@ const fmt0 = (x) => (Number.isFinite(x) ? Math.round(x).toString() : '—');
 const fmt1 = (x) => (Number.isFinite(x) ? x.toFixed(1) : '—');
 const fmtSigned1 = (x) => (Number.isFinite(x) ? (x > 0 ? '+' : '') + x.toFixed(1) : '—');
 
+/** 進捗 { [levelId]: { stars, score } }。旧形式（数値 = 星）はそのまま読めるよう変換する */
 function loadProgress() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     const obj = raw ? JSON.parse(raw) : {};
-    return obj && typeof obj === 'object' ? obj : {};
+    if (!obj || typeof obj !== 'object') return {};
+    // 値を必ず { stars: 0..3 の整数, score: 0..100 の整数 | null } に正規化する（壊れた保存値を持ち越さない）
+    // null / 空文字は「未記録」として null のまま残す（+null が 0 になって「0 点」に化けないように）
+    const clampInt = (v, lo, hi) => (v == null || v === '' || !Number.isFinite(+v) ? null : Math.max(lo, Math.min(hi, Math.round(+v))));
+    const known = new Set(LEVELS.map((l) => l.id));
+    for (const k of Object.keys(obj)) {
+      const v = obj[k];
+      const stars = clampInt(typeof v === 'number' ? v : v && v.stars, 0, 3);
+      const score = v && typeof v === 'object' ? clampInt(v.score, 0, 100) : null;
+      // 現在のレベル ID に無い記録（旧レベル名）は捨てる
+      if (stars == null || !known.has(k)) delete obj[k]; else obj[k] = { stars, score };
+    }
+    return obj;
   } catch { return {}; }
 }
+const VIEW_KEY = 'jamlab.viewMode';
+const ONBOARD_KEY = 'jamlab.onboarded';
+const readLS = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
+const writeLS = (k, v) => { try { localStorage.setItem(k, v); } catch { /* 保存できなくても動作は続ける */ } };
 function saveProgress(progress) {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); } catch { /* プライベートモード等は無視 */ }
 }
 
 export function createGame({ hud, charts, scene }) {
+  // ---- 音・表示モード（CASUAL_POLISH.md） ----
+  const sound = createSound();
+  let viewMode = readLS(VIEW_KEY) === 'detail' ? 'detail' : 'simple';
+  let onboarded = readLS(ONBOARD_KEY) === '1';
+  const bestScoreOf = (id) => (progress[id] && Number.isFinite(progress[id].score) ? progress[id].score : null);
+  /** プレイ中の暫定スコア（完走したものとして評価する） */
+  function liveScore() {
+    if (!g.level || g.level === FREE_LEVEL || !g.metrics || !ctx) return null;
+    try { return scoreOf(g.level, g.metrics.summary(), { ...ctx, completed: true }); } catch { return null; }
+  }
   // ---- 状態 ----
   const g = {
     phase: 'title',        // 'title' | 'briefing' | 'playing' | 'result'
@@ -80,6 +108,7 @@ export function createGame({ hud, charts, scene }) {
 
   function releaseInputs() {
     trial = null;
+    sound.brake(false);
     input.keyBrake = input.touchBrake = false;
     input.brake = 0;
     if (g.sim) sendControl('auto', 0, 0);
@@ -244,6 +273,9 @@ export function createGame({ hud, charts, scene }) {
 
     applyMode('auto');   // 車は常に自動運転。プレイヤーの操作はブレーキだけ
     hud.hideModals();
+    sound.play('start');
+    hud.setViewMode?.(viewMode);
+    if (!onboarded && level !== FREE_LEVEL) hud.showOnboarding?.(); else hud.hideOnboarding?.();
     hud.setHudVisible(true, false);
     hud.setActiveLevel(level.id);
     hud.setExperiment(level, { free: level === FREE_LEVEL, mode: 'auto' });
@@ -282,8 +314,12 @@ export function createGame({ hud, charts, scene }) {
     try { res = evaluate(level, s, ctx) || {}; } catch { res = {}; }
     const stars = Math.max(0, Math.min(3, res.stars | 0));
     const lines = Array.isArray(res.lines) ? res.lines : [];
-    if (progress[level.id] == null || stars > progress[level.id]) { progress[level.id] = stars; saveProgress(progress); }
-    hud.setLevelStars(level.id, progress[level.id]);
+    const score = scoreOf(level, s, ctx);
+    const prev = progress[level.id] || { stars: 0, score: null };
+    const isNewBest = Number.isFinite(score) && (prev.score == null || score > prev.score);
+    progress[level.id] = { stars: Math.max(prev.stars | 0, stars), score: isNewBest ? score : prev.score };
+    saveProgress(progress);
+    hud.setLevelStars(level.id, progress[level.id].stars);
     const idx = LEVELS.indexOf(level);
     const next = idx >= 0 && idx < LEVELS.length - 1 ? LEVELS[idx + 1] : FREE_LEVEL;
     g.nextLevel = next;
@@ -294,6 +330,11 @@ export function createGame({ hud, charts, scene }) {
       lesson: level.lesson,
       completed: ctx.completed,
       nextLabel: next === FREE_LEVEL ? 'フリーラボへ' : `次の実験 ${next.no} へ`,
+      score, bestScore: progress[level.id].score, isNewBest,
+      // 演出の合図（hud が星ポップ / カウントアップの節目で呼ぶ）
+      onStar: (i) => sound.play(['star1', 'star2', 'star3'][Math.min(2, i | 0)]),
+      onTick: () => sound.play('tick'),
+      onDone: () => { if (stars === 3) sound.play('fanfare'); if (isNewBest) sound.play('newBest'); },
     });
   }
 
@@ -380,9 +421,11 @@ export function createGame({ hud, charts, scene }) {
         ctx.leaderAhead = args.aheadIndex ?? 3;
         markEvent(Number.isInteger(braked) ? { s: sim.cars[braked].s } : undefined);
         hud.toast(`前方 ${ctx.leaderAhead} 台目が急ブレーキ！ 車間を使って、後ろの車を止めずに受け流そう。`);
+        sound.play('hint');
       } else if (e.action === 'hint') {
         const a = e.args;
         hud.toast(typeof a === 'string' ? a : (a && (a.text || a.message)) || '');
+        sound.play('hint');
       }
     }
   }
@@ -418,6 +461,8 @@ export function createGame({ hud, charts, scene }) {
     };
     trial.metrics.markEvent();
     markEvent();                                       // レベル全体の計測もここから
+    sound.brake(true);
+    if (!onboarded) { onboarded = true; writeLS(ONBOARD_KEY, '1'); hud.hideOnboarding?.(); }
   }
 
   function brakeUp(src) {
@@ -427,6 +472,7 @@ export function createGame({ hud, charts, scene }) {
     trial.sec = Math.max(0, g.sim.time - trial.startTime);
     trial.phase = 'observing';
     trial.observeUntil = g.sim.time + OBSERVE_SEC;
+    sound.brake(false);
   }
 
   /** 観察が終わった試行を 1 点として記録する（step から毎サブステップ呼ばれる） */
@@ -453,6 +499,7 @@ export function createGame({ hud, charts, scene }) {
     ctx.longestSec = Math.max(ctx.longestSec, rec.sec);
     ctx.shortestSec = Math.min(ctx.shortestSec, rec.sec);
     trial = { phase: 'result', result: rec };
+    sound.play('trial');
   }
 
   /** HUD に渡すブレーキ計の状態 */
@@ -558,6 +605,8 @@ export function createGame({ hud, charts, scene }) {
       hud.setInfluence(g.metrics.summary());
       hud.setTimer(sim.time, g.level.durationSec);
       hud.setBrakeState(brakeState());
+      // 暫定スコアはプレイ中だけ更新する（リザルトへ移った後は確定値と食い違うので触らない）
+      if (g.phase === 'playing' && g.level !== FREE_LEVEL) hud.setScore?.({ current: liveScore(), best: bestScoreOf(g.level.id), isNewBest: false });
       charts.draw({ sim, metrics: g.metrics, v0: sim.params.v0, eventTime: ctx ? ctx.eventTime : null,
         sag: !!g.cfg.sag, attempts: ctx ? ctx.attempts : [] });
     } else {
@@ -618,6 +667,17 @@ export function createGame({ hud, charts, scene }) {
       if (which !== 'brake') return;
       if (down) brakeDown('touch'); else brakeUp('touch');
     });
+    hud.on('toggleMute', () => { sound.setMuted(!sound.muted); hud.setMuted?.(sound.muted); });
+    hud.on('toggleView', () => {
+      viewMode = viewMode === 'simple' ? 'detail' : 'simple';
+      writeLS(VIEW_KEY, viewMode);
+      hud.setViewMode?.(viewMode);
+    });
+    hud.setMuted?.(sound.muted);
+    // ブラウザの自動再生制限: 最初の操作で AudioContext を起こす
+    const unlockOnce = () => { sound.unlock(); window.removeEventListener('pointerdown', unlockOnce); window.removeEventListener('keydown', unlockOnce); };
+    window.addEventListener('pointerdown', unlockOnce);
+    window.addEventListener('keydown', unlockOnce);
     hud.on('resultRetry', () => startLevel(g.level, g.overrides));
     hud.on('resultNext', () => openBriefing(g.nextLevel || FREE_LEVEL));
     hud.on('resultTitle', showTitle);

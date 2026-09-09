@@ -341,6 +341,11 @@ export function createCharts({ timeline, spaceTime, minimap, scatter }) {
   // (d) 用量反応の散布図（踏んだ秒数 → 後続車の総時間損失）
   // ---------------------------------------------------------------
   const SCAT_SEC_MAX = 6;
+  // 新しい点の「ポン」（0.4 秒）: 点数が増えた時刻を覚え、経過時間で拡大→収束を描く。
+  // draw は ~10 Hz なので、アニメ中だけ rAF で散布図を追加再描画して滑らかにする
+  const SCAT_POP_MS = 400;
+  let scatPrevN = 0, scatPopAt = -Infinity, scatRaf = 0;
+  const scatRedraw = () => { scatRaf = 0; if (lastArgs) drawScatter(lastArgs); };
 
   /** 目盛りの上限を切りのよい値に丸める（18 → 20、4 → 5） */
   function niceMax(v) {
@@ -370,6 +375,10 @@ export function createCharts({ timeline, spaceTime, minimap, scatter }) {
       if (a.timeLoss > maxAff) maxAff = a.timeLoss;
       n++;
     }
+    // 点が増えたらポップ開始（減った = レベル切替なので静かにリセット）
+    if (n > scatPrevN) scatPopAt = performance.now();
+    scatPrevN = n;
+    const popAge = (performance.now() - scatPopAt) / SCAT_POP_MS;  // 0..1 がアニメ中
     const xMax = Math.max(SCAT_SEC_MAX, Math.ceil(maxSec));
     const yMax = Math.max(30, niceMax(maxAff));
     const xOf = (s) => padL + pw * clamp01(s / xMax);
@@ -450,11 +459,20 @@ export function createCharts({ timeline, spaceTime, minimap, scatter }) {
     }
     if (last) {
       const x = xOf(last.sec), y = yOf(last.timeLoss);
+      // ポップ: 拡大（最大 ≈1.8 倍）→ 収束。広がって消える輪も添える
+      const popping = popAge >= 0 && popAge < 1;
+      const s = popping ? 1 + 1.4 * (1 - popAge) * Math.sin(Math.PI * popAge) : 1;
+      if (popping) {
+        ctx.strokeStyle = `rgba(142,164,234,${(0.6 * (1 - popAge)).toFixed(3)})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(x, y, 7.5 + 16 * popAge, 0, Math.PI * 2); ctx.stroke();
+      }
       ctx.fillStyle = ACCENT_HI;
-      ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, 5 * s, 0, Math.PI * 2); ctx.fill();
       ctx.strokeStyle = 'rgba(255,255,255,0.75)';
       ctx.lineWidth = 1.4;
-      ctx.beginPath(); ctx.arc(x, y, 7.5, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(x, y, 7.5 * s, 0, Math.PI * 2); ctx.stroke();
+      if (popping && !scatRaf) scatRaf = requestAnimationFrame(scatRedraw);
     }
   }
 

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JAM LAB — sound dev</title>
+<style>
+  body { margin: 0; padding: 24px; background: #0b1018; color: #e8eef5; font-family: system-ui, sans-serif; }
+  h1 { font-size: 16px; margin: 0 0 12px; color: #9fd0ff; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  button { padding: 10px 14px; border: 0; border-radius: 8px; background: #22304a; color: #e8eef5; font-size: 14px; cursor: pointer; }
+  button:active { background: #3a5a8a; }
+  button.on { background: #c94b4b; }
+  #state { font-size: 12px; color: #8a9bb0; }
+</style>
+</head>
+<body>
+<h1>sound.js 単体確認（最初のクリックで unlock）</h1>
+<div class="row" id="oneshots"></div>
+<div class="row">
+  <button id="brake">ブレーキ（押している間）</button>
+  <button id="tick15">tick ×15 Hz（1 秒）</button>
+  <button id="mute">ミュート: OFF</button>
+</div>
+<div id="state"></div>
+<script type="module">
+  import { createSound } from '../src/ui/sound.js';
+  const sound = createSound();
+  const names = ['click', 'start', 'trial', 'tick', 'star1', 'star2', 'star3', 'fanfare', 'newBest', 'hint'];
+  const row = document.getElementById('oneshots');
+  for (const n of names) {
+    const b = document.createElement('button');
+    b.textContent = n;
+    b.addEventListener('pointerdown', () => { sound.unlock(); sound.play(n); });
+    row.appendChild(b);
+  }
+  const brakeBtn = document.getElementById('brake');
+  brakeBtn.addEventListener('pointerdown', () => { sound.unlock(); sound.brake(true); brakeBtn.classList.add('on'); });
+  const off = () => { sound.brake(false); brakeBtn.classList.remove('on'); };
+  brakeBtn.addEventListener('pointerup', off);
+  brakeBtn.addEventListener('pointerleave', off);
+  document.getElementById('tick15').addEventListener('pointerdown', () => {
+    sound.unlock();
+    let i = 0;
+    const id = setInterval(() => { sound.play('tick'); if (++i >= 15) clearInterval(id); }, 1000 / 15);
+  });
+  const muteBtn = document.getElementById('mute');
+  const showMute = () => { muteBtn.textContent = `ミュート: ${sound.muted ? 'ON' : 'OFF'}`; };
+  muteBtn.addEventListener('pointerdown', () => { sound.unlock(); sound.setMuted(!sound.muted); showMute(); });
+  showMute();
+  document.getElementById('state').textContent = `AudioContext: ${typeof AudioContext !== 'undefined' ? '利用可' : '利用不可'}`;
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 // sim/levels.js — レベル定義の必須フィールド・星判定（ctx.attempts ベース）・evaluate の出力
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { LEVELS, PLAY_LEVELS, FREE_LEVEL, getLevel, evaluate, lossPerCar } from '../src/sim/levels.js';
+import { LEVELS, PLAY_LEVELS, FREE_LEVEL, getLevel, evaluate, scoreOf, lossPerCar } from '../src/sim/levels.js';
 
 const baseSummary = {
   affectedCount: 0, totalTimeLoss: 0, stoppedCount: 0, waveSpeed: null,
@@ -267,4 +267,25 @@ test('evaluate は stars と 3 本の理由行・数値行を返す', () => {
   assert.ok(r.lines[0].includes('最後まで'));
   assert.ok(r.lines.some((s) => s.includes('計測不足')));
   assert.ok(r.lines.some((s) => s.includes('不正解') && s.includes('後ろへ')));
+});
+
+test('scoreOf: 0〜100 の整数で、星と同じ向きに増える。FREE は null', () => {
+  const l1 = getLevel('first-tap');
+  const full = { completed: true, quizCorrect: true, attempts: [A_TAP, A_TAP, A_TAP] };
+  assert.equal(scoreOf(l1, baseSummary, full), 100, '3 条件 + 3 試行 + クイズで満点');
+  assert.equal(scoreOf(l1, baseSummary, { completed: true, quizCorrect: true, attempts: [] }), 20, 'ゲート未達は criteria 0、クイズ 20 のみ');
+  assert.equal(scoreOf(l1, baseSummary, { completed: false, quizCorrect: true, attempts: [A_TAP] }), 25, '未完走（星 0）は上限 25');
+  // 星 0 の最大点 < 星 1 の最低点（criteria 20 + 試行 1 回）で、星とスコアの順序が入れ替わらない
+  const oneStarMin = scoreOf(l1, baseSummary, { completed: true, quizCorrect: false, attempts: [at(1.3, 4, 20, { waveSpeed: -12 })] });
+  assert.ok(oneStarMin > 25, `star1 min ${oneStarMin}`);
+  const l5 = getLevel('dont-brake');
+  // 05 にもクイズがあるので、満点を見るときは正解込みで評価する
+  const s5 = (sec, loss) => scoreOf(l5, { ...baseSummary, totalTimeLoss: loss }, { completed: true, quizCorrect: true, totalBrakeSec: sec, attempts: [] });
+  assert.equal(s5(0, 116), 100);
+  assert.ok(s5(0, 116) > s5(2.0, 129) && s5(2.0, 129) > s5(3.0, 211));
+  assert.equal(scoreOf(getLevel('free'), baseSummary, { completed: true }), null);
+  for (const l of PLAY_LEVELS) {
+    const v = scoreOf(l, baseSummary, { completed: true, attempts: [] });
+    assert.ok(Number.isInteger(v) && v >= 0 && v <= 100, l.id);
+  }
 });

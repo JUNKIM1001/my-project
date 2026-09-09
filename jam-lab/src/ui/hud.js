@@ -91,9 +91,20 @@ export function createHud(doc = document) {
     resHeadline: $('res-headline'), resNumbers: $('res-numbers'), resLines: $('res-lines'),
     resLesson: $('res-lesson'), lessonTitle: $('lesson-title'), lessonBody: $('lesson-body'), lessonFact: $('lesson-fact'),
     resNext: $('res-next'), resRetry: $('res-retry'), resTitleBtn: $('res-title-btn'),
+    // カジュアル仕上げ（CASUAL_POLISH.md）
+    btnMute: $('btn-mute'), muteOn: $('mute-icon-on'), muteOff: $('mute-icon-off'),
+    btnView: $('btn-view'), btnFinishTop: $('btn-finish-top'),
+    missionNo: $('mission-no'), missionTitle: $('mission-title'), missionHowto: $('mission-howto'),
+    missionDensity: $('mission-density'), missionDensityInput: $('mission-density-input'), missionDensityOut: $('mission-density-out'),
+    scoreBlock: $('score-block'), scoreCurrent: $('score-current'), scoreBest: $('score-best'), scoreNew: $('score-new'),
+    vignette: $('brake-vignette'), onboard: $('onboard-hint'),
+    resScore: $('res-score'), resScoreNum: $('res-score-num'), resScoreBest: $('res-score-best'), resScoreNew: $('res-score-new'),
+    confetti: $('confetti'),
   };
 
   els.btnPulse = els.btnBrake; // 旧名の別名（互換用）
+  const win = doc.defaultView || window;
+  const reducedMotion = () => !!(win.matchMedia && win.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   const chartCanvases = {
     timeline: $('chart-timeline'),
@@ -108,6 +119,9 @@ export function createHud(doc = document) {
   const click = (elm, name, ...args) => elm && elm.addEventListener('click', (e) => { e.currentTarget.blur(); emit(name, ...args); });
   click(els.btnRestart, 'restart');
   click(els.btnFinish, 'finish');
+  click(els.btnFinishTop, 'finish');   // simple 表示ではトップバーの「結果を見る」を使う
+  click(els.btnView, 'toggleView');
+  click(els.btnMute, 'toggleMute');
   click($('btn-camera'), 'camera');
   click($('btn-tod'), 'tod');
   click($('btn-pause'), 'pause');
@@ -132,8 +146,30 @@ export function createHud(doc = document) {
     const out = row.querySelector('output');
     const fmt = SLIDER_FORMAT[param] || ((v) => String(v));
     const show = () => setText(out, fmt(Number(input.value)));
-    input.addEventListener('input', () => { show(); if (param !== 'carCount') emit('slider', param, Number(input.value)); });
-    input.addEventListener('change', () => { show(); if (param === 'carCount') emit('slider', param, Number(input.value)); input.blur(); });
+    input.addEventListener('input', () => { show(); if (param !== 'carCount') emit('slider', param, Number(input.value)); else syncDensity(); });
+    input.addEventListener('change', () => { show(); if (param === 'carCount') { syncDensity(); emit('slider', param, Number(input.value)); } input.blur(); });
+  }
+
+  // バナー下の台数スライダー（simple 用）: 左パネルの carCount スライダーの鏡。値・レンジは常に左パネル側が正
+  const mainDensityInput = els.sliders.querySelector('.slider[data-param="carCount"] input');
+  const mainDensityOut = els.sliders.querySelector('.slider[data-param="carCount"] output');
+  function syncDensity() {
+    const m = mainDensityInput, d = els.missionDensityInput;
+    if (!m || !d) return;
+    if (d.min !== m.min) d.min = m.min;
+    if (d.max !== m.max) d.max = m.max;
+    if (d.value !== m.value) d.value = m.value;
+    setText(els.missionDensityOut, SLIDER_FORMAT.carCount(Number(d.value)));
+  }
+  if (els.missionDensityInput) {
+    const d = els.missionDensityInput;
+    d.addEventListener('input', () => setText(els.missionDensityOut, SLIDER_FORMAT.carCount(Number(d.value))));
+    d.addEventListener('change', () => {
+      const v = Number(d.value);
+      if (mainDensityInput) { mainDensityInput.value = d.value; setText(mainDensityOut, SLIDER_FORMAT.carCount(v)); }
+      emit('slider', 'carCount', v);
+      d.blur();
+    });
   }
   for (const row of els.sliders.querySelectorAll('.check')) {
     const input = row.querySelector('input');
@@ -220,6 +256,62 @@ export function createHud(doc = document) {
     setText(els.expQuestion, level.question || '');
     setText(els.expHowto, level.howTo || '');
     els.btnFinish.hidden = free;
+    if (els.btnFinishTop) els.btnFinishTop.hidden = free;
+    // simple 用のミッションバナー。台数スライダーは densityRange のあるレベルだけ
+    setText(els.missionNo, level.no);
+    setText(els.missionTitle, level.title);
+    setText(els.missionHowto, level.howTo || '');
+    hud.classList.toggle('has-density', !!level.densityRange);
+  }
+
+  // ---------------------------------------------------------------
+  // 表示モード（simple / detail）・ミュート表示
+  // ---------------------------------------------------------------
+  let viewMode = 'detail';
+  /** 'simple' | 'detail'。保存（localStorage）は game.js 側の責務 */
+  function setViewMode(mode) {
+    viewMode = mode === 'simple' ? 'simple' : 'detail';
+    hud.classList.toggle('mode-simple', viewMode === 'simple');
+    if (els.btnView) {
+      // ボタンは「切り替え先」を示す
+      setText(els.btnView, viewMode === 'simple' ? '詳細' : 'シンプル');
+      els.btnView.setAttribute('aria-label', viewMode === 'simple' ? '詳細表示に切り替え' : 'シンプル表示に切り替え');
+    }
+  }
+  function getViewMode() { return viewMode; }
+  function setMuted(muted) {
+    const m = !!muted;
+    if (els.muteOn) els.muteOn.hidden = m;
+    if (els.muteOff) els.muteOff.hidden = !m;
+    if (els.btnMute) {
+      els.btnMute.setAttribute('aria-pressed', String(m));
+      els.btnMute.setAttribute('aria-label', m ? 'ミュート解除' : 'ミュート');
+    }
+  }
+
+  // ---------------------------------------------------------------
+  // スコア（車パネル）: current == null（FREE）なら非表示
+  // ---------------------------------------------------------------
+  function setScore({ current = null, best = null, isNewBest = false } = {}) {
+    const has = current != null && Number.isFinite(current);
+    els.scoreBlock.hidden = !has;
+    if (!has) return;
+    setText(els.scoreCurrent, String(Math.round(current)));
+    setText(els.scoreBest, best != null && Number.isFinite(best) ? `ベスト ${Math.round(best)}` : '');
+    els.scoreNew.hidden = !isNewBest;
+  }
+
+  // ---------------------------------------------------------------
+  // 初回オンボーディング（吹き出し）。出すタイミングは game.js が決める
+  // ---------------------------------------------------------------
+  function showOnboarding() {
+    if (!els.onboard) return;
+    const coarse = !!(win.matchMedia && win.matchMedia('(pointer: coarse)').matches);
+    setText(els.onboard, coarse ? '下のボタンを押している間ブレーキ' : 'S / ↓ を押している間ブレーキ');
+    els.onboard.hidden = false;
+  }
+  function hideOnboarding() {
+    if (els.onboard) els.onboard.hidden = true;
   }
 
   /**
@@ -246,6 +338,7 @@ export function createHud(doc = document) {
       if (spec.toggleValues && spec.toggleValues[t] != null) row.querySelector('input').checked = !!spec.toggleValues[t];
     }
     els.sliders.hidden = visible.size === 0 && toggles.size === 0;
+    syncDensity();
   }
 
   /** 旧 API 互換のダミー（操作はブレーキのみになり、モードによる出し分けは廃止） */
@@ -318,6 +411,7 @@ export function createHud(doc = document) {
   let brakePhase = '';   // 直前のフェーズ（変化時だけクラス / hidden を触る）
   let obsTotal = 0;      // 観察フェーズの全体秒数（進捗バーの分母）
   let barPct = -1;       // 直前のバー幅（%）
+  let vigLast = -1;      // 直前のビネット強度（0.05 刻み・変化時だけ style を触る）
 
   /**
    * state = { phase: 'idle'|'braking'|'observing'|'result', holdSec, remainSec,
@@ -332,11 +426,16 @@ export function createHud(doc = document) {
       els.brakeNum.hidden = phase !== 'braking';
       els.brakeBar.hidden = phase !== 'observing';
       if (phase === 'observing') { obsTotal = Math.max(0.001, s.remainSec || 0); barPct = -1; }
+      hud.classList.toggle('is-braking', phase === 'braking'); // 赤いビネット（CSS で opacity をイーズ）
       brakePhase = phase;
     }
     if (phase === 'braking') {
-      setText(els.brakeValue, Math.max(0, s.holdSec || 0).toFixed(1));
+      const hold = Math.max(0, s.holdSec || 0);
+      setText(els.brakeValue, hold.toFixed(1));
       setText(els.brakeLabel, 'ブレーキ中');
+      // ビネットの濃さは踏んだ長さに同期（0.55 → 2.5 秒で 1.0）
+      const vig = Math.round((0.55 + 0.45 * Math.min(1, hold / 2.5)) * 20) / 20;
+      if (vig !== vigLast) { vigLast = vig; hud.style.setProperty('--vig', String(vig)); }
     } else if (phase === 'observing') {
       const remain = Math.max(0, s.remainSec || 0);
       setText(els.brakeLabel, `観察中 残り ${Math.ceil(remain)} 秒`);
@@ -376,9 +475,110 @@ export function createHud(doc = document) {
   // モーダル
   // ---------------------------------------------------------------
   function hideModals() {
+    cancelResultFx();
     els.modalTitle.hidden = true;
     els.modalBriefing.hidden = true;
     els.modalResult.hidden = true;
+  }
+
+  // ---------------------------------------------------------------
+  // リザルト演出: スコアのカウントアップ / 星のポップ通知 / 紙吹雪
+  // ---------------------------------------------------------------
+  let resRaf = 0;            // カウントアップの rAF
+  const resTimers = [];      // 星 / 紙吹雪の setTimeout
+  let confRaf = 0;           // 紙吹雪の rAF
+  function cancelResultFx() {
+    if (resRaf) { cancelAnimationFrame(resRaf); resRaf = 0; }
+    for (const t of resTimers) clearTimeout(t);
+    resTimers.length = 0;
+    stopConfetti();
+  }
+
+  /** 0 → target を 0.8 秒でカウントアップ。onTick は 60 ms に 1 回まで、onDone は完了時 */
+  function countUp(target, onTick, onDone) {
+    const t0 = performance.now();
+    let lastTick = -Infinity, lastVal = -1;
+    const step = (now) => {
+      const t = Math.min(1, (now - t0) / 800);
+      const e = 1 - Math.pow(1 - t, 3);   // easeOutCubic
+      const v = Math.round(target * e);
+      if (v !== lastVal) {
+        lastVal = v;
+        setText(els.resScoreNum, String(v));
+        if (onTick && now - lastTick >= 60) { lastTick = now; onTick(v); }
+      }
+      if (t < 1) resRaf = requestAnimationFrame(step);
+      else { resRaf = 0; if (onDone) onDone(); }
+    };
+    resRaf = requestAnimationFrame(step);
+  }
+
+  // 紙吹雪: 粒の配列は 1 回だけ確保し、毎フレームのアロケーションをしない
+  const CONF_N = 140;
+  const CONF_COLORS = ['#f5a524', '#2dd4bf', '#8ea4ea', '#e5484d', '#ffffff'];
+  const conf = {
+    x: new Float32Array(CONF_N), y: new Float32Array(CONF_N), vx: new Float32Array(CONF_N), vy: new Float32Array(CONF_N),
+    rot: new Float32Array(CONF_N), vr: new Float32Array(CONF_N), w: new Float32Array(CONF_N), h: new Float32Array(CONF_N),
+    c: new Uint8Array(CONF_N),
+  };
+  function stopConfetti() {
+    if (confRaf) { cancelAnimationFrame(confRaf); confRaf = 0; }
+    const cv = els.confetti;
+    if (cv && !cv.hidden) {
+      const ctx = cv.getContext('2d');
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      cv.hidden = true;
+    }
+  }
+  /** 3 星の紙吹雪（1.5 秒）。prefers-reduced-motion では何もしない */
+  function startConfetti() {
+    const cv = els.confetti;
+    if (!cv || reducedMotion()) return;
+    stopConfetti();
+    const W = win.innerWidth, H = win.innerHeight;
+    const dpr = Math.min(2, win.devicePixelRatio || 1);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    const ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    for (let i = 0; i < CONF_N; i++) {
+      conf.x[i] = W * 0.5 + (Math.random() - 0.5) * W * 0.3;
+      conf.y[i] = H * 0.38;
+      conf.vx[i] = (Math.random() - 0.5) * 1100;
+      conf.vy[i] = -(350 + Math.random() * 600);
+      conf.rot[i] = Math.random() * Math.PI;
+      conf.vr[i] = (Math.random() - 0.5) * 14;
+      conf.w[i] = 6 + Math.random() * 6;
+      conf.h[i] = 4 + Math.random() * 4;
+      conf.c[i] = (Math.random() * CONF_COLORS.length) | 0;
+    }
+    cv.hidden = false;
+    const DUR = 1500;
+    const t0 = performance.now();
+    let prev = t0;
+    const frame = (now) => {
+      const dt = Math.min(0.05, (now - prev) / 1000); prev = now;
+      const age = (now - t0) / DUR;
+      if (age >= 1) { confRaf = 0; stopConfetti(); return; }
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalAlpha = age > 0.7 ? (1 - age) / 0.3 : 1;  // 最後の 0.45 秒でフェード
+      for (let i = 0; i < CONF_N; i++) {
+        conf.vy[i] += 1400 * dt;
+        conf.vx[i] *= 0.985;
+        conf.x[i] += conf.vx[i] * dt;
+        conf.y[i] += conf.vy[i] * dt;
+        conf.rot[i] += conf.vr[i] * dt;
+        ctx.save();
+        ctx.translate(conf.x[i], conf.y[i]);
+        ctx.rotate(conf.rot[i]);
+        ctx.fillStyle = CONF_COLORS[conf.c[i]];
+        ctx.fillRect(-conf.w[i] / 2, -conf.h[i] / 2, conf.w[i], conf.h[i]);
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1;
+      confRaf = requestAnimationFrame(frame);
+    };
+    confRaf = requestAnimationFrame(frame);
   }
   function isModalOpen() {
     return !els.modalTitle.hidden || !els.modalBriefing.hidden || !els.modalResult.hidden;
@@ -467,7 +667,11 @@ export function createHud(doc = document) {
 
   /**
    * リザルト表示。
-   * payload = { level, stars, headline, numbers: [{label, value, unit}], lines, lesson, completed, nextLabel }
+   * payload = { level, stars, headline, numbers: [{label, value, unit}], lines, lesson, completed, nextLabel,
+   *             score, bestScore, isNewBest,          // score == null（FREE）ならスコア欄は出さない
+   *             onTick(value), onStar(index), onDone } // 演出フック（任意・効果音用）
+   * 星は 0.25 秒間隔でポップ（onStar(i) は i*250 ms）、スコアは 0.8 秒でカウントアップ（onTick は 60 ms 間引き）、
+   * 3 星なら 3 つ目の星の直後に紙吹雪。onDone はカウントアップ完了時（score が無ければ即時）。
    */
   function showResult(p) {
     hideModals();
@@ -476,12 +680,34 @@ export function createHud(doc = document) {
     els.resQuiz.hidden = true;
     els.resBody.hidden = false;
 
-    // 星: 一度全部消してから再付与（アニメーション再生のため）
+    // 星: 一度全部消してから再付与（アニメーション再生のため）。CSS の animation-delay と同じ 0.25 秒刻みで通知
     const spans = els.resStars.querySelectorAll('span');
     spans.forEach((s) => s.classList.remove('lit'));
     void els.resStars.offsetWidth;
-    spans.forEach((s, i) => { if (i < p.stars) s.classList.add('lit'); });
+    const nStars = Math.max(0, Math.min(3, p.stars | 0));
+    spans.forEach((s, i) => {
+      if (i >= nStars) return;
+      s.classList.add('lit');
+      if (p.onStar) resTimers.push(setTimeout(() => p.onStar(i), i * 250));
+    });
+    if (nStars === 3) resTimers.push(setTimeout(startConfetti, 3 * 250));
     setStarsA11y(els.resStars, p.stars);
+
+    // スコア: 0 → 確定値。NEW BEST バッジはカウントアップ完了時に出す
+    const hasScore = p.score != null && Number.isFinite(p.score);
+    els.resScore.hidden = !hasScore;
+    if (hasScore) {
+      const target = Math.round(p.score);
+      // 読み上げは確定値だけ（カウントアップ中の数字は読ませない）
+      els.resScore.setAttribute('aria-label', `スコア ${target} 点${p.isNewBest ? '、ベスト更新' : ''}`);
+      setText(els.resScoreBest, p.bestScore != null && Number.isFinite(p.bestScore) ? `ベスト ${Math.round(p.bestScore)}` : '');
+      els.resScoreNew.hidden = true;
+      const done = () => { if (p.isNewBest) els.resScoreNew.hidden = false; if (p.onDone) p.onDone(); };
+      if (reducedMotion()) { setText(els.resScoreNum, String(target)); done(); }
+      else { setText(els.resScoreNum, '0'); countUp(target, p.onTick, done); }
+    } else if (p.onDone) {
+      p.onDone();
+    }
     setText(els.resStarsCap, ['まだ観察の途中。もう一度試してみよう。', 'まずは一歩。数字の意味を確かめよう。', 'よい観察。あと少しで満点。', '完璧な観察。渋滞の本質をつかんだ。'][Math.max(0, Math.min(3, p.stars))]);
     els.resIncomplete.hidden = p.completed !== false;
 
@@ -517,6 +743,7 @@ export function createHud(doc = document) {
     setExperiment, setSliders, setMode, flashPulse,
     setTimer, setPaused, setSpeed, setInfluence, setCar, setBrakeState,
     setHudVisible, toggleSheet, toast,
+    setViewMode, getViewMode, setMuted, setScore, showOnboarding, hideOnboarding,
     hideModals, isModalOpen, pressPrimary, showTitle, showBriefing, showQuiz, showResult,
   };
   return api;

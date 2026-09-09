@@ -78,7 +78,8 @@ kbd {
 
 /* ---- HUD グリッド ---- */
 .hud {
-  position: fixed; inset: 0; display: grid; gap: 12px; padding: 12px; pointer-events: none;
+  /* z-index: ビネットを HUD 内で最背面（z:-1）に置くための重ね合わせ文脈 */
+  position: fixed; inset: 0; z-index: 1; display: grid; gap: 12px; padding: 12px; pointer-events: none;
   grid-template-columns: 300px minmax(0, 1fr) 300px;
   grid-template-rows: auto minmax(0, 1fr) auto var(--log-h);
   grid-template-areas:
@@ -114,6 +115,73 @@ kbd {
 .timer .total { font-size: 12px; color: var(--faint); }
 .tag { font-size: 10px; letter-spacing: 0.16em; padding: 3px 8px; border-radius: 6px; background: rgba(245, 165, 36, 0.18); color: var(--amber); font-weight: 700; }
 .sheet-toggle { display: none; }
+/* トップバー右の操作群: ミュート / 表示切替 / 結果（simple のみ） */
+.top-ctl { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.btn-icon { width: 34px; height: 34px; padding: 0; border-radius: 9px; }
+.btn-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.btn-finish-top { display: none; white-space: nowrap; }
+.hud.mode-simple .btn-finish-top { display: inline-flex; }
+.hud.mode-simple .sheet-toggle { display: none; }
+
+/* ミッションバナー（simple のみ・1 行） + 台数スライダー（densityRange のあるレベルだけ） */
+.mission { grid-area: banner; display: none; flex-direction: column; gap: 6px; justify-self: center; width: min(760px, 100%); padding: 8px 16px; }
+.hud.mode-simple .mission { display: flex; }
+.mission-line { display: flex; align-items: baseline; gap: 8px; min-width: 0; font-size: 13.5px; white-space: nowrap; }
+.mission-line .mission-no { color: var(--accent-hi); font-weight: 700; letter-spacing: 0.08em; font-size: 12px; flex-shrink: 0; }
+.mission-line b { font-weight: 700; flex-shrink: 0; }
+.mission-line .sep { color: var(--faint); flex-shrink: 0; }
+.mission-line .howto-txt { color: var(--muted); overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.mission-density { display: none; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); }
+.hud.mode-simple.has-density .mission-density { display: flex; }
+.mission-density input { flex: 1; margin: 0; accent-color: var(--accent-hi); }
+.mission-density output { color: var(--text); font-variant-numeric: tabular-nums; min-width: 64px; text-align: right; }
+
+/* ---- 表示モード simple: 上部バー / バナー / 車パネル / 散布図だけ ---- */
+.hud.mode-simple {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr) auto var(--log-h);
+  grid-template-areas: "top" "banner" "." "car" "log";
+}
+.hud.mode-simple .side { display: none; }
+.hud.mode-simple .chart-timeline, .hud.mode-simple .chart-spacetime { display: none; }
+.hud.mode-simple .log-charts { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
+/* 車パネル: 速度（大）・ブレーキ計（1.3 倍）・スコアだけ */
+.hud.mode-simple .panel-car { width: min(720px, 100%); justify-self: center; gap: 22px; padding: 12px 24px; }
+.hud.mode-simple .car-name, .hud.mode-simple .car-sub, .hud.mode-simple .car-btns { display: none; }
+.hud.mode-simple .speed .num { font-size: 56px; }
+.hud.mode-simple .brake { flex: 1 1 250px; max-width: 400px; padding-left: 20px; border-left: 1px solid var(--border); gap: 6px; }
+.hud.mode-simple .brake-num .num { font-size: 44px; }
+.hud.mode-simple .brake-num small { font-size: 15px; }
+.hud.mode-simple .brake-label { font-size: 15.5px; }
+.hud.mode-simple .brake-bar { height: 4px; }
+.hud.mode-simple .score-num { font-size: 40px; }
+
+/* スコア（車パネル右端） */
+.score { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; padding-left: 14px; border-left: 1px solid var(--border); min-width: 72px; }
+.score-head { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.score-best { font-size: 11px; color: var(--muted); }
+.score-best:empty { display: none; }
+.score-new {
+  font-size: 9px; letter-spacing: 0.12em; font-weight: 800; padding: 2px 5px; border-radius: 4px; line-height: 1.2;
+  background: var(--amber); color: #1a1205; animation: pop .45s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+.score-num { font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--accent-hi); }
+
+/* ブレーキ中の赤いビネット（HUD 内の最背面・opacity は --vig で踏んだ長さに同期） */
+.vignette {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .35s ease;
+  box-shadow: inset 0 0 140px 40px rgba(229, 72, 77, 0.55), inset 0 0 40px 10px rgba(229, 72, 77, 0.25);
+}
+.hud.is-braking .vignette { opacity: var(--vig, 1); }
+
+/* 初回オンボーディング: ブレーキ計の上の吹き出し */
+.onboard {
+  position: absolute; left: 50%; bottom: calc(100% + 18px); z-index: 3; white-space: nowrap; pointer-events: none;
+  padding: 9px 14px; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 700; font-size: 13.5px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); transform: translate(-50%, 0); animation: bob 1.6s ease-in-out infinite;
+}
+.onboard::after { content: ""; position: absolute; left: 50%; top: 100%; transform: translateX(-50%); border: 7px solid transparent; border-top-color: var(--accent); }
+@keyframes bob { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -5px); } }
 
 /* 左: 実験パネル */
 .panel-left { grid-area: left; display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow-y: auto; }
@@ -181,6 +249,7 @@ kbd {
 
 /* 中央下: ブレーキ計（踏んだ長さ → 観察中 → 結果） */
 .brake {
+  position: relative; /* オンボーディング吹き出しの基準 */
   display: flex; flex-direction: column; justify-content: center; gap: 4px;
   min-width: 0; flex: 1 1 190px; max-width: 300px; padding-left: 16px; border-left: 1px solid var(--border);
 }
@@ -234,6 +303,9 @@ kbd {
   padding: 10px 16px; border-radius: 10px; font-size: 13.5px; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
 }
 .toast.is-show { opacity: 1; transform: translate(-50%, 0); }
+/* シンプル表示ではミッションバナーが上部中央にあるので、トーストはその下に出す */
+body:has(.hud.mode-simple) .toast { top: 118px; }
+@media (max-width: 640px) { body:has(.hud.mode-simple) .toast { top: 150px; } } /* 狭い画面はトップバーが高くバナーが下がる */
 
 /* ---- モーダル ---- */
 .modal {
@@ -271,9 +343,25 @@ kbd {
 .stars { font-size: 42px; letter-spacing: 0.08em; line-height: 1; margin: 8px 0 4px; color: rgba(255, 255, 255, 0.14); }
 .stars span { display: inline-block; }
 .stars span.lit { color: var(--amber); text-shadow: 0 0 18px rgba(245, 165, 36, 0.55); animation: pop .55s cubic-bezier(.2, 1.6, .4, 1) both; }
-.stars span:nth-child(2).lit { animation-delay: .18s; }
-.stars span:nth-child(3).lit { animation-delay: .36s; }
+.stars span:nth-child(2).lit { animation-delay: .25s; }
+.stars span:nth-child(3).lit { animation-delay: .5s; }
 @keyframes pop { from { transform: scale(0.2) rotate(-20deg); opacity: 0; } to { transform: none; opacity: 1; } }
+/* リザルト上段: 星（左）+ スコア（右） */
+.res-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.res-score { text-align: right; padding: 8px 14px; margin-top: 8px; border-radius: 12px; background: rgba(63, 90, 166, 0.14); border: 1px solid var(--border); min-width: 132px; }
+.res-score-num { font-size: 48px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: var(--accent-hi); }
+.res-score-num small { font-size: 14px; color: var(--muted); margin-left: 4px; font-weight: 500; letter-spacing: 0; }
+.res-score-sub { display: flex; justify-content: flex-end; align-items: center; gap: 6px; margin-top: 4px; font-size: 11px; color: var(--muted); }
+/* 3 星の紙吹雪（モーダルより手前・操作は透過） */
+.confetti { position: fixed; inset: 0; z-index: 30; pointer-events: none; width: 100%; height: 100%; }
+/* タイトル: ロゴの浮遊 + 主ボタンの呼吸（reduced-motion では下の全体ルールで静止） */
+#title-h1 { animation: floaty 4.5s ease-in-out infinite; }
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+#title-start { animation: breathe 2.6s ease-in-out infinite; }
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(142, 164, 234, 0); }
+  50% { box-shadow: 0 0 0 6px rgba(142, 164, 234, 0.22), 0 0 24px rgba(142, 164, 234, 0.35); }
+}
 .stars-cap { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
 .incomplete { font-size: 12.5px; color: var(--amber); margin: 6px 0; }
 .headline {
@@ -359,6 +447,14 @@ kbd {
   .chart-title .t-short { display: inline; }
   .ph-en { display: none; }
   .speed .num { font-size: 36px; }
+  /* simple: ブレーキ計は折り返して 1 行占有、スコアは速度の隣 */
+  .hud.mode-simple .speed .num { font-size: 44px; }
+  .hud.mode-simple .brake { flex-basis: 100%; max-width: none; padding-left: 0; border-left: 0; order: 2; }
+  .hud.mode-simple .score { margin-left: auto; }
+  .hud.mode-simple .score-num { font-size: 32px; }
+  .hud.mode-simple .panel-car { gap: 10px 14px; padding: 10px 14px; }
+  .mission { padding: 6px 12px; }
+  .mission-line { font-size: 12.5px; }
 }
 /* 横向きの低い画面: 縦積みだと潰れるので横並びに戻す */
 @media (max-width: 640px) and (max-height: 480px) {
@@ -398,8 +494,28 @@ kbd {
       <span class="num" id="timer">00:00</span>
       <span class="total num" id="timer-total"></span>
     </div>
+    <div class="top-ctl">
+      <button class="btn btn-ghost btn-icon" id="btn-mute" aria-label="ミュート" aria-pressed="false">
+        <svg id="mute-icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a8 8 0 0 1 0 11"/></svg>
+        <svg id="mute-icon-off" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l4 6M21 9l-4 6"/></svg>
+      </button>
+      <button class="btn btn-ghost" id="btn-view" aria-label="シンプル表示に切り替え">シンプル</button>
+      <button class="btn btn-ghost btn-finish-top" id="btn-finish-top">結果を見る</button>
+    </div>
     <button class="btn btn-ghost sheet-toggle" id="sheet-toggle">パネル</button>
   </header>
+
+  <!-- ミッションバナー（simple のみ）: 「実験 02 長く踏むと、どうなる？ ─ S / ↓ を押している間ブレーキ」 -->
+  <div class="panel mission" id="mission-banner">
+    <div class="mission-line">
+      <span class="mission-no">実験 <span id="mission-no">01</span></span><b id="mission-title">—</b><span class="sep">─</span><span class="howto-txt" id="mission-howto"></span>
+    </div>
+    <label class="mission-density" id="mission-density">
+      <span>車の台数</span><input type="range" id="mission-density-input" min="20" max="100" step="1" value="48" aria-label="車の台数（密度）"><output id="mission-density-out">48 台/km</output>
+    </label>
+  </div>
+
+  <div class="vignette" id="brake-vignette" aria-hidden="true"></div>
 
   <div class="side" id="side">
     <!-- 左: 実験 -->
@@ -478,6 +594,11 @@ kbd {
       <div class="brake-num" id="brake-num" hidden><span class="num" id="brake-value">0.0</span><small>秒</small></div>
       <div class="brake-label" id="brake-label">S / ↓ を押している間ブレーキ</div>
       <div class="brake-bar" id="brake-bar" hidden><i id="brake-bar-fill"></i></div>
+      <div class="onboard" id="onboard-hint" role="status" hidden>S / ↓ を押している間ブレーキ</div>
+    </div>
+    <div class="score" id="score-block" hidden aria-hidden="true">  <!-- 暫定値は頻繁に変わるので読み上げ対象外 -->
+      <div class="score-head"><span class="label">Score</span><span class="score-best num" id="score-best"></span><span class="score-new" id="score-new" hidden>NEW BEST</span></div>
+      <div class="score-num num" id="score-current">0</div>
     </div>
     <div class="car-btns">
       <button class="btn btn-ghost" id="btn-camera">視点: <span id="camera-mode">追従</span><kbd>C</kbd></button>
@@ -499,7 +620,7 @@ kbd {
       </div>
     </div>
     <div class="log-charts">
-      <div class="chart">
+      <div class="chart chart-timeline">
         <div class="chart-title"><span><span class="t-long">車列の平均速度</span><span class="t-short">平均速度</span></span><b id="chart-mean-now"></b></div>
         <div class="chart-body"><canvas id="chart-timeline" role="img" aria-label="折れ線グラフ: 車列の平均速度の推移（km/h）。橙の点線はブレーキ等のイベント時刻"></canvas></div>
       </div>
@@ -509,7 +630,7 @@ kbd {
       </div>
       <div class="chart chart-scatter">
         <div class="chart-title"><span><span class="t-long">踏んだ秒数 → 影響（試行の記録）</span><span class="t-short">散布図</span></span><span class="muted">直近を強調</span></div>
-        <div class="chart-body"><canvas id="chart-scatter" role="img" aria-label="散布図: 横軸はブレーキを踏んだ秒数、縦軸は影響を受けた後続車の台数。試行のたびに点が増える"></canvas></div>
+        <div class="chart-body"><canvas id="chart-scatter" role="img" aria-label="散布図: 横軸はブレーキを踏んだ秒数、縦軸は後続車の総時間損失（秒）。試行のたびに点が増える"></canvas></div>
       </div>
     </div>
   </section>
@@ -581,8 +702,16 @@ kbd {
     </section>
 
     <section id="res-body" hidden>
-      <div class="stars" id="res-stars" role="img" aria-label="星 0 つ"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></div>
-      <div class="stars-cap" id="res-stars-cap"></div>
+      <div class="res-head">
+        <div>
+          <div class="stars" id="res-stars" role="img" aria-label="星 0 つ"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></div>
+          <div class="stars-cap" id="res-stars-cap"></div>
+        </div>
+        <div class="res-score" id="res-score" hidden role="img" aria-label="スコア">
+          <div class="res-score-num num"><span id="res-score-num">0</span><small>点</small></div>
+          <div class="res-score-sub"><span class="label">Score</span><span class="num" id="res-score-best"></span><span class="score-new" id="res-score-new" hidden>NEW BEST</span></div>
+        </div>
+      </div>
       <p class="incomplete" id="res-incomplete" hidden>制限時間の前に終了したため、観察は「未完了」として採点しています。</p>
       <p class="headline" id="res-headline"></p>
       <div class="numgrid" id="res-numbers"></div>
@@ -601,6 +730,8 @@ kbd {
     </section>
   </div>
 </div>
+
+<canvas class="confetti" id="confetti" aria-hidden="true" hidden></canvas>
 
 <script type="module" src="src/main.js"></script>
 </body>
