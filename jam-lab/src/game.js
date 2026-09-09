@@ -60,6 +60,30 @@ export function createGame({ hud, charts, scene }) {
   let viewMode = readLS(VIEW_KEY) === 'detail' ? 'detail' : 'simple';
   let onboarded = readLS(ONBOARD_KEY) === '1';
   const bestScoreOf = (id) => (progress[id] && Number.isFinite(progress[id].score) ? progress[id].score : null);
+  const MAX_STARS = LEVELS.length * 3;
+  const starsOfId = (id) => (progress[id] ? progress[id].stars | 0 : 0);
+  const isCleared = (id) => starsOfId(id) >= 1;   // クリア = 星 1 つ以上、パーフェクト = 3 つ
+  /** 解放済みレベル: 01 は常に、以降は前をクリアで。FREE は 01 クリアで解放 */
+  function unlockedIds() {
+    const set = new Set([LEVELS[0].id]);
+    for (let i = 1; i < LEVELS.length; i++) if (isCleared(LEVELS[i - 1].id)) set.add(LEVELS[i].id);
+    if (isCleared(LEVELS[0].id)) set.add(FREE_LEVEL.id);
+    return set;
+  }
+  const totalStars = () => LEVELS.reduce((t, l) => t + starsOfId(l.id), 0);
+  const nextLevelToPlay = () => LEVELS.find((l) => !isCleared(l.id)) || null;
+  const titleOpts = () => ({ unlocked: unlockedIds(), totalStars: totalStars(), maxStars: MAX_STARS, nextLevel: nextLevelToPlay() });
+  /** プレイ中の目標チェックリスト（level.goals の文 × criteria の達成フラグ） */
+  function goalItems() {
+    const level = g.level;
+    if (!level || level === FREE_LEVEL || typeof level.criteria !== 'function' || !g.metrics || !ctx) return [];
+    let cs = [];
+    try { cs = level.criteria(g.metrics.summary(), { ...ctx, completed: true }) || []; } catch { cs = []; }
+    const goals = Array.isArray(level.goals) ? level.goals : [];
+    return cs.slice(0, 3).map((c, i) => ({ text: goals[i] || c.label, ok: !!c.ok }));
+  }
+  let lastGoalsKey = '';
+  const vibrate = (ms) => { try { navigator.vibrate?.(ms); } catch { /* 非対応端末 */ } };
   /** プレイ中の暫定スコア（完走したものとして評価する） */
   function liveScore() {
     if (!g.level || g.level === FREE_LEVEL || !g.metrics || !ctx) return null;
@@ -213,10 +237,11 @@ export function createGame({ hud, charts, scene }) {
     applyMode('auto');
     hud.setActiveLevel(null);
     hud.setHudVisible(false);
-    hud.showTitle(LEVELS, progress);
+    hud.showTitle(LEVELS, progress, titleOpts());
   }
 
   function openBriefing(level) {
+    if (level !== LEVELS[0] && !unlockedIds().has(level.id)) { showTitle(); return; }  // ロック中は開かない
     g.level = level;
     g.overrides = {};
     g.phase = 'briefing';
@@ -232,7 +257,7 @@ export function createGame({ hud, charts, scene }) {
     const meta = Number.isFinite(level.durationSec)
       ? `${level.simConfig.carCount} 台の車列 ・ 制限時間 ${level.durationSec} 秒 ・ 自動運転（あなたはブレーキだけ）`
       : `${level.simConfig.carCount} 台の車列 ・ 時間無制限`;
-    hud.showBriefing(level, meta);
+    hud.showBriefing(level, meta, { goals: Array.isArray(level.goals) ? level.goals : [], durationSec: level.durationSec });
   }
 
   function startLevel(level, overrides = {}) {
@@ -275,6 +300,8 @@ export function createGame({ hud, charts, scene }) {
     hud.hideModals();
     sound.play('start');
     hud.setViewMode?.(viewMode);
+    lastGoalsKey = '';
+    hud.setGoals?.(level === FREE_LEVEL ? [] : goalItems());   // FREE は目標なし
     if (!onboarded && level !== FREE_LEVEL) hud.showOnboarding?.(); else hud.hideOnboarding?.();
     hud.setHudVisible(true, false);
     hud.setActiveLevel(level.id);
@@ -315,11 +342,15 @@ export function createGame({ hud, charts, scene }) {
     const stars = Math.max(0, Math.min(3, res.stars | 0));
     const lines = Array.isArray(res.lines) ? res.lines : [];
     const score = scoreOf(level, s, ctx);
+    const unlockedBefore = unlockedIds();
     const prev = progress[level.id] || { stars: 0, score: null };
     const isNewBest = Number.isFinite(score) && (prev.score == null || score > prev.score);
     progress[level.id] = { stars: Math.max(prev.stars | 0, stars), score: isNewBest ? score : prev.score };
     saveProgress(progress);
     hud.setLevelStars(level.id, progress[level.id].stars);
+    const unlockedAfter = unlockedIds();
+    hud.setLevels(allLevels, progress, { unlocked: unlockedAfter });
+    const unlockedNext = allLevels.find((l) => unlockedAfter.has(l.id) && !unlockedBefore.has(l.id) && l !== level) || null;
     const idx = LEVELS.indexOf(level);
     const next = idx >= 0 && idx < LEVELS.length - 1 ? LEVELS[idx + 1] : FREE_LEVEL;
     g.nextLevel = next;
@@ -329,7 +360,9 @@ export function createGame({ hud, charts, scene }) {
       numbers: buildNumbers(level, s, ctx),
       lesson: level.lesson,
       completed: ctx.completed,
-      nextLabel: next === FREE_LEVEL ? 'フリーラボへ' : `次の実験 ${next.no} へ`,
+      // 次のレベルが未解放（= 今回クリアできなかった）なら「次へ」ではなくタイトルへ誘導する
+      nextLabel: !unlockedAfter.has(next.id) ? 'タイトルへ戻る' : next === FREE_LEVEL ? 'フリーラボへ' : `次の実験 ${next.no} へ`,
+      cleared: stars >= 1, perfect: stars === 3, unlockedNext,
       score, bestScore: progress[level.id].score, isNewBest,
       // 演出の合図（hud が星ポップ / カウントアップの節目で呼ぶ）
       onStar: (i) => sound.play(['star1', 'star2', 'star3'][Math.min(2, i | 0)]),
@@ -462,6 +495,7 @@ export function createGame({ hud, charts, scene }) {
     trial.metrics.markEvent();
     markEvent();                                       // レベル全体の計測もここから
     sound.brake(true);
+    vibrate(15);
     if (!onboarded) { onboarded = true; writeLS(ONBOARD_KEY, '1'); hud.hideOnboarding?.(); }
   }
 
@@ -500,6 +534,7 @@ export function createGame({ hud, charts, scene }) {
     ctx.shortestSec = Math.min(ctx.shortestSec, rec.sec);
     trial = { phase: 'result', result: rec };
     sound.play('trial');
+    vibrate(30);
   }
 
   /** HUD に渡すブレーキ計の状態 */
@@ -548,7 +583,7 @@ export function createGame({ hud, charts, scene }) {
   }
 
   function firstLevelToPlay() {
-    return LEVELS.find((l) => progress[l.id] == null) || LEVELS[0];
+    return nextLevelToPlay() || LEVELS[0];
   }
 
   // ---- キーボード ----
@@ -606,7 +641,12 @@ export function createGame({ hud, charts, scene }) {
       hud.setTimer(sim.time, g.level.durationSec);
       hud.setBrakeState(brakeState());
       // 暫定スコアはプレイ中だけ更新する（リザルトへ移った後は確定値と食い違うので触らない）
-      if (g.phase === 'playing' && g.level !== FREE_LEVEL) hud.setScore?.({ current: liveScore(), best: bestScoreOf(g.level.id), isNewBest: false });
+      if (g.phase === 'playing' && g.level !== FREE_LEVEL) {
+        hud.setScore?.({ current: liveScore(), best: bestScoreOf(g.level.id), isNewBest: false });
+        const items = goalItems();
+        const key = items.map((it) => (it.ok ? '1' : '0') + it.text).join('|');
+        if (key !== lastGoalsKey) { lastGoalsKey = key; hud.setGoals?.(items); }   // 変化した時だけ DOM を触る
+      }
       charts.draw({ sim, metrics: g.metrics, v0: sim.params.v0, eventTime: ctx ? ctx.eventTime : null,
         sag: !!g.cfg.sag, attempts: ctx ? ctx.attempts : [] });
     } else {
@@ -643,10 +683,22 @@ export function createGame({ hud, charts, scene }) {
   function boot() {
     if (booted) return; // 2 回目以降は no-op（HUD / window リスナーの多重登録を防ぐ）
     booted = true;
-    hud.setLevels(allLevels, progress);
-    hud.on('selectLevel', (id) => openBriefing(findLevel(id)));
+    hud.setLevels(allLevels, progress, { unlocked: unlockedIds() });
+    hud.on('selectLevel', (id) => {
+      if (!unlockedIds().has(id)) { hud.toast('前の実験をクリアすると解放されます'); return; }  // hud 側の保険
+      openBriefing(findLevel(id));
+    });
+    hud.on('lockedTap', (id) => {
+      const idx = allLevels.findIndex((l) => l.id === id);
+      const prevLv = idx > 0 ? allLevels[idx - 1] : LEVELS[0];
+      hud.toast(`実験 ${prevLv.no} をクリアすると解放されます`);
+      sound.play('hint');
+    });
     hud.on('titleStart', () => openBriefing(firstLevelToPlay()));
-    hud.on('titleFree', () => openBriefing(FREE_LEVEL));
+    hud.on('titleFree', () => {
+      if (!unlockedIds().has(FREE_LEVEL.id)) { hud.toast(`実験 ${LEVELS[0].no} をクリアするとフリーラボが解放されます`); sound.play('hint'); return; }
+      openBriefing(FREE_LEVEL);
+    });
     hud.on('briefStart', () => startLevel(g.level, {}));
     hud.on('briefBack', showTitle);
     hud.on('brakeDown', () => brakeDown('touch'));
@@ -679,7 +731,11 @@ export function createGame({ hud, charts, scene }) {
     window.addEventListener('pointerdown', unlockOnce);
     window.addEventListener('keydown', unlockOnce);
     hud.on('resultRetry', () => startLevel(g.level, g.overrides));
-    hud.on('resultNext', () => openBriefing(g.nextLevel || FREE_LEVEL));
+    hud.on('resultNext', () => {
+      const next = g.nextLevel || FREE_LEVEL;
+      if (!unlockedIds().has(next.id)) { showTitle(); return; }   // ロック中へは進めない
+      openBriefing(next);
+    });
     hud.on('resultTitle', showTitle);
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('keyup', onKeyUp);

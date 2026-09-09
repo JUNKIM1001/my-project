@@ -100,6 +100,11 @@ export function createHud(doc = document) {
     vignette: $('brake-vignette'), onboard: $('onboard-hint'),
     resScore: $('res-score'), resScoreNum: $('res-score-num'), resScoreBest: $('res-score-best'), resScoreNew: $('res-score-new'),
     confetti: $('confetti'),
+    // 有料級仕上げ（PREMIUM_POLISH.md）: 目標チェックリスト / 解放 / クリア条件 / バッジ
+    goalsCard: $('goals-card'), goalsList: $('goals-list'), expGoals: $('exp-goals'), expGoalsList: $('exp-goals-list'),
+    titleStatus: $('title-status'), titleStars: $('title-stars'), titleNext: $('title-next'),
+    briefRule: $('brief-rule'), briefDuration: $('brief-duration'),
+    resBadge: $('res-badge'), resUnlock: $('res-unlock'),
   };
 
   els.btnPulse = els.btnBrake; // 旧名の別名（互換用）
@@ -180,18 +185,23 @@ export function createHud(doc = document) {
   // 押し下げ = brakeDown、離す / 指が外れる = brakeUp。旧 'hold' も互換のため併せて通知する。
   const bindBrake = (elm) => {
     if (!elm) return;
-    let down = false;
+    // 押した指（pointerId）だけを離す対象にする。2 本目の指の up/cancel で 1 本目のブレーキが
+    // 外れないようにし、setPointerCapture で指がボタン外へ出ても up を受け取る
+    let activeId = null;
     const press = (e) => {
       e.preventDefault();
-      if (down) return;
-      down = true;
+      if (activeId !== null) return;
+      activeId = e.pointerId ?? -1;
+      try { elm.setPointerCapture?.(e.pointerId); } catch { /* 非対応は無視 */ }
       elm.classList.add('is-down');
       emit('hold', 'brake', true);
       emit('brakeDown');
     };
-    const release = () => {
-      if (!down) return;
-      down = false;
+    const release = (e) => {
+      if (activeId === null) return;
+      if (e && e.pointerId !== undefined && e.pointerId !== activeId && e.type !== 'blur') return;
+      try { elm.releasePointerCapture?.(activeId); } catch { /* 取得していなければ無視 */ }
+      activeId = null;
       elm.classList.remove('is-down');
       emit('hold', 'brake', false);
       emit('brakeUp');
@@ -199,8 +209,12 @@ export function createHud(doc = document) {
     elm.addEventListener('pointerdown', press);
     elm.addEventListener('pointerup', release);
     elm.addEventListener('pointercancel', release);
-    elm.addEventListener('pointerleave', release);
+    elm.addEventListener('lostpointercapture', release);
     elm.addEventListener('blur', release);
+    // pointer capture 非対応（古い Safari 等）の保険: ボタン外で離しても window で拾って解放する
+    window.addEventListener('pointerup', release);
+    window.addEventListener('pointercancel', release);
+    window.addEventListener('blur', () => release());
     elm.addEventListener('contextmenu', (e) => e.preventDefault());
   };
   bindBrake(els.btnBrake);
@@ -219,7 +233,17 @@ export function createHud(doc = document) {
   // レベルタブ
   // ---------------------------------------------------------------
   const tabById = new Map();
-  function setLevels(levels, progress = {}) {
+  let unlockedSet = null;   // null = 全て解放（旧 API 互換）。Set<levelId> なら含まれないレベルはロック
+  /** progress[id] は { stars, score }（旧形式の数値も受ける）→ 星数 or null */
+  const starsOf = (p) => (p == null ? null : (typeof p === 'object' ? (p.stars ?? null) : p));
+  const toSet = (u) => (u instanceof Set ? u : Array.isArray(u) ? new Set(u) : null);
+
+  /**
+   * レベルタブを作り直す。unlocked（Set<id>）を渡すと含まれないレベルは 🔒 + aria-disabled になり、
+   * クリックは selectLevel ではなく lockedTap(levelId) を発火する。省略時は全て解放扱い。
+   */
+  function setLevels(levels, progress = {}, { unlocked } = {}) {
+    unlockedSet = toSet(unlocked);
     els.tabs.replaceChildren();
     tabById.clear();
     for (const lv of levels) {
@@ -227,23 +251,114 @@ export function createHud(doc = document) {
       b.type = 'button';
       b.dataset.id = lv.id;
       b.title = lv.title;
-      b.append(doc.createTextNode(lv.no));
+      const lock = el('span', 'tab-lock', '🔒');
+      lock.setAttribute('aria-hidden', 'true');
+      lock.hidden = true;
+      b.append(lock, doc.createTextNode(lv.no));
       const st = el('span', 'tab-stars');
       b.append(st);
-      b.addEventListener('click', () => { b.blur(); emit('selectLevel', lv.id); });
+      b.addEventListener('click', () => {
+        b.blur();
+        if (b.classList.contains('is-locked')) emit('lockedTap', lv.id);
+        else emit('selectLevel', lv.id);
+      });
       els.tabs.append(b);
-      tabById.set(lv.id, { b, st });
+      tabById.set(lv.id, { b, st, lock, lv });
       if (progress[lv.id] != null) setLevelStars(lv.id, progress[lv.id]);
+      applyLock(lv.id);
     }
+  }
+  function applyLock(id) {
+    const t = tabById.get(id);
+    if (!t) return;
+    const locked = unlockedSet != null && !unlockedSet.has(id);
+    t.b.classList.toggle('is-locked', locked);
+    t.lock.hidden = !locked;
+    if (locked) {
+      t.b.setAttribute('aria-disabled', 'true');
+      t.b.setAttribute('aria-label', `実験 ${t.lv.no} ${t.lv.title}（ロック中）`);
+      t.b.title = `${t.lv.title}（ロック中）`;
+    } else {
+      t.b.removeAttribute('aria-disabled');
+      t.b.removeAttribute('aria-label');
+      t.b.title = t.lv.title;
+    }
+  }
+  /** タブを作り直さずにロック状態だけ更新（Set<id> / 配列。null で全解放） */
+  function setUnlocked(unlocked) {
+    unlockedSet = toSet(unlocked);
+    for (const id of tabById.keys()) applyLock(id);
   }
   function setActiveLevel(id) {
     for (const [lid, t] of tabById) t.b.classList.toggle('is-active', lid === id);
   }
+  /** stars は数値 or { stars, score }（progress の 1 要素）。null で消す */
   function setLevelStars(id, stars) {
     const t = tabById.get(id);
     if (!t) return;
-    setText(t.st, stars == null ? '' : starsText(stars));
-    setStarsA11y(t.st, stars);
+    const n = starsOf(stars);
+    setText(t.st, n == null ? '' : starsText(n));
+    setStarsA11y(t.st, n);
+  }
+
+  // ---------------------------------------------------------------
+  // 目標チェックリスト（simple: バナー下のカード / detail: 左パネル）
+  // 行は件数が変わった時だけ作り直し、毎 tick は textContent とクラスの差分更新のみ。
+  // ○ → ✓ に変わった瞬間だけ 0.3 秒のポップ（is-pop）。
+  // ---------------------------------------------------------------
+  function makeGoalList(ul) {
+    const rows = [];   // { li, mark, text, ok, popT }
+    const rebuild = (n) => {
+      for (const r of rows) clearTimeout(r.popT);
+      rows.length = 0;
+      ul.replaceChildren();
+      for (let i = 0; i < n; i++) {
+        const li = el('li', 'goal');
+        const mark = el('span', 'goal-mark', '○');
+        mark.setAttribute('role', 'img');
+        mark.setAttribute('aria-label', '未達成');
+        const text = el('span', 'goal-text', '');
+        li.append(mark, text);
+        ul.append(li);
+        rows.push({ li, mark, text, ok: null, popT: 0 });
+      }
+    };
+    return {
+      update(items) {
+        if (!ul) return;
+        if (rows.length !== items.length) rebuild(items.length);
+        for (let i = 0; i < items.length; i++) {
+          const it = items[i] || {};
+          const r = rows[i];
+          setText(r.text, String(it.text ?? ''));
+          const ok = !!it.ok;
+          if (ok === r.ok) continue;
+          const flipped = r.ok === false && ok;   // 初回描画（null → ok）ではポップさせない
+          r.ok = ok;
+          r.li.classList.toggle('is-ok', ok);
+          setText(r.mark, ok ? '✓' : '○');
+          r.mark.setAttribute('aria-label', ok ? '達成' : '未達成');
+          clearTimeout(r.popT);
+          if (flipped && !reducedMotion()) {
+            r.li.classList.add('is-pop');
+            r.popT = setTimeout(() => r.li.classList.remove('is-pop'), 350);
+          } else {
+            r.li.classList.remove('is-pop');
+          }
+        }
+      },
+    };
+  }
+  const goalsSimple = makeGoalList(els.goalsList);
+  const goalsDetail = makeGoalList(els.expGoalsList);
+  /** items = [{ text, ok }]（3 件）。空配列 / null で非表示（FREE） */
+  function setGoals(items) {
+    const list = Array.isArray(items) ? items : [];
+    const hide = list.length === 0;
+    if (els.goalsCard) els.goalsCard.hidden = hide;
+    if (els.expGoals) els.expGoals.hidden = hide;
+    goalsSimple.update(list);
+    goalsDetail.update(list);
   }
 
   // ---------------------------------------------------------------
@@ -479,6 +594,9 @@ export function createHud(doc = document) {
     els.modalTitle.hidden = true;
     els.modalBriefing.hidden = true;
     els.modalResult.hidden = true;
+    // バッジは毎回 hidden → 表示にしてアニメーションを再生させる（クイズ表示中は出さない）
+    if (els.resBadge) els.resBadge.hidden = true;
+    if (els.resUnlock) els.resUnlock.hidden = true;
   }
 
   // ---------------------------------------------------------------
@@ -598,31 +716,70 @@ export function createHud(doc = document) {
     return false;
   }
 
-  function showTitle(levels = [], progress = {}) {
+  /**
+   * タイトル。progress[id] は { stars, score }（旧形式の数値も可）。
+   * opts = { unlocked: Set<id>, totalStars, maxStars, nextLevel }
+   *   totalStars / maxStars → 「★ 9 / 15」、nextLevel → 「次の実験: 03 混んでいる道路では」（全クリアなら null で省略）
+   */
+  function showTitle(levels = [], progress = {}, opts = {}) {
     hideModals();
+    if (opts.unlocked !== undefined) setUnlocked(opts.unlocked);
     els.titleProgress.replaceChildren();
     for (const lv of levels) {
-      if (progress[lv.id] == null) continue;
+      const n = starsOf(progress[lv.id]);
+      if (n == null) continue;
       const s = el('span', null, lv.no);
-      const b = el('b', null, starsText(progress[lv.id]));
-      setStarsA11y(b, progress[lv.id]);
+      const b = el('b', null, starsText(n));
+      setStarsA11y(b, n);
       s.append(b);
       els.titleProgress.append(s);
+    }
+    const hasStars = Number.isFinite(opts.totalStars) && Number.isFinite(opts.maxStars);
+    const next = opts.nextLevel || null;
+    if (els.titleStatus) {
+      els.titleStatus.hidden = !hasStars && !next;
+      if (els.titleStars) {
+        els.titleStars.hidden = !hasStars;
+        setText(els.titleStars, hasStars ? `★ ${opts.totalStars} / ${opts.maxStars}` : '');
+        els.titleStars.setAttribute('aria-label', hasStars ? `星 ${opts.totalStars} / ${opts.maxStars}` : '');
+      }
+      if (els.titleNext) {
+        els.titleNext.hidden = !next;
+        if (next) els.titleNext.replaceChildren(doc.createTextNode('次の実験: '), el('b', null, next.no), doc.createTextNode(next.title || ''));
+        else els.titleNext.replaceChildren();
+      }
     }
     els.modalTitle.hidden = false;
     focusPrimary(els.modalTitle);
   }
 
-  function showBriefing(level, meta = '') {
+  /**
+   * ブリーフィング。opts = { goals: string[3], durationSec } は省略可（level.goals / level.durationSec を使う）。
+   * 「クリア条件」に 3 目標を ★1/★2/★3 のラベル付きで並べ、「★1 でクリア、★3 でパーフェクト」と制限時間を添える。
+   */
+  function showBriefing(level, meta = '', opts = {}) {
     hideModals();
     setText(els.briefNo, level.no);
     setText(els.briefTitle, level.title);
     setText(els.briefQuestion, level.question || '');
     els.briefBullets.replaceChildren(...(level.briefing || []).map((t) => el('li', null, t)));
     setText(els.briefHowto, level.howTo || '');
-    const goals = level.goals || [];
+    const goals = Array.isArray(opts.goals) ? opts.goals : (level.goals || []);
+    const dur = opts.durationSec !== undefined ? opts.durationSec : level.durationSec;
     els.briefGoalsBox.hidden = goals.length === 0;
-    els.briefGoals.replaceChildren(...goals.map((t) => el('li', null, t)));
+    els.briefGoals.replaceChildren(...goals.map((t, i) => {
+      const li = el('li', 'brief-goal');
+      const tag = el('b', 'goal-tag', `★${i + 1}`);
+      tag.setAttribute('aria-label', `星 ${i + 1}`);
+      li.append(tag, el('span', null, typeof t === 'string' ? t : (t && t.text) || ''));
+      return li;
+    }));
+    if (els.briefRule) els.briefRule.hidden = goals.length === 0;
+    if (els.briefDuration) {
+      const has = Number.isFinite(dur);
+      els.briefDuration.hidden = !has;
+      setText(els.briefDuration, has ? `制限時間 ${Math.round(dur)} 秒。時間内にどこまで満たせるかで星が決まります。` : '');
+    }
     setText(els.briefMeta, meta);
     els.modalBriefing.hidden = false;
     focusPrimary(els.modalBriefing);
@@ -669,6 +826,7 @@ export function createHud(doc = document) {
    * リザルト表示。
    * payload = { level, stars, headline, numbers: [{label, value, unit}], lines, lesson, completed, nextLabel,
    *             score, bestScore, isNewBest,          // score == null（FREE）ならスコア欄は出さない
+   *             cleared, perfect, unlockedNext,       // バッジ（省略時は stars から: 3 = パーフェクト、1〜2 = クリア）/ 解放された次のレベル（or null）
    *             onTick(value), onStar(index), onDone } // 演出フック（任意・効果音用）
    * 星は 0.25 秒間隔でポップ（onStar(i) は i*250 ms）、スコアは 0.8 秒でカウントアップ（onTick は 60 ms 間引き）、
    * 3 星なら 3 つ目の星の直後に紙吹雪。onDone はカウントアップ完了時（score が無ければ即時）。
@@ -679,6 +837,21 @@ export function createHud(doc = document) {
     setText(els.resTitle, p.level.title);
     els.resQuiz.hidden = true;
     els.resBody.hidden = false;
+
+    // バッジ: パーフェクト！（3★）/ クリア！（1〜2★）/ 未クリア — もう一度（0★）。hideModals で hidden にしてあるので再表示でポップが再生される
+    const starsN = Math.max(0, Math.min(3, p.stars | 0));
+    const perfect = p.perfect != null ? !!p.perfect : starsN === 3;
+    const cleared = perfect || (p.cleared != null ? !!p.cleared : starsN >= 1);
+    if (els.resBadge) {
+      els.resBadge.className = `res-badge ${perfect ? 'is-perfect' : cleared ? 'is-clear' : 'is-fail'}`;
+      setText(els.resBadge, perfect ? 'パーフェクト！' : cleared ? 'クリア！' : '未クリア — もう一度');
+      els.resBadge.hidden = false;
+    }
+    if (els.resUnlock) {
+      const nx = p.unlockedNext;
+      els.resUnlock.hidden = !nx;
+      setText(els.resUnlock, nx ? `実験 ${nx.no} が解放されました` : '');
+    }
 
     // 星: 一度全部消してから再付与（アニメーション再生のため）。CSS の animation-delay と同じ 0.25 秒刻みで通知
     const spans = els.resStars.querySelectorAll('span');
@@ -739,7 +912,7 @@ export function createHud(doc = document) {
   const api = {
     els, chartCanvases,
     on(name, fn) { handlers.set(name, fn); return api; },
-    setLevels, setActiveLevel, setLevelStars,
+    setLevels, setActiveLevel, setLevelStars, setUnlocked, setGoals,
     setExperiment, setSliders, setMode, flashPulse,
     setTimer, setPaused, setSpeed, setInfluence, setCar, setBrakeState,
     setHudVisible, toggleSheet, toast,

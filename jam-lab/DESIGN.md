@@ -19,6 +19,7 @@
 レベル構成・操作・評価の現行仕様は [BRAKE_REDESIGN.md](BRAKE_REDESIGN.md) を参照（本書の
 レベル案の表は初版のもの）。
 **2026-09-09 のカジュアル仕上げ**（シンプル表示 / スコア / 効果音 / 演出）は [CASUAL_POLISH.md](CASUAL_POLISH.md) を参照。
+**2026-09-09 第 2 弾**（クリア条件の明示 / レベル解放 / スマホ操作）は [PREMIUM_POLISH.md](PREMIUM_POLISH.md) を参照。
 
 ## スタック / 構成
 
