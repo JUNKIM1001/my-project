@@ -132,6 +132,10 @@ export function createGame({ hud, charts, scene }) {
 
   function releaseInputs() {
     trial = null;
+    // 観察視点のまま一時停止 / やり直し / 終了に入らないよう、元の視点へ戻してから捨てる
+    if (observeReturnCam && g.cameraMode === 'observe') setCamera(observeReturnCam);
+    else if (g.cameraMode === 'observe') setCamera('chase');
+    observeReturnCam = null;
     sound.brake(false);
     input.keyBrake = input.touchBrake = false;
     input.brake = 0;
@@ -507,6 +511,12 @@ export function createGame({ hud, charts, scene }) {
     trial.phase = 'observing';
     trial.observeUntil = g.sim.time + OBSERVE_SEC;
     sound.brake(false);
+    // 観察中は自動で上空視点にして、後ろへ広がる渋滞が見えるようにする（追従視点のときだけ。結果が出たら戻す）
+    if (g.cameraMode === 'chase' || g.cameraMode === 'cockpit') {
+      observeReturnCam = g.cameraMode;
+      setCamera('observe');
+      hud.toast('上空から観察中。後ろの車列に注目');
+    }
   }
 
   /** 観察が終わった試行を 1 点として記録する（step から毎サブステップ呼ばれる） */
@@ -535,6 +545,7 @@ export function createGame({ hud, charts, scene }) {
     trial = { phase: 'result', result: rec };
     sound.play('trial');
     vibrate(30);
+    if (observeReturnCam) { setCamera(observeReturnCam); observeReturnCam = null; }   // 観察が終わったら元の視点へ
   }
 
   /** HUD に渡すブレーキ計の状態 */
@@ -559,11 +570,16 @@ export function createGame({ hud, charts, scene }) {
     g.speed = m;
     hud.setSpeed(m);
   }
+  let observeReturnCam = null;   // 観察中に自動で上空へ切り替えたとき、戻す先の視点
+  function setCamera(mode) {
+    g.cameraMode = mode;
+    scene.setCameraMode(mode);
+    if (g.sim) hud.setCar(carInfo());   // sim 生成前（起動直後）は表示更新だけ省く
+  }
   function cycleCamera() {
+    observeReturnCam = null;   // プレイヤーが自分で切り替えたら自動復帰はしない
     const i = CAMERA_CYCLE.indexOf(g.cameraMode);
-    g.cameraMode = CAMERA_CYCLE[(i + 1) % CAMERA_CYCLE.length];
-    scene.setCameraMode(g.cameraMode);
-    hud.setCar(carInfo());
+    setCamera(CAMERA_CYCLE[(i + 1) % CAMERA_CYCLE.length]);
   }
   function toggleTimeOfDay() {
     g.timeOfDay = g.timeOfDay === 'morning' ? 'dusk' : 'morning';

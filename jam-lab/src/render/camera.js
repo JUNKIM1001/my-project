@@ -3,7 +3,8 @@
 // 座標規約: Y が上。車のローカル +X = 進行方向 (fx, fz)、ローカル +Z = 進行方向の右手 (-fz, fx)。
 import * as THREE from '../../vendor/three.module.js';
 
-export const CAMERA_MODES = ['chase', 'overhead', 'overview', 'cockpit'];
+export const CAMERA_MODES = ['chase', 'overhead', 'overview', 'cockpit', 'observe'];
+// observe: 観察用。上空 90 m から、プレイヤーの 35 m 後方を中心に見下ろす（後ろへ広がる渋滞が画面に入る）
 
 const BLEND_SEC = 0.6;      // モード切替の補間時間
 const CHASE_TAU_POS = 0.25; // 追従カメラ位置の時定数（指数ラグ）
@@ -57,6 +58,12 @@ export function createCameraRig(camera) {
         // 上空 60 m から真下。up を進行方向に取り、道路が画面上方向へ流れるようにする
         target.pos.copy(P).setY(P.y + 60);
         target.look.copy(P);
+        target.up.copy(F);
+        break;
+      case 'observe':
+        // 観察用: 35 m 後方の上空 90 m から見下ろす。プレイヤーは画面上寄り、後続車列が下側に広がる
+        target.look.copy(P).addScaledVector(F, -35);
+        target.pos.copy(target.look).setY(P.y + 90);
         target.up.copy(F);
         break;
       case 'overview':

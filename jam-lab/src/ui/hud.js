@@ -3,7 +3,7 @@
 // 毎フレームの更新は textContent の差分書き込みのみ（innerHTML の再構築はしない）。
 // ゲームロジックは持たず、ユーザー操作は on(name, fn) で登録されたハンドラへ通知する。
 
-const CAMERA_LABEL = { chase: '追従', overhead: '上空', overview: '全景', cockpit: '運転席' };
+const CAMERA_LABEL = { chase: '追従', overhead: '上空', overview: '全景', cockpit: '運転席', observe: '観察' };
 const TOD_LABEL = { morning: '朝', dusk: '夕' };
 
 /** スライダーの表示フォーマット（param → 文字列） */
@@ -128,6 +128,7 @@ export function createHud(doc = document) {
   click(els.btnView, 'toggleView');
   click(els.btnMute, 'toggleMute');
   click($('btn-camera'), 'camera');
+  click($('btn-camera-top'), 'camera');   // シンプル表示 / スマホでも視点を切り替えられるようトップバーにも置く
   click($('btn-tod'), 'tod');
   click($('btn-pause'), 'pause');
   click($('title-start'), 'titleStart');
