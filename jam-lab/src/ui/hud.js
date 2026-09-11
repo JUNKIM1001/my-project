@@ -116,6 +116,9 @@ export function createHud(doc = document) {
     spaceTime: $('chart-spacetime'),
     minimap: $('chart-minimap'),
     scatter: $('chart-scatter'),
+    course: $('chart-course'),           // シンプル表示の「コース全体」パネル
+    courseReadout: $('course-readout'),
+    ringReadout: $('ring-readout'),
   };
 
   // ---------------------------------------------------------------
@@ -535,6 +538,8 @@ export function createHud(doc = document) {
    * ~10 Hz で呼ばれる前提。textContent の差分書き込みのみ。
    */
   function setBrakeState(state) {
+    // 観察中はコース全体パネルを強調（渋滞が後ろへ広がる様子をここで見てもらう）
+    $('panel-course')?.classList.toggle('is-observing', !!state && state.phase === 'observing');
     const s = state || {};
     const phase = s.phase || 'idle';
     if (phase !== brakePhase) {

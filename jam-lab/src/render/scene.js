@@ -3,6 +3,7 @@
 // ジオメトリは起動時 / setSag 時にだけ構築し、毎フレームは行列更新と描画のみ。
 import * as THREE from '../../vendor/three.module.js';
 import { LENGTH, CAR_LENGTH, pointAt, elevationAt, wrap, lerpAlong } from '../shared/track.js';
+import { jamHeat, heatColor, HEAT_SEGMENTS } from '../shared/heat.js';
 import { createTrafficCar, setBrake, disposeCar, disposeCarAssets, CAR_COLORS } from './carkit.js';
 import { createRX7, WHEEL_R } from './rx7.js';
 import { createCameraRig, CAMERA_MODES } from './camera.js';
@@ -218,6 +219,20 @@ function buildTrack(sag, textures, lampMaterial) {
   // 道路面
   const asphalt = new THREE.MeshStandardMaterial({ color: 0x4a4d52, roughness: 0.95, map: textures.asphalt });
   add(buildStrip({ d: -ROAD_HALF, h: 0 }, { d: ROAD_HALF, h: 0 }, sag), asphalt);
+  // 渋滞ヒートの帯: 頂点カラーを毎フレーム書き換える。加算合成なので黒 = 見えない（流れている区間）、
+  // 渋滞している区間だけが橙〜赤に光る。区間数は buildStrip のサンプル数（LENGTH / 2 = 500）と一致させる
+  {
+    const geo = buildStrip({ d: -ROAD_HALF + 0.4, h: 0.04 }, { d: ROAD_HALF - 0.4, h: 0.04 }, sag);
+    const nv = geo.getAttribute('position').count;
+    // RGBA の頂点カラー（itemSize 4 → three が頂点アルファを使う）。流れている区間はアルファ 0 で透明、
+    // 渋滞区間だけ橙〜赤を重ねる。加算合成は環境により見えなかったため通常合成 + アルファにした
+    geo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(nv * 4), 4));
+    const mat = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 1,
+      depthWrite: false, toneMapped: false });
+    const m = add(geo, mat, { receiveShadow: false, castShadow: false });
+    m.name = 'heat';
+    m.renderOrder = 2;
+  }
 
   // 白線（外縁 2 本 + センター破線）。polygonOffset で遠景の z ファイトを避ける
   const line = new THREE.MeshStandardMaterial({
@@ -444,7 +459,10 @@ export function createScene(canvas, { sag = false, shadows = true, timeOfDay = '
   // --- 車の配置 ---
   const pose = { x: 0, y: 0, z: 0, fx: 0, fz: -1 };
   let prevPlayerS = null;
-  let prevSimTime = null;   // シムが作り直されたか（時刻が巻き戻ったか）の判定用
+  let prevSimTime = null;
+  let heatTick = 0;                                // 渋滞ヒート更新の間引きカウンタ
+  const heatBuf = new Float32Array(HEAT_SEGMENTS);  // jamHeat の再利用バッファ
+  const heatRGB = [0, 0, 0];   // シムが作り直されたか（時刻が巻き戻ったか）の判定用
   const _p = new THREE.Vector3();
 
   /** s と勾配から車を置く。ピッチは車長分の標高差から取り、勾配の折れ目で滑らかに変わる */
@@ -480,6 +498,33 @@ export function createScene(canvas, { sag = false, shadows = true, timeOfDay = '
     const useInterp = !!(it && it.ready && it.curS.length === cars.length && it.prevS.length === cars.length);
     const alpha = useInterp ? Math.min(1, Math.max(0, it.alpha ?? 1)) : 1;
     const renderS = (i, car) => (useInterp ? lerpAlong(it.prevS[i], it.curS[i], alpha) : car.s);
+
+    // 渋滞ヒートの帯（3D）: 10 Hz 程度で更新。基準速度はその密度の平衡速度（無ければ v0）
+    if (cars.length && (heatTick++ % 6) === 0) {
+      const heatMesh = track.getObjectByName('heat');
+      if (heatMesh) {
+        const v0 = (sim.params && sim.params.v0) || 22.2;
+        const ref = Math.min(sim.equilibriumSpeed > 0 ? sim.equilibriumSpeed : v0, v0);   // v0 を超えない
+        jamHeat(cars, ref, heatBuf);
+        const col = heatMesh.geometry.getAttribute('color');
+        const arr = col.array;
+        const nSeg = Math.min(HEAT_SEGMENTS, col.count / 2);
+        for (let k = 0; k < nSeg; k++) {
+          const h = heatBuf[k];
+          heatColor(h, heatRGB);
+          const a = h < 0.05 ? 0 : 0.5 + 0.45 * h;    // 弱い減速でもはっきり見え、停止はほぼ塗りつぶす
+          const o = k * 8;                              // 1 区間 = 2 頂点 × RGBA
+          arr[o] = heatRGB[0]; arr[o+1] = heatRGB[1]; arr[o+2] = heatRGB[2]; arr[o+3] = a;
+          arr[o+4] = heatRGB[0]; arr[o+5] = heatRGB[1]; arr[o+6] = heatRGB[2]; arr[o+7] = a;
+        }
+        // strip が周回の終端頂点を重複して持つ実装に変わっても継ぎ目が透明にならないよう、余りは先頭の値で埋める
+        for (let k = nSeg; k < col.count / 2; k++) {
+          const o = k * 8, src = 0;
+          for (let j = 0; j < 8; j++) arr[o + j] = arr[src + j];
+        }
+        col.needsUpdate = true;
+      }
+    }
 
     let playerFound = false;
     for (let i = 0; i < cars.length; i++) {

@@ -664,7 +664,10 @@ export function createGame({ hud, charts, scene }) {
         if (key !== lastGoalsKey) { lastGoalsKey = key; hud.setGoals?.(items); }   // 変化した時だけ DOM を触る
       }
       charts.draw({ sim, metrics: g.metrics, v0: sim.params.v0, eventTime: ctx ? ctx.eventTime : null,
-        sag: !!g.cfg.sag, attempts: ctx ? ctx.attempts : [] });
+        sag: !!g.cfg.sag, attempts: ctx ? ctx.attempts : [],
+        // 渋滞ヒートの基準速度: その密度の平衡速度。ただし希望速度 v0 は超えない（超えると定常走行が渋滞扱いになる）
+        ref: Math.min(sim.equilibriumSpeed > 0 ? sim.equilibriumSpeed : sim.params.v0, sim.params.v0),
+        observing: !!(trial && trial.phase === 'observing') });
     } else {
       hud.setBrakeState({ phase: 'idle' });
       charts.draw({ sim, metrics: null, v0: sim.params.v0, eventTime: null, sag: !!g.cfg.sag, attempts: [] });

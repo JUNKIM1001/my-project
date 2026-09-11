@@ -9,6 +9,7 @@
 // 時空間図は ImageData を再利用し、ミニマップの道路形状は Path2D をキャッシュする。
 
 import { pointAt, RADIUS, STRAIGHT, LENGTH } from '../shared/track.js';
+import { jamHeat, heatColor, heatSummary, HEAT_SEGMENTS } from '../shared/heat.js';
 
 const FONT = '-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "Noto Sans JP", sans-serif';
 const C_TEAL = [45, 212, 191];
@@ -62,7 +63,7 @@ function placeholder(ctx, w, h, text) {
   ctx.fillText(text, w / 2, h / 2);
 }
 
-export function createCharts({ timeline, spaceTime, minimap, scatter }) {
+export function createCharts({ timeline, spaceTime, minimap, scatter, course, courseReadout, ringReadout }) {
   let lastArgs = null;
 
   // ---------------------------------------------------------------
@@ -257,6 +258,7 @@ export function createCharts({ timeline, spaceTime, minimap, scatter }) {
   // (c) 周回路ミニマップ
   // ---------------------------------------------------------------
   let mmKey = '', mmPath = null, mmSagPath = null, mmStartX = 0, mmStartY = 0;
+  const mmCache = new Map();   // canvas → 経路キャッシュ
   let mmScale = 1, mmCx = 0, mmCy = 0;
   // 周回路（スタジアム形）の外接矩形: 長辺 = z 方向、短辺 = x 方向
   const TRACK_W = STRAIGHT + 2 * RADIUS; // 427.3
@@ -286,23 +288,45 @@ export function createCharts({ timeline, spaceTime, minimap, scatter }) {
     mmStartX = projX(p0); mmStartY = projY(p0);
   }
 
-  function drawMinimap({ sim, v0, sag }) {
-    const f = fit(minimap);
+  // 渋滞ヒート（区間ごとの重さ）。draw のたびに sim から計算し、ミニマップとコース全体の両方で使う
+  let heatBuf = new Float32Array(HEAT_SEGMENTS);
+  const HEAT_PALETTE = Array.from({ length: 32 }, (_, i) => {
+    const c = heatColor(i / 31);
+    return `rgb(${Math.round(c[0]*255)},${Math.round(c[1]*255)},${Math.round(c[2]*255)})`;
+  });
+  const heatCss = (h) => HEAT_PALETTE[Math.max(0, Math.min(31, Math.round(h * 31)))];
+
+  /**
+   * 周回路の地図。道路そのものを「渋滞の重さ」で色分けし（流れている区間は道路色のまま、
+   * 減速は橙、停止は赤の帯）、その上に車の点とプレイヤーを描く。target を変えて 2 つの canvas に描ける。
+   */
+  function drawRing(target, { sim, v0, sag, heat, observing }) {
+    const f = fit(target);
     if (!f) return;
     const { ctx, w, h } = f;
     ctx.clearRect(0, 0, w, h);
+    // 経路は canvas ごとにキャッシュ（ミニマップとコース全体でサイズが違うため、共通変数だと毎回作り直しになる）
     const key = `${w}x${h}`;
-    if (key !== mmKey) { buildTrackPaths(w, h); mmKey = key; }
+    let cache = mmCache.get(target);
+    if (!cache || cache.key !== key) {
+      buildTrackPaths(w, h);
+      cache = { key, path: mmPath, sag: mmSagPath, sx: mmStartX, sy: mmStartY, scale: mmScale, cx: mmCx, cy: mmCy };
+      mmCache.set(target, cache);
+    } else {
+      mmPath = cache.path; mmSagPath = cache.sag; mmStartX = cache.sx; mmStartY = cache.sy;
+      mmScale = cache.scale; mmCx = cache.cx; mmCy = cache.cy;
+    }
 
-    // 道路
+    // 道路（下地）
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = 'rgba(255,255,255,0.13)';
-    ctx.lineWidth = Math.max(5, 7 * mmScale);
+    const roadW = Math.max(6, 9 * mmScale);
+    ctx.strokeStyle = 'rgba(255,255,255,0.16)';
+    ctx.lineWidth = roadW;
     ctx.stroke(mmPath);
     if (sag) {
-      ctx.strokeStyle = 'rgba(245,165,36,0.35)';
-      ctx.lineWidth = Math.max(5, 7 * mmScale);
+      ctx.strokeStyle = 'rgba(245,165,36,0.30)';
+      ctx.lineWidth = roadW;
       ctx.stroke(mmSagPath);
       ctx.fillStyle = 'rgba(245,165,36,0.8)';
       ctx.font = `9px ${FONT}`;
@@ -310,6 +334,20 @@ export function createCharts({ timeline, spaceTime, minimap, scatter }) {
       ctx.textBaseline = 'middle';
       const pm = pointAt(400);
       ctx.fillText('サグ', projX(pm), projY(pm) + (projY(pm) > mmCy ? 12 : -12));
+    }
+    // 渋滞の帯: 重さ 0.05 以上の区間だけを色で上書き（2 m 刻み、線分で描く）
+    if (heat) {
+      const segLen = LENGTH / heat.length;
+      ctx.lineCap = 'butt';
+      ctx.lineWidth = roadW;
+      for (let k = 0; k < heat.length; k++) {
+        const hk = heat[k];
+        if (hk < 0.05) continue;
+        const a = pointAt(k * segLen), b = pointAt((k + 1) * segLen);
+        ctx.strokeStyle = heatCss(hk);
+        ctx.beginPath(); ctx.moveTo(projX(a), projY(a)); ctx.lineTo(projX(b), projY(b)); ctx.stroke();
+      }
+      ctx.lineCap = 'round';
     }
     // スタート地点のティック
     ctx.fillStyle = 'rgba(255,255,255,0.25)';
@@ -330,10 +368,36 @@ export function createCharts({ timeline, spaceTime, minimap, scatter }) {
     if (player) {
       const x = projX(player), y = projY(player);
       ctx.fillStyle = ACCENT_HI;
-      ctx.beginPath(); ctx.arc(x, y, r + 1.2, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, r + 1.6, 0, Math.PI * 2); ctx.fill();
       ctx.strokeStyle = '#fff';
       ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.arc(x, y, r + 3.5, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(x, y, r + 4, 0, Math.PI * 2); ctx.stroke();
+      if (observing) {   // 観察中はプレイヤーの後方（波が進む側）に「←」を添える
+        ctx.fillStyle = 'rgba(255,255,255,0.75)';
+        ctx.font = `10px ${FONT}`;
+        ctx.textAlign = 'center';
+        ctx.fillText('あなた', x, y - r - 9);
+      }
+    }
+  }
+
+  function drawMinimap(args) {
+    const { sim } = args;
+    const v0 = args.v0 || 22.2;
+    const ref = Math.min(args.ref || (sim && sim.equilibriumSpeed > 0 ? sim.equilibriumSpeed : v0), v0);   // v0 を超えない
+    const heat = args.heat || (sim && sim.cars ? jamHeat(sim.cars, ref, heatBuf) : null);
+    if (heat) heatBuf = heat;
+    const a = { ...args, heat };
+    drawRing(minimap, a);
+    if (course) drawRing(course, a);
+    // 読み上げ用の一行: 渋滞区間の割合と最も重い地点
+    if (heat && (courseReadout || ringReadout)) {
+      const sm = heatSummary(heat);
+      const txt = sm.maxHeat < 0.05
+        ? '渋滞なし ─ 車列は流れています'
+        : `コース全体のうち ${Math.round(sm.jammedRatio * 100)}% が渋滞 ・ いちばん重い場所はスタートから ${Math.round(sm.maxAt)} m`;
+      if (courseReadout && courseReadout.textContent !== txt) courseReadout.textContent = txt;
+      if (ringReadout && ringReadout.textContent !== txt) ringReadout.textContent = txt;
     }
   }
 

@@ -163,10 +163,19 @@ kbd {
 
 /* ---- 表示モード simple: 上部バー / バナー / 目標 / 車パネル / 散布図だけ ---- */
 .hud.mode-simple {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 340px;
   grid-template-rows: auto auto auto minmax(0, 1fr) auto var(--log-h);
-  grid-template-areas: "top" "banner" "goals" "." "car" "log";
+  grid-template-areas: "top top" "banner course" "goals course" ". course" "car car" "log log";
 }
+/* コース全体パネル（simple のみ）。道路を渋滞の重さで塗った地図を右側に常時表示 */
+.panel-course { display: none; grid-area: course; flex-direction: column; gap: 6px; align-self: start; min-height: 0; }
+.hud.mode-simple .panel-course { display: flex; }
+.course-body { position: relative; height: 200px; }
+.course-body canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.course-observing { display: none; color: var(--amber); }
+.panel-course.is-observing { border-color: rgba(245, 165, 36, 0.55); }
+.panel-course.is-observing .course-observing { display: inline; }
+.readout { font-size: 11.5px; color: var(--muted); min-height: 1.4em; }
 .hud.mode-simple .side { display: none; }
 .hud.mode-simple .chart-timeline, .hud.mode-simple .chart-spacetime { display: none; }
 .hud.mode-simple .log-charts { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
@@ -487,7 +496,21 @@ body:has(.hud.mode-simple) .toast { top: 118px; }
   .hud { padding-bottom: max(8px, var(--sab)); }
   .goals { padding: 6px 12px 8px; }
 }
+@media (max-width: 1099px) {
+  .hud.mode-simple {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "top" "banner" "goals" "course" "car" "log";
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto var(--log-h);
+  }
+  .hud.mode-simple .panel-course { justify-self: center; width: min(520px, 100%); align-self: stretch; }
+  .hud.mode-simple .course-body { flex: 1; height: auto; min-height: 120px; }
+}
 @media (max-width: 640px) {
+  /* 狭い画面の simple: コース全体マップを左 6 割に寄せ、右側にブレーキボタンを並べる（重なり防止） */
+  .hud.mode-simple .panel-course { justify-self: start; width: 60%; }
+  .hud.mode-simple .panel-course .legend { font-size: 10px; gap: 8px; flex-wrap: nowrap; white-space: nowrap; }
+  .hud.mode-simple .panel-course .legend span { overflow: hidden; text-overflow: ellipsis; }
+  body:has(.hud.mode-simple) .touch { justify-content: flex-end; padding-right: 10px; }
   .timer .total { display: none; }
   .tab { min-width: 36px; padding: 4px 6px; font-size: 12px; }
   /* タッチボタンは車情報パネルの上に置く（重なり防止）。
@@ -644,6 +667,7 @@ body:has(.hud.mode-simple) .toast { top: 118px; }
         <span><i style="background:#e5484d"></i>停止</span>
         <span><i style="background:#8ea4ea"></i>あなた</span>
       </div>
+      <div class="readout num" id="ring-readout" aria-live="off"></div>
     </aside>
 
     <!-- 右下: あなたが起こした波 -->
@@ -670,6 +694,19 @@ body:has(.hud.mode-simple) .toast { top: 118px; }
   </div>
 
   <!-- 中央下: 車情報 -->
+  <!-- シンプル表示用: コース全体と渋滞の重さ（道路を色で塗る） -->
+  <aside class="panel panel-course" id="panel-course" aria-label="コース全体と渋滞の重さ">
+    <div class="ph"><span class="ph-ja">コース全体 <span class="muted">· 色 = 渋滞の重さ</span></span><span class="ph-en course-observing">観察中</span></div>
+    <div class="course-body"><canvas id="chart-course" role="img" aria-label="コース全体の地図。道路の色が渋滞の重さ（橙=減速、赤=停止）、点が各車、青い輪があなた"></canvas></div>
+    <div class="legend">
+      <span><i style="background:#2dd4bf"></i>流れている</span>
+      <span><i style="background:#f5a524"></i>減速</span>
+      <span><i style="background:#e5484d"></i>停止</span>
+      <span><i style="background:#8ea4ea"></i>あなた</span>
+    </div>
+    <div class="readout num" id="course-readout" aria-live="off"></div>
+  </aside>
+
   <div class="panel panel-car" id="panel-car">
     <div class="car-name">あなたの車<small>RX-7 FD3S</small></div>
     <div class="speed" id="car-speed-wrap"><span class="num" id="car-speed">0</span><small>km/h</small></div>
