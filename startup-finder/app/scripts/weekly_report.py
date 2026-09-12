@@ -4,6 +4,7 @@
         基準日から遡って7日以内の全ファイル（週に複数回クロールが走っても集約される）
 - 文脈: ローカルSQLiteのDB総数・当年の調達収録数
 - 出力: data/reports/weekly_report_YYYY-MM-DD.html / .txt
+        data/reports/note_YYYY-MM-DD.txt（note投稿用原稿: 1行目タイトル、空行、本文。メール末尾にも同梱）
         標準出力にメール件名とファイルパスをJSONで出す（週次タスクがGmail送信に使う）
 
 usage:
@@ -82,9 +83,84 @@ def db_context():
         return None
 
 
+def db_enrich(recs):
+    """クロールJSONに website / description が欠けている社をDBの値で補う。
+
+    クロール時にURLを拾えたかどうかで企業名リンクが付いたり付かなかったりするのを防ぐ。
+    """
+    try:
+        c = sqlite3.connect(DB_PATH)
+        cur = c.cursor()
+    except sqlite3.Error:
+        return
+    for r in recs:
+        if r.get("website") and r.get("description"):
+            continue
+        try:
+            cur.execute("SELECT website, description FROM companies WHERE name=?", (r.get("name") or "",))
+            row = cur.fetchone()
+        except sqlite3.Error:
+            return
+        if not row:
+            continue
+        if not r.get("website") and row[0]:
+            r["website"] = row[0]
+        if not r.get("description") and row[1]:
+            r["description"] = row[1]
+
+
+def note_draft(raises, exits, amounts, stage_cnt, sector_cnt, inv_cnt, base):
+    """note投稿用の原稿（タイトル, 本文）を作る。
+
+    noteの編集画面は「1. 」で始まる行を自動で番号リスト化して構造が崩れるため、
+    企業番号は【n】形式にする。URLは1行に単独で置くとnote側でリンクカードになる。
+    """
+    top = lambda d, k: "、".join("%s %d件" % (a, b) for a, b in sorted(d.items(), key=lambda x: -x[1])[:k]) or "—"
+    start = base - timedelta(days=WINDOW_DAYS)
+    period = "%d/%d〜%d/%d" % (start.month, start.day, base.month, base.day)
+    title = "【週次】国内スタートアップ資金調達まとめ %s｜%d件" % (period, len(raises))
+    if amounts:
+        title += "・合計%s" % oku(sum(amounts))
+    L = ["%d年%d月%d日〜%d月%d日の1週間に発表された、国内スタートアップの資金調達・M&Aを数字でまとめます。"
+         "CVC向け国内スタートアップDB「Startup Finder」の週次クロール結果をもとにしています。"
+         "数値は公表・報道値のみで、非公表分は集計から除いています。" % (start.year, start.month, start.day, base.month, base.day), ""]
+    L += ["■ 今週のサマリー", "・資金調達の発表: %d件" % len(raises)]
+    if amounts:
+        L += ["・合計調達額（公表分）: %s" % oku(sum(amounts)), "・中央値: %s" % oku(median(amounts))]
+        b = raises[0]; blr = b.get("last_round") or {}
+        L.append("・最大案件: %s（%s、%s）" % (b["name"], blr.get("round") or "", oku(blr.get("amount_oku"))))
+    L += ["・M&A・IPO: %d件" % len(exits), "", "■ 内訳",
+          "・ステージ: %s" % top(stage_cnt, 5), "・分野: %s" % top(sector_cnt, 6), "・出資側（頻出）: %s" % top(inv_cnt, 5), "",
+          "■ 今週の資金調達（金額順）", "表記は「被出資側（調達した企業）｜ラウンド・金額｜出資側（投資家）」です。", ""]
+    if not raises:
+        L.append("今週は該当する資金調達の発表を検出しませんでした。")
+    for i, r in enumerate(raises, 1):
+        lr = r.get("last_round") or {}
+        invs = "、".join((lr.get("investors") or r.get("investors") or [])[:4]) or "非公表"
+        L.append("【%d】%s｜%s・%s｜出資: %s" % (i, r["name"], lr.get("round") or r.get("stage") or "", oku(lr.get("amount_oku")), invs))
+        if r.get("description"):
+            L.append(r["description"])
+        site = safe_url(r.get("website"))
+        if site:
+            L.append(site)
+        L.append("")
+    L.append("■ M&A・IPO・スタートアップによる出資")
+    if exits:
+        for x in exits:
+            label = {"ma": "M&A", "ipo": "IPO", "closed": "解散", "invest": "出資"}.get(x.get("status"), x.get("status"))
+            L.append("・%s（%s）%s" % (x["name"], label, x.get("status_note") or ""))
+    else:
+        L.append("・今週は検出なし")
+    L += ["", "■ 出典について",
+          "各案件は各社プレスリリース・報道（PR TIMES、Kepple、BRIDGE、日経、TechCrunch等）を出典としています。企業リンクは各社公式サイトです。",
+          "", "Startup Finder（CVC向け国内スタートアップDB、約1,900社収録）: %s" % APP_URL]
+    return title, "\n".join(L)
+
+
 def build(base):
     raises = load_window("weekly", base)
     exits = load_window("exit", base)
+    db_enrich(raises)
     ctx = db_context()
 
     def amt(r):
@@ -195,6 +271,11 @@ def build(base):
 
     body.append('<p style="margin:24px 0 0;font-size:12.5px"><a href="%s" style="color:#2a5bd7">Startup Finder を開く →</a>　'
                 '<span style="color:#7a8494">企業名リンクは各社サイト、出典は報道・プレスリリースです。数値は公表・報道値のみ（非公表は除外して集計）。</span></p>' % APP_URL)
+    note_title, note_body = note_draft(raises, exits, amounts, stage_cnt, sector_cnt, inv_cnt, base)
+    body.append('<h3 style="font-size:14px;margin:28px 0 6px">📝 note用原稿（コピーしてそのまま貼れます）</h3>'
+                '<p style="font-size:12px;color:#7a8494;margin:0 0 6px">タイトル: <b style="color:#1f2a44">%s</b></p>'
+                '<pre style="white-space:pre-wrap;word-break:break-all;font-family:inherit;font-size:12px;line-height:1.6;'
+                'background:#f3f5fa;border:1px solid #e6e9f0;border-radius:8px;padding:12px">%s</pre>' % (esc(note_title), esc(note_body)))
     body.append("</div>")
     html_out = "\n".join(body)
 
@@ -216,7 +297,8 @@ def build(base):
         lines.append("")
         lines.append("DB累計 %s社（%s年調達収録 %s社）" % (format(ctx["total"], ","), ctx["year"], ctx["this_year"]))
     lines.append(APP_URL)
-    return subject, html_out, "\n".join(lines), len(raises), len(exits)
+    lines += ["", "=" * 40, "note用原稿", "タイトル: " + note_title, "", note_body]
+    return subject, html_out, "\n".join(lines), len(raises), len(exits), note_title, note_body
 
 
 def main():
@@ -224,13 +306,15 @@ def main():
     ap.add_argument("--date", help="基準日 YYYY-MM-DD（省略時は今日）")
     a = ap.parse_args()
     base = date.fromisoformat(a.date) if a.date else date.today()
-    subject, html_out, text_out, n_raise, n_exit = build(base)
+    subject, html_out, text_out, n_raise, n_exit, note_title, note_body = build(base)
     os.makedirs(OUT_DIR, exist_ok=True)
     hp = os.path.join(OUT_DIR, "weekly_report_%s.html" % base.isoformat())
     tp = os.path.join(OUT_DIR, "weekly_report_%s.txt" % base.isoformat())
     open(hp, "w", encoding="utf-8").write(html_out)
     open(tp, "w", encoding="utf-8").write(text_out)
-    print(json.dumps({"subject": subject, "html_path": hp, "text_path": tp,
+    np_ = os.path.join(OUT_DIR, "note_%s.txt" % base.isoformat())
+    open(np_, "w", encoding="utf-8").write(note_title + "\n\n" + note_body)
+    print(json.dumps({"subject": subject, "html_path": hp, "text_path": tp, "note_path": np_, "note_title": note_title,
                       "raises": n_raise, "exits": n_exit}, ensure_ascii=False))
 
 
